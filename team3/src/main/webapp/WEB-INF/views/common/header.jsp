@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 
 <meta charset="utf-8">
@@ -41,10 +43,21 @@
 	<header class="clearfix">
 
 		<span>Blueprint</span>
-		<a onclick="window.location='memberLogin'"><h1>플젝명</h1></a>
+		<a onclick="window.location='main'"><h1>플젝명</h1></a>
 		<nav class="mainmenu">
-
-			<a onclick="window.location='memberLogin'">로그인</a> <a onclick="window.location='memberClassify'">회원가입</a> <a onclick="window.location='myGuest'">마이 페이지</a> <a onclick="window.location='adminMenu'">관리자페이지</a>
+			<c:if test="${sessionScope.memberState == 0 }">
+				<a onclick="window.location='memberLogin'">로그인</a>
+				<a onclick="window.location='memberClassify'">회원가입</a>
+				<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');">관리자페이지</a>
+			</c:if>
+			 <c:if test="${sessionScope.memberState == 1 }">
+				<a onclick="window.location='myGuest'">마이 페이지</a>
+				<a onclick="window.location='logout'">로그아웃</a> 
+			 </c:if>
+			 <c:if test="${sessionScope.memberState == 2 }">
+				<a onclick="window.location='myDoctor'">마이 페이지</a>
+				<a onclick="window.location='logout'">로그아웃</a> 
+			 </c:if>						
 		</nav>
 	</header>
 
@@ -67,10 +80,19 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupList'">검사 목록</a></li>
-                 <!--                <li class="sub-title text-uppercase"><a class="menu-item"  >검사 결과</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  >처방결과</a></li> -->
-                            
+                            <c:if test="${sessionScope.memberState != 2 }">
+								<li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 결과 목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방결과</a></li>  
+							 </c:if>
+							 <c:if test="${sessionScope.memberState == 2 }">
+								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupRequest'">검사 의뢰 등록</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupList'">검사 의뢰 목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupAdd'">건강검진 등록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 결과 목록</a></li>
+                                
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationAdd'">처방등록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방결과</a></li>  
+							 </c:if>	
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
@@ -231,7 +253,7 @@
                 </div>
             </li>
              <li class="nav-item dropdown mega-dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">병원,약국 찾기 </a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 의료 센터 </a>
                 <div class="dropdown-menu mega-menu row z-depth-1" aria-labelledby="navbarDropdownMenuLink">
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
@@ -401,7 +423,7 @@
                     </div>
                 </div>
             </li>  <li class="nav-item dropdown mega-dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">헬스케어</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">헬스 케어</a>
                 <div class="dropdown-menu mega-menu row z-depth-1" aria-labelledby="navbarDropdownMenuLink">
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
@@ -577,9 +599,7 @@
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventList'">이벤트 목록</a></li>
-                          
-                  
-                            
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventRequest'">이벤트 신청</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">

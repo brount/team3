@@ -1,5 +1,6 @@
 @charset "UTF-8";
 .navbar .mega-dropdown {
+  width : 160px;
   position: static !important; }
 
 .navbar .dropdown-menu.mega-menu {
@@ -47,5 +48,4 @@
      .nav-link {
             padding-right: $navbar-nav-link-padding-x;
             padding-left: $navbar-nav-link-padding-x;
-                margin-right : 50px; 
           }

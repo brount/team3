@@ -6,10 +6,11 @@
 <title> 사이트 이름 </title>
 <body>
    
-   <header>
+<header>
    <%@ include file="../common/header.jsp" %>
-   </header>
-   <section>   
+</header>
+
+<section>
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-3">
@@ -74,7 +75,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#">회원정보수정</a>
+                            <a href="doctorModify">회원정보수정</a>
                         </h4>
                     </div>
                 </div>
@@ -93,11 +94,11 @@
             </div>
         </div>
     </div>
-   </section>   
+</section>    
    
-   <footer>
+<footer>
    <%@ include file="../common/footer.jsp" %>
-   </footer>
+</footer>
 
 
 </body>

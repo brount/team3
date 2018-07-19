@@ -1,5 +1,9 @@
 package com.team.medical.service;
 
-public interface DoctorService {
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.ui.Model;
+
+public interface DoctorService {
+	public void doctorLogin(HttpServletRequest req, Model model);
 }

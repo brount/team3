@@ -2,14 +2,13 @@
 
 .footer-bs {
 	background-color: #424959;
-	padding: 60px 40px;
 	color:#ffffff;
-	margin-bottom: 20px;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 6px;
-	height:250px;
+	/* 
 	position:inherit;
+	 */
 	bottom:0;
 	width:100%;
 }
@@ -17,7 +16,7 @@
 
 .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social,
 	.footer-bs .footer-ns {
-	padding: 10px 25px;
+	padding: 20px;
 }
 
 .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns

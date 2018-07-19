@@ -2,48 +2,60 @@ package com.team.medical.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.medical.service.GuestService;
+
 @Controller
 public class GuestContoller {
 	
-	//일반회원가입정보입력페이지                          
+	@Autowired
+	GuestService guService;
+	
+	// 일반회원가입정보입력페이지                          
 	@RequestMapping(value = "guestShipForm")
 	public String guestShipForm(HttpServletRequest req, Model model) {
 		System.out.println("guestShipForm, 페이지");
 		return "guest/guestShipForm";
 	}	
-	//일반회원정보수정페이지                           
+	// 일반회원정보수정페이지                           
 	@RequestMapping(value = "guestModify")
 	public String guestModify(HttpServletRequest req, Model model) {
 		System.out.println("guestModify, 페이지");
 		return "guest/guestModify";
 	}	
-	//마이헬스페이지                           
+	// 마이헬스페이지                           
 	@RequestMapping(value = "myHealth")
 	public String myHealth(HttpServletRequest req, Model model) {
 		System.out.println("myHealth, 페이지");
 		return "guest/myHealth";
 	}	
-	//즐겨찾는병원페이지                            
+	// 즐겨찾는병원페이지                            
 	@RequestMapping(value = "bookMark")
 	public String bookMark(HttpServletRequest req, Model model) {
 		System.out.println("bookMark, 페이지");
 		return "guest/bookMark";
 	}	
-	//예약목록페이지                            
+	// 예약목록페이지                            
 	@RequestMapping(value = "reserveList")
 	public String reserveList(HttpServletRequest req, Model model) {
 		System.out.println("reserveList, 페이지");
 		return "guest/reserveList";
 	}
-	//질문등록페이지                           
+	// 질문등록페이지 
 	@RequestMapping(value = "boardAdd")
 	public String BoardAdd(HttpServletRequest req, Model model) {
 		System.out.println("BoardAdd, 페이지");
 		return "guest/boardAdd";
+	}
+	// 질문수정페이지
+	@RequestMapping(value = "boardModify")
+	public String boardModify(HttpServletRequest req, Model model) {
+		System.out.println("BoardAdd, 페이지");
+		return "guest/boardModify";
 	}
 	//간단진료페이지                           
 	@RequestMapping(value = "simpleTreat")
@@ -92,5 +104,14 @@ public class GuestContoller {
 	public String myGuest(HttpServletRequest req, Model model) {
 		System.out.println("myGuest, 페이지");
 		return "guest/myGuest";
+	}
+	//일반회원로그인
+	@RequestMapping(value = "guestLogin")
+	public String guestLogin(HttpServletRequest req, Model model) {
+		System.out.println("guestLogin, 페이지");
+		
+		guService.guestLogin(req, model);
+		
+		return "common/mainmenuversion";
 	}
 }

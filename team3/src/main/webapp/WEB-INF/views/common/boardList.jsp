@@ -18,12 +18,15 @@
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                  <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd'">
+                              </div>
+                              <div>
+                              	
                               </div>
                           </form>
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
-                             
 
                                <table class="table table-inbox table-hover">
                                 
@@ -33,14 +36,12 @@
                                   <td class="view-message">제목</td>                                  
                                   <td></td>
                                   <td></td>
-                                    <td> 
+                                    <td>
                                         <span>작성자
-                                            <div>
-                                                <span class="label label-success pull-left"> </span> 
-                                                <span class="label label-info pull-left"> </span>
-                                                <span class="label label-warning pull-left"> </span>
-                                                <span class="label label-danger pull-left"> </span>
-                                            </div>
+                                            <span class="label label-success pull-left"> </span> 
+                                            <span class="label label-info pull-left"> </span>
+                                            <span class="label label-warning pull-left"> </span>
+                                            <span class="label label-danger pull-left"> </span>
                                         </span>
                                     </td>
                                   <td class="view-message  text-left">등록일</td>
@@ -82,6 +83,7 @@
                                   <td class="view-message  text-left">Chức vụ</td>
                           </tbody>
                           </table>
+                          </div>
                       </div>
                   </aside>
                   <ul class="pagination">
@@ -96,14 +98,11 @@
 				    </ul>
               </div>                    
 		</div>
-		
    </section>
-   
    
    <footer>
    <%@ include file="../common/footer.jsp" %>
    </footer>
-
 
 </body>
 </html>

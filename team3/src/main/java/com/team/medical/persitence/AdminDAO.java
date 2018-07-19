@@ -1,5 +1,7 @@
 package com.team.medical.persitence;
 
-public interface AdminDAO {
+import java.util.Map;
 
+public interface AdminDAO {
+	public int adminLoginPro(Map<String,String> map);
 }

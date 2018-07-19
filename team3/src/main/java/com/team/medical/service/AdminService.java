@@ -1,5 +1,9 @@
 package com.team.medical.service;
 
-public interface AdminService {
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.ui.Model;
+
+public interface AdminService {
+	public void adminLoginPro(HttpServletRequest req, Model model);
 }

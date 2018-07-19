@@ -2,12 +2,18 @@ package com.team.medical.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.medical.service.DoctorService;
+
 @Controller
 public class DoctorContoller {
+	
+	@Autowired
+	DoctorService docService;
 	
 	//의사회원가입정보입력페이지                      
 	@RequestMapping(value = "doctorShipForm")
@@ -86,5 +92,31 @@ public class DoctorContoller {
  	public String myDoctor(HttpServletRequest req, Model model) {
  		System.out.println("myDoctor, 페이지");
  		return "doctor/myDoctor";
+ 	}
+ 	//검사의뢰
+    @RequestMapping(value = "checkupRequest")
+    public String checkupRequest(HttpServletRequest req, Model model) {
+       System.out.println("checkupRequest, 페이지");
+       return "doctor/checkupRequest";
+    }
+    //검사의뢰
+    @RequestMapping(value = "checkupAdd")
+    public String checkupAdd(HttpServletRequest req, Model model) {
+       System.out.println("checkupAdd, 페이지");
+       return "doctor/checkupAdd";
+    }
+    //검사의뢰목록상세
+    @RequestMapping(value = "checkupInfo")
+    public String checkupInfo(HttpServletRequest req, Model model) {
+       System.out.println("checkupInfo, 페이지");
+       return "doctor/checkupInfo";
+    }
+ 	//의사회원로그인
+ 	@RequestMapping(value = "doctorLogin")
+ 	public String doctorLogin(HttpServletRequest req, Model model) {
+ 		System.out.println("doctorLogin, 페이지");
+ 		docService.doctorLogin(req,model);
+ 		
+ 		return "common/mainmenuversion";
  	}
 }

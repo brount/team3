@@ -1,5 +1,7 @@
 package com.team.medical.persitence;
 
-public interface DoctorDAO {
+import java.util.Map;
 
+public interface DoctorDAO {
+	public int doctorLogin(Map<String,String> map);
 }

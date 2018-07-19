@@ -11,8 +11,9 @@ public class CommonContoller {
 	@RequestMapping("main")
 	public String main(HttpServletRequest req,Model model) {
 		System.out.println("main");
-
-	
+		if(req.getSession().getAttribute("memberState") == null) {
+			req.getSession().setAttribute("memberState", 0);
+		}
 		return "common/mainmenuversion";
 	}
 	//내용들어 갈 부분(헤더푸터공통부분)
@@ -159,6 +160,34 @@ public class CommonContoller {
 	public String BoardInfo(HttpServletRequest req, Model model) {
 		System.out.println("BoardInfo, 페이지");
 		return "common/boardInfo";
+	}
+	//로그인화면페이지              
+	@RequestMapping(value = "memberLoginPro")
+	public String memberLoginPro(HttpServletRequest req, Model model) {
+		System.out.println("memberLoginPro, 페이지");
+		int state = Integer.parseInt(req.getParameter("memberState"));
+		req.getSession().setAttribute("memberState", state);
+		String id =req.getParameter("id");
+		String pwd = req.getParameter("pwd");
+		req.setAttribute("id", id);
+		req.setAttribute("pwd", pwd);
+		String page=null;
+		if(state == 1) {
+			page = "guest/guestLogin";
+		}
+		else if(state == 2) {
+			page = "doctor/doctorLogin";
+		}
+		return page;
+	}
+	//로그아웃
+	@RequestMapping(value = "logout")
+	public String logout(HttpServletRequest req, Model model) {
+		System.out.println("logout, 페이지");
+		req.getSession().setAttribute("memberState",0);
+		req.getSession().setAttribute("id",null);
+		
+		return "common/mainmenuversion";
 	}
 }
 

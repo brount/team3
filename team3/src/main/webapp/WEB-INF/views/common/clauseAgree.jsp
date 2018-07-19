@@ -23,7 +23,7 @@
    <%@ include file="../common/header.jsp" %>
    </header>
    
-   <section style="padding:2rem;">
+   <section>
 	<div class="container"><!-- 회원가입약관 동의 시작 { -->
 		<div class="modal-dialog" style="max-width:800px;">
 		    <div class="modal-content">

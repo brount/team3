@@ -10,7 +10,7 @@
 	<%@ include file="../common/header.jsp" %>
 	</header>
 	
-	<section style="padding:2rem 0;">
+	<section>
 		<div class="container">
 		
 		<div class="row" style="margin-top:20px">

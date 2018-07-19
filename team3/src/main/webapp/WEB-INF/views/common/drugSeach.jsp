@@ -12,7 +12,7 @@
 	<%@ include file="../common/header.jsp" %>
 	</header>
 	
-	<section style="padding:2rem;">
+	<section>
 		<script src="/medical/resources/common/js/drugSeach.js"></script>
 		<div class="container">
 		    <div class="row">
@@ -29,17 +29,17 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                       <a href="#" style="color:#007bff;">자외선지수</a>
+		                                       <a href="#">자외선지수</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">식중독지수</a>
+		                                        <a href="#">식중독지수</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                       <a href="#" style="color:#007bff;">기타</a>
+		                                       <a href="#">기타</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>

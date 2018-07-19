@@ -53,8 +53,8 @@
 				
 				<tr>
 					<th colspan=4>
-						<input class="btn btn-primary" type="button" value="글수정">
-						 <input class="btn btn-primary" type="button" value="글삭제" >
+						<input class="btn btn-primary" type="button" value="글수정" onclick="window.location='boardModify'">
+						 <input class="btn btn-primary" type="button" value="글삭제">
 						 <input class="btn btn-primary" type="button" value="목록보기">
 					</th>
 				</tr>

@@ -11,7 +11,7 @@
 	<%@ include file="../common/header.jsp" %>
 	</header>
 	
-	<section style="padding:2rem;">
+	<section>
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
@@ -27,22 +27,22 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                       <a href="#" style="color:#007bff;">자외선지수</a>
+		                                       <a href="#">자외선지수</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">식중독지수</a>
+		                                        <a href="#">식중독지수</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                       <a href="#" style="color:#007bff;">기타</a>
+		                                       <a href="#">기타</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">기타</a>
+		                                        <a href="#">기타</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -60,22 +60,22 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Orders</a>
+		                                        <a href="#">Orders</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Invoices</a>
+		                                        <a href="#">Invoices</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Shipments</a>
+		                                        <a href="#">Shipments</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Tex</a>
+		                                        <a href="#">Tex</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -93,22 +93,22 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Change Password</a>
+		                                        <a href="#">Change Password</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Notifications</a> 
+		                                        <a href="#">Notifications</a> 
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Import/Export</a>
+		                                        <a href="#">Import/Export</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                       <a href="#" style="color:#007bff;">Delete Account</a>
+		                                       <a href="#">Delete Account</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -159,22 +159,22 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Sales</a>
+		                                        <a href="#">Sales</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Customers</a>
+		                                        <a href="#">Customers</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Products</a>
+		                                        <a href="#">Products</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#" style="color:#007bff;">Shopping Cart</a>
+		                                        <a href="#">Shopping Cart</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
