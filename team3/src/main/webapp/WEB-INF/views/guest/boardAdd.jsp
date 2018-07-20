@@ -18,7 +18,7 @@
 </header>
 
 <section>
-	<fieldset style="width: 800px; margin-left:600px;">
+	<fieldset style="width: 800px; margin:0 auto;">
 		<legend>글 작성</legend>
 		<table   class="table table-striped table-hover" border="1" align="center" id="board" >
 			<tr>

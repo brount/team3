@@ -21,8 +21,74 @@
 </header>
 
 <section>
-    <div class="container">
- <div class="mail-box">
+<div class="container">
+		    <div class="row">
+		        <div class="col-sm-3 col-md-3">
+		            <div class="panel-group" id="accordion">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
+		                        </h4>
+		                    </div>
+		                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
+		                        <div class="panel-body">
+		                            <table class="table">
+		                                <tr>
+		                                    <td>
+		                                        <a href="myHealth">내 건강정보</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                        <a href="checkupRegister">검진서등록</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                        <a href="checkAnalyze">내 검진결과</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                       <a href="#">내 질문목록</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                        <a href="reserveList">예약목록</a>
+		                                    </td>
+		                                </tr>
+		                            </table>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="bookMark">즐겨찾는병원</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a  href="guestModify">회원정보수정</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="memberExit">회원탈퇴</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>	
+			  		 <div class="col-sm-9 col-md-9">
+			            <div class="well">
+			                <div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>나의 예약 목록</h3>
@@ -99,13 +165,10 @@
 						※ ‘예약내역’ 에는 오늘 날짜 이후의 예약내역만 확인하실 수 있습니다.<br>
 						※ 오늘 이전의 예약내역은 ‘지난예약내역’ 에서 확인하시기 바랍니다.<br>
                    </div> 
-                   
-      </div>
-
-
-
-
-
+			            </div>
+			        </div>
+			    </div>
+			</div> 
 </section>
 
   

@@ -40,17 +40,22 @@
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                        <a href="http://www.jquery2dotnet.com">내 검진결과</a>
+	                                        <a href="checkupRegister">검진서등록</a>
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                       <a href="http://www.jquery2dotnet.com">내 질문목록</a>
+	                                        <a href="checkAnalyze">내 검진결과</a>
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                        <a href="http://www.jquery2dotnet.com">예약목록</a>
+	                                       <a href="#">내 질문목록</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td>
+	                                        <a href="reserveList">예약목록</a>
 	                                    </td>
 	                                </tr>
 	                            </table>
@@ -60,21 +65,21 @@
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" data-parent="#accordion" href="#">즐겨찾는병원</a>
+	                            <a href="bookMark">즐겨찾는병원</a>
 	                        </h4>
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a href="guestModify" data-toggle="collapse" data-parent="#accordion" >회원정보수정</a>
+	                            <a href="guestModify">회원정보수정</a>
 	                        </h4>
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" data-parent="#accordion" href="#">회원탈퇴</a>
+	                            <a href="memberExit">회원탈퇴</a>
 	                        </h4>
 	                    </div>
 	                </div>

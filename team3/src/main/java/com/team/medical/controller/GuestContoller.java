@@ -81,11 +81,11 @@ public class GuestContoller {
 		System.out.println("personalCare, 페이지");
 		return "guest/personalCare";
 	}
-	//예약신청페이지                             
+	//예약신청페이지  !!! 예약 신청 리스트 따로 필요할 듯 
 	@RequestMapping(value = "reserveForm")
 	public String reserveForm(HttpServletRequest req, Model model) {
 		System.out.println("reserveForm, 페이지");
-		return "guest/reserveForm";
+		return "guest/reserveForm2";
 	}
 	//검진결과분석페이지                             
 	@RequestMapping(value = "checkAnalyze")
@@ -93,7 +93,7 @@ public class GuestContoller {
 		System.out.println("checkAnalyze, 페이지");
 		return "guest/checkAnalyze";
 	}
-	//검진서등록페이지                              
+	//검진서등록페이지
 	@RequestMapping(value = "checkupRegister")
 	public String checkupRegister(HttpServletRequest req, Model model) {
 		System.out.println("checkupRegister, 페이지");

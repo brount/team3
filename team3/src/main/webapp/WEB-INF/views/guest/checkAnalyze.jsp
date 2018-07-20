@@ -1,57 +1,5 @@
-<%-- 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-
-
-
-
-
-
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['검사항목', '2016', '2017', '2018'],
-          ['혈압', 1000, 400, 200],
-          ['혈당', 1170, 460, 250],
-          ['콜레스트롤', 660, 1120, 300],
-          ['비만도', 1030, 540, 350]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-  <header>
-   <%@ include file="../common/header.jsp" %>
-</header>
-   --%>
-  
-  
-  
-  
-  
-  
-  
-  
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8"%>
 <html>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -91,18 +39,83 @@
 </header>
 <section>
 <div class="container">
-   <div class="row">
+		    <div class="row">
+		        <div class="col-sm-3 col-md-3">
+		            <div class="panel-group" id="accordion">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
+		                        </h4>
+		                    </div>
+		                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
+		                        <div class="panel-body">
+		                            <table class="table">
+		                                <tr>
+		                                    <td>
+		                                        <a href="myHealth">내 건강정보</a>
+		                                    </td>
+		                                </tr>
+	                                    <tr>
+		                                    <td>
+		                                        <a href="checkupRegister">검진서등록</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                        <a href="checkAnalyze">내 검진결과</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                       <a href="#">내 질문목록</a>
+		                                    </td>
+		                                </tr>
+		                                <tr>
+		                                    <td>
+		                                        <a href="reserveList">예약목록</a>
+		                                    </td>
+		                                </tr>
+		                            </table>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="bookMark">즐겨찾는병원</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a  href="guestModify">회원정보수정</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="memberExit">회원탈퇴</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>	
+			  		 <div class="col-sm-9 col-md-9">
+			            <div class="well">
+			                <div>
       
-      <div class="panel panel-primary" style="margin-left: 50px;">
+      <div class="panel panel-primary" style="margin-left: 10px">
           <div class="panel-heading" >
               <h3> 정다정님의 건강검진 결과</h3>
           </div>
           <div id="toolbar-admin" class="panel-body">
-             
           </div>
-                     <div id="columnchart_material" style="width: 800px; height: 500px; margin-left: 100px;" ></div>
+          <div id="columnchart_material" style="width:95%; height: 500px; margin:0 auto;"></div>
           
-          <table class="table table-striped table-hover" border="1" style="width: 1000px; ">
+          <table class="table table-striped table-hover" border="1" style="width:95%; margin:5px auto;">
               <thead>
                   <tr>
                       <th class="col-check"></th>
@@ -222,8 +235,8 @@
                    
                    <tr>
                       <td>고혈압<br>
-                      이상지질혈증<br>
-                      동맥경화</td>
+				                      이상지질혈증<br>
+				                      동맥경화</td>
                       <td>총콜레스테롤</td>
                       <td>mg/dL</td>
                       <td>200미만</td>
@@ -314,148 +327,13 @@ $(function() {
     
 });
 </script>
+			            </div>
+			        </div>
+			    </div>
+
 </section>
  <footer>
    <%@ include file="../common/footer.jsp" %>
 </footer>
-</body>
-</html>
-
-<%-- <!-- 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container">
-   <div class="row">
-      
-      <div class="panel panel-primary">
-          <div class="panel-heading">
-              <h3>건강검진 결과</h3>
-          </div>
-          <div id="toolbar-admin" class="panel-body">
-              <div class="btn-toolbar" role="toolbar" aria-label="admin">
-                  
-                </div>
-          </div>
-          <table class="table table-striped table-hover" border="1">
-              <thead>
-                  <tr>
-                      <th class="col-check"></th>
-                      <th>구분</th>
-                      <th colspan="2">목표질환</th>
-                      <th>결과</th>
-                      <th colspan="2">참고치</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr class="success">
-                      <td class="col-check"><input type="checkbox" class="form-check-input"></td>
-                      <td rowspan="9">계층검사</td>
-                      <td rowspan="3">비만</td>
-                      <td>신장</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      
-                      
-                      
-                  </tr>
-                  <tr class="success">
-                      <td class="col-check"><input type="checkbox" class="form-check-input"></td>
-                      <td rowspan="3">요검사</td>
-                      <td></td>
-                      <td>192.168.1.98</td>
-                      <td>EE:FF:33:44:AB:CD</td>
-                      <td class="status">Online</td>
-                      <td>test</td>
-                  </tr>
-                  <tr class="success">
-                      <td class="col-check"><input type="checkbox" class="form-check-input"></td>
-                      <td rowspan="7">혈액검사</td>
-                      <td>TSR321</td>
-                      <td>192.168.1.97</td>
-                      <td>EF:12:FE:34:AA:CC</td>
-                      <td class="status">Offline</td>
-                      <td>test</td>
-                  </tr>
-                  <tr class="success">
-                      <td class="col-check"><input type="checkbox" class="form-check-input"></td>
-                      <td rowspan="2">영상검사</td>
-                      <td>QPO987</td>
-                      <td>192.168.1.96</td>
-                      <td>FA:91:EB:82:DC:73</td>
-                      <td class="status">Out Of Order</td>
-                      <td>test</td>
-                  </tr>
-                  
-              </tbody>
-          </table>
-      </div>
-   </div>
-</div>
-<script>
-$(function() {
-    $('.col-check').hide();
-    $('#btn-admin').on('click', function(){
-        if($("#toolbar-admin").is(":visible"))
-        {
-          $("#toolbar-admin").hide();
-          $(".col-check").hide();
-        }
-        else
-        {
-            $("#toolbar-admin").show();
-            $(".col-check").show();
-        }
-   });
-    
-    $('#btn-online').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('success');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Online');
-    });
-    $('#btn-offline').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('warning');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Offline');
-    });
-    $('#btn-out-of-order').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('danger');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Out Of Order');
-    });
-    
-});
-</script>
-</html>
-
- --> --%>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
- <!-- 
-	<img src="resources/images/Demonstration/checkAnalyze.jpg">
-	<input type="button" onclick="window.location='main'" value="메인페이지">
-	<input type="button" onclick="window.location='checkAnalyzeList'" value="검진서목록"> -->
 </body>
 </html>

@@ -31,7 +31,7 @@ public class AdminContoller {
 		System.out.println("sanctionList, 페이지");
 		return "admin/sanctionList";
 	}
-	//의사회원목록페이지    
+	//의사회원목록페이지
 	@RequestMapping(value = "doctorList")
 	public String doctorList(HttpServletRequest req, Model model) {
 		System.out.println("doctorList, 페이지");

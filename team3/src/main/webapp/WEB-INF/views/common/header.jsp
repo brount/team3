@@ -174,8 +174,9 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" onclick="window.location='reserveList'" >병원 예약</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='reserveList'">클리닉 예약</a></li>
+                            	<!-- 예약 리스트 필요함 -->
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" onclick="window.location='reserveForm'" >병원 예약</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='reserveForm'">클리닉 예약</a></li>
             
                             </ol>
                         </div>
@@ -599,7 +600,9 @@
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventList'">이벤트 목록</a></li>
+                                <c:if test="${sessionScope.memberState == 2 }">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventRequest'">이벤트 신청</a></li>
+							 	</c:if>	
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
