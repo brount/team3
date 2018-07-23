@@ -26,22 +26,22 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">나의정보</a>
+                                        <a href="#">나의정보</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">병원정보</a>
+                                        <a href="#">병원정보</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                       <a href="http://www.jquery2dotnet.com">내 답변목록</a>
+                                       <a href="#">내 답변목록</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">예약목록</a>
+                                        <a href="#">예약목록</a>
                                     </td>
                                 </tr>
                             </table>
@@ -51,21 +51,20 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">포인트</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#">포인트</a>
                         </h4>
                     </div>
-                </div>
                  <div id="collapseTwo" class="panel-collapse collapse in collapse show">
                         <div class="panel-body">
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">포인트 내역</a>
+                                        <a href="#">포인트 내역</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">포인트 충전</a>
+                                        <a href="#">포인트 충전</a>
                                     </td>
                                 </tr>
                             </table>
@@ -82,16 +81,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#">회원탈퇴</a>
+                            <a href="memberExit">회원탈퇴</a>
                         </h4>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-9 col-md-9">
+            </div>
+            <div class="col-sm-9 col-md-9">
             <div class="well">
                 <h1> 내 용 드 러 갈 부 분</h1>
-            </div>
+        </div>
+        </div>
         </div>
     </div>
 </section>    

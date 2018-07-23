@@ -8,9 +8,9 @@
 <body>
  <header>
 	<%@ include file="../common/header.jsp" %>
-</header> 
-<section>
+</header>
 
+<section>
 <div class="container">
 	<div class="row">
 		

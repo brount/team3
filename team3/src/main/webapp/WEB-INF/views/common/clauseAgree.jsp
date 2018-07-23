@@ -31,7 +31,7 @@
 		        <span class="modal-title"><strong>약관 동의</strong></span>
 		      </div>
 		    <div class="modal-body">
-		      <form  name="fregister" id="fregister" action="" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off" role="form">
+		      <form  name="fregister" id="fregister" action="guestShipForm" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off" role="form">
 		        <div class="last-col">
 		          <div class="demo-col">
 		            <textarea class="form-control textarea" rows="5" readonly="readonly" style="resize: none;">

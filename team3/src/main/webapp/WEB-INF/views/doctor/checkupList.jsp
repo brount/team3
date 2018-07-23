@@ -1,13 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <body>
 <header>
 	<%@ include file="../common/header.jsp" %>
 </header>
-	    <div class="container">
- <div class="mail-box">
+
+<section>
+	<div class="container">
+		    <div class="row">
+		        <div class="col-sm-3 col-md-3">
+		            <div class="panel-group" id="accordion">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="#">검사의뢰 등록</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="#">검사의뢰 목록</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a  href="#">건강검진 등록</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="#">건강검진 결과 목록</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a  href="#">처방등록</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="#">처방결과</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>	
+			  		 <div class="col-sm-9 col-md-9">
+			            <div class="well">
+			                <div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>검사 의뢰서 목록</h3>
@@ -80,8 +133,14 @@
                   <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
                   <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
                 </ul>
-              </div>                    
-      </div>
+              </div>            
+			            </div>
+			        </div>
+			    </div>
+			</div> 
+			
+
+</section>
  <footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>

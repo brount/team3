@@ -124,14 +124,11 @@
         </div>
      
       </div>
-  
          <div class="form-group" >
         <label class="col-md-3 control-label">증상</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> 
-          
 				<div style="margin-left: 10px;">
-				
 				  <label>
 				    <input type="checkbox" class="option-input checkbox"  />
 					두통
