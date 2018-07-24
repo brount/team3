@@ -90,17 +90,17 @@
 		                <form class="form-horizontal" action=" " method="post"  id="reg_form">
 	    <fieldset>
 	
-	      <legend>My Health</legend>뿌링클
-	    
+	      <legend>My Health</legend>
+	
 		 <div class="form-group">
 	        <label class="col-md-3 control-label">생년월일</label>
 	        <div class="col-md-6  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input name="phone1" placeholder="1994" class="form-control" type="text" style="width:30px; margin-right: 10px;">
+	            ${vo.birth1}
 	          		<b>년</b> 
-	             <input name="phone2" placeholder="01" class="form-control" type="text" style="width:50px; margin-right: 10px;" >
+	            ${vo.birth2}
 	     		       <b>월</b> 	
-	              <input name="phone3" placeholder="13" class="form-control" type="text" style="width:50px; margin-right: 10px;">
+	            ${vo.birth3}
 	              	<b>일</b> 
 	          </div>
 	        </div>
@@ -112,7 +112,7 @@
 	        <label class="col-md-3 control-label">신장</label>
 	        <div class="col-md-6  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="first_name" placeholder="163" class="form-control"  type="text" style="hegint:70px;"> 
+	            ${vo.height}
 	            	<b>cm</b> 
 	            
 	          </div>
@@ -123,7 +123,7 @@
 	        <label class="col-md-3 control-label">체중</label>
 	        <div class="col-md-6  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="first_name" placeholder="46" class="form-control"  type="text" style="width:50px;"> 
+	            ${vo.weight}
 	            	<b>kg</b> 
 	            
 	          </div>
@@ -134,44 +134,29 @@
 	        <label class="col-md-3 control-label">혈액형</label>
 	        <div class="col-md-7  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	          
-	            <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="b" checked />
-				    A형
-				  </label>
-				    <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="b" />
-				  B형
-				  </label>
-				     <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="b" />
-				   AB형
-				  </label>
-				   <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="b" />
-				   O형
-				  </label>
-	          </div>
+	          ${vo.bloodtype}
+	        </div>
 	        </div>
 	      </div>
-	  
+ 	  
 	   <div class="form-group" >
 	        <label class="col-md-3 control-label">성별</label>
 	        <div class="col-md-6  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	          
-	            <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="m" checked />
-				  여자
-				  </label>
-				    <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="m" />
-				  남자
-				  </label>
-				  
+	          ${vo.getGender()} 
 	          </div>
 	        </div>
+	      </div> 
+	  
+	      <c:if test="${insertcnt ==0 }">
+	      <div style="display:table; margin:0 auto;">
+				<div>
+				
+				<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 	      </div>
+	      </div>
+	   
+		</c:if>
 	  </fieldset>
 	  </form>
 		            </div>

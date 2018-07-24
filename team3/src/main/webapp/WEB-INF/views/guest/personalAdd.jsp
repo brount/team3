@@ -19,7 +19,7 @@
    <%@ include file="../common/header.jsp" %>
 </header>
 
-<section>
+<section>   
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
@@ -27,79 +27,158 @@
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a href="exerciseInfoList">운동정보</a>
+	                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
 	                        </h4>
-	                    </div>                   
+	                    </div>
+	                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
+	                        <div class="panel-body">
+	                            <table class="table">
+	                                <tr>
+	                                    <td>
+	                                        <a href="myHealth">내 건강정보</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td>
+	                                        <a href="checkupRegister">검진서등록</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td>
+	                                        <a href="checkAnalyze">내 검진결과</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td>
+	                                       <a href="#">내 질문목록</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td>
+	                                        <a href="reserveList">예약목록</a>
+	                                    </td>
+	                                </tr>
+	                            </table>
+	                        </div>
+	                    </div>
 	                </div>
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a href="foodInfoList">음식정보</a>
+	                            <a href="bookMark">즐겨찾는병원</a>
 	                        </h4>
 	                    </div>
 	                </div>
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a href="personalCare">개인건강관리</a>
+	                            <a href="guestModify">회원정보수정</a>
+	                        </h4>
+	                    </div>
+	                </div>
+	                <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                        <h4 class="panel-title">
+	                            <a href="memberExit">회원탈퇴</a>
 	                        </h4>
 	                    </div>
 	                </div>
 	            </div>
+	        </div>	
+		  		 <div class="col-sm-9 col-md-9">
+		            <div class="well">
+		  <form class="form-horizontal" action="personalAddPro" method="post"  id="">
+	    <fieldset>
+	
+	      <legend>My Health 등록</legend>
+	    
+		 <div class="form-group">
+	        <label class="col-md-3 control-label">생년월일</label>
+	        <div class="col-md-6  inputGroupContainer">
+	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	            <input name="birth1" placeholder="1994" class="form-control" type="text" style="width:30px; margin-right: 10px;">
+	          		<b>년</b> 
+	             <input name="birth2" placeholder="01" class="form-control" type="text" style="width:50px; margin-right: 10px;" >
+	     		       <b>월</b> 	
+	              <input name="birth3" placeholder="13" class="form-control" type="text" style="width:50px; margin-right: 10px;">
+	              	<b>일</b> 
+	          </div>
 	        </div>
-  		 	<div class="col-sm-9 col-md-9">
-	            <div class="well">
-		            <div class="container">
-						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
-						    <fieldset>
-						
-						      <legend>나의 건강정보 등록하기</legend>
-						 
-						   <div class="form-group" >
-						        <label class="col-md-4 control-label">성별</label>
-						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						          
-						            <label style="margin-left: 10px;margin-right: 10px;">
-									    <input type="radio" class="option-input radio" name="m" checked />
-									  여자
-									  </label>
-									    <label style="margin-left: 10px;margin-right: 10px;">
-									    <input type="radio" class="option-input radio" name="m" />
-									  남자
-									  </label>
-									  
-						          </div>
-						        </div>
-						      </div>
-						   
-						      <div class="form-group" >
-						        <label class="col-md-4 control-label">신장</label>
-						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input  name="first_name" placeholder="163" class="form-control"  type="text" style="hegint:70px;"> 
-						            	<b>cm</b> 
-						            
-						          </div>
-						        </div>
-						      </div>
-						      
-						         <div class="form-group" >
-						        <label class="col-md-4 control-label">체중</label>
-						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input  name="first_name" placeholder="46" class="form-control"  type="text" style="width:50px;"> 
-						            	<b>kg</b> 
-						            
-						          </div>
-						        </div>
-						      </div>
-						  
+	     
+	      </div>
+	        
+	   
+	      <div class="form-group" >
+	        <label class="col-md-3 control-label">신장</label>
+	        <div class="col-md-6  inputGroupContainer">
+	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	            <input  name="height" placeholder="163" class="form-control"  type="text" style="hegint:70px;"> 
+	            	<b>cm</b> 
+	            
+	          </div>
+	        </div>
+	      </div>
+	      
+	         <div class="form-group" >
+	        <label class="col-md-3 control-label">체중</label>
+	        <div class="col-md-6  inputGroupContainer">
+	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	            <input  name="weight" placeholder="46" class="form-control"  type="text" style="width:50px;"> 
+	            	<b>kg</b> 
+	            
+	          </div>
+	        </div>
+	      </div>
+	 
+	         <div class="form-group" >
+	        <label class="col-md-3 control-label">혈액형</label>
+	        <div class="col-md-7  inputGroupContainer">
+	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	          
+	            <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio" name="bloodtype" checked value="A" />
+				    A형
+				  </label>
+				    <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio"  name="bloodtype" value="B"  />
+				  B형
+				  </label>
+				     <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio" name="bloodtype" value="AB"/>
+				   AB형
+				  </label>
+				   <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio" name="bloodtype" value="O" />
+				   O형
+				  </label>
+	          </div>
+	        </div>
+	      </div>
+	  
+	   <div class="form-group" >
+	        <label class="col-md-3 control-label">성별</label>
+	        <div class="col-md-6  inputGroupContainer">
+	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+	          
+	            <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio" name="gender" value="여자" checked />
+				  여자
+				  </label>
+				    <label style="margin-left: 10px;margin-right: 10px;">
+				    <input type="radio" class="option-input radio" name="gender" value="남자" />
+				  남자
+				  </label>
+				  
+	          </div>
+	        </div>
+	      </div>
+	      
+	      
 						         <div class="form-group" >
 						        <label class="col-md-4 control-label">나이</label>
 						        <div class="col-md-6  inputGroupContainer">
 						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input  name="first_name" placeholder="25" class="form-control"  type="text" style="width:50px;"> 
+						            <input  name="age" placeholder="25" class="form-control"  type="text" style="width:50px;"> 
 						            	<b>세(만)</b> 
 						            
 						          </div>
@@ -112,27 +191,19 @@
 						          <button type="submit" class="btn btn-warning" >등록하기<span class="glyphicon glyphicon-send"></span></button>
 						        </div>
 						      </div>
-						    </fieldset>
-						  </form>
-						</div>
-				   </div>
-	            </div>
-	        </div>		        
+	  </fieldset>
+	  </form>
+		            </div>
+		        </div>
+	        
 	    </div>
+	</div> 
 </section>
-
+ 
  <footer>
    <%@ include file="../common/footer.jsp" %>
 </footer>
- 
-
-<!-- 
 
 
-	<img src="resources/images/Demonstration/personalAdd.jpg">
-	<input type="button" onclick="window.location='main'" value="등록">
-	<input type="button" onclick="window.location='main'" value="취소">
-	<input type="button" onclick="window.location='personalCare'" value="이전">
-	<input type="button" onclick="window.location='main'" value="메인페이지"> -->
 </body>
 </html>

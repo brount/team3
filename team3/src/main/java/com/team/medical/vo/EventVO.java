@@ -3,19 +3,24 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class EventVO {
-	private int advertisement_no;
+	private int advertisementNo;
 	private int doctorno;
-	private String advertisement_image;
-	private String advertisement_contents;
-	private Date advertisement_registration_date;
-	private int advertisement_period;
-	private int advertisement_kind;
-	private int hospital_no;
-	public int getAdvertisement_no() {
-		return advertisement_no;
+	private String advertisementTitle;
+	private String advertisementThumbnail;
+	private String advertisementImage;
+	private String advertisementContents;
+	private Date advertisementRegDate;
+	private int advertisementPeriod;
+	private int advertisementKind;
+	private Date advertisementStart;
+	private Date advertisementEnd;
+	private int advertisementState;
+	
+	public int getAdvertisementNo() {
+		return advertisementNo;
 	}
-	public void setAdvertisement_no(int advertisement_no) {
-		this.advertisement_no = advertisement_no;
+	public void setAdvertisementNo(int advertisementNo) {
+		this.advertisementNo = advertisementNo;
 	}
 	public int getDoctorno() {
 		return doctorno;
@@ -23,42 +28,66 @@ public class EventVO {
 	public void setDoctorno(int doctorno) {
 		this.doctorno = doctorno;
 	}
-	public String getAdvertisement_image() {
-		return advertisement_image;
+	public String getAdvertisementTitle() {
+		return advertisementTitle;
 	}
-	public void setAdvertisement_image(String advertisement_image) {
-		this.advertisement_image = advertisement_image;
+	public void setAdvertisementTitle(String advertisementTitle) {
+		this.advertisementTitle = advertisementTitle;
 	}
-	public String getAdvertisement_contents() {
-		return advertisement_contents;
+	public String getAdvertisementThumbnail() {
+		return advertisementThumbnail;
 	}
-	public void setAdvertisement_contents(String advertisement_contents) {
-		this.advertisement_contents = advertisement_contents;
+	public void setAdvertisementThumbnail(String advertisementThumbnail) {
+		this.advertisementThumbnail = advertisementThumbnail;
 	}
-	public Date getAdvertisement_registration_date() {
-		return advertisement_registration_date;
+	public String getAdvertisementImage() {
+		return advertisementImage;
 	}
-	public void setAdvertisement_registration_date(Date advertisement_registration_date) {
-		this.advertisement_registration_date = advertisement_registration_date;
+	public void setAdvertisementImage(String advertisementImage) {
+		this.advertisementImage = advertisementImage;
 	}
-	public int getAdvertisement_period() {
-		return advertisement_period;
+	public String getAdvertisementContents() {
+		return advertisementContents;
 	}
-	public void setAdvertisement_period(int advertisement_period) {
-		this.advertisement_period = advertisement_period;
+	public void setAdvertisementContents(String advertisementContents) {
+		this.advertisementContents = advertisementContents;
 	}
-	public int getAdvertisement_kind() {
-		return advertisement_kind;
+	public Date getAdvertisementRegDate() {
+		return advertisementRegDate;
 	}
-	public void setAdvertisement_kind(int advertisement_kind) {
-		this.advertisement_kind = advertisement_kind;
+	public void setAdvertisementRegDate(Date advertisementRegDate) {
+		this.advertisementRegDate = advertisementRegDate;
 	}
-	public int getHospital_no() {
-		return hospital_no;
+	public int getAdvertisementPeriod() {
+		return advertisementPeriod;
 	}
-	public void setHospital_no(int hospital_no) {
-		this.hospital_no = hospital_no;
+	public void setAdvertisementPeriod(int advertisementPeriod) {
+		this.advertisementPeriod = advertisementPeriod;
 	}
+	public int getAdvertisementKind() {
+		return advertisementKind;
+	}
+	public void setAdvertisementKind(int advertisementKind) {
+		this.advertisementKind = advertisementKind;
+	}
+	public Date getAdvertisementStart() {
+		return advertisementStart;
+	}
+	public void setAdvertisementStart(Date advertisementStart) {
+		this.advertisementStart = advertisementStart;
+	}
+	public Date getAdvertisementEnd() {
+		return advertisementEnd;
+	}
+	public void setAdvertisementEnd(Date advertisementEnd) {
+		this.advertisementEnd = advertisementEnd;
+	}
+	public int getAdvertisementState() {
+		return advertisementState;
+	}
+	public void setAdvertisementState(int advertisementState) {
+		this.advertisementState = advertisementState;
+	}	
 	
 	
 }

@@ -6,4 +6,45 @@
 	<select id="doctorLogin" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM doctor WHERE doctorid=#{id} AND doctorpwd=#{pwd}
 	</select>
+	<!-- 아이디 체크 -->
+	<select id ="idCheck" resultType="int">
+		select count(*) from doctor where doctorid =#{doctorid,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 회원가입 정보 넣기 -->
+	<insert id="insertMember" parameterType="com.team.medical.vo.DoctorVO">
+		insert into doctor( doctorno, hospitalno, doctorid, doctorpwd, doctorname, doctorappro, doctorphone, doctoremail, doctorregstration, doctorspecialism, point, sanctions, licence)
+		values( doctornoseq.nextval ,#{hospitalno},#{doctorid},#{doctorpwd},#{doctorname},#{doctorappro},#{doctorphone},#{doctoremail},#{doctorregstration},#{doctorspecialism},#{point},#{sanctions}, #{licence,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 회원 정보 수정 -->
+	<update id ="updateMemberInfo" parameterType="com.team.medical.vo.DoctorVO">
+		update doctor set doctorpwd = #{doctorpwd}, doctorname =#{doctorname}, doctorphone =#{doctorphone}, doctoremail =#{doctoremail}, doctorspecialism =#{doctorspecialism},licence =#{licence,jdbcType=VARCHAR} where doctorid =#{doctorid,jdbcType=VARCHAR} 
+	</update>
+	
+	<!-- 의사회원 탈퇴 -->
+	<delete id = "deleteMember" parameterType="String">
+		delete from doctor where doctorid=#{id}
+	</delete>
+	
+	<!-- 일반회원 정보 -->
+	<!-- <select id = "getcusInfo" resultType="com.team.medical.vo.GuestVO">
+	   select * from doctor where guestid =#{guestid,jdbcType=VARCHAR}
+	</select> -->
+	
+	<!-- 내 병원 정보 입력 -->
+	<insert id="insertHospitalInfo" parameterType="com.team.medical.vo.HospitalVO">
+		insert into Hospital(hospitalno, doctorno, hospitalname, hospitaladdress1, hospitaladdress2, hospitaladdress3, hospitalphone, hospitalinstruction, hospitaltime, hospitalholiday, hospitalimage)
+		values( hospitalseq.nextval ,#{doctorno},#{hospitalname},#{hospitaladdress1,jdbcType=VARCHAR},#{hospitaladdress2,jdbcType=VARCHAR},#{hospitaladdress3,jdbcType=VARCHAR},#{hospitalphone,jdbcType=VARCHAR},#{hospitalinstruction,jdbcType=VARCHAR},#{hospitaltime},#{hospitalholiday,jdbcType=VARCHAR},#{hospitalimage,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 내정보 -->
+	<select id="getMyInfo" parameterType="String" resultType="int">
+		select doctorno from doctor where doctorid=#{id,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 내 병원 정보 가져오기 -->
+	<select id="getMyhospitalInfo" parameterType="int" resultType="com.team.medical.vo.HospitalVO">
+		select * from hospital where doctorno =#{doctorno,jdbcType=INTEGER}
+	</select>
 </mapper>

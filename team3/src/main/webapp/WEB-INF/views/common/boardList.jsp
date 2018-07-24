@@ -18,7 +18,7 @@
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                                  <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd'">
+                                  <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd?kind=1'">
                               </div>
                               <div>
                               	
@@ -32,70 +32,71 @@
                                 
                             <tbody>
                               <tr class="unread">
-                                    <td class="view-message  dont-show">글번호</td>
-                                  <td class="view-message">제목</td>                                  
-                                  <td></td>
-                                  <td></td>
+                                    <td class="view-message ">글번호</td>
+                                  <td class="view-message">제목</td> 
                                     <td>
                                         <span>작성자
-                                            <span class="label label-success pull-left"> </span> 
-                                            <span class="label label-info pull-left"> </span>
-                                            <span class="label label-warning pull-left"> </span>
-                                            <span class="label label-danger pull-left"> </span>
                                         </span>
                                     </td>
-                                  <td class="view-message  text-left">등록일</td>
+                                  <td class="view-message  ">등록일</td>
                               </tr>
-                              <tr class="">
-                                  <td class="view-message  dont-show">NV0001</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-success">Làm việc</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
-                              </tr>
-                              <tr class="">
-                                  <td class="view-message dont-show">NV0005</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-danger">Thôi việc</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
-                              </tr>
-                              <tr class="">
-                                  <td class="view-message dont-show">NV0006</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-success">Làm việc</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
-                              </tr>
-                              <tr class="">
-                                  <td class="view-message dont-show">NV0007</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-success">Làm việc</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
-                              </tr>
-                              <tr class="">
-                                  <td class="view-message dont-show">NV0008</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-warning">Tập huấn</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
-                              </tr>
-                              <tr class="">
-                                  <td class="view-message dont-show">NV0010</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">제목</a></td>
-                                  <td><span class="label label-info">Công tác</span></td>
-                                  <td class="view-message  text-left">Chức vụ</td>
+                              <c:if test="${cnt>0 }">
+								<c:forEach var="dto" items="${dtos }">
+									<tr>
+										<td>
+											${number }
+											<c:set var="number" value="${number-1 }"></c:set>
+										</td>					
+										<td >
+											<a href="boardInfo?num=${dto.boardno }&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle }</a>
+										</td>
+										<td >${dto.boardwriter }</td>
+										<td >
+											<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate }"/>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<!-- 게시글이 없으면 -->
+							<c:if test="${cnt==0 }">
+								<tr>
+									<td colspan="6" align="center">
+										게시글이 없습니다. 글을 작성해 주세요.!!
+									</td>
+								</tr>
+							</c:if>
                           </tbody>
                           </table>
                           </div>
                       </div>
                   </aside>
-                  <ul class="pagination">
-				      <li class="disabled"><span>«</span></li>
-				      <li class="active"><span>1</span></li>
-				      <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
-				      <li><a href="http://bootsnipp.com/search?q=page&page=3">3</a></li>
-				      <li><a href="http://bootsnipp.com/search?q=page&page=4">4</a></li>
-				      <li class="disabled"><span>...</span></li>
-				      <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
-				      <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
-				    </ul>
+                  <table style="width:1000px"align="center">
+				<tr>
+					<th align="center">
+						<c:if test="${cnt>0 }">
+							<!-- 처음[◀◀] / 이전블록 [◀] -->
+							<c:if test="${startPage > pageBlock }">
+								<a href="bookList.hs">[◀◀]</a>
+								<a href="bookList.hs?pageNum=${startPage-pageBlock}">[◀]</a>	
+							</c:if>
+							<!-- 페이지 블록 -->
+							<c:forEach var="i" begin="${startPage }" end="${endPage }">
+								<c:if test="${i == currentPage }">
+									<span> <b>[${i }]</b></span>
+								</c:if>
+								<c:if test="${i != currentPage }">
+									<a href="bookList.hs?pageNum=${i}">[${i }]</a>
+								</c:if>
+							</c:forEach>										
+							<!-- 다음블록[▶] / 끝[▶▶] -->
+							<c:if test="${pageCnt > endPage }">
+								<a href="bookList.hs?pageNum=${startPage+pageBlock}">[▶]</a>
+								<a href="bookList.hs?pageNum=${pageCnt}">[▶▶]</a>
+							</c:if>
+						</c:if>
+					</th>
+				</tr>
+			</table>
               </div>                    
 		</div>
    </section>

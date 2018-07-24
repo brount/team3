@@ -2,8 +2,260 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
 <mapper namespace="com.team.medical.persitence.AdminDAO">
+
+	<!-- 관리자 로그인 -->
 	<select id="adminLoginPro" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) FROM admin WHERE adminid=#{id} AND adminpwd=#{pwd}
+		SELECT COUNT(*) FROM admin WHERE adminid=#{id} AND
+		adminpwd=#{pwd}
 	</select>
+
+	<!-- 일반회원목록 갯수 -->
+	<select id="getMemberListCnt" resultType="int">
+		SELECT COUNT(*) FROM guest WHERE status = 0 AND sanctions = 0
+	</select>
+
+	<!-- 일반회원목록 조회 -->
+	<select id="getMemberList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+		
+			SELECT guestNo
+				 , guestid
+				 , guestname
+				 , address2
+				 , guestage
+				 , guesttel
+				 , sanctions
+				 , guestdate
+				 , rownum
+			  from guest
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+			   AND status = 0
+			   AND sanctions = 0
+		]]>
+	</select>
+
+	<!-- 일반회원검색목록 갯수 구하기 -->
+	<select id="search_memberCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(guestNo) FROM guest
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					guestNo LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND guestname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND guestid LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+				AND sanctions = 0 
+				AND status = 0
+		</where>
+	</select>
+	
+	<!-- 일반회원검색목록 조회 -->
+	<select id="search_member" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+		
+			SELECT * FROM( SELECT guestNo
+					 			, guestid
+					 			, guestname
+					 			, address2
+					 			, guestage
+					 			, guesttel
+					 			, sanctions
+					 			, guestdate
+					 			, rownum rnum
+							 FROM (SELECT *
+									 FROM guest
+			<where>
+				<choose>
+					<when test="sc == 0 ">
+						guestNo LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 1">
+						AND guestname LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 2">
+						AND guestid LIKE '%'||#{search}||'%'
+					</when>
+				</choose>
+					AND sanctions = 0
+					AND status = 0
+			</where>
+				ORDER BY guestid DESC
+					)
+				)
+				<![CDATA[ 
+	                  WHERE rnum >= #{start} AND rnum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 일반제제회원목록 갯수 -->
+	<select id="getMembersanctionsListCnt" resultType="int">
+		SELECT COUNT(*) FROM guest WHERE sanctions != 0 AND status = 0
+	</select>
+
+	<!-- 일반제제회원목록 조회 -->
+	<select id="getMembersanctionsList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+		<![CDATA[
+			SELECT guestNo
+				 , guestid
+				 , guestname
+				 , address2
+				 , guestage
+				 , guesttel
+				 , sanctions
+				 , guestdate
+				 , rownum
+			  from guest
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+			   AND sanctions != 0
+			   AND status = 0
+		]]>
+	</select>
+
+	<!-- 일반제제회원검색목록 갯수 구하기 -->
+	<select id="search_membersanctionsListCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(guestNo) FROM guest
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					guestNo LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND guestname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND guestid LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+				AND sanctions != 0
+				AND status = 0
+		</where>
+	</select>
+	
+	<!-- 일반제제회원검색목록 불러오기 -->
+	<select id="search_membersanctionsList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+		 
+			SELECT * FROM( SELECT guestNo
+					 			, guestid
+					 			, guestname
+					 			, address2
+					 			, guestage
+					 			, guesttel
+					 			, sanctions
+					 			, guestdate
+					 			, rownum rnum
+							 FROM (SELECT *
+									 FROM guest
+			<where>
+				<choose>
+					<when test="sc == 0 ">
+						guestNo LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 1">
+						AND guestname LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 2">
+						AND guestid LIKE '%'||#{search}||'%'
+					</when>
+				</choose>
+					AND sanctions != 0
+					AND status = 0
+			</where>
+				ORDER BY guestid DESC
+					)
+				)
+				<![CDATA[ 
+	                  WHERE rnum >= #{start} AND rnum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 일반탈퇴회원목록 갯수 -->
+	<select id="getMembersecessionListCnt" resultType="int">
+		SELECT COUNT(*) FROM guest where status = 1
+	</select>
+
+	<!-- 일반탈퇴회원목록 조회 -->
+	<select id="getMembersecessionList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+			SELECT guestNo
+				 , guestid
+				 , guestname
+				 , address2
+				 , guestage
+				 , guesttel
+				 , sanctions
+				 , guestdate
+				 , rownum
+			  from guest
+		<![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+			   AND status = 1
+		]]>
+	</select>
+
+	<!-- 일반탈퇴회원검색목록 갯수 구하기 -->
+	<select id="search_membersecessionListCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(guestNo) FROM guest
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					guestNo LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					and guestname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					and guestid LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+				and status = 1
+		</where>
+	</select>
+	
+	<!-- 일반탈퇴회원검색목록 불러오기 -->
+	<select id="search_membersecessionList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+			SELECT * FROM( SELECT guestNo
+					 			, guestid
+					 			, guestname
+					 			, address2
+					 			, guestage
+					 			, guesttel
+					 			, sanctions
+					 			, guestdate
+					 			, rownum rnum
+							 FROM (SELECT *
+									 FROM guest
+			<where>
+				<choose>
+					<when test="sc == 0 ">
+						guestNo = #{search}
+					</when>
+					<when test="sc == 1">
+						and guestname LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 2">
+						and guestid LIKE '%'||#{search}||'%'
+					</when>
+				</choose>
+				and status = 1
+			</where>
+				ORDER BY guestid DESC
+					)
+				)
+				<![CDATA[ 
+	                  WHERE rnum >= #{start} AND rnum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 일반탈퇴회원삭제 처리 -->
+    <delete id="memberdeletePro">
+   	 	DELETE guest WHERE guestNo=#{guestNo}
+    </delete>
 </mapper>

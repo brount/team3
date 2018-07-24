@@ -3,6 +3,7 @@ package com.team.medical.vo;
 public class CheckupVO {
 	// 검진결과
 	private int guestNo;
+	private String guestname;
 	private String height;
 	private String 	weight;
 	private String fatness;
@@ -30,6 +31,15 @@ public class CheckupVO {
 	}
 	public void setGuestNo(int guestNo) {
 		this.guestNo = guestNo;
+	}
+	
+	
+	
+	public String getGuestname() {
+		return guestname;
+	}
+	public void setGuestname(String guestname) {
+		this.guestname = guestname;
 	}
 	public String getHeight() {
 		return height;

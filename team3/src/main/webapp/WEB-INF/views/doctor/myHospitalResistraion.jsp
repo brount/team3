@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@include file="../common/setting.jsp" %>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![ENDif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![ENDif]-->
@@ -12,100 +12,125 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
+<title>bootstrap form validation</title>
 <link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical//resources/css/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical//resources/css/css/style.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body>
-<header>
-	<%@ include file="../common/header.jsp" %>
-</header>
-
-<section style="padding:2rem 0;">
-
+ <header>
+   <%@ include file="../common/header.jsp" %>
+</header> 
+<section>
 <div class="container">
 <div class="col-lg-9">
-	        <br>
+           <br>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- homeyLink -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0173509626327009"
+     data-ad-slot="9233259299"
+     data-ad-format="link"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <br>
 
 
-  <form class="form-horizontal" action=" " method="post"  id="reg_form">
+  <form class="form-horizontal" action="myHospitalInputPro" method="post" name="reg_form" enctype="multipart/form-data">
+   	<input type="hidden" name ="hiddenId" value="0">
+		<input type="hidden" name="hiddenEmail" value=0>
+   
     <fieldset>
       
       <!-- Form Name -->
-      <legend> 이벤트 신청 페이지 </legend>
+      <legend> 내 병원정보 입력 </legend>
     
       <!-- Text input-->
-      아래 내용을 바탕으로 이벤트 페이지 및 배너 게재를 요청합니다<br><br>
+      
       <div class="form-group">
-        <label class="col-md-4 control-label">제목</label>
+        <label class="col-md-4 control-label">병원 이름</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  name="title" placeholder="제목을 입력해주세요" class="form-control" type="text">
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      <div class="form-group">
-        <label class="col-md-4 control-label">이벤트 기간 </label>
-        <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-             <input  name="date1" class="form-control" type="date">
-             <input  name="date2" class="form-control" type="date">
+            <input  name="hospitalname" placeholder="병원 이름을 입력해주세요" class="form-control" type="text">
           </div>
         </div>
       </div>
       
       <div class="form-group">
-        <label class="col-md-4 control-label">이벤트 이미지</label>
+        <label class="col-md-4 control-label">병원 주소</label>
+        <div class="col-md-6  inputGroupContainer">
+           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="hospitaladdress1" placeholder="우편번호를 입력해주세요" class="form-control" type="text"><br>
+            <input  name="hospitaladdress2" placeholder="도로명주소를 입력해주세요" class="form-control" type="text"><br>
+            <input  name="hospitaladdress3" placeholder="지번 주소를 입력해주세요" class="form-control" type="text"><br>
+            <input type="button" value="주소찾기">
+          
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4 control-label">병원 전화번호</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="hospitalphone" placeholder="병원 전화번호를 입력해주세요" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      
+        <!-- Text area -->
+      
+      <div class="form-group">
+        <label class="col-md-4 control-label">병원 소개글 </label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input  name="image" class="form-control"  type="file">
+            <textarea class="form-control" name="hospitalinstruction" placeholder="병원 소개글을 적어주세요 "></textarea>
+          </div>
+        </div>
+      </div>
+      
+     <div class="form-group">
+        <label class="col-md-4 control-label">병원 진료시간 </label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="hospitaltime" placeholder="병원 진료시간을 입력해주세요" class="form-control" type="text">
           </div>
         </div>
       </div>
       
       <div class="form-group">
-        <label class="col-md-4 control-label">이벤트 내용 </label>
+        <label class="col-md-4 control-label">병원 휴무일</label>
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <textarea class="form-control" name="comment" placeholder="이벤트 내용을 적어주세요 "></textarea>
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="hospitalholiday" placeholder="병원 휴무일을 입력해주세요" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+   
+   <div class="form-group">
+        <label class="col-md-4 control-label">병원 이미지</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="hospitalimage"  class="form-control" type="file">
           </div>
         </div>
       </div>
       
-        <div class="form-group">
-        <label class="col-md-4 control-label">이벤트 종류</label>
-        <div class="col-md-6 selectContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-            <select name="kind" class="form-control selectpicker" >
-              <option value=" " >이벤트 종류를 선택해주세요</option>
-              <option>광고</option>
-              <option>베너</option>
-            </select>
-          </div>
-        </div>
-      </div>
     
-      <!-- Text input-->
-      
+       
      
   
       <!-- Button -->
       <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-warning" >신청 <span class="glyphicon glyphicon-send"></span></button>
-          <button type="reset" class="btn btn-warning" >취소 <span class="glyphicon glyphicon-send"></span></button>
-          <button type="button" class="btn btn-warning" >메인 <span class="glyphicon glyphicon-send"></span></button>
+          <button type="submit" class="btn btn-warning" >등록<span class="glyphicon glyphicon-send"></span></button>
+        <button type="reset" class="btn btn-warning" >취소<span class="glyphicon glyphicon-send"></span></button>
+         <a href="main"><button type="button" class="btn btn-warning" >메인<span class="glyphicon glyphicon-send"></span></button></a>
         </div>
       </div>
     </fieldset>
@@ -143,6 +168,9 @@
 
 </div>
 </section>
+<footer>
+   <%@ include file="../common/footer.jsp" %>
+</footer>
 <!-- /.container --> 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
@@ -160,7 +188,7 @@
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            title: {
+            first_name: {
                 validators: {
                         stringLength: {
                         min: 2,
@@ -171,29 +199,7 @@
                 }
             },
             
-            date1: {
-                validators: {
-                        stringLength: {
-                        min: 2,
-                    },
-                        notEmpty: {
-                        message: '공백없이 입력하세요'
-                    }
-                }
-            },
-            
-            date2: {
-                validators: {
-                        stringLength: {
-                        min: 2,
-                    },
-                        notEmpty: {
-                        message: '공백없이 입력하세요'
-                    }
-                }
-            },
-            
-            image: {
+            id: {
                 validators: {
                         stringLength: {
                         min: 2,
@@ -205,32 +211,31 @@
             },
              
            
-            kind: {
+            phone: {
                 validators: {
-                        stringLength: {
-                        min: 2,
+                    notEmpty: {
+                        message: '공백없이 입력하세요'
                     },
-                        notEmpty: {
-                        message: '이벤트 종류를 선택해주세요'
+                    phone: {
+                        country: 'KO',
+                        message: 'Please supply a vaild phone number with area code'
                     }
                 }
-            },  
+            },
             
             
-		comment: {
+      comment: {
                 validators: {
                       stringLength: {
-                        max: 500,
-                        message:'500글자 미만으로 입력하세요'
+                        max: 100,
+                        message:'100글자 미만으로 입력하세요'
                     },
                     notEmpty: {
-                        message: '내용를 입력해주세요'
+                        message: '전문분야를 입력해주세요'
                     }
                     }
-                 },	
-                 
-                 
-	 email: {
+                 },   
+    email: {
                 validators: {
                     notEmpty: {
                         message: '공백없이 입력하세요'
@@ -240,8 +245,8 @@
                     }
                 }
             },
-					
-	password: {
+               
+   password: {
             validators: {
                 identical: {
                     field: 'confirmPassword',
@@ -257,12 +262,12 @@
                 }
             }
          },
-			
+         
             
             }
         })
-		
- 	
+      
+    
         .on('success.form.bv', function(e) {
             $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
                 $('#reg_form').data('bootstrapValidator').resetForm();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html class="no-js" lang="en">
 
@@ -11,13 +12,62 @@
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+
+ <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+	function addressSearch() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						var fullAddr = '';
+						var extraAddr = '';
+						if (data.userSelectedType === 'R') {
+							fullAddr = data.roadAddress;
+						} else {
+							fullAddr = data.jibunAddress;
+						}
+
+						if (data.userSelectedType === 'R') {
+							if (data.bname !== '') {
+								extraAddr += data.bname;
+							}
+							if (data.buildingName !== '') {
+								extraAddr += (extraAddr !== '' ? ','
+										+ data.buildingName : data.buildingName);
+
+							}
+							fullAddr += (extraAddr !== '' ? '(' + extraAddr
+									+ ')' : '');
+
+						}
+						document.getElementById('sample6_postcode').value = data.zonecode;
+						document.getElementById('sample6_address').value = fullAddr;
+
+						document.getElementById('sample6_address2').focus();
+					}
+				}).open();
+
+	}
+
+</script>
+
 </head>
 
 <body>
 
+
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+
+
+<!-- 
+	2018/07/23 주민, 이메일 , 연락처 컬럼 수정
+
+
+
+ -->
+
 
 <section>
 <div class="container">
@@ -87,7 +137,7 @@
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
 	            <div class="well">
-	                <form class="form-horizontal" action=" " method="post"  id="reg_form">
+	    <form class="form-horizontal" action="guestModifyPro" method="post"  id="reg_form">
     <fieldset>
       
       <legend>회원정보수정</legend>
@@ -96,17 +146,17 @@
       
       <div class="form-group" >
         <label class="col-md-3 control-label">아이디</label>
-     	  뿌링클
+     		${vo.getGuestid()}
       </div>
   
         <div class="form-group has-feedback">
-            <label for="password"  class="col-md-3 control-label">
+            <label for="password"  class="col-md-3 control-label"> 
              		      비밀번호
                 </label>
                 <div class="col-md-6  inputGroupContainer">
                 <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
             <input class="form-control" id="userPw" type="password" placeholder="password" 
-                       name="password" data-minLength="5"
+                     value="${vo.getGuestpwd()}"  name="password" data-minLength="5"
                        data-error="some error"
                        required/>
                 <span class="glyphicon form-control-feedback"></span>
@@ -122,7 +172,7 @@
                  <div class="col-md-6  inputGroupContainer">
                 <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
             <input class="form-control {$borderColor}" id="userPw2" type="password" placeholder="Confirm password" 
-                       name="confirmPassword" data-match="#confirmPassword" data-minLength="5"
+                      value="${vo.getGuestpwd()}"  name="confirmPassword" data-match="#confirmPassword" data-minLength="5"
                        data-match-error="some error 2"
                        required/>
                 <span class="glyphicon form-control-feedback"></span>
@@ -131,53 +181,71 @@
              </div>
         </div>
      
-      <div class="form-group">
-        <label class="col-md-3 control-label">Zip Code</label>
+         <div class="form-group" >
+        <label class="col-md-4 control-label">이름</label>
+  		
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-            <input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  	${vo.getGuestname()}
           </div>
         </div>
       </div>
-      
-        <!-- Text area -->
-      
-      <div class="form-group">
-        <label class="col-md-3 control-label">About </label>
+        
+        
+        
+         <div class="form-group">
+        <label class="col-md-4 control-label">주민등록번호</label>
+                 
+        
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <textarea class="form-control" name="comment" placeholder="About "></textarea>
-          </div>
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+		  ${vo.getJumin()}       
+  </div>
         </div>
       </div>
-      
-     
+        
+        
        </fieldset>
-       	<legend> Account information </legend>
+       	<legend> 추가입력 정보</legend>
         <fieldset>
           <div class="form-group">
         <label class="col-md-3 control-label">연락처</label>
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-            <input name="phone1" placeholder="010" class="form-control" type="text" style="width:30px;" onkeyup="nextHp1();">
-            -
-             <input name="phone2" placeholder="1234" class="form-control" type="text" style="width:50px;" onkeyup="nextHp2();">
-             -
-              <input name="phone3" placeholder="5678" class="form-control" type="text" style="width:50px;" onkeyup="nextHp3();">
-          </div>
+  	        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+	<c:if test="${vo.getGuesttel() == null}">
+		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:30px">
+		 					-
+		 					<input class="input" type="text" name = "phone2" maxlength="3" style="width:30px">
+		 					-
+		 					<input class="input" type="text" name = "phone3" maxlength="3" style="width:30px">
+		 				</c:if>
+		 				<c:if test="${vo.getGuesttel() != null}">
+		 				<c:set var="hpArr" value="${fn:split(vo.getGuesttel(),'-')}" />
+		 					
+		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:30px"
+		 						value="${hpArr[0]}">
+		 					-
+		 					<input class="input" type="text" name = "phone2" maxlength="4" style="width:30px"
+		 						value="${hpArr[1]}">
+		 					-
+		 					<input class="input" type="text" name = "phone3" maxlength="4" style="width:30px"
+		 						value="${hpArr[2]}">
+		 					
+		 			</c:if>
+	   </div>
         </div>
       </div>
+    
       
-      <!-- Text input-->
       <div class="form-group">
         <label class="col-md-3 control-label">주소</label>
         <div class="col-md-6  inputGroupContainer">
          <input type="button" onclick="addressSearch();" value="주소찾기" class="btn btn-warning">
-        <input type="text" name="addcode" id="sample6_postcode" placeholder="우편번호" size="6" style="padding:3px"class="form-control" style="width:30px" >
-		 <input name="address" id="sample6_address" placeholder="주소" class="form-control" type="text">
+        <input type="text" value="${vo.getAddress1()}" name="address1" id="sample6_postcode" placeholder="우편번호" size="6" style="padding:3px"class="form-control" style="width:30px" >
+		 <input value="${vo.getAddress2()}" name="address2" id="sample6_address" placeholder="주소" class="form-control" type="text">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
            
-             <input name="address"   id="sample6_address2"  placeholder="상세주소" class="form-control" type="text" onchange="addinput();">
+             <input name="address3"value="${vo.getAddress3()}"   id="sample6_address2"  placeholder="상세주소" class="form-control" type="text" onchange="addinput();">
              <input type="hidden" name="address">
           </div>
         </div>
@@ -188,9 +256,16 @@
         <label class="col-md-3 control-label">이메일</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input name="email"  class="form-control"  type="text" style="width:80px;">
-             @
-            <input class="input" type="text" name="email" style="width:200px;">
+           
+		 			<c:set var="emailArr" value="${fn:split(vo.getGuestemail(),'@')}" />	
+		 				
+		 				<input class="input" type="text" name="email1" maxlength="10"
+		 						style="width:60px" value="${emailArr[0]}">
+		 				@
+		 				<input class="input" type="text" name="email2" maxlength="20"
+		 						style="width:70px" value="${emailArr[1]}" >
+           
+           
            
 		 <select name="state" class="form-control selectpicker"  onchange="SelectEmailChk();">
 		 

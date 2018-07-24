@@ -9,6 +9,7 @@ public class ReservationVO {
 	private int guestNo;
 	private Date reservationTime;
 	private int reservationKind;
+	
 	public int getReservationNo() {
 		return reservationNo;
 	}

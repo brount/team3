@@ -3,4 +3,92 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.medical.persitence.CommonDAO">
+
+	<!-- 게시글 갯수 -->
+	<select id="getQuestionCnt" resultType="int">
+		select count(boardno) from QuestionBoard where kind=#{kind}
+	</select>
+	<!-- 게시글 목록 -->
+	<select id="getQuestionList" parameterType="java.util.Map" resultType="com.team.medical.vo.QuestionBoardVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT boardno, boardwriter, boardpwd, boardtitle, boardcontent,boarddate, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM QuestionBoard 
+			   	   	  		  where kind=#{kind}
+			   	   	  	  ORDER BY boardno DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 글상세보기 -->
+	<select id="getQuestion" resultType="com.team.medical.vo.QuestionBoardVO">
+		SELECT * FROM QuestionBoard WHERE boardno = #{boardno}
+	</select>
+	<!-- 글수정 -->
+	<update id="boardModifyPro" parameterType="com.team.medical.vo.QuestionBoardVO">
+		UPDATE QuestionBoard SET boardno=#{boardno}, boardtitle=#{boardtitle}, boardcontent=#{boardcontent} WHERE boardno = #{boardno}
+	</update>
+	<!-- // pwdChk -->
+	<select id="pwdChk" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM QuestionBoard WHERE boardno=#{boardno} AND boardpwd = #{boardpwd}
+	</select>
+	<!-- 글작성 -->
+	<insert id="boardAddPro" parameterType="com.team.medical.vo.QuestionBoardVO">
+		INSERT INTO QuestionBoard(boardno,boardwriter,boardpwd,boardtitle,boardcontent,kind) values(BOARD_SEQ.NEXTVAL,#{boardwriter},#{boardpwd},#{boardtitle},#{boardcontent},#{kind})
+	</insert>
+	<!-- 글 삭제 -->
+	<delete id="boardDeletePro" parameterType="int">
+		DELETE QuestionBoard WHERE boardno = #{boardno}
+	</delete>
+	<!-- 댓글 가져오기 -->
+	<select id="getreList" resultType="com.team.medical.vo.QuestionBoardVO">
+		<![CDATA[
+			SELECT * 
+			 FROM(SELECT boardno, boardwriter, boardpwd, boardtitle, boardcontent,boarddate ,kind 
+					 FROM(
+							SELECT * 
+							FROM QuestionBoard 
+							WHERE kind = #{kind} AND ref = #{ref} 
+							ORDER BY boarddate )
+						)    
+		]]>
+	</select>
+	<!-- 댓글작성 -->
+	<insert id="inputre" parameterType="com.team.medical.vo.QuestionBoardVO">
+		INSERT INTO QuestionBoard (boardno,boardwriter,boardpwd,boardtitle,boardcontent,kind,ref) values(BOARD_SEQ.NEXTVAL,#{boardwriter},#{boardpwd},#{boardtitle},#{boardcontent},#{kind},#{ref})
+	</insert>
+
+	<!-- 닥터 아이디 -->
+	<select id="eventNo" parameterType="String" resultType="int">
+		SELECT doctorno FROM doctor WHERE doctorid=#{id}
+	</select>
+	
+	<!-- 이벤트 추가 -->
+	<insert id="insertEvent" parameterType="com.team.medical.vo.EventVO">
+		INSERT
+		INTO event (advertisementNo, doctorno, advertisementTitle, advertisementThumbnail ,advertisementImage, advertisementContents,
+					advertisementRegDate, advertisementKind, advertisementStart, advertisementEnd, advertisementState)
+		VALUES (advertisementnoseq.nextval, #{doctorno}, #{advertisementTitle}, #{advertisementThumbnail}, #{advertisementImage}, #{advertisementContents},
+				sysdate, #{advertisementKind}, #{advertisementStart}, #{advertisementEnd}, #{advertisementState})
+	</insert>
+	
+	<!-- 이벤트리스트 -->
+	<select id="eventList" parameterType="java.util.Map" resultType="com.team.medical.vo.EventVO">
+		<![CDATA[
+		SELECT *
+		  FROM (SELECT advertisementNo, advertisementThumbnail, advertisementTitle,
+		  			   advertisementStart, advertisementEnd, rownum rNum
+		         FROM (SELECT * FROM event ORDER BY advertisementNo DESC))
+		  WHERE rNum >= 1 AND rNum <= 12
+		]]>
+	</select>
+	
+	<!-- 이벤트 상세보기 -->
+	<select id="eventInfo" resultType="com.team.medical.vo.EventVO">
+		SELECT * FROM event WHERE advertisementNo=#{advertisementNo}
+	</select>
 </mapper>

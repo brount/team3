@@ -21,11 +21,11 @@
 						<hr class="colorgraph">
 							<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-		                        <a href="clauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
+		                        <a href="guestClauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
 		                        <img src="/medical/resources/common/images/guest.png" style="display:table; width:100px; margin:0 auto;">일반 회원가입</a>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="clauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
+								<a href="doctorClauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
 								<img src="/medical/resources/common/images/doctor.png" style="display:table; width:100px; margin:0 auto;">의사 회원가입</a>
 							</div>
 						</div>

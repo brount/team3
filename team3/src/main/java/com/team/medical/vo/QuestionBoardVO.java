@@ -13,6 +13,14 @@ public class QuestionBoardVO {
 	private int notify;
 	private int notifycnt;
 	private String notifyreason;
+	private int kind;	
+		
+	public int getKind() {
+		return kind;
+	}
+	public void setKind(int kind) {
+		this.kind = kind;
+	}
 	public int getBoardno() {
 		return boardno;
 	}

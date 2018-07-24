@@ -1,52 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- jQuery -->
-<script src="./resources/pyj/js/jquery.min.js"/></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="./resources/pyj/js/bootstrap.min.js"/></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="./resources/pyj/js/metisMenu.min.js"/></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="./resources/pyj/js/startmin.js"/></script>
-
-
 <title> 관리자 페이지 - 일반회원관리</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/startmin.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-    </head>
+</head>
 <body>
 	<div id="wrapper">
-
 	    <!-- Navigation -->
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="navbar-header">
@@ -70,9 +31,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -141,9 +99,11 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <button type="button">
-                                    	삭제
-                                    </button>
+	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
+						 				<option value="memberList">일반회원목록</option>
+						 				<option value="membersanctionList">제제회원목록</option>
+						 				<option value="membersecessionList">탈퇴회원목록</option>
+						 			</select>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -155,7 +115,6 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
-	                                        	<th><input type="checkBox"></th>
 	                                            <th>회원번호</th>
 	                                            <th>회원ID</th>
 	                                            <th>회원명</th>
@@ -167,45 +126,72 @@
 	                                        </tr>
 	                                        </thead>
 	                                        <tbody>
-	                                        <tr>
-	                                        	<td><input type="checkBox"></td>
-	                                            <td>3326</td>
-	                                            <td>Solomon</td>
-	                                            <td>맹솔로몬</td>
-	                                            <td>서울특별시 금천구 가산동</td>
-	                                            <td>20</td>
-	                                            <td>010-0000-0000</td>
-	                                            <td>1</td>
-	                                            <td>15-73036397</td>
-	                                        </tr>
+	                                        <c:if test="${cnt > 0}">
+												<c:forEach var="dto" items="${dtos}">
+													<tr>
+													    <td onclick="window.location='membersanctionManage'">${dto.guestNo}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.guestid}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.guestname}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.address2}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.guestage}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.guesttel}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.sanctions}</td>
+														<td onclick="window.location='membersanctionManage'">${dto.guestdate}</td>
+		                                        	</tr>
+		                                       	</c:forEach>
+		                                       </c:if>
 	                                        </tbody>
 	                                    </table>
 	                                    
-	                                    <!-- 페이지 컨트롤 -->
+	                                   <!-- 페이지 컨트롤 -->
 										<table align="center">
-											<tr align="center">
-												<th>[≪]</th>
-												<th>[<]</th>
-												<th>1</th>
-												<th>[>]</th>
-												<th>[≫]</th>
+											<tr>
+												<th align="center">
+													<c:if test="${cnt > 0}">
+														<!-- 맨끝[◀◀] / 이전[◀] -->
+														<c:if test="${startPage > pageBlock}">
+															<a href="memberList">[맨앞]</a>
+															<a href="memberList?pageNum=${startPage - pageBlock}">[이전]</a>
+														</c:if>
+									
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
+															<c:if test="${i == currentPage}">
+																<span><b>[${i}]</b></span>
+															</c:if>
+															<c:if test="${i != currentPage}">
+																<a href="memberList?pageNum=${i}">[${i}]</a>
+															</c:if>
+														</c:forEach>
+														
+														<!-- 맨끝[▶▶] / 다음▶] -->
+														<c:if test="${pageCount > endPage}">
+															<a href="memberList?pageNum=${startPage + pageBlock}">[다음]</a>
+															<a href="memberList?pageNum=${pageCount}">[맨뒤]</a>
+														</c:if>
+													</c:if>
+												</th>
 											</tr>
 										</table>
+										
 	                                    <table align="center">
+	                                    	<form action="memberSearchList" class="search_box" method="post">
                                   			<tr>
                                        			<td>
-	                                        		<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-								 						<option value="#">회원ID</option>
-								 						<option value="#">회원명</option>
+	                                        		<select class="input" name="sc" >
+								 						<option value=0> 회원번호</option>
+								 						<option value=1> 회원명  </option>
+								 						<option value=2> 회원ID </option>
 								 					</select>
 							 					</td>
 							 					<td>
-							 						<input type="search" id="search">
+							 						<input type="text" id="search" name="search">
 							 					</td>
 							 					<td>
-							 						<input type="button" value="검색">
+							 						<input type="submit" value="검색">
 							 					</td>
 						 					</tr>
+						 					</form>
+						 					
 						 				</table>
 	                                </div>
 	                                <!-- /.table-responsive -->

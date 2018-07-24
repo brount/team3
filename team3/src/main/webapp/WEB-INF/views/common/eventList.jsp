@@ -6,9 +6,9 @@
 <title> 사이트 이름 </title>
 <body>
    
-   <header>
-   <%@ include file="../common/header.jsp" %>
-   </header>
+<header>
+	<%@ include file="../common/header.jsp" %>
+</header>
    
    <section>   	
 		<div class="container">
@@ -30,27 +30,17 @@
 					      <h1 class="my-4 text-center text-lg-left">이벤트 목록</h1>
 					
 					      <div class="row text-center text-lg-left">
-					
-					        <div class="col-lg-3 col-md-4 col-xs-6">
-					          <a href="eventInfo" class="d-block mb-4">
-					            <img class="img-fluid img-thumbnail" src="/medical/resources/images/cake.png" alt="">
-					          </a>
-					        </div>
-					        <div class="col-lg-3 col-md-4 col-xs-6">
-					          <a href="eventInfo" class="d-block mb-4">
-					            <img class="img-fluid img-thumbnail" src="/medical/resources/images/cabin.png" alt="">
-					          </a>
-					        </div>
-					        <div class="col-lg-3 col-md-4 col-xs-6">
-					          <a href="eventInfo" class="d-block mb-4">
-					            <img class="img-fluid img-thumbnail" src="/medical/resources/images/circus.png" alt="">
-					          </a>
-					        </div>
-					        <div class="col-lg-3 col-md-4 col-xs-6">
-					          <a href="eventInfo" class="d-block mb-4">
-					            <img class="img-fluid img-thumbnail" src="/medical/resources/images/game.png" alt="">
-					          </a>
-					        </div>					
+							<c:forEach var="dto" items="${dtos}">
+								<div class="col-lg-3 col-md-4 col-xs-6">
+						          <a href="eventInfo?advertisementNo=${dto.advertisementNo}" class="d-block mb-4">
+						           	<div align="center"> 
+						           	${dto.advertisementTitle}
+						           	<img src="resources/images/event/${dto.advertisementThumbnail}" style="width:165px; height:100px;">
+						            ${dto.advertisementStart} ~ ${dto.advertisementEnd}
+						           	</div>
+						          </a>
+						        </div>
+							</c:forEach>
 					      </div>					
 			        	</div>  
 		            </div>
@@ -58,9 +48,10 @@
 		    </div>
 		</div> 
    </section>
-   <footer>
-   <%@ include file="../common/footer.jsp" %>
-   </footer>
+   
+<footer>
+	<%@ include file="../common/footer.jsp" %>
+</footer>
 
 
 </body>

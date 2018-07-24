@@ -31,13 +31,12 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#">개인건강관리</a>
+		                            <a href="personalCare">개인건강관리</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		            </div>
 		        </div>
-		           	
 			  		 <div class="col-sm-9 col-md-9">
 			            <div class="well">
 			                <h1> 이미지</h1>

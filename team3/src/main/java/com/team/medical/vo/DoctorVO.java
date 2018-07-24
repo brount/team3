@@ -15,6 +15,14 @@ public class DoctorVO {
 	private int doctorspecialism;
 	private int point;
 	private int sanctions;
+	private String licence;
+	
+	public String getLicence() {
+		return licence;
+	}
+	public void setLicence(String licence) {
+		this.licence = licence;
+	}
 	public int getDoctorno() {
 		return doctorno;
 	}

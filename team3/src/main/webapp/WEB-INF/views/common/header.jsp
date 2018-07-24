@@ -43,8 +43,13 @@
 	<header class="clearfix">
 
 		<span>Blueprint</span>
-		<a onclick="window.location='main'"><h1>플젝명</h1></a>
+		<a onclick="window.location='main'"><h1>Medi Clip</h1></a>
 		<nav class="mainmenu">
+			<c:if test="${sessionScope.memberState == null }">
+				<a onclick="window.location='memberLogin'">로그인</a>
+				<a onclick="window.location='memberClassify'">회원가입</a>
+				<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');">관리자페이지</a>
+			</c:if>
 			<c:if test="${sessionScope.memberState == 0 }">
 				<a onclick="window.location='memberLogin'">로그인</a>
 				<a onclick="window.location='memberClassify'">회원가입</a>
@@ -599,7 +604,7 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventList'">이벤트 목록</a></li>
+                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventList'">이벤트 목록</a></li>
                                 <c:if test="${sessionScope.memberState == 2 }">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"    onclick="window.location='eventRequest'">이벤트 신청</a></li>
 							 	</c:if>	

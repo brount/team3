@@ -15,7 +15,7 @@
 		
 		<div class="row" style="margin-top:20px">
 		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form">
+				<form role="form" action="deletePro">
 					<fieldset>
 						<h3> 회원탈퇴확인 </h3>
 						<hr class="colorgraph">

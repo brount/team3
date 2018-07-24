@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">병원정보</a>
+                                        <a href="myHospital">병원정보</a>
                                     </td>
                                 </tr>
                                 <tr>

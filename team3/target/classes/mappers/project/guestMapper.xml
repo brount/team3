@@ -3,7 +3,83 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.medical.persitence.GuestDAO">
+	
 	<select id="guestLogin" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM guest WHERE guestid=#{id} AND guestpwd=#{pwd}
 	</select>
+
+
+ 
+  <!-- 중복확인, 정보수정, 회원탈퇴 처리 -->
+ 	<select id="idCheck" resultType="int">
+ 		SELECT COUNT(*) FROM guest WHERE guestid=#{strId}
+ 	</select>
+
+	<!-- 이메일 인증 -->
+ 	<select id="emailok" resultType="int">
+ 		SELECT COUNT(*) FROM guest WHERE guestemail=#{email}
+ 	</select>
+	
+	<!-- 회원가입 처리 -->
+	<insert id="insertGuest" parameterType="com.team.medical.vo.GuestVO">
+		INSERT INTO guest(GUESTNO, JUMIN, GUESTID, GUESTPWD, GUESTNAME, GUESTAGE, GUESTTEL, GUESTEMAIL, ADDRESS1, ADDRESS2, ADDRESS3, GUESTDATE, STATUS )
+		 VALUES(guest_seq.NEXTVAL, #{jumin},#{guestid},#{guestpwd},#{guestname}, 26, #{guesttel},#{guestemail},#{address1},#{address2},#{address3},#{guestdate}, 0)	
+	
+	</insert>
+	
+	<!-- 회원정보조회 -->
+	<select id="getGuestInfo" resultType="com.team.medical.vo.GuestVO">
+	SELECT * FROM guest WHERE guestid=#{id}
+	</select>
+	
+	<!-- 회원정보 수정처리 -->
+	<update id="updateGuest" parameterType="com.team.medical.vo.GuestVO">
+	update guest set guestpwd=${guestpwd},  address1=#{address1}, address2=#{address2}, address3=#{address3},
+	guesttel=#{guesttel}, guestemail=#{guestemail} where GUESTNO=#{guestNo}  
+	</update>
+	
+	<!-- 회원탈퇴 업뎃처리 -->
+	<update id="guestExitPro">
+		update guest set status=1 where guestNo=#{guestNo}
+	</update>
+	
+	<!-- 내 질문목록 -->
+	<select id="myBordList" resultType="com.team.medical.vo.QuestionBoardVO">
+	
+	 select * from QuestionBoard where boardwriter=#{id}
+	</select>
+	
+	
+	<!-- 마이헬스 정보 인서트  -->
+	<insert id="personalAddPro" parameterType="com.team.medical.vo.MyhealthVO">
+	INSERT INTO Myhealth(guestNo, birth1, birth2, birth3, age, height, weight, gender, bloodtype )
+		VALUES(#{guestNo}, #{birth1}, #{birth2}, #{birth3}, #{age}, #{height}, #{weight}, #{gender}, #{bloodtype})
+	</insert>
+	
+	<!-- 마이헬스 정보 셀렉트  -->
+	<select id="myHealth" resultType="com.team.medical.vo.MyhealthVO">
+	SELECT * FROM Myhealth WHERE guestNo=#{guestNo}	
+	</select>
+
+	<!-- 검진서등록 인설트 -->
+	<insert id="checkupRegisterPro" parameterType="com.team.medical.vo.CheckupVO">
+		INSERT INTO CheckUp( GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL, VISIONR , HEARINGL , HEARINGR ,BLOODPREMAX ,  BLOODPREMIN             
+    ,URINEGLUCOSE, URINEPROTEIN , OCCULTHEMATURIA, URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,  TOTALCHOLESTEROL      
+   , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG)
+		VALUES(#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
+		 #{bloodpremax}, #{bloodpremin},#{urineglucose},#{urineprotein},#{occulthematuria},#{urineph},
+		 #{hemoglobin},#{bloodglucose},#{totalcholesterol}, #{ast},#{alt},#{gammagtp},#{hepatitisscr}, #{breastradiography}, #{ecg})
+	</insert>
+	
+	<!-- 검진서 결과 셀렉트 -->
+	<select id="checkAnalyze" resultType="com.team.medical.vo.CheckupVO">
+	SELECT  g.GUESTNO, g.GUESTNAME, c.HEIGHT, c.WEIGHT, c.FATNESS , c.VISIONL, c.VISIONR , c.HEARINGL , c.HEARINGR ,c.BLOODPREMAX ,  c.BLOODPREMIN             
+    ,c.URINEGLUCOSE, c.URINEPROTEIN , c.OCCULTHEMATURIA, c.URINEPH ,c.HEMOGLOBIN ,c.BLOODGLUCOSE  ,  c.TOTALCHOLESTEROL      
+   , c.AST, c.ALT , c.GAMMAGTP , c.HEPATITISSCR ,c.BREASTRADIOGRAPHY, c.ECG 
+   			FROM CheckUp c , guest g WHERE c.GUESTNO = g.GUESTNO AND g.guestNo=#{guestNo}	
+	</select>
+	
+	
+																						
+
 </mapper>

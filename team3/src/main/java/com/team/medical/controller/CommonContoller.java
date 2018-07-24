@@ -1,12 +1,19 @@
 package com.team.medical.controller;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.team.medical.service.CommonService;
 
 @Controller
 public class CommonContoller {
+	
+	@Autowired
+	CommonService coService;
 	
 	@RequestMapping("main")
 	public String main(HttpServletRequest req,Model model) {
@@ -34,12 +41,6 @@ public class CommonContoller {
 	public String memberClassify(HttpServletRequest req, Model model) {
 		System.out.println("memberClassify, 페이지");
 		return "common/memberClassify";
-	}
-	//약관동의페이지
-	@RequestMapping(value = "clauseAgree")
-	public String clauseAgree(HttpServletRequest req, Model model) {
-		System.out.println("clauseAgree, 페이지");
-		return "common/clauseAgree";
 	}
 	//본인인증페이지
 	@RequestMapping(value = "memberCertify")
@@ -141,25 +142,169 @@ public class CommonContoller {
 	@RequestMapping(value = "eventList")
 	public String eventList(HttpServletRequest req, Model model) {
 		System.out.println("eventList, 페이지");
+		
+		coService.eventList(req, model);
+		
 		return "common/eventList";
 	}
 	//이벤트 상세페이지
 	@RequestMapping(value = "eventInfo")
 	public String eventInfo(HttpServletRequest req, Model model) {
 		System.out.println("eventInfo, 페이지");
+		
+		coService.eventInfo(req, model);
+		
 		return "common/eventInfo";
+	}
+	//이벤트 신청페이지                       
+	@RequestMapping(value = "eventRequest")
+	public String eventRequest(HttpServletRequest req, Model model) {
+		System.out.println("eventRequest, 페이지");
+		
+		String id = (String) req.getSession().getAttribute("id");
+		model.addAttribute("id", id);
+		
+		return "common/eventRequest";
+	}
+	//이벤트 추가
+	@RequestMapping(value = "eventAdd")
+	public String eventAdd(MultipartHttpServletRequest req, Model model) {
+		System.out.println("eventAdd, 페이지");
+		
+		coService.eventAdd(req, model);
+		
+		return "common/eventRequest";
 	}
 	//질문목록페이지
 	@RequestMapping(value = "boardList")
-	public String BoardList(HttpServletRequest req, Model model) {
+	public String boardList(HttpServletRequest req, Model model) {
 		System.out.println("boardList, 페이지");
+		
+		coService.boardList(req,model);
 		return "common/boardList";
 	}
 	//질문상세페이지 
 	@RequestMapping(value = "boardInfo")
-	public String BoardInfo(HttpServletRequest req, Model model) {
+	public String boardInfo(HttpServletRequest req, Model model) {
 		System.out.println("BoardInfo, 페이지");
+		
+		coService.boardInfo(req, model);
 		return "common/boardInfo";
+	}
+	// 질문등록페이지 
+	@RequestMapping(value = "boardAdd")
+	public String BoardAdd(HttpServletRequest req, Model model) {
+		System.out.println("BoardAdd, 페이지");
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		
+		int num =0;
+		int ref =1; // 그룹화 아이디
+		int pageNum=1;//페이지
+		//답변글
+		// contentForm.jsp에서 get방식으로 넘긴 값 num, ref, ref_step, ref_level를 받는다.
+		if(req.getParameter("num") != null) {
+			num = Integer.parseInt(req.getParameter("num"));
+			ref = Integer.parseInt(req.getParameter("ref"));
+			pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		}		
+		model.addAttribute("num", num);
+		model.addAttribute("ref", ref);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("kind", kind);
+		
+		return "common/boardAdd";
+	}
+	// 질문등록 처리
+	@RequestMapping(value = "boardAddPro")
+	public String boardAddPro(HttpServletRequest req, Model model) {
+		System.out.println("boardAddPro, 페이지");
+		coService.boardAddPro(req,model);
+		return "common/boadrList";
+	}
+	// 질문수정페이지
+	@RequestMapping(value = "boardModify")
+	public String boardModify(HttpServletRequest req, Model model) {
+		System.out.println("boardModify, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		
+		return "common/boardModify";
+	}
+	// 질문수정상세페이지
+	@RequestMapping(value="boardModifyView")
+	public String boardModifyView(HttpServletRequest req, Model model) {
+		System.out.println("boardModifyView, 페이지");
+		
+		coService.boardModify(req, model);		
+		return "common/boardModifyView";
+	}
+	// 질문수정처리페이지
+	@RequestMapping(value = "boardModifyPro")
+	public String boardModifyPro(HttpServletRequest req, Model model) {
+		System.out.println("boardModifyPro, 페이지");
+		coService.boardModifyPro(req, model);
+		
+		return "common/boardModifyPro";
+	}
+	// 질문삭제페이지
+	@RequestMapping(value = "boardDelete")
+	public String boardDelete(HttpServletRequest req, Model model) {
+		System.out.println("boardDelete, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		
+		return "common/boardDelete";
+	}
+	// 질문삭제 처리페이지
+	@RequestMapping(value = "boardDeletePro")
+	public String boardDeletePro(HttpServletRequest req, Model model) {
+		System.out.println("boardDeletePro, 페이지");
+		
+		coService.boardDeletePro(req, model);
+		return "common/boardDeletePro";
+	}
+	// 의사 댓글작성
+	@RequestMapping(value = "inputre")
+	public String inputre(HttpServletRequest req, Model model) {
+		System.out.println("inputre, 페이지");
+		
+		coService.inputre(req,model);
+		coService.boardInfo(req, model);
+		return "common/boardInfo";
+	}
+	// 댓글삭제페이지
+	@RequestMapping(value = "refDelete")
+	public String refDelete(HttpServletRequest req, Model model) {
+		System.out.println("refDelete, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int number = Integer.parseInt(req.getParameter("number"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		model.addAttribute("number",number);
+		
+		return "common/refDelete";
+	}
+	// 댓글삭제 처리페이지
+	@RequestMapping(value = "refDeletePro")
+	public String refDeletePro(HttpServletRequest req, Model model) {
+		System.out.println("refDeletePro, 페이지");
+		
+		coService.boardDeletePro(req, model);
+		return "common/refDeletePro";
 	}
 	//로그인화면페이지              
 	@RequestMapping(value = "memberLoginPro")
@@ -189,5 +334,6 @@ public class CommonContoller {
 		
 		return "common/mainmenuversion";
 	}
+	
 }
 

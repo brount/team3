@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.medical.service.DoctorService;
 
@@ -15,29 +16,75 @@ public class DoctorContoller {
 	@Autowired
 	DoctorService docService;
 	
+	//약관동의페이지
+	@RequestMapping(value = "doctorClauseAgree")
+	public String clauseAgree(HttpServletRequest req, Model model) {
+		System.out.println("clauseAgree, 페이지");
+		return "doctor/doctorClauseAgree";
+	}
 	//의사회원가입정보입력페이지                      
 	@RequestMapping(value = "doctorShipForm")
 	public String doctorShipForm(HttpServletRequest req, Model model) {
 		System.out.println("doctorShipForm, 페이지");
 		return "doctor/doctorShipForm";
 	}
+	//아이디 중복확인                    
+	@RequestMapping(value = "doctorconfirmId")
+	public String confirmId(HttpServletRequest req, Model model) {
+		System.out.println("confirmId, 페이지");
+		
+		docService.confirmId(req, model);
+		return "doctor/confirmId";
+	}
+	//회원 가입 처리
+	@RequestMapping("inputPro")
+	public String inputPro(MultipartHttpServletRequest req, Model model) {
+		System.out.println("inputPro");
+		
+		docService.inputPro(req, model);
+		return "doctor/inputPro";
+	}
 	//의사회원정보수정페이지                       
 	@RequestMapping(value = "doctorModify")
 	public String doctorModify(HttpServletRequest req, Model model) {
 		System.out.println("doctorModify, 페이지");
+		
 		return "doctor/doctorModify";
-	}	
-	//이벤트 신청페이지                       
-	@RequestMapping(value = "eventRequest")
-	public String eventRequest(HttpServletRequest req, Model model) {
-		System.out.println("eventRequest, 페이지");
-		return "doctor/eventRequest";
-	}		
+	}
+	//의사회원정보수정페이지                       
+	@RequestMapping(value = "modifyPro")
+	public String modifyPro(MultipartHttpServletRequest req, Model model) {
+		System.out.println("doctorModify, 페이지");
+		
+		docService.modifyPro(req, model);
+		return "doctor/modifyPro";
+	}
+	//의사회원탈퇴                       
+	@RequestMapping(value = "deletePro")
+	public String deletePro(HttpServletRequest req, Model model) {
+		System.out.println("deletePro, 페이지");
+		
+		docService.deletePro(req, model);
+		return "doctor/deletePro";
+	}
 	//마이병원                       
 	@RequestMapping(value = "myHospital")
 	public String myHospital(HttpServletRequest req, Model model) {
 		System.out.println("myHospital, 페이지");
+		String id = (String)req.getSession().getAttribute("id");
+		model.addAttribute("id",id);
+		
+		
+		docService.myHospitalInfo(req, model);
 		return "doctor/myHospital";
+	}
+	//마이병원 등록                      
+	@RequestMapping(value = "myHospitalInputPro")
+	public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
+		System.out.println("myHospitalInputPro, 페이지");
+		
+		docService.myHospitalInputPro(req, model);
+		return "doctor/myHospitalInputPro";
 	}	
 	//포인트관리페이지                        
 	@RequestMapping(value = "pointManage")
@@ -97,6 +144,8 @@ public class DoctorContoller {
     @RequestMapping(value = "checkupRequest")
     public String checkupRequest(HttpServletRequest req, Model model) {
        System.out.println("checkupRequest, 페이지");
+       
+      // docService.cusInfo(req, model);
        return "doctor/checkupRequest";
     }
     //검사의뢰

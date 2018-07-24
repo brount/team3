@@ -17,42 +17,42 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="#">검사의뢰 등록</a>
+		                            <a href="checkupRequest">검사의뢰 등록</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="#">검사의뢰 목록</a>
+		                            <a href="checkupList">검사의뢰 목록</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a  href="#">건강검진 등록</a>
+		                            <a  href="checkupAdd">건강검진 등록</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="#">건강검진 결과 목록</a>
+		                            <a href="checkupResultList">건강검진 결과 목록</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a  href="#">처방등록</a>
+		                            <a  href="examinationAdd">처방등록</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="#">처방결과</a>
+		                            <a href="examinationList">처방결과</a>
 		                        </h4>
 		                    </div>
 		                </div>
@@ -123,7 +123,7 @@
                           </table>
                       </div>  
                   </aside>
-                  <ul class="pagination">
+                  <ul class="pagination" style="display:table; margin:0 auto;">
                   <li class="disabled"><span>«</span></li>
                   <li class="active"><span>1</span></li>
                   <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
@@ -134,13 +134,12 @@
                   <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
                 </ul>
               </div>            
-			            </div>
-			        </div>
-			    </div>
-			</div> 
-			
-
+	            </div>
+	        </div>
+	    </div>
+	</div> 
 </section>
+
  <footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>

@@ -3,21 +3,23 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class GuestVO {
-	private int guestNo;
-	private String jumin;
-	private String guestid	;
-	private String guestpwd	;
-	private String guestname;
-	private int guestage;
-	private String guesttel;
-	private String guestemail;
-	private String address1;
-	private String address2;
-	private String address3;
-	private String favoritehos;
-	private Date guestdate;
-	private int sanctions;
-	public int getGuestNo() {
+	private int 	guestNo;		// 회원번호
+	private String 	jumin;			// 주민번호
+	private String 	guestid;		// 회원아이디
+	private String 	guestpwd;		// 회원비밀번호
+	private String 	guestname;		// 회원명
+	private int 	guestage;		// 회원연령
+	private String 	guesttel;		// 회원연락처
+	private String 	guestemail;		// 회원이메일
+	private String 	address1;		// 우편번호
+	private String 	address2;		// 지번 주소
+	private String 	address3;		// 도로명 주소
+	private String 	favoritehos;	// 즐겨찾는 병원
+	private Date 	guestdate;		// 가입일
+	private int 	sanctions;		// 제제단계
+	private int 	status;			// 탈퇴여부
+	
+	public  int getGuestNo() {
 		return guestNo;
 	}
 	public void setGuestNo(int guestNo) {
@@ -100,6 +102,12 @@ public class GuestVO {
 	}
 	public void setSanctions(int sanctions) {
 		this.sanctions = sanctions;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

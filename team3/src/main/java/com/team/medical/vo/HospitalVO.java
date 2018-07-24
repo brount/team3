@@ -11,9 +11,10 @@ public class HospitalVO {
 	private String hospitaladdress3;
 	private String hospitalphone;
 	private String hospitalinstruction;
-	private Date hospitaltime;
+	private String hospitaltime;
 	private String hospitalholiday;
 	private String hospitalimage;
+	
 	public int getHospitalno() {
 		return hospitalno;
 	}
@@ -62,10 +63,10 @@ public class HospitalVO {
 	public void setHospitalinstruction(String hospitalinstruction) {
 		this.hospitalinstruction = hospitalinstruction;
 	}
-	public Date getHospitaltime() {
+	public String getHospitaltime() {
 		return hospitaltime;
 	}
-	public void setHospitaltime(Date hospitaltime) {
+	public void setHospitaltime(String hospitaltime) {
 		this.hospitaltime = hospitaltime;
 	}
 	public String getHospitalholiday() {

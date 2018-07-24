@@ -11,31 +11,90 @@ import com.team.medical.service.AdminService;
 
 @Controller
 public class AdminContoller {
+	
 	@Autowired
 	AdminService adService;
-	//회원목록페이지
+	
+	//일반회원목록페이지
 	@RequestMapping(value = "memberList")
 	public String memberList(HttpServletRequest req, Model model) {
 		System.out.println("memberList, 페이지");
+		adService.memberList(req, model);
 		return "admin/memberList";
 	}
-	//제제관리페이지  
-	@RequestMapping(value = "sanctionManage")
-	public String sanctionManage(HttpServletRequest req, Model model) {
-		System.out.println("sanctionManage, 페이지");
-		return "admin/sanctionManage";
+	//일반회원검색목록페이지
+	@RequestMapping(value = "memberSearchList")
+	public String memberSearchList(HttpServletRequest req, Model model) {
+		System.out.println("memberSearchList, 페이지");
+		adService.memberSearchList(req, model);
+		return "admin/memberList";
 	}
-	//제제회원목록페이지   
-	@RequestMapping(value = "sanctionList")
-	public String sanctionList(HttpServletRequest req, Model model) {
-		System.out.println("sanctionList, 페이지");
-		return "admin/sanctionList";
+	//일반제제회원목록페이지   
+	@RequestMapping(value = "membersanctionList")
+	public String membersanctionList(HttpServletRequest req, Model model) {
+		System.out.println("membersanctionList, 페이지");
+		adService.membersanctionList(req, model);
+		return "admin/membersanctionList";
+	}
+	//일반제제회원검색목록페이지
+	@RequestMapping(value = "membersanctionSearchList")
+	public String membersanctionSearchList(HttpServletRequest req, Model model) {
+		System.out.println("membersanctionSearchList, 페이지");
+		adService.membersanctionSearchList(req, model);
+		return "admin/membersanctionList";
+	}
+	//일반탈퇴회원목록페이지  
+	@RequestMapping(value = "membersecessionList")
+	public String membersecessionList(HttpServletRequest req, Model model) {
+		System.out.println("membersecessionList, 페이지");
+		adService.membersecessionList(req, model);
+		return "admin/membersecessionList";
+	}
+	//일반탈퇴회원검색목록페이지
+	@RequestMapping(value = "membersecessionSearchList")
+	public String membersecessionSearchList(HttpServletRequest req, Model model) {
+		System.out.println("membersecessionSearchList, 페이지");
+		adService.membersecessionSearchList(req, model);
+		return "admin/membersecessionList";
+	}
+	// 일반탈퇴회원삭제 처리 페이지
+	@RequestMapping(value = "memberdeletePro")
+	public String memberdeletePro(HttpServletRequest req, Model model) {
+		System.out.println("memberdeletePro");
+
+		adService.memberdeletePro(req, model);
+		
+		return "admin/memberdeletePro";
+	}
+	//일반회원제제관리페이지
+	@RequestMapping(value = "membersanctionManage")
+	public String membersanctionManage(HttpServletRequest req, Model model) {
+		System.out.println("membersanctionManage, 페이지");
+		return "admin/membersanctionManage";
 	}
 	//의사회원목록페이지
 	@RequestMapping(value = "doctorList")
 	public String doctorList(HttpServletRequest req, Model model) {
 		System.out.println("doctorList, 페이지");
 		return "admin/doctorList";
+	}
+	//의사회원탈퇴목록페이지
+	@RequestMapping(value = "doctorsecessionList")
+	public String doctorsecessionList(HttpServletRequest req, Model model) {
+		System.out.println("doctorsecessionList, 페이지");
+		return "admin/doctorsecessionList";
+	}
+	//의사회원제제목록페이지 
+	@RequestMapping(value = "doctorsanctionList")
+	public String doctorsanctionList(HttpServletRequest req, Model model) {
+		System.out.println("doctorsanctionList, 페이지");
+		return "admin/doctorsanctionList";
+	}
+	//의사회원제제관리페이지
+	@RequestMapping(value = "doctorsanctionManage")
+	public String doctorsanctionManage(HttpServletRequest req, Model model) {
+		System.out.println("doctorsanctionManage, 페이지");
+		return "admin/doctorsanctionManage";
 	}
 	//제휴병원목록페이지     
 	@RequestMapping(value = "hospitalList")
@@ -158,7 +217,7 @@ public class AdminContoller {
 		return "admin/eventRequestList";
 	}
 	//광고등록폼페이지             
-	@RequestMapping(value = "eventAdd")
+	@RequestMapping(value = "adminEventAdd")
 	public String eventAdd(HttpServletRequest req, Model model) {
 		System.out.println("eventAdd, 페이지");
 		return "admin/eventAdd";
@@ -175,14 +234,6 @@ public class AdminContoller {
 		System.out.println("cashList, 페이지");
 		return "admin/cashList";
 	}
-	/* 현재 안씀
-	//관리자 메뉴            
-	@RequestMapping(value = "adminMenu")
-	public String adminMenu(HttpServletRequest req, Model model) {
-		System.out.println("adminMenu, 페이지");
-		return "admin/adminMenu";
-	}
-	*/
 	//관리자 로그인 페이지
 	@RequestMapping(value = "adminLogin")
 	public String adminLogin(HttpServletRequest req, Model model) {

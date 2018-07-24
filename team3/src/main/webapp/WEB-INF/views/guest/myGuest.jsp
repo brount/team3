@@ -41,7 +41,7 @@
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                       <a href="#">내 질문목록</a>
+		                                       <a href="myBordList">내 질문목록</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
@@ -70,7 +70,7 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="memberExit">회원탈퇴</a>
+		                            <a href="guestExit">회원탈퇴</a>
 		                        </h4>
 		                    </div>
 		                </div>

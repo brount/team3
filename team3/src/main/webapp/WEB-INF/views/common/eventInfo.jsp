@@ -26,7 +26,15 @@
 		        </div>
 	  		 	<div class="col-sm-9 col-md-9">
 		            <div class="well">
-			  		 내용
+			  		 	<div class="container">
+					      <div class="row text-center text-lg-left">
+				           	<div align="center"> 
+				           	${dto.advertisementTitle}  
+				           	<img src="resources/images/event/${dto.advertisementImage}">
+				            ${dto.advertisementContents}
+				           	</div>
+					      </div>					
+			        	</div>  
 		            </div>
 		        </div>		        
 		    </div>

@@ -39,7 +39,7 @@ function loginSet(){
 							<button type="button" class="btn" data-color="info">아이디 저장</button>
 		                    <input type="checkbox" name="remember_me"  class="hidden">
 						</span>						
-		                    <input type="checkbox" name="memberState" value="1"  class="" onchange="statChk1();">일반회원
+		                    <input type="checkbox" name="memberState" value="1" class="" onchange="statChk1();">일반회원
 							<input type="checkbox" name="memberState" value="2" class="" onchange="statChk2();">의사회원
 							<script type="text/javascript">
 							

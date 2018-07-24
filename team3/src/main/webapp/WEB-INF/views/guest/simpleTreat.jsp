@@ -27,7 +27,7 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
+		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">날씨(보건기상지수)</a>
 		                        </h4>
 		                    </div>
 		                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
@@ -35,27 +35,12 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                        <a href="myHealth">내 건강정보</a>
-		                                    </td>
-		                                </tr>
-	                                    <tr>
-		                                    <td>
-		                                        <a href="checkupRegister">검진서등록</a>
+		                                       <a href="#">자외선지수</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="checkAnalyze">내 검진결과</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                       <a href="#">내 질문목록</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="reserveList">예약목록</a>
+		                                        <a href="#">식중독지수</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -65,21 +50,28 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="bookMark">즐겨찾는병원</a>
+		                            <a href="cpreventionList">예방정보</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a  href="guestModify">회원정보수정</a>
+		                            <a href="diseaseTop">10대질병</a>
 		                        </h4>
 		                    </div>
 		                </div>
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a href="memberExit">회원탈퇴</a>
+		                            <a href="simpleTreat">간단진료</a>
+		                        </h4>
+		                    </div>
+		                </div>
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a href="drugSeach">약검색</a>
 		                        </h4>
 		                    </div>
 		                </div>
