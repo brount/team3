@@ -14,29 +14,7 @@
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
-		            <div class="panel-group" id="accordion">
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a href="exerciseInfoList">운동정보</a>
-		                        </h4>
-		                    </div>                   
-		                </div>
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a href="foodInfoList">음식정보</a>
-		                        </h4>
-		                    </div>
-		                </div>
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a href="personalCare">개인건강관리</a>
-		                        </h4>
-		                    </div>
-		                </div>
-		            </div>
+		            <%@ include file="../common/menuCare.jsp" %>
 		        </div>
 	  		 	<div class="col-sm-9 col-md-9">
 		            <div class="well">
