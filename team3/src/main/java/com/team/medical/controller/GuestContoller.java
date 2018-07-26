@@ -96,6 +96,20 @@ public class GuestContoller {
 		guService.personalAddPro(req, model);
 		return "guest/personalAddPro";
 	}	
+	//  마이헬스 수정페이지
+	@RequestMapping(value = "personalMof")
+	public String personalMof(HttpServletRequest req, Model model) {
+		logger.info("personalMof, 페이지");
+		guService.myHealth(req, model);
+		return "guest/personalMof";
+	}	
+	//  마이헬스 수정처리페이지
+	@RequestMapping(value = "personalMofPro")
+	public String personalMofPro(HttpServletRequest req, Model model) {
+		logger.info("personalMofPro, 페이지");
+		guService.personalMofPro(req, model);
+		return "guest/personalMofPro";
+	}	
 	// 즐겨찾는병원페이지                            
 	@RequestMapping(value = "bookMark")
 	public String bookMark(HttpServletRequest req, Model model) {
@@ -118,8 +132,11 @@ public class GuestContoller {
 	@RequestMapping(value = "personalAdd")
 	public String personalAdd(HttpServletRequest req, Model model) {
 		logger.info("personalAdd, 페이지");
+		
+		
 		return "guest/personalAdd";
 	}	
+	
 	//칼로리등록페이지                            
 	@RequestMapping(value = "caloryAdd")
 	public String caloryAdd(HttpServletRequest req, Model model) {
@@ -130,12 +147,16 @@ public class GuestContoller {
 	@RequestMapping(value = "personalCare")
 	public String personalCare(HttpServletRequest req, Model model) {
 		logger.info("personalCare, 페이지");
+		
+		guService.myHealth(req, model);
+
 		return "guest/personalCare";
 	}
 	//예약신청페이지  !!! 예약 신청 리스트 따로 필요할 듯 
 	@RequestMapping(value = "reserveForm")
 	public String reserveForm(HttpServletRequest req, Model model) {
 		logger.info("reserveForm, 페이지");
+		guService.reservehospital(req, model);
 		return "guest/reserveForm2";
 	}
 	//검진결과분석페이지                             

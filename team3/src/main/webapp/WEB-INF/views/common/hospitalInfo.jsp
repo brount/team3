@@ -94,33 +94,33 @@
 							</div>
 						
 							<div>
-								병원명
+								${vo.hospitalname }
 								<button type="button" class="btn btn-primary" value="" style="margin-left:30px; padding:0px;">즐겨찾는 병원 등록</button>
 							</div>
 							<table class='table'>
 								<tr>
 									<th>전화번호</th>
-									<td>내용</td>
+									<td>${vo.hospitalphone }</td>
 								</tr>
 								<tr>
 									<th>주소</th>
-									<td>내용</td>
+									<td>${vo.hospitaladdress3 }</td>
 								</tr>
 								<tr>
 									<th>진료시간</th>
-									<td>내용</td>
+									<td>${vo.hospitaltime }</td>
 								</tr>
 								<tr>
 									<th>휴무일</th>
-									<td>내용</td>
+									<td>${vo.hospitalholiday }</td>
 								</tr>
 								<tr>
 									<th>소개글</th>
-									<td>내용</td>
+									<td>${vo.hospitalinstruction }</td>
 								</tr>
 								<tr>
 									<th>이미지</th>
-									<td>내용</td>
+									<td> <img src="/medical/resources/images/licence/${vo.hospitalimage }"> </td>
 								</tr>
 							</table>
 						</div>

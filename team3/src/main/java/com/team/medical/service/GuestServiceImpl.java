@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 
 import com.team.medical.persitence.GuestDAO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -217,29 +219,50 @@ public class GuestServiceImpl implements GuestService {
 		int insertcnt = dao.personalAddPro(vo);
 		model.addAttribute("insertcnt", insertcnt);
 
-		
-
-	
-	
-
-	
 	}
+	
+
+	@Override
+	public void personalMofPro(HttpServletRequest req, Model model) {
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //Myhealth테이블에 guestno 인서트 하기위해 회원정보 불러옴
+		int guestNo = gvo.getGuestNo();
+		System.out.println(guestNo);
+		MyhealthVO vo = new MyhealthVO();
+		vo.setGuestNo(guestNo);
+		vo.setBirth1(Integer.parseInt(req.getParameter("birth1")));
+		vo.setBirth2(Integer.parseInt(req.getParameter("birth2")));
+		vo.setBirth3(Integer.parseInt(req.getParameter("birth3")));
+		vo.setAge(Integer.parseInt(req.getParameter("age")));
+		vo.setHeight(req.getParameter("height"));
+		vo.setWeight(req.getParameter("weight"));
+		vo.setGender(req.getParameter("gender"));
+		vo.setBloodtype(req.getParameter("bloodtype"));
+		
+		int updatecnt = dao.personalMofPro(vo);
+		model.addAttribute("updatecnt", updatecnt);
+
+	}
+
+	
+	
 	@Override
 	public void myHealth(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //Myhealth테이블에 guestno을 통해 해당 회원의 건강정보를  셀렉트 하기위함
 		int guestNo = gvo.getGuestNo();
-		int insertcnt =0;
+		System.out.println("guestNo?"+guestNo);
+		int selectcnt =0;
 	
 		
 		MyhealthVO vo = new MyhealthVO();
 		vo = dao.myHealth(guestNo);
 		if(vo !=null) {
-			insertcnt = 1;  //등록하기 버튼 표시여부 때문에 필요!
+			selectcnt = 1;  //등록하기 버튼 표시여부 때문에 필요!
 		}
-		System.out.println(	 insertcnt);
+		System.out.println("selectcnt?"+selectcnt);
 		model.addAttribute("vo", vo);
-		model.addAttribute("insertcnt", insertcnt);
+		model.addAttribute("selectcnt", selectcnt);
 	
 		
 				
@@ -251,9 +274,9 @@ public class GuestServiceImpl implements GuestService {
 		GuestVO gvo = dao.getGuestInfo(id);  //Checkup테이블에 guestno 인서트 하기위해 회원정보에서 guestNo 값 가져옴
 		int guestNo = gvo.getGuestNo();
 		
-		CheckupVO vo = new CheckupVO();
+		ExaminationVO vo = new ExaminationVO();
 		
-		vo.setGuestNo(guestNo);
+		vo.setGuestno(guestNo);
 		vo.setHeight(req.getParameter("height"));
 		vo.setWeight(req.getParameter("weight"));
 		vo.setFatness(req.getParameter("fatness"));
@@ -291,11 +314,17 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //CheckUp테이블에 guestno을 통해 해당 회원의 검진서결과를  셀렉트 하기위함
 		int guestNo = gvo.getGuestNo();
+		int selectcnt = 0;
 		
-		CheckupVO vo = new CheckupVO();
+		ExaminationVO vo = new ExaminationVO();
 		vo = dao.checkAnalyze(guestNo);
 		
+		if(vo!=null) {
+			selectcnt = 1;
+		}
 		model.addAttribute("vo",vo);
+		model.addAttribute("selectcnt",selectcnt);
+
 	
 	}
 	@Override
@@ -352,7 +381,7 @@ public class GuestServiceImpl implements GuestService {
 		
 		model.addAttribute("dtos",dtos);
 		
-		
+		 
 
 
 		
@@ -369,4 +398,17 @@ public class GuestServiceImpl implements GuestService {
 		
 		
 	}
+	@Override
+	public void reservehospital(HttpServletRequest req, Model model) {
+		//int hospitalno = req.getParameter("hospitalno");
+		int hospitalno = 26;
+		HospitalVO vo = new HospitalVO();
+		
+		vo = dao.reservehospital(hospitalno);
+		
+		model.addAttribute("vo",vo);
+			
+	
+	}
+	
 }

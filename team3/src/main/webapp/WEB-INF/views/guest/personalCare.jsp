@@ -50,23 +50,24 @@
   		 	<div class="col-sm-9 col-md-9">
 	            <div class="well">
 		            <div class="container">
-						뿌링클
+					
+					
 						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
 						    <fieldset>
 						
 						      <legend>개인건강관리페이지</legend>
-						
+						<c:if test="${selectcnt!=0}">
 							 <div class="form-group">
 						        <label class="col-md-4 control-label">생년월일</label>
 						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input name="phone1" placeholder="1994" class="form-control" type="text" style="width:50px; margin-right: 10px;">
-						          		<b>년</b> 
-						             <input name="phone2" placeholder="01" class="form-control" type="text" style="width:50px; margin-right: 10px;" >
-						     		       <b>월</b> 	
-						              <input name="phone3" placeholder="13" class="form-control" type="text" style="width:50px; margin-right: 10px;">
-						              	<b>일</b> 
-						          </div>
+									<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+						           ${vo.birth1}
+						         		<b>년</b> 
+						           ${vo.birth2}
+						    		       <b>월</b> 	
+						           ${vo.birth3}
+						             	<b>일</b> 
+						         </div>
 						        </div>
 						     
 						      </div>
@@ -76,8 +77,8 @@
 						        <label class="col-md-4 control-label">신장</label>
 						        <div class="col-md-6  inputGroupContainer">
 						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input  name="first_name" placeholder="163" class="form-control"  type="text" style="hegint:70px;"> 
-						            	<b>cm</b> 
+									${vo.height}						            	
+									<b>cm</b> 
 						            
 						          </div>
 						        </div>
@@ -87,25 +88,30 @@
 						        <label class="col-md-4 control-label">체중</label>
 						        <div class="col-md-6  inputGroupContainer">
 						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            <input  name="first_name" placeholder="46" class="form-control"  type="text" style="width:50px;"> 
+						            	    ${vo.weight}
 						            	<b>kg</b> 
 						            
 						          </div>
 						        </div>
 						      </div>
-						      
+						  
 						         <div class="form-group" >
 						        <label class="col-md-4 control-label"> 나의 신체질량지수(BMI)</label>
 						        <div class="col-md-6  inputGroupContainer">
 						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						          
+						          ${vo.weight/(vo.height*vo.height)}		
 						          </div>
 						        </div>
 						      </div>
-						
+						</c:if>
 						<div style="display:table; margin:0 auto;">
 							<div>
+							<c:if test="${selectcnt==0}">
 								<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> 내 건강정보 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+						  		</c:if>
+						  			<c:if test="${selectcnt!=0}">
+								 <button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> 내 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+						  		</c:if>
 						  		<button type="button" class="btn btn-warning" onclick="window.location='caloryAdd'"> 음식 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 							</div>
 						 </div>    

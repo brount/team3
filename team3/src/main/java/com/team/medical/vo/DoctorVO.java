@@ -3,19 +3,19 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class DoctorVO {
-	private int doctorno;
-	private int hospitalno;
-	private String doctorid;
-	private String doctorpwd;
-	private String doctorname;
-	private int doctorappro;
-	private String doctorphone;
-	private String doctoremail;
-	private Date doctorregstration;
-	private int doctorspecialism;
-	private int point;
-	private int sanctions;
-	private String licence;
+	private int doctorno;				// 의사회원번호
+	private int hospitalno;				// 병원등록번호
+	private String doctorid;			// 의사회원ID
+	private String doctorpwd;			// 의사회원PW
+	private String doctorname;			// 의사회원명
+	private int doctorappro;			// 승인여부
+	private String doctorphone;			// 개인연락처
+	private String doctoremail;			// 이메일주소
+	private Date doctorregstration;		// 가입신청일
+	private int doctorspecialism;		// 전문분야
+	private int point;					// 포인트
+	private int sanctions;				// 제제단계
+	private String licence;				// 의사면허이미지
 	
 	public String getLicence() {
 		return licence;

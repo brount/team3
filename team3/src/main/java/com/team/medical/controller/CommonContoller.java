@@ -82,6 +82,15 @@ public class CommonContoller {
 		logger.info("PreventionList, 페이지");
 		return "common/preventionList";
 	}
+	//질병 리스트
+	@RequestMapping(value = "cdiseaseList")
+	public String diseaseList(HttpServletRequest req, Model model) {
+		logger.info("cdiseaseList, 페이지");
+		
+		
+		
+		return "common/cdiseaseList";
+	}
 	//병상세페이지
 	@RequestMapping(value = "diseaseInfo")
 	public String diseaseInfo(HttpServletRequest req, Model model) {
@@ -134,12 +143,16 @@ public class CommonContoller {
 	@RequestMapping(value = "hospitalSeach")
 	public String hospitalSeach(HttpServletRequest req, Model model) {
 		logger.info("hospitalSeach, 페이지");
+		
+		coService.hospitalList(req, model);
 		return "common/hospitalSeach";
 	}
 	//병원정보페이지                          
 	@RequestMapping(value = "hospitalInfo")
 	public String hospitalInfo(HttpServletRequest req, Model model) {
 		logger.info("hospitalInfo, 페이지");
+		
+		coService.getHospitalInfo(req, model);
 		return "common/hospitalInfo";
 	}
 	//이벤트 목록페이지                        
@@ -185,6 +198,7 @@ public class CommonContoller {
 		logger.info("boardList, 페이지");
 		
 		coService.boardList(req,model);
+		
 		return "common/boardList";
 	}
 	//질문상세페이지 
@@ -222,8 +236,12 @@ public class CommonContoller {
 	@RequestMapping(value = "boardAddPro")
 	public String boardAddPro(HttpServletRequest req, Model model) {
 		logger.info("boardAddPro, 페이지");
+		
 		coService.boardAddPro(req,model);
-		return "common/boadrList";
+		
+		coService.boardList(req, model);
+		
+		return "common/boardList";
 	}
 	// 질문수정페이지
 	@RequestMapping(value = "boardModify")

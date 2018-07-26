@@ -15,6 +15,8 @@
 <section>
 <div style="width:45%; margin:0 auto;">
 <div class="well">
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function addressSearch() {
 		new daum.Postcode(

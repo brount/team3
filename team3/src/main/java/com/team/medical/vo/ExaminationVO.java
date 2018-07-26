@@ -3,7 +3,8 @@ package com.team.medical.vo;
 public class ExaminationVO {
 	//검진서
 	private int COL;
-	private int guestno;
+	private int guestNo;
+	private int guestname;
 	private String height;
 	private String weight;
 	private String fatness;
@@ -32,11 +33,25 @@ public class ExaminationVO {
 	public void setCOL(int cOL) {
 		COL = cOL;
 	}
-	public int getGuestno() {
-		return guestno;
+	
+	
+	public int getGuestNo() {
+		return guestNo;
 	}
-	public void setGuestno(int guestno) {
-		this.guestno = guestno;
+	public void setGuestNo(int guestNo) {
+		this.guestNo = guestNo;
+	}
+	public int getGuestname() {
+		return guestname;
+	}
+	public void setGuestname(int guestname) {
+		this.guestname = guestname;
+	}
+	public int getGuestno() {
+		return guestNo;
+	}
+	public void setGuestno(int guestNo) {
+		this.guestNo = guestNo;
 	}
 	public String getHeight() {
 		return height;

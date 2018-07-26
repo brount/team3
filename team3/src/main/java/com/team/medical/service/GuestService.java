@@ -31,14 +31,21 @@ public interface GuestService {
 	
 	// 마이헬스 정보등록페이지
 	public void personalAddPro(HttpServletRequest req, Model model);
-	
+	// 마이헬스 정버수수정처리페이지
+	public void personalMofPro(HttpServletRequest req, Model model);
 	// 마이헬스 등록한 정보 셀렉트 
 	public void myHealth(HttpServletRequest req, Model model);
+	
 	
 	// 검진서 등록 처리
 	public void checkupRegisterPro(HttpServletRequest req, Model model);
 	
 	// 해당 회원의 검진서 분석결과 조회
 	public void checkAnalyze(HttpServletRequest req, Model model);
+	
+	//병원예약 클릭시 해당 병원정보 조회
+	public void reservehospital(HttpServletRequest req, Model model);
+	
+	
 	
 }

@@ -36,15 +36,42 @@
 						           	<div align="center"> 
 						           	${dto.advertisementTitle}
 						           	<img src="resources/images/event/${dto.advertisementThumbnail}" style="width:165px; height:100px;">
-						            ${dto.advertisementStart} ~ ${dto.advertisementEnd}
+						           	<div style="font-size:14; margin-top:5px;">${dto.advertisementStart} ~ ${dto.advertisementEnd}</div>
 						           	</div>
 						          </a>
 						        </div>
 							</c:forEach>
 					      </div>					
-			        	</div>  
+			        	</div> 
+			        	<table align="center">
+							<tr>
+								<th align="center">
+									<c:if test="${cnt>0}">
+										<!-- 처음[◀◀] / 이전블록 [◀] -->
+										<c:if test="${startPage > pageBlock}">
+											<a href="eventList">[◀◀]</a>
+											<a href="eventList?pageNum=${startPage-pageBlock}">[◀]</a>	
+										</c:if>
+										<!-- 페이지 블록 -->
+										<c:forEach var="i" begin="${startPage}" end="${endPage}">
+											<c:if test="${i == currentPage }">
+												<span> <b>[${i }]</b></span>
+											</c:if>
+											<c:if test="${i != currentPage }">
+												<a href="eventList?pageNum=${i}">[${i}]</a>
+											</c:if>
+										</c:forEach>										
+										<!-- 다음블록[▶] / 끝[▶▶] -->
+										<c:if test="${pageCnt > endPage}">
+											<a href="eventList?pageNum=${startPage+pageBlock}">[▶]</a>
+											<a href="eventList?pageNum=${pageCnt}">[▶▶]</a>
+										</c:if>
+									</c:if>
+								</th>
+							</tr>
+						</table>		    
 		            </div>
-		        </div>		        
+		        </div>
 		    </div>
 		</div> 
    </section>

@@ -41,7 +41,7 @@
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                       <a href="#">내 질문목록</a>
+	                                       <a href="myBordList">내 질문목록</a>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -89,6 +89,12 @@
 							</div>
 						<table class="table table-striped table-hover" border="1">
 							<thead>
+							<tr>
+							<th colspan="4">검진서번호</th>
+							<td colspan="2"><input name="height" placeholder="20170725" class="form-control"  type="text" style="width:180px;"></td>
+							
+							</tr>
+							
 					                  <tr>
 					                      <th class="col-check"></th>
 					                      <th>구분</th>

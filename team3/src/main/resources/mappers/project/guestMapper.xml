@@ -56,30 +56,40 @@
 		VALUES(#{guestNo}, #{birth1}, #{birth2}, #{birth3}, #{age}, #{height}, #{weight}, #{gender}, #{bloodtype})
 	</insert>
 	
+	<!-- 마이헬스 정보 업데이트 -->
+	<update id="personalMofPro" parameterType="com.team.medical.vo.MyhealthVO">
+	update Myhealth 
+		set birth1=#{birth1} , birth2=#{birth2} , birth3=#{birth3} , age=#{age} , height=#{height} , weight=#{weight} , gender=#{gender} , bloodtype= #{bloodtype} 
+		where guestNo=#{guestNo}
+	</update>
+	
 	<!-- 마이헬스 정보 셀렉트  -->
 	<select id="myHealth" resultType="com.team.medical.vo.MyhealthVO">
 	SELECT * FROM Myhealth WHERE guestNo=#{guestNo}	
 	</select>
 
 	<!-- 검진서등록 인설트 -->
-	<insert id="checkupRegisterPro" parameterType="com.team.medical.vo.CheckupVO">
-		INSERT INTO CheckUp( GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL, VISIONR , HEARINGL , HEARINGR ,BLOODPREMAX ,  BLOODPREMIN             
+	<insert id="checkupRegisterPro" parameterType="com.team.medical.vo.ExaminationVO">
+		INSERT INTO Examination(COL,  GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL, VISIONR , HEARINGL , HEARINGR ,BLOODPREMAX ,  BLOODPREMIN             
     ,URINEGLUCOSE, URINEPROTEIN , OCCULTHEMATURIA, URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,  TOTALCHOLESTEROL      
    , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG)
-		VALUES(#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
+		VALUES(#{COL} ,#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
 		 #{bloodpremax}, #{bloodpremin},#{urineglucose},#{urineprotein},#{occulthematuria},#{urineph},
 		 #{hemoglobin},#{bloodglucose},#{totalcholesterol}, #{ast},#{alt},#{gammagtp},#{hepatitisscr}, #{breastradiography}, #{ecg})
 	</insert>
 	
 	<!-- 검진서 결과 셀렉트 -->
-	<select id="checkAnalyze" resultType="com.team.medical.vo.CheckupVO">
-	SELECT  g.GUESTNO, g.GUESTNAME, c.HEIGHT, c.WEIGHT, c.FATNESS , c.VISIONL, c.VISIONR , c.HEARINGL , c.HEARINGR ,c.BLOODPREMAX ,  c.BLOODPREMIN             
-    ,c.URINEGLUCOSE, c.URINEPROTEIN , c.OCCULTHEMATURIA, c.URINEPH ,c.HEMOGLOBIN ,c.BLOODGLUCOSE  ,  c.TOTALCHOLESTEROL      
-   , c.AST, c.ALT , c.GAMMAGTP , c.HEPATITISSCR ,c.BREASTRADIOGRAPHY, c.ECG 
-   			FROM CheckUp c , guest g WHERE c.GUESTNO = g.GUESTNO AND g.guestNo=#{guestNo}	
+	<select id="checkAnalyze" resultType="com.team.medical.vo.ExaminationVO">
+	SELECT  g.GUESTNO,guestname, HEIGHT,WEIGHT,FATNESS ,VISIONL,VISIONR ,HEARINGL ,HEARINGR ,BLOODPREMAX , BLOODPREMIN             
+    ,URINEGLUCOSE,URINEPROTEIN ,OCCULTHEMATURIA,URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,TOTALCHOLESTEROL      
+   ,AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY,ECG 
+   FROM Examination c , guest g WHERE c.GUESTNO = g.GUESTNO AND g.guestNo=#{guestNo}	
 	</select>
 	
-	
+	<!-- 예약버튼 클릭한 병원정보 셀렉트  -->
+	<select id="reservehospital" resultType="com.team.medical.vo.HospitalVO">
+		SELECT * FROM Hospital where hospitalno=#{hospitalno}
+	</select>
 																						
 
 </mapper>

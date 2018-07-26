@@ -13,7 +13,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -108,6 +110,15 @@ public class GuestDAOImpl implements GuestDAO {
 		return insertcnt;
 	}
 
+	@Override
+	public int personalMofPro(MyhealthVO vo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int updatecnt = dao.personalMofPro(vo);
+		
+		return updatecnt;
+	}
+
+	
 	// 마이헬스정보 셀렉트
 	@Override
 	public MyhealthVO myHealth(int guestNo) {
@@ -121,7 +132,7 @@ public class GuestDAOImpl implements GuestDAO {
 
 	// 검진서등록 인서트
 	@Override
-	public int checkupRegisterPro(CheckupVO vo) {
+	public int checkupRegisterPro(ExaminationVO vo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 
 		int insertcnt = dao.checkupRegisterPro(vo);
@@ -130,9 +141,9 @@ public class GuestDAOImpl implements GuestDAO {
 	}
 
 	@Override
-	public CheckupVO checkAnalyze(int guestNo) {
+	public ExaminationVO checkAnalyze(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		CheckupVO vo = new CheckupVO();
+		ExaminationVO vo = new ExaminationVO();
 		vo = dao.checkAnalyze(guestNo);
 		return vo;
 
@@ -166,6 +177,15 @@ public class GuestDAOImpl implements GuestDAO {
 		int updatecnt = dao.guestExitPro(guestNo);
 
 		return updatecnt;
+	}
+
+	@Override
+	public HospitalVO reservehospital(int hospitalno) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		HospitalVO vo = new HospitalVO();
+		vo = dao.reservehospital(hospitalno);
+		return vo;
 	}
 
 }

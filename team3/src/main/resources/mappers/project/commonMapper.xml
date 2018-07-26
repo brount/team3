@@ -67,6 +67,28 @@
 		SELECT doctorno FROM doctor WHERE doctorid=#{id}
 	</select>
 	
+	<!-- 병원목록 갯수세기 -->
+	<select id="getHospitalCnt" resultType="int">
+		select count(hospitalno) from hospital
+	</select>
+	
+	<!-- 병원목록 가져오기 -->	
+	<select id="getHospitalList" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT hospitalno, doctorno, hospitalname, hospitaladdress1, hospitaladdress2,
+			  		hospitalphone,hospitalinstruction,hospitaltime,hospitalholiday,hospitalimage,
+			  		hospitalstate, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM hospital 
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
 	<!-- 이벤트 추가 -->
 	<insert id="insertEvent" parameterType="com.team.medical.vo.EventVO">
 		INSERT
@@ -82,13 +104,18 @@
 		SELECT *
 		  FROM (SELECT advertisementNo, advertisementThumbnail, advertisementTitle,
 		  			   advertisementStart, advertisementEnd, rownum rNum
-		         FROM (SELECT * FROM event ORDER BY advertisementNo DESC))
-		  WHERE rNum >= 1 AND rNum <= 12
+		         FROM (SELECT * FROM event ORDER BY advertisementEnd DESC))
+		  WHERE rNum >= #{start} AND rNum <= #{end}
 		]]>
 	</select>
 	
 	<!-- 이벤트 상세보기 -->
 	<select id="eventInfo" resultType="com.team.medical.vo.EventVO">
 		SELECT * FROM event WHERE advertisementNo=#{advertisementNo}
+	</select>
+	
+	<!-- 이벤트 갯수 구하기 -->
+	<select id="getEventCnt" resultType="int">
+		SELECT count(*) FROM event
 	</select>
 </mapper>

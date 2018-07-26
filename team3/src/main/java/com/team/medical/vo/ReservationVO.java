@@ -4,8 +4,9 @@ import java.sql.Date;
 
 public class ReservationVO {
 	//예약목록
-	private int reservationNo;
+	private int hospitalno;
 	private int doctorNo;
+	private int reservationNo;
 	private int guestNo;
 	private Date reservationTime;
 	private int reservationKind;

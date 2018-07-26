@@ -11,7 +11,7 @@
 		adminpwd=#{pwd}
 	</select>
 
-	<!-- 일반회원목록 갯수 -->
+	<!-- 일반회원목록 개수 -->
 	<select id="getMemberListCnt" resultType="int">
 		SELECT COUNT(*) FROM guest WHERE status = 0 AND sanctions = 0
 	</select>
@@ -37,7 +37,7 @@
 		]]>
 	</select>
 
-	<!-- 일반회원검색목록 갯수 구하기 -->
+	<!-- 일반회원검색목록 개수 구하기 -->
 	<select id="search_memberCnt" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(guestNo) FROM guest
 		<where>
@@ -94,7 +94,7 @@
       			]]>
 	</select>
 
-	<!-- 일반제제회원목록 갯수 -->
+	<!-- 일반제제회원목록 개수 -->
 	<select id="getMembersanctionsListCnt" resultType="int">
 		SELECT COUNT(*) FROM guest WHERE sanctions != 0 AND status = 0
 	</select>
@@ -119,7 +119,7 @@
 		]]>
 	</select>
 
-	<!-- 일반제제회원검색목록 갯수 구하기 -->
+	<!-- 일반제제회원검색목록 개수 구하기 -->
 	<select id="search_membersanctionsListCnt" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(guestNo) FROM guest
 		<where>
@@ -176,7 +176,7 @@
       			]]>
 	</select>
 
-	<!-- 일반탈퇴회원목록 갯수 -->
+	<!-- 일반탈퇴회원목록 개수 -->
 	<select id="getMembersecessionListCnt" resultType="int">
 		SELECT COUNT(*) FROM guest where status = 1
 	</select>
@@ -200,7 +200,7 @@
 		]]>
 	</select>
 
-	<!-- 일반탈퇴회원검색목록 갯수 구하기 -->
+	<!-- 일반탈퇴회원검색목록 개수 구하기 -->
 	<select id="search_membersecessionListCnt" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(guestNo) FROM guest
 		<where>
@@ -256,6 +256,31 @@
 
 	<!-- 일반탈퇴회원삭제 처리 -->
     <delete id="memberdeletePro">
-   	 	DELETE guest WHERE guestNo=#{guestNo}
+   	 	DELETE guest WHERE guestNo=#{guestno}
     </delete>
+
+
+	<!-- 약 목록 개수 -->
+	<select id="getDrugListCnt" resultType="int">
+		SELECT COUNT(*) FROM drug
+	</select>
+
+	<!-- 약 목록 조회 -->
+	<select id="getDrugList" parameterType="java.util.Map" resultType="com.team.medical.vo.DrugVO">
+		
+			SELECT drugCode
+				 , drugName
+				 , drugCompany
+				 , drugGroupCode
+				 , drugGroup
+				 , pro_usual
+				 , admitDate
+				 , registDate
+				 , rownum
+			  from drug
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+		]]>
+	</select>
 </mapper>

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.medical.persitence.DoctorDAO;
+import com.team.medical.vo.CheckupListVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.HospitalVO;
 
@@ -62,7 +63,7 @@ public class DoctorServiceImpl implements DoctorService {
 	public String inputPro(MultipartHttpServletRequest req, Model model) {
 		MultipartFile file = req.getFile("file");
         String saveDir = req.getRealPath("/resources/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
         
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -112,7 +113,7 @@ public class DoctorServiceImpl implements DoctorService {
 	public String modifyPro(MultipartHttpServletRequest req, Model model) {
 		MultipartFile file = req.getFile("file");
         String saveDir = req.getRealPath("/resources/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
         
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -165,69 +166,141 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
-		MultipartFile file = req.getFile("hospitalimage");
+   public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
+      MultipartFile file = req.getFile("hospitalimage");
         String saveDir = req.getRealPath("/resources/images/licence/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
         
-        try {
-            file.transferTo(new File(saveDir+file.getOriginalFilename()));
+        try {           
+           if(file != null) {
+               file.transferTo(new File(saveDir+file.getOriginalFilename()));
+               
+               FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+               FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+               
+               int data = 0;
+               
+               while((data = fis.read()) != -1) {
+                   fos.write(data);
+               }
+               fis.close();
+               fos.close();
+           }      
             
-            FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-            FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+         String id = (String)req.getSession().getAttribute("id");
+         String hospitalname = req.getParameter("hospitalname");
+         String hospitaladdress1 = req.getParameter("hospitaladdress1");
+         String hospitaladdress2 = req.getParameter("hospitaladdress2");
+         String hospitaladdress3 = req.getParameter("hospitaladdress3");
+         String hospitalphone = req.getParameter("hospitalphone");
+         String hospitalinstruction = req.getParameter("hospitalinstruction");
+         String hospitaltime = req.getParameter("hospitaltime");
+         String hospitalholiday = req.getParameter("hospitalholiday");
+         String hospitalimage = file.getOriginalFilename();
+         String doctorno = "d"+String.valueOf(dao.getMyInfo(id))+"t";
+         int cnt =0;
+         cnt = dao.chkHospital(hospitalphone);
+         
+         if(cnt == 0) {
+            HospitalVO vo = new HospitalVO();      
+                  
+            vo.setDoctorno(doctorno);
+            vo.setHospitalname(hospitalname);
+            vo.setHospitaladdress1(hospitaladdress1);
+            vo.setHospitaladdress2(hospitaladdress2);
+            vo.setHospitaladdress3(hospitaladdress3);
+            vo.setHospitalphone(hospitalphone);
+            vo.setHospitalinstruction(hospitalinstruction);
+            vo.setHospitaltime(hospitaltime);
+            vo.setHospitalholiday(hospitalholiday);
+            vo.setHospitalimage(hospitalimage);
             
-            int data = 0;
+            int intsertCnt = dao.insertHospitalInfo(vo);
+            model.addAttribute("intsertCnt", intsertCnt);
+         }else {
+            HospitalVO vo = dao.getHospitalInfo(hospitalphone);
             
-            while((data = fis.read()) != -1) {
-                fos.write(data);
-            }
-            fis.close();
-            fos.close();
-		
+            String doctorno2 = vo.getDoctorno()+","+doctorno;
+            vo.setDoctorno(doctorno2);
             
-		String id = (String)req.getSession().getAttribute("id");
-		String hospitalname = req.getParameter("hospitalname");
-		String hospitaladdress1 = req.getParameter("hospitaladdress1");
-		String hospitaladdress2 = req.getParameter("hospitaladdress2");
-		String hospitaladdress3 = req.getParameter("hospitaladdress13");
-		String hospitalphone = req.getParameter("hospitalphone");
-		String hospitalinstruction = req.getParameter("hospitalinstruction");
-		String hospitaltime = req.getParameter("hospitaltime");
-		String hospitalholiday = req.getParameter("hospitalholiday");
-		String hospitalimage = file.getOriginalFilename();
-		
-		HospitalVO vo = new HospitalVO();
-		
-		vo.setHospitalname(hospitalname);
-		vo.setHospitaladdress1(hospitaladdress1);
-		vo.setHospitaladdress2(hospitaladdress2);
-		vo.setHospitaladdress3(hospitaladdress3);
-		vo.setHospitalphone(hospitalphone);
-		vo.setHospitalinstruction(hospitalinstruction);
-		vo.setHospitaltime(hospitaltime);
-		vo.setHospitalholiday(hospitalholiday);
-		vo.setHospitalimage(hospitalimage);
-
-		int intsertCnt = dao.insertHospitalInfo(vo);
-		model.addAttribute("intsertCnt", intsertCnt);
-	
+            int intsertCnt = dao.updateHospital(vo);
+            model.addAttribute("intsertCnt", intsertCnt);
+         }
+   
         } catch(IOException e) {
             e.printStackTrace();
         }
-		return realDir;
+      return realDir;
+      
+   }
+
+   @Override
+   public void myHospitalInfo(HttpServletRequest req, Model model) {
+      String id = (String)req.getSession().getAttribute("id");
+      System.out.println("id :" + id);
+      String doctorno = "d"+String.valueOf(dao.getMyInfo(id))+"t";
+      
+      HospitalVO vo = dao.getMyhospitalInfo(doctorno); 
+      
+      System.out.println("vo : "+vo);
+      model.addAttribute("vo", vo);
+      
+   }
+
+	@Override
+	public void docInfo(HttpServletRequest req, Model model) {
+		String id = (String)req.getSession().getAttribute("id");
+		
+		String doctorno = "d"+String.valueOf(dao.getMyInfo(id))+"t";
+		
+		HospitalVO dto = dao.getMyhospitalInfo(doctorno); 
+		
+		DoctorVO vo = dao.getDocInfo(id);
+		model.addAttribute("vo",vo);
+		model.addAttribute("dto",dto);
+		
 		
 	}
 
 	@Override
-	public void myHospitalInfo(HttpServletRequest req, Model model) {
-		String id = (String)req.getSession().getAttribute("id");
-		System.out.println("id :" + id);
-		int doctorno = dao.getMyInfo(id);
+	public void checkupRequestInputPro(HttpServletRequest req, Model model) {
+		///////
+		//환자이름
+		//주민등록번호
+		//성별
+		//나이
+		//연락처
+		//이메일
+		///
 		
-		HospitalVO vo = dao.getMyhospitalInfo(doctorno); 
+		CheckupListVO vo = dao.checkListInput();
 		
-		System.out.println("vo : "+vo);
-		model.addAttribute("vo", vo);
+		String doctorspecialism = req.getParameter("doctorspecialism");
+		String doctorname = req.getParameter("doctorname");
+		String hospitaladdress1 = req.getParameter("hospitaladdress1");
+		String hospitaladdress2 = req.getParameter("hospitaladdress2");
+		String hospitaladdress3 = req.getParameter("hospitaladdress3");
+		String hospitalname = req.getParameter("hospitalname");
+		String hospitalphone = req.getParameter("hospitalphone");
+		
+		String checkup_kind = req.getParameter("checkup_kind");
+		String checkup_name = req.getParameter("checkup_name");
+		String checkup_opinion = req.getParameter("checkup_opinion");
+		String checkup_contents = req.getParameter("checkup_contents");
+		
+		model.addAttribute("doctorspecialism",doctorspecialism);
+		model.addAttribute("doctorname",doctorname);
+		model.addAttribute("hospitaladdress1",hospitaladdress1);
+		model.addAttribute("hospitaladdress2",hospitaladdress2);
+		model.addAttribute("hospitaladdress3",hospitaladdress3);
+		model.addAttribute("hospitalname",hospitalname);
+		model.addAttribute("hospitalphone",hospitalphone);
+		
+		model.addAttribute("checkup_kind",checkup_kind);
+		model.addAttribute("checkup_name",checkup_name);
+		model.addAttribute("checkup_opinion",checkup_opinion);
+		model.addAttribute("checkup_contents",checkup_contents);
+		
 		
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import com.team.medical.vo.EventVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 public interface CommonDAO {
@@ -26,12 +27,18 @@ public interface CommonDAO {
 	public ArrayList<QuestionBoardVO> getreList(Map<String,Integer> map);
 	// 댓글작성
 	public int inputre(QuestionBoardVO dto);
+	// 병원 갯수 구하기
+	public int getHospitalCnt();
+	// 병원 목록 뿌리기
+	public ArrayList<HospitalVO> getHospitalList(Map<String,Integer> map);
 	// 이벤트 생성에 필요한 닥터넘버를 받아오기 위한 sql
 	public int eventNo(String id);
 	// 이벤트 추가
 	public int insertEvent(EventVO dto);
 	// 이벤트 목록
-	public ArrayList<EventVO> eventList();
+	public ArrayList<EventVO> eventList(Map<String,Integer> map);
 	// 이벤트 상세 정보
 	public EventVO eventInfo(int advertisementNo);
+	// 이벤트 갯수 구하기
+	public int getEventCnt();
 }

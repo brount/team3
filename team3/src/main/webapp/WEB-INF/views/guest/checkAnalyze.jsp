@@ -68,7 +68,7 @@
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                       <a href="#">내 질문목록</a>
+		                                       <a href="myBordList">내 질문목록</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
@@ -107,11 +107,21 @@
 			            <div class="well">
 			                <div>
       
-     
+     <form action="checkupRegister">
       <div class="panel panel-primary" style="margin-left: 10px">
           <div class="panel-heading" >
+          <c:if test="${selectcnt ==0 }">
+          	   <div class="form-group">
+					        	<div style="display:table; margin:0 auto;">
+					          <button type="submit" class="btn btn-warning" >검진서를 등록해주세요~! <span class="glyphicon glyphicon-send"></span></button>
+					        </div>
+					      </div>
+          </c:if>
+           <c:if test="${selectcnt !=0 }">
               <h3> ${vo.guestname }님의 건강검진 결과</h3>
+         </c:if>
           </div>
+          
           <div id="toolbar-admin" class="panel-body">
           </div>
           <div id="columnchart_material" style="width:95%; height: 500px; margin:0 auto;"></div>
@@ -293,7 +303,7 @@
           </table>
      
       </div>
-   
+   </form>
    </div>
 </div>
 <script>

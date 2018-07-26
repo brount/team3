@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -37,15 +39,19 @@ public interface GuestDAO {
 	
 	//마이헬스정보 인서트
 	public int personalAddPro(MyhealthVO vo);
+	//마이헬스정보 인서트
+	public int personalMofPro(MyhealthVO vo);
 	
 	//마이헬스정보 셀렉트
 	public MyhealthVO myHealth(int guestNo);
 	
 	//검진서 등록 처리
-	public int checkupRegisterPro(CheckupVO vo);
+	public int checkupRegisterPro(ExaminationVO vo);
 
 	//검진서 결과 셀렉트
-	public CheckupVO checkAnalyze(int guestNo);
-
+	public ExaminationVO checkAnalyze(int guestNo);
+	
+	//예약할 병원 정보 셀렉트 
+	public HospitalVO reservehospital(int hospitalno);
 
 }

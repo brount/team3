@@ -350,7 +350,7 @@
                             <ol class="list-unstyled mx-4 dark-grey-text">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"   onclick="window.location='weatherList'">날씨(보건기상지수)</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='cpreventionList'">예방정보</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='diseaseTop'">10대질병</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='cdiseaseList'">질병목록</a></li>
                                <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='simpleTreat'">간단진료</a></li>
                            <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='drugSeach'">약검색</a></li>
                             

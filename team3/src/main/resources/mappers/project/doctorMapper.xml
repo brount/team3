@@ -44,7 +44,30 @@
 	</select>
 	
 	<!-- 내 병원 정보 가져오기 -->
-	<select id="getMyhospitalInfo" parameterType="int" resultType="com.team.medical.vo.HospitalVO">
-		select * from hospital where doctorno =#{doctorno,jdbcType=INTEGER}
+   <select id="getMyhospitalInfo" parameterType="String" resultType="com.team.medical.vo.HospitalVO">
+      select * from hospital where doctorno LIKE '%'|| #{doctorno} ||'%'
+   </select>
+   
+   <!-- 제휴병원 중복체크 -->
+   <select id="chkHospital" parameterType="String" resultType="int">
+      SELECT count(hospitalno) FROM hospital WHERE hospitalphone = #{hospitalphone}
+   </select>
+   <!-- 병원정보 가져오기(병원번호) -->
+   <select id="getHospitalInfo" parameterType="String" resultType="com.team.medical.vo.HospitalVO">
+      select * from hospital where hospitalphone = #{hospitalphone}
+   </select>
+   <!-- 병원정보수정 -->
+   <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
+      UPDATA hospital SET doctorno=#{doctorno},hospitalname=#{hospitalname},
+      hospitaladdress1=#{hospitaladdress1},hospitaladdress2=#{hospitaladdress2},
+      hospitaladdress3=#{hospitaladdress3},hospitalphone=#{hospitalphone},
+      hospitalinstruction=#{hospitalinstruction},hospitaltime=#{hospitaltime},
+      hospitalholiday=#{hospitalholiday},hospitalimage=#{hospitalimage}
+      WHERE hospitalno = #{hospitalno}
+   </update>
+	
+	<!-- 의사 정보 가져오기 -->
+	<select id = "getDocInfo"  resultType="com.team.medical.vo.DoctorVO">
+		select * from doctor where doctorid=#{doctorid,jdbcType=VARCHAR}
 	</select>
 </mapper>

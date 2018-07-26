@@ -134,6 +134,7 @@
 					        </tr>
 					     </table>
 					</div>
+					<input type="button" value="병원 등록하기" onclick="window.location='myHospitalResistraion'">
 				</div>
         	</div>
         </div>

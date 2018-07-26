@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.EventVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 @Repository
@@ -25,7 +26,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return selectCnt;
 	}
-	
 	//게시글 목록 조회
 	@Override
 	public ArrayList<QuestionBoardVO> getQuestionList(Map<String,Integer> map) {		
@@ -36,7 +36,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return dtos;
 	}
-	
 	// 글 상세보기
 	@Override
 	public QuestionBoardVO getQuestion(int num) {
@@ -46,7 +45,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cVO;
 	}
-	
 	// 글 수정
 	@Override
 	public int boardModifyPro(QuestionBoardVO dto) {
@@ -56,7 +54,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cnt;
 	}
-	
 	// pwdChk
 	@Override
 	public int pwdChk(Map<String,Object> map) {
@@ -66,7 +63,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cnt;
 	}
-	
 	// 글 작성
 	@Override
 	public int boardAddPro(QuestionBoardVO dto) {
@@ -76,7 +72,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cnt;
 	}	
-	
 	// 글 삭제
 	@Override
 	public int boardDeletePro(int num) {
@@ -86,7 +81,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cnt;
 	}
-	
 	// 댓글 가져오기
 	@Override
 	public ArrayList<QuestionBoardVO> getreList(Map<String,Integer> map) {
@@ -104,7 +98,23 @@ public class CommonDAOImpl implements CommonDAO {
 			
 		return cnt;
 	}
-	
+	// 병원 갯수 구하기
+	@Override
+	public int getHospitalCnt() {
+		int selectCnt=0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt=dao.getHospitalCnt();
+		
+		return selectCnt;
+	}
+	// 병원 목록 뿌리기
+	@Override
+	public ArrayList<HospitalVO> getHospitalList(Map<String, Integer> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		ArrayList<HospitalVO> dtos=dao.getHospitalList(map);
+		System.out.println("1"+dtos);
+		return dtos;
+	}
 	// 이벤트 생성에 필요한 닥터넘버를 받아오기 위한 sql
 	@Override
 	public int eventNo(String id) {
@@ -115,7 +125,6 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return cnt;
 	}
-	
 	// 이벤트 추가
 	@Override
 	public int insertEvent(EventVO dto) {
@@ -127,19 +136,18 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return insertCnt;
 	}
-
 	// 이벤트 목록
 	@Override
-	public ArrayList<EventVO> eventList() {
+	public ArrayList<EventVO> eventList(Map<String,Integer> map) {
 
 		ArrayList<EventVO> dtos = null;
 		
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
-		dtos = dao.eventList();
+		dtos = dao.eventList(map);
 		
 		return dtos;
 	}
-
+	// 이벤트 상세 정보
 	@Override
 	public EventVO eventInfo(int advertisementNo) {
 
@@ -149,5 +157,15 @@ public class CommonDAOImpl implements CommonDAO {
 		vo = SDAO.eventInfo(advertisementNo);
 		
 		return vo;
+	}
+	// 이벤트 갯수 구하기
+	@Override
+	public int getEventCnt() {
+		
+		int selectCnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt = dao.getEventCnt();
+		
+		return selectCnt;
 	}
 }

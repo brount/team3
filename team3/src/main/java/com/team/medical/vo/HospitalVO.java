@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class HospitalVO {
 	private int hospitalno;
-	private int doctorno;
+	private String doctorno;
 	private String hospitalname;
 	private String hospitaladdress1;
 	private String hospitaladdress2;
@@ -14,17 +14,46 @@ public class HospitalVO {
 	private String hospitaltime;
 	private String hospitalholiday;
 	private String hospitalimage;
+	private String hospitalkind1;
+	private String hospitalkind2;
+	private String hospitalkind3;
+	private int hospitalstate;
 	
+	
+	public String getHospitalkind1() {
+		return hospitalkind1;
+	}
+	public void setHospitalkind1(String hospitalkind1) {
+		this.hospitalkind1 = hospitalkind1;
+	}
+	public String getHospitalkind2() {
+		return hospitalkind2;
+	}
+	public void setHospitalkind2(String hospitalkind2) {
+		this.hospitalkind2 = hospitalkind2;
+	}
+	public String getHospitalkind3() {
+		return hospitalkind3;
+	}
+	public void setHospitalkind3(String hospitalkind3) {
+		this.hospitalkind3 = hospitalkind3;
+	}
+	public int getHospitalstate() {
+		return hospitalstate;
+	}
+	public void setHospitalstate(int hospitalstate) {
+		this.hospitalstate = hospitalstate;
+	}
 	public int getHospitalno() {
 		return hospitalno;
 	}
 	public void setHospitalno(int hospitalno) {
 		this.hospitalno = hospitalno;
 	}
-	public int getDoctorno() {
+	public String getDoctorno() {
 		return doctorno;
 	}
-	public void setDoctorno(int doctorno) {
+	public void setDoctorno(String doctorno) {
 		this.doctorno = doctorno;
 	}
 	public String getHospitalname() {

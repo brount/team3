@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.GuestVO;
 
 @Repository
@@ -146,10 +147,10 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	
-	
+	//일반탈퇴회원 삭제페이지
 	@Override
 	public int memberdeletePro(int num) {
-		System.out.println("삭제할 제품 번호 : " + num);
+		System.out.println("삭제할 회원 번호 : " + num);
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 		int deleteCnt = dao.memberdeletePro(num);
@@ -160,17 +161,35 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 
-    //다중삭제페이지
+    //일반탈퇴회원 다중삭제페이지
     @Override
     public int memberChkdeletePro(String[] chk) {
     	AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-  	  	int deletecnt = 0;
+  	  	int deleteCnt = 0;
   	  	for (int i = 0; i < chk.length; i++) {
-  	  		deletecnt = dao.memberdeletePro(Integer.parseInt(chk[i]));
+  	  		deleteCnt = dao.memberdeletePro(Integer.parseInt(chk[i]));
   	  	}
 
-  	  	System.out.println(deletecnt == 1 ? "삭제성공" : "삭제실패");
-
-  	  	return deletecnt;
+  	  	return deleteCnt;
     }
+
+    // 약 목록 개수 구하기
+	@Override
+	public int getDrugListCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+		int selectCnt = dao.getDrugListCnt();
+
+		return selectCnt;
+	}
+
+	// 약 목록 조회
+	@Override
+	public ArrayList<DrugVO> getDrugList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+		ArrayList<DrugVO> dtos = dao.getDrugList(map);
+
+		return dtos;
+	}
 }

@@ -23,10 +23,10 @@ public class AdminContoller {
 	@RequestMapping(value = "memberList")
 	public String memberList(HttpServletRequest req, Model model) {
 		logger.info("memberList, 페이지");
-		
 		adService.memberList(req, model);
 		return "admin/memberList";
 	}
+	
 	//일반회원검색목록페이지
 	@RequestMapping(value = "memberSearchList")
 	public String memberSearchList(HttpServletRequest req, Model model) {
@@ -34,6 +34,7 @@ public class AdminContoller {
 		adService.memberSearchList(req, model);
 		return "admin/memberList";
 	}
+	
 	//일반제제회원목록페이지   
 	@RequestMapping(value = "membersanctionList")
 	public String membersanctionList(HttpServletRequest req, Model model) {
@@ -41,6 +42,7 @@ public class AdminContoller {
 		adService.membersanctionList(req, model);
 		return "admin/membersanctionList";
 	}
+	
 	//일반제제회원검색목록페이지
 	@RequestMapping(value = "membersanctionSearchList")
 	public String membersanctionSearchList(HttpServletRequest req, Model model) {
@@ -48,6 +50,7 @@ public class AdminContoller {
 		adService.membersanctionSearchList(req, model);
 		return "admin/membersanctionList";
 	}
+	
 	//일반탈퇴회원목록페이지  
 	@RequestMapping(value = "membersecessionList")
 	public String membersecessionList(HttpServletRequest req, Model model) {
@@ -55,6 +58,7 @@ public class AdminContoller {
 		adService.membersecessionList(req, model);
 		return "admin/membersecessionList";
 	}
+	
 	//일반탈퇴회원검색목록페이지
 	@RequestMapping(value = "membersecessionSearchList")
 	public String membersecessionSearchList(HttpServletRequest req, Model model) {
@@ -62,6 +66,7 @@ public class AdminContoller {
 		adService.membersecessionSearchList(req, model);
 		return "admin/membersecessionList";
 	}
+	
 	// 일반탈퇴회원삭제 처리 페이지
 	@RequestMapping(value = "memberdeletePro")
 	public String memberdeletePro(HttpServletRequest req, Model model) {
@@ -71,36 +76,43 @@ public class AdminContoller {
 		
 		return "admin/memberdeletePro";
 	}
+	
 	//일반회원제제관리페이지
 	@RequestMapping(value = "membersanctionManage")
 	public String membersanctionManage(HttpServletRequest req, Model model) {
 		logger.info("membersanctionManage, 페이지");
 		return "admin/membersanctionManage";
 	}
+	
 	//의사회원목록페이지
 	@RequestMapping(value = "doctorList")
 	public String doctorList(HttpServletRequest req, Model model) {
 		logger.info("doctorList, 페이지");
+		adService.doctorList(req, model);
 		return "admin/doctorList";
 	}
+	
 	//의사회원탈퇴목록페이지
 	@RequestMapping(value = "doctorsecessionList")
 	public String doctorsecessionList(HttpServletRequest req, Model model) {
 		logger.info("doctorsecessionList, 페이지");
 		return "admin/doctorsecessionList";
 	}
+	
 	//의사회원제제목록페이지 
 	@RequestMapping(value = "doctorsanctionList")
 	public String doctorsanctionList(HttpServletRequest req, Model model) {
 		logger.info("doctorsanctionList, 페이지");
 		return "admin/doctorsanctionList";
 	}
+	
 	//의사회원제제관리페이지
 	@RequestMapping(value = "doctorsanctionManage")
 	public String doctorsanctionManage(HttpServletRequest req, Model model) {
 		logger.info("doctorsanctionManage, 페이지");
 		return "admin/doctorsanctionManage";
 	}
+	
 	//제휴병원목록페이지     
 	@RequestMapping(value = "hospitalList")
 	public String hospitalList(HttpServletRequest req, Model model) {
@@ -123,6 +135,7 @@ public class AdminContoller {
 	@RequestMapping(value = "drugList")
 	public String drugList(HttpServletRequest req, Model model) {
 		logger.info("drugList, 페이지");
+		adService.drugList(req, model);
 		return "admin/drugList";
 	}
 	//질병정보목록페이지        

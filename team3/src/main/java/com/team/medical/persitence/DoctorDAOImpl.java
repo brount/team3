@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.medical.vo.CheckupListVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.HospitalVO;
 
@@ -88,11 +89,49 @@ public class DoctorDAOImpl implements DoctorDAO {
 	}
 	
 	@Override
-	public HospitalVO getMyhospitalInfo(int doctorno) {
+	   public HospitalVO getMyhospitalInfo(String doctorno) {
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      HospitalVO selectCnt = dao.getMyhospitalInfo(doctorno);
+	      
+	      return selectCnt;
+	   }
+	   // 제휴병원 중복체크
+	   @Override
+	   public int chkHospital(String hospitalphone) {
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      int chkCnt = dao.chkHospital(hospitalphone);
+	     
+	      
+	      return chkCnt;
+	   }
+	   // 병원정보가져오기 (병원번호)
+	   @Override
+	   public HospitalVO getHospitalInfo(String hospitalphone) {
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      HospitalVO vo = dao.getHospitalInfo(hospitalphone);
+	      
+	      return vo;
+	   }
+	   // 병원정보수정
+	   @Override
+	   public int updateHospital(HospitalVO vo) {
+	      int updateCnt=0;
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      updateCnt = dao.updateHospital(vo); 
+	      return updateCnt;
+	   }
+
+	@Override
+	public DoctorVO getDocInfo(String id) {
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		HospitalVO selectCnt = dao.getMyhospitalInfo(doctorno);
-		
+		DoctorVO selectCnt = dao.getDocInfo(id);
 		return selectCnt;
+	}
+
+	@Override
+	public CheckupListVO checkListInput() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

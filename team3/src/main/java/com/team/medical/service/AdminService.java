@@ -29,4 +29,11 @@ public interface AdminService {
 	
 	// 일반탈퇴회원삭제
 	public void memberdeletePro(HttpServletRequest req, Model model);
+	
+	// 의사회원목록
+	public void doctorList(HttpServletRequest req, Model model);
+	
+	
+	// 약목록
+	public void drugList(HttpServletRequest req, Model model);
 }

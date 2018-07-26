@@ -59,9 +59,9 @@
 	 <div class="col-sm-9 col-md-9">
 
     <div class="well">
- 		<form class="form-horizontal" action=" " method="post"  id="reg_form">
+ 		<form class="form-horizontal" action="reservePro" method="post"  id="reg_form">
 		    <fieldset>
-		      <legend>진료 예약 </legend><a>김순영 소아과 032-544-8275</a>
+		      <legend>진료 예약 </legend><a><b>${vo.hospitalname} ☏ ${vo.hospitalphone}</b></a>
 		     <div style="margin: 20px 20px;">
 		   
 		  </div>
@@ -71,10 +71,10 @@
 		        <label class="col-md-4 control-label">진료과</label>
 		        <div class="col-md-6 selectContainer">
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-		            <select name="state" class="form-control selectpicker" >
+		            <select name="hospitalkind" class="form-control selectpicker" >
 		              <option value=" " >진료과</option>
-		              <option>이비인후과</option>
-		              <option>내과</option>
+		              <option>${vo.hospitalkind1}</option>
+		              <option>${vo.hospitalkind2}</option>
 		        
 		            </select>
 		          </div>
@@ -101,7 +101,7 @@
 		        <div class="col-md-6  inputGroupContainer">
 		     <!--     <div id="calendarDiv" style="font-family:Gulim;font-size:9pt; margin-left: 40px;"></div>  -->
 		     <div class="wrapper" style="z-index: 100">
-		    <input type="text" id="datepicker" placeholder="날짜를 선택하세요." readonly="true" />
+		    <input type="text" id="datepicker" placeholder="날짜를 선택하세요." readonly="true" name="day" />
 		    <i class="ion-calendar" ></i>
 		  </div>
 		
@@ -111,7 +111,7 @@
 		        <label class="col-md-4 control-label">예약시간</label>
 		        <div class="col-md-6 selectContainer">
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-		            <select  class="form-control selectpicker" >
+		            <select  class="form-control selectpicker"  name="clock">
 		              <option >시</option>
 		              <option>오전 9시</option>
 		              <option>오전 10시</option>
@@ -125,7 +125,7 @@
 		              <option>오후 6시</option>
 		        
 		            </select>
-		              <select  class="form-control selectpicker" >
+		              <select  class="form-control selectpicker" name="minute" >
 		                <option>분</option>
 		              	<option>00 분</option>
 		                <option>10 분</option>
@@ -147,7 +147,7 @@
 		        <label class="col-md-4 control-label">증상 입력 </label>
 		        <div class="col-md-6  inputGroupContainer">
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-		            <textarea class="form-control" name="comment" placeholder="About "></textarea>
+		            <textarea class="form-control" name="symptom" placeholder="About "></textarea>
 		          </div>
 		        </div>
 		      </div>
@@ -160,39 +160,39 @@
 						<div style="margin-left: 10px;">
 						
 						  <label>
-						    <input type="checkbox" class="option-input checkbox"  />
+						    <input type="checkbox" class="option-input checkbox" name="head" />
 							두통
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="fever" />
 							    발열
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="cough" />
 						    기침
 						  </label>
 						 <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="disgusted"/>
 						메스꺼움
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="stomachache"/>
 						   복통
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="vomit"/>
 						    구토
 						  </label>
 		 					<label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="diarrhea"/>
 						  설사
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="musclepain"/>
 						    근육통
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" />
+						    <input type="checkbox" class="option-input checkbox" name="sore throat"/>
 						    인후통
 						  </label>
 						  

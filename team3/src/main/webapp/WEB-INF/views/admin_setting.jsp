@@ -27,7 +27,7 @@
 <script src="./resources/pyj/js/startmin.js"/></script>
 
 <!-- admin-setting JS -->
-<script src="./resources/pyj/js/admin.js"/></script>
+<script src="./resources/pyj/js/admin_script.js"/></script>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">

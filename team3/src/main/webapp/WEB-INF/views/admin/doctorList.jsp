@@ -1,42 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- jQuery -->
-<script src="./resources/pyj/js/jquery.min.js"/></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="./resources/pyj/js/bootstrap.min.js"/></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="./resources/pyj/js/metisMenu.min.js"/></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="./resources/pyj/js/startmin.js"/></script>
-
-
 <title> 관리자 페이지 - 의사회원관리</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/startmin.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
 <body>
 	<div id="wrapper">
 
@@ -63,9 +31,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -134,9 +99,12 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <button type="button">
-                                    	삭제
-                                    </button>
+	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
+						 				<option value="doctorList">의사회원목록</option>
+						 				<option value="doctorpermissionList">의사회원승인대기목록</option>
+						 				<option value="doctorsanctionList">의사제제회원목록</option>
+						 				<option value="doctorsecessionList">의사탈퇴회원목록</option>
+						 			</select>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -149,65 +117,90 @@
 	                                        <thead>
 	                                        <tr>
 	                                        	<th><input type="checkBox"></th>
-	                                            <th>회원번호</th>
-	                                            <th>병원명</th>
-	                                            <th>회원ID</th>
-	                                            <th>회원명</th>
-	                                            <th>병원소재지</th>
-	                                            <th>병원연락처</th>
-	                                            <th>전문분야</th>
-	                                            <th>승인여부</th>
-												<th>제재단계</th>
-												<th>포인트</th>
-	                                            <th>가입일</th>
+	                                            <th>회원번호</th>			
+	                                            <th>병원명</th>			
+	                                            <th>회원ID</th>			
+	                                            <th>회원명</th>			
+	                                            <th>병원소재지</th>			
+	                                            <th>병원연락처</th>			
+	                                            <th>전문분야</th>			
+	                                            <th>승인여부</th>			
+												<th>제재단계</th>			
+												<th>포인트</th>			
+	                                            <th>가입일</th>			
 	                                        </tr>
 	                                        </thead>
 	                                        <tbody>
-	                                        <tr>
-	                                        	<td><input type="checkBox"></td>
-	                                            <td>3333</td>
-	                                            <td>kosmo정신의학과</td>
-	                                            <td>살려줘</td>
-	                                            <td>빵진</td>
-	                                            <td>서울시 금천구 가산동</td>
-	                                            <td>02-0000-0000</td>
-	                                            <td>정신과</td>
-	                                            <td>O</td>
-												<td>0</td>
-												<td>15000</td>
-	                                            <td>2018-07-18</td>
-	                                        </tr>
+	                                        <c:if test="${cnt > 0}">
+												<c:forEach var="dto" items="${dtos}">
+													<tr>
+													    <td onclick="window.location='doctorsanctionManage'">${dto.doctorno}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.hospitalname}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.doctorid}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.doctorname}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.hospitaladdress3}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.hospitalphone}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.doctorspecialism}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.doctorappro}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.sanctions}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.point}</td>
+														<td onclick="window.location='doctorsanctionManage'">${dto.doctorregstration}</td>
+		                                        	</tr>
+		                                       	</c:forEach>
+		                                       </c:if>
 	                                        </tbody>
 	                                    </table>
 	                                    
 	                                    
 	                                    <!-- 페이지 컨트롤 -->
 										<table align="center">
-											<tr align="center">
-												<th>[≪]</th>
-												<th>[<]</th>
-												<th>1</th>
-												<th>[>]</th>
-												<th>[≫]</th>
+											<tr>
+												<th align="center">
+													<c:if test="${cnt > 0}">
+														<!-- 맨끝[◀◀] / 이전[◀] -->
+														<c:if test="${startPage > pageBlock}">
+															<a href="doctorList">[맨앞]</a>
+															<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
+														</c:if>
+									
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
+															<c:if test="${i == currentPage}">
+																<span><b>[${i}]</b></span>
+															</c:if>
+															<c:if test="${i != currentPage}">
+																<a href="doctorList?pageNum=${i}">[${i}]</a>
+															</c:if>
+														</c:forEach>
+														
+														<!-- 맨끝[▶▶] / 다음▶] -->
+														<c:if test="${pageCount > endPage}">
+															<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
+															<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
+														</c:if>
+													</c:if>
+												</th>
 											</tr>
 										</table>
+										
 	                                    <table align="center">
+	                                    	<form action="doctorSearchList" class="search_box" method="post">
                                   			<tr>
                                        			<td>
-	                                        		<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-								 						<option value="#">회원ID</option>
-								 						<option value="#">회원명</option>
-								 						<option value="#">병원명</option>
-								 						<option value="#">전문분야</option>
+	                                        		<select class="input" name="sc" >
+								 						<option value=0>회원ID</option>
+								 						<option value=1>회원명</option>
+								 						<option value=2>병원명</option>
+								 						<option value=3>전문분야</option>
 								 					</select>
 							 					</td>
 							 					<td>
-							 						<input type="search" id="search">
+							 						<input type="text" id="search" name="search">
 							 					</td>
 							 					<td>
-							 						<input type="button" value="검색">
+							 						<input type="submit" value="검색">
 							 					</td>
 						 					</tr>
+						 					</form>
 						 				</table>
 	                                </div>
 	                                <!-- /.table-responsive -->
