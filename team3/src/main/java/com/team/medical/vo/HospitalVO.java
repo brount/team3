@@ -1,7 +1,5 @@
 package com.team.medical.vo;
 
-import java.sql.Date;
-
 public class HospitalVO {
 	private int hospitalno;
 	private String doctorno;
@@ -18,7 +16,6 @@ public class HospitalVO {
 	private String hospitalkind2;
 	private String hospitalkind3;
 	private int hospitalstate;
-	
 	
 	public String getHospitalkind1() {
 		return hospitalkind1;

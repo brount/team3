@@ -12,15 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.SystemPropertyUtils;
 
 import com.team.medical.persitence.GuestDAO;
+import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
-
+import com.team.medical.vo.ReservationVO;
 
 @Service
 public class GuestServiceImpl implements GuestService {
@@ -410,5 +413,165 @@ public class GuestServiceImpl implements GuestService {
 			
 	
 	}
+	@Override
+	public void reservePro(HttpServletRequest req, Model model) {
+		ReservationVO vo = new ReservationVO();
+		//나중에  실제 데이터에 따라 쿼리문 변동
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원의 회원정보 수정을위해 guestNo 값셀렉
+		int guestNo = gvo.getGuestNo();
+		
+		System.out.println("hospitalno? " + req.getParameter("hospitalno"));
+		System.out.println("reservationTime? " + req.getParameter("reservationTime"));
 	
+		
+		vo.setHospitalno(Integer.parseInt(req.getParameter("hospitalno")));
+		vo.setGuestNo(guestNo);
+		vo.setReservationTime(Date.valueOf(req.getParameter("reservationTime")));
+		vo.setReservationKind(Integer.parseInt(req.getParameter("reservationKind")));
+		vo.setHospitalkind(req.getParameter("hospitalkind"));
+		vo.setClock(req.getParameter("clock"));
+		vo.setMinute(req.getParameter("minute"));
+		vo.setSymptom(req.getParameter("symptom"));
+		vo.setSymptomchk(req.getParameter("symptomchk"));
+		
+		int insertcnt = dao.reservePro(vo);
+		model.addAttribute("insertcnt",insertcnt );
+		
+	}
+	@Override
+	public void reserveList(HttpServletRequest req, Model model) {
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
+		
+		dtos = dao.reserveList(guestNo);
+		model.addAttribute("dtos",dtos );
+
+		 
+	
+	}
+		//간단진료 증상 체크시 해당 질병과 질병을 진료하는 병원 셀렉
+	@Override
+	public void simpleTreatPro(HttpServletRequest req, Model model) {
+		int selectcnt = 0; //질병의 유무 구분
+		
+		//나열된 증상을 , 로 구분하여 배열에 담음
+		String[] chk = req.getParameter("symptomchk").split(",");
+
+		//증상에해당하는 병 정보담을 바구니
+		 ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
+		 //병의 진료과에 해당하는 병원 정보 담을 바구니
+		 ArrayList<HospitalVO> htos = new ArrayList<HospitalVO>();
+		
+		//배열에 담은 증상만큼 dao 실행
+		for (int i = 0; i < chk.length; i++) {
+			System.out.println("service: "+ chk[i]);
+			dtos = dao.simpleTreatPro(chk[i]);
+			
+				
+		}
+		
+		//조회된 질병의 진료과 만큼 병원 조회
+		for(int j =0 ; j<dtos.size(); j++) {
+		String dikind = dtos.get(j).getDiseasehospitalkind();
+		System.out.println("service dikind"+dikind);
+		htos = dao.simpleTreathos(dikind);
+		if(dikind != null) {
+			selectcnt =1;
+		}
+		}
+		
+		
+		System.out.println("selectcnt : "+ selectcnt);
+		model.addAttribute("dtos", dtos);
+		model.addAttribute("htos", htos);
+		model.addAttribute("selectcnt", selectcnt);
+	}
+	@Override
+	public void foodsearch(HttpServletRequest req, Model model) {
+		String food =  req.getParameter("food");
+		int selectcnt = 0;
+		CalorieVO vo = new CalorieVO();
+		
+		vo = dao.foodsearch(food);
+		if(vo != null) {
+			selectcnt = 1;
+		}
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("selectcnt",selectcnt);
+	}
+	@Override
+	public void todaycal(HttpServletRequest req, Model model) {
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원의 회원정보 수정을위해 guestNo 값셀렉
+		int guestNo = gvo.getGuestNo();
+		int food1 = Integer.parseInt(req.getParameter("food1"));
+		int food2 = Integer.parseInt(req.getParameter("food2"));
+		int food3 = Integer.parseInt(req.getParameter("food3"));
+		
+		int todaycal =food1+food2+food3;
+		System.out.println("todaycal"+todaycal);
+		System.out.println("guestNo"+guestNo);
+		
+		CalorieVO vo =  new CalorieVO();
+		vo.setGuestNo(guestNo);
+		vo.setTodaycal(todaycal);
+
+		int insertcnt = dao.todaycal(vo);
+		
+		
+		
+	
+		if(insertcnt !=0) {
+			
+			vo = dao.mycal(guestNo);
+		}
+	
+		model.addAttribute("vo",vo);
+	}
+	
+
+/*	@Override
+	public void simpleTreatPro(HttpServletRequest req, Model model) {
+		
+
+		String[] chk = req.getParameter("symptomchk").split(",");
+
+		 ArrayList<SimpleTreatVO> dtos = new ArrayList<SimpleTreatVO>();
+		
+		for (int i = 0; i < chk.length; i++) {
+			System.out.println("service: "+ chk[i]);
+			dtos = dao.simpleTreatPro(chk[i]);
+		}
+	
+		model.addAttribute("dtos", dtos);
+
+	}*/
+/*	@Override
+	public void simpleTreatPro(HttpServletRequest req, Model model) {
+		
+
+		String[] chk = req.getParameter("symptomchk").split(",");
+
+		 ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
+		
+		for (int i = 0; i < chk.length; i++) {
+			System.out.println("service: "+ chk[i]);
+			dtos = dao.simpleTreatPro(chk[i]);
+			
+				
+		}
+		for(int j =0 ; j<dtos.size(); j++) {
+		String dikind = dtos.get(j).getDiseasehospitalkind();
+		
+		}
+		System.out.println("병테이블 진료과"+dtos.get(0).getDiseasehospitalkind());
+		
+		model.addAttribute("dtos", dtos);
+
+	}
+	*/
 }

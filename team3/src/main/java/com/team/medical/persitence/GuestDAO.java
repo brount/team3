@@ -3,12 +3,15 @@ package com.team.medical.persitence;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
+import com.team.medical.vo.ReservationVO;
 
 public interface GuestDAO {
 	
@@ -53,5 +56,27 @@ public interface GuestDAO {
 	
 	//예약할 병원 정보 셀렉트 
 	public HospitalVO reservehospital(int hospitalno);
-
+	
+	//예약정보 인서트
+	public int reservePro(ReservationVO vo);
+	
+	//나의 예약목록 셀렉트
+	public ArrayList<ReservationVO> reserveList(int guestNo);
+	
+	//간단진료 증상 검색 후 결과반환  
+	public ArrayList<DiseaseVO> simpleTreatPro(String chk);
+	
+	//증상해당하는 병원 검색
+	public ArrayList<HospitalVO> simpleTreathos(String dikind);
+	
+	//음식 검색 후 칼로리 조회
+	public CalorieVO foodsearch (String food);
+	
+	//아점저 값으로 하루 칼로리 인서트 
+	public int todaycal(CalorieVO vo);
+	
+	//해당 회원의 하루 칼로리 검색
+	public CalorieVO mycal(int guestNo);
+	
+	
 }

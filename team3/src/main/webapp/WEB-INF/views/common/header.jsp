@@ -91,6 +91,7 @@
 							 </c:if>
 							 <c:if test="${sessionScope.memberState == 2 }">
 								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupRequest'">검사 의뢰 등록</a></li>
+								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='patientList'">검진 예약 목록</a></li>
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupList'">검사 의뢰 목록</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupAdd'">건강검진 등록</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 결과 목록</a></li>

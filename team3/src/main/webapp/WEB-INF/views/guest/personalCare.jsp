@@ -23,29 +23,7 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
-	            <div class="panel-group" id="accordion">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="exerciseInfoList">운동정보</a>
-	                        </h4>
-	                    </div>                   
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="foodInfoList">음식정보</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="personalCare">개인건강관리</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	            </div>
+	            <%@ include file="../common/menuCare.jsp" %>
 	        </div>
   		 	<div class="col-sm-9 col-md-9">
 	            <div class="well">
@@ -98,9 +76,16 @@
 						         <div class="form-group" >
 						        <label class="col-md-4 control-label"> 나의 신체질량지수(BMI)</label>
 						        <div class="col-md-6  inputGroupContainer">
+						         
 						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						          ${vo.weight/(vo.height*vo.height)}		
+						      	  ${vo.weight/(vo.height*vo.height)	}	
+						      	
+						      	
+						      
+						        
 						          </div>
+						            <br><br><br>
+						           <img src="/medical/resources/djcss/img/bmi.jpg" style="width:500px; height:400px;"> 
 						        </div>
 						      </div>
 						</c:if>

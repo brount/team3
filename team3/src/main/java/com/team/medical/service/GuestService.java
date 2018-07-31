@@ -43,9 +43,23 @@ public interface GuestService {
 	// 해당 회원의 검진서 분석결과 조회
 	public void checkAnalyze(HttpServletRequest req, Model model);
 	
-	//병원예약 클릭시 해당 병원정보 조회
+	//병원예약 클릭시 해당 병원정보 조회후 예약신청페이지에 정보넘김
 	public void reservehospital(HttpServletRequest req, Model model);
 	
+	//병원예약 처리
+	public void reservePro(HttpServletRequest req, Model model);
+	
+	//나의 예약목록 셀렉트
+	public void reserveList(HttpServletRequest req, Model model);
+	
+	//간단진료 인설트
+	public void simpleTreatPro(HttpServletRequest req, Model model);
+	 
+	//음식검색 후 칼로리 조회
+	public void foodsearch(HttpServletRequest req, Model model);
+	
+	//하루 칼로리 인서트
+	public void todaycal(HttpServletRequest req, Model model);
 	
 	
 }

@@ -54,31 +54,32 @@
                                   <td></td>
                                   <td></td>                               
                                   <td>예약종류</td>
-                                  <td>에약시간</td>
+                                  <td>예약날짜</td>
+								  <td>예약시간</td>
+                                  
+                                  
                              
                                         
                               </tr>
+                               <c:forEach var="dto" items="${dtos}" >
                               <tr class="">
                    <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                               <td>101</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">클리닉예약</span></td>
-                                  <td class="view-message  text-left">2018/08/30</td>
+                               <td>${dto.reservationNo}</td>
+                                  <td colspan="3" class="view-message"><a href="boardInfo">${dto.hospitalname }</a></td>
+                                  <td><span class="label label-success">
+                                  <c:if test="${dto.reservationKind==1}">
+                                  	병원 예약
+                                  </c:if>
+                                  <c:if test="${dto.reservationKind==2}">
+                                  	클리닉 예약
+                                  </c:if>
+                                  
+                                  </span></td>
+                                  <td class="view-message  text-left">${dto.reservationTime }</td>
+                                  <td>${dto.clock }${dto.minute } </td>
+                                  
                               </tr>
-                                 <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                               <td>101</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">클리닉예약</span></td>
-                                  <td class="view-message  text-left">2018/08/30</td>
-                              </tr>
-                               <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                               <td>101</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">클리닉예약</span></td>
-                                  <td class="view-message  text-left">2018/08/30</td>
-                              </tr>
+                     </c:forEach>
                           </tbody>
                           </table>
                       </div>
@@ -101,7 +102,7 @@
                    <div style="margin-top: 50px;">
 				                       ※ 병원에 대기하는 환자가 많거나 현재 시간 기준으로 + 30분은 예약 및 예약수정이 불가능합니다.<br>
 						재예약을 원하시는 분은 신중히 취소해 주시기 바랍니다.<br>
-						※ 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 제 30조 2항(개인정보 이용내역의 통지)에 따라 에버메디 예약 서비스를 이용한 회원님의 개인정보 이용내역입니다.<br>
+						※ 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 제 30조 2항(개인정보 이용내역의 통지)에 따라 메디클립 예약 서비스를 이용한 회원님의 개인정보 이용내역입니다.<br>
 						※ ‘예약내역’ 에는 오늘 날짜 이후의 예약내역만 확인하실 수 있습니다.<br>
 						※ 오늘 이전의 예약내역은 ‘지난예약내역’ 에서 확인하시기 바랍니다.<br>
                    </div> 

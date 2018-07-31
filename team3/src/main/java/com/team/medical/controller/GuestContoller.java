@@ -120,6 +120,8 @@ public class GuestContoller {
 	@RequestMapping(value = "reserveList")
 	public String reserveList(HttpServletRequest req, Model model) {
 		logger.info("reserveList, 페이지");
+		guService.reserveList(req, model);
+
 		return "guest/reserveList";
 	}
 	//간단진료페이지                           
@@ -128,6 +130,18 @@ public class GuestContoller {
 		logger.info("simpleTreat, 페이지");
 		return "guest/simpleTreat";
 	}	
+	
+	
+	
+	//간단진료 처리페이지                           
+		@RequestMapping(value = "simpleTreatPro")
+		public String simpleTreatPro(HttpServletRequest req, Model model) {
+			logger.info("simpleTreatPro, 페이지");
+			guService.simpleTreatPro(req, model);
+			return "guest/simpleTreatPro";
+		}	
+	
+	
 	//♬개인정보등록페이지                           
 	@RequestMapping(value = "personalAdd")
 	public String personalAdd(HttpServletRequest req, Model model) {
@@ -159,6 +173,15 @@ public class GuestContoller {
 		guService.reservehospital(req, model);
 		return "guest/reserveForm2";
 	}
+	//예약신청처리페이지
+	@RequestMapping(value = "reservePro")
+	public String reservePro(HttpServletRequest req, Model model) {
+		logger.info("reservePro, 페이지");
+		guService.reservePro(req, model);
+		return "guest/reservePro";
+	}
+	
+	
 	//검진결과분석페이지                             
 	@RequestMapping(value = "checkAnalyze")
 	public String checkAnalyze(HttpServletRequest req, Model model) {
@@ -181,6 +204,42 @@ public class GuestContoller {
 
 		return "guest/checkupRegisterPro";
 	}
+	//음식 검색 칼로리조회 -아침
+	@RequestMapping(value = "foodsearch1")
+	public String foodsearch1(HttpServletRequest req, Model model) {
+		logger.info("foodsearch, 페이지");
+		guService.foodsearch(req, model);
+
+		return "guest/foodsearch1";
+	}
+	//음식 검색 칼로리조회 -점심
+		@RequestMapping(value = "foodsearch2")
+		public String foodsearch2(HttpServletRequest req, Model model) {
+			logger.info("foodsearch, 페이지");
+			guService.foodsearch(req, model);
+
+			return "guest/foodsearch2";
+		}
+	
+	//음식 검색 칼로리조회 -저녁
+	@RequestMapping(value = "foodsearch3")
+	public String foodsearch3(HttpServletRequest req, Model model) {
+		logger.info("foodsearch, 페이지");
+		guService.foodsearch(req, model);
+
+		return "guest/foodsearch3";
+	}
+
+	//아점저 칼로리 등록 후  정보 인설트 
+	@RequestMapping(value = "todaycal")
+	public String todaycal(HttpServletRequest req, Model model) {
+		logger.info("todaycal, 페이지");
+		guService.todaycal(req, model);
+
+		return "guest/todaycal";
+	}
+	
+	
 	// ♬ 마이페이지
 	@RequestMapping(value = "myGuest")
 	public String myGuest(HttpServletRequest req, Model model) {

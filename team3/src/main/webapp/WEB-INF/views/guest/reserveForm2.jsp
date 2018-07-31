@@ -60,6 +60,11 @@
 
     <div class="well">
  		<form class="form-horizontal" action="reservePro" method="post"  id="reg_form">
+ 		<input type="hidden" name="hospitalno" value="${vo.hospitalno}">
+ 		 <input type="hidden" name="doctorNo" value="doctorNo">
+ 		 <input type="hidden" name="guestNo" value="guestNo">
+ 		 
+ 		
 		    <fieldset>
 		      <legend>진료 예약 </legend><a><b>${vo.hospitalname} ☏ ${vo.hospitalphone}</b></a>
 		     <div style="margin: 20px 20px;">
@@ -85,10 +90,9 @@
 		        <label class="col-md-4 control-label">예약구분</label>
 		        <div class="col-md-6 selectContainer">
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-		            <select name="state" class="form-control selectpicker" >
-		              <option value=" " >진료</option>
-		              <option>진료</option>
-		        
+		            <select class="form-control selectpicker" name="reservationKind" >
+		                <option value="1" >병원예약</option>
+		        	    <option value="2" >클리닉예약</option>
 		            </select>
 		          </div>
 		        </div>
@@ -101,7 +105,7 @@
 		        <div class="col-md-6  inputGroupContainer">
 		     <!--     <div id="calendarDiv" style="font-family:Gulim;font-size:9pt; margin-left: 40px;"></div>  -->
 		     <div class="wrapper" style="z-index: 100">
-		    <input type="text" id="datepicker" placeholder="날짜를 선택하세요." readonly="true" name="day" />
+		    <input type="text" id="datepicker" placeholder="날짜를 선택하세요." readonly="true" name="reservationTime" />
 		    <i class="ion-calendar" ></i>
 		  </div>
 		
@@ -113,26 +117,25 @@
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 		            <select  class="form-control selectpicker"  name="clock">
 		              <option >시</option>
-		              <option>오전 9시</option>
-		              <option>오전 10시</option>
-		              <option>오전 11시</option>
-		              <option>오후 12시</option>
-		              <option>오후 1시</option>
-		              <option>오후 2시</option>
-		              <option>오후 3시</option>
-		              <option>오후 4시</option>
-		              <option>오후 5시</option>
-		              <option>오후 6시</option>
+		              <option value="오전 9시"  >오전 9시</option>
+		              <option value="오전10시">오전 10시</option>
+		              <option value="오전 11시">오전 11시</option>
+		              <option value="오후 12시">오후 12시</option>
+		              <option value="오후2시">오후 2시</option>
+		              <option value="오후 3시">오후 3시</option>
+		              <option value="오후 4시">오후 4시</option>
+		              <option value="오후 5시">오후 5시</option>
+		              <option value="오후 6시">오후 6시</option>
 		        
 		            </select>
 		              <select  class="form-control selectpicker" name="minute" >
 		                <option>분</option>
-		              	<option>00 분</option>
-		                <option>10 분</option>
-		                <option>20 분</option>
-		                <option>30 분</option>
-		                <option>40 분</option>
-		                <option>50 분</option>                       
+		              	<option  value="00분" >00 분</option>
+		                <option value="10분" >10 분</option>
+		                <option value="20분" >20 분</option>
+		                <option value="30분" >30 분</option>
+		                <option value="40분" >40 분</option>
+		                <option value="50분" >50 분</option>                       
 		            </select>
 		          </div>
 		        </div>
@@ -160,39 +163,39 @@
 						<div style="margin-left: 10px;">
 						
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" name="head" />
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk" value="head"/>
 							두통
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" name="fever" />
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="fever" />
 							    발열
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" name="cough" />
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="cough" />
 						    기침
 						  </label>
 						 <label>
-						    <input type="checkbox" class="option-input checkbox" name="disgusted"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="disgusted"/>
 						메스꺼움
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" name="stomachache"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="stomachache"/>
 						   복통
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" name="vomit"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="vomit"/>
 						    구토
 						  </label>
 		 					<label>
-						    <input type="checkbox" class="option-input checkbox" name="diarrhea"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="diarrhea"/>
 						  설사
 						  </label>
 						   <label>
-						    <input type="checkbox" class="option-input checkbox" name="musclepain"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="musclepain"/>
 						    근육통
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox" name="sore throat"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="sore throat"/>
 						    인후통
 						  </label>
 						  
@@ -227,7 +230,8 @@
 		      dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
 		      dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
 		      weekHeader: "주",
-		      dateFormat: "yy년 m월 d일",
+			   dateFormat: "yy-m-d", 
+		     
 		      firstDay: 0,
 		      isRTL: false,
 		      showMonthAfterYear: true,
@@ -258,9 +262,9 @@
 
 
 
-	<!-- <img src="resources/images/Demonstration/reserveForm.jpg">
-	<input type="button" onclick="window.location='main'" value="메인페이지">
+<!-- <img src="resources/images/Demonstration/reserveForm.jpg"> -->
+	<!-- <--<input type="button" onclick="window.location='main'" value="메인페이지">
 	<input type="button" onclick="window.location='reserveList'" value="등록">
-	<input type="button" onclick="window.location='reserveList'" value="취소"> -->
+	<input type="button" onclick="window.location='reserveList'" value="취소"> --> -->
 </body>
 </html>

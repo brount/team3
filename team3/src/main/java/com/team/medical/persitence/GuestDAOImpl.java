@@ -12,12 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
+import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.QuestionBoardVO;
+import com.team.medical.vo.ReservationVO;
 
 
 @Repository
@@ -185,6 +188,83 @@ public class GuestDAOImpl implements GuestDAO {
 
 		HospitalVO vo = new HospitalVO();
 		vo = dao.reservehospital(hospitalno);
+		return vo;
+	}
+
+	@Override
+	public int reservePro(ReservationVO vo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		
+		int insertcnt = dao.reservePro(vo);
+	
+		return insertcnt;
+
+	
+	}
+
+	
+	
+	@Override
+	public  ArrayList<ReservationVO> reserveList(int guestNo) {
+		ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
+
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		dtos = dao.reserveList(guestNo);
+
+		return dtos;
+	}
+
+	@Override
+	public ArrayList<DiseaseVO> simpleTreatPro(String chk) {
+		ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
+
+		
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		System.out.println( "dao:"+chk);
+		
+		
+		dtos = dao.simpleTreatPro(chk);
+	
+		return dtos;
+	}
+
+	@Override
+	public ArrayList<HospitalVO> simpleTreathos(String dikind) {
+		System.out.println("dao dikind : "+dikind);
+		ArrayList<HospitalVO> htos = new ArrayList<HospitalVO>();
+		 GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		 htos = dao.simpleTreathos(dikind);
+		
+		return htos;
+	}
+
+	@Override
+	public CalorieVO foodsearch(String food) {
+		
+		CalorieVO vo = new CalorieVO();
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		vo = dao.foodsearch(food);
+		
+		
+		return vo;
+	}
+
+	@Override
+	public int todaycal(CalorieVO vo) {
+		
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int insertcnt = dao.todaycal(vo);
+		return insertcnt;
+	}
+
+	@Override
+	public CalorieVO mycal(int guestNo) {
+		CalorieVO vo = new CalorieVO();
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		vo = dao.mycal(guestNo);
+		
+		
 		return vo;
 	}
 
