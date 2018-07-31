@@ -78,16 +78,28 @@ public class CommonContoller {
 	}
 	//예방내용페이지                           
 	@RequestMapping(value = "cpreventionList")
-	public String PreventionList(HttpServletRequest req, Model model) {
-		logger.info("PreventionList, 페이지");
-		return "common/preventionList";
+	public String preventionList(HttpServletRequest req, Model model) {
+		logger.info("cpreventionList, 페이지");
+		
+		coService.preventionList(req, model);
+		
+		return "common/cpreventionList";
+	}
+	//예방내용페이지                           
+	@RequestMapping(value = "preventionInfo")
+	public String preventionInfo(HttpServletRequest req, Model model) {
+		logger.info("preventionInfo, 페이지");
+		
+		coService.preventionInfo(req, model);
+		
+		return "common/preventionInfo";
 	}
 	//질병 리스트
 	@RequestMapping(value = "cdiseaseList")
 	public String diseaseList(HttpServletRequest req, Model model) {
 		logger.info("cdiseaseList, 페이지");
 		
-		
+		coService.diseaseList(req, model);
 		
 		return "common/cdiseaseList";
 	}
@@ -95,6 +107,9 @@ public class CommonContoller {
 	@RequestMapping(value = "diseaseInfo")
 	public String diseaseInfo(HttpServletRequest req, Model model) {
 		logger.info("diseaseInfo, 페이지");
+		
+		coService.diseaseInfo(req, model);
+		
 		return "common/diseaseInfo";
 	}
 	//약검색페이지
@@ -355,6 +370,13 @@ public class CommonContoller {
 		req.getSession().setAttribute("id",null);
 		
 		return "common/mainmenuversion";
+	}
+	// 식중독지수
+	@RequestMapping(value = "foodPoisoning")
+	public String foodPoisoning(HttpServletRequest req, Model model) {
+		logger.info("foodPoisoning, 페이지");
+		
+		return "common/foodPoisoning";
 	}
 	
 }

@@ -27,19 +27,14 @@
 		delete from doctor where doctorid=#{id}
 	</delete>
 	
-	<!-- 일반회원 정보 -->
-	<!-- <select id = "getcusInfo" resultType="com.team.medical.vo.GuestVO">
-	   select * from doctor where guestid =#{guestid,jdbcType=VARCHAR}
-	</select> -->
-	
 	<!-- 내 병원 정보 입력 -->
 	<insert id="insertHospitalInfo" parameterType="com.team.medical.vo.HospitalVO">
 		insert into Hospital(hospitalno, doctorno, hospitalname, hospitaladdress1, hospitaladdress2, hospitaladdress3, hospitalphone, hospitalinstruction, hospitaltime, hospitalholiday, hospitalimage)
 		values( hospitalseq.nextval ,#{doctorno},#{hospitalname},#{hospitaladdress1,jdbcType=VARCHAR},#{hospitaladdress2,jdbcType=VARCHAR},#{hospitaladdress3,jdbcType=VARCHAR},#{hospitalphone,jdbcType=VARCHAR},#{hospitalinstruction,jdbcType=VARCHAR},#{hospitaltime},#{hospitalholiday,jdbcType=VARCHAR},#{hospitalimage,jdbcType=VARCHAR})
 	</insert>
 	
-	<!-- 내정보 -->
-	<select id="getMyInfo" parameterType="String" resultType="int">
+	<!-- 의사 번호 가져오기 -->
+	<select id="getdocnoInfo" parameterType="String" resultType="int">
 		select doctorno from doctor where doctorid=#{id,jdbcType=VARCHAR}
 	</select>
 	
@@ -56,6 +51,9 @@
    <select id="getHospitalInfo" parameterType="String" resultType="com.team.medical.vo.HospitalVO">
       select * from hospital where hospitalphone = #{hospitalphone}
    </select>
+   <select id="getHpInfo" parameterType="String" resultType="com.team.medical.vo.HpVO">
+      select * from hp where hospitalphone = #{hospitalphone}
+   </select>
    <!-- 병원정보수정 -->
    <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
       UPDATA hospital SET doctorno=#{doctorno},hospitalname=#{hospitalname},
@@ -70,4 +68,82 @@
 	<select id = "getDocInfo"  resultType="com.team.medical.vo.DoctorVO">
 		select * from doctor where doctorid=#{doctorid,jdbcType=VARCHAR}
 	</select>
+	
+	<!-- 검사 의뢰서 등록 -->
+	<insert id = "checkListInput" parameterType="com.team.medical.vo.CheckupListVO">
+		insert into CheckupList(doctorno, checkuplist, guestno, checkup_kind, checkup_name, checkup_opinion, checkup_contents, checkup_date)
+		values(#{doctorno}, checkuplistseq.nextval, guestno.nextval, #{checkup_kind}, #{checkup_name}, #{checkup_opinion}, #{checkup_contents} ,#{checkup_date})
+	</insert>
+	
+	<select id="getcheckupListCnt" resultType="int">
+		select count(checkuplist) from CheckupList
+	</select>
+	
+	<!-- 검사의뢰 목록 -->
+	<select id="CheckupList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupListVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT doctorno, checkuplist, guestno, checkup_kind, checkup_name, checkup_opinion, checkup_contents, checkup_date, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM CheckupList 
+			   	   	  		    ORDER BY checkuplist DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<!-- 의사 번호로 정보가져오기 -->
+	<select id = "getDoctorInfo" parameterType="int" resultType="com.team.medical.vo.DoctorVO">
+		select * from doctor where doctorno=#{doctorno,jdbcType=INTEGER}
+	</select>
+		
+	<!-- 일반회원 정보 -->
+	<select id = "getcusInfo" parameterType="int" resultType="com.team.medical.vo.GuestVO">
+	   select * from guest where guestno =#{guestno,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 검사의뢰 의사번호 -->
+	<select id = "checkupdoc" resultType="int">
+	   select doctorno from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
+	
+	<select id = "getCheckupInfo" parameterType="int" resultType="com.team.medical.vo.CheckupListVO">
+	   select * from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
+	
+	<select id = "getcusnoInfo" resultType="int">
+		select guestno from checkuplist where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
+	
+	<insert id = "checkupAdd" parameterType="com.team.medical.vo.CheckupVO">
+		insert into Checkup (checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date)
+		values(checkupseq.nextval, #{guestNo,jdbcType=INTEGER}, #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, #{fatness,jdbcType=VARCHAR}, #{visionl,jdbcType=VARCHAR}, #{visionr,jdbcType=VARCHAR}, #{hearingl,jdbcType=VARCHAR}, #{hearingr,jdbcType=VARCHAR}, #{bloodpremax,jdbcType=VARCHAR}, #{bloodpremin,jdbcType=VARCHAR}, #{urineglucose,jdbcType=VARCHAR}, #{urineprotein,jdbcType=VARCHAR}, #{occulthematuria,jdbcType=VARCHAR}, #{urineph,jdbcType=VARCHAR}, #{hemoglobin,jdbcType=VARCHAR}, #{bloodglucose,jdbcType=VARCHAR}, #{totalcholesterol,jdbcType=VARCHAR}, #{ast,jdbcType=VARCHAR}, #{alt,jdbcType=VARCHAR}, #{gammagtp,jdbcType=VARCHAR}, #{hepatitisscr,jdbcType=VARCHAR}, #{breastradiography,jdbcType=VARCHAR}, #{ecg,jdbcType=VARCHAR}, #{checkup_date} )
+	</insert>
+	
+	<select id="getCheckupResultListCnt" resultType="int">
+		select count(checkup) from checkup
+	</select>
+	
+	<select id="getCheckupResultList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM Checkup 
+			   	   	  		    ORDER BY Checkup DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id = "getCheckupResultInfo" parameterType="int" resultType="com.team.medical.vo.CheckupVO">
+	   select * from Checkup where checkup =#{checkup,jdbcType=INTEGER}
+	</select>
+	
 </mapper>

@@ -3,8 +3,10 @@ package com.team.medical.persitence;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 public interface CommonDAO {
@@ -41,4 +43,16 @@ public interface CommonDAO {
 	public EventVO eventInfo(int advertisementNo);
 	// 이벤트 갯수 구하기
 	public int getEventCnt();
+	// 질병 갯수 구하기
+	public int getDiseaseCnt();
+	// 질병 목록
+	public ArrayList<DiseaseVO> diseaseList(Map<String,Integer> map);
+	// 질병 상세 정보
+	public DiseaseVO diseaseInfo(int diseaseCode);
+	// 예방 갯수 구하기
+	public int getPreventionCnt();
+	// 예방 목록
+	public ArrayList<PreventionVO> preventionList(Map<String,Integer> map);
+	// 예방 상세 정보
+	public PreventionVO preventionInfo(int preventionCode);
 }

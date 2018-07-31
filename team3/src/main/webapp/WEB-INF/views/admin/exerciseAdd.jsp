@@ -1,42 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- jQuery -->
-<script src="./resources/pyj/js/jquery.min.js"/></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="./resources/pyj/js/bootstrap.min.js"/></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="./resources/pyj/js/metisMenu.min.js"/></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="./resources/pyj/js/startmin.js"/></script>
-
-
 <title> 관리자 페이지 - 정보관리</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/startmin.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 	<div id="wrapper">
@@ -48,8 +15,8 @@
 	        </div>
 	
 	        <ul class="nav navbar-right navbar-top-links">
-	        	<li><a href="main">Main</a></li>
-	            <li><a href="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+	        	<li onclick="main">Main</a></li>
+	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
 	        </ul>
 	        <!-- /.navbar-top-links -->
 	
@@ -64,9 +31,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,58 +93,50 @@
 	                	<h1 class="page-header">운동정보추가</h1>		<!-- 페이지 제목 -->
 	            	</div>
 	            	<!-- col-lg-12 -->
-	            	
-							<div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <form role="form" action="exerciseList">
-                                      		<!-- 검색 -->
-                                            <div class="form-group input-group">
-                                            	<label>운동명</label>
-                                                <input type="text" class="form-control"> 	<!-- 검색창 -->
-                                                
-                                                <span class="input-group-btn" style="top:13px">
-                                                    <button class="btn btn-default" type="button" style="padding-bottom:9px; padding-top:9px'"><i class="fa fa-search"></i> <!-- 검색버튼 -->
-                                                    </button>
-                                                </span>
-                                            </div>
-                                            <!-- 검색 -->
-                                            
-                                            <div class="form-group">
-                                                <label>운동방법</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            
-                                           <div class="form-group">
-                                                <label>목적</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label>장점</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label>단점</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label>주의할점</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-	                                        <button type="submit" class="btn btn-default">등록</button>
-                                            <button type="reset" class="btn btn-default" onclick="window.location='exerciseList'">취소</button>
-                                        </form>
-                                    </div>
-                                    <!-- /.col-lg-6 (nested) -->
-                                </div>
-                                <!-- /.row (nested) -->
-                            </div>
-                            <!-- /.panel-body -->
-															 
-	    		</div>
+						<div class="panel-body">
+                              <div class="row">
+                                  <div class="col-lg-6">
+                                      <form role="form" action="exerciseAddPro" onsubmit="return exerciseChk()" name="exerciseForm">
+                                    		<input type="hidden" name="pageNum" value="${pageNum}">
+                                      	<div class="form-group input-group">
+                                          	<label>운동명</label>
+                                              <input type="text" class="form-control" name="exerciseName"> 
+                                          </div>
+                                          
+                                         <div class="form-group">
+                                              <label>운동방법</label>
+                                              <textarea class="form-control" rows="3" placeholder="'내용1','내용2',..." name="exerciseMethod"></textarea>
+                                         </div>
+                                         <div class="form-group">
+                                              <label>목적</label>
+                                              <textarea class="form-control" rows="3" placeholder="'내용1','내용2',..." name="exercisePurpose"></textarea>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                              <label>장점</label>
+                                              <textarea class="form-control" rows="3" placeholder="'내용1','내용2',..." name="exerciseMerit"></textarea>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                              <label>단점</label>
+                                              <textarea class="form-control" rows="3" placeholder="'내용1','내용2',..." name="exerciseDemerits"></textarea>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                              <label>주의할점</label>
+                                              <textarea class="form-control" rows="3" placeholder="'내용1','내용2',..." name="exerciseCaution"></textarea>
+                                          </div>
+                                          
+                                       <button type="submit" class="btn btn-default">등록</button>
+                                       <button type="reset" class="btn btn-default" onclick="window.location='exerciseList'">취소</button>
+                                      </form>
+                                  </div>
+                                  <!-- /.col-lg-6 (nested) -->
+                              </div>
+                              <!-- /.row (nested) -->
+                          </div>
+                         <!-- /.panel-body -->
+	    			</div>
 	    		<!-- /.row -->
 			</div>
 			<!-- section -->

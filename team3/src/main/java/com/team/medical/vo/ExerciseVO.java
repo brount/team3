@@ -1,12 +1,12 @@
 package com.team.medical.vo;
 
 public class ExerciseVO {
-	private String exerciseName;
-	private String exerciseMethod;
-	private String exercisePurpose;
-	private String exerciseMerit;
-	private String exerciseDemerits;
-	private String exerciseCaution;
+	private String exerciseName;		// 운동명
+	private String exerciseMethod;		// 운동방법
+	private String exercisePurpose;		// 운동목적
+	private String exerciseMerit;		// 장점
+	private String exerciseDemerits;	// 단점
+	private String exerciseCaution;		// 주의할점
 	
 	public String getExerciseName() {
 		return exerciseName;

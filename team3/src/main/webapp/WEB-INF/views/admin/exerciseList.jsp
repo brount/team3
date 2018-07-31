@@ -1,49 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- jQuery -->
-<script src="./resources/pyj/js/jquery.min.js"/></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="./resources/pyj/js/bootstrap.min.js"/></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="./resources/pyj/js/metisMenu.min.js"/></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="./resources/pyj/js/startmin.js"/></script>
-
-
 <title> 관리자 페이지 - 정보관리</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/startmin.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-    </head>
+</head>
 <body>
 	<div id="wrapper">
 
@@ -54,8 +16,8 @@
 	        </div>
 	
 	        <ul class="nav navbar-right navbar-top-links">
-	        	<li><a href="main">Main</a></li>
-	            <li><a href="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+	        	<li onclick="main">Main</a></li>
+	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
 	        </ul>
 	        <!-- /.navbar-top-links -->
 	
@@ -70,9 +32,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -141,11 +100,11 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <button type="button" onclick="window.location='exerciseAdd'">
+                                    <button type="button" onclick="window.location='exerciseAdd?pageNum=${pageNum}'">
                                     	추가
                                     </button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button">
+                                   <button type="button" onclick="exercisedeleteCheck()">
                                     	삭제
                                     </button>
 	                            </div>
@@ -159,7 +118,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th><input type="checkBox"></th>
+		                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>운동이름</th>
 		                                            <th>목적</th>
 		                                            <th>장점</th>
@@ -168,50 +127,75 @@
 		                                        </tr>
 	                                        </thead>
 	                                        <tbody>
-		                                        <tr>
-		                                        	<td><input type="checkBox"></td>
-		                                            <td type="button" onclick="window.location='exerciseModify'">숨쉬기</td>
-		                                            <td>살기위함</td>
-		                                            <td>상쾌함</td>
-													<td>미세먼지</td>
-		                                            <td>침 잘못삼키지않게 주의할것</td>
-		                                        </tr>
-	                                        </tbody>
+		                                        <c:if test="${cnt > 0}">
+													<c:forEach var="dto" items="${dtos}">
+														<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+														<tr >
+															<td class="center">
+															<input type="checkbox" name="checkOne" value="${dto.exerciseName}"></td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseName}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exercisePurpose}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseMerit}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseDemerits}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseCaution}</td>
+	                                 		        	</tr>
+		                                       		</c:forEach>
+		                                    	</c:if>
+	                                    	</tbody>
 	                                    </table>
-	                                    
 	                                    
 	                                    <!-- 페이지 컨트롤 -->
 										<table align="center">
-											<tr align="center">
-												<th>[≪]</th>
-												<th>[<]</th>
-												<th>1</th>
-												<th>[>]</th>
-												<th>[≫]</th>
+											<tr>
+												<th align="center"><c:if test="${cnt > 0}">
+														<!-- 맨끝[◀◀] / 이전[◀] -->
+														<c:if test="${startPage > pageBlock}">
+															<a href="exerciseList">[맨앞]</a>
+															<a href="exerciseList?pageNum=${startPage - pageBlock}">[이전]</a>
+														</c:if>
+
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
+															<c:if test="${i == currentPage}">
+																<span><b>[${i}]</b></span>
+															</c:if>
+															<c:if test="${i != currentPage}">
+																<a href="exerciseList?pageNum=${i}">[${i}]</a>
+															</c:if>
+														</c:forEach>
+
+														<!-- 맨끝[▶▶] / 다음▶] -->
+														<c:if test="${pageCount > endPage}">
+															<a href="exerciseList?pageNum=${startPage + pageBlock}">[다음]</a>
+															<a href="exerciseList?pageNum=${pageCount}">[맨뒤]</a>
+														</c:if>
+													</c:if></th>
 											</tr>
 										</table>
-	                                    <table align="center">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-								 						<option value="#">운동명</option>
-								 						<option value="#">목적</option>
-								 						<option value="#">장점</option>
-								 						<option value="#">주의할점</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="search" id="search">
-							 					</td>
-							 					<td>
-							 						<input type="button" value="검색">
-							 					</td>
-						 					</tr>
-						 				</table>
+
+										<table align="center">
+											<form action="exerciseSearchList" class="search_box" method="post">
+												<tr>
+													<td>
+														<select class="input" name="sc">
+															<option value="0">운동명</option>
+									 						<option value="1">목적</option>
+									 						<option value="2">장점</option>
+									 						<option value="3">주의할점</option>
+														</select>
+													</td>
+													<td>
+														<input type="text" id="search" name="search">
+													</td>
+													<td>
+														<input type="submit" value="검색">
+													</td>
+												</tr>
+											</form>
+										</table>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>
-	                        </div>
+	                        </div>					
 	                        <!-- /.row -->
 	                    </div>
 	                    <!-- /.panel-body -->
@@ -223,8 +207,7 @@
 	        <!-- /.row -->
 	    </div>
 	    <!-- /#page-wrapper -->
-	
 	</div>
 	<!-- /#wrapper -->
-    </body>
+</body>
 </html>

@@ -18,6 +18,7 @@ public class GuestVO {
 	private Date 	guestdate;		// 가입일
 	private int 	sanctions;		// 제제단계
 	private int 	status;			// 탈퇴여부
+	private String  reason;			// 제제사유
 	
 	public  int getGuestNo() {
 		return guestNo;
@@ -108,6 +109,12 @@ public class GuestVO {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 	

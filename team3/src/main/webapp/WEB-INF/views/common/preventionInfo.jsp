@@ -19,7 +19,32 @@
 		        </div>
 		        <div class="col-sm-9 col-md-9">
 		            <div class="well">
-		                <h1>내용</h1>
+		                <div class='form container'>
+						<div>
+							<div class="row" style="margin-bottom:20px;">
+							<div class="center-block clearfix">
+							</div>
+							</div>
+							<table class='table'>
+								<tr>
+									<th>예방접종종류</th>
+									<td>${dto.preventionKind}</td>
+								</tr>
+								<tr>
+									<th>국가번호</th>
+									<td>${dto.countryCode}</td>
+								</tr>
+								<tr>
+									<th>질병등록번호</th>
+									<td>${dto.diseaseRcode}</td>
+								</tr>
+								<tr>
+									<th>내용</th>
+									<td>${dto.preventionContent}</td>
+								</tr>
+							</table>
+							</div>
+						</div>
 		            </div>
 		        </div>
 		    </div>

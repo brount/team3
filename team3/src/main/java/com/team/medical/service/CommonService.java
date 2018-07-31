@@ -32,4 +32,10 @@ public interface CommonService {
 	public void eventInfo(HttpServletRequest req, Model model);
 	// 질병 목록
 	public void diseaseList(HttpServletRequest req, Model model);
+	// 질병 상세 페이지
+	public void diseaseInfo(HttpServletRequest req, Model model);
+	// 질병 목록
+	public void preventionList(HttpServletRequest req, Model model);
+	// 질병 상세 페이지
+	public void preventionInfo(HttpServletRequest req, Model model);
 }

@@ -15,8 +15,8 @@
 	        </div>
 	
 	        <ul class="nav navbar-right navbar-top-links">
-	        	<li><a href="main">Main</a></li>
-	            <li><a href="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+	        	<li onclick="main">Main</a></li>
+	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
 	        </ul>
 	        <!-- /.navbar-top-links -->
 	
@@ -129,14 +129,14 @@
 	                                        <c:if test="${cnt > 0}">
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-													    <td onclick="window.location='membersanctionManage'">${dto.guestNo}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.guestid}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.guestname}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.address2}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.guestage}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.guesttel}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.sanctions}</td>
-														<td onclick="window.location='membersanctionManage'">${dto.guestdate}</td>
+													    <td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestNo}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestid}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestname}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.address2}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestage}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guesttel}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.sanctions}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestdate}</td>
 		                                        	</tr>
 		                                       	</c:forEach>
 		                                       </c:if>

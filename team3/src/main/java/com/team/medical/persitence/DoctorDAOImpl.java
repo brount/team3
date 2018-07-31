@@ -1,5 +1,6 @@
 package com.team.medical.persitence;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.CheckupListVO;
+import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
+import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.HpVO;
 
 @Repository
 public class DoctorDAOImpl implements DoctorDAO {
@@ -81,14 +85,15 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return cnt;
 	}
 
-	public int getMyInfo(String id) {
+	public int getdocnoInfo(String id) {
 		
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		int selectCnt = dao.getMyInfo(id);
+		int selectCnt = dao.getdocnoInfo(id);
 		return selectCnt;
 	}
 	
-	@Override
+		// 내 병원 정보 가져오기
+		@Override
 	   public HospitalVO getMyhospitalInfo(String doctorno) {
 	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
 	      HospitalVO selectCnt = dao.getMyhospitalInfo(doctorno);
@@ -112,6 +117,14 @@ public class DoctorDAOImpl implements DoctorDAO {
 	      
 	      return vo;
 	   }
+	   // 일반병원정보가져오기 (병원번호)
+	   @Override
+	   public HpVO getHpInfo(String hospitalphone) {
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      HpVO vo = dao.getHpInfo(hospitalphone);
+	      
+	      return vo;
+	   }
 	   // 병원정보수정
 	   @Override
 	   public int updateHospital(HospitalVO vo) {
@@ -129,19 +142,106 @@ public class DoctorDAOImpl implements DoctorDAO {
 	}
 
 	@Override
-	public CheckupListVO checkListInput() {
-		// TODO Auto-generated method stub
-		return null;
+	public int checkListInput(CheckupListVO vo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int insertCnt = dao.checkListInput(vo);
+		return insertCnt;
 	}
+
+	@Override
+	public int getcheckupListCnt(int kind) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getcheckupListCnt(kind);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<CheckupListVO> CheckupList(Map<String, Integer> map) {
+		ArrayList<CheckupListVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		
+		dtos=dao.CheckupList(map);
+		
+		return dtos;
+	}
+	
+	//일반 회원 정보
+	@Override
+	public GuestVO getcusInfo(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		GuestVO cnt = dao.getcusInfo(guestno);
+		return cnt;
+	}
+
+	@Override
+	public DoctorVO getDoctorInfo(int doctorno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		DoctorVO cnt = dao.getDoctorInfo(doctorno);
+		return cnt;
+	}
+
+
+	@Override
+	public int checkupdoc(int checkuplist) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.checkupdoc(checkuplist);
+		return cnt;
+	}
+
+	@Override
+	public CheckupListVO getCheckupInfo(int checkuplist) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		CheckupListVO cnt = dao.getCheckupInfo(checkuplist);
+		return cnt;
+	}
+
+	@Override
+	public int checkupAdd(CheckupVO vo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int insertCnt = dao.checkupAdd(vo);
+		return insertCnt;
+	}
+
+	@Override
+	public int getcusnoInfo(int checkuplist) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getcusnoInfo(checkuplist);
+		return cnt;
+	}
+
+	@Override
+	public int getCheckupResultListCnt(int i) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getCheckupResultListCnt(i);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<CheckupVO> getCheckupResultList(Map<String, Integer> map) {
+		ArrayList<CheckupVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		
+		dtos=dao.getCheckupResultList(map);
+		
+		return dtos;
+	}
+
+	@Override
+	public CheckupVO getCheckupResultInfo(int checkup) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		CheckupVO cnt = dao.getCheckupResultInfo(checkup);
+		return cnt;
+	}
+
+	
+
+
+
 	
 	
 
-	/*//일반 회원 정보
-	@Override
-	public GuestVO getcusInfo(String id) {
-		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		GuestVO cnt = dao.getcusInfo(id);
-		return cnt;
-	}*/
+
 	
 }

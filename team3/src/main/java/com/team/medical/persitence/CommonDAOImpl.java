@@ -7,8 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 @Repository
@@ -26,7 +28,7 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return selectCnt;
 	}
-	//게시글 목록 조회
+	// 게시글 목록 조회
 	@Override
 	public ArrayList<QuestionBoardVO> getQuestionList(Map<String,Integer> map) {		
 		ArrayList<QuestionBoardVO> dtos =null ;
@@ -153,8 +155,8 @@ public class CommonDAOImpl implements CommonDAO {
 
 		EventVO vo = null;
 		
-		CommonDAO SDAO = sqlSession.getMapper(CommonDAO.class);
-		vo = SDAO.eventInfo(advertisementNo);
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		vo = dao.eventInfo(advertisementNo);
 		
 		return vo;
 	}
@@ -167,5 +169,69 @@ public class CommonDAOImpl implements CommonDAO {
 		selectCnt = dao.getEventCnt();
 		
 		return selectCnt;
+	}
+	// 질병 갯수 구하기
+	@Override
+	public int getDiseaseCnt() {
+		
+		int selectCnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt = dao.getDiseaseCnt();
+		
+		return selectCnt;
+	}
+	// 질병 목록
+	@Override
+	public ArrayList<DiseaseVO> diseaseList(Map<String, Integer> map) {
+		
+		ArrayList<DiseaseVO> dtos = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		dtos = dao.diseaseList(map);
+		
+		return dtos;
+	}
+	// 질병 상세 정보
+	@Override
+	public DiseaseVO diseaseInfo(int diseaseCode) {
+
+		DiseaseVO vo = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		vo = dao.diseaseInfo(diseaseCode);
+		
+		return vo;
+	}
+	// 질병 갯수 구하기
+	@Override
+	public int getPreventionCnt() {
+		
+		int selectCnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt = dao.getPreventionCnt();
+		
+		return selectCnt;
+	}
+	// 예방 목록
+	@Override
+	public ArrayList<PreventionVO> preventionList(Map<String, Integer> map) {
+
+		ArrayList<PreventionVO> dtos = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		dtos = dao.preventionList(map);
+		
+		return dtos;
+	}
+	// 예방 상세 정보
+	@Override
+	public PreventionVO preventionInfo(int preventionCode) {
+
+		PreventionVO vo = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		vo = dao.preventionInfo(preventionCode);
+		
+		return vo;
 	}
 }

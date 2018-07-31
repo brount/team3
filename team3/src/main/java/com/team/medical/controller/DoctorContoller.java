@@ -44,6 +44,16 @@ public class DoctorContoller {
 		docService.inputPro(req, model);
 		return "doctor/inputPro";
 	}
+	
+	//의사회원로그인
+ 	@RequestMapping(value = "doctorLogin")
+ 	public String doctorLogin(HttpServletRequest req, Model model) {
+ 		System.out.println("doctorLogin, 페이지");
+ 		docService.doctorLogin(req,model);
+ 		
+ 		return "common/mainmenuversion";
+ 	}
+ 	
 	//의사회원정보수정페이지                       
 	@RequestMapping(value = "doctorModify")
 	public String doctorModify(HttpServletRequest req, Model model) {
@@ -94,42 +104,114 @@ public class DoctorContoller {
 		docService.myHospitalInputPro(req, model);
 		return "doctor/myHospitalInputPro";
 	}	
-	//포인트관리페이지                        
-	@RequestMapping(value = "pointManage")
-	public String pointManage(HttpServletRequest req, Model model) {
-		System.out.println("pointManage, 페이지");
-		return "doctor/pointManage";
-	}
-	//검사목록페이지                         
+	
+	//검사의뢰
+    @RequestMapping(value = "checkupRequest")
+    public String checkupRequest(HttpServletRequest req, Model model) {
+    	
+       docService.docnoInfo(req, model);
+       System.out.println("checkupRequest, 페이지");
+       
+      // docService.cusInfo(req, model);
+       return "doctor/checkupRequest";
+    }
+    
+    //검사의뢰 등록처리
+    @RequestMapping(value = "checkupRequestInputPro")
+    public String checkupRequestInputPro(HttpServletRequest req, Model model) {
+       System.out.println("checkupRequestInputPro, 페이지");
+       
+       docService.checkupRequestInputPro(req, model);
+       return "doctor/checkupRequestInputPro";
+    }
+	
+	//검사의뢰목록페이지                         
 	@RequestMapping(value = "checkupList")
 	public String checkupList(HttpServletRequest req, Model model) {
 		System.out.println("checkupList, 페이지");
+		
+		String doctorname = req.getParameter("doctorname");
+		model.addAttribute("doctorname",doctorname);
+		
+		docService.checkupList(req, model);
+		
 		return "doctor/checkupList";
 	}
-	//검사결과상세페이지                          
-	@RequestMapping(value = "checkupResult")
-	public String checkupResult(HttpServletRequest req, Model model) {
-		System.out.println("checkupResult, 페이지");
-		return "doctor/checkupResult";
-	}
+	
+	 // 검사의뢰 상세
+    @RequestMapping(value = "checkupInfo")
+    public String checkupInfo(HttpServletRequest req, Model model) {
+       System.out.println("checkupInfo, 페이지");
+       
+       int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
+       model.addAttribute("checkuplist", checkuplist);
+       
+       docService.getCheckupInfo(req, model);
+       
+       return "doctor/checkupInfo";
+    }
+    
+    //건강검진 등록
+    @RequestMapping(value = "checkupAdd")
+	    public String checkupAdd(HttpServletRequest req, Model model) {
+	    System.out.println("checkupAdd, 페이지");
+	  
+	    int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
+	    model.addAttribute("checkuplist", checkuplist);
+	    docService.getCheckupInfo(req, model);
+	  
+	    return "doctor/checkupAdd";
+    }
+    
+    //건강검진 등록처리
+    @RequestMapping(value = "checkupAddInputPro")
+    public String checkupAddInputPro(HttpServletRequest req, Model model) {
+    System.out.println("checkupAddInputPro, 페이지");
+  
+    docService.checkupAddInputPro(req, model);
+  
+    return "doctor/checkupAddInputPro";
+    }
+    
+    //건강검진 목록페이지                          
+  	@RequestMapping(value = "checkupResultList")
+  	public String checkupResultList(HttpServletRequest req, Model model) {
+  		System.out.println("checkupResultList, 페이지");
+  		
+  		docService.checkupResultList(req, model);
+  		return "doctor/checkupResultList";
+  	}
+    
+  	// 건강검진 상세페이지                          
+  	@RequestMapping(value = "checkupResult")
+  	public String checkupResult(HttpServletRequest req, Model model) {
+  		System.out.println("checkupResult, 페이지");
+  		
+  		int checkup = Integer.parseInt(req.getParameter("checkup"));
+        model.addAttribute("checkup", checkup);
+        docService.checkupResult(req, model);
+  		
+  		
+  		return "doctor/checkupResult";
+  	}
+  	
+    //처방결과등록페이지                          
+  	@RequestMapping(value = "examinationAdd")
+  	public String examinationAdd(HttpServletRequest req, Model model) {
+  		System.out.println("examinationAdd, 페이지");
+  		
+         return "doctor/examinationAdd";
+  	}
+	
+	
 	//처방상세페이지                          
 	@RequestMapping(value = "examinationInfo")
 	public String examinationInfo(HttpServletRequest req, Model model) {
 		System.out.println("examinationInfo, 페이지");
 		return "doctor/examinationInfo";
 	}
-	//검사결과목록페이지                          
-	@RequestMapping(value = "checkupResultList")
-	public String checkupResultList(HttpServletRequest req, Model model) {
-		System.out.println("checkupResultList, 페이지");
-		return "doctor/checkupResultList";
-	}
-	//처방결과등록페이지                          
-	@RequestMapping(value = "examinationAdd")
-	public String examinationAdd(HttpServletRequest req, Model model) {
-		System.out.println("examinationAdd, 페이지");
-		return "doctor/examinationAdd";
-	}
+	
+	
 	//처방목록페이지                          
 	@RequestMapping(value = "examinationList")
 	public String examinationList(HttpServletRequest req, Model model) {
@@ -148,45 +230,7 @@ public class DoctorContoller {
  		System.out.println("myDoctor, 페이지");
  		return "doctor/myDoctor";
  	}
- 	//검사의뢰
-    @RequestMapping(value = "checkupRequest")
-    public String checkupRequest(HttpServletRequest req, Model model) {
-    	
-       docService.docInfo(req, model);
-       System.out.println("checkupRequest, 페이지");
-       
-      // docService.cusInfo(req, model);
-       return "doctor/checkupRequest";
-    }
-  //검사의뢰 등록처리
-    @RequestMapping(value = "checkupRequestInputPro")
-    public String checkupRequestInputPro(HttpServletRequest req, Model model) {
-       System.out.println("checkupRequestInputPro, 페이지");
-       
-       docService.checkupRequestInputPro(req, model);
-       return "doctor/checkupRequestInputPro";
-    }
-    
-    //검사의뢰
-    @RequestMapping(value = "checkupAdd")
-    public String checkupAdd(HttpServletRequest req, Model model) {
-       System.out.println("checkupAdd, 페이지");
-       return "doctor/checkupAdd";
-    }
-    //검사의뢰목록상세
-    @RequestMapping(value = "checkupInfo")
-    public String checkupInfo(HttpServletRequest req, Model model) {
-       System.out.println("checkupInfo, 페이지");
-       return "doctor/checkupInfo";
-    }
- 	//의사회원로그인
- 	@RequestMapping(value = "doctorLogin")
- 	public String doctorLogin(HttpServletRequest req, Model model) {
- 		System.out.println("doctorLogin, 페이지");
- 		docService.doctorLogin(req,model);
- 		
- 		return "common/mainmenuversion";
- 	}
+ 	
  	
  	//검진 예약 목록
     @RequestMapping(value = "patientList")
@@ -194,4 +238,11 @@ public class DoctorContoller {
        System.out.println("patientList, 페이지");
        return "doctor/patientList";
     }
+    
+    //포인트관리페이지                        
+  	@RequestMapping(value = "pointManage")
+  	public String pointManage(HttpServletRequest req, Model model) {
+  		System.out.println("pointManage, 페이지");
+  		return "doctor/pointManage";
+  	}
 }

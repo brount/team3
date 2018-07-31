@@ -1,7 +1,10 @@
 package com.team.medical.vo;
 
+import java.sql.Date;
+
 public class CheckupVO {
 	// 검진결과
+	private int checkup;
 	private int guestNo;
 	private String guestname;
 	private String height;
@@ -26,6 +29,22 @@ public class CheckupVO {
 	private String hepatitisscr;
 	private String breastradiography;
 	private String ecg;
+	private Date checkup_date;
+	
+	
+	
+	public int getCheckup() {
+		return checkup;
+	}
+	public void setCheckup(int checkup) {
+		this.checkup = checkup;
+	}
+	public Date getCheckup_date() {
+		return checkup_date;
+	}
+	public void setCheckup_date(Date checkup_date) {
+		this.checkup_date = checkup_date;
+	}
 	public int getGuestNo() {
 		return guestNo;
 	}

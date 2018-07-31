@@ -98,7 +98,7 @@
 				sysdate, #{advertisementKind}, #{advertisementStart}, #{advertisementEnd}, #{advertisementState})
 	</insert>
 	
-	<!-- 이벤트리스트 -->
+	<!-- 이벤트 리스트 -->
 	<select id="eventList" parameterType="java.util.Map" resultType="com.team.medical.vo.EventVO">
 		<![CDATA[
 		SELECT *
@@ -117,5 +117,47 @@
 	<!-- 이벤트 갯수 구하기 -->
 	<select id="getEventCnt" resultType="int">
 		SELECT count(*) FROM event
+	</select>
+	
+	<!-- 질병 갯수 구하기 -->
+	<select id="getDiseaseCnt" resultType="int">
+		SELECT count(*) FROM disease
+	</select>
+	
+	<!-- 질병 리스트 -->
+	<select id="diseaseList" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
+		<![CDATA[
+		SELECT *
+		  FROM (SELECT diseaseCode, diseaseName, diseaseDefine, diseaseCause, diseaseSymptom,
+		  			   diseaseDiagnosis, diseaseCure, complications, prevention, rownum rNum
+		         FROM (SELECT * FROM disease ORDER BY diseaseCode DESC))
+		  WHERE rNum >= #{start} AND rNum <= #{end}
+		]]>
+	</select>
+	
+	<!-- 질병 상세보기 -->
+	<select id="diseaseInfo" resultType="com.team.medical.vo.DiseaseVO">
+		SELECT * FROM disease WHERE diseaseCode=#{diseaseCode}
+	</select>
+	
+	<!-- 예방 갯수 구하기 -->
+	<select id="getPreventionCnt" resultType="int">
+		SELECT count(*) FROM prevention
+	</select>
+	
+	<!-- 예방 리스트 -->
+	<select id="preventionList" parameterType="java.util.Map" resultType="com.team.medical.vo.PreventionVO">
+		<![CDATA[
+		SELECT *
+		  FROM (SELECT preventionCode, preventionKind, countryCode, diseasercode,
+		               preventioncontent, rownum rNum
+		         FROM (SELECT * FROM prevention ORDER BY preventionCode DESC))
+		  WHERE rNum >= #{start} AND rNum <= #{end}
+		]]>
+	</select>
+	
+	<!-- 예방 상세보기 -->
+	<select id="preventionInfo" resultType="com.team.medical.vo.PreventionVO">
+		SELECT * FROM prevention WHERE preventionCode=#{preventionCode}
 	</select>
 </mapper>

@@ -68,7 +68,7 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum rnum
+					 			, rownum
 							 FROM (SELECT *
 									 FROM guest
 			<where>
@@ -90,7 +90,7 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rnum >= #{start} AND rnum <= #{end}
+	                  WHERE rownum >= #{start} AND rownum <= #{end}
       			]]>
 	</select>
 
@@ -150,7 +150,7 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum rnum
+					 			, rownum
 							 FROM (SELECT *
 									 FROM guest
 			<where>
@@ -172,7 +172,7 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rnum >= #{start} AND rnum <= #{end}
+	                  WHERE rownum >= #{start} AND rownum <= #{end}
       			]]>
 	</select>
 
@@ -229,7 +229,7 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum rnum
+					 			, rownum
 							 FROM (SELECT *
 									 FROM guest
 			<where>
@@ -250,14 +250,32 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rnum >= #{start} AND rnum <= #{end}
+	                  WHERE rownum >= #{start} AND rownum <= #{end}
       			]]>
 	</select>
 
 	<!-- 일반탈퇴회원삭제 처리 -->
     <delete id="memberdeletePro">
-   	 	DELETE guest WHERE guestNo=#{guestno}
+   	 	DELETE guest WHERE guestNo=#{guestNo}
     </delete>
+
+	<!-- 일반회원제제관리 조회 -->
+	<select id="membersanctionManage" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
+		SELECT guestNo, guestname, guestid, sanctions FROM guest where guestNo=#{guestNo}
+	</select>
+
+	<!-- 일반회원제제관리 처리 -->
+	<update id="membersanctionManagePro" parameterType="com.team.medical.vo.GuestVO"> 
+		UPDATE  guest SET 
+				guestNo		=	#{guestNo},
+				guestname	=	#{guestname},
+				guestid		=	#{guestid},
+				sanctions	=	#{sanctions},
+				reason		=	#{reason} 
+		 WHERE  guestNo		=	#{guestNo} 
+	</update>
+
+
 
 
 	<!-- 약 목록 개수 -->
@@ -283,4 +301,278 @@
 			   AND rownum <= #{end}
 		]]>
 	</select>
+
+
+
+
+	<!-- 질병 목록 개수 -->
+	<select id="getDiseaseListCnt" resultType="int">
+		SELECT COUNT(*) FROM disease
+	</select>
+
+	<!-- 질병 목록 조회 -->
+	<select id="getDiseaseList" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
+			SELECT diseaseCode
+				 , diseaseName
+				 , diseaseDefine
+				 , diseaseSymptom
+				 , diseaseDiagnosis
+				 , diseaseCure
+				 , complications
+				 , prevention
+				 , rownum
+			  from disease
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+		]]>
+		ORDER BY diseaseCode desc
+	</select>
+
+	<!-- 질병 목록 삭제 처리 -->
+    <delete id="diseasedeletePro">
+   	 	DELETE disease WHERE diseaseCode=#{diseaseCode}
+    </delete>
+
+	<!-- 질병검색목록 개수 구하기 -->
+	<select id="search_diseaseListCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(diseaseCode) FROM disease
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					diseaseCode LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					and diseaseName LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					and diseaseSymptom LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					and complications LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 질병검색목록 불러오기 -->
+	<select id="search_diseaseList" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
+			SELECT * FROM( SELECT diseaseCode
+				 				, diseaseName
+				 				, diseaseDefine
+				 				, diseaseSymptom
+				 				, diseaseDiagnosis
+				 				, diseaseCure
+				 				, complications
+				 				, prevention
+				 				, rownum
+							 FROM (SELECT *
+									 FROM disease
+			<where>
+				<choose>
+					<when test="sc == 0 ">
+						diseaseCode LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 1">
+						and diseaseName LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 2">
+						and diseaseSymptom LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 3">
+						and complications LIKE '%'||#{search}||'%'
+					</when>
+				</choose>
+			</where>
+				ORDER BY diseaseCode DESC
+					)
+				)
+				<![CDATA[ 
+	                  WHERE rownum >= #{start} AND rownum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 질병 추가 처리 -->
+	<insert id="diseaseAdd" parameterType="com.team.medical.vo.DiseaseVO">
+		insert into disease (diseaseCode, diseaseName, diseaseDefine, diseaseCause, diseaseSymptom, diseaseDiagnosis, diseaseCure, complications, prevention)
+		values(disease_seq.nextval, #{diseaseName}, #{diseaseDefine}, #{diseaseCause}, #{diseaseSymptom}, #{diseaseDiagnosis}, #{diseaseCure}, #{complications}, #{prevention})
+	</insert>
+	
+	<!-- 질병 수정 폼 -->
+	<select id="diseaseModify" resultType="com.team.medical.vo.DiseaseVO">
+		SELECT diseaseCode
+			 , diseaseName
+			 , diseaseDefine
+			 , diseaseCause
+			 , diseaseSymptom
+			 , diseaseDiagnosis
+			 , diseaseCure
+			 , complications
+			 , prevention
+		  FROM disease 
+		 WHERE diseaseCode = #{diseaseCode}
+	</select>
+	
+	<!-- 질병 수정 처리 -->
+	<update id="diseaseModifyPro" parameterType="com.team.medical.vo.DiseaseVO">
+		UPDATE disease SET diseaseName		=	#{diseaseName}
+						 , diseaseDefine	=	#{diseaseDefine}
+						 , diseaseCause		=	#{diseaseCause}
+						 , diseaseSymptom	=	#{diseaseSymptom}
+						 , diseaseDiagnosis	=	#{diseaseDiagnosis}
+						 , diseaseCure		=	#{diseaseCure}
+						 , complications	=	#{complications}
+						 , prevention		=	#{prevention}
+		 WHERE diseaseCode = #{diseaseCode}
+	</update>
+
+
+
+	<!-- 운동목록 개수 -->
+	<select id="getExerciseListCnt" resultType="int">
+		SELECT COUNT(*) FROM exercise
+	</select>
+
+	<!-- 운동 목록 조회 -->
+	<select id="getExerciseList" parameterType="java.util.Map" resultType="com.team.medical.vo.ExerciseVO">
+			SELECT exerciseName
+				 , exercisePurpose
+				 , exerciseMerit
+				 , exerciseDemerits
+				 , exerciseCaution
+				 , rownum
+			  from exercise
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+		]]>
+		ORDER BY exerciseName desc
+	</select>
+
+	<!-- 운동 목록 삭제 처리 -->
+    <delete id="exercisedeletePro">
+   	 	DELETE exercise WHERE exerciseName=#{exerciseName}
+    </delete>
+
+	<!-- 운동검색목록 개수 구하기 -->
+	<select id="search_exerciseListCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(exerciseName) FROM exercise
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					exerciseName LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					and exercisePurpose LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					and exerciseMerit LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					and exerciseCaution LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 운동검색목록 불러오기 -->
+	<select id="search_exerciseList" parameterType="java.util.Map" resultType="com.team.medical.vo.ExerciseVO">
+			SELECT * FROM( SELECT exerciseName
+				 				, exercisePurpose
+				 				, exerciseMerit
+				 				, exerciseDemerits
+				 				, exerciseCaution
+				 				, rownum
+							 FROM (SELECT *
+									 FROM exercise
+			<where>
+				<choose>
+					<when test="sc == 0 ">
+						exerciseName LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 1">
+						and exercisePurpose LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 2">
+						and exerciseMerit LIKE '%'||#{search}||'%'
+					</when>
+					<when test="sc == 3">
+						and exerciseCaution LIKE '%'||#{search}||'%'
+					</when>
+				</choose>
+			</where>
+				ORDER BY exerciseName DESC
+					)
+				)
+				<![CDATA[ 
+	                  WHERE rownum >= #{start} AND rownum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 운동 추가 처리 -->
+	<insert id="exerciseAdd" parameterType="com.team.medical.vo.ExerciseVO">
+		insert into exercise (exerciseName, exerciseMethod, exercisePurpose, exerciseMerit, exerciseDemerits, exerciseCaution)
+		values(#{exerciseName}, #{exerciseMethod}, #{exercisePurpose}, #{exerciseMerit}, #{exerciseDemerits}, #{exerciseCaution})
+	</insert>
+	
+	<!-- 운동 수정 폼 -->
+	<select id="exerciseModify" resultType="com.team.medical.vo.ExerciseVO">
+		SELECT exerciseName
+			 , exerciseMethod
+			 , exercisePurpose
+			 , exerciseMerit
+			 , exerciseDemerits
+			 , exerciseCaution
+		  FROM exercise 
+		 WHERE exerciseName = #{exerciseName}
+	</select>
+	
+	<!-- 운동 수정 처리 -->
+	<update id="exerciseModifyPro" parameterType="com.team.medical.vo.ExerciseVO">
+		UPDATE exercise SET exerciseName		=	#{exerciseName}
+						  , exerciseMethod		=	#{exerciseMethod}
+						  , exercisePurpose		=	#{exercisePurpose}
+						  , exerciseMerit		=	#{exerciseMerit}
+						  , exerciseDemerits	=	#{exerciseDemerits}
+						  , exerciseCaution		=	#{exerciseCaution}
+		 WHERE exerciseName = #{exerciseName}
+	</update>
+	
+
+
+	<!-- 예방접종목록 개수 -->
+	<select id="getApreventionListCnt" resultType="int">
+		SELECT COUNT(*) FROM prevention
+	</select>
+
+	<!-- 예방접종목록 조회 -->
+	<select id="getApreventionList" parameterType="java.util.Map" resultType="com.team.medical.vo.PreventionVO">
+			SELECT preventionCode
+				 , preventionKind
+				 , countryCode
+				 , preventionContent
+				 , rownum
+			  from prevention
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+		]]>
+		ORDER BY preventionCode desc
+	</select>
+	
+	<!-- 예방접종목록 조회2 -->
+	<select id="getApreventionList2" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
+			SELECT diseaseName
+				 , diseaseCode
+				 , rownum
+			  from disease d
+			  join prevention p
+			    on d.deseaseCode = p.deseaseCode
+	 <![CDATA[
+			 where rownum >= #{start} 
+			   AND rownum <= #{end}
+		]]>
+		ORDER BY exerciseName desc
+	</select>
+
 </mapper>

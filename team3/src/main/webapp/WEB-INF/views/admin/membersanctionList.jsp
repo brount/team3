@@ -85,35 +85,35 @@
 								<div class="col-lg-4">
 									<div class="table-responsive">
 										<table class="table table-bordered table-hover table-striped">
-											<thead>
-												<tr>
-													<th>회원번호</th>
-													<th>회원ID</th>
-													<th>회원명</th>
-													<th>회원주소</th>
-													<th>회원연령</th>
-													<th>회원연락처</th>
-													<th>제재단계</th>
-													<th>가입일</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:if test="${cnt > 0}">
-													<c:forEach var="dto" items="${dtos}">
-														<tr>
-															<td onclick="window.location='membersanctionManage'">${dto.guestNo}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.guestid}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.guestname}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.address2}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.guestage}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.guesttel}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.sanctions}</td>
-															<td onclick="window.location='membersanctionManage'">${dto.guestdate}</td>
-														</tr>
-													</c:forEach>
-												</c:if>
-											</tbody>
-										</table>
+	                                        <thead>
+	                                        <tr>
+	                                            <th>회원번호</th>
+	                                            <th>회원ID</th>
+	                                            <th>회원명</th>
+	                                            <th>회원주소</th>
+	                                            <th>회원연령</th>
+	                                            <th>회원연락처</th>
+												<th>제재단계</th>
+	                                            <th>가입일</th>
+	                                        </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        <c:if test="${cnt > 0}">
+												<c:forEach var="dto" items="${dtos}">
+													<tr>
+													    <td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestNo}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestid}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestname}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.address2}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestage}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guesttel}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.sanctions}</td>
+														<td onclick="window.location='membersanctionManage?&guestNo=${dto.guestNo}&pageNum=${pageNum}&number=${number+1}'">${dto.guestdate}</td>
+		                                        	</tr>
+		                                       	</c:forEach>
+		                                       </c:if>
+	                                        </tbody>
+	                                    </table>
 
 										<!-- 페이지 컨트롤 -->
 										<table align="center">

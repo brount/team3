@@ -1,55 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- jQuery -->
-<script src="./resources/pyj/js/jquery.min.js"/></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="./resources/pyj/js/bootstrap.min.js"/></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="./resources/pyj/js/metisMenu.min.js"/></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="./resources/pyj/js/startmin.js"/></script>
-
-
 <title> 관리자 페이지 - 정보관리</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/startmin.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/pyj/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 	<div id="wrapper">
 
 	    <!-- Navigation -->
-	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="navbar-header">
 	            <a class="navbar-brand" href="memberList"> 관리자 </a>
 	        </div>
 	
 	        <ul class="nav navbar-right navbar-top-links">
-	        	<li><a href="main">Main</a></li>
-	            <li><a href="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+	        	<li onclick="main">Main</a></li>
+	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
 	        </ul>
 	        <!-- /.navbar-top-links -->
 	
@@ -64,9 +32,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

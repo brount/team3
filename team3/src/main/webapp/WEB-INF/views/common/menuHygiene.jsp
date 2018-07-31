@@ -9,7 +9,7 @@
 	                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">날씨(보건기상지수)</a>
 	            </h4>
 	        </div>
-	        <div id="collapseOne" class="panel-collapse collapse in collapse show">
+	        <div id="collapseOne" class="panel-collapse collapse in collapse">
 	            <div class="panel-body">
 	                <table class="table">
 	                    <tr>
@@ -19,7 +19,7 @@
 	                    </tr>
 	                    <tr>
 	                        <td>
-	                            <a href="#">식중독지수</a>
+	                            <a href="foodPoisoning">식중독지수</a>
 	                        </td>
 	                    </tr>
 	                </table>
@@ -36,7 +36,7 @@
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
-	                <a href="diseaseTop">10대질병</a>
+	                <a href="cdiseaseList">질병정보</a>
 	            </h4>
 	        </div>
 	    </div>

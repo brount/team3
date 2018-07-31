@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="../common/setting.jsp" %>
 <html>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -8,138 +9,190 @@
 <body>
  <header>
 	<%@ include file="../common/header.jsp" %>
-</header>
+</header> 
+
 
 <section>
+<form action="checkupRequestInputPro" method="post" name="checkRequest">
+<!-- 의사 -->
+<input type="hidden" value="${vo.doctorspecialism}" name="doctorspecialism">
+<input type="hidden" value="${vo.doctorname}" name="doctorname">
+<!-- 병원 -->
+<input type="hidden" value="${dto.hospitaladdress1}" name="hospitaladdress1">
+<input type="hidden" value="${dto.hospitaladdress2}" name="hospitaladdress2">
+<input type="hidden" value="${dto.hospitaladdress3}" name="hospitaladdress3">
+<input type="hidden" value="${dto.hospitalname}" name="hospitalname">
+<input type="hidden" value="${dto.hospitalphone}" name="hospitalphone">
+<!-- 환자 -->
+<%-- <input type="hidden" value="${dto.hospitaladdress2}" name="guestName">
+<input type="hidden" value="${dto.hospitaladdress3}" name="guestJumin">
+<input type="hidden" value="${dto.hospitalname}" name="guestSex">
+<input type="hidden" value="${dto.hospitalphone}" name="guestAge">
+<input type="hidden" value="${dto.hospitalphone}" name="guestPhone">
+<input type="hidden" value="${dto.hospitalphone}" name="guestEmail"> --%>
+<input type="hidden" value="${checkuplist}" name="checkuplist">
+
+
+
 <div class="container">
-	    <div class="row">
-	        <div class="col-sm-3 col-md-3">
-	            <%@ include file="../common/menuCheckup.jsp" %>
-	        		</div>	
-		  		 		<div class="col-sm-9 col-md-9">
-		           			 <div class="well">
-		                <div>
-					<div class="panel panel-primary">
-					    <div class="panel-heading">
-					        <h3>검사 의뢰서</h3>
-					    </div>
-					    <table class="table" border="1" >
-							<tr>
-								<td>진료 의뢰일 : 2018년 7월 19일 5시 10분</td>
-							</tr>
-							<tr>
-								<td>과명 : 2018년 7월 19일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의사명 : 박영진</td>
-							</tr>
-					    </table>
-					    
-					    <table class="table" border="1" >
-							<tr>
-								<td>성명 : 신우철</td>
-								<td>주민등록번호 : 123456-1*******</td>
-							</tr>
-							<tr>
-								<td>성별 : 남</td>
-								<td>나이 : 20</td>
-							</tr>
-							<tr>
-								<td>연락처 : 01012345695</td>
-								<td>이메일 주소 : sin@naver.com</td>
-							</tr>
-					    </table>
-								    
-					    <table class="table" border="1" >
-							<tr>
-								<td>
-									▣ 의뢰과목<br><br>
-									<input type="checkbox" name="request" value="엑스레이" >엑스레이　
-									<input type="checkbox" name="request" value="혈액" checked="checked">혈액　
-									<input type="checkbox" name="request" value="소변" checked="checked">소변　 
-									<input type="checkbox" name="request" value="MRI">MRI　 
-									<input type="checkbox" name="request" value="내시경">내시경　  
-									
-								</td>
-							</tr>
-							<tr>
-								<td>
-									▣ 진단명<br><br><textarea rows="5" style="resize: none; width: 100%;">스트레스성 우울증</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									▣ 병력 및 소견<br><br><textarea rows="5" style="resize: none; width: 100%;">지나친 야근으로 인하여 피로가 누적된것으로 보임</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									▣ 의뢰 내용<br><br><textarea rows="5" style="resize: none; width: 100%;">혈액 검사와 소변검사를 요청함</textarea>
-								</td>
-							</tr>
-					    </table>
-					    
-					    <table class="table" border="1" >
-								<tr>
-									<td align="center">의뢰 병원 : 코스모정신의학과</td>
-									<td align="center">전화번호 : 029521241</td>
-								</tr>
-								<tr>
-									<td align="center">주소 : 금천구 가산동 29</td>
-									<td align="center">의사 : 박영진</td>
-								</tr>
-					    </table>
-					    <table class="table" border="1" >
-								<tr>
-									<td align="center"> 코스모정신의학과 병원</td>
-								</tr>
-					    </table>
-					  
-					</div>
-					<center>
-					<input type="button" value="등록하기">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="reset" value="작성취소">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" value="메인가기" onclick="window.location='main'">
-				</div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupRequest">검사의뢰 등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupList">검사의뢰 목록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="checkupAdd">건강검진 등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupResultList">건강검진 결과 목록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="examinationAdd">처방등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="examinationList">처방결과</a>
+                        </h4>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div> 
-
-<script>
-/* class="success" */
-$(function() {
-    $('.col-check').hide();
-    $('#btn-admin').on('click', function(){
-        if($("#toolbar-admin").is(":visible"))
-        {
-		    $("#toolbar-admin").hide();
-		    $(".col-check").hide();
-        }
-        else
-        {
-            $("#toolbar-admin").show();
-            $(".col-check").show();
-        }
-	});
-    
-    $('#btn-online').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('success');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Online');
-    });
-    $('#btn-offline').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('warning');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Offline');
-    });
-    $('#btn-out-of-order').on('click', function(){
-         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('danger');
-         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('Out Of Order');
-    });
-    
-});
-</script>
+        </div>	
+	  		 <div class="col-sm-9 col-md-9">
+	            <div class="well">
+					<div>
+						<div class="panel panel-primary">
+						    <div class="panel-heading">
+						        <h3>검사 의뢰서</h3>
+						    </div>
+						    <table class="table" border="1" >
+								<tr>
+									<td>진료 의뢰일 : ${checkup_date}</td>
+								</tr>
+								<tr>
+									<td>과명 : 
+									<c:if test="${docDto.doctorspecialism==1}">
+										내과
+									</c:if>
+									<c:if test="${docDto.doctorspecialism==2}">
+										이비인후과
+									</c:if>
+									<c:if test="${docDto.doctorspecialism==3}">
+										정신의학과
+									</c:if>
+									<c:if test="${docDto.doctorspecialism==4}">
+										외과
+									</c:if>
+									<c:if test="${docDto.doctorspecialism==5}">
+										치과
+									</c:if>
+									
+									
+									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의사명 : ${vo.doctorname}</td>
+								</tr>
+						    </table>
+						    
+						    <table class="table" border="1" >
+								<tr>
+									<td>성명 : ${gusDto.guestname}</td>
+									<td>주민등록번호 : ${gusDto.jumin}</td>
+								</tr>
+								<tr>
+									<td>성별 : <input type="text" name="guestSex"></td>
+									<td>나이 : <input type="text" name="guestAge"></td>
+								</tr>
+								<tr>
+									<td>연락처 : ${gusDto.guesttel}</td>
+									<td>이메일 주소 : ${gusDto.guestemail}</td>
+								</tr>
+						    </table>
+									    
+						    <table class="table" border="1" >
+								<tr>
+									<td>
+										▣ 의뢰과목<br><br>
+										<input type="checkbox" name="checkup_kind" value="엑스레이">엑스레이　
+										<input type="checkbox" name="checkup_kind" value="혈액">혈액　
+										<input type="checkbox" name="checkup_kind" value="소변">소변　 
+										<input type="checkbox" name="checkup_kind" value="MRI">MRI　 
+										<input type="checkbox" name="checkup_kind" value="내시경">내시경　  
+										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										▣ 진단명<br><br><textarea name="checkup_name" rows="5" style="resize: none; width: 100%;">${checkDto.checkup_name}</textarea>
+									</td>
+								</tr> 
+								<tr>
+									<td>
+										▣ 병력 및 소견<br><br><textarea name ="checkup_opinion" rows="5"  style="resize: none; width: 100%;">${checkDto.checkup_opinion}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										▣ 의뢰 내용<br><br><textarea name ="checkup_contents" rows="5" style="resize: none; width: 100%;">${checkDto.checkup_contents}</textarea>
+									</td>
+								</tr>
+						    </table>
+						    
+						    <table class="table" border="1" >
+								<tr>
+									<td align="center">의뢰 병원 : ${hosDto.hospitalname}</td>
+									<td align="center">전화번호 : ${hosDto.hospitalphone}</td>
+								</tr>
+								<tr>
+									<td align="center">주소 : ${hosDto.hospitaladdress1}<br>
+															  ${hosDto.hospitaladdress2}<br>
+															  ${hosDto.hospitaladdress3}<br>	
+									</td>
+									<td align="center">의사 :${docDto.doctorname}</td>
+								</tr>
+						    </table>
+						    <table class="table" border="1" >
+								<tr>
+									<td align="center"> ${hosDto.hospitalname}</td>
+								</tr>
+						    </table>
+						    
+						</div>
+						<div style="display:table; margin:0 auto;">
+							<input type="button" value="건강검진 등록" style="margin-right:5px;"  onclick="window.location='checkupAdd?checkuplist=${checkuplist}'">
+							<input type="button" value="목록가기" style="margin-left:5px;" onclick="window.location='checkupList'">
+						</div>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	</div> 
+</form>
 </section>
-
  <footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>
-
 </body>
 </html>

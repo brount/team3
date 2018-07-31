@@ -13,19 +13,73 @@
 
 
 <section>
-<form action="checkupRequestInputPro" method="post" name="checkRequest">
+<form action="checkupRequestInputPro" method="post" name="checkupRequest">
+<!-- 의사 -->
 <input type="hidden" value="${vo.doctorspecialism}" name="doctorspecialism">
 <input type="hidden" value="${vo.doctorname}" name="doctorname">
+<!-- 병원 -->
 <input type="hidden" value="${dto.hospitaladdress1}" name="hospitaladdress1">
 <input type="hidden" value="${dto.hospitaladdress2}" name="hospitaladdress2">
 <input type="hidden" value="${dto.hospitaladdress3}" name="hospitaladdress3">
 <input type="hidden" value="${dto.hospitalname}" name="hospitalname">
 <input type="hidden" value="${dto.hospitalphone}" name="hospitalphone">
+<!-- 환자 -->
+<%-- <input type="hidden" value="${dto.hospitaladdress2}" name="guestName">
+<input type="hidden" value="${dto.hospitaladdress3}" name="guestJumin">
+<input type="hidden" value="${dto.hospitalname}" name="guestSex">
+<input type="hidden" value="${dto.hospitalphone}" name="guestAge">
+<input type="hidden" value="${dto.hospitalphone}" name="guestPhone">
+<input type="hidden" value="${dto.hospitalphone}" name="guestEmail"> --%>
+
+
 
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-3">
-            <%@ include file="../common/menuCheckup.jsp" %>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupRequest">검사의뢰 등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupList">검사의뢰 목록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="checkupAdd">건강검진 등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="checkupResultList">건강검진 결과 목록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="examinationAdd">처방등록</a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="examinationList">처방결과</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
 	            <div class="well">
@@ -34,12 +88,14 @@
 						    <div class="panel-heading">
 						        <h3>검사 의뢰서</h3>
 						    </div>
+						     <c:set value="0" var="a"></c:set>
+                               <c:set value="0" var="b"></c:set>
 						    <table class="table" border="1" >
 								<tr>
 									<td>진료 의뢰일 : 2018년 7월 19일 5시 10분</td>
 								</tr>
 								<tr>
-									<td>과명 : 
+									<td>과명 : ${docList[a].doctorname}
 									<c:if test="${vo.doctorspecialism==1}">
 										내과
 									</c:if>
@@ -63,16 +119,16 @@
 						    
 						    <table class="table" border="1" >
 								<tr>
-									<td>성명 : 신우철</td>
-									<td>주민등록번호 : 123456-1*******</td>
+									<td>성명 : <input type="text" name="guestName"></td>
+									<td>주민등록번호 : <input type="text" name="guestJumin"></td>
 								</tr>
 								<tr>
-									<td>성별 : 남</td>
-									<td>나이 : 20</td>
+									<td>성별 : <input type="text" name="guestSex"></td>
+									<td>나이 : <input type="text" name="guestAge"></td>
 								</tr>
 								<tr>
-									<td>연락처 : 01012345695</td>
-									<td>이메일 주소 : sin@naver.com</td>
+									<td>연락처 : <input type="text" name="guestPhone"></td>
+									<td>이메일 주소 : <input type="text" name="guestEmail"></td>
 								</tr>
 						    </table>
 									    

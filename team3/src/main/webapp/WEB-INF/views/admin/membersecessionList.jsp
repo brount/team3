@@ -133,9 +133,10 @@
 											<tbody>
 												<c:if test="${cnt > 0}">
 													<c:forEach var="dto" items="${dtos}">
-													<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+														<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 														<tr>
-															<td class="center"><input type="checkbox" name="checkOne" value="${dto.guestNo}"></td>
+															<td class="center">
+															<input type="checkbox" name="checkOne" value="${dto.guestNo}"></td>
 															<td>${dto.guestNo}</td>
 															<td>${dto.guestid}</td>
 															<td>${dto.guestname}</td>

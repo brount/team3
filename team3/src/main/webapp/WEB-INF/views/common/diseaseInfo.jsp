@@ -1,19 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="/medical/resources/common/css/sidebar.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<html lang="en">
+<title> 사이트 이름 </title>
 <body>
-	<center>
-	<img alt="병상세페이지 " src="/medical/resources/images/common/병상세페이지.jpg"><br>
-	<input type="button" value="이전"onclick="history.back();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" value="메인" onclick="window.location='main'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<header>
+	<%@ include file="../common/header.jsp" %>
+	</header>
 	
-
-
-
+	<section>
+		<div class="container">
+		    <div class="row">
+		        <div class="col-sm-3 col-md-3">
+		            <%@ include file="../common/menuHygiene.jsp" %>
+		        </div>
+		        <div class="col-sm-9 col-md-9">
+		            <div class="well">
+		                <div class='form container'>
+						<div>
+							<div class="row" style="margin-bottom:20px;">
+							<div class="center-block clearfix">
+							</div>
+							</div>
+							<table class='table'>
+								<tr>
+									<th>병명</th>
+									<td>${dto.diseaseName}</td>
+								</tr>
+								<tr>
+									<th>정의</th>
+									<td>${dto.diseaseDefine}</td>
+								</tr>
+								<tr>
+									<th>원인</th>
+									<td>${dto.diseaseCause}</td>
+								</tr>
+								<tr>
+									<th>증상</th>
+									<td>${dto.diseaseSymptom}</td>
+								</tr>
+								<tr>
+									<th>진단</th>
+									<td>${dto.diseaseDiagnosis}</td>
+								</tr>
+								<tr>
+									<th>치료</th>
+									<td>${dto.diseaseCure}</td>
+								</tr>
+								<tr>
+									<th>경과/합병증</th>
+									<td>${dto.complications}</td>
+								</tr>
+								<tr>
+									<th>예방방법</th>
+									<td>${dto.prevention}</td>
+								</tr>
+							</table>
+							</div>
+						</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</section>
+	
+	<footer>
+	<%@ include file="../common/footer.jsp" %>
+	</footer>
 </body>
 </html>

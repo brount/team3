@@ -17,8 +17,8 @@
 	        </div>
 	
 	        <ul class="nav navbar-right navbar-top-links">
-	        	<li><a href="main">Main</a></li>
-	            <li><a href="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+	        	<li onclick="main">Main</a></li>
+	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
 	        </ul>
 	        <!-- /.navbar-top-links -->
 	
@@ -33,9 +33,6 @@
                                 </li>
                                 <li>
                                     <a href="doctorList">의사회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="sanctionList">제제회원목록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

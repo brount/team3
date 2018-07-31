@@ -1,11 +1,12 @@
 package com.team.medical.vo;
 
 public class PreventionVO {
-	private int preventionCode;
-	private String preventionKind;
-	private int countryCode;
-	private int diseaseRcode;
-	private String preventionContent;
+	private int preventionCode;				// 예방접종 등록번호
+	private String preventionKind;			// 예방접종 종류
+	private int countryCode;				// 국가코드
+	private int diseaseRcode;				// 질병 번호
+	private String preventionContent;		// 접종목적
+	
 	public int getPreventionCode() {
 		return preventionCode;
 	}

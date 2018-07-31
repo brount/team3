@@ -1,96 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<html lang="en">
+<title> 사이트 이름 </title>
 <body>
-<header>
-	<%@ include file="../common/header.jsp" %>
-</header>
-
-<section>
-	<div class="container">
-    <div class="row">
-        <div class="col-sm-3 col-md-3">
-            <%@ include file="../common/menuCheckup.jsp" %>
-        </div>	
-	  		 <div class="col-sm-9 col-md-9">
-	            <div class="well">
-					<div class="mail-box">
+   
+   <header>
+   <%@ include file="../common/header.jsp" %>
+   </header>
+   
+   <section>
+      <div class="container">
+ <div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
-                          <h3>건강검진 결과 의뢰 목록</h3>
+                          <h3>건강검진 목록</h3>
                           <form action="#" class="pull-right position">
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                  <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd?kind=1'">
+                              </div>
+                              <div>
                               </div>
                           </form>
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
 
-                               <table class="table table-inbox table-hover">
+                          <table class="table table-inbox table-hover">
                                 
                             <tbody>
                               <tr class="unread">
-                                    <td class="view-message  dont-show">번호</td>
-                                  <td class="view-message">환자</td>                                  
+                                  <td class="view-message">검진번호</td>
+                                  <td class="view-message">환자명</td> 
                                   <td class="view-message  text-left">등록일</td>
                               </tr>
-                              <tr class="">
-                                  <td class="view-message  dont-show">5</td>
-                                  <td class="view-message"><a href=checkupResult>신우철님 검강검진 의뢰 목록</a></td>
-                                  <td class="view-message  text-left">2018-05-06</td>
-                              </tr>
-                             
-                              <tr class="">
-                                  <td class="view-message  dont-show">4</td>
-                                  <td class="view-message"><a href=checkupResult>김환자님 검강검진 의뢰 목록</a></td>
-                                  <td class="view-message  text-left">2018-05-06</td>
-                              </tr>
-                             
-                              <tr class="">
-                                  <td class="view-message  dont-show">3</td>
-                                  <td class="view-message"><a href=checkupResult>김짜잔님 검강검진 의뢰 목록</a></td>
-                                  <td class="view-message  text-left">2018-05-06</td>
-                              </tr>
-                             
-                              <tr class="">
-                                  <td class="view-message  dont-show">2</td>
-                                  <td class="view-message"><a href=checkupResult>김허접님 검강검진 의뢰 목록</a></td>
-                                  <td class="view-message  text-left">2018-05-06</td>
-                              </tr>
-                             
-                              <tr class="">
-                                  <td class="view-message  dont-show">1</td>
-                                  <td class="view-message"><a href=checkupResult>김게임님 검강검진 의뢰 목록</a></td>
-                                  <td class="view-message  text-left">2018-05-06</td>
-                              </tr>
-                             
+                              <c:if test="${cnt>0 }">
+                               <c:set value="0" var="b"></c:set>
+								<c:forEach var="dto" items="${dtos}">
+									<tr>
+										<td>
+											${dto.checkup}
+											<c:set var="number" value="${number-1 }"></c:set>
+										</td>					
+										<td ><a onclick="window.location='checkupResult?pageNum=${pageNum}&number=${number+1}&checkup=${dto.checkup}'">${guestList[b].guestname}</a></td>
+											
+										<td >
+											<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.checkup_date}"/>
+										</td>
+									</tr>
+									<c:set var="b" value="${b+1 }"></c:set>
+								</c:forEach>
+							</c:if>
+							<!-- 게시글이 없으면 -->
+							<c:if test="${cnt==0 }">
+								<tr>
+									<td colspan="6" align="center">
+										게시글이 없습니다. 글을 작성해 주세요.!!
+									</td>
+								</tr>
+							</c:if>
                           </tbody>
-                          </table>
+                          </table> 
+                          </div>
                       </div>
                   </aside>
-                  <ul class="pagination" style="display:table; margin:0 auto;">
-                  <li class="disabled"><span>«</span></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=3">3</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=4">4</a></li>
-                  <li class="disabled"><span>...</span></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
-                </ul>
+                  <table align="center">
+				<tr>
+					<th align="center">
+						<c:if test="${cnt>0}">
+							<!-- 처음[◀◀] / 이전블록 [◀] -->
+							<c:if test="${startPage > pageBlock }">
+								<a href="checkupResult">[◀◀]</a>
+								<a href="ccheckupResult?pageNum=${startPage-pageBlock}">[◀]</a>	
+							</c:if>
+							<!-- 페이지 블록 -->
+							<c:forEach var="i" begin="${startPage }" end="${endPage }">
+								<c:if test="${i == currentPage }">
+									<span> <b>[${i }]</b></span>
+								</c:if>
+								<c:if test="${i != currentPage }">
+									<a href="checkupResult?pageNum=${i}">[${i }]</a>
+								</c:if>
+							</c:forEach>										
+							<!-- 다음블록[▶] / 끝[▶▶] -->
+							<c:if test="${pageCnt > endPage }">
+								<a href="checkupResult?pageNum=${startPage+pageBlock}">[▶]</a>
+								<a href="checkupResult?pageNum=${pageCnt}">[▶▶]</a>
+							</c:if>
+						</c:if>
+					</th>
+				</tr>
+			</table>
               </div>                    
-	            </div>
-	        </div>
-	    </div>
-	</div> 
-</section>
+		</div>
+   </section>
+   
+   <footer>
+   <%@ include file="../common/footer.jsp" %>
+   </footer>
 
- <footer>
-	<%@ include file="../common/footer.jsp" %>
-</footer>
 </body>
 </html>
