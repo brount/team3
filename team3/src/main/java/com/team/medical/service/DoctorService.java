@@ -48,6 +48,27 @@ public interface DoctorService {
 	// 건강검진 상세
 	public void checkupResult(HttpServletRequest req, Model model);
 
+	// 처방전 등록
+	public void examinationInputPro(HttpServletRequest req, Model model);
+
+	// 처방전 목록
+	public void examinationList(HttpServletRequest req, Model model);
+
+	// 처방전 상세목록
+	public void examinationInfo(HttpServletRequest req, Model model);
+
+	// 의사 수정 정보
+	public void doctorModifyInfo(HttpServletRequest req, Model model);
+
+	// 검사 예약 목록
+	public void patientList(HttpServletRequest req, Model model);
+
+	// 예약 상세 페이지
+	public void patientInfo(HttpServletRequest req, Model model);
+
+	//처방전 페이지
+	public void examinationAdd(HttpServletRequest req, Model model);
+
 	//일반회원 정보 가져오기
 	//public void cusInfo(HttpServletRequest req, Model model);
 

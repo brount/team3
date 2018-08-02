@@ -101,11 +101,11 @@
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 	          
 	            <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="gender" value="여자" checked />
+				    <input type="radio" class="option-input radio" name="gender" value="1" checked />
 				  여자
 				  </label>
 				    <label style="margin-left: 10px;margin-right: 10px;">
-				    <input type="radio" class="option-input radio" name="gender" value="남자" />
+				    <input type="radio" class="option-input radio" name="gender" value="2" />
 				  남자
 				  </label>
 				  

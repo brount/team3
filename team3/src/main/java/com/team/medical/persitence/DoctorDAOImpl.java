@@ -13,6 +13,8 @@ import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.HpVO;
+import com.team.medical.vo.PrescriptionVO;
+import com.team.medical.vo.ReservationVO;
 
 @Repository
 public class DoctorDAOImpl implements DoctorDAO {
@@ -235,6 +237,142 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return cnt;
 	}
 
+	@Override
+	public int getGuestCheckupResult(int checkup) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getGuestCheckupResult(checkup);
+		return cnt;
+	}
+
+	@Override
+	public int getDoctonoCheckupResult(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getDoctonoCheckupResult(guestno);
+		return cnt;
+	}
+
+	@Override
+	public int getHospitalnoDocno(String doctorno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getHospitalnoDocno(doctorno);
+		return cnt;
+	}
+
+	@Override
+	public int examinationAdd(PrescriptionVO vo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int insertCnt = dao.examinationAdd(vo);
+		return insertCnt;
+	}
+	
+	// 처방전 글 갯수
+	@Override
+	public int examinationListCnt(int i) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.examinationListCnt(i);
+		return selectCnt;
+	}
+
+	// 처방전 목록
+	@Override
+	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map) {
+		ArrayList<PrescriptionVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		
+		dtos=dao.getExaminationList(map);
+		
+		return dtos;
+	}
+
+	// 처방전 번호로 회원번호 가져오기
+	@Override
+	public int getPrescriptionNoGuestno(int prescriptionNo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getPrescriptionNoGuestno(prescriptionNo);
+		return cnt;
+	}
+
+	// 처방전 정보
+	@Override
+	public PrescriptionVO getPrescription(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		PrescriptionVO cnt = dao.getPrescription(guestno);
+		return cnt;
+	}
+
+	// 예약 글 갯수
+	@Override
+	public int getPatientListCnt(int i) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getPatientListCnt(i);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<ReservationVO> getpatientList(Map<String, Integer> map) {
+		ArrayList<ReservationVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		
+		dtos=dao.getpatientList(map);
+		
+		return dtos;
+	}
+
+	// 예약병원정보
+	@Override
+	public HospitalVO getHospitalNoInfo(int hospitalno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		HospitalVO cnt = dao.getHospitalNoInfo(hospitalno);
+		return cnt;
+	}
+
+	// 예약번호로 환자번호 가져오기
+	@Override
+	public int reservationNoguestno(int reservationNo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.reservationNoguestno(reservationNo);
+		return cnt;
+		
+	}
+
+	@Override
+	public ReservationVO reservationInfo(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		ReservationVO cnt = dao.reservationInfo(guestno);
+		return cnt;
+	}
+
+	@Override
+	public CheckupVO getCheckupGuestno(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		CheckupVO cnt = dao.getCheckupGuestno(guestno);
+		return cnt;
+	}
+
+	@Override
+	public int doctornoGuestno(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.doctornoGuestno(guestno);
+		return cnt;
+	}
+
+	@Override
+	public int getCheckupListGuestno(int guestno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getCheckupListGuestno(guestno);
+		return cnt;
+	}
+
+	/*@Override
+	public int getDocLicence(String id) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getDocLicence(id);
+		return cnt;
+		
+	}
+*/
 	
 
 

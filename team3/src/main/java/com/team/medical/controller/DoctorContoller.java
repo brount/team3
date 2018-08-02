@@ -59,6 +59,7 @@ public class DoctorContoller {
 	public String doctorModify(HttpServletRequest req, Model model) {
 		System.out.println("doctorModify, 페이지");
 		
+		docService.doctorModifyInfo(req, model);
 		return "doctor/doctorModify";
 	}
 	//의사회원정보수정페이지                       
@@ -109,10 +110,10 @@ public class DoctorContoller {
     @RequestMapping(value = "checkupRequest")
     public String checkupRequest(HttpServletRequest req, Model model) {
     	
+       docService.patientInfo(req, model);
        docService.docnoInfo(req, model);
        System.out.println("checkupRequest, 페이지");
        
-      // docService.cusInfo(req, model);
        return "doctor/checkupRequest";
     }
     
@@ -155,9 +156,12 @@ public class DoctorContoller {
     @RequestMapping(value = "checkupAdd")
 	    public String checkupAdd(HttpServletRequest req, Model model) {
 	    System.out.println("checkupAdd, 페이지");
-	  
+	    int doctorno = Integer.parseInt(req.getParameter("doctorno"));
 	    int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
 	    model.addAttribute("checkuplist", checkuplist);
+	    model.addAttribute("doctorno", doctorno);
+		   
+	    
 	    docService.getCheckupInfo(req, model);
 	  
 	    return "doctor/checkupAdd";
@@ -165,12 +169,12 @@ public class DoctorContoller {
     
     //건강검진 등록처리
     @RequestMapping(value = "checkupAddInputPro")
-    public String checkupAddInputPro(HttpServletRequest req, Model model) {
-    System.out.println("checkupAddInputPro, 페이지");
-  
-    docService.checkupAddInputPro(req, model);
-  
-    return "doctor/checkupAddInputPro";
+	    public String checkupAddInputPro(HttpServletRequest req, Model model) {
+	    System.out.println("checkupAddInputPro, 페이지");
+	    
+	    docService.checkupAddInputPro(req, model);
+	  
+	    return "doctor/checkupAddInputPro";
     }
     
     //건강검진 목록페이지                          
@@ -178,6 +182,9 @@ public class DoctorContoller {
   	public String checkupResultList(HttpServletRequest req, Model model) {
   		System.out.println("checkupResultList, 페이지");
   		
+  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		model.addAttribute("doctorno", doctorno);
+		System.out.println("doctorno :" +  doctorno);
   		docService.checkupResultList(req, model);
   		return "doctor/checkupResultList";
   	}
@@ -188,7 +195,10 @@ public class DoctorContoller {
   		System.out.println("checkupResult, 페이지");
   		
   		int checkup = Integer.parseInt(req.getParameter("checkup"));
+  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		model.addAttribute("doctorno", doctorno);
         model.addAttribute("checkup", checkup);
+        System.out.println("checkupResultdoctorno : "+doctorno);
         docService.checkupResult(req, model);
   		
   		
@@ -200,30 +210,57 @@ public class DoctorContoller {
   	public String examinationAdd(HttpServletRequest req, Model model) {
   		System.out.println("examinationAdd, 페이지");
   		
-         return "doctor/examinationAdd";
+  		docService.examinationAdd(req, model);
+        return "doctor/examinationAdd";
+  	}
+  	
+  	//처방결과등록페이지                          
+  	@RequestMapping(value = "examinationInputPro")
+  	public String examinationInputPro(HttpServletRequest req, Model model) {
+  		System.out.println("examinationInputPro, 페이지");
+  		
+  		int checkup = Integer.parseInt(req.getParameter("checkup"));
+  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		model.addAttribute("doctorno", doctorno);
+  		model.addAttribute("checkup", checkup);
+  		
+  		docService.examinationInputPro(req, model);
+        return "doctor/examinationInputPro";
   	}
 	
-	
+  	//처방목록페이지                          
+  	@RequestMapping(value = "examinationList")
+  	public String examinationList(HttpServletRequest req, Model model) {
+  		System.out.println("examinationList, 페이지");
+  		
+  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		model.addAttribute("doctorno", doctorno);
+  		
+  		docService.examinationList(req, model);
+  		return "doctor/examinationList";
+  	}
+  	
 	//처방상세페이지                          
 	@RequestMapping(value = "examinationInfo")
 	public String examinationInfo(HttpServletRequest req, Model model) {
 		System.out.println("examinationInfo, 페이지");
+		
+		int prescriptionNo = Integer.parseInt(req.getParameter("prescriptionNo"));
+  		model.addAttribute("checkup", prescriptionNo);
+		
+		docService.examinationInfo(req, model);
 		return "doctor/examinationInfo";
 	}
 	
 	
-	//처방목록페이지                          
-	@RequestMapping(value = "examinationList")
-	public String examinationList(HttpServletRequest req, Model model) {
-		System.out.println("examinationList, 페이지");
-		return "doctor/examinationList";
-	}
+	
 	//병원업무진행
     @RequestMapping(value = "hospital")
     public String hospital(HttpServletRequest req, Model model) {
        System.out.println("hospital, 페이지");
        return "doctor/hospital";
     }
+    
     //마이페이지
  	@RequestMapping(value = "myDoctor")
  	public String myDoctor(HttpServletRequest req, Model model) {
@@ -236,7 +273,18 @@ public class DoctorContoller {
     @RequestMapping(value = "patientList")
     public String patientList(HttpServletRequest req, Model model) {
        System.out.println("patientList, 페이지");
+       
+       docService.patientList(req, model);
        return "doctor/patientList";
+    }
+    
+    //검진 예약 상세
+    @RequestMapping(value = "patientInfo")
+    public String patientInfo(HttpServletRequest req, Model model) {
+       System.out.println("patientInfo, 페이지");
+       
+       docService.patientInfo(req, model);
+       return "doctor/patientInfo";
     }
     
     //포인트관리페이지                        

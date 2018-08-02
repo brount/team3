@@ -87,18 +87,14 @@
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                             <c:if test="${sessionScope.memberState != 2 }">
-								<li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 결과 목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방결과</a></li>  
+								<li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진  목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방전 목록</a></li>  
 							 </c:if>
 							 <c:if test="${sessionScope.memberState == 2 }">
-								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupRequest'">검사 의뢰 등록</a></li>
-								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='patientList'">검진 예약 목록</a></li>
+								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='patientList'">검진 예약 목록</a></li>	
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='checkupList'">검사 의뢰 목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupAdd'">건강검진 등록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 결과 목록</a></li>
-                                
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationAdd'">처방등록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방결과</a></li>  
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진 목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방전 목록</a></li>  
 							 </c:if>	
                             </ol>
                         </div>

@@ -86,87 +86,94 @@
 	            </div>
 	        </div>	
 		  		 <div class="col-sm-9 col-md-9">
-		            <div class="well">
+		           
 		                <form class="form-horizontal" action=" " method="post"  id="reg_form">
+	    	           
 	    <fieldset>
 	
-	      <legend>My Health</legend>
-		 <c:if test="${selectcnt == 0 }">
-		 <div class="form-group">
-	        <label class="col-md-3 control-label">생년월일</label>
-	        <div class="col-md-6  inputGroupContainer">
-	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            ${vo.birth1}
-	          		<b>년</b> 
-	            ${vo.birth2}
-	     		       <b>월</b> 	
-	            ${vo.birth3}
-	              	<b>일</b> 
-	          </div>
-	        </div>
-	     
-	      </div>
-	        
-	   
-	      <div class="form-group" >
-	        <label class="col-md-3 control-label">신장</label>
-	        <div class="col-md-6  inputGroupContainer">
-	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            ${vo.height}
-	            	<b>cm</b> 
-	            
-	          </div>
-	        </div>
-	      </div>
-	      
-	         <div class="form-group" >
-	        <label class="col-md-3 control-label">체중</label>
-	        <div class="col-md-6  inputGroupContainer">
-	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            ${vo.weight}
-	            	<b>kg</b> 
-	            
-	          </div>
-	        </div>
-	      </div>
+	
+	
+	
+	      <h1>My Health</h1>
+		 <c:if test="${selectcnt != 0 }">
 	 
-	         <div class="form-group" >
-	        <label class="col-md-3 control-label">혈액형</label>
-	        <div class="col-md-7  inputGroupContainer">
-	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	          ${vo.bloodtype}
-	        </div>
-	        </div>
-	      </div>
- 	  
-	   <div class="form-group" >
-	        <label class="col-md-3 control-label">성별</label>
-	        <div class="col-md-6  inputGroupContainer">
-	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	          ${vo.getGender()} 
-	          </div>
-	        </div>
-	      </div> 
-	  
-	  
-	     
-	      <div style="display:table; margin:0 auto;">
+					 	 <table class="table table-inbox table-hover">
+					 	 
+					 	 	   <tr class="unread">
+                                    <td class="view-message  dont-show">생년월일</td>
+                                  <td class="view-message"> 
+                                  ${vo.birth1}
+						         		<b>년</b> 
+						           ${vo.birth2}
+						    		       <b>월</b> 	
+						           ${vo.birth3}
+						             	<b>일</b> 
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					 	  <tr class="unread">
+                                    <td class="view-message  dont-show">신장</td>
+                                  <td class="view-message"> 
+                                  	${vo.height}						            	
+									<b>cm</b> 
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					
+					 <tr class="unread">
+                                    <td class="view-message  dont-show">체중</td>
+                                  <td class="view-message"> 
+                                  	${vo.weight}						            	
+									<b>kg</b> 
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					
+					 <tr class="unread">
+                                    <td class="view-message  dont-show">혈액형</td>
+                                  <td class="view-message"> 
+                                  		  ${vo.bloodtype}	
+                                  
+                                  </td>                                  
+                           
+                              </tr>	
+                              
+                              	 <tr class="unread">
+                                    <td class="view-message  dont-show">성별</td>
+                                  <td class="view-message"> 
+	                             	 ${gender}
+                                  </td>                                  
+                           
+                              </tr>
+					
+					
+					
+					 <tr class="unread">
+                                    <td class="view-message  dont-show" colspan="2" align="center"> 
+									<button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+
+								</td>
+                                    
+                                    
+                                  
+                              </tr>	
+					
+					
+						</table>
+					</c:if>
+
+		<c:if test="${selectcnt == 0} ">
+	        <div style="display:table; margin:0 auto;">
 				<div>
 				
-				<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+				<button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 	      </div>
 	      </div>
 	   
-		</c:if>
-		<c:if test="${selectcnt != 0} ">
-	   
-	      <div style="display:table; margin:0 auto;">
-				<div>
-				
-				<button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
-	      </div>
-	      </div>
-	   
+	    
 		
 		</c:if>
 	  </fieldset>
@@ -175,7 +182,7 @@
 		        </div>
 	        
 	    </div>
-	</div> 
+
 </section>
  
  <footer>

@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.DiseaseVO;
+import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
+import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PreventionVO;
 
 @Repository
@@ -150,11 +152,11 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 일반탈퇴회원 삭제페이지
 	@Override
-	public int memberdeletePro(int num) {
-		System.out.println("삭제할 회원 번호 : " + num);
+	public int memberdeletePro(int guestNo) {
+		System.out.println("삭제할 회원 번호 : " + guestNo);
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-		int deleteCnt = dao.memberdeletePro(num);
+		int deleteCnt = dao.memberdeletePro(guestNo);
 		
 		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
 		
@@ -163,11 +165,11 @@ public class AdminDAOImpl implements AdminDAO {
 	
     // 일반탈퇴회원 다중삭제페이지
     @Override
-    public int memberChkdeletePro(String[] chk) {
+    public int memberChkdeletePro(String[] checkOne) {
     	AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
   	  	int deleteCnt = 0;
-  	  	for (int i = 0; i < chk.length; i++) {
-  	  		deleteCnt = dao.memberdeletePro(Integer.parseInt(chk[i]));
+  	  	for (int i = 0; i < checkOne.length; i++) {
+  	  		deleteCnt = dao.memberdeletePro(Integer.parseInt(checkOne[i]));
   	  	}
 
   	  	return deleteCnt;
@@ -196,7 +198,263 @@ public class AdminDAOImpl implements AdminDAO {
  		return updateCnt;
  	}
     
- //---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+ 	
+ 	// 의사회원목록 갯수 구하기
+ 	@Override
+ 	public int getDoctorListCnt() {
+ 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.getDoctorListCnt();
+
+ 		return selectCnt;
+ 	}
+
+ 	// 의사회원목록 조회
+ 	@Override
+ 	public ArrayList<DoctorVO> getDoctorList(Map<String, Object> map) {
+
+ 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.getDoctorList(map);
+
+ 		return dtos;
+ 	}
+
+ 	// 의사회원목록 조회2
+  	@Override
+  	public ArrayList<HospitalVO> getDoctorList2(Map<String, Object> map) {
+
+  		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+  		ArrayList<HospitalVO> dtos = dao.getDoctorList2(map);
+
+  		return dtos;
+  	}
+  	
+  	// 의사회원검색목록 개수 구하기
+  	@Override
+	public int search_doctorCnt() {
+  		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.search_doctorCnt();
+
+ 		return selectCnt;
+	}
+
+  	// 의사회원검색목록 조회
+	@Override
+	public ArrayList<DoctorVO> search_doctor(Map<String, Object> map2) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.search_doctor(map2);
+
+ 		return dtos;
+	}
+ 	
+	// 의사회원 승인대기 목록 개수 구하기
+	@Override
+	public int getDoctorPermissionListCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.getDoctorPermissionListCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사회원 승인대기 목록
+	@Override
+	public ArrayList<DoctorVO> getDoctorPermissionList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.getDoctorPermissionList(map);
+
+ 		return dtos;
+	}
+
+	/*
+	// 의사회원 승인대기 검색목록 개수 구하기
+	@Override
+	public int search_doctorPermissionCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.search_doctorPermissionCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사회원 승인대기 검색목록 조회
+	@Override
+	public ArrayList<DoctorVO> search_doctorPermission(Map<String, Object> map2) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.search_doctorPermission(map2);
+
+ 		return dtos;
+	}
+	*/
+	
+	/*
+	// 의사제제회원 개수 구하기
+	@Override
+	public int getDoctorSanctionListCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.getDoctorSanctionListCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사제제회원 목록
+	@Override
+	public ArrayList<DoctorVO> getDoctorSanctionList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.getDoctorSanctionList(map);
+
+ 		return dtos;
+	}
+	
+	// 의사제제회원 검색목록 개수 구하기
+	@Override
+	public int search_doctorSanctionCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.search_doctorSanctionCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사제제회원 검색목록
+	@Override
+	public ArrayList<DoctorVO> search_doctorSanction(Map<String, Object> map2) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.search_doctorSanction(map2);
+
+ 		return dtos;
+	}
+	*/
+	
+	// 의사탈퇴회원 개수 구하기
+	@Override
+	public int getDoctorSecessionListCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.getDoctorSecessionListCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사탈퇴회원 목록 조회
+	@Override
+	public ArrayList<DoctorVO> getDoctorSecessionList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.getDoctorSecessionList(map);
+
+ 		return dtos;
+	}
+
+	// 의사탈퇴회원 검색개수 구하기
+	@Override
+	public int search_doctorSecessionCnt() {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		int selectCnt = dao.search_doctorSecessionCnt();
+
+ 		return selectCnt;
+	}
+
+	// 의사탈퇴회원 검색목록 조회
+	@Override
+	public ArrayList<DoctorVO> search_doctorSecession(Map<String, Object> map2) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<DoctorVO> dtos = dao.search_doctorSecession(map2);
+
+ 		return dtos;
+	}
+	
+	// 의사회원 삭제 처리
+	@Override
+	public int doctordeletePro(int doctorno) {
+		System.out.println("삭제할 회원 번호 : " + doctorno);
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int deleteCnt = dao.doctordeletePro(doctorno);
+		
+		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
+		
+		return deleteCnt;
+	}
+	
+	// 의사회원 다중 삭제 처리
+	@Override
+	public int doctorChkdeletePro(String[] checkOne) {
+		
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int deleteCnt = 0;
+  	  	for (int i = 0; i < checkOne.length; i++) {
+  	  		deleteCnt = dao.doctordeletePro(Integer.parseInt(checkOne[i]));
+  	  	}
+
+  	  	return deleteCnt;
+	}
+	
+	// 의사회원 승인 처리
+	@Override
+	public int doctorPermissionPro(int doctorno) {
+		System.out.println("승인할 회원 번호 : " + doctorno);
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.doctorPermissionPro(doctorno);
+		
+		System.out.println(updateCnt == 1 ? "승인성공" : "승인실패");
+		
+		return updateCnt;
+	}
+
+	// 의사회원 다중 승인 처리
+	@Override
+	public int doctorChkPermissionPro(String[] checkOne) {
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int updateCnt = 0;
+  	  	for (int i = 0; i < checkOne.length; i++) {
+  	  		updateCnt = dao.doctorPermissionPro(Integer.parseInt(checkOne[i]));
+  	  	}
+
+  	  	return updateCnt;
+	}
+
+	// 의사회원 제명 처리
+	@Override
+	public int doctorExpelPro(int doctorno) {
+		System.out.println("제명할 회원 번호 : " + doctorno);
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.doctorExpelPro(doctorno);
+		
+		System.out.println(updateCnt == 1 ? "제명성공" : "제명실패");
+		
+		return updateCnt;
+	}
+
+	// 의사회원 다중 제명 처리
+	@Override
+	public int doctorChkExpelPro(String[] checkOne) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int updateCnt = 0;
+  	  	for (int i = 0; i < checkOne.length; i++) {
+  	  		updateCnt = dao.doctorExpelPro(Integer.parseInt(checkOne[i]));
+  	  	}
+
+  	  	return updateCnt;
+	}
+	
+	
+//---------------------------------------------------------------------------------------
  	
     // 약 목록 개수 구하기
 	@Override
@@ -218,6 +476,85 @@ public class AdminDAOImpl implements AdminDAO {
 		return dtos;
 	}
 
+	// 약목록 삭제
+	@Override
+	public int drugdeletePro(int drugCode) {
+		System.out.println("삭제할 약 번호 : " + drugCode);
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int deleteCnt = dao.drugdeletePro(drugCode);
+		
+		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
+		
+		return deleteCnt;
+	}
+
+	// 약목록 다중삭제
+	@Override
+	public int drugChkdeletePro(String[] chk) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int deleteCnt = 0;
+  	  	for (int i = 0; i < chk.length; i++) {
+  	  		deleteCnt = dao.drugdeletePro(Integer.parseInt(chk[i]));
+  	  	}
+
+  	  	return deleteCnt;
+	}
+
+	// 약검색목록 개수구하기
+	@Override
+	public int search_drugListCnt(Map<String, Object> map) {
+		int selectCnt = 0;
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		selectCnt = dao.search_drugListCnt(map);
+		System.out.println("약검색목록개수 : " + selectCnt);
+		return selectCnt;
+	}
+
+	// 약검색목록 조회
+	@Override
+	public ArrayList<DrugVO> search_drugList(Map<String, Object> map) {
+		ArrayList<DrugVO> dtos = null;
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		dtos = dao.search_drugList(map);
+		return dtos;
+	}
+
+	// 약 추가 처리
+	@Override
+	public int drugAddPro(DrugVO dto) {
+		
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int insertCnt = dao.drugAddPro(dto);
+       
+		System.out.println(insertCnt==1 ? "추가 성공":"추가 실패");
+            
+		return insertCnt;
+	}
+
+	// 약 수정 폼
+	@Override
+	public DrugVO drugModify(int drugCode) {
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		DrugVO dto = dao.drugModify(drugCode);
+		
+		return dto;
+	}
+	
+	// 약 수정 처리
+	@Override
+	public int drugModifyPro(DrugVO dto) {
+		
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.drugModifyPro(dto);
+       
+		System.out.println("updateCnt : " + updateCnt);
+		System.out.println(updateCnt==1 ? "수정 성공":"수정 실패");
+            
+		return updateCnt;
+	}
+	
 //---------------------------------------------------------------------------------------
 	
 	// 질병목록 개수
@@ -242,11 +579,11 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 질병목록 삭제
 	@Override
-	public int diseasedeletePro(int num) {
-		System.out.println("삭제할 회원 번호 : " + num);
+	public int diseasedeletePro(int diseaseCode) {
+		System.out.println("삭제할 질병 번호 : " + diseaseCode);
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-		int deleteCnt = dao.diseasedeletePro(num);
+		int deleteCnt = dao.diseasedeletePro(diseaseCode);
 		
 		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
 		
@@ -271,7 +608,7 @@ public class AdminDAOImpl implements AdminDAO {
 		int selectCnt = 0;
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 		selectCnt = dao.search_diseaseListCnt(map);
-		System.out.println("질병검색목록목록갯수 : " + selectCnt);
+		System.out.println("질병검색목록갯수 : " + selectCnt);
 		return selectCnt;
 	}
 
@@ -326,7 +663,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public int getExerciseListCnt() {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 
-		int selectCnt = dao.getDiseaseListCnt();
+		int selectCnt = dao.getExerciseListCnt();
 
 		return selectCnt;
 	}
@@ -343,10 +680,10 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 운동목록 삭제
 	@Override
-	public int exercisedeletePro(String num) {
+	public int exerciseDeletePro(String exerciseName) {
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-		int deleteCnt = dao.exercisedeletePro(num);
+		int deleteCnt = dao.exerciseDeletePro(exerciseName);
 		
 		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
 		
@@ -355,11 +692,12 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 운동목록 다중삭제
 	@Override
-	public int exerciseChkdeletePro(String[] chk) {
+	public int exerciseChkDeletePro(String[] chk) {
+		
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
   	  	int deleteCnt = 0;
   	  	for (int i = 0; i < chk.length; i++) {
-  	  		deleteCnt = dao.exercisedeletePro(chk[i]);
+  	  		deleteCnt = dao.exerciseDeletePro(chk[i]);
   	  	}
 
   	  	return deleteCnt;
@@ -386,10 +724,10 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 운동 추가 처리
 	@Override
-	public int exerciseAdd(ExerciseVO dto) {
+	public int exerciseAddPro(ExerciseVO dto) {
 		
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-		int insertCnt = dao.exerciseAdd(dto);
+		int insertCnt = dao.exerciseAddPro(dto);
        
 		System.out.println(insertCnt==1 ? "추가 성공":"추가 실패");
             
@@ -418,7 +756,6 @@ public class AdminDAOImpl implements AdminDAO {
             
 		return updateCnt;
 	}
-
 	
 //---------------------------------------------------------------------------------------	
 	
@@ -451,7 +788,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 		return dtos;
 	}
-//------------------------------------------------------------ 희성
+	//------------------------------------------------------------ 희성
 	@Override
 	public int addEvent(EventVO dto) {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
@@ -492,4 +829,12 @@ public class AdminDAOImpl implements AdminDAO {
   	  	return deleteCnt;
 	}
 //------------------------------------------------------------ 희성
+
+	
+
+
+	
+
+	
+
 }

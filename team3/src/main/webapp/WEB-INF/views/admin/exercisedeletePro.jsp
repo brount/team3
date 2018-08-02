@@ -5,7 +5,7 @@
 <body>
 	<c:if test="${deleteCnt == 0}">
 		<script type="text/javascript">
-			errorAlert("삭제할 질병을 선택하세요.");
+			errorAlert("삭제할 운동을 선택하세요.");
 		</script>
 	</c:if>
 

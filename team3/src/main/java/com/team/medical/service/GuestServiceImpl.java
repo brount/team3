@@ -18,6 +18,7 @@ import com.team.medical.persitence.GuestDAO;
 import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
+import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
@@ -213,9 +214,9 @@ public class GuestServiceImpl implements GuestService {
 		vo.setBirth2(Integer.parseInt(req.getParameter("birth2")));
 		vo.setBirth3(Integer.parseInt(req.getParameter("birth3")));
 		vo.setAge(Integer.parseInt(req.getParameter("age")));
-		vo.setHeight(req.getParameter("height"));
-		vo.setWeight(req.getParameter("weight"));
-		vo.setGender(req.getParameter("gender"));
+		vo.setHeight(Integer.parseInt(req.getParameter("height")));
+		vo.setWeight(Integer.parseInt(req.getParameter("weight")));
+		vo.setGender(Integer.parseInt(req.getParameter("gender")));
 		vo.setBloodtype(req.getParameter("bloodtype"));
 		
 		int insertcnt = dao.personalAddPro(vo);
@@ -236,9 +237,9 @@ public class GuestServiceImpl implements GuestService {
 		vo.setBirth2(Integer.parseInt(req.getParameter("birth2")));
 		vo.setBirth3(Integer.parseInt(req.getParameter("birth3")));
 		vo.setAge(Integer.parseInt(req.getParameter("age")));
-		vo.setHeight(req.getParameter("height"));
-		vo.setWeight(req.getParameter("weight"));
-		vo.setGender(req.getParameter("gender"));
+		vo.setHeight(Integer.parseInt(req.getParameter("height")));
+		vo.setWeight(Integer.parseInt(req.getParameter("weight")));
+		vo.setGender(Integer.parseInt(req.getParameter("gender")));
 		vo.setBloodtype(req.getParameter("bloodtype"));
 		
 		int updatecnt = dao.personalMofPro(vo);
@@ -255,14 +256,39 @@ public class GuestServiceImpl implements GuestService {
 		int guestNo = gvo.getGuestNo();
 		System.out.println("guestNo?"+guestNo);
 		int selectcnt =0;
-	
+		int bmi = 0;
+		String gender = "";
+		  
 		
+		  
 		MyhealthVO vo = new MyhealthVO();
+		
 		vo = dao.myHealth(guestNo);
+		int weight =vo.getWeight();
+		int height =vo.getHeight();
+		
+		
+		if(vo.getGender()==1) {
+			gender="여자";
+		}else if(vo.getGender()==2) {
+			gender="남자";
+		}
+		
+		
 		if(vo !=null) {
 			selectcnt = 1;  //등록하기 버튼 표시여부 때문에 필요!
+
+			/* bmi = (weight/(height*height))*10000;*/
+			int height2 = height*height;
+			int weigth2 =  weight*10000;
+			double Dbmi = weigth2/height2;
+			 bmi = (int)Dbmi;
+			/*bmi*/
+		
 		}
-		System.out.println("selectcnt?"+selectcnt);
+
+		model.addAttribute("gender", gender);
+		model.addAttribute("bmi", bmi);
 		model.addAttribute("vo", vo);
 		model.addAttribute("selectcnt", selectcnt);
 	
@@ -374,20 +400,113 @@ public class GuestServiceImpl implements GuestService {
 	@Override
 	public void myBordList(HttpServletRequest req, Model model) {
 		
+		
+
+		
+
+		
+		int pageSize = 10; // 한 페이지당 출력할 글 갯수
+		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
+
+		int cnt = 0; // 글 갯수
+		int start = 0; // 현재 페이지 시작 글번호
+		
+		int end = 0; // 현재 페이지 마지막 글번호
+		int number = 0; // 화면에 출력할 출력용 글번호(실제DB의 번호와 달리 보여질 때 삭제된 행이있어도 순서대로 보여지도록~!)
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재페이지
+
+		int pageCount = 0; // 페이지갯수
+		int startPage = 0; // 시작페이지
+		int endPage = 0; // 마지막페이지
+
+		
 		String id = (String) req.getSession().getAttribute("id");
-		System.out.println("ID?" +id);
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
 		
-		ArrayList<QuestionBoardVO> dtos = new ArrayList<QuestionBoardVO>();
 		
-		dtos = dao.myBordList(id);
-		
-		model.addAttribute("dtos",dtos);
-		
-		 
+		cnt = dao.myBordListcnt(id);
+		System.out.println("cnt : " + cnt);
 
+		pageNum = req.getParameter("pageNum");	
+		if (pageNum == null) {
+			pageNum = "1"; // 첫 페이지를 1페이지로 설정
 
+		}
+		// 글 30건을 기준
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage :" + currentPage);
+
+		// 글 갯수를 출력할 글 갯수로 나누는데
+		// 나머지가 있을수 있으므로 나머지가 있으면 1페이지 추가하기위해 삼항연산자로 되묻는다.
+		// 예) pageCount = (30/5)+(30 % 5 > 0 ? 1:0);
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지 갯수 + 나머지
+
+		// 1 =(1-1)*5+1;
+		start = (currentPage - 1) * pageSize + 1; // 페이지별로 시작 글번호
+
+		// 5 = 1 + 5 -1;
+		end = start + pageSize - 1; // 페이지별로 마지막 글번호
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1-1) * 5;
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 글번호
+		System.out.println("number" + number);
+		System.out.println("pageSize" + pageSize);
+	
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("id", id);
+			
+			ArrayList<QuestionBoardVO> dtos = new ArrayList<QuestionBoardVO>();
+			 dtos = dao.myBordList(map);
+			 
+			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			model.addAttribute("dtos", dtos);
+	
+		}
+
+		// 1 = (1/3)*3+1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작페이지
+
+		if (currentPage % pageBlock == 0) {
+			startPage -= pageBlock;
+		}
+		System.out.println("startPage:" + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		System.out.println("endPage : " + endPage); // 마지막페이지
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
+
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("number", number); // 글 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
 		
+			model.addAttribute("startPage", startPage); // 시작페이지
+			model.addAttribute("endPage", endPage); // 마지막페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재페이지
+
+		}
 	}
+	
 	@Override
 	public void guestExitPro(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
@@ -440,18 +559,114 @@ public class GuestServiceImpl implements GuestService {
 	}
 	@Override
 	public void reserveList(HttpServletRequest req, Model model) {
+		
+
+		
+		int pageSize = 10; // 한 페이지당 출력할 글 갯수
+		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
+
+		int cnt = 0; // 글 갯수
+		int start = 0; // 현재 페이지 시작 글번호
+		int end = 0; // 현재 페이지 마지막 글번호
+		int number = 0; // 화면에 출력할 출력용 글번호(실제DB의 번호와 달리 보여질 때 삭제된 행이있어도 순서대로 보여지도록~!)
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재페이지
+
+		int pageCount = 0; // 페이지갯수
+		int startPage = 0; // 시작페이지
+		int endPage = 0; // 마지막페이지
+
+		
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
 		int guestNo = gvo.getGuestNo();
-		ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
 		
-		dtos = dao.reserveList(guestNo);
-		model.addAttribute("dtos",dtos );
+		
+		cnt = dao.reservecnt(guestNo);
+		System.out.println("cnt : " + cnt);
 
-		 
+		pageNum = req.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1"; // 첫 페이지를 1페이지로 설정
+
+		}
+		// 글 30건을 기준
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage :" + currentPage);
+
+		// 글 갯수를 출력할 글 갯수로 나누는데
+		// 나머지가 있을수 있으므로 나머지가 있으면 1페이지 추가하기위해 삼항연산자로 되묻는다.
+		// 예) pageCount = (30/5)+(30 % 5 > 0 ? 1:0);
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지 갯수 + 나머지
+
+		// 1 =(1-1)*5+1;
+		start = (currentPage - 1) * pageSize + 1; // 페이지별로 시작 글번호
+
+		// 5 = 1 + 5 -1;
+		end = start + pageSize - 1; // 페이지별로 마지막 글번호
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1-1) * 5;
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 글번호
+		System.out.println("number" + number);
+		System.out.println("pageSize" + pageSize);
+	
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+			
+			ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
+			 dtos = dao.reserveList(map);
+			 
+			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			model.addAttribute("dtos", dtos);
+			
+			
+			
+		}
+
+		// 1 = (1/3)*3+1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작페이지
+
+		if (currentPage % pageBlock == 0) {
+			startPage -= pageBlock;
+		}
+		System.out.println("startPage:" + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		System.out.println("endPage : " + endPage); // 마지막페이지
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
+
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("number", number); // 글 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
+		
+			model.addAttribute("startPage", startPage); // 시작페이지
+			model.addAttribute("endPage", endPage); // 마지막페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재페이지
+
+		}
 	
 	}
-		//간단진료 증상 체크시 해당 질병과 질병을 진료하는 병원 셀렉
+
+	//간단진료 증상 체크시 해당 질병과 질병을 진료하는 병원 셀렉
 	@Override
 	public void simpleTreatPro(HttpServletRequest req, Model model) {
 		int selectcnt = 0; //질병의 유무 구분
@@ -488,53 +703,492 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("htos", htos);
 		model.addAttribute("selectcnt", selectcnt);
 	}
-	/*
 	@Override
 	public void foodsearch(HttpServletRequest req, Model model) {
 		String food =  req.getParameter("food");
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  
+		int guestNo = gvo.getGuestNo();
 		int selectcnt = 0;
-		CalorieVO vo = new CalorieVO();
+	
+		FoodVO vo = new FoodVO();
+		vo.setGuestNo(guestNo);
+		vo.setFood(food);
 		
-		vo = dao.foodsearch(food);
-		if(vo != null) {
+		ArrayList<FoodVO> dtos = new ArrayList<FoodVO>();
+		dtos = dao.foodsearch(vo);
+		if(dtos != null) {
 			selectcnt = 1;
 		}
 		
-		model.addAttribute("vo",vo);
+		model.addAttribute("dtos",dtos);
 		model.addAttribute("selectcnt",selectcnt);
 	}
-	*/
-	/*
 	@Override
 	public void todaycal(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
-		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원의 회원정보 수정을위해 guestNo 값셀렉
+		GuestVO gvo = dao.getGuestInfo(id);  
 		int guestNo = gvo.getGuestNo();
 		int food1 = Integer.parseInt(req.getParameter("food1"));
 		int food2 = Integer.parseInt(req.getParameter("food2"));
 		int food3 = Integer.parseInt(req.getParameter("food3"));
-		
+		Date sysdate= new Date(System.currentTimeMillis());
+
 		int todaycal =food1+food2+food3;
 		System.out.println("todaycal"+todaycal);
 		System.out.println("guestNo"+guestNo);
 		
-		CalorieVO vo =  new CalorieVO();
+		FoodVO vo =  new FoodVO();
 		vo.setGuestNo(guestNo);
 		vo.setTodaycal(todaycal);
+		vo.setDay(sysdate);
 
 		int insertcnt = dao.todaycal(vo);
 		
-		
-		
-	
 		if(insertcnt !=0) {
 			
-			vo = dao.mycal(guestNo);
+			vo = dao.mycal(vo);
+		}
+		
+		// 기초대사량 구하기 위한 회원건강정보셀렉
+		MyhealthVO mvo = new MyhealthVO();
+		double	basalmetabolism	= 0;
+		
+	
+		mvo = dao.myHealth(guestNo);
+		int height = mvo.getHeight();
+		int weight = mvo.getWeight();
+		int age = mvo.getAge();
+
+		
+		if(mvo.getGender()==1) {	//여자
+			basalmetabolism	= (655.1+(9.56*weight)+(5*height)-(6.76*age));
+		}else if(mvo.getGender()==2) { //남자
+			basalmetabolism	= (66.47+(13.75*weight)+(1.85*height)-(4.68*age));
+		}
+		
+		int alertcnt=0;
+		if(basalmetabolism<todaycal) {
+			 alertcnt=1;
+		}
+		
+		System.out.println("alertcnt?"+alertcnt);
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("mvo",mvo);
+		model.addAttribute("basalmetabolism",basalmetabolism);
+		model.addAttribute("alertcnt",alertcnt);
+	}
+	@Override
+	public void caloryAdd(HttpServletRequest req, Model model) {
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  
+		int guestNo = gvo.getGuestNo();
+		FoodVO vo =  new FoodVO();
+
+		Date sysdate= new Date(System.currentTimeMillis());
+		vo.setGuestNo(guestNo);
+		vo.setDay(sysdate);
+		
+		vo = dao.mycal(vo);
+		
+		int cnt=0;
+		if(vo != null) {
+			cnt=1;
+		
+		
+		// 기초대사량 구하기 위한 회원건강정보셀렉
+		MyhealthVO mvo = new MyhealthVO();
+		double Dbasalmetabolism	= 0;
+		
+		System.out.println(guestNo);
+		
+		mvo = dao.myHealth(guestNo);
+		int height = mvo.getHeight();
+		int weight = mvo.getWeight();
+		int age =  mvo.getAge();
+		
+		if(mvo.getGender()==1) {
+			Dbasalmetabolism	= 655.1+(9.56*weight)+(1.85*height)-(4.68*age);
+		}else if(mvo.getGender()==2) {
+			Dbasalmetabolism	= 66.47+(13.75*weight)+(5*height)-(6.76*age);
+					
+		}
+		
+		int todaycal = vo.getTodaycal();
+		int encouragecal = (int) (Dbasalmetabolism*1.3);
+
+		
+		int alertcnt=0;
+		if(todaycal>encouragecal) {
+			alertcnt=1;
+		}
+
+		int basalmetabolism = (int)Dbasalmetabolism;
+		
+		model.addAttribute("mvo",mvo);
+		model.addAttribute("basalmetabolism",basalmetabolism);
+		model.addAttribute("encouragecal",encouragecal);
+		model.addAttribute("alertcnt",alertcnt);
+		
+		}
+		
+
+		model.addAttribute("cnt",cnt);
+		model.addAttribute("vo",vo);
+		
+	}
+	@Override
+	public void calorAddModi(HttpServletRequest req, Model model) {
+		
+	String id = (String) req.getSession().getAttribute("id");
+	GuestVO gvo = dao.getGuestInfo(id);  
+	int guestNo = gvo.getGuestNo();
+	int food1 = Integer.parseInt(req.getParameter("food1"));
+	int food2 = Integer.parseInt(req.getParameter("food2"));
+	int food3 = Integer.parseInt(req.getParameter("food3"));
+	Date sysdate= new Date(System.currentTimeMillis());
+
+	int todaycal =food1+food2+food3;
+	System.out.println("todaycal"+todaycal);
+	System.out.println("guestNo"+guestNo);
+	
+	FoodVO vo =  new FoodVO();
+	vo.setGuestNo(guestNo);
+	vo.setTodaycal(todaycal);
+	vo.setDay(sysdate);
+
+	int cnt = dao.mycalUpdate(vo);
+	
+	if(cnt !=0) {
+		
+		vo = dao.mycal(vo);
+	}
+
+	// 기초대사량 구하기 위한 회원건강정보셀렉
+	
+		double Dbasalmetabolism	= 0;
+		
+		System.out.println(guestNo);
+		MyhealthVO mvo = new MyhealthVO();
+		mvo = dao.myHealth(guestNo);
+		int height = mvo.getHeight();
+		int weight = mvo.getWeight();
+		int age =  mvo.getAge();
+
+		
+		if(mvo.getGender()==1) {
+			Dbasalmetabolism	= 655.1+(9.56*weight)+(1.85*height)-(4.68*age);
+		}else if(mvo.getGender()==2) {
+			Dbasalmetabolism	= 66.47+(13.75*weight)+(5*height)-(6.76*age);
+					
+		}
+		
+		int alertcnt=0;
+		int encouragecal = (int) (Dbasalmetabolism*1.3);
+		int basalmetabolism = (int)Dbasalmetabolism;
+		
+		if(todaycal>encouragecal) {
+			alertcnt=1;
 		}
 	
+		
+		
+		model.addAttribute("alertcnt",alertcnt);
+		model.addAttribute("encouragecal",encouragecal);
+		model.addAttribute("basalmetabolism",basalmetabolism);
+		
 		model.addAttribute("vo",vo);
+
 	}
-	*/
+	@Override
+	public void newfood(HttpServletRequest req, Model model) {
+		
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  
+		int guestNo = gvo.getGuestNo();
+		String food = req.getParameter("food");
+		int foodcal = Integer.parseInt(req.getParameter("foodcal"));
+		int foodgram= Integer.parseInt(req.getParameter("foodgram"));
+		
+		
+		FoodVO vo = new FoodVO();
+		vo.setGuestNo(guestNo);
+		vo.setFood(food);
+		vo.setFoodcal(foodcal);
+		vo.setFoodgram(foodgram);
+		
+		int foodcnt = dao.newfood(vo);
+		
+		model.addAttribute("foodcnt",foodcnt);
+		
+	
+	}
+	@Override
+	public void myFoodList(HttpServletRequest req, Model model) {
+	
+
+		int pageSize = 10; // 한 페이지당 출력할 글 갯수
+		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
+
+		int cnt = 0; // 글 갯수
+		int start = 0; // 현재 페이지 시작 글번호
+		int end = 0; // 현재 페이지 마지막 글번호
+		int number = 0; // 화면에 출력할 출력용 글번호(실제DB의 번호와 달리 보여질 때 삭제된 행이있어도 순서대로 보여지도록~!)
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재페이지
+
+		int pageCount = 0; // 페이지갯수
+		int startPage = 0; // 시작페이지
+		int endPage = 0; // 마지막페이지
+
+		
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		
+		cnt = dao.myFoodcnt(guestNo);
+		System.out.println("cnt : " + cnt);
+
+		pageNum = req.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1"; // 첫 페이지를 1페이지로 설정
+
+		}
+		// 글 30건을 기준
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage :" + currentPage);
+
+		// 글 갯수를 출력할 글 갯수로 나누는데
+		// 나머지가 있을수 있으므로 나머지가 있으면 1페이지 추가하기위해 삼항연산자로 되묻는다.
+		// 예) pageCount = (30/5)+(30 % 5 > 0 ? 1:0);
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지 갯수 + 나머지
+
+		// 1 =(1-1)*5+1;
+		start = (currentPage - 1) * pageSize + 1; // 페이지별로 시작 글번호
+
+		// 5 = 1 + 5 -1;
+		end = start + pageSize - 1; // 페이지별로 마지막 글번호
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1-1) * 5;
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 글번호
+		System.out.println("number" + number);
+		System.out.println("pageSize" + pageSize);
+	
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+		
+			ArrayList<FoodVO> dtos = new ArrayList<FoodVO>();
+			 dtos = dao.myFoodList(map);
+			 
+			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			model.addAttribute("dtos", dtos);
+			
+			
+			
+		}
+
+		// 1 = (1/3)*3+1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작페이지
+
+		if (currentPage % pageBlock == 0) {
+			startPage -= pageBlock;
+		}
+		System.out.println("startPage:" + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		System.out.println("endPage : " + endPage); // 마지막페이지
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
+
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("number", number); // 글 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
+		
+			model.addAttribute("startPage", startPage); // 시작페이지
+			model.addAttribute("endPage", endPage); // 마지막페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재페이지
+
+		}
+	
+	
+	
+	
+	}
+	@Override
+	public void bookMark(HttpServletRequest req, Model model) {
+		
+
+		
+
+		int pageSize = 10; // 한 페이지당 출력할 글 갯수
+		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
+
+		int cnt = 0; // 글 갯수
+		int start = 0; // 현재 페이지 시작 글번호
+		int end = 0; // 현재 페이지 마지막 글번호
+		int number = 0; // 화면에 출력할 출력용 글번호(실제DB의 번호와 달리 보여질 때 삭제된 행이있어도 순서대로 보여지도록~!)
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재페이지
+
+		int pageCount = 0; // 페이지갯수
+		int startPage = 0; // 시작페이지
+		int endPage = 0; // 마지막페이지
+
+		
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		
+		cnt = dao.bookMarkcnt(guestNo);
+		System.out.println("cnt : " + cnt);
+
+		pageNum = req.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1"; // 첫 페이지를 1페이지로 설정
+
+		}
+		// 글 30건을 기준
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage :" + currentPage);
+
+		// 글 갯수를 출력할 글 갯수로 나누는데
+		// 나머지가 있을수 있으므로 나머지가 있으면 1페이지 추가하기위해 삼항연산자로 되묻는다.
+		// 예) pageCount = (30/5)+(30 % 5 > 0 ? 1:0);
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지 갯수 + 나머지
+
+		// 1 =(1-1)*5+1;
+		start = (currentPage - 1) * pageSize + 1; // 페이지별로 시작 글번호
+
+		// 5 = 1 + 5 -1;
+		end = start + pageSize - 1; // 페이지별로 마지막 글번호
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1-1) * 5;
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 글번호
+		System.out.println("number" + number);
+		System.out.println("pageSize" + pageSize);
+	
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+		
+			ArrayList<HospitalVO> dtos = new ArrayList<HospitalVO>();
+			 dtos = dao.bookMark(map);
+			 
+			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			model.addAttribute("dtos", dtos);
+			
+			
+			
+		}
+
+		// 1 = (1/3)*3+1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작페이지
+
+		if (currentPage % pageBlock == 0) {
+			startPage -= pageBlock;
+		}
+		System.out.println("startPage:" + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		System.out.println("endPage : " + endPage); // 마지막페이지
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
+
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("number", number); // 글 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
+		
+			model.addAttribute("startPage", startPage); // 시작페이지
+			model.addAttribute("endPage", endPage); // 마지막페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재페이지
+
+		}
+	
+	
+	
+	
+	
+
+		
+		
+	}
+	@Override
+	public void exitOkPro(HttpServletRequest req, Model model) {
+		String pwd= req.getParameter("password");
+		String id = (String) req.getSession().getAttribute("id");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		
+		int selectcnt = dao.exitOkPro(map);
+
+		model.addAttribute("selectcnt",selectcnt);
+	}
+	@Override
+	public void myFoodModi(HttpServletRequest req, Model model) {
+		int foodno = Integer.parseInt(req.getParameter("foodno"));
+		int foodcal = Integer.parseInt(req.getParameter("foodcal"));
+		int foodgram = Integer.parseInt(req.getParameter("foodgram"));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("foodno", foodno);
+		map.put("foodcal", foodcal);
+		map.put("foodgram", foodgram);
+		
+		int updatecnt = dao.myFoodModi(map);
+		
+		model.addAttribute("updatecnt",updatecnt);
+
+	
+	}
+	@Override
+	public void myFoodDelete(HttpServletRequest req, Model model) {
+
+		int foodno = Integer.parseInt(req.getParameter("foodno"));
+		int deletecnt = dao.myFoodDelete(foodno);
+		
+		model.addAttribute("deletecnt",deletecnt);
+
+	}
+	
 
 /*	@Override
 	public void simpleTreatPro(HttpServletRequest req, Model model) {

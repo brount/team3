@@ -9,6 +9,8 @@ import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.HpVO;
+import com.team.medical.vo.PrescriptionVO;
+import com.team.medical.vo.ReservationVO;
 
 public interface DoctorDAO {
 	
@@ -87,6 +89,61 @@ public interface DoctorDAO {
 	// 건강검진 정보 가져오기
 	public CheckupVO getCheckupResultInfo(int checkup);
 
+	// 건강검진 환자 번호
+	public int getGuestCheckupResult(int checkup);
+
+	// 건강검진 의사번호
+	public int getDoctonoCheckupResult(int guestno);
+
+	// 의사번호로 병원번호 가져오기
+	public int getHospitalnoDocno(String doctorno);
+
+	// 처방전 등록처리
+	public int examinationAdd(PrescriptionVO vo);
+
+	// 처방전 글 갯수
+	public int examinationListCnt(int i);
+
+	// 처방전 목록
+	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map);
+
+	// 처방전 번호로 회원번호 가져오기
+	public int getPrescriptionNoGuestno(int prescriptionNo);
+
+	// 처방전 정보
+	public PrescriptionVO getPrescription(int guestno);
+
+	// 예약 글 갯수
+	public int getPatientListCnt(int i);
+
+	// 예약 글 목록
+	public ArrayList<ReservationVO> getpatientList(Map<String, Integer> map);
+
+	// 예약병원정보
+	public HospitalVO getHospitalNoInfo(int hospitalno);
+
+	// 예약번호로 환자번호 가져오기
+	public int reservationNoguestno(int reservationNo);
+
+	// 예약정보 
+	public ReservationVO reservationInfo(int guestno);
+
+	//게스트 번호로 건강검진번호 가져오기
+	public CheckupVO getCheckupGuestno(int guestno);
+	
+	// 게스트 번호로 의사번호 가져오기
+	public int doctornoGuestno(int guestno);
+
+	// 게스트 번호로 건강검진 가져오기
+	public int getCheckupListGuestno(int guestno);
+
+	// 의사 면허증
+	//public int getDocLicence(String id);
+
+	
+
+	
+	
 	
 
 

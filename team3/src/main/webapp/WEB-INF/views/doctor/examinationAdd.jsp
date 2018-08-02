@@ -9,8 +9,10 @@
  <header>
 	<%@ include file="../common/header.jsp" %>
 </header> 
-
 <section>
+<input type="hidden" value="${checkup}" name="checkup">
+<input type="hidden" value="${doctorno}" name="doctorno">
+<form action="examinationInputPro?checkup=${checkup}&doctorno=${docDto.doctorno}" method="post" name="examinationAdd">
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-3">
@@ -25,29 +27,39 @@
 						    </div>
 						    <table class="table" border="1">
 						    	<tr>
-						    		<th>번호</th>
-						    		<td>00152</td>
+						    		<th rowspan="3"><br>환<br>자</th>
+						    		<th>이름</th>
+						    		<td>${gusDto.guestname}</td>
 						    		<th rowspan="3">의<br>료<br>기<br>관</th>
 						    		<th>명칭</th>
-						    		<td>코스모정신의학과</td>
+						    		<td>${hosDto.hospitalname}</td>
 						    	</tr>
 						    	<tr>
-						    		<th rowspan="2">환자</th>
-						    		<td>신우철</td>
+						    		<th>주민번호</th>
+						    		<td>${gusDto.jumin}</td>
 						    		<th>전화번호</th>
-						    		<td>02-977-2645</td>
+						    		<td>${hosDto.hospitalphone}</td>
+						    		
 						    	</tr>
 						    	<tr>
-						    		<td>123456-1******</td>
-						    		<th>e-mail주소</th>
-						    		<td>kosmo@naver.com</td>
+						    		<th>연락처</th>
+						    		<td>${gusDto.guesttel}</td>
+						    		<th>의사명</th>
+						    		<td>${docDto.doctorname}</td>
 						    	</tr>
 						    </table>
-						  
+						  	<table class="table table-striped table-hover" border="1">
+						  		<tr>
+						  			<th>증상</th>
+						  		</tr>
+						  		<tr>
+						  			<td><textarea cols="90" rows="5" name = "symptom" maxlength="100"></textarea></td>
+						  		</tr>
+						  	</table>
 						    <table class="table table-striped table-hover" border="1">
 						        <thead>
 						            <tr>
-						    		<th>처 방 의 약 품 명 칭</th>
+						    		<th>처 방 의 약 품 <br>명 칭</th>
 						    		<th>1회<br>투여량</th>
 						    		<th>1회<br>투여횟수</th>
 						    		<th>총<br>투여일수</th>
@@ -56,111 +68,85 @@
 						        </thead>
 						        <tbody>
 						            <tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="text" style="width:100%" name="drugname"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage"></td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="drugrepeat">번</td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="dosagedate">일</td>
+						                <td><input type="text" style="width:100%" name="dosageusage"></td>
 						          	</tr>
 						          	 <tr>
+						                <td><input type="text" style="width:100%" name="drugname2"></td>
 						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						          	</tr>
-						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						                <td><input type="text" style="width:100%"></td>
 						          	</tr>
 						          	<tr>
 						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						                <td><input type="text" style="width:100%"></td>
 						          	</tr>
 						          	<tr>
 						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						                <td><input type="text" style="width:100%"></td>
 						          	</tr>
 						          	<tr>
 						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						                <td><input type="text" style="width:100%"></td>
 						          	</tr>
-						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						          	</tr>
-						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						          	</tr>
+						          	
 						          	<tr>
 						          		<th colspan="4" align="center">주사제 처방내역</th>
 						          		<th> 조 제 시 참 고 사 항 </th>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td rowspan="5"><textarea rows="8"></textarea>　</td>
+						                <th>처 방 의 약 품 <br>명 칭</th>
+							    		<th>1회<br>투여량</th>
+							    		<th>1회<br>투여횟수</th>
+							    		<th>총<br>투여일수</th>
+						                <td rowspan="5"><textarea rows="8" name="caution" maxlength="255"></textarea>　</td>
+						          	</tr>
+						          	<tr>
+						          	  	<td><input type="text" style="width:100%" name="injectionname"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectiondosage"></td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="injectionrepeat">번</td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="injectiondate">일</td>
 						          	</tr>
 						          	<tr>
 						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						          	  	<td><input type="text" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						          	</tr>
 						          	<tr>
 						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						          	</tr>
-						          	<tr>
 						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						          	</tr>
-						          	<tr>
-						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
-						                <td><input type="number" style="width:100%"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
+						                <td><input type="number" style="width:100%" min="0"></td>
 						          	</tr>
 						        </tbody>
 						    </table>
 						    
 						</div>
 						<div style="display:table; margin:0 auto;">
-							<input type="button" value="등록하기" style="margin-right:5px;">
+							<input type="submit" value="처방등록" style="margin-right:5px;">
 							<input type="reset" value="작성취소">
-							<input type="button" value="메인가기" style="margin-left:5px;" onclick="window.location='main'">
+							<input type="button" value="처방목록" style="margin-left:5px;" onclick="window.location='examinationList'">
 						</div>
 					</div>
 	            </div>
 	        </div>
 	    </div>
 	</div> 
-
+</form>
 </section>
 
  <footer>

@@ -66,7 +66,7 @@
                               <c:forEach var="dto" items="${dtos }" >
                               <tr class="">
                                   <td class="view-message  dont-show">${dto.boardno}</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">${dto.boardtitle}</a></td>
+                                  <td colspan="3" class="view-message"><a href="boardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a></td>
                                   <td><span class="label label-success">${dto.boardwriter}</span></td>
                                   <td class="view-message  text-left">${dto.boarddate}</td>
                               </tr>
@@ -79,7 +79,41 @@
                           </div>
                       </div>
                   </aside>
-                  <ul class="pagination">
+                  
+                  <!-- 페이지 컨트롤 -->
+		<table style="width:1000px" align="center">
+			<tr>
+				<th align="center">
+					<c:if test="${cnt>0 }">
+						<!-- 처음[◀◀] / 이전[◀]  -->
+						<c:if test="${startPage > pageBlock }">
+							<a href="myBordList">[◀◀]</a>
+							<a href="myBordList?pageNum=${startPage - pageBlock }">[◀]</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<c:if test="${i == currentPage }">
+								<span><b>[${i}]</b></span>
+							</c:if>
+							<c:if test="${i != currentPage}">
+								<a href="myBordList?pageNum=${i }">[${i}]</a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- 다음[▶] / 끝[▶▶]  -->	
+						<c:if test="${pageCount > endPage }">
+							<a href="myBordList?pageNum=${startPage + pageBlock }">[▶]</a>
+							<a href="myBordList?pageNum=${pageCount}">[▶▶] </a>
+						</c:if>
+					</c:if>
+				</th>
+			</tr>
+		
+		</table>			
+                  
+                  
+                  
+                  <!-- <ul class="pagination">
 				      <li class="disabled"><span>«</span></li>
 				      <li class="active"><span>1</span></li>
 				      <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
@@ -88,7 +122,7 @@
 				      <li class="disabled"><span>...</span></li>
 				      <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
 				      <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
-				    </ul>
+				    </ul> -->
               </div>                    
 		</div>
 			            </div>

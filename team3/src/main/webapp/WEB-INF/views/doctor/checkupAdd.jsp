@@ -12,8 +12,10 @@
 </header> 
 
 <section>
-<form action="checkupAddInputPro" method="post" name="checkupAdd">
-<input type="hidden" value="${checkup}" name="checkup">
+<form action="checkupAddInputPro?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}" method="post" name="checkupAdd">
+<input type="hidden" value="${checkuplist}" name="checkuplist">
+<input type="hidden" value="${doctorno}" name="doctorno">
+
 <div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
@@ -28,12 +30,11 @@
 								    </div>
 								    <table class="table" border="1" >
 								<tr>
+									<th colspan="2">환자 정보</th>
+								</tr>    
+								<tr>
 									<td>성명 : ${gusDto.guestname}</td>
 									<td>주민등록번호 : ${gusDto.jumin}</td>
-								</tr>
-								<tr>
-									<td>성별 : <input type="text" name="guestSex"></td>
-									<td>나이 : <input type="text" name="guestAge"></td>
 								</tr>
 								<tr>
 									<td>연락처 : ${gusDto.guesttel}</td>

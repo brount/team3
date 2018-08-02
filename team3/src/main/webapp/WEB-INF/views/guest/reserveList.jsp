@@ -31,13 +31,8 @@
 			                <div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
-                          <h3>나의 예약 목록</h3>
-                          <form action="#" class="pull-right position">
-                              <div class="input-append">
-                                  <input type="text" class="sr-input" placeholder="검색">
-                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                              </div>
-                          </form>
+                          <h3>나의 예약 목록(${cnt})</h3>
+                       
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
@@ -47,8 +42,7 @@
                                 
                             <tbody>
                               <tr class="unread">
-                                      <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-
+                                   
                      			  <td>예약번호</td>
                                   <td class="view-message">병원명</td>   
                                   <td></td>
@@ -63,7 +57,7 @@
                               </tr>
                                <c:forEach var="dto" items="${dtos}" >
                               <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
+               			  
                                <td>${dto.reservationNo}</td>
                                   <td colspan="3" class="view-message"><a href="boardInfo">${dto.hospitalname }</a></td>
                                   <td><span class="label label-success">
@@ -87,7 +81,51 @@
            
                   </aside>
                   
-                  <ul class="pagination" style="margin-top: 50px;margin-left:400px; ">
+                  
+                  
+                  
+                  <!-- 페이지 컨트롤 -->
+		<table style="width:1000px" align="center">
+			<tr>
+				<th align="center">
+					<c:if test="${cnt>0 }">
+						<!-- 처음[◀◀] / 이전[◀]  -->
+						<c:if test="${startPage > pageBlock }">
+							<a href="reserveList">[◀◀]</a>
+							<a href="reserveList?pageNum=${startPage - pageBlock }">[◀]</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<c:if test="${i == currentPage }">
+								<span><b>[${i}]</b></span>
+							</c:if>
+							<c:if test="${i != currentPage}">
+								<a href="reserveList?pageNum=${i }">[${i}]</a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- 다음[▶] / 끝[▶▶]  -->	
+						<c:if test="${pageCount > endPage }">
+							<a href="reserveList?pageNum=${startPage + pageBlock }">[▶]</a>
+							<a href="reserveList?pageNum=${pageCount}">[▶▶] </a>
+						</c:if>
+					</c:if>
+				</th>
+			</tr>
+		
+		</table>			
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <!-- ul class="pagination" style="margin-top: 50px;margin-left:400px; ">
                   <li class="disabled"><span>«</span></li>
                   <li class="active"><span>1</span></li>
                   <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
@@ -96,7 +134,7 @@
                   <li class="disabled"><span>...</span></li>
                   <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
                   <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
-                </ul>
+                </ul> -->
             
 					 </div>                    
                    <div style="margin-top: 50px;">

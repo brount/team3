@@ -10,7 +10,9 @@
 	</c:if>
 
 	<c:if test="${deleteCnt != 0}">
-		<c:redirect url="diseaseList"></c:redirect>
+		<script type="text/javascript">
+			window.location="diseaseList";	
+		</script>
 	</c:if>
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
+import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
@@ -160,18 +161,41 @@ public class GuestDAOImpl implements GuestDAO {
 		return updatecnt;
 	
 	}
+	
+	@Override
+	public int myBordListcnt(String id) {
+
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int cnt = dao.myBordListcnt(id);
+		
+		return cnt;
+	}
+	
+	
 
 	@Override
-	public ArrayList<QuestionBoardVO> myBordList(String id) {
+	public ArrayList<QuestionBoardVO> myBordList(Map<String,Object> map) {
 		 ArrayList<QuestionBoardVO> dtos = new ArrayList<QuestionBoardVO>();
 		
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 
-		dtos = dao.myBordList(id);
+		dtos = dao.myBordList(map);
 
 		return dtos;
 	}
 
+	@Override
+	public int exitOkPro(Map<String, Object> map) {
+		
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		
+		int selectcnt = dao.exitOkPro(map);
+		
+		return selectcnt;
+				
+	
+	}
+	
 	@Override
 	public int guestExitPro(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -204,12 +228,12 @@ public class GuestDAOImpl implements GuestDAO {
 	
 	
 	@Override
-	public  ArrayList<ReservationVO> reserveList(int guestNo) {
+	public  ArrayList<ReservationVO> reserveList(Map<String,Object> map) {
 		ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
 
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 
-		dtos = dao.reserveList(guestNo);
+		dtos = dao.reserveList(map);
 
 		return dtos;
 	}
@@ -237,20 +261,20 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return htos;
 	}
-/*
+
 	@Override
-	public CalorieVO foodsearch(String food) {
+	public ArrayList<FoodVO> foodsearch(FoodVO vo ) {
 		
-		CalorieVO vo = new CalorieVO();
+		 ArrayList<FoodVO> dtos = new  ArrayList<FoodVO>();
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		vo = dao.foodsearch(food);
+		dtos = dao.foodsearch(vo);
 		
 		
-		return vo;
+		return dtos;
 	}
 
 	@Override
-	public int todaycal(CalorieVO vo) {
+	public int todaycal(FoodVO vo) {
 		
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		int insertcnt = dao.todaycal(vo);
@@ -258,13 +282,101 @@ public class GuestDAOImpl implements GuestDAO {
 	}
 
 	@Override
-	public CalorieVO mycal(int guestNo) {
-		CalorieVO vo = new CalorieVO();
+	public FoodVO mycal(FoodVO vo) {
+	
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		vo = dao.mycal(guestNo);
+		vo = dao.mycal(vo);
 		
 		
 		return vo;
 	}
-*/
+
+	@Override
+	public int mycalUpdate(FoodVO vo) {	
+	GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+	int cnt = dao.mycalUpdate(vo);
+	return cnt;
+	
+	}
+
+	@Override
+	public int newfood(FoodVO vo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		
+		int foodcnt = dao.newfood(vo);
+		
+		
+		return foodcnt;
+	}
+
+	@Override
+	public int reservecnt(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int cnt = dao.reservecnt(guestNo);
+		return cnt;
+	}
+
+	@Override
+	public int myFoodcnt(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int cnt = dao.myFoodcnt(guestNo);
+		
+		return cnt;
+	
+	}
+
+	@Override
+	public ArrayList<FoodVO> myFoodList(Map<String, Object> map) {
+		
+		ArrayList<FoodVO> dtos = new ArrayList<FoodVO>();
+
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		dtos = dao.myFoodList(map);
+		
+		return dtos;
+
+	}
+
+	@Override
+	public int bookMarkcnt(int guestNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<HospitalVO> bookMark(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int myFoodModi(Map<String, Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int updatecnt = dao.myFoodModi(map);
+		
+		return updatecnt;
+	
+	}
+
+	@Override
+	public int myFoodDelete(int foodno) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int deletecnt = dao.myFoodDelete(foodno);
+		
+		return deletecnt;
+
+		
+		
+	}
+
+	
+
+
+
+
 }

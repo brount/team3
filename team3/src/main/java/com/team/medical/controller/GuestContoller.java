@@ -114,6 +114,7 @@ public class GuestContoller {
 	@RequestMapping(value = "bookMark")
 	public String bookMark(HttpServletRequest req, Model model) {
 		logger.info("bookMark, 페이지");
+		guService.bookMark(req, model);
 		return "guest/bookMark";
 	}	
 	// 예약목록페이지                            
@@ -155,8 +156,29 @@ public class GuestContoller {
 	@RequestMapping(value = "caloryAdd")
 	public String caloryAdd(HttpServletRequest req, Model model) {
 		logger.info("caloryAdd, 페이지");
-		return "guest/caloryAdd";
+		guService.caloryAdd(req, model);
+
+		return "guest/caloryAdd2";
 	}	
+	
+	//칼로리수정페이지                            
+		@RequestMapping(value = "caloryAddModi")
+		public String calorAddModi(HttpServletRequest req, Model model) {
+			logger.info("caloryAddModi, 페이지");
+
+			return "guest/caloryAddModi";
+		}	
+	
+	//칼로리수정처리페이지            
+		@RequestMapping(value = "calorAddModiPro")
+		public String calorAddModiPro(HttpServletRequest req, Model model) {
+			logger.info("calorAddModiPro, 페이지");
+			guService.calorAddModi(req, model);
+
+			return "guest/caloryAdd";
+		}	
+		
+		
 	//개인건강관리페이지                            
 	@RequestMapping(value = "personalCare")
 	public String personalCare(HttpServletRequest req, Model model) {
@@ -204,7 +226,6 @@ public class GuestContoller {
 
 		return "guest/checkupRegisterPro";
 	}
-	/*
 	//음식 검색 칼로리조회 -아침
 	@RequestMapping(value = "foodsearch1")
 	public String foodsearch1(HttpServletRequest req, Model model) {
@@ -239,12 +260,58 @@ public class GuestContoller {
 
 		return "guest/todaycal";
 	}
-	*/
+	
+	
+	//사용자가 새로운 음식과 칼로리 인설트
+	@RequestMapping(value = "newfood")
+	public String newfood(HttpServletRequest req, Model model) {
+		logger.info("newfood, 페이지");
+		guService.newfood(req, model);
+
+		return "guest/newfood";
+	}
+	//사용자가 새로운 음식과 칼로리 인설트/ 수정페이지버전
+		@RequestMapping(value = "newfoodmodi")
+		public String newfoodmodi(HttpServletRequest req, Model model) {
+			logger.info("newfoodmodi, 페이지");
+			guService.newfood(req, model);
+
+			return "guest/newfoodmodi";
+		}
+	
+	//사용자가 추가한 음식 목록
+		@RequestMapping(value = "myFoodList")
+		public String myFoodList(HttpServletRequest req, Model model) {
+			logger.info("myFoodList, 페이지");
+			guService.myFoodList(req, model);
+
+			return "guest/myFoodList";
+		}
+	//사용자가 추가한 음식 수정
+		@RequestMapping(value = "myFoodModi")
+		public String myFoodModi(HttpServletRequest req, Model model) {
+			logger.info("myFoodModi, 페이지");
+			guService.myFoodModi(req, model);
+
+			return "guest/myFoodModi";
+		}
+		
+		
+	//사용자가 추가한 음식 삭제
+		@RequestMapping(value = "myFoodDelete")
+		public String myFoodDelete(HttpServletRequest req, Model model) {
+			logger.info("myFoodModi, 페이지");
+			guService.myFoodDelete(req, model);
+
+			return "guest/myFoodDelete";
+		}
 	
 	// ♬ 마이페이지
 	@RequestMapping(value = "myGuest")
 	public String myGuest(HttpServletRequest req, Model model) {
 		logger.info("myGuest, 페이지");
+		
+		guService.myHealth(req, model);
 		return "guest/myGuest";
 	}
 	
@@ -265,12 +332,30 @@ public class GuestContoller {
 		
 		return "guest/guestLoginPro";
 	}	
-	//일반회원탈퇴확인페이지                  
+	//일반회원탈퇴비밀번호확인                  
 	@RequestMapping(value = "guestExit")
 	public String memberExit(HttpServletRequest req, Model model) {
-		logger.info("guestExit, 페이지");
-		return "guest/guestExit";
+		logger.info("exitOk, 페이지");
+		return "guest/exitOk";
 	}
+	//일반회원탈퇴비밀번호확인처리             
+		@RequestMapping(value = "exitOkPro")
+		public String exitOkPro(HttpServletRequest req, Model model) {
+			logger.info("exitOkPro, 페이지");
+			guService.exitOkPro(req, model);
+
+			return "guest/exitOkPro";
+	}
+	//일반회원탈퇴 안내문          
+			@RequestMapping(value = "guestExitOk")
+			public String guestExitOk(HttpServletRequest req, Model model) {
+				logger.info("guestExitOk, 페이지");
+				
+
+				return "guest/guestExit";
+		}
+	
+	
 	@RequestMapping(value = "guestExitPro")
 	public String guestExitPro(HttpServletRequest req, Model model) {
 		logger.info("guestExitPro, 페이지");

@@ -3,6 +3,8 @@
 <%@include file="../common/setting.jsp" %>
 <html>
 <body>
+<input type="hidden" value="${doctorno}" name="doctorno">
+
 	<c:if test="${insertCnt==0}">
 	
 	<script type="text/javascript">
@@ -14,7 +16,7 @@
 	<c:if test="${insertCnt!=0}">	
 		<script type="text/javascript">
 		alert("검진의뢰가 등록되었습니다");
-		window.location="checkupResultList"		
+		window.location="checkupResultList?doctorno=${doctorno}"		
 		</script>
 	
 	</c:if>

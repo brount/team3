@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
@@ -8,81 +7,7 @@
 <body>
 	<div id="wrapper">
 
-	    <!-- Navigation -->
-	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="navbar-header">
-	            <a class="navbar-brand" href="memberList"> 관리자 </a>
-	        </div>
-	
-	        <ul class="nav navbar-right navbar-top-links">
-	        	<li onclick="main">Main</a></li>
-	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
-	        </ul>
-	        <!-- /.navbar-top-links -->
-	
-	        <div class="navbar-default sidebar" role="navigation">
-	            <div class="sidebar-nav navbar-collapse">
-	                <ul class="nav" id="side-menu">
-	                    <li>
-                        	<a href="#">회원관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="memberList">일반회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="doctorList">의사회원목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="hospitalList">병원관리</a>
-	                    </li>
-	                    
-	                    <li>
-                        	<a href="#">정보관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="drugList">약정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="diseaseList">질병정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="exerciseList">운동정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="foodList">음식정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="apreventionList">예방정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="requestList">요구사항목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="eventRequestList">광고관리</a>
-	                    </li>
-	                    <li>
-	                    	<a href="#">결산<span class="fa arrow"></span></a>
-	                    	<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="pointList">포인트결제내역목록</a>
-                                </li>
-                                <li>
-                                    <a href="cashList">현금결제내역목록</a>
-                                </li>
-                            </ul>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
-	    </nav>
+	   <jsp:include page="./admin_nav.jsp"></jsp:include>
 	
 	    <div id="page-wrapper">
 	        <div class="row">
@@ -102,9 +27,14 @@
 	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
 						 				<option value="doctorList">의사회원목록</option>
 						 				<option value="doctorpermissionList">의사회원승인대기목록</option>
-						 				<option value="doctorsanctionList">의사제제회원목록</option>
+						 				<!-- <option value="doctorsanctionList">의사제제회원목록</option> -->
 						 				<option value="doctorsecessionList">의사탈퇴회원목록</option>
 						 			</select>
+						 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" onclick="doctorExpelCheck();">
+                                    	제명
+                                    </button>
+						 			
 	                            </div>
 	                        </div>
 	                    </div>
@@ -116,7 +46,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
-	                                        	<th><input type="checkBox"></th>
+	                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
 	                                            <th>회원번호</th>			
 	                                            <th>병원명</th>			
 	                                            <th>회원ID</th>			
@@ -131,21 +61,26 @@
 	                                        </tr>
 	                                        </thead>
 	                                        <tbody>
+	                                        
 	                                        <c:if test="${cnt > 0}">
+	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">${pageNum}
+	                                        	<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-													    <td onclick="window.location='doctorsanctionManage'">${dto.doctorno}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.hospitalname}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.doctorid}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.doctorname}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.hospitaladdress3}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.hospitalphone}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.doctorspecialism}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.doctorappro}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.sanctions}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.point}</td>
-														<td onclick="window.location='doctorsanctionManage'">${dto.doctorregstration}</td>
+														<td><input type="checkbox" name="checkOne" value="${dto.doctorno}"></td>
+													    <td>${dto.doctorno}</td>
+														<td>${dtos2[a].hospitalname}</td>
+														<td>${dto.doctorid}</td>
+														<td>${dto.doctorname}</td>
+														<td>${dtos2[a].hospitaladdress3}</td>
+														<td>${dtos2[a].hospitalphone}</td>
+														<td>${dto.doctorspecialism}</td>
+														<td>${dto.doctorappro}</td>
+														<td>${dto.sanctions}</td>
+														<td>${dto.point}</td>
+														<td>${dto.doctorregstration}</td>
 		                                        	</tr>
+		                                        	<c:set var="a" value="${a+1 }"></c:set>
 		                                       	</c:forEach>
 		                                       </c:if>
 	                                        </tbody>
@@ -157,25 +92,48 @@
 											<tr>
 												<th align="center">
 													<c:if test="${cnt > 0}">
-														<!-- 맨끝[◀◀] / 이전[◀] -->
-														<c:if test="${startPage > pageBlock}">
-															<a href="doctorList">[맨앞]</a>
-															<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
+														<c:if test="${sc == null}">
+															<!-- 맨끝[◀◀] / 이전[◀] -->
+															<c:if test="${startPage > pageBlock}">
+																<a href="doctorList">[맨앞]</a>
+																<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
+															</c:if>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="doctorList?pageNum=${i}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<!-- 맨끝[▶▶] / 다음▶] -->
+															<c:if test="${pageCount > endPage}">
+																<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
+																<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
+															</c:if>
 														</c:if>
-									
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="doctorList?pageNum=${i}">[${i}]</a>
-															</c:if>
-														</c:forEach>
 														
-														<!-- 맨끝[▶▶] / 다음▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
+														<c:if test="${sc != null}">
+															<c:if test="${startPage > pageBlock}">
+																<a href="doctorSearchList?sc=${sc}&search=${search}">[맨앞]</a>
+																<a href="doctorSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+															</c:if>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="doctorSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<c:if test="${pageCount > endPage}">
+																<a href="doctorSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
+																<a href="doctorSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+															</c:if>
 														</c:if>
 													</c:if>
 												</th>
@@ -183,7 +141,7 @@
 										</table>
 										
 	                                    <table align="center">
-	                                    	<form action="doctorSearchList" class="search_box" method="post">
+	                                    	<form action="doctorSearchList" class="search_box" method="get">
                                   			<tr>
                                        			<td>
 	                                        		<select class="input" name="sc" >

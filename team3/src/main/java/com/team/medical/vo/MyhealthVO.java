@@ -1,5 +1,7 @@
 package com.team.medical.vo;
 
+import java.sql.Date;
+
 public class MyhealthVO {
 
 	private int    guestNo;
@@ -8,20 +10,14 @@ public class MyhealthVO {
 	private int    birth2; //월(01)
 	private int    birth3; //일(13)
 	private int    age; //나이 
-	private String height;
-	private String weight;
+	private int height;
+	private int weight;
 	private String bloodtype; //혈액형
-	private String bmi;
-	private String gender; // 성별
-	
+	private int bmi;
+	private int gender; // 성별 - 1: 여자, 2: 남자
 
 	
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+	
 	public int getGuestNo() {
 		return guestNo;
 	}
@@ -33,24 +29,6 @@ public class MyhealthVO {
 	}
 	public void setCalorieno(int calorieno) {
 		this.calorieno = calorieno;
-	}
-	public String getHeight() {
-		return height;
-	}
-	public void setHeight(String height) {
-		this.height = height;
-	}
-	public String getWeight() {
-		return weight;
-	}
-	public void setWeight(String weight) {
-		this.weight = weight;
-	}
-	public String getBmi() {
-		return bmi;
-	}
-	public void setBmi(String bmi) {
-		this.bmi = bmi;
 	}
 	public int getBirth1() {
 		return birth1;
@@ -76,12 +54,41 @@ public class MyhealthVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public int getWeight() {
+		return weight;
+	}
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
 	public String getBloodtype() {
 		return bloodtype;
 	}
 	public void setBloodtype(String bloodtype) {
 		this.bloodtype = bloodtype;
 	}
+	public int getBmi() {
+		return bmi;
+	}
+	public void setBmi(int bmi) {
+		this.bmi = bmi;
+	}
+	public int getGender() {
+		return gender;
+	}
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+	
+	
+	
+
+	
 	
 	
 

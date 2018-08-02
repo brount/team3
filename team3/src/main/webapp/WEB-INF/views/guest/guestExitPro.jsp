@@ -19,7 +19,7 @@
 			alert("회원탈퇴처리 되었습니다.");
 			</script>
 			
-			<c:redirect url="main"/>
+			<c:redirect url="logout"/>
 		</c:if>
 </body>
 </html>

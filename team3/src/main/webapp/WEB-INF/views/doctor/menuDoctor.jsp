@@ -14,11 +14,6 @@
 	                <table class="table">
 	                    <tr>
 	                        <td>
-	                            <a href="#">나의정보</a>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>
 	                            <a href="myHospital">병원정보</a>
 	                        </td>
 	                    </tr>

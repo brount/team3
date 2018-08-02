@@ -18,23 +18,29 @@
 
 	<!-- 일반회원목록 조회 -->
 	<select id="getMemberList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
-		
-			SELECT guestNo
-				 , guestid
-				 , guestname
-				 , address2
-				 , guestage
-				 , guesttel
-				 , sanctions
-				 , guestdate
-				 , rownum
-			  from guest
-	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
-			   AND status = 0
-			   AND sanctions = 0
-		]]>
+		select * 
+    	  from (
+                 SELECT guestNo 
+                      , guestid
+                      , guestname
+                      , address2
+                      , guestage
+                      , guesttel
+                      , sanctions
+                      , guestdate
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from guest
+                           where status = 0
+                             and sanctions = 0
+                           order by guestNo desc
+                        )
+               )
+               <![CDATA[
+         WHERE rNum >= #{start}
+           AND rNum <= #{end}
+               ]]>
 	</select>
 
 	<!-- 일반회원검색목록 개수 구하기 -->
@@ -68,7 +74,7 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum
+					 			, rownum rNum
 							 FROM (SELECT *
 									 FROM guest
 			<where>
@@ -90,7 +96,8 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rownum >= #{start} AND rownum <= #{end}
+	                  WHERE rNum >= #{start} 
+	                    AND rNum <= #{end}
       			]]>
 	</select>
 
@@ -101,22 +108,30 @@
 
 	<!-- 일반제제회원목록 조회 -->
 	<select id="getMembersanctionsList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
-		<![CDATA[
-			SELECT guestNo
-				 , guestid
-				 , guestname
-				 , address2
-				 , guestage
-				 , guesttel
-				 , sanctions
-				 , guestdate
-				 , rownum
-			  from guest
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
-			   AND sanctions != 0
-			   AND status = 0
-		]]>
+		
+		select * 
+    	  from (
+                 SELECT guestNo 
+                      , guestid
+                      , guestname
+                      , address2
+                      , guestage
+                      , guesttel
+                      , sanctions
+                      , guestdate
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from guest
+                           where status = 0
+                             and sanctions != 0
+                           order by guestNo desc
+                        )
+               )
+               <![CDATA[
+         WHERE rNum >= #{start}
+           AND rNum <= #{end}
+               ]]>
 	</select>
 
 	<!-- 일반제제회원검색목록 개수 구하기 -->
@@ -150,7 +165,7 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum
+					 			, rownum rNum
 							 FROM (SELECT *
 									 FROM guest
 			<where>
@@ -172,7 +187,8 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rownum >= #{start} AND rownum <= #{end}
+	                  WHERE rNum >= #{start} 
+	                    AND rNum <= #{end}
       			]]>
 	</select>
 
@@ -183,21 +199,29 @@
 
 	<!-- 일반탈퇴회원목록 조회 -->
 	<select id="getMembersecessionList" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
-			SELECT guestNo
-				 , guestid
-				 , guestname
-				 , address2
-				 , guestage
-				 , guesttel
-				 , sanctions
-				 , guestdate
-				 , rownum
-			  from guest
-		<![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
-			   AND status = 1
-		]]>
+			
+		select * 
+    	  from (
+                 SELECT guestNo 
+                      , guestid
+                      , guestname
+                      , address2
+                      , guestage
+                      , guesttel
+                      , sanctions
+                      , guestdate
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from guest
+                           where status = 1
+                           order by guestNo desc
+                        )
+               )
+               <![CDATA[
+         WHERE rNum >= #{start}
+           AND rNum <= #{end}
+               ]]>
 	</select>
 
 	<!-- 일반탈퇴회원검색목록 개수 구하기 -->
@@ -229,28 +253,28 @@
 					 			, guesttel
 					 			, sanctions
 					 			, guestdate
-					 			, rownum
+					 			, rownum rNum
 							 FROM (SELECT *
 									 FROM guest
-			<where>
-				<choose>
-					<when test="sc == 0 ">
-						guestNo = #{search}
-					</when>
-					<when test="sc == 1">
-						and guestname LIKE '%'||#{search}||'%'
-					</when>
-					<when test="sc == 2">
-						and guestid LIKE '%'||#{search}||'%'
-					</when>
-				</choose>
-				and status = 1
-			</where>
-				ORDER BY guestid DESC
+									<where>
+										<choose>
+											<when test="sc == 0 ">
+												guestNo = #{search}
+											</when>
+											<when test="sc == 1">
+												and guestname LIKE '%'||#{search}||'%'
+											</when>
+											<when test="sc == 2">
+												and guestid LIKE '%'||#{search}||'%'
+											</when>
+										</choose>
+										and status = 1
+									</where>
+									ORDER BY guestid DESC
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rownum >= #{start} AND rownum <= #{end}
+	                  WHERE rNum >= #{start} AND rNum <= #{end}
       			]]>
 	</select>
 
@@ -278,6 +302,437 @@
 
 
 
+
+
+
+
+	<!-- 의사회원목록 개수 -->
+	<select id="getDoctorListCnt" resultType="int">
+		SELECT COUNT(*) FROM doctor 
+		<where>
+			doctorappro = 1 AND sanctions = 0
+		</where>
+	</select>
+
+	<!-- 의사회원목록 조회 -->
+	<select id="getDoctorList" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		SELECT * 
+		  FROM (
+				SELECT doctorno 
+					 , doctorid
+					 , doctorname
+					 , doctorspecialism
+		 			 , doctorappro
+					 , sanctions
+					 , point
+					 , doctorregstration
+					 , rownum rNum        
+				  FROM (
+						SELECT * 
+						  FROM doctor
+						 WHERE doctorappro = 1 
+						   AND sanctions = 0
+						 ORDER by doctorno desc
+						)
+				)
+		<![CDATA[
+		 WHERE rNum >= #{start}
+		   AND rNum <= #{end}
+		]]>
+	</select>
+
+	<!-- 의사회원검색목록 개수 구하기 -->
+	<select id="search_doctorCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(doctorno) FROM doctor
+		<where>
+			 doctorappro = 1 AND sanctions = 0
+			<choose>
+				<when test="sc == 0 ">
+					AND doctorid LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND doctorname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND hospitalname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					AND doctorspecialism LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 의사회원검색목록 조회 -->
+	<select id="search_doctor" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		select * 
+    	  from (
+                 SELECT doctorno 
+                      , doctorid
+                      , doctorname
+                      , doctorspecialism
+                      , doctorappro
+                      , sanctions
+                      , point
+                      , doctorregstration
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from doctor
+								WHERE doctorappro = 1 
+                              	  AND sanctions = 0
+								<choose>
+									<when test="sc == 0 ">
+										AND doctorid LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 1">
+										AND doctorname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 2">
+										AND hospitalname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 3">
+										AND doctorspecialism LIKE '%'||#{search}||'%'
+									</when>
+								</choose>
+                           ORDER by doctorno desc
+                        )
+               )
+				<![CDATA[
+         	WHERE rNum >= #{start}
+           	  AND rNum <= #{end}
+               ]]>
+	</select>
+
+	<!-- 의사회원 승인대기 목록 개수 -->
+	<select id="getDoctorPermissionListCnt" resultType="int">
+		SELECT COUNT(*) FROM doctor 
+		<where>
+			doctorappro = 0 AND sanctions = 0
+		</where>
+	</select>
+
+	<!-- 의사회원 승인대기 목록 조회 -->
+	<select id="getDoctorPermissionList" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		SELECT * 
+		  FROM (
+				SELECT doctorno 
+					 , doctorid
+					 , doctorname
+					 , doctorspecialism
+		 			 , doctorappro
+					 , sanctions
+					 , point
+					 , doctorregstration
+					 , rownum rNum        
+				  FROM (
+						SELECT * 
+						  FROM doctor
+						 WHERE doctorappro = 0
+						   AND sanctions = 0
+						 ORDER by doctorno desc
+						)
+				)
+		<![CDATA[
+		 WHERE rNum >= #{start}
+		   AND rNum <= #{end}
+		]]>
+	</select>
+
+
+	<!-- 
+	 의사회원 승인대기 검색목록 개수 구하기 
+	<select id="search_doctorPermissionCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(doctorno) FROM doctor
+		<where>
+			 doctorappro = 0 AND sanctions = 0
+			<choose>
+				<when test="sc == 0 ">
+					AND doctorid LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND doctorname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND hospitalname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					AND doctorspecialism LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	의사회원 승인대기 검색목록 조회
+	<select id="search_doctorPermission" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+			select * 
+    	  from (
+                 SELECT doctorno 
+                      , doctorid
+                      , doctorname
+                      , doctorspecialism
+                      , doctorappro
+                      , sanctions
+                      , point
+                      , doctorregstration
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from doctor
+								WHERE doctorappro = 0
+                              	  AND sanctions = 0
+								<choose>
+									<when test="sc == 0 ">
+										AND doctorid LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 1">
+										AND doctorname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 2">
+										AND hospitalname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 3">
+										AND doctorspecialism LIKE '%'||#{search}||'%'
+									</when>
+								</choose>
+                           ORDER by doctorno desc
+                        )
+               )
+				<![CDATA[
+         	WHERE rNum >= #{start}
+           	  AND rNum <= #{end}
+               ]]>
+	</select>
+	 -->
+
+	<!-- 
+	의사제제회원 목록 개수
+	<select id="getDoctorSanctionListCnt" resultType="int">
+		SELECT COUNT(*) FROM doctor 
+		<![CDATA[
+			where doctorappro = 1 
+			AND sanctions > 0
+		]]>
+	</select>
+
+	의사제제회원 목록 조회
+	<select id="getDoctorSanctionList" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		SELECT * 
+		  FROM (
+				SELECT doctorno 
+					 , doctorid
+					 , doctorname
+					 , doctorspecialism
+		 			 , doctorappro
+					 , sanctions
+					 , point
+					 , doctorregstration
+					 , rownum rNum        
+				  FROM (
+						SELECT * 
+						  FROM doctor
+<![CDATA[
+			 			 where doctorappro = 1 
+						   AND sanctions > 0
+]]>
+						 ORDER by doctorno desc
+						)
+				)
+		<![CDATA[
+		 WHERE rNum >= #{start}
+		   AND rNum <= #{end}
+		]]>
+	</select>
+
+	의사제제회원 검색목록 개수 구하기
+	<select id="search_doctorSanctionCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(doctorno) FROM doctor
+		<where>
+	<![CDATA[
+			 doctorappro = 1 
+			 AND sanctions > 0
+	]]>
+			<choose>
+				<when test="sc == 0 ">
+					AND doctorid LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND doctorname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND hospitalname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					AND doctorspecialism LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	의사제제회원 검색목록 조회
+	<select id="search_doctorSanction" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		 select * 
+    	  from (
+                 SELECT doctorno 
+                      , doctorid
+                      , doctorname
+                      , doctorspecialism
+                      , doctorappro
+                      , sanctions
+                      , point
+                      , doctorregstration
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from doctor
+<![CDATA[
+			 				where doctorappro = 1 
+			 					AND sanctions > 0
+]]>
+								<choose>
+									<when test="sc == 0 ">
+										AND doctorid LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 1">
+										AND doctorname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 2">
+										AND hospitalname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 3">
+										AND doctorspecialism LIKE '%'||#{search}||'%'
+									</when>
+								</choose>
+                           ORDER by doctorno desc
+                        )
+               )
+				<![CDATA[
+         	WHERE rNum >= #{start}
+           	  AND rNum <= #{end}
+               ]]>
+	</select>
+	 -->
+	
+	
+	<!-- 의사탈퇴회원 목록 개수 -->
+	<select id="getDoctorSecessionListCnt" resultType="int">
+		SELECT COUNT(*) FROM doctor 
+		<where>
+			doctorappro = 2
+		</where> 
+	</select>
+
+	<!-- 의사탈퇴회원 목록 조회 -->
+	<select id="getDoctorSecessionList" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		SELECT * 
+		  FROM (
+				SELECT doctorno 
+					 , doctorid
+					 , doctorname
+					 , doctorspecialism
+		 			 , doctorappro
+					 , sanctions
+					 , point
+					 , doctorregstration
+					 , rownum rNum        
+				  FROM (
+						SELECT * 
+						  FROM doctor
+			 			 where doctorappro = 2
+						 ORDER by doctorno desc
+						)
+				)
+		<![CDATA[
+		 WHERE rNum >= #{start}
+		   AND rNum <= #{end}
+		]]>
+	</select>
+
+	<!-- 의사탈퇴회원 검색목록 개수 구하기 -->
+	<select id="search_doctorSecessionCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(doctorno) FROM doctor
+		<where>
+			 doctorappro = 2
+			<choose>
+				<when test="sc == 0 ">
+					AND doctorid LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					AND doctorname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					AND hospitalname LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 3">
+					AND doctorspecialism LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 의사탈퇴회원 검색목록 조회 -->
+	<select id="search_doctorSecession" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
+		 select * 
+    	  from (
+                 SELECT doctorno 
+                      , doctorid
+                      , doctorname
+                      , doctorspecialism
+                      , doctorappro
+                      , sanctions
+                      , point
+                      , doctorregstration
+					  , rownum rNum        
+            	   from (
+                	      select * 
+                            from doctor
+                            <where>
+			 					doctorappro = 1 
+								<choose>
+									<when test="sc == 0 ">
+										AND doctorid LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 1">
+										AND doctorname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 2">
+										AND hospitalname LIKE '%'||#{search}||'%'
+									</when>
+									<when test="sc == 3">
+										AND doctorspecialism LIKE '%'||#{search}||'%'
+									</when>
+								</choose>
+							</where>
+                           ORDER by doctorno desc
+                        )
+               )
+				<![CDATA[
+         	WHERE rNum >= #{start}
+           	  AND rNum <= #{end}
+               ]]>
+	</select>
+	
+	<!-- 의사 회원 삭제 처리 -->
+    <delete id="doctordeletePro">
+   	 	DELETE doctor WHERE doctorno=#{doctorno}
+    </delete>	
+
+	<!-- 의사 회원 승인 처리 -->
+	<update id="doctorPermissionPro" parameterType="com.team.medical.vo.DoctorVO"> 
+		UPDATE  doctor SET doctorappro =	1
+		 WHERE  doctorno =	#{doctorno} 
+	</update>
+	
+	<!-- 의사 회원 제명 처리 -->
+	<update id="doctorExpelPro" parameterType="com.team.medical.vo.DoctorVO"> 
+		UPDATE  doctor SET doctorappro =	2
+		 WHERE  doctorno =	#{doctorno} 
+	</update>
+
+
+
+
+
 	<!-- 약 목록 개수 -->
 	<select id="getDrugListCnt" resultType="int">
 		SELECT COUNT(*) FROM drug
@@ -285,23 +740,169 @@
 
 	<!-- 약 목록 조회 -->
 	<select id="getDrugList" parameterType="java.util.Map" resultType="com.team.medical.vo.DrugVO">
-		
-			SELECT drugCode
-				 , drugName
-				 , drugCompany
-				 , drugGroupCode
-				 , drugGroup
-				 , pro_usual
-				 , admitDate
-				 , registDate
-				 , rownum
-			  from drug
-	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
-		]]>
+		SELECT *
+          FROM ( 
+                SELECT  drugCode,drugName,drugCompany,drugGroupCode,drugGroup,pro_Usual,admitDate,
+                        temperState,shape,drugImage,signF,signB,drugForm,colorF,colorB,splitlineF,splitlineB,maxAxis,
+                        minAxis,thickness,registDate,markF,markB,markImageF,markImageB,markCodeF,markCodeB,
+                        drugStorageMethod,drugEfficacy,drugUsedCapacity,drugPrecautions, rownum rNum
+                  FROM ( 
+                         SELECT * 
+                           FROM drug 
+                          ORDER BY registDate DESC )
+               )
+       <where>
+      <![CDATA[             
+        rNum >= #{start} AND rNum <= #{end}
+      ]]>
+      </where>
+	</select>
+
+	<!-- 약 목록 삭제 처리 -->
+    <delete id="drugdeletePro">
+   	 	DELETE drug WHERE drugCode=#{drugCode}
+    </delete>
+
+	<!-- 약 검색목록 개수 구하기 -->
+	<select id="search_drugListCnt" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(drugCode) FROM drug
+		<where>
+			<choose>
+				<when test="sc == 0 ">
+					drugCode LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 1">
+					and drugName LIKE '%'||#{search}||'%'
+				</when>
+				<when test="sc == 2">
+					and drugCompany LIKE '%'||#{search}||'%'
+				</when>
+			</choose>
+		</where>
 	</select>
 	
+	<!-- 약검색목록 불러오기 -->
+	<select id="search_drugList" parameterType="java.util.Map" resultType="com.team.medical.vo.DrugVO">
+			SELECT *
+	          FROM ( 
+	                SELECT  drugCode,drugName,drugCompany,drugGroupCode,drugGroup,pro_Usual,admitDate,
+	                        temperState,shape,drugImage,signF,signB,drugForm,colorF,colorB,splitlineF,splitlineB,maxAxis,
+	                        minAxis,thickness,registDate,markF,markB,markImageF,markImageB,markCodeF,markCodeB,
+	                        drugStorageMethod,drugEfficacy,drugUsedCapacity,drugPrecautions, rownum rNum
+	                  FROM ( 
+	                         SELECT * 
+	                           FROM drug 
+								<where>
+									<choose>
+										<when test="sc == 0 ">
+											drugCode LIKE '%'||#{search}||'%'
+										</when>
+										<when test="sc == 1">
+											and drugName LIKE '%'||#{search}||'%'
+										</when>
+										<when test="sc == 2">
+											and drugCompany LIKE '%'||#{search}||'%'
+										</when>
+									</choose>
+								</where>
+			 				  	ORDER BY registDate DESC 
+			 				)
+	               )
+				<![CDATA[ 
+	                  WHERE rNum >= #{start} 
+	                    AND rNum <= #{end}
+      			]]>
+	</select>
+
+	<!-- 약 추가 처리 -->
+	<insert id="drugAddPro" parameterType="com.team.medical.vo.DrugVO">
+		insert into drug ( drugCode		
+						 , drugName
+						 , drugCompany
+						 , drugGroupCode
+						 , drugGroup
+						 , pro_Usual
+						 , admitDate
+						 , temperState
+						 , shape	
+						 , drugImage	
+						 , signF		
+						 , signB		
+						 , drugForm	
+						 , colorF	
+						 , colorB	
+						 , splitlineF
+						 , splitlineB	
+						 , maxAxis		
+						 , minAxis		
+						 , thickness	
+						 , registDate
+						 , markF		
+						 , markB		
+						 , markImageF	
+						 , markImageB	
+						 , markCodeF	
+						 , markCodeB	
+						 , drugStorageMethod
+						 , drugEfficacy		
+						 , drugUsedCapacity	
+						 , drugPrecautions	
+						 )
+		values(			   drugCode.nextval
+			 			 , #{drugName}
+			 			 , #{drugCompany}
+			 			 , #{drugGroupCode}
+						 , #{drugGroup}
+						 , #{pro_Usual}
+						 , #{admitDate}
+						 , #{temperState}
+						 , #{shape}
+						 , #{drugImage}
+						 , #{signF}
+						 , #{signB}
+						 , #{drugForm}
+						 , #{colorF}
+						 , #{colorB}
+						 , #{splitlineF}
+						 , #{splitlineB}
+						 , #{maxAxis}
+						 , #{minAxis}
+						 , #{thickness}
+						 , #{registDate}
+						 , #{markF}
+						 , #{markB}
+						 , #{markImageF}
+						 , #{markImageB}
+						 , #{markCodeF}
+						 , #{markCodeB}
+						 , #{drugStorageMethod}
+						 , #{drugEfficacy}
+						 , #{drugUsedCapacity}
+						 , #{drugPrecautions}
+			  )
+	</insert>
+	
+	<!-- 약 수정 폼 -->
+	<select id="drugModify" resultType="com.team.medical.vo.DrugVO">
+		SELECT * FROM drug WHERE drugCode = #{drugCode}
+	</select>
+	
+	<!-- 약 수정 처리 -->
+	<update id="drugModifyPro" parameterType="com.team.medical.vo.DrugVO">
+		UPDATE drug SET    drugName				=	#{drugName}
+						 , drugCompany			=	#{drugCompany}
+						 , drugGroupCode		=	#{drugGroupCode}
+						 , pro_Usual			=	#{pro_Usual}
+						 , drugStorageMethod	=	#{drugStorageMethod}
+						 , drugEfficacy			=	#{drugEfficacy}
+						 , drugUsedCapacity		=	#{drugUsedCapacity}
+						 , drugPrecautions		=	#{drugPrecautions}
+		 WHERE drugCode = #{drugCode}
+	</update>
+
+
+
+
 
 
 
@@ -313,21 +914,28 @@
 
 	<!-- 질병 목록 조회 -->
 	<select id="getDiseaseList" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
-			SELECT diseaseCode
-				 , diseaseName
-				 , diseaseDefine
-				 , diseaseSymptom
-				 , diseaseDiagnosis
-				 , diseaseCure
-				 , complications
-				 , prevention
-				 , rownum
-			  from disease
-	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
-		]]>
-		ORDER BY diseaseCode desc
+			SELECT * 
+			  FROM( 
+				   SELECT diseaseCode
+				 		, diseaseName
+				 		, diseaseDefine
+				 		, diseaseSymptom
+				 		, diseaseDiagnosis
+				 		, diseaseCure
+				 		, complications
+				 		, prevention
+				 		, rownum rNum
+					 FROM (
+					 		SELECT *
+							  FROM disease
+							 ORDER BY diseaseCode desc
+						)
+					)
+		 <![CDATA[
+				 where rNum >= #{start} 
+				   AND rNum <= #{end}
+			]]>
+		
 	</select>
 
 	<!-- 질병 목록 삭제 처리 -->
@@ -366,7 +974,7 @@
 				 				, diseaseCure
 				 				, complications
 				 				, prevention
-				 				, rownum
+				 				, rownum rNum
 							 FROM (SELECT *
 									 FROM disease
 			<where>
@@ -389,7 +997,7 @@
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rownum >= #{start} AND rownum <= #{end}
+	                  WHERE rNum >= #{start} AND rNum <= #{end}
       			]]>
 	</select>
 
@@ -429,6 +1037,11 @@
 
 
 
+
+
+
+
+
 	<!-- 운동목록 개수 -->
 	<select id="getExerciseListCnt" resultType="int">
 		SELECT COUNT(*) FROM exercise
@@ -436,22 +1049,26 @@
 
 	<!-- 운동 목록 조회 -->
 	<select id="getExerciseList" parameterType="java.util.Map" resultType="com.team.medical.vo.ExerciseVO">
-			SELECT exerciseName
-				 , exercisePurpose
-				 , exerciseMerit
-				 , exerciseDemerits
-				 , exerciseCaution
-				 , rownum
-			  from exercise
+			SELECT * 
+				FROM( SELECT exerciseName
+				 				, exerciseDefine
+				 				, exerciseMethod
+				 				, exercisePart
+				 				, exerciseCaution
+				 				, rownum rNum
+							 FROM (SELECT *
+									 FROM exercise
+									 ORDER BY exerciseName desc
+								 )
+					 )
 	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
+			 where rNum >= #{start} 
+			   AND rNum <= #{end}
 		]]>
-		ORDER BY exerciseName desc
 	</select>
 
 	<!-- 운동 목록 삭제 처리 -->
-    <delete id="exercisedeletePro">
+    <delete id="exerciseDeletePro">
    	 	DELETE exercise WHERE exerciseName=#{exerciseName}
     </delete>
 
@@ -463,27 +1080,20 @@
 				<when test="sc == 0 ">
 					exerciseName LIKE '%'||#{search}||'%'
 				</when>
-				<when test="sc == 1">
-					and exercisePurpose LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 2">
-					and exerciseMerit LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 3">
-					and exerciseCaution LIKE '%'||#{search}||'%'
-				</when>
 			</choose>
 		</where>
 	</select>
 	
 	<!-- 운동검색목록 불러오기 -->
 	<select id="search_exerciseList" parameterType="java.util.Map" resultType="com.team.medical.vo.ExerciseVO">
-			SELECT * FROM( SELECT exerciseName
-				 				, exercisePurpose
-				 				, exerciseMerit
-				 				, exerciseDemerits
+			SELECT * 
+				FROM( 
+						SELECT exerciseName
+				 				, exerciseDefine
+				 				, exerciseMethod
+				 				, exercisePart
 				 				, exerciseCaution
-				 				, rownum
+				 				, rownum rNum
 							 FROM (SELECT *
 									 FROM exercise
 			<where>
@@ -491,38 +1101,29 @@
 					<when test="sc == 0 ">
 						exerciseName LIKE '%'||#{search}||'%'
 					</when>
-					<when test="sc == 1">
-						and exercisePurpose LIKE '%'||#{search}||'%'
-					</when>
-					<when test="sc == 2">
-						and exerciseMerit LIKE '%'||#{search}||'%'
-					</when>
-					<when test="sc == 3">
-						and exerciseCaution LIKE '%'||#{search}||'%'
-					</when>
 				</choose>
 			</where>
 				ORDER BY exerciseName DESC
 					)
 				)
 				<![CDATA[ 
-	                  WHERE rownum >= #{start} AND rownum <= #{end}
+	                  WHERE rNum >= #{start} AND rNum <= #{end}
       			]]>
 	</select>
 
 	<!-- 운동 추가 처리 -->
-	<insert id="exerciseAdd" parameterType="com.team.medical.vo.ExerciseVO">
-		insert into exercise (exerciseName, exerciseMethod, exercisePurpose, exerciseMerit, exerciseDemerits, exerciseCaution)
-		values(#{exerciseName}, #{exerciseMethod}, #{exercisePurpose}, #{exerciseMerit}, #{exerciseDemerits}, #{exerciseCaution})
+	<insert id="exerciseAddPro" parameterType="com.team.medical.vo.ExerciseVO">
+		insert into exercise (exerciseName, exerciseImage, exerciseDefine, exerciseMethod, exercisePart, exerciseCaution)
+		values(#{exerciseName}, #{exerciseImage}, #{exerciseDefine}, #{exerciseMethod}, #{exercisePart}, #{exerciseCaution})
 	</insert>
 	
 	<!-- 운동 수정 폼 -->
 	<select id="exerciseModify" resultType="com.team.medical.vo.ExerciseVO">
 		SELECT exerciseName
+			 , exerciseImage
+			 , exerciseDefine
 			 , exerciseMethod
-			 , exercisePurpose
-			 , exerciseMerit
-			 , exerciseDemerits
+			 , exercisePart
 			 , exerciseCaution
 		  FROM exercise 
 		 WHERE exerciseName = #{exerciseName}
@@ -531,14 +1132,19 @@
 	<!-- 운동 수정 처리 -->
 	<update id="exerciseModifyPro" parameterType="com.team.medical.vo.ExerciseVO">
 		UPDATE exercise SET exerciseName		=	#{exerciseName}
+						  , exerciseImage		=	#{exerciseImage}
+						  , exerciseDefine		=	#{exerciseDefine}
 						  , exerciseMethod		=	#{exerciseMethod}
-						  , exercisePurpose		=	#{exercisePurpose}
-						  , exerciseMerit		=	#{exerciseMerit}
-						  , exerciseDemerits	=	#{exerciseDemerits}
+						  , exercisePart		=	#{exercisePart}
 						  , exerciseCaution		=	#{exerciseCaution}
 		 WHERE exerciseName = #{exerciseName}
 	</update>
 	
+
+
+
+
+
 
 
 	<!-- 예방접종목록 개수 -->
@@ -552,11 +1158,11 @@
 				 , preventionKind
 				 , countryCode
 				 , preventionContent
-				 , rownum
+				 , rownum rNum
 			  from prevention
 	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
+			 where rNum >= #{start} 
+			   AND rNum <= #{end}
 		]]>
 		ORDER BY preventionCode desc
 	</select>
@@ -565,17 +1171,17 @@
 	<select id="getApreventionList2" parameterType="java.util.Map" resultType="com.team.medical.vo.DiseaseVO">
 			SELECT diseaseName
 				 , diseaseCode
-				 , rownum
+				 , rownum rNum
 			  from disease d
 			  join prevention p
 			    on d.deseaseCode = p.deseaseCode
 	 <![CDATA[
-			 where rownum >= #{start} 
-			   AND rownum <= #{end}
+			 where rNum >= #{start} 
+			   AND rNum <= #{end}
 		]]>
 		ORDER BY exerciseName desc
 	</select>
-
+	
 	<!-- 이벤트 추가 -->
     <insert id="addEvent" parameterType="com.team.medical.vo.EventVO">
     INSERT
@@ -594,4 +1200,5 @@
 	<delete id="delEvent" parameterType="int">
 		DELETE event WHERE advertisementNo = #{advertisementNo}
 	</delete>
+
 </mapper>

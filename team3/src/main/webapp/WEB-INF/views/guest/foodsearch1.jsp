@@ -30,25 +30,27 @@ function calorie(calorie) {
 
 
 		<c:if test="${selectcnt== 1}">
-                               <table class="table table-inbox table-hover">
+               <table class="table table-inbox table-hover">
+                     <c:forEach var="dto" items="${dtos}">
                      <tbody>
                             
 				<tr>
 					<th>음식 :</th>
-					<td>${vo.food }</td>
+					<td>${dto.food }</td>
 				</tr>
 					<tr>
 					<th>칼로리 :</th>
-					<td>${vo.calorie }</td>
+					<td>${dto.foodcal }</td>
 				</tr>
 				<tr>
-					<th>
-						<!-- 부모쪽으로 넘길 id를 set  --> <input class="btn btn-warning"
-						type="button" value="확인" onclick="calorie('${vo.calorie}');">
-						<!-- 중복확인창에서 사용할수 있는 아이디면 값을 회원가입창으로 넘긴다. -->
+					<th colspan="2" align="center">
+					<input class="btn btn-warning"
+						type="button" value="선택" onclick="calorie('${dto.foodcal}');">
+						
 					</th>
 				</tr>
 			</tbody>
+			</c:forEach>
 			</table>
 
 		</c:if>

@@ -25,7 +25,7 @@
 		<c:if  test = "${deleteCnt!=0 }">
 			<script type="text/javascript">
 			errorAlert("탈퇴되었습니다");	
-			window.location="main"
+			window.location="logout"
 					
 			</script>
 		</c:if>

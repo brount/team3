@@ -1,16 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html lang="en">
-<title> 사이트 이름 </title>
+<html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <body>
-   
-   <header>
-   <%@ include file="../common/header.jsp" %>
-   </header>
-   
-   <section>
-      <div class="container">
- <div class="mail-box">
+<header>
+	<%@ include file="../common/header.jsp" %>
+</header>
+
+<section>
+<input type="hidden" value="${doctorno}" name="doctorno">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <%@ include file="../common/menuCheckup.jsp" %>
+        </div>	
+	  		 <div class="col-sm-9 col-md-9">
+	            <div class="well">
+					<div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>건강검진 목록</h3>
@@ -18,16 +25,13 @@
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                                  <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd?kind=1'">
-                              </div>
-                              <div>
                               </div>
                           </form>
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
 
-                          <table class="table table-inbox table-hover">
+                               <table class="table table-inbox table-hover">
                                 
                             <tbody>
                               <tr class="unread">
@@ -43,10 +47,10 @@
 											${dto.checkup}
 											<c:set var="number" value="${number-1 }"></c:set>
 										</td>					
-										<td ><a onclick="window.location='checkupResult?pageNum=${pageNum}&number=${number+1}&checkup=${dto.checkup}'">${guestList[b].guestname}</a></td>
+										<td ><a onclick="window.location='checkupResult?pageNum=${pageNum}&number=${number+1}&checkup=${dto.checkup}&doctorno=${doctorno}'">${guestList[b].guestname}</a></td>
 											
 										<td >
-											<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.checkup_date}"/>
+											<fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.checkup_date}"/>
 										</td>
 									</tr>
 									<c:set var="b" value="${b+1 }"></c:set>
@@ -71,8 +75,8 @@
 						<c:if test="${cnt>0}">
 							<!-- 처음[◀◀] / 이전블록 [◀] -->
 							<c:if test="${startPage > pageBlock }">
-								<a href="checkupResult">[◀◀]</a>
-								<a href="ccheckupResult?pageNum=${startPage-pageBlock}">[◀]</a>	
+								<a href="examinationList">[◀◀]</a>
+								<a href="examinationList?pageNum=${startPage-pageBlock}">[◀]</a>	
 							</c:if>
 							<!-- 페이지 블록 -->
 							<c:forEach var="i" begin="${startPage }" end="${endPage }">
@@ -80,13 +84,13 @@
 									<span> <b>[${i }]</b></span>
 								</c:if>
 								<c:if test="${i != currentPage }">
-									<a href="checkupResult?pageNum=${i}">[${i }]</a>
+									<a href="cexaminationList?pageNum=${i}">[${i }]</a>
 								</c:if>
 							</c:forEach>										
 							<!-- 다음블록[▶] / 끝[▶▶] -->
 							<c:if test="${pageCnt > endPage }">
-								<a href="checkupResult?pageNum=${startPage+pageBlock}">[▶]</a>
-								<a href="checkupResult?pageNum=${pageCnt}">[▶▶]</a>
+								<a href="examinationList?pageNum=${startPage+pageBlock}">[▶]</a>
+								<a href="examinationList?pageNum=${pageCnt}">[▶▶]</a>
 							</c:if>
 						</c:if>
 					</th>
@@ -94,11 +98,16 @@
 			</table>
               </div>                    
 		</div>
-   </section>
+  		</div>
+  	</div>
+  </div>
+  
+  
+ </section>
    
-   <footer>
-   <%@ include file="../common/footer.jsp" %>
-   </footer>
 
+<footer>
+	<%@ include file="../common/footer.jsp" %>
+</footer>
 </body>
 </html>

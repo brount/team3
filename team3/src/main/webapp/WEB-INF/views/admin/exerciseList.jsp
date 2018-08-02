@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
@@ -9,81 +8,7 @@
 <body>
 	<div id="wrapper">
 
-	    <!-- Navigation -->
-	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="navbar-header">
-	            <a class="navbar-brand" href="memberList"> 관리자 </a>
-	        </div>
-	
-	        <ul class="nav navbar-right navbar-top-links">
-	        	<li onclick="main">Main</a></li>
-	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
-	        </ul>
-	        <!-- /.navbar-top-links -->
-	
-	        <div class="navbar-default sidebar" role="navigation">
-	            <div class="sidebar-nav navbar-collapse">
-	                <ul class="nav" id="side-menu">
-	                    <li>
-                        	<a href="#">회원관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="memberList">일반회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="doctorList">의사회원목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="hospitalList">병원관리</a>
-	                    </li>
-	                    
-	                    <li>
-                        	<a href="#">정보관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="drugList">약정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="diseaseList">질병정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="exerciseList">운동정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="foodList">음식정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="apreventionList">예방정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="requestList">요구사항목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="eventRequestList">광고관리</a>
-	                    </li>
-	                    <li>
-	                    	<a href="#">결산<span class="fa arrow"></span></a>
-	                    	<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="pointList">포인트결제내역목록</a>
-                                </li>
-                                <li>
-                                    <a href="cashList">현금결제내역목록</a>
-                                </li>
-                            </ul>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
-	    </nav>
+	    <jsp:include page="./admin_nav.jsp"></jsp:include>
 	
 	    <div id="page-wrapper">
 	        <div class="row">
@@ -104,7 +29,7 @@
                                     	추가
                                     </button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                   <button type="button" onclick="exercisedeleteCheck()">
+                                   <button type="button" onclick="exerciseDeleteCheck()">
                                     	삭제
                                     </button>
 	                            </div>
@@ -119,24 +44,24 @@
 	                                        <thead>
 		                                        <tr>
 		                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
-		                                            <th>운동이름</th>
-		                                            <th>목적</th>
-		                                            <th>장점</th>
-													<th>단점</th>
+		                                            <th>운동명</th>
+		                                            <th>운동정의</th>
+		                                            <th>운동방법</th>
+													<th>운동부위</th>
 		                                            <th>주의할점</th>
 		                                        </tr>
 	                                        </thead>
 	                                        <tbody>
 		                                        <c:if test="${cnt > 0}">
+		                                       	 	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 													<c:forEach var="dto" items="${dtos}">
-														<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 														<tr >
 															<td class="center">
 															<input type="checkbox" name="checkOne" value="${dto.exerciseName}"></td>
 															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseName}</td>
-															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exercisePurpose}</td>
-															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseMerit}</td>
-															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseDemerits}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseDefine}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseMethod}</td>
+															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exercisePart}</td>
 															<td onclick="window.location='exerciseModify?exerciseName=${dto.exerciseName}&pageNum=${pageNum}&number=${number+1}'">${dto.exerciseCaution}</td>
 	                                 		        	</tr>
 		                                       		</c:forEach>
@@ -147,28 +72,53 @@
 	                                    <!-- 페이지 컨트롤 -->
 										<table align="center">
 											<tr>
-												<th align="center"><c:if test="${cnt > 0}">
-														<!-- 맨끝[◀◀] / 이전[◀] -->
-														<c:if test="${startPage > pageBlock}">
-															<a href="exerciseList">[맨앞]</a>
-															<a href="exerciseList?pageNum=${startPage - pageBlock}">[이전]</a>
-														</c:if>
-
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
+												<th align="center">
+													<c:if test="${cnt > 0}">
+														<c:if test="${sc == null}">
+															<!-- 맨끝[◀◀] / 이전[◀] -->
+															<c:if test="${startPage > pageBlock}">
+																<a href="exerciseList">[맨앞]</a>
+																<a href="exerciseList?pageNum=${startPage - pageBlock}">[이전]</a>
 															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="exerciseList?pageNum=${i}">[${i}]</a>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="exerciseList?pageNum=${i}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<!-- 맨끝[▶▶] / 다음▶] -->
+															<c:if test="${pageCount > endPage}">
+																<a href="exerciseList?pageNum=${startPage + pageBlock}">[다음]</a>
+																<a href="exerciseList?pageNum=${pageCount}">[맨뒤]</a>
 															</c:if>
-														</c:forEach>
-
-														<!-- 맨끝[▶▶] / 다음▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="exerciseList?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="exerciseList?pageNum=${pageCount}">[맨뒤]</a>
 														</c:if>
-													</c:if></th>
+														
+														<c:if test="${sc != null}">
+															<c:if test="${startPage > pageBlock}">
+																<a href="exerciseSearchList?sc=${sc}&search=${search}">[맨앞]</a>
+																<a href="exerciseSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+															</c:if>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="exerciseSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<c:if test="${pageCount > endPage}">
+																<a href="exerciseSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
+																<a href="exerciseSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+															</c:if>
+														</c:if>
+													</c:if>
+												</th>
 											</tr>
 										</table>
 
@@ -178,9 +128,6 @@
 													<td>
 														<select class="input" name="sc">
 															<option value="0">운동명</option>
-									 						<option value="1">목적</option>
-									 						<option value="2">장점</option>
-									 						<option value="3">주의할점</option>
 														</select>
 													</td>
 													<td>

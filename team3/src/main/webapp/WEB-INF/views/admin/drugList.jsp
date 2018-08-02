@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="../admin_setting.jsp" %>
 <html>
 <head>
@@ -10,81 +9,7 @@
 <body>
 	<div id="wrapper">
 
-	    <!-- Navigation -->
-	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="navbar-header">
-	            <a class="navbar-brand" href="memberList"> 관리자 </a>
-	        </div>
-	
-	        <ul class="nav navbar-right navbar-top-links">
-	        	<li onclick="main">Main</a></li>
-	            <li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
-	        </ul>
-	        <!-- /.navbar-top-links -->
-	
-	        <div class="navbar-default sidebar" role="navigation">
-	            <div class="sidebar-nav navbar-collapse">
-	                <ul class="nav" id="side-menu">
-	                    <li>
-                        	<a href="#">회원관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="memberList">일반회원목록</a>
-                                </li>
-                                <li>
-                                    <a href="doctorList">의사회원목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="hospitalList">병원관리</a>
-	                    </li>
-	                    
-	                    <li>
-                        	<a href="#">정보관리<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="drugList">약정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="diseaseList">질병정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="exerciseList">운동정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="foodList">음식정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="apreventionList">예방정보목록</a>
-                                </li>
-                                <li>
-                                    <a href="requestList">요구사항목록</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
-	                    <li>
-	                        <a href="eventRequestList">광고관리</a>
-	                    </li>
-	                    <li>
-	                    	<a href="#">결산<span class="fa arrow"></span></a>
-	                    	<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="pointList">포인트결제내역목록</a>
-                                </li>
-                                <li>
-                                    <a href="cashList">현금결제내역목록</a>
-                                </li>
-                            </ul>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
-	    </nav>
+	    <jsp:include page="./admin_nav.jsp"></jsp:include>
 	
 	    <div id="page-wrapper">
 	        <div class="row">
@@ -101,7 +26,7 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <button type="button" onclick="window.location='drugAdd'">
+                                    <button type="button" onclick="window.location='drugAdd?pageNum=${pageNum}'">
                                     	추가
                                     </button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -135,15 +60,15 @@
 													<c:forEach var="dto" items="${dtos}">
 													<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 														<tr>
-															<td class="center"><input type="checkbox" name="checkOne" value="${dto.guestNo}"></td>
-															<td>${dto.drugCode}</td>
-															<td>${dto.drugName}</td>
-															<td>${dto.drugCompany}</td>
-															<td>${dto.drugGroupCode}</td>
-															<td>${dto.drugGroup}</td>
-															<td>${dto.pro_usual}</td>
-															<td>${dto.admitDate}</td>
-															<td>${dto.registDate}</td>
+															<td class="center"><input type="checkbox" name="checkOne" value="${dto.drugCode}"></td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugCode}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugName}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugCompany}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugGroupCode}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugGroup}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.pro_Usual}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.admitDate}</td>
+															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.registDate}</td>
 														</tr>
 													</c:forEach>
 												</c:if>
@@ -153,7 +78,8 @@
 										<!-- 페이지 컨트롤 -->
 										<table align="center">
 											<tr>
-												<th align="center"><c:if test="${cnt > 0}">
+												<th align="center">
+													<c:if test="${cnt > 0}">
 														<!-- 맨끝[◀◀] / 이전[◀] -->
 														<c:if test="${startPage > pageBlock}">
 															<a href="drugList">[맨앞]</a>
@@ -174,19 +100,19 @@
 															<a href="drugList?pageNum=${startPage + pageBlock}">[다음]</a>
 															<a href="drugList?pageNum=${pageCount}">[맨뒤]</a>
 														</c:if>
-													</c:if></th>
+													</c:if>
+												</th>
 											</tr>
 										</table>
 
 										<table align="center">
-											<form action="drugList" class="search_box" method="post">
+											<form action="drugSearchList" class="search_box" method="get">
 												<tr>
 													<td>
-														<select class="input" name="sc">
-															<option value="0">약이름</option>
-									 						<option value="1">제조업체</option>
-									 						<option value="2">등록일자</option>
-									 						<option value="3">허가일자</option>
+														<select class="input" name="sc" >
+															<option value="0">약 번호</option>
+															<option value="1">약 이름</option>
+									 						<option value="2">제조업체</option>
 														</select>
 													</td>
 													<td>

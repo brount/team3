@@ -15,79 +15,81 @@
 
 <body>
 
+
+
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
 
-<section>
+<section style="margin-bottom: 100px;">
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
 	            <%@ include file="../common/menuCare.jsp" %>
 	        </div>
   		 	<div class="col-sm-9 col-md-9">
-	            <div class="well">
+
 		            <div class="container">
 					
 					
 						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
 						    <fieldset>
-						
-						      <legend>개인건강관리페이지</legend>
+						    <h1>PersonalCare</h1>
 						<c:if test="${selectcnt!=0}">
-							 <div class="form-group">
-						        <label class="col-md-4 control-label">생년월일</label>
-						        <div class="col-md-6  inputGroupContainer">
-									<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						           ${vo.birth1}
+						
+						
+						
+						 
+					 	 <table class="table table-inbox table-hover" style="height: 250px; font-size: 25px;" >
+					 	 
+					 	 	   <tr class="unread">
+                                    <td class="view-message  dont-show">생년월일</td>
+                                  <td class="view-message"> 
+                                  ${vo.birth1}
 						         		<b>년</b> 
 						           ${vo.birth2}
 						    		       <b>월</b> 	
 						           ${vo.birth3}
 						             	<b>일</b> 
-						         </div>
-						        </div>
-						     
-						      </div>
-						        
-						   
-						      <div class="form-group" >
-						        <label class="col-md-4 control-label">신장</label>
-						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-									${vo.height}						            	
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					 	  <tr class="unread">
+                                    <td class="view-message  dont-show">신장</td>
+                                  <td class="view-message"> 
+                                  	${vo.height}						            	
 									<b>cm</b> 
-						            
-						          </div>
-						        </div>
-						      </div>
-						      
-						         <div class="form-group" >
-						        <label class="col-md-4 control-label">체중</label>
-						        <div class="col-md-6  inputGroupContainer">
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						            	    ${vo.weight}
-						            	<b>kg</b> 
-						            
-						          </div>
-						        </div>
-						      </div>
-						  
-						         <div class="form-group" >
-						        <label class="col-md-4 control-label"> 나의 신체질량지수(BMI)</label>
-						        <div class="col-md-6  inputGroupContainer">
-						         
-						          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-						      	  ${vo.weight/(vo.height*vo.height)	}	
-						      	
-						      	
-						      
-						        
-						          </div>
-						            <br><br><br>
-						           <img src="/medical/resources/djcss/img/bmi.jpg" style="width:500px; height:400px;"> 
-						        </div>
-						      </div>
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					
+					 <tr class="unread">
+                                    <td class="view-message  dont-show">체중</td>
+                                  <td class="view-message"> 
+                                  	${vo.weight}						            	
+									<b>kg</b> 
+                                  
+                                  </td>                                  
+                           
+                              </tr>
+					
+					 <tr class="unread">
+                                    <td class="view-message  dont-show">나의 신체질량 BMI 지수</td>
+                                  <td class="view-message"> 
+                                  		  ${bmi}	
+                                  
+                                  </td>                                  
+                           
+                              </tr>	
+						</table>
+						
+						
+						
+						
+						    <!-- 추가해도되고안해도되고        <img src="/medical/resources/djcss/img/bmi.jpg" style="width:500px; height:400px;">  -->
+						    
 						</c:if>
 						<div style="display:table; margin:0 auto;">
 							<div>
@@ -106,7 +108,7 @@
 						  </div>
 	            </div>
 	        </div>		        
-	    </div>
+	
 </section>
 
 
