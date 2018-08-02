@@ -2,15 +2,16 @@
     pageEncoding="UTF-8"%>
 <html lang="en">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title> 사이트 이름 </title>
-<body>
+<body onload="dateC();">
 
 <header>
 	<%@ include file="../common/header.jsp" %>
 </header>
 
 <section>
-<div class="container">
+<div class="container" >
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
 	            <div class="panel-group" id="accordion">
@@ -51,9 +52,91 @@
 					        <label class="col-md-4 control-label">이벤트 기간 </label>
 					        <div class="col-md-6  inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input  name="date1" class="form-control" type="date">
-					             <input  name="date2" class="form-control" type="date">
-					          </div>
+					             <input id="date1"  name="date1" class="form-control" type="date" onchange="date();">
+					             <input id="date2" name="date2" class="form-control" type="date">					           
+					          </div>		
+					             <input type="radio" name="point" value="1000" checked="checked">7일
+					          	<input type="radio" name="point" value="2000" >15일
+					          	<input type="radio" name="point" value="3500">30일		          
+					          <script type="text/javascript">
+								function dateC(){		
+									var formattedDate = new Date();
+									var d = formattedDate.getDate();
+									var m = formattedDate.getMonth();
+									
+									(++m < 10)? m = "0" + m : m;
+									(d < 10)? d = "0" + d : d;
+									var y = formattedDate.getFullYear(); 
+									$("#date1").val(y + "-" + m + "-" + d);
+									var d2 = Number(d)+7;
+									if( d2<10){
+										d2 = "0"+d2;
+									}
+									$("#date2").val(y + "-" + m + "-" + d2);
+									
+					          	}
+								function date(){
+									var date1 = $("#date1").val();
+									console.log(date1);
+									var y = date1.substr(0,4);
+									var m = date1.substr(5,2);
+									var d = date1.substr(8,2);
+									
+									var date = new Date(y,m,d);
+									$("input[checked=checked]").prop('checked', true);
+									date.setDate(date.getDate()+7);  
+									(d < 10)? d = "0" + d : d;
+									
+									 // year
+								    var yyyy = '' + date.getFullYear();
+
+								    // month
+								    var mm = ('0' + (date.getMonth()));  // prepend 0 // +1 is because Jan is 0
+								    mm = mm.substr(mm.length - 2);                  // take last 2 chars
+
+								    // day
+								    var dd = ('0' + date.getDate());         // prepend 0
+								    dd = dd.substr(dd.length - 2);                  // take last 2 chars
+								    
+									var date2 = yyyy+"-"+mm+"-"+dd;
+									$("#date2").val(date2);		
+								}
+								$("input[name=point]").click(function(){
+									var date1 = $("#date1").val();
+									console.log(date1);
+									var y = date1.substr(0,4);
+									var m = date1.substr(5,2);
+									var d = date1.substr(8,2);
+									var date = new Date(y,m,d);
+									switch($(this).val()){
+										case "1000" :
+											date.setDate(date.getDate()+7);  
+											break;
+										case "2000" :
+											date.setDate(date.getDate()+15);  
+											break;
+										case "3500" :
+											date.setDate(date.getDate()+30);
+											break;
+									}
+									(d < 10)? d = "0" + d : d;
+									
+									 // year
+								    var yyyy = '' + date.getFullYear();
+
+								    // month
+								    var mm = ('0' + (date.getMonth()));  // prepend 0 // +1 is because Jan is 0
+								    mm = mm.substr(mm.length - 2);                  // take last 2 chars
+
+								    // day
+								    var dd = ('0' + date.getDate());         // prepend 0
+								    dd = dd.substr(dd.length - 2);                  // take last 2 chars
+								    
+									var date2 = yyyy+"-"+mm+"-"+dd;
+									$("#date2").val(date2);										
+									
+								})
+					          </script>
 					        </div>
 					      </div>
 					      

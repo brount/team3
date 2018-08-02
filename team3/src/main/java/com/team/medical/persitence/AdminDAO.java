@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.DrugVO;
+import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.PreventionVO;
@@ -138,4 +139,16 @@ public interface AdminDAO {
 
 	// 예방정보 목록 조회
 	public ArrayList<DiseaseVO> getApreventionList2(Map<String, Object> map);
+
+	//------------------------------------- 희성
+	// 이벤트 추가
+	public int addEvent(EventVO dto);
+	// 이벤트 수정
+	public int upEvent(EventVO dto);
+	// 이벤트 삭제
+	public int delEvent(int num);
+
+	// 일반탈퇴회원 다중삭제 처리
+	public int delChkEvent(String[] checkOne);
+	//------------------------------------- 희성
 }

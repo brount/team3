@@ -5,9 +5,9 @@ import java.sql.Date;
 public class ReservationVO {
 	//예약목록
 	
-	private int hospitalno;//병원번호
+	private int hospitalno;		 //병원번호
 	private String hospitalname; //병원명
-	private int doctorNo;	//의사번호
+	private int doctorNo;		//의사번호
 	private int reservationNo;	//예약번호
 	private int guestNo;		//환자번호
 	private Date reservationTime;	//예약날짜

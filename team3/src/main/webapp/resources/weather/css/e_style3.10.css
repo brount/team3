@@ -71,18 +71,18 @@
 /*young*/
 .d04_1{width:50px; height:50px; background:url(../_images/icons/g/g_04.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 /*--*/
-.d05{width:50px; height:50px; background:url(../_images/icons/g/g_04.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
+.d05{width:50px; height:50px; background:url(../images/warning5.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 
 /* 5등급 */
-.d001{width:50px; height:50px; background:url(../_images/icons/g/g_05_2.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#555;  font-family: 'Nanum Gothic', sans-serif; font-weight:600;}
-.d002{width:50px; height:50px; background:url(../_images/icons/g/g_06.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#555; font-family:'Nanum Gothic', sans-serif; font-weight:600; }
-.d003{width:50px; height:50px; background:url(../_images/icons/g/g_07.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
-.d004{width:50px; height:50px; background:url(../_images/icons/g/g_08.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
+.d001{width:50px; height:50px; background:url(../images/warning1.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#555;  font-family: 'Nanum Gothic', sans-serif; font-weight:600;}
+.d002{width:50px; height:50px; background:url(../images/warning2.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#555; font-family:'Nanum Gothic', sans-serif; font-weight:600; }
+.d003{width:50px; height:50px; background:url(../images/warning3.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
+.d004{width:50px; height:50px; background:url(../images/warning4.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 .d004_2{width:50px; height:50px; background:url(../_images/icons/g/g_09.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 /*young*/
 .d004_1{width:50px; height:50px; background:url(../_images/icons/g/g_09.png) no-repeat; position:relative; background-size:cover;line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 /*--*/
-.d005{width:50px; height:50px; background:url(../_images/icons/g/g_09.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
+.d005{width:50px; height:50px; background:url(../images/warning5.png) no-repeat; position:relative; background-size:cover; line-height:48px; color:#fff; font-family:'Nanum Gothic', sans-serif; font-weight:600;}
 
 
 .s_icon1{width:72px; height:48px; background:url(../_images/icons/s_icon1.gif) no-repeat; position:relative;margin:0 auto;}

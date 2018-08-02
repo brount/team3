@@ -2,10 +2,10 @@ package com.team.medical.vo;
 
 public class ExerciseVO {
 	private String exerciseName;		// 운동명
+	private String exerciseImage;		// 운동이미지
+	private String exerciseDefine;		// 운동정의
 	private String exerciseMethod;		// 운동방법
-	private String exercisePurpose;		// 운동목적
-	private String exerciseMerit;		// 장점
-	private String exerciseDemerits;	// 단점
+	private String exercisePart;		// 운동부위
 	private String exerciseCaution;		// 주의할점
 	
 	public String getExerciseName() {
@@ -14,29 +14,29 @@ public class ExerciseVO {
 	public void setExerciseName(String exerciseName) {
 		this.exerciseName = exerciseName;
 	}
+	public String getExerciseImage() {
+		return exerciseImage;
+	}
+	public void setExerciseImage(String exerciseImage) {
+		this.exerciseImage = exerciseImage;
+	}
+	public String getExerciseDefine() {
+		return exerciseDefine;
+	}
+	public void setExerciseDefine(String exerciseDefine) {
+		this.exerciseDefine = exerciseDefine;
+	}
 	public String getExerciseMethod() {
 		return exerciseMethod;
 	}
 	public void setExerciseMethod(String exerciseMethod) {
 		this.exerciseMethod = exerciseMethod;
 	}
-	public String getExercisePurpose() {
-		return exercisePurpose;
+	public String getExercisePart() {
+		return exercisePart;
 	}
-	public void setExercisePurpose(String exercisePurpose) {
-		this.exercisePurpose = exercisePurpose;
-	}
-	public String getExerciseMerit() {
-		return exerciseMerit;
-	}
-	public void setExerciseMerit(String exerciseMerit) {
-		this.exerciseMerit = exerciseMerit;
-	}
-	public String getExerciseDemerits() {
-		return exerciseDemerits;
-	}
-	public void setExerciseDemerits(String exerciseDemerits) {
-		this.exerciseDemerits = exerciseDemerits;
+	public void setExercisePart(String exercisePart) {
+		this.exercisePart = exercisePart;
 	}
 	public String getExerciseCaution() {
 		return exerciseCaution;
@@ -44,5 +44,7 @@ public class ExerciseVO {
 	public void setExerciseCaution(String exerciseCaution) {
 		this.exerciseCaution = exerciseCaution;
 	}
+	
+	
 	
 }

@@ -13,13 +13,6 @@
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
-	                <a href="foodInfoList">음식정보</a>
-	            </h4>
-	        </div>
-	    </div>
-	    <div class="panel panel-default">
-	        <div class="panel-heading">
-	            <h4 class="panel-title">
 	                <a href="personalCare">개인건강관리</a>
 	            </h4>
 	        </div>

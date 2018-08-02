@@ -1,10 +1,13 @@
 package com.team.medical.persitence;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 import com.team.medical.vo.DiseaseVO;
+import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
+import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
@@ -55,4 +58,24 @@ public interface CommonDAO {
 	public ArrayList<PreventionVO> preventionList(Map<String,Integer> map);
 	// 예방 상세 정보
 	public PreventionVO preventionInfo(int preventionCode);
+	// 운동 갯수 구하기
+	public int getExerciseCnt();
+	// 운동 목록
+	public ArrayList<ExerciseVO> exerciseList(Map<String,Integer> map);
+	// 운동 상세 정보
+	public ExerciseVO exerciseInfo(String exerciseName);
+	// 고객센터 게시글 갯수
+	public int getReportBoardCnt(Map<String, Integer> map);
+	// 고객센터 목록 조회
+	public ArrayList<QuestionBoardVO> getReportBoardList(Map<String,Integer> map);
+	// 약 갯수 구하기
+	public int getDrugListCnt(Map<String, Object> map);
+	// 약 선택검색
+	public ArrayList<DrugVO> getDrugList(Map<String, Object> map);
+	// 포인트 업데이트
+	public int updatePoint(String id);
+	// 포인트 사용
+	public void usePoint(Map<String,Object> map);
+	public ArrayList<String> test(String[] args) throws IOException;
+	
 }

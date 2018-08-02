@@ -3,7 +3,6 @@ package com.team.medical.persitence;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
@@ -68,7 +67,7 @@ public interface GuestDAO {
 	
 	//증상해당하는 병원 검색
 	public ArrayList<HospitalVO> simpleTreathos(String dikind);
-	
+	/*
 	//음식 검색 후 칼로리 조회
 	public CalorieVO foodsearch (String food);
 	
@@ -77,6 +76,6 @@ public interface GuestDAO {
 	
 	//해당 회원의 하루 칼로리 검색
 	public CalorieVO mycal(int guestNo);
-	
+	*/
 	
 }

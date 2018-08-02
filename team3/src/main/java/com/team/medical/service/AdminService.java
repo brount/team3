@@ -3,6 +3,7 @@ package com.team.medical.service;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface AdminService {
 	
@@ -69,7 +70,7 @@ public interface AdminService {
 	public void diseaseModifyPro(HttpServletRequest req, Model model);
 	
 //--------------------------------------------------------------------------------------
-	
+	/*
 	// 운동목록
 	public void exerciseList(HttpServletRequest req, Model model);
 	
@@ -87,10 +88,19 @@ public interface AdminService {
 	
 	// 운동 수정 처리
 	public void exerciseModifyPro(HttpServletRequest req, Model model);
-	
+	*/
 //--------------------------------------------------------------------------------------
 	
 	// 예방접종 목록
 	public void apreventionList(HttpServletRequest req, Model model);
+	
+//------------------------------------------------------------------------------------- 희성
+
+	// 이벤트 추가
+	public void eventAdd(MultipartHttpServletRequest req, Model model);
+	// 이벤트 수정
+	public void eventUp(MultipartHttpServletRequest req, Model model);
+	// 이벤트 삭제
+	public void eventDel(HttpServletRequest req, Model model);
 	
 }

@@ -301,6 +301,7 @@
 			   AND rownum <= #{end}
 		]]>
 	</select>
+	
 
 
 
@@ -575,4 +576,22 @@
 		ORDER BY exerciseName desc
 	</select>
 
+	<!-- 이벤트 추가 -->
+    <insert id="addEvent" parameterType="com.team.medical.vo.EventVO">
+    INSERT
+		INTO event (advertisementNo, doctorno, advertisementTitle, advertisementThumbnail ,advertisementImage, advertisementContents,
+					advertisementRegDate, advertisementKind, advertisementStart, advertisementEnd, advertisementState)
+		VALUES (advertisementnoseq.nextval, #{doctorno}, #{advertisementTitle}, #{advertisementThumbnail}, #{advertisementImage}, #{advertisementContents},
+				sysdate, #{advertisementKind}, #{advertisementStart}, #{advertisementEnd}, #{advertisementState})
+    </insert>
+	<!-- 이벤트 수정 -->
+	<update id="upEvent" parameterType="com.team.medical.vo.EventVO">
+		UPDATE event SET advertisementTitle=#{advertisementTitle}, advertisementImage=#{advertisementImage},
+			advertisementContents=#{advertisementContents},advertisementThumbnail=#{advertisementThumbnail}
+			WHERE advertisementNo = #{advertisementNo}
+	</update>
+	<!-- 이벤트 삭제 -->
+	<delete id="delEvent" parameterType="int">
+		DELETE event WHERE advertisementNo = #{advertisementNo}
+	</delete>
 </mapper>

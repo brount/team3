@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.SystemPropertyUtils;
 
 import com.team.medical.persitence.GuestDAO;
-import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
@@ -489,6 +488,7 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("htos", htos);
 		model.addAttribute("selectcnt", selectcnt);
 	}
+	/*
 	@Override
 	public void foodsearch(HttpServletRequest req, Model model) {
 		String food =  req.getParameter("food");
@@ -503,6 +503,8 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("vo",vo);
 		model.addAttribute("selectcnt",selectcnt);
 	}
+	*/
+	/*
 	@Override
 	public void todaycal(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
@@ -532,7 +534,7 @@ public class GuestServiceImpl implements GuestService {
 	
 		model.addAttribute("vo",vo);
 	}
-	
+	*/
 
 /*	@Override
 	public void simpleTreatPro(HttpServletRequest req, Model model) {

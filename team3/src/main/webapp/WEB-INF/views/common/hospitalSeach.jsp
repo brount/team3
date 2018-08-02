@@ -66,12 +66,12 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                       <a href="#">병원</a>
+		                                       <a href="hospitalSeach">병원</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#">제휴병원</a>
+		                                        <a href="achospitalSeach">제휴병원</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -81,7 +81,7 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#">약국 검색</a>
+		                            <a  href="drugStoreSeach">약국 검색</a>
 		                        </h4>
 		                    </div>		                  
 		                </div>

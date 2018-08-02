@@ -14,7 +14,7 @@
 	                <table class="table">
 	                    <tr>
 	                        <td>
-	                           <a href="#">자외선지수</a>
+	                           <a href="ultravioletRay">자외선지수</a>
 	                        </td>
 	                    </tr>
 	                    <tr>

@@ -1,5 +1,7 @@
 package com.team.medical.service;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
@@ -34,8 +36,23 @@ public interface CommonService {
 	public void diseaseList(HttpServletRequest req, Model model);
 	// 질병 상세 페이지
 	public void diseaseInfo(HttpServletRequest req, Model model);
-	// 질병 목록
+	// 예방 목록
 	public void preventionList(HttpServletRequest req, Model model);
-	// 질병 상세 페이지
+	// 예방 상세 페이지
 	public void preventionInfo(HttpServletRequest req, Model model);
+	// 운동 목록
+	public void exerciseInfoList(HttpServletRequest req, Model model);
+	// 운동 상세 페이지
+	public void exerciseInfo(HttpServletRequest req, Model model);
+	// 고객센터 게시글 리스트
+	public void reportBoardList(HttpServletRequest req, Model model);
+	// 고객센터 게시글 상세페이지
+	public void reportBoardInfo(HttpServletRequest req, Model model);
+	// 약 검색목록 페이지
+	public void drugSeachList(HttpServletRequest req, Model model);
+	// 테스트
+	public void test(HttpServletRequest req, Model model) throws IOException;
+	
+	
+	
 }

@@ -171,7 +171,7 @@ public class GuestContoller {
 	public String reserveForm(HttpServletRequest req, Model model) {
 		logger.info("reserveForm, 페이지");
 		guService.reservehospital(req, model);
-		return "guest/reserveForm2";
+		return "guest/reserveForm";
 	}
 	//예약신청처리페이지
 	@RequestMapping(value = "reservePro")
@@ -204,6 +204,7 @@ public class GuestContoller {
 
 		return "guest/checkupRegisterPro";
 	}
+	/*
 	//음식 검색 칼로리조회 -아침
 	@RequestMapping(value = "foodsearch1")
 	public String foodsearch1(HttpServletRequest req, Model model) {
@@ -238,7 +239,7 @@ public class GuestContoller {
 
 		return "guest/todaycal";
 	}
-	
+	*/
 	
 	// ♬ 마이페이지
 	@RequestMapping(value = "myGuest")

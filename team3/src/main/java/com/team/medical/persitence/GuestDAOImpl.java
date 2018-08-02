@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
-import com.team.medical.vo.CalorieVO;
 import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
@@ -238,7 +237,7 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return htos;
 	}
-
+/*
 	@Override
 	public CalorieVO foodsearch(String food) {
 		
@@ -267,5 +266,5 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return vo;
 	}
-
+*/
 }

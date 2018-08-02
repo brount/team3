@@ -124,10 +124,12 @@
 						<table>
 							<tr>
 								<th colspan=4>
+									<c:if test="${sessionScope.id==dto.boardwriter}">
 									<input class="inputButton" type="button" value="글수정"
 									 onclick="window.location='boardModify?num=${dto.boardno}&pageNum=${pageNum }&kind=1'">
 									 <input class="inputButton" type="button" value="글삭제"
 									 onclick="window.location='boardDelete?num=${dto.boardno}&pageNum=${pageNum }&kind=1'">
+									 </c:if>
 									 <input class="inputButton" type="button" value="목록보기"
 									 onclick="window.location='boardList?pageNum=${pageNum }'">
 								</th>

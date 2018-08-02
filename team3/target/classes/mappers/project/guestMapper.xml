@@ -120,21 +120,24 @@
 	</select>
 	
 	<!-- 입력한 음식에 따른 칼로리 -->
+	<!-- 
 	<select id="foodsearch" resultType="com.team.medical.vo.CalorieVO">
 		SELECT CALORIE , c.food  from calorie c , food f where c.food=f.food and c.food=#{food}
 	</select>						
-	
+	 -->
 	<!-- 회원번호와 하루 총 칼로리 인서트 -->			
+	<!-- 
 	<insert id="todaycal" parameterType="com.team.medical.vo.CalorieVO">
 		insert into calorie(calorieno, GUESTNO, DAY, TODAYCAL ) values(cal_seq.nextval, #{guestNo}, sysdate, #{todaycal})
 	</insert>									
-	
+	 -->
 	
 	<!--  -->
+	<!-- 
 	<select id="mycal"  resultType="com.team.medical.vo.CalorieVO"> 
 		select * from calorie where GUESTNO=#{guestNo} and day=sysdate
 	</select>
-	
+	 -->
 	
 	
 	

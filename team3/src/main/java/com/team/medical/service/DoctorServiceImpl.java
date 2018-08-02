@@ -439,7 +439,7 @@ public class DoctorServiceImpl implements DoctorService {
 	    int docno = dao.checkupdoc(checkuplist);
 		
 		DoctorVO docDto = dao.getDoctorInfo(docno);
-		String doctorno = String.valueOf(docDto.getDoctorno());
+		String doctorno = "d"+String.valueOf(docDto.getDoctorno())+"t";
 		
 		HospitalVO hosDto = dao.getMyhospitalInfo(doctorno); 
 		GuestVO gusDto = dao.getcusInfo(checkuplist);

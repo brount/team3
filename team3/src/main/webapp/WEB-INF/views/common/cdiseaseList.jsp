@@ -60,7 +60,8 @@
 											<a href="cdiseaseList?pageNum=${startPage+pageBlock}">[▶]</a>
 											<a href="cdiseaseList?pageNum=${pageCnt}">[▶▶]</a>
 										</c:if>
-									</c:if></th>
+									</c:if>
+								</th>
 							</tr>
 						</table>
 					</div>

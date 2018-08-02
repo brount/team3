@@ -1,5 +1,12 @@
 package com.team.medical.persitence;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -8,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.DiseaseVO;
+import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
+import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
@@ -22,6 +31,7 @@ public class CommonDAOImpl implements CommonDAO {
 	// 글 갯수 구하기
 	@Override
 	public int getQuestionCnt(int kind) {
+		
 		int selectCnt=0;
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
 		selectCnt=dao.getQuestionCnt(kind);
@@ -234,4 +244,136 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return vo;
 	}
+	// 운동 갯수 구하기
+	@Override
+	public int getExerciseCnt() {
+		
+		int selectCnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt = dao.getExerciseCnt();
+		
+		return selectCnt;
+	}
+	// 운동 목록
+	@Override
+	public ArrayList<ExerciseVO> exerciseList(Map<String, Integer> map) {
+
+		ArrayList<ExerciseVO> dtos = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		dtos = dao.exerciseList(map);
+		
+		return dtos;
+	}
+	// 운동 상세 정보
+	@Override
+	public ExerciseVO exerciseInfo(String exerciseName) {
+
+		ExerciseVO vo = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		vo = dao.exerciseInfo(exerciseName);
+		
+		return vo;
+	}
+	// 고객센터 갯수 구하기
+	@Override
+	public int getReportBoardCnt(Map<String, Integer> map) {
+		
+		int selectCnt=0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt=dao.getReportBoardCnt(map);
+		
+		return selectCnt;
+	}
+	// 고객센터 목록 조회
+	@Override
+	public ArrayList<QuestionBoardVO> getReportBoardList(Map<String, Integer> map) {
+
+		ArrayList<QuestionBoardVO> dtos = null;
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		dtos=dao.getReportBoardList(map);
+		
+		return dtos;
+	}
+	// 질병 갯수 구하기
+	@Override
+	public int getDrugListCnt(Map<String, Object> map) {
+		
+		int selectCnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		selectCnt = dao.getDrugListCnt(map);
+		
+		return selectCnt;
+	}
+	// 질병 리스트
+	@Override
+	public ArrayList<DrugVO> getDrugList(Map<String, Object> map) {
+		ArrayList<DrugVO> list = null;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		list =  dao.getDrugList(map);
+		return list;
+	}
+	// 업데이트 포인트
+	@Override
+	public int updatePoint(String id) {
+		int cnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		cnt = dao.updatePoint(id);
+		return cnt;
+	}
+	// 업데이트 포인트
+	@Override
+	public void usePoint(Map<String,Object> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		dao.usePoint(map);
+	}
+	
+	// 테스트
+	@Override
+	public ArrayList<String> test(String[] args) throws IOException {
+		
+		java.util.Date today = new java.util.Date();
+		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
+		
+		String[] arr = {"1100000000", "2600000000"};
+        
+		ArrayList<String> a = new ArrayList<String>();
+		
+		for (String arr1 : arr) {
+			
+	        StringBuilder urlBuilder = new StringBuilder("http://newsky2.kma.go.kr/iros/RetrieveLifeIndexService3/getFsnLifeList"); /*URL*/
+	        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=A2X1aQuzE9qW3%2FmSsIpe83iQVh3HdleyFy5nRQQH%2BkUucy%2BBHAq9iIZYepGkzqLATSjd2zdaiS2CNkfW1Fm61g%3D%3D"); /*Service Key*/
+	        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+	        urlBuilder.append("&" + URLEncoder.encode("areaNo","UTF-8") + "=" + URLEncoder.encode(arr1, "UTF-8")); /*지점코드*/
+	        urlBuilder.append("&" + URLEncoder.encode("time","UTF-8") + "=" + URLEncoder.encode(date.format(today)+"06", "UTF-8")); /*2017년6월8일6시*/
+	        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
+	        URL url = new URL(urlBuilder.toString());
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("GET");
+	        conn.setRequestProperty("Content-type", "application/json");
+	        BufferedReader rd;
+	        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+	            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        } else {
+	            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	        }
+	        StringBuilder sb = new StringBuilder();
+	        String line;
+	        while ((line = rd.readLine()) != null) {
+	            a.add(line);
+	        }
+	        
+	        rd.close();
+	        conn.disconnect();
+	        
+		}
+		
+		return a;
+		
+		
+    }
+	
+	
 }

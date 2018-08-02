@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.DrugVO;
+import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.PreventionVO;
@@ -450,5 +451,45 @@ public class AdminDAOImpl implements AdminDAO {
 
 		return dtos;
 	}
+//------------------------------------------------------------ 희성
+	@Override
+	public int addEvent(EventVO dto) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int insertCnt = dao.addEvent(dto);
+		return insertCnt;
+	}
+	
+	@Override
+	public int upEvent(EventVO dto) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.upEvent(dto);
+       
+		System.out.println("updateCnt : " + updateCnt);
+		System.out.println(updateCnt==1 ? "수정 성공":"수정 실패");
+		return updateCnt;
+	}
 
+	@Override
+	public int delEvent(int num) {
+		System.out.println("삭제할  이벤트 번호 : " + num);
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int deleteCnt = dao.delEvent(num);
+		
+		System.out.println(deleteCnt == 1 ? "삭제성공" : "삭제실패");
+		
+		return deleteCnt;
+	}
+
+	@Override
+	public int delChkEvent(String[] checkOne) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int deleteCnt = 0;
+  	  	for (int i = 0; i < checkOne.length; i++) {
+  	  		deleteCnt += dao.delEvent(Integer.parseInt(checkOne[i]));
+  	  	}
+
+  	  	return deleteCnt;
+	}
+//------------------------------------------------------------ 희성
 }

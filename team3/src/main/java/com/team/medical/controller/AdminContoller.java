@@ -8,14 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.medical.service.AdminService;
+import com.team.medical.service.CommonService;
 
 @Controller
 public class AdminContoller {
 	
 	@Autowired
 	AdminService adService;
+	@Autowired
+	CommonService coService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminContoller.class);
 	
@@ -246,7 +250,7 @@ public class AdminContoller {
 	}
 	
 //--------------------------------------------------------------------------------------		
-
+/*
 	// 운동정보목록페이지  
 	@RequestMapping(value = "exerciseList")
 	public String exerciseList(HttpServletRequest req, Model model) {
@@ -314,7 +318,7 @@ public class AdminContoller {
 		
 		return "admin/exerciseModifyPro";
 	}
-	
+	*/
 //-------------------------------------------------------------------------------------- 
 	
 	//음식정보목록페이지         
@@ -376,6 +380,7 @@ public class AdminContoller {
 	@RequestMapping(value = "eventRequestList")
 	public String eventList(HttpServletRequest req, Model model) {
 		logger.info("eventRequestList, 페이지");
+		coService.eventList(req, model);
 		return "admin/eventRequestList";
 	}
 	
@@ -385,6 +390,38 @@ public class AdminContoller {
 		logger.info("eventAdd, 페이지");
 		return "admin/eventAdd";
 	}
+//---------------------------------------------------------------------------------------- 희성
+	//광고등록처리페이지             
+	@RequestMapping(value = "adminEventAddPro")
+	public String eventAddPro(MultipartHttpServletRequest req, Model model) {
+		logger.info("eventAddPro, 페이지");
+		adService.eventAdd(req,model);
+		return "admin/eventAddPro";
+	}
+	//광고목록수정페이지             
+	@RequestMapping(value = "eventModify")
+	public String eventModify(HttpServletRequest req, Model model) {
+		logger.info("eventModify, 페이지");
+		coService.eventInfo(req, model);
+		return "admin/eventModify";
+	}
+	//광고목록수정처리페이지             
+	@RequestMapping(value = "eventModifyPro")
+	public String eventModifyPro(MultipartHttpServletRequest req, Model model) {
+		logger.info("eventModifyPro, 페이지");
+		adService.eventUp(req,model);
+		coService.eventList(req, model);
+		return "admin/eventRequestList";
+	}
+	//광고등록처리페이지             
+	@RequestMapping(value = "eventDel")
+	public String eventDel(HttpServletRequest req, Model model) {
+		logger.info("eventDel, 페이지");
+		adService.eventDel(req,model);
+		coService.eventList(req, model);
+		return "admin/eventRequestList";
+	}
+//---------------------------------------------------------------------------------------- 희성
 	
 	//포인트결제내역목록페이지             
 	@RequestMapping(value = "pointList")

@@ -1,55 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- 퀵메뉴 -->
-<div class="quick-navigation">
-	<div class="inner-wrap">
-		<div class="quick-menu">
-			<div class="quick-menu-title">
-				<button type="button" class="button quick-menu-toggle" role="button">
-					<span class="button-text">QUICK MENU</span> <i 
-					style="background-image: url('/medical/resources/images/plusicon.png')"
-						class="iconset-quick icon-quick-toggle" 
-						aria-hidden="true"></i>
-				</button>
-			</div>
 
-			<div class="quick-menu-list">
-				<ul>
-					<li><a href="/home/healthMedical/main.do" target="_blank"
-						title="새창열림" class="button"><i
-							class="iconset-quick icon-quick-menu01" aria-hidden="true"></i> <span
-							class="button-text">건강의학센터</span></a></li>
-					<li><a href="/home/hbv/main.do" target="_blank" title="새창열림"
-						class="button"><i class="iconset-quick icon-quick-menu03"
-							aria-hidden="true"></i> <span class="button-text">심장뇌혈관병원</span></a></li>
-					<li><a href="/home/cancer/main/index.do" target="_blank"
-						title="새창열림" class="button"><i
-							class="iconset-quick icon-quick-menu02" aria-hidden="true"></i> <span
-							class="button-text">암병원</span></a></li>
-					<li><a href="/home/proton/main/index.do" target="_blank"
-						title="새창열림" class="button"><i
-							class="iconset-quick icon-quick-menu07" aria-hidden="true"></i> <span
-							class="button-text">양성자치료센터</span></a></li>
-					<li><a href="http://www.refer.co.kr" target="_blank"
-						title="새창열림" class="button"><i
-							class="iconset-quick icon-quick-menu08" aria-hidden="true"></i> <span
-							class="button-text">파트너즈포털</span></a></li>
-					<li><a href="/home/recruit/main.do" target="_blank"
-						title="새창열림" class="button"><i
-							class="iconset-quick icon-quick-menu04" aria-hidden="true"></i> <span
-							class="button-text">인재채용</span></a></li>
-					<!-- <li><a href="http://happycafe.samsunghospital.com" target="_blank" title="새창열림" class="button"><i class="iconset-quick icon-quick-menu06" aria-hidden="true"></i> <span class="button-text">해피카페</span></a></li> -->
-					<li><a href="/home/main/otWebzineAppliNews.do" class="button"><i
-							class="iconset-quick icon-quick-menu05" aria-hidden="true"></i> <span
-							class="button-text">소식지신청</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
- <footer class="footer-bs">
+<footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">
             	<h2>Logo</h2>
@@ -95,7 +48,6 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="/medical/resources/css/vendor/jquery/jquery.min.js"></script>
 <script src="/medical/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Plugin JavaScript -->

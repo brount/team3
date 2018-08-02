@@ -54,12 +54,13 @@ public interface GuestService {
 	
 	//간단진료 인설트
 	public void simpleTreatPro(HttpServletRequest req, Model model);
-	 
+	 /*
 	//음식검색 후 칼로리 조회
 	public void foodsearch(HttpServletRequest req, Model model);
-	
+	*/
+	/*
 	//하루 칼로리 인서트
 	public void todaycal(HttpServletRequest req, Model model);
-	
+	*/
 	
 }

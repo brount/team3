@@ -1,4 +1,7 @@
 package com.team.medical.controller;
+
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -27,56 +30,38 @@ public class CommonContoller {
 		}
 		return "common/mainmenuversion";
 	}
-	//내용들어 갈 부분(헤더푸터공통부분)
+	// 내용들어 갈 부분(헤더푸터공통부분)
 	@RequestMapping("templets")
 	public String templets(HttpServletRequest req,Model model) {
 		logger.info("templets");
 	
 		return "common/templets";
 	}
-	//로그인화면페이지              
+	// 로그인화면페이지              
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin(HttpServletRequest req, Model model) {
 		logger.info("memberLogin, 페이지");
 		return "common/memberLogin";
 	}
-	//회원분류페이지
+	// 회원분류페이지
 	@RequestMapping(value = "memberClassify")
 	public String memberClassify(HttpServletRequest req, Model model) {
 		logger.info("memberClassify, 페이지");
 		return "common/memberClassify";
 	}
-	//본인인증페이지
+	// 본인인증페이지
 	@RequestMapping(value = "memberCertify")
 	public String memberCertify(HttpServletRequest req, Model model) {
 		logger.info("memberCertify, 페이지");
 		return "common/memberCertify";
 	}
-	//가입완료페이지
+	// 가입완료페이지
 	@RequestMapping(value = "memberShipPro")
 	public String memberShipPro(HttpServletRequest req, Model model) {
 		logger.info("memberShipPro, 페이지");
 		return "common/memberShipPro";
 	}
-	//비밀번호확인페이지                 
-	@RequestMapping(value = "passwordChek")
-	public String passwordChek(HttpServletRequest req, Model model) {
-		logger.info("passwordChek, 페이지");
-		return "common/passwordChek";
-	}
-	//회원탈퇴확인페이지                  
-	@RequestMapping(value = "memberExit")
-	public String memberExit(HttpServletRequest req, Model model) {
-		logger.info("memberExit, 페이지");
-		return "common/memberExit";
-	}
-	//날씨페이지                   
-	@RequestMapping(value = "weatherList")
-	public String weatherList(HttpServletRequest req, Model model) {
-		logger.info("weatherList, 페이지");
-		return "common/weatherList";
-	}
-	//예방내용페이지                           
+	// 예방내용페이지                           
 	@RequestMapping(value = "cpreventionList")
 	public String preventionList(HttpServletRequest req, Model model) {
 		logger.info("cpreventionList, 페이지");
@@ -85,7 +70,7 @@ public class CommonContoller {
 		
 		return "common/cpreventionList";
 	}
-	//예방내용페이지                           
+	// 예방내용페이지                           
 	@RequestMapping(value = "preventionInfo")
 	public String preventionInfo(HttpServletRequest req, Model model) {
 		logger.info("preventionInfo, 페이지");
@@ -94,7 +79,7 @@ public class CommonContoller {
 		
 		return "common/preventionInfo";
 	}
-	//질병 리스트
+	// 질병 리스트
 	@RequestMapping(value = "cdiseaseList")
 	public String diseaseList(HttpServletRequest req, Model model) {
 		logger.info("cdiseaseList, 페이지");
@@ -103,7 +88,7 @@ public class CommonContoller {
 		
 		return "common/cdiseaseList";
 	}
-	//병상세페이지
+	// 병상세페이지
 	@RequestMapping(value = "diseaseInfo")
 	public String diseaseInfo(HttpServletRequest req, Model model) {
 		logger.info("diseaseInfo, 페이지");
@@ -118,43 +103,45 @@ public class CommonContoller {
 		logger.info("drugSeach, 페이지");
 		return "common/drugSeach";
 	}
+	//약전체검색
+	@RequestMapping(value = "drugSeachList")
+	public String drugSeachAll(HttpServletRequest req, Model model) {
+		logger.info("drugSeachAll, 페이지");
+		
+		coService.drugSeachList(req,model);
+		return "common/drugList";
+	}
 	//약상세페이지                      
 	@RequestMapping(value = "drugInfo")
 	public String drugInfo(HttpServletRequest req, Model model) {
 		logger.info("drugInfo, 페이지");
 		return "common/drugInfo";
 	}
-	//운동정보목록페이지                       
+	// 운동정보목록페이지                       
 	@RequestMapping(value = "exerciseInfoList")
 	public String exerciseList(HttpServletRequest req, Model model) {
 		logger.info("exerciseInfoList, 페이지");
+		
+		coService.exerciseInfoList(req, model);
+		
 		return "common/exerciseInfoList";
 	}
-	//운동정보페이지                       
+	// 운동정보페이지                       
 	@RequestMapping(value = "exerciseInfo")
 	public String exerciseInfo(HttpServletRequest req, Model model) {
 		logger.info("exerciseInfo, 페이지");
+		
+		coService.exerciseInfo(req, model);
+		
 		return "common/exerciseInfo";
 	}
-	//음식정보목록페이지                        
-	@RequestMapping(value = "foodInfoList")
-	public String foodList(HttpServletRequest req, Model model) {
-		logger.info("foodInfoList, 페이지");
-		return "common/foodInfoList";
-	}
-	//음식정보페이지                        
-	@RequestMapping(value = "foodInfo")
-	public String foodInfo(HttpServletRequest req, Model model) {
-		logger.info("foodInfo, 페이지");
-		return "common/foodInfo";
-	}
-	//10대질병정보페이지                         
+	// 10대질병정보페이지                         
 	@RequestMapping(value = "diseaseTop")
 	public String diseaseTop(HttpServletRequest req, Model model) {
 		logger.info("diseaseTop, 페이지");
 		return "common/diseaseTop";
 	}
-	//병원약국검색페이지                       
+	//병원검색페이지                       
 	@RequestMapping(value = "hospitalSeach")
 	public String hospitalSeach(HttpServletRequest req, Model model) {
 		logger.info("hospitalSeach, 페이지");
@@ -162,7 +149,14 @@ public class CommonContoller {
 		coService.hospitalList(req, model);
 		return "common/hospitalSeach";
 	}
-	//병원정보페이지                          
+	//약국검색페이지                       
+	@RequestMapping(value = "drugStoreSeach")
+	public String drugStoreSeach(HttpServletRequest req, Model model) {
+		logger.info("drugStoreSeach, 페이지");
+		
+		return "common/drugStoreSeach";
+	}
+	// 병원정보페이지                          
 	@RequestMapping(value = "hospitalInfo")
 	public String hospitalInfo(HttpServletRequest req, Model model) {
 		logger.info("hospitalInfo, 페이지");
@@ -170,7 +164,7 @@ public class CommonContoller {
 		coService.getHospitalInfo(req, model);
 		return "common/hospitalInfo";
 	}
-	//이벤트 목록페이지                        
+	// 이벤트 목록페이지                        
 	@RequestMapping(value = "eventList")
 	public String eventList(HttpServletRequest req, Model model) {
 		logger.info("eventList, 페이지");
@@ -179,7 +173,7 @@ public class CommonContoller {
 		
 		return "common/eventList";
 	}
-	//이벤트 상세페이지
+	// 이벤트 상세페이지
 	@RequestMapping(value = "eventInfo")
 	public String eventInfo(HttpServletRequest req, Model model) {
 		logger.info("eventInfo, 페이지");
@@ -188,7 +182,7 @@ public class CommonContoller {
 		
 		return "common/eventInfo";
 	}
-	//이벤트 신청페이지                       
+	// 이벤트 신청페이지                       
 	@RequestMapping(value = "eventRequest")
 	public String eventRequest(HttpServletRequest req, Model model) {
 		logger.info("eventRequest, 페이지");
@@ -198,7 +192,7 @@ public class CommonContoller {
 		
 		return "common/eventRequest";
 	}
-	//이벤트 추가
+	// 이벤트 추가
 	@RequestMapping(value = "eventAdd")
 	public String eventAdd(MultipartHttpServletRequest req, Model model) {
 		logger.info("eventAdd, 페이지");
@@ -207,7 +201,7 @@ public class CommonContoller {
 		
 		return "common/eventRequest";
 	}
-	//질문목록페이지
+	// 질문목록페이지
 	@RequestMapping(value = "boardList")
 	public String boardList(HttpServletRequest req, Model model) {
 		logger.info("boardList, 페이지");
@@ -216,7 +210,7 @@ public class CommonContoller {
 		
 		return "common/boardList";
 	}
-	//질문상세페이지 
+	// 질문상세페이지 
 	@RequestMapping(value = "boardInfo")
 	public String boardInfo(HttpServletRequest req, Model model) {
 		logger.info("BoardInfo, 페이지");
@@ -277,7 +271,7 @@ public class CommonContoller {
 	public String boardModifyView(HttpServletRequest req, Model model) {
 		logger.info("boardModifyView, 페이지");
 		
-		coService.boardModify(req, model);		
+		coService.boardModify(req, model);	
 		return "common/boardModifyView";
 	}
 	// 질문수정처리페이지
@@ -343,7 +337,7 @@ public class CommonContoller {
 		coService.boardDeletePro(req, model);
 		return "common/refDeletePro";
 	}
-	//로그인화면페이지              
+	// 로그인화면페이지              
 	@RequestMapping(value = "memberLoginPro")
 	public String memberLoginPro(HttpServletRequest req, Model model) {
 		logger.info("memberLoginPro, 페이지");
@@ -362,7 +356,7 @@ public class CommonContoller {
 		}
 		return page;
 	}
-	//로그아웃
+	// 로그아웃
 	@RequestMapping(value = "logout")
 	public String logout(HttpServletRequest req, Model model) {
 		logger.info("logout, 페이지");
@@ -377,6 +371,125 @@ public class CommonContoller {
 		logger.info("foodPoisoning, 페이지");
 		
 		return "common/foodPoisoning";
+	}
+	// 자외선지수
+	@RequestMapping(value = "ultravioletRay")
+	public String ultravioletRay(HttpServletRequest req, Model model) {
+		logger.info("ultravioletRay, 페이지");
+		
+		return "common/ultravioletRay";
+	}
+	// 고객센터 글목록페이지
+	@RequestMapping(value = "reportBoardList")
+	public String reportBoardList(HttpServletRequest req, Model model) {
+		logger.info("reportBoardList, 페이지");
+		
+		coService.reportBoardList(req, model);
+		
+		return "common/reportBoardList";
+	}
+	// 질문상세페이지 
+	@RequestMapping(value = "reportBoardInfo")
+	public String reportBoardInfo(HttpServletRequest req, Model model) {
+		logger.info("reportBoardInfo, 페이지");
+		
+		coService.reportBoardInfo(req, model);
+		return "common/reportBoardInfo";
+	}
+	// 고객센터 글등록페이지 
+	@RequestMapping(value = "reportBoardAdd")
+	public String reportBoardAdd(HttpServletRequest req, Model model) {
+		logger.info("reportBoardAdd, 페이지");
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		
+		int num =0;
+		int ref =1; // 그룹화 아이디
+		int pageNum=1; //페이지
+		// 답변글
+		// contentForm.jsp에서 get방식으로 넘긴 값 num, ref, ref_step, ref_level를 받는다.
+		if(req.getParameter("num") != null) {
+			num = Integer.parseInt(req.getParameter("num"));
+			ref = Integer.parseInt(req.getParameter("ref"));
+			pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		}
+		model.addAttribute("num", num);
+		model.addAttribute("ref", ref);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("kind", kind);
+		
+		return "common/reportBoardAdd";
+	}
+	// 고객센터 글등록 처리
+	@RequestMapping(value = "reportBoardAddPro")
+	public String reportBoardAddPro(HttpServletRequest req, Model model) {
+		logger.info("reportBoardAddPro, 페이지");
+		
+		coService.boardAddPro(req,model);
+		
+		coService.reportBoardList(req, model);
+		
+		return "common/reportBoardList";
+	}
+	// 고객센터 수정 페이지
+	@RequestMapping(value = "reportBoardModify")
+	public String reportBoardModify(HttpServletRequest req, Model model) {
+		logger.info("reportBoardModify, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		
+		return "common/reportBoardModify";
+	}
+	// 고객센터 수정상세페이지
+	@RequestMapping(value="reportBoardModifyView")
+	public String reportBoardModifyView(HttpServletRequest req, Model model) {
+		logger.info("reportBoardModifyView, 페이지");
+		
+		coService.boardModify(req, model);
+		return "common/reportBoardModifyView";
+	}
+	// 고객센터 수정처리페이지
+	@RequestMapping(value = "reportBoardModifyPro")
+	public String reportBoardModifyPro(HttpServletRequest req, Model model) {
+		logger.info("reportBoardModifyPro, 페이지");
+		coService.boardModifyPro(req, model);
+		
+		return "common/reportBoardModifyPro";
+	}
+	// 고객센터 삭제페이지
+	@RequestMapping(value = "reportBoardDelete")
+	public String reportBoardDelete(HttpServletRequest req, Model model) {
+		logger.info("reportBoardDelete, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		
+		return "common/reportBoardDelete";
+	}
+	// 고객센터 삭제 처리페이지
+	@RequestMapping(value = "reportBoardDeletePro")
+	public String reportBoardDeletePro(HttpServletRequest req, Model model) {
+		logger.info("reportBoardDeletePro, 페이지");
+		
+		coService.boardDeletePro(req, model);
+		return "common/reportBoardDeletePro";
+	}
+	// 테스트
+	@RequestMapping(value = "test")
+	public String test(HttpServletRequest req, Model model) throws IOException {
+		logger.info("test, 페이지");
+		
+		coService.test(req, model);
+		
+		return "common/test";
 	}
 	
 }

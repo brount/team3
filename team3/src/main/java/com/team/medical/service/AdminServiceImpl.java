@@ -1,5 +1,10 @@
 package com.team.medical.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,10 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.medical.persitence.AdminDAO;
+import com.team.medical.persitence.CommonDAO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.DrugVO;
+import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.PreventionVO;
@@ -22,6 +31,8 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	AdminDAO dao;
+	@Autowired
+	CommonDAO codao;
 	
 	// 관리자 로그인
 	@Override
@@ -1036,7 +1047,7 @@ public class AdminServiceImpl implements AdminService {
 
 	
 //--------------------------------------------------------------------------------------	
-
+/*
 	// 운동목록
 	@Override
 	public void exerciseList(HttpServletRequest req, Model model) {
@@ -1309,7 +1320,7 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("exerciseName",exerciseName);
 		model.addAttribute("pageNum", pageNum);
 	}
-
+*/
 	//--------------------------------------------------------------------------------------	
 
 	// 예방접종 목록
@@ -1410,4 +1421,169 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
 		}
 	}
+	
+//---------------------------------------------------------------------------------------- 희성
+	// 이벤트추가
+	@Override
+	public void eventAdd(MultipartHttpServletRequest req, Model model) {
+		MultipartFile file = req.getFile("image");
+		
+		MultipartFile file2 = req.getFile("thumbnail");
+        
+        String saveDir = req.getRealPath("/resources/images/event");
+        
+        String realDir="C:\\Dve36\\gitTeam\\team3\\src\\main\\webapp\\resources\\images\\event\\";
+        
+        try {
+            file.transferTo(new File(saveDir+file.getOriginalFilename()));
+            
+            FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+            FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+            
+            file2.transferTo(new File(saveDir+file2.getOriginalFilename()));
+            
+            FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
+            FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
+            
+            int data = 0;
+            int data2 = 0;
+            
+            while((data = fis.read()) != -1) {
+                fos.write(data);
+            }
+            
+            while((data2 = fis2.read()) != -1) {
+                fos2.write(data2);
+            }
+            fis.close();
+            fos.close();
+            fis2.close();
+            fos2.close();
+            
+    		String advertisementTitle = req.getParameter("title");
+    		String advertisementThumbnail = file2.getOriginalFilename();
+    		String advertisementImage = file.getOriginalFilename();
+    		String advertisementContents = req.getParameter("content");
+    		int advertisementKind = Integer.parseInt(req.getParameter("kind"));
+    		String date1 = req.getParameter("date1");
+    		Date advertisementStart = Date.valueOf(date1);
+    		String date2 = req.getParameter("date2");
+    		Date advertisementEnd = Date.valueOf(date2);
+    		System.out.println(advertisementStart);
+    		System.out.println(advertisementEnd);
+    		
+            EventVO dto = new EventVO();
+            dto.setAdvertisementTitle(advertisementTitle);
+            dto.setAdvertisementThumbnail(advertisementThumbnail);
+            dto.setAdvertisementImage(advertisementImage);
+            dto.setAdvertisementContents(advertisementContents);
+            dto.setAdvertisementKind(advertisementKind);
+            dto.setAdvertisementStart(advertisementStart);
+            dto.setAdvertisementEnd(advertisementEnd);
+            dto.setAdvertisementState(1);
+            
+            int insertCnt = 0;
+            insertCnt = dao.addEvent(dto);
+            
+            model.addAttribute("insertCnt", insertCnt);
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }      
+		
+	}
+	// 이벤트수정
+	@Override
+	public void eventUp(MultipartHttpServletRequest req, Model model) {
+		int advertisementNo = Integer.parseInt(req.getParameter("advertisementNo"));
+        EventVO dto = codao.eventInfo(advertisementNo);
+        
+		if(req.getParameter("image") != null) {
+			MultipartFile file = req.getFile("image");
+			
+			MultipartFile file2 = req.getFile("thumbnail");
+	        
+	        String saveDir = req.getRealPath("/resources/images/event");
+	        
+	        String realDir="C:\\Dve36\\gitTeam\\team3\\src\\main\\webapp\\resources\\images\\event\\";	        
+        
+	        try {
+	        		file.transferTo(new File(saveDir+file.getOriginalFilename()));
+	                
+	                FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+	                FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+	                
+	                file2.transferTo(new File(saveDir+file2.getOriginalFilename()));
+	                
+	                FileInputStream fis2 = new FileInputStream(saveDir + file2.getOriginalFilename());
+	                FileOutputStream fos2 = new FileOutputStream(realDir + file2.getOriginalFilename());
+	                
+	                int data = 0;
+	                int data2 = 0;
+	                
+	                while((data = fis.read()) != -1) {
+	                    fos.write(data);
+	                }
+	                
+	                while((data2 = fis2.read()) != -1) {
+	                    fos2.write(data2);
+	                }
+	                fis.close();
+	                fos.close();
+	                fis2.close();
+	                fos2.close();
+	                String advertisementThumbnail = file2.getOriginalFilename();
+	        		String advertisementImage = file.getOriginalFilename();
+	        		dto.setAdvertisementThumbnail(advertisementThumbnail);
+	                dto.setAdvertisementImage(advertisementImage);
+	        	          
+	            
+	        } catch(IOException e) {
+	            e.printStackTrace();
+	        }   
+		} 
+        
+		String advertisementTitle = req.getParameter("title");    		
+		String advertisementContents = req.getParameter("content");
+		int advertisementKind = Integer.parseInt(req.getParameter("kind"));
+		String date1 = req.getParameter("date1");
+		Date advertisementStart = Date.valueOf(date1);
+		String date2 = req.getParameter("date2");
+		Date advertisementEnd = Date.valueOf(date2);
+		System.out.println(advertisementStart);
+		System.out.println(advertisementEnd);      
+        
+        dto.setAdvertisementTitle(advertisementTitle);           
+        dto.setAdvertisementContents(advertisementContents);
+        dto.setAdvertisementKind(advertisementKind);
+        dto.setAdvertisementStart(advertisementStart);
+        dto.setAdvertisementEnd(advertisementEnd);
+        dto.setAdvertisementState(1);
+        
+        int insertCnt = 0;
+        insertCnt = dao.upEvent(dto);
+        
+        model.addAttribute("insertCnt", insertCnt);
+	}
+	// 이벤트삭제
+	@Override
+	public void eventDel(HttpServletRequest req, Model model) {
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		String[] checkOne = req.getParameter("advertisementNo").split(",");
+		ArrayList<Integer> member_arr = new ArrayList<Integer>();
+		
+		for (int i = 0; i < checkOne.length; i++) {
+			member_arr.add(Integer.parseInt(checkOne[i]));
+			System.out.println(Integer.parseInt(checkOne[i]));
+		}
+		
+		int deleteCnt = dao.delChkEvent(checkOne);
+		  
+		model.addAttribute("deleteCnt", deleteCnt);
+		model.addAttribute("pageNum",pageNum);
+	}
+
+
+	
+	//--------------------------------------------------------------------------------------
 }
