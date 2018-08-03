@@ -305,6 +305,7 @@ public class GuestServiceImpl implements GuestService {
 		ExaminationVO vo = new ExaminationVO();
 		
 		vo.setGuestno(guestNo);
+		System.out.println(guestNo);
 		vo.setHeight(req.getParameter("height"));
 		vo.setWeight(req.getParameter("weight"));
 		vo.setFatness(req.getParameter("fatness"));
@@ -327,8 +328,8 @@ public class GuestServiceImpl implements GuestService {
 		vo.setHepatitisscr(req.getParameter("hepatitisscr"));
 		vo.setBreastradiography(req.getParameter("breastradiography"));
 		vo.setEcg(req.getParameter("ecg"));
-		
-		
+/*		vo.setExaminationday(Date.valueOf(req.getParameter("Examinationday")));
+*/		
 		int insertcnt = dao.checkupRegisterPro(vo);
 		model.addAttribute("insertcnt",insertcnt);
 		
@@ -350,7 +351,12 @@ public class GuestServiceImpl implements GuestService {
 		if(vo!=null) {
 			selectcnt = 1;
 		}
+		int	bloodpremax =Integer.parseInt(vo.getBloodpremax()); 
+		
+		
 		model.addAttribute("vo",vo);
+		model.addAttribute("bloodpremax",bloodpremax);
+
 		model.addAttribute("selectcnt",selectcnt);
 
 	
@@ -919,6 +925,13 @@ public class GuestServiceImpl implements GuestService {
 		vo.setFoodgram(foodgram);
 		
 		int foodcnt = dao.newfood(vo);
+		System.out.println(food);
+		System.out.println(foodcal);
+		System.out.println(foodgram);
+
+
+		
+		
 		
 		model.addAttribute("foodcnt",foodcnt);
 		
@@ -1168,12 +1181,22 @@ public class GuestServiceImpl implements GuestService {
 		int foodno = Integer.parseInt(req.getParameter("foodno"));
 		int foodcal = Integer.parseInt(req.getParameter("foodcal"));
 		int foodgram = Integer.parseInt(req.getParameter("foodgram"));
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("foodno", foodno);
 		map.put("foodcal", foodcal);
 		map.put("foodgram", foodgram);
 		
+		
+		System.out.println(foodno);
+		System.out.println(foodcal);
+		System.out.println(foodgram);
+
+		
+		
 		int updatecnt = dao.myFoodModi(map);
+		
 		
 		model.addAttribute("updatecnt",updatecnt);
 
@@ -1187,6 +1210,16 @@ public class GuestServiceImpl implements GuestService {
 		
 		model.addAttribute("deletecnt",deletecnt);
 
+	}
+	@Override
+	public void foodmodi(HttpServletRequest req, Model model) {
+			int foodno = Integer.parseInt(req.getParameter("foodno"));
+			FoodVO vo =  new FoodVO();
+			vo = dao.foodmodi(foodno);
+			
+			model.addAttribute("vo",vo);
+	
+	
 	}
 	
 

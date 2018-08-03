@@ -80,13 +80,6 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return deleteCnt;
 	}
 
-	@Override
-	public int insertHospitalInfo(HospitalVO vo) {
-		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		int cnt = dao.insertHospitalInfo(vo);
-		return cnt;
-	}
-
 	public int getdocnoInfo(String id) {
 		
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);

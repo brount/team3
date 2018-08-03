@@ -27,11 +27,6 @@
 		update doctor set doctorappro = 3 where doctorid=#{id}  
 	</update>
 	
-	<!-- 내 병원 정보 입력 -->
-	<insert id="insertHospitalInfo" parameterType="com.team.medical.vo.HospitalVO">
-		insert into Hospital(hospitalno, doctorno, hospitalname, hospitaladdress1, hospitaladdress2, hospitaladdress3, hospitalphone, hospitalinstruction, hospitaltime, hospitalholiday, hospitalimage)
-		values( hospitalseq.nextval ,#{doctorno},#{hospitalname},#{hospitaladdress1,jdbcType=VARCHAR},#{hospitaladdress2,jdbcType=VARCHAR},#{hospitaladdress3,jdbcType=VARCHAR},#{hospitalphone,jdbcType=VARCHAR},#{hospitalinstruction,jdbcType=VARCHAR},#{hospitaltime},#{hospitalholiday,jdbcType=VARCHAR},#{hospitalimage,jdbcType=VARCHAR})
-	</insert>
 	
 	<!-- 의사 번호 가져오기 -->
 	<select id="getdocnoInfo" parameterType="String" resultType="int">
@@ -54,13 +49,13 @@
    <select id="getHpInfo" parameterType="String" resultType="com.team.medical.vo.HpVO">
       select * from hp where hospitalphone = #{hospitalphone}
    </select>
-   <!-- 병원정보수정 -->
+    <!-- 병원정보수정 -->
    <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
-      UPDATA hospital SET doctorno=#{doctorno},hospitalname=#{hospitalname},
-      hospitaladdress1=#{hospitaladdress1},hospitaladdress2=#{hospitaladdress2},
-      hospitaladdress3=#{hospitaladdress3},hospitalphone=#{hospitalphone},
-      hospitalinstruction=#{hospitalinstruction},hospitaltime=#{hospitaltime},
-      hospitalholiday=#{hospitalholiday},hospitalimage=#{hospitalimage}
+      UPDATA hospital SET doctorno=#{doctorno},
+      hospitaladdr=#{hospitaladdr},hospitalphone=#{hospitalphone},
+      hospitalinstruction=#{hospitalinstruction},hospitalimage=#{hospitalimage},
+      mon=#{mon},tues=#{tues}, wed=#{wed}, thurs=#{thurs}, fri=#{fri}, sat=#{sat}, sun=#{sun}, 
+      holi=#{holi}, hospitalstate=#{hospitalstate}, hospitalkind=#{hospitalkind}
       WHERE hospitalno = #{hospitalno}
    </update>
 	
@@ -88,7 +83,7 @@
 			   	   	  FROM(
 			   	   	  		SELECT * 
 			   	   	  		  FROM CheckupList 
-			   	   	  		    ORDER BY checkuplist DESC
+			   	   	  		    ORDER BY checkuplist DESC 
 			   	   	  	  )
 					)   
 			 WHERE rnum >= #{start} AND rnum <= #{end}
@@ -163,12 +158,12 @@
 	</select>
 	
 	<select id = "getHospitalnoDocno" resultType="int">
-	   select hospitalno from hospital where doctorno =#{doctorno,jdbcType=INTEGER}
+	   select hospitalno from hospital where doctorno =#{doctorno,jdbcType=VARCHAR}
 	</select>
 	
 	<insert id = "examinationAdd" parameterType="com.team.medical.vo.PrescriptionVO">
 		insert into prescription(prescriptionNo, hospitalno, guestno, symptom, drugname, drugdosage, drugrepeat, dosagedate, dosageusage, injectionname, injectiondosage, injectionrepeat, injectiondate, caution, prescriptionDate)
-		values(prescriptionNo_seq.nextval,#{hospitalno},#{guestno},#{symptom,jdbcType=VARCHAR},#{drugname},#{drugdosage,jdbcType=VARCHAR},#{drugrepeat,jdbcType=INTEGER},#{dosagedate},#{dosageusage,jdbcType=INTEGER},#{injectionname,jdbcType=VARCHAR},#{injectiondosage,jdbcType=VARCHAR},#{injectionrepeat,jdbcType=INTEGER},#{injectiondate,jdbcType=INTEGER},#{caution,jdbcType=VARCHAR},#{prescriptionDate})
+		values(prescriptionNo_seq.nextval,#{hospitalno},#{guestno},#{symptom,jdbcType=VARCHAR},#{drugname},#{drugdosage,jdbcType=VARCHAR},#{drugrepeat,jdbcType=VARCHAR},#{dosagedate},#{dosageusage,jdbcType=VARCHAR},#{injectionname,jdbcType=VARCHAR},#{injectiondosage,jdbcType=VARCHAR},#{injectionrepeat,jdbcType=VARCHAR},#{injectiondate,jdbcType=VARCHAR},#{caution,jdbcType=VARCHAR},#{prescriptionDate})
 	</insert>
 	
 	<!-- 처방전 글 갯수 -->

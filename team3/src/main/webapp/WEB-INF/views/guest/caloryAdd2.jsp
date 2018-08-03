@@ -70,7 +70,7 @@ function newfoodinsert(){
 
 
 
-<section>
+<section  style="margin-bottom: 300px;" >
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">

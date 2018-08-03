@@ -13,7 +13,6 @@
 
 <!-- /medical/resources/css/ -->
 <!-- Bootstrap core CSS -->
-<script src="/medical/resources/css/vendor/jquery/jquery.min.js"></script>
 <link href="/medical/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom fonts for this template -->
@@ -37,6 +36,7 @@
 <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
 <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/component.css" />
 <script src="/medical/resources/css/js/modernizr.custom.js"></script>
+
 
 </head>
 

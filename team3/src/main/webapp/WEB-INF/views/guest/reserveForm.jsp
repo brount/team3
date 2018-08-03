@@ -78,9 +78,7 @@
 		          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 		            <select name="hospitalkind" class="form-control selectpicker" >
 		              <option value=" " >진료과</option>
-		              <option>${vo.hospitalkind1}</option>
-		              <option>${vo.hospitalkind2}</option>
-		        
+		              <option>${vo.hospitalkind}</option>
 		            </select>
 		          </div>
 		        </div>

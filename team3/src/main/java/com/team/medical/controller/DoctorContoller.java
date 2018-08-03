@@ -97,12 +97,12 @@ public class DoctorContoller {
 		return "doctor/myHospitalResistraion";
 	}
 	
-	//마이병원 등록처리                  
+	//마이병원 수정처리                  
 	@RequestMapping(value = "myHospitalInputPro")
 	public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
 		System.out.println("myHospitalInputPro, 페이지");
 		
-		docService.myHospitalInputPro(req, model);
+		docService.myHospitalUpdatePro(req, model);
 		return "doctor/myHospitalInputPro";
 	}	
 	
@@ -156,10 +156,10 @@ public class DoctorContoller {
     @RequestMapping(value = "checkupAdd")
 	    public String checkupAdd(HttpServletRequest req, Model model) {
 	    System.out.println("checkupAdd, 페이지");
-	    int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+	    //int doctorno = Integer.parseInt(req.getParameter("doctorno"));
 	    int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
 	    model.addAttribute("checkuplist", checkuplist);
-	    model.addAttribute("doctorno", doctorno);
+	    //model.addAttribute("doctorno", doctorno);
 		   
 	    
 	    docService.getCheckupInfo(req, model);
@@ -182,9 +182,10 @@ public class DoctorContoller {
   	public String checkupResultList(HttpServletRequest req, Model model) {
   		System.out.println("checkupResultList, 페이지");
   		
-  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+  		//********
+  	/*	int doctorno = Integer.parseInt(req.getParameter("doctorno"));
 		model.addAttribute("doctorno", doctorno);
-		System.out.println("doctorno :" +  doctorno);
+		System.out.println("doctorno :" +  doctorno);*/
   		docService.checkupResultList(req, model);
   		return "doctor/checkupResultList";
   	}
@@ -195,10 +196,7 @@ public class DoctorContoller {
   		System.out.println("checkupResult, 페이지");
   		
   		int checkup = Integer.parseInt(req.getParameter("checkup"));
-  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
-		model.addAttribute("doctorno", doctorno);
         model.addAttribute("checkup", checkup);
-        System.out.println("checkupResultdoctorno : "+doctorno);
         docService.checkupResult(req, model);
   		
   		
@@ -220,8 +218,6 @@ public class DoctorContoller {
   		System.out.println("examinationInputPro, 페이지");
   		
   		int checkup = Integer.parseInt(req.getParameter("checkup"));
-  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
-		model.addAttribute("doctorno", doctorno);
   		model.addAttribute("checkup", checkup);
   		
   		docService.examinationInputPro(req, model);
@@ -232,9 +228,6 @@ public class DoctorContoller {
   	@RequestMapping(value = "examinationList")
   	public String examinationList(HttpServletRequest req, Model model) {
   		System.out.println("examinationList, 페이지");
-  		
-  		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
-		model.addAttribute("doctorno", doctorno);
   		
   		docService.examinationList(req, model);
   		return "doctor/examinationList";

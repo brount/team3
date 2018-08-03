@@ -68,39 +68,39 @@
 						        </thead>
 						        <tbody>
 						            <tr>
-						                <td><input type="text" style="width:100%" name="drugname"></td>
-						                <td><input type="text" style="width:100%" name="drugdosage"></td>
-						                <td><input type="number" style="width:100%" min="0" max="99" name="drugrepeat">번</td>
-						                <td><input type="number" style="width:100%" min="0" max="99" name="dosagedate">일</td>
-						                <td><input type="text" style="width:100%" name="dosageusage"></td>
+						                <td><input type="text" style="width:100%" name="drugname1"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage1"></td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="drugrepeat1">번</td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="dosagedate1">일</td>
+						                <td><input type="text" style="width:100%" name="dosageusage1"></td>
 						          	</tr>
 						          	 <tr>
 						                <td><input type="text" style="width:100%" name="drugname2"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage2"></td>
+						                <td><input type="number" style="width:100%" min="0" name="drugrepeat2"></td>
+						                <td><input type="number" style="width:100%" min="0" name="dosagedate2"></td>
+						                <td><input type="text" style="width:100%" name="dosageusage2"></td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="text" style="width:100%" name="drugname3"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage3"></td>
+						                <td><input type="number" style="width:100%" min="0" name="drugrepeat3"></td>
+						                <td><input type="number" style="width:100%" min="0" name="dosagedate3"></td>
+						                <td><input type="text" style="width:100%" name="dosageusage3"></td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="text" style="width:100%" name="drugname4"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage4"></td>
+						                <td><input type="number" style="width:100%" min="0" name="drugrepeat4"></td>
+						                <td><input type="number" style="width:100%" min="0" name="dosagedate4"></td>
+						                <td><input type="text" style="width:100%" name="dosageusage4"></td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td><input type="text" style="width:100%" name="drugname5"></td>
+						                <td><input type="text" style="width:100%" name="drugdosage5"></td>
+						                <td><input type="number" style="width:100%" min="0" name="drugrepeat5"></td>
+						                <td><input type="number" style="width:100%" min="0" name="dosagedate5"></td>
+						                <td><input type="text" style="width:100%" name="dosageusage5"></td>
 						          	</tr>
 						          	
 						          	<tr>
@@ -115,22 +115,22 @@
 						                <td rowspan="5"><textarea rows="8" name="caution" maxlength="255"></textarea>　</td>
 						          	</tr>
 						          	<tr>
-						          	  	<td><input type="text" style="width:100%" name="injectionname"></td>
-						          	  	<td><input type="text" style="width:100%" name="injectiondosage"></td>
-						                <td><input type="number" style="width:100%" min="0" max="99" name="injectionrepeat">번</td>
-						                <td><input type="number" style="width:100%" min="0" max="99" name="injectiondate">일</td>
+						          	  	<td><input type="text" style="width:100%" name="injectionname1"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectiondosage1"></td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="injectionrepeat1">번</td>
+						                <td><input type="number" style="width:100%" min="0" max="99" name="injectiondate1">일</td>
 						          	</tr>
 						          	<tr>
-						          	  	<td><input type="text" style="width:100%"></td>
-						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectionname2"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectiondosage2"></td>
+						                <td><input type="number" style="width:100%" min="0" name="injectionrepeat2"></td>
+						                <td><input type="number" style="width:100%" min="0" name="injectiondate2"></td>
 						          	</tr>
 						          	<tr>
-						          	  	<td><input type="text" style="width:100%"></td>
-						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectionname3"></td>
+						          	  	<td><input type="text" style="width:100%" name="injectiondosage3"></td>
+						                <td><input type="number" style="width:100%" min="0" name="injectionrepeat3"></td>
+						                <td><input type="number" style="width:100%" min="0" name="injectiondate3"></td>
 						          	</tr>
 						        </tbody>
 						    </table>

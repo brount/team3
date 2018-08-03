@@ -28,9 +28,6 @@ public interface DoctorDAO {
 	//의사 회원 탈퇴
 	public int deleteMember(String id);
 
-	// 내 병원 정보 입력
-	public int insertHospitalInfo(HospitalVO vo);
-
 	// 내 병원 정보 가져오기
 	public HospitalVO getMyhospitalInfo(String doctorno);
 	

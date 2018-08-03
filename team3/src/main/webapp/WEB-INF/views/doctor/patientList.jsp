@@ -67,6 +67,10 @@
 										</td>	
 										<td ><a onclick="window.location='patientInfo?pageNum=${pageNum}&number=${number+1}&reservationNo=${dto.reservationNo}'">${guestList[b].guestname}</a></td>
 										<td>${hospitalList[a].hospitalname}</td>
+										<c:if test="${dto.reservationKind==1 }">
+											<td >
+											<span class="label label-success">병원예약</span></td>
+										</c:if>
 										<c:if test="${dto.reservationKind==2 }">
 											<td >
 											<span class="label label-success">클리닉예약</span></td>

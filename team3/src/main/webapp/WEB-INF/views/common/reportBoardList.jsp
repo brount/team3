@@ -33,6 +33,7 @@
 								<tbody>
 									<tr class="unread">
 										<td class="view-message">글번호</td>
+										<td class="view-message">분류</td>
 										<td class="view-message">제목</td>
 										<td><span>작성자 </span></td>
 										<td class="view-message">등록일</td>
@@ -42,6 +43,14 @@
 											<tr>
 												<td>
 													${number } <c:set var="number" value="${number-1}"></c:set>
+												</td>
+												<td>
+													<c:if test="${dto.kind == 3}">
+														공지
+													</c:if>
+													<c:if test="${dto.kind == 4}">
+														신고
+													</c:if>
 												</td>
 												<td>
 													<a href="reportBoardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a>

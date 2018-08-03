@@ -86,11 +86,11 @@
 	            </div>
 	        </div>	
 		  		 <div class="col-sm-9 col-md-9">
-		            <div class="well">
+		          
 		  <form class="form-horizontal" action="personalMofPro" method="post"  id="">
 	    <fieldset>
 	
-	      <legend>My Health 수정</legend>
+	      <h1>My Health 수정</h1>
 	    
 		 <div class="form-group">
 	        <label class="col-md-3 control-label">생년월일</label>
@@ -197,7 +197,6 @@
 		        </div>
 	        
 	    </div>
-	</div> 
 </section>
  
  <footer>

@@ -102,9 +102,8 @@
 									<td align="center">전화번호 : ${dto.hospitalphone}</td>
 								</tr>
 								<tr>
-									<td align="center">주소 : ${dto.hospitaladdress1}<br>
-															  ${dto.hospitaladdress2}<br>
-															  ${dto.hospitaladdress3}<br>	
+									<td align="center">주소 : ${dto.hospitaladdr}<br>
+															 	
 									</td>
 									<td align="center">의사 :${vo.doctorname}</td>
 								</tr>

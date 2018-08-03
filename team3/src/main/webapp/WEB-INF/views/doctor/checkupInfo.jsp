@@ -104,9 +104,7 @@
 									<td align="center">전화번호 : ${hosDto.hospitalphone}</td>
 								</tr>
 								<tr>
-									<td align="center">주소 : ${hosDto.hospitaladdress1}<br>
-															  ${hosDto.hospitaladdress2}<br>
-															  ${hosDto.hospitaladdress3}<br>	
+									<td align="center">주소 : ${hosDto.hospitaladdr}<br>
 									</td>
 									<td align="center">의사 :${docDto.doctorname}</td>
 								</tr>

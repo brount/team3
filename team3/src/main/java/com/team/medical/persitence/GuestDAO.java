@@ -109,6 +109,10 @@ public interface GuestDAO {
 	//사용자가 즐겨찾기한 병원의 정보 셀렉
 	public ArrayList<HospitalVO> bookMark(Map<String,Object> map);
 
+	
+	// 사용자가 추가한 음식 수정 윈도우폼에 뿌릴 정보
+	public FoodVO foodmodi(int foodno);
+	
 	// 사용자가 추가한 음식 수정
 	public int myFoodModi(Map<String,Object> map);
 

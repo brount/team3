@@ -220,7 +220,6 @@
 								<div style="display:table; margin:0 auto;">
 									<input type="submit" value="등록하기" style="margin-right:5px;">
 									<input type="reset" value="작성취소">
-									<input type="button" value="메인가기" style="margin-left:5px;" onclick="window.location='checkupResultList'">
 								</div>
 							</div>
 			            </div>

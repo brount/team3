@@ -129,8 +129,11 @@ public class DoctorServiceImpl implements DoctorService {
         String saveDir = req.getRealPath("/resources/");
         String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
         DoctorVO vo = new DoctorVO();
+        
         try {
-            if (req.getFile("file") != null) {
+           String image = req.getParameter("file");
+         //  vo = dao.
+        	if (req.getFile("file") != null) {
             	file.transferTo(new File(saveDir+file.getOriginalFilename()));
 	            
 	            FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
@@ -195,13 +198,17 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-   public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
-      MultipartFile file = req.getFile("hospitalimage");
+   public String myHospitalUpdatePro(MultipartHttpServletRequest req, Model model) {
+	 MultipartFile file = req.getFile("hospitalimage");
         String saveDir = req.getRealPath("/resources/images/licence/");
         String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
          
         try {           
-           if(file != null) {
+        	String id = (String)req.getSession().getAttribute("id");
+        	String doctorno = "d"+String.valueOf(dao.getdocnoInfo(id))+"t";
+           HospitalVO vo = dao.getMyhospitalInfo(doctorno);   
+           
+           if(req.getParameter("hospitalimage") != null) {
                file.transferTo(new File(saveDir+file.getOriginalFilename()));
                
                FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
@@ -214,59 +221,25 @@ public class DoctorServiceImpl implements DoctorService {
                }
                fis.close();
                fos.close();
+               String hospitalimage = file.getOriginalFilename();
+               vo.setHospitalimage(hospitalimage);
            }      
-            
-         String id = (String)req.getSession().getAttribute("id");
-         String hospitalname = req.getParameter("hospitalname");
-         String hospitaladdress1 = req.getParameter("hospitaladdress1");
-         String hospitaladdress2 = req.getParameter("hospitaladdress2");
-         String hospitaladdress3 = req.getParameter("hospitaladdress3");
+         
          String hospitalphone = req.getParameter("hospitalphone");
          String hospitalinstruction = req.getParameter("hospitalinstruction");
-         String hospitaltime = "";
-         String hospitaltime1 = req.getParameter("hospitaltime1");
-         String hospitaltime2 = req.getParameter("hospitaltime2");
          
-         String hospitalholiday = req.getParameter("hospitalholiday");
-         String hospitalimage = file.getOriginalFilename();
-         String doctorno = "d"+String.valueOf(dao.getdocnoInfo(id))+"t";
-         int cnt =0;
-         cnt = dao.chkHospital(hospitalphone);
+         vo.setHospitalphone(hospitalphone);
+         vo.setHospitalinstruction(hospitalinstruction);            
          
-         if(cnt == 0) {
-            HospitalVO vo = new HospitalVO();      
-                  
-            vo.setDoctorno(doctorno);
-            vo.setHospitalname(hospitalname);
-            vo.setHospitaladdress1(hospitaladdress1);
-            vo.setHospitaladdress2(hospitaladdress2);
-            vo.setHospitaladdress3(hospitaladdress3);
-            vo.setHospitalphone(hospitalphone);
-            vo.setHospitalinstruction(hospitalinstruction);
-            if (!hospitaltime1.equals("") && !hospitaltime2.equals("")){
-            	hospitaltime = hospitaltime1 + "~" + hospitaltime1;
-    		}
-            
-            vo.setHospitaltime(hospitaltime);
-            vo.setHospitalholiday(hospitalholiday);
-            vo.setHospitalimage(hospitalimage);
-            
-            int intsertCnt = dao.insertHospitalInfo(vo);
-            model.addAttribute("intsertCnt", intsertCnt);
-         }else {
-            HospitalVO vo = dao.getHospitalInfo(hospitalphone);
-            
-            String doctorno2 = vo.getDoctorno()+","+doctorno;
-            vo.setDoctorno(doctorno2);
-            
-            int intsertCnt = dao.updateHospital(vo);
-            model.addAttribute("intsertCnt", intsertCnt);
-         }
-   
+         
+         int intsertCnt = dao.updateHospital(vo);
+         model.addAttribute("intsertCnt", intsertCnt);
+         
         } catch(IOException e) {
             e.printStackTrace();
         }
       return realDir;
+      
       
    }
 
@@ -654,7 +627,9 @@ public class DoctorServiceImpl implements DoctorService {
 		 
 		int checkup = Integer.parseInt(req.getParameter("checkup"));
 		int guestno = dao.getGuestCheckupResult(checkup);
-		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		String id = (String)req.getSession().getAttribute("id");
+		System.out.println("id : "+ id);
+		int doctorno = dao.getdocnoInfo(id);
 		
 		DoctorVO docDto = dao.getDoctorInfo(doctorno);
 		String doctorno2 = "d"+String.valueOf(docDto.getDoctorno())+"t";
@@ -663,15 +638,53 @@ public class DoctorServiceImpl implements DoctorService {
 		System.out.println("hospitalno");
 		
 		String symptom = req.getParameter("symptom");
-		String drugname  = req.getParameter("drugname");
-		String drugdosage  = req.getParameter("drugdosage");
-		int drugrepeat = Integer.parseInt(req.getParameter("drugrepeat"));
-		int dosagedate = Integer.parseInt(req.getParameter("dosagedate"));
-		String dosageusage = req.getParameter("dosageusage");
-		String injectionname = req.getParameter("injectionname");
-		String injectiondosage = req.getParameter("injectiondosage");
-		int injectionrepeat = Integer.parseInt(req.getParameter("injectionrepeat"));
-		int injectiondate = Integer.parseInt(req.getParameter("injectiondate"));
+		String drugname  = "";
+		String drugname1  = req.getParameter("drugname1");
+		String drugname2  = req.getParameter("drugname2");
+		String drugname3  = req.getParameter("drugname3");
+		String drugname4  = req.getParameter("drugname4");
+		String drugname5  = req.getParameter("drugname5");
+		String drugdosage = "";
+		String drugdosage1  = req.getParameter("drugdosage1");
+		String drugdosage2  = req.getParameter("drugdosage2");
+		String drugdosage3  = req.getParameter("drugdosage3");
+		String drugdosage4  = req.getParameter("drugdosage4");
+		String drugdosage5  = req.getParameter("drugdosage5");
+		String drugrepeat = ""; 
+		String drugrepeat1 = req.getParameter("drugrepeat1");
+		String drugrepeat2 = req.getParameter("drugrepeat2");
+		String drugrepeat3 = req.getParameter("drugrepeat3");
+		String drugrepeat4 = req.getParameter("drugrepeat4");
+		String drugrepeat5 = req.getParameter("drugrepeat5");
+		String dosagedate = "";
+		String dosagedate1 = req.getParameter("dosagedate1");
+		String dosagedate2 = req.getParameter("dosagedate2");
+		String dosagedate3 = req.getParameter("dosagedate3");
+		String dosagedate4 = req.getParameter("dosagedate4");
+		String dosagedate5 = req.getParameter("dosagedate5");
+		String dosageusage = "";
+		String dosageusage1 = req.getParameter("dosageusage1");
+		String dosageusage2 = req.getParameter("dosageusage2");
+		String dosageusage3 = req.getParameter("dosageusage3");
+		String dosageusage4 = req.getParameter("dosageusage4");
+		String dosageusage5 = req.getParameter("dosageusage5");
+		String injectionname = "";
+		String injectionname1 = req.getParameter("injectionname1");
+		String injectionname2 = req.getParameter("injectionname2");
+		String injectionname3 = req.getParameter("injectionname3");
+		String injectiondosage = "";
+		String injectiondosage1 = req.getParameter("injectiondosage1");
+		String injectiondosage2 = req.getParameter("injectiondosage2");
+		String injectiondosage3 = req.getParameter("injectiondosage3");
+		String injectionrepeat = "";
+		String injectionrepeat1 = req.getParameter("injectionrepeat1");
+		String injectionrepeat2 = req.getParameter("injectionrepeat2");
+		String injectionrepeat3 = req.getParameter("injectionrepeat3");
+		String injectiondate = "";
+		String injectiondate1 = req.getParameter("injectiondate1");
+		String injectiondate2 = req.getParameter("injectiondate2");
+		String injectiondate3 = req.getParameter("injectiondate3");
+		
 		String caution = req.getParameter("caution");
 		
 		
@@ -680,16 +693,51 @@ public class DoctorServiceImpl implements DoctorService {
 		vo.setHospitalno(hospitalno);
 		vo.setGuestno(guestno);
 		vo.setSymptom(symptom);
+		if (!drugname1.equals("") || !drugname2.equals("") || !drugname3.equals("") || !drugname4.equals("") || !drugname5.equals("")){
+			drugname = drugname1 + ", " + drugname2 + ", " + drugname3 + ", " + drugname4 + ", " + drugname5;
+		}
 		vo.setDrugname(drugname);
-		vo.setDrugdosage(drugdosage);;
+
+		if (!drugdosage1.equals("") || !drugdosage2.equals("") || !drugdosage3.equals("") || !drugdosage4.equals("") || !drugdosage5.equals("")){
+			drugdosage = drugdosage1 + ", " + drugdosage2 + ", " + drugdosage3 + ", " + drugdosage4 + ", " + drugdosage5;
+		}
+		vo.setDrugdosage(drugdosage);
+		
+		if (!drugrepeat1.equals("") || !drugrepeat2.equals("") || !drugrepeat3.equals("") || !drugrepeat4.equals("") || !drugrepeat5.equals("")){
+			drugrepeat = drugrepeat1 + ", " + drugrepeat2 + ", " + drugrepeat3 + ", " + drugrepeat4 + ", " + drugrepeat5;
+		}
 		vo.setDrugrepeat(drugrepeat);
+		
+		if (!dosagedate1.equals("") || !dosagedate2.equals("") || !dosagedate3.equals("") || !dosagedate4.equals("") || !dosagedate5.equals("")){
+			dosagedate = dosagedate1 + ", " + dosagedate2 + ", " + dosagedate3 + ", " + dosagedate4 + ", " + dosagedate5;
+		}
 		vo.setDosagedate(dosagedate);
+		
+		if (!dosageusage1.equals("") || !dosageusage2.equals("") || !dosageusage3.equals("") || !dosageusage4.equals("") || !dosageusage5.equals("")){
+			dosageusage = dosageusage1 + ", " + dosageusage2 + ", " + dosageusage3 + ", " + dosageusage4 + ", " + dosageusage5;
+		}
 		vo.setDosageusage(dosageusage);
+		
+		if (!injectionname1.equals("") || !injectionname2.equals("") || !injectionname3.equals("") ){
+			injectionname = injectionname1 + ", " + injectionname2 + ", " + injectionname3;
+		}
 		vo.setInjectionname(injectionname);
+		
+		if (!injectiondosage1.equals("") || !injectiondosage2.equals("") || !injectiondosage3.equals("") ){
+			injectiondosage = injectiondosage1 + ", " + injectiondosage2 + ", " + injectiondosage3;
+		}
 		vo.setInjectiondosage(injectiondosage);
+		
+		if (!injectionrepeat1.equals("") || !injectionrepeat2.equals("") || !injectionrepeat3.equals("") ){
+			injectionrepeat = injectionrepeat1 + ", " + injectionrepeat2 + ", " + injectionrepeat3;
+		}
 		vo.setInjectionrepeat(injectionrepeat);
+		
+		if (!injectiondate1.equals("") || !injectiondate2.equals("") || !injectiondate3.equals("") ){
+			injectiondate = injectiondate1 + ", " + injectiondate2 + ", " + injectiondate3;
+		}
 		vo.setInjectiondate(injectiondate);
-		vo.setCaution(caution);
+		
 		vo.setPrescriptionDate(new Date(System.currentTimeMillis()));
 		
 		int insertCnt = dao.examinationAdd(vo);
@@ -789,8 +837,8 @@ public class DoctorServiceImpl implements DoctorService {
 		
 		int prescriptionNo = Integer.parseInt(req.getParameter("prescriptionNo"));
 		int guestno = dao.getPrescriptionNoGuestno(prescriptionNo);
-		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
-		
+		String id = (String)req.getSession().getAttribute("id");
+		int doctorno = dao.getdocnoInfo(id);
 		DoctorVO docDto = dao.getDoctorInfo(doctorno);
 		String doctorno2 = "d"+String.valueOf(docDto.getDoctorno())+"t";
 		HospitalVO hosDto = dao.getMyhospitalInfo(doctorno2); 
@@ -925,18 +973,14 @@ public class DoctorServiceImpl implements DoctorService {
         
         int guestno = dao.getGuestCheckupResult(checkup);
         System.out.println("guestno" + guestno);
-       // CheckupVO CheckDto = dao.getCheckupResultInfo(checkup);
         GuestVO gusDto = dao.getcusInfo(guestno);
         String doctorno = req.getParameter("doctorno");//
         System.out.println("doctorno"+ doctorno);
         HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
         System.out.println("hosDto" + hosDto);
-        DoctorVO docDto = dao.getDoctorInfo(Integer.parseInt(doctorno));
         
         model.addAttribute("gusDto",gusDto);
-       // model.addAttribute("CheckDto",CheckDto);
         model.addAttribute("hosDto",hosDto);
-        model.addAttribute("docDto",docDto);
 		
 	}
 

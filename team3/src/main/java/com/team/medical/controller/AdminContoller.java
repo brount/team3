@@ -496,14 +496,6 @@ public class AdminContoller {
 	
 //-------------------------------------------------------------------------------------- 
 	
-	
-	//요구사항목록페이지            
-	@RequestMapping(value = "requestList")
-	public String requestList(HttpServletRequest req, Model model) {
-		logger.info("requestList, 페이지");
-		return "admin/requestList";
-	}
-	
 	//광고신청목록페이지             
 	@RequestMapping(value = "eventRequestList")
 	public String eventList(HttpServletRequest req, Model model) {
@@ -582,4 +574,18 @@ public class AdminContoller {
 		adService.adminLoginPro(req, model);
 		return "admin/adminLoginPro";
 	}
+	
+//---------------------------------------------------------------------------------------- 나다
+	
+	// 신고요청 목록          
+	@RequestMapping(value = "adminReportList")
+	public String adminReportBoardList(HttpServletRequest req, Model model) {
+		logger.info("adminReportList, 페이지");
+		
+		coService.reportBoardList(req, model);
+		
+		return "admin/adminReportList";
+	}
+		
+//---------------------------------------------------------------------------------------- 나다
 }	

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
 
@@ -12,10 +12,12 @@
 <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-function modi() {
-	if (!document.foodlist.foodcal.value) {
-		alert('수정할 칼로리를 입력해주세요.');
-	
+function modi(foodno) {
+
+	var url = "foodmodi?foodno="+ foodno; 
+
+
+	window.open(url, "foodmodi", "menubar=no,width=1100,height=300");
 }
 
 </script>
@@ -30,7 +32,8 @@ function modi() {
    <%@ include file="../common/header.jsp" %>
 </header>
 
-<section>
+<section  style="margin-bottom: 100px;" >
+  <form name="foodlist" action="myFoodModi" onsubmit="return modi();">
 <div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
@@ -38,7 +41,7 @@ function modi() {
 		        </div>	
 			  		 <div class="col-sm-9 col-md-9">
 			                <div class="mail-box">
-			     <form name="foodlist" action="myFoodModi" onsubmit="return modi();">
+			   
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>나만의 음식 목록(${cnt})</h3>
@@ -76,24 +79,27 @@ function modi() {
                                  
                                   <td><span class="label label-success">
                                
-                               <input type="text" placeholder=" ${dto.foodcal }" name="foodcal" style="background-color: #5cb85c;  width: 80px;" >
+                               ${dto.foodcal }
                                    Kcal
                                   </span></td>
                                
                                <td><span class="label label-success">
                                
-                               <input type="text" placeholder="${dto.foodgram}" name="foodgram" style="background-color: #5cb85c;  width: 80px;" >
-                                   g
+                               ${dto.foodgram}g
                                   </span></td>
                                   
                                   
                                  <td>
-                                	 <input type="submit" class="btn" value="수정" >
+                                	    <input type="button" class="btn" value="수정" onclick="modi(${dto.foodno })">
            	                         <input type="button" class="btn" value="삭제" onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
+           	                	   
+           	
                                   </td>
                               </tr>
                                 
                      </c:forEach>
+                     
+                     
                  	<tr>
                      
                           </tbody>
@@ -101,13 +107,11 @@ function modi() {
                       </div>
                       </div>
            
-                                             
-           	
            	
                   </aside>
                   
-                  
-                  </form>
+                 
+                                      
                   
                   <!-- 페이지 컨트롤 -->
 		<table style="width:1000px" align="center">
@@ -147,7 +151,8 @@ function modi() {
 			            </div>
 			        </div>
 			    </div>
-
+    
+                  </form>
 </section>
 
   

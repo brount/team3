@@ -271,7 +271,7 @@ public class GuestContoller {
 		return "guest/newfood";
 	}
 	//사용자가 새로운 음식과 칼로리 인설트/ 수정페이지버전
-		@RequestMapping(value = "newfoodmodi")
+		@RequestMapping(value = "newfoodModi")
 		public String newfoodmodi(HttpServletRequest req, Model model) {
 			logger.info("newfoodmodi, 페이지");
 			guService.newfood(req, model);
@@ -287,13 +287,23 @@ public class GuestContoller {
 
 			return "guest/myFoodList";
 		}
+		
+	//사용자가 추가한 음식 수정 전 폼
+		
+		@RequestMapping(value = "foodmodi")
+		public String foodmodi(HttpServletRequest req, Model model) {
+			logger.info("foodmodi, 페이지");
+			guService.foodmodi(req, model);
+			return "guest/foodmodi";
+		}
+	
 	//사용자가 추가한 음식 수정
 		@RequestMapping(value = "myFoodModi")
 		public String myFoodModi(HttpServletRequest req, Model model) {
 			logger.info("myFoodModi, 페이지");
 			guService.myFoodModi(req, model);
 
-			return "guest/myFoodModi";
+			return "guest/foodmodiPro";
 		}
 		
 		

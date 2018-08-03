@@ -374,6 +374,17 @@ public class GuestDAOImpl implements GuestDAO {
 		
 	}
 
+	@Override
+	public FoodVO foodmodi(int foodno) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		FoodVO vo = new FoodVO();
+		
+		 vo = dao.foodmodi(foodno);
+		 return vo;
+	
+	}
+
 	
 
 

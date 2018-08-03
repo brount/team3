@@ -90,8 +90,8 @@
 						<table class="table table-striped table-hover" border="1">
 							<thead>
 							<tr>
-							<th colspan="4">검진서번호</th>
-							<td colspan="2"><input name="height" placeholder="20170725" class="form-control"  type="text" style="width:180px;"></td>
+							<th colspan="4">검진 날짜</th>
+							<td colspan="2"><input name="reservationtime" placeholder="20170725" class="form-control"  type="text" style="width:180px;"></td>
 							
 							</tr>
 							

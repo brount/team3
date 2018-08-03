@@ -48,8 +48,9 @@ function foodsearch3() {
 function newfoodinsert(){
 	var food = document.cal.food.value;
 	var foodcal = document.cal.foodcal.value;
+	var foodgram = document.cal.foodgram.value;
 	
-	window.location="newfoodModi?food="+food+"&foodcal="+foodcal;
+	window.location="newfoodModi?food="+food+"&foodcal="+foodcal+"&foodgram="+foodgram;
 
 	
 }
@@ -209,7 +210,7 @@ function newfoodinsert(){
 					       <div class="col-md-6  inputGroupContainer">
 					       
 					          <div class="input-group" style=" margin-top: 35px;"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="foodcal" placeholder="100 g" class="form-control"  type="text" > 
+					            <input  name="foodgram" placeholder="100 g" class="form-control"  type="text" > 
 					           
 					                        	<b style="margin-left: 20px;">g</b> 
 					             

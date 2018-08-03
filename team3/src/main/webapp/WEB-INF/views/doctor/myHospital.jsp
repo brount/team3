@@ -40,9 +40,7 @@
 					        <tr>
 					        	<th style="background: lightcyan">병원주소</th>
 					        	<td>
-					        		${vo.hospitaladdress1}<br>
-					        		${vo.hospitaladdress2}<br>
-					        		${vo.hospitaladdress3}<br>
+					        		${vo.hospitaladdr}<br>
 					        	</td>
 					        </tr>
 					        <tr>
@@ -55,15 +53,20 @@
 					        </tr>
 					    	<tr>
 					        	<th style="background: lightcyan">진료시간</th>
-					        	<td>${vo.hospitaltime}</td>
+					        	<td>월 : ${vo.mon}<br>
+						        	화 : ${vo.tues}<br>
+						        	수 : ${vo.wed}<br>
+						        	목 : ${vo.thurs}<br>
+						        	금 : ${vo.fri}<br>
+						        	토 : ${vo.sat}<br>
+						        	일 : ${vo.sun}<br>
+						        	공휴일  : ${vo.holi}<br>
+					        	</td>
 					        </tr>
-					   		<tr>
-					        	<th style="background: lightcyan">휴무일</th>
-					        	<td>${vo.hospitalholiday}</td>
-					        </tr>
+					   		
 					     </table>
 					</div>
-					<input type="button" value="병원 등록하기" onclick="window.location='myHospitalResistraion'">
+					<input type="button" value="병원 수정" onclick="window.location='myHospitalResistraion'">
 				</div>
         	</div>
         </div>

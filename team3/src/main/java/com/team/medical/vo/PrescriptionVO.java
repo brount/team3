@@ -9,13 +9,13 @@ public class PrescriptionVO {
 	private String symptom;
 	private String drugname;
 	private String drugdosage;
-	private int drugrepeat;
-	private int dosagedate;
+	private String drugrepeat;
+	private String dosagedate;
 	private String dosageusage;
 	private String injectionname;
 	private String injectiondosage;
-	private int injectionrepeat;
-	private int injectiondate;
+	private String injectionrepeat;
+	private String injectiondate;
 	private String caution;
 	private Date prescriptionDate;
 	public int getPrescriptionNo() {
@@ -54,16 +54,16 @@ public class PrescriptionVO {
 	public void setDrugdosage(String drugdosage) {
 		this.drugdosage = drugdosage;
 	}
-	public int getDrugrepeat() {
+	public String getDrugrepeat() {
 		return drugrepeat;
 	}
-	public void setDrugrepeat(int drugrepeat) {
+	public void setDrugrepeat(String drugrepeat) {
 		this.drugrepeat = drugrepeat;
 	}
-	public int getDosagedate() {
+	public String getDosagedate() {
 		return dosagedate;
 	}
-	public void setDosagedate(int dosagedate) {
+	public void setDosagedate(String dosagedate) {
 		this.dosagedate = dosagedate;
 	}
 	public String getDosageusage() {
@@ -84,16 +84,16 @@ public class PrescriptionVO {
 	public void setInjectiondosage(String injectiondosage) {
 		this.injectiondosage = injectiondosage;
 	}
-	public int getInjectionrepeat() {
+	public String getInjectionrepeat() {
 		return injectionrepeat;
 	}
-	public void setInjectionrepeat(int injectionrepeat) {
+	public void setInjectionrepeat(String injectionrepeat) {
 		this.injectionrepeat = injectionrepeat;
 	}
-	public int getInjectiondate() {
+	public String getInjectiondate() {
 		return injectiondate;
 	}
-	public void setInjectiondate(int injectiondate) {
+	public void setInjectiondate(String injectiondate) {
 		this.injectiondate = injectiondate;
 	}
 	public String getCaution() {

@@ -48,6 +48,7 @@
 
 
 <!-- Bootstrap core JavaScript -->
+<script src="/medical/resources/css/vendor/jquery/jquery.min.js"></script>
 <script src="/medical/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Plugin JavaScript -->
@@ -62,10 +63,9 @@
 
 <script src="/medical/resources/css/js/freelancer.min.js"></script>
 <!-- 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ -->
 <script src="/medical/resources/css/js/cbpHorizontalMenu.min.js"></script>
-
 
 <script type="text/javascript">
 $(document).ready(function() {

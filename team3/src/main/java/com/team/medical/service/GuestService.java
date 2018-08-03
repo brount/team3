@@ -80,6 +80,8 @@ public interface GuestService {
 	// 사용자가 추가한 음식목록
 	public void myFoodList(HttpServletRequest req, Model model);
 	
+	// 사용자가 추가한 음식 수정 윈도우창에 뿌릴 정보
+	public void foodmodi(HttpServletRequest req, Model model);
 	// 사용자가 추가한 음식 수정
 	public void myFoodModi(HttpServletRequest req, Model model);
 

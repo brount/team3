@@ -72,22 +72,22 @@
 		select count(hospitalno) from hospital
 	</select>
 	
-	<!-- 병원목록 가져오기 -->	
-	<select id="getHospitalList" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
-		<![CDATA[
-			SELECT * 
-			  FROM(
-			  		SELECT hospitalno, doctorno, hospitalname, hospitaladdress1, hospitaladdress2,
-			  		hospitalphone,hospitalinstruction,hospitaltime,hospitalholiday,hospitalimage,
-			  		hospitalstate, rownum rnum
-			   	   	  FROM(
-			   	   	  		SELECT * 
-			   	   	  		  FROM hospital 
-			   	   	  	  )
-					)   
-			 WHERE rnum >= #{start} AND rnum <= #{end}
-		]]>
-	</select>
+	<!-- 병원목록 가져오기 -->   
+   <select id="getHospitalList" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
+      <![CDATA[
+         SELECT * 
+           FROM(
+                 SELECT hospitalno, doctorno, hospitalname, hospitaladdr,
+                 hospitalphone,hospitalinstruction,hospitalimage,mon,tues,wed,thurs
+                 ,fri,sat,sun,holi,hospitalkind,hospitalstate, rownum rnum
+                       FROM(
+                             SELECT * 
+                               FROM hospital 
+                            )
+               )   
+          WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+   </select>
 	
 	<!-- 이벤트 추가 -->
 	<insert id="insertEvent" parameterType="com.team.medical.vo.EventVO">

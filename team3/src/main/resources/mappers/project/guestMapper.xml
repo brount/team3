@@ -100,8 +100,8 @@
 	<insert id="checkupRegisterPro" parameterType="com.team.medical.vo.ExaminationVO">
 		INSERT INTO Examination(COL,  GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL, VISIONR , HEARINGL , HEARINGR ,BLOODPREMAX ,  BLOODPREMIN             
     ,URINEGLUCOSE, URINEPROTEIN , OCCULTHEMATURIA, URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,  TOTALCHOLESTEROL      
-   , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG)
-		VALUES(#{COL} ,#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
+   , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG )
+		VALUES(col_seq.nextval ,#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
 		 #{bloodpremax}, #{bloodpremin},#{urineglucose},#{urineprotein},#{occulthematuria},#{urineph},
 		 #{hemoglobin},#{bloodglucose},#{totalcholesterol}, #{ast},#{alt},#{gammagtp},#{hepatitisscr}, #{breastradiography}, #{ecg})
 	</insert>
@@ -190,7 +190,7 @@
 	
 	<!-- 사용자가 등록한 음식의 총 갯수  -->
 	<select id="myFoodcnt" resultType="int">
-		select count(*) from food where guestNo = #{guestNo}
+		select count(*) from food where guestNo = #{guestNo} and food is not null
 	</select>
 	
 	<!-- 사용자가 등록한 음식목록리스트 셀렉 -->
@@ -223,6 +223,10 @@
 	
 	</delete>
 	
+	<select id="foodmodi" resultType="com.team.medical.vo.FoodVO">
+	select *from food where foodno=#{foodno}
+	
+	</select>
 	
 	
 	

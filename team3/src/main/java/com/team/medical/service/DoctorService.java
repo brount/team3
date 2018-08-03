@@ -22,7 +22,7 @@ public interface DoctorService {
 	public void deletePro(HttpServletRequest req, Model model);
 
 	// 내 병원 정보 입력
-	public String myHospitalInputPro(MultipartHttpServletRequest req, Model model);
+	public String myHospitalUpdatePro(MultipartHttpServletRequest req, Model model);
 
 	// 내 병원 정보
 	public void myHospitalInfo(HttpServletRequest req, Model model);

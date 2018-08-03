@@ -5,23 +5,69 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+      var data = new google.visualization.arrayToDataTable([
+    	  ['검사항목', '정상수치', '나의 수치'],
+          ['최고혈압', '${vo.bloodpremax}',120],
+          ['최저혈압', 60,'${vo.bloodpremin}'],
+          ['혈당', 126,'${vo.bloodglucose}'],
+          ['콜레스트롤',200,'${vo.totalcholesterol}'],
+          ['비만도', 25, '${vo.fatness}']
+          ]);
+
+      var options = {
+        width: 800,
+        chart: {
+          title: 'Nearby galaxies',
+          subtitle: 'distance on the left, brightness on the right'
+        },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        series: {
+          0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+          1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+        },
+        axes: {
+          x: {
+            distance: {label: 'parsecs'}, // Bottom x-axis.
+            brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+          }
+        }
+      };
+
+    var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+    chart.draw(data, options);
+  };
+    </script>
+ 
+ 
+   <!--  <script type="text/javascript">
+    
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
-
+		
+       
       function drawChart() {
+    	
+    	  
         var data = google.visualization.arrayToDataTable([
-          ['검사항목', '2016', '2017', '2018'],
-          ['혈압', 1000, 400, 200],
-          ['혈당', 1170, 460, 250],
-          ['콜레스트롤', 660, 1120, 300],
-          ['비만도', 1030, 540, 350]
+          ['검사항목', '정상수치', '나의수치'],
+          ['최고혈압', 120, '${vo.bloodpremax}'],
+          ['최저혈압', 60, '${vo.bloodpremin}'],
+          ['혈당', 1170, 460],
+          ['콜레스트롤', 660, 1120],
+          ['비만도', 1030, 540]
         ]);
 
         var options = {
           chart: {
-            title: '3년 간 건강검진 수치',
-            subtitle: '2016-2018',
+            title: '정상수치 대비  나의 수치알아보기',
+            subtitle: '',
+           
           }
         };
 
@@ -29,7 +75,7 @@
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
-    </script>
+    </script> -->
  
 <link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
  </head>
@@ -107,7 +153,7 @@
 			            <div class="well">
 			                <div>
       
-     <form action="checkupRegister">
+     <form action="checkupRegister" name="cr">
       <div class="panel panel-primary" style="margin-left: 10px">
           <div class="panel-heading" >
           <c:if test="${selectcnt ==0 }">
@@ -124,8 +170,7 @@
           
           <div id="toolbar-admin" class="panel-body">
           </div>
-          <div id="columnchart_material" style="width:95%; height: 500px; margin:0 auto;"></div>
-          
+          <div id="dual_x_div" style="width:95%; height: 500px; margin:0 auto;"></div>
           <table class="table table-striped table-hover" border="1" style="width:95%; margin:5px auto;">
               <thead>
                   <tr>
@@ -187,7 +232,7 @@
                    <tr>
                       <td rowspan="2">고혈압</td>
                       <td>혈압(최고)</td>
-                      <td>${vo.bloodpremax}mmHg</td>
+                      <td name="bloodpremax">${vo.bloodpremax}mmHg</td>
                       <td></td>
                       <td>120이하</td>
                    </tr>
