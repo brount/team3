@@ -24,7 +24,6 @@ import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.HospitalVO;
-import com.team.medical.vo.HpVO;
 import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -385,10 +384,7 @@ public class CommonServiceImpl implements CommonService {
 		if(vo != null) {
 			model.addAttribute("vo", vo);
 			System.out.println(1);
-		}else {
-			HpVO vo2 = docdao.getHpInfo(hospitalphone);
-			model.addAttribute("vo",vo2);
-		}
+		} 
 		
 		model.addAttribute("pageNum",pageNum);
 	}

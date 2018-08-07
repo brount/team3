@@ -68,13 +68,26 @@
 	</select>
 	
 	<!-- 병원목록 갯수세기 -->
-	<select id="getHospitalCnt" resultType="int">
+	<select id="getHospitalCnt" resultType="int" parameterType="java.util.Map">
 		select count(hospitalno) from hospital
+		<where>  
+			<if test="state == 2 ">
+				hospitalstate = 2
+			</if>    	
+        	<if test="select != null">
+     			<if test="sc == 1">
+		       		AND hospitalname LIKE '%'||#{select}||'%'
+		       	</if>
+		       	<if test="sc == 2">
+		       		AND hospitaladdr LIKE '%'||#{select}||'%'
+		       	</if>
+	      	</if>	      		
+      	</where>
 	</select>
 	
 	<!-- 병원목록 가져오기 -->   
    <select id="getHospitalList" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
-      <![CDATA[
+     
          SELECT * 
            FROM(
                  SELECT hospitalno, doctorno, hospitalname, hospitaladdr,
@@ -83,10 +96,26 @@
                        FROM(
                              SELECT * 
                                FROM hospital 
+                               <where>
+                               <if test="state == 2 ">
+									hospitalstate = 2
+								</if>  
+                               	<if test="select != null">
+	                               	<if test="sc == 1">
+						        		hospitalname LIKE '%'||#{select}||'%'
+						        	</if>
+						        	<if test="sc == 2">
+						        		hospitaladdr LIKE '%'||#{select}||'%'
+						        	</if>
+					        	</if>
+                               </where>
                             )
                )   
-          WHERE rnum >= #{start} AND rnum <= #{end}
-      ]]>
+        <where>        	        	
+        	<![CDATA[
+	           AND rnum >= #{start} AND rnum <= #{end}
+	      	]]>	      	
+      	</where>
    </select>
 	
 	<!-- 이벤트 추가 -->
@@ -198,7 +227,7 @@
                        			FROM QuestionBoard
                       			   WHERE kind IN (#{notice},#{report})
                       			   ORDER BY boardno DESC)
-		   	   	  	   ORDER BY kind ASC, boardno DESC)
+		   	   	  	   ORDER BY kind ASC)
 			  )
 		<![CDATA[
 			 WHERE rnum >= #{start} AND rnum <= #{end}

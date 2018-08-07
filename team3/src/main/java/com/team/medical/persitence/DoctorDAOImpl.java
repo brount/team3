@@ -12,7 +12,6 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
-import com.team.medical.vo.HpVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -112,14 +111,7 @@ public class DoctorDAOImpl implements DoctorDAO {
          
          return vo;
       }
-	   // 일반병원정보가져오기 (병원번호)
-	   @Override
-	   public HpVO getHpInfo(String hospitalphone) {
-	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-	      HpVO vo = dao.getHpInfo(hospitalphone);
-	      
-	      return vo;
-	   }
+      
 	   // 병원정보수정
 	   @Override
 	   public int updateHospital(HospitalVO vo) {

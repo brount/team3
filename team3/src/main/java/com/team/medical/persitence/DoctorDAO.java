@@ -8,7 +8,6 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
-import com.team.medical.vo.HpVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -43,9 +42,6 @@ public interface DoctorDAO {
     // 병원정보 (병원번호)
     public HospitalVO getHospitalInfo(Map<String,Object> map);
    
-    // 일반병원정보
-    public HpVO getHpInfo(String hospitalphone);
-    
     // 병원정보 수정
     public int updateHospital(HospitalVO vo);
 

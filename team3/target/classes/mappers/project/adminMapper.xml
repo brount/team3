@@ -728,6 +728,121 @@
 		UPDATE  doctor SET doctorappro =	2
 		 WHERE  doctorno =	#{doctorno} 
 	</update>
+	
+	<!-- 제휴병원 승인 처리 -->
+	<update id="hospitalPermissionPro" parameterType="com.team.medical.vo.HospitalVO"> 
+		UPDATE  hospital SET hospitalkind =	1
+		 WHERE  doctorno =	#{doctorno} 
+	</update>
+
+
+
+
+
+
+
+	<!-- 병원 목록 개수 -->
+	<select id="getHospitalListCnt" resultType="int">
+		SELECT COUNT(*) FROM hospital 
+		<where>
+			<choose>
+				<when test="hospitalChoice == 0 ">
+				<![CDATA[
+					hospitalstate < 2
+						<choose>
+							<when test="sc == 0 ">
+								AND hospitalname LIKE '%'||#{search}||'%'
+							</when>
+							<when test="sc == 1">
+								AND hospitaladdr LIKE '%'||#{search}||'%'
+							</when>
+							<when test="sc == 2">
+								AND hospitalkind LIKE '%'||#{search}||'%'
+							</when>
+						</choose>
+					]]>
+				</when>
+			
+				<when test="hospitalChoice == 2">
+				     hospitalstate = 2
+				     <choose>
+						<when test="sc == 0 ">
+							AND hospitalname LIKE '%'||#{search}||'%'
+						</when>
+						<when test="sc == 1">
+							AND hospitaladdr LIKE '%'||#{search}||'%'
+						</when>
+						<when test="sc == 2">
+							AND hospitalkind LIKE '%'||#{search}||'%'
+						</when>
+					</choose>
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+
+	<!-- 병원 목록 조회 -->
+	<select id="getHospitalList" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
+		SELECT * 
+		  FROM (
+				SELECT hospitalno 
+					 , hospitalname
+					 , hospitalphone
+					 , hospitaladdr
+		 			 , hospitalkind
+					 , hospitalinstruction
+					 , rownum rNum        
+				  FROM (
+						SELECT * 
+						  FROM hospital
+					  	<where>
+							<choose>
+								<when test="hospitalChoice == 0 ">
+								<![CDATA[
+									hospitalstate < 2 
+										<choose>
+											<when test="sc == 0 ">
+												AND hospitalname LIKE '%'||#{search}||'%'
+											</when>
+											<when test="sc == 1">
+												AND hospitaladdr LIKE '%'||#{search}||'%'
+											</when>
+											<when test="sc == 2">
+												AND hospitalkind LIKE '%'||#{search}||'%'
+											</when>
+										</choose>
+									]]>
+								</when>
+								<when test="hospitalChoice == 2">
+									hospitalstate = 2
+										<choose>
+											<when test="sc == 0 ">
+												AND hospitalname LIKE '%'||#{search}||'%'
+											</when>
+											<when test="sc == 1">
+												AND hospitaladdr LIKE '%'||#{search}||'%'
+											</when>
+											<when test="sc == 2">
+												AND hospitalkind LIKE '%'||#{search}||'%'
+											</when>
+										</choose>
+								</when>
+							</choose>
+						</where>
+			 			 
+						 ORDER by hospitalno desc
+						)
+				)
+		<![CDATA[
+		 WHERE rNum >= #{start}
+		   AND rNum <= #{end}
+		]]>
+	</select>
+
+
+
+
 
 
 
@@ -1196,11 +1311,12 @@
 			advertisementContents=#{advertisementContents},advertisementThumbnail=#{advertisementThumbnail}
 			WHERE advertisementNo = #{advertisementNo}
 	</update>
+
 	<!-- 이벤트 삭제 -->
 	<delete id="delEvent" parameterType="int">
 		DELETE event WHERE advertisementNo = #{advertisementNo}
 	</delete>
-	
+
 	<!-- 포인트목록 개수 -->
 	<select id="getPointListCnt" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM point
@@ -1218,7 +1334,7 @@
 				</otherwise>
 			</choose>
 		</where>
-	</select> 
+	</select>
 	
 	<!-- 공지사항 상세보기 -->
 	<select id="adminReportInfo" resultType="com.team.medical.vo.QuestionBoardVO">
@@ -1234,4 +1350,6 @@
 	<delete id="adminReportDeletePro" parameterType="int">
 		DELETE QuestionBoard WHERE boardno = #{boardno}
 	</delete>
+	
+	
 </mapper>
