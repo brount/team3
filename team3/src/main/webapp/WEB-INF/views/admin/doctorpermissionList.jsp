@@ -69,12 +69,15 @@
 												<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-														<td><input type="checkbox" name="checkOne" value="${dto.doctorno}"></td>
+														<td>
+															<input type="checkbox" name="checkOne" value="${dto.doctorno}">
+															<input style="display:none" type="checkbox" name="checkTwo" value="${dto.hospitalno}">
+														</td>
 													    <td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalname}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorid}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdress3}</td>
+														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
 														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>

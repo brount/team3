@@ -67,8 +67,8 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public String inputPro(MultipartHttpServletRequest req, Model model) {
 		MultipartFile file = req.getFile("file");
-        String saveDir = req.getRealPath("/resources/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String saveDir = req.getRealPath("/resources/images/licence/");
+        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
         
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -126,8 +126,8 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public String modifyPro(MultipartHttpServletRequest req, Model model) {
 		MultipartFile file = req.getFile("file");
-        String saveDir = req.getRealPath("/resources/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String saveDir = req.getRealPath("/resources/images/licence/");
+        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
         DoctorVO vo = new DoctorVO();
         
         try {
@@ -201,7 +201,7 @@ public class DoctorServiceImpl implements DoctorService {
    public String myHospitalUpdatePro(MultipartHttpServletRequest req, Model model) {
 	 MultipartFile file = req.getFile("hospitalimage");
         String saveDir = req.getRealPath("/resources/images/licence/");
-        String realDir="C:\\Users\\Kimdo\\git\\team3!\\team3\\src\\main\\webapp\\resources\\images\\licences"; // 저장 경로
+        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
          
         try {           
         	String id = (String)req.getSession().getAttribute("id");
@@ -274,26 +274,26 @@ public class DoctorServiceImpl implements DoctorService {
 		String id = (String)req.getSession().getAttribute("id");
 		int doctorno = dao.getdocnoInfo(id);
 		int guestno = Integer.parseInt(req.getParameter("guestno"));
-		//환자이름
-		//주민등록번호
-		//성별
-		//나이
-		//연락처
-		//이메일
 		
 		
 		CheckupListVO vo = new CheckupListVO();
 		
 		String doctorspecialism = req.getParameter("doctorspecialism");
 		String doctorname = req.getParameter("doctorname");
-		String hospitaladdress1 = req.getParameter("hospitaladdress1");
-		String hospitaladdress2 = req.getParameter("hospitaladdress2");
-		String hospitaladdress3 = req.getParameter("hospitaladdress3");
+		String hospitaladdr= req.getParameter("hospitaladdr");
 		String hospitalname = req.getParameter("hospitalname");
 		String hospitalphone = req.getParameter("hospitalphone");
 		
+		String checkup_kind = "";
+		String[] kind = req.getParameterValues("checkup_kind");
+		for(int i = 0 ; i<kind.length; i ++) {
+			String a = (i==0) ? kind[i] : "," + kind[i];
+			System.out.println("a : " + a);
+			checkup_kind += a;
+			
+		}
+		System.out.println("checkup_kind : " + checkup_kind);
 		
-		String checkup_kind = req.getParameter("checkup_kind");
 		String checkup_name = req.getParameter("checkup_name");
 		String checkup_opinion = req.getParameter("checkup_opinion");
 		String checkup_contents = req.getParameter("checkup_contents");
@@ -308,9 +308,7 @@ public class DoctorServiceImpl implements DoctorService {
 		
 		model.addAttribute("doctorspecialism",doctorspecialism);
 		model.addAttribute("doctorname",doctorname);
-		model.addAttribute("hospitaladdress1",hospitaladdress1);
-		model.addAttribute("hospitaladdress2",hospitaladdress2);
-		model.addAttribute("hospitaladdress3",hospitaladdress3);
+		model.addAttribute("hospitaladdr",hospitaladdr);
 		model.addAttribute("hospitalname",hospitalname);
 		model.addAttribute("hospitalphone",hospitalphone);
 		
@@ -319,10 +317,15 @@ public class DoctorServiceImpl implements DoctorService {
 		model.addAttribute("checkup_opinion",checkup_opinion);
 		model.addAttribute("checkup_contents",checkup_contents);
 		
-		
 		model.addAttribute("vo",vo);
 		
 		int insertCnt = dao.checkListInput(vo);
+		CheckupVO cv = new CheckupVO();
+		cv.setGuestNo(guestno);
+		int checkuplist = dao.getCheckupListno();
+		cv.setCheckuplist(checkuplist);
+		dao.checkupAdd(cv);
+		
 		model.addAttribute("insertCnt",insertCnt);
 	}
 
@@ -428,7 +431,6 @@ public class DoctorServiceImpl implements DoctorService {
 	public void getCheckupInfo(HttpServletRequest req, Model model) {
 
 		int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
-	    System.out.println("checkuplist : " + checkuplist);
 
 	    int docno = dao.checkupdoc(checkuplist);
 	    int guestno = dao.getcusnoInfo(checkuplist);
@@ -441,6 +443,13 @@ public class DoctorServiceImpl implements DoctorService {
 		CheckupListVO checkDto = dao.getCheckupInfo(checkuplist);
 		
 		String checkup_kind = checkDto.getCheckup_kind();
+		
+		if(req.getParameter("kind")!=null) {
+			String kind = req.getParameter("kind");
+			model.addAttribute("kind",kind);
+			
+		}
+		
 		
 		model.addAttribute("checkup_kind",checkup_kind);
 		
@@ -459,58 +468,99 @@ public class DoctorServiceImpl implements DoctorService {
 		System.out.println("doctorno" + doctorno);
 		
 		int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
-	    String height = req.getParameter("height");
-	    String weight = req.getParameter("weight");
-	    String fatness = req.getParameter("fatness");
-	    String visionl = req.getParameter("visionl");
-	    String visionr = req.getParameter("visionr");
-	    String hearingl = req.getParameter("hearingl");
-	    String hearingr = req.getParameter("hearingr");
-	    String bloodpremax = req.getParameter("bloodpremax");
-	    String bloodpremin = req.getParameter("bloodpremin");
-	    String urineglucose = req.getParameter("urineglucose");
-	    String urineprotein = req.getParameter("urineprotein");
-	    String occulthematuria = req.getParameter("occulthematuria");
-	    String urineph = req.getParameter("urineph");
-	    String hemoglobin = req.getParameter("hemoglobin");
-	    String bloodglucose = req.getParameter("bloodglucose");
-	    String totalcholesterol = req.getParameter("totalcholesterol");
-	    String ast = req.getParameter("ast");
-	    String alt = req.getParameter("alt");
-	    String gammagtp = req.getParameter("gammagtp");
-	    String hepatitisscr = req.getParameter("hepatitisscr");
-	    String breastradiography = req.getParameter("breastradiography");
-	    String ecg = req.getParameter("ecg");
-	    
-	    int guestno =  dao.getcusnoInfo(checkuplist);
-		CheckupVO vo = new CheckupVO();
-		
-		vo.setGuestNo(guestno);
-		vo.setHeight(height);
-		vo.setWeight(weight);
-		vo.setFatness(fatness);
-		vo.setVisionl(visionl);
-		vo.setVisionr(visionr);
-		vo.setHearingl(hearingl);
-		vo.setHearingr(hearingr);
-		vo.setBloodpremax(bloodpremax);
-		vo.setBloodpremin(bloodpremin);
-		vo.setUrineglucose(urineglucose);
-		vo.setUrineprotein(urineprotein);
-		vo.setOcculthematuria(occulthematuria);
-		vo.setUrineph(urineph);
-		vo.setHemoglobin(hemoglobin);
-		vo.setBloodglucose(bloodglucose);
-		vo.setTotalcholesterol(totalcholesterol);
-		vo.setAst(ast);
-		vo.setAlt(alt);
-		vo.setGammagtp(gammagtp);
-		vo.setHepatitisscr(hepatitisscr);
-		vo.setBreastradiography(breastradiography);
-		vo.setEcg(ecg);
+		int checkup = dao.getCheckupCheckupList(checkuplist);
+		CheckupVO vo = dao.getCheckupResultInfo(checkup);
+		if(req.getParameter("height")!= null) {
+			String height = req.getParameter("height");
+			vo.setHeight(height);
+		}
+		if(req.getParameter("weight")!= null) {
+			String weight = req.getParameter("weight");
+			vo.setWeight(weight);
+		}
+		if(req.getParameter("fatness")!= null) {
+			String fatness = req.getParameter("fatness");
+			vo.setFatness(fatness);
+		}
+		if(req.getParameter("visionl")!= null) {
+			String visionl = req.getParameter("visionl");
+			vo.setVisionl(visionl);
+		}
+		if(req.getParameter("visionr")!= null) {
+			String visionr = req.getParameter("visionr");
+			vo.setVisionr(visionr);
+		}
+		if(req.getParameter("hearingl")!= null) {
+			String hearingl = req.getParameter("hearingl");
+			vo.setHearingl(hearingl);
+		}
+		if(req.getParameter("hearingr")!= null) {
+			String hearingr = req.getParameter("hearingr");
+			vo.setHearingr(hearingr);
+		}
+		if(req.getParameter("bloodpremax")!= null) {
+			String bloodpremax = req.getParameter("bloodpremax");
+			vo.setBloodpremax(bloodpremax);
+		}
+		if(req.getParameter("bloodpremin")!= null) {
+			String bloodpremin = req.getParameter("bloodpremin");
+			vo.setBloodpremin(bloodpremin);
+		}
+		if(req.getParameter("urineglucose")!= null) {
+			String urineglucose = req.getParameter("urineglucose");
+			vo.setUrineglucose(urineglucose);
+		}
+		if(req.getParameter("urineprotein")!= null) {
+			String urineprotein = req.getParameter("urineprotein");
+			vo.setUrineprotein(urineprotein);
+		}
+		if(req.getParameter("occulthematuria")!= null) {
+			String occulthematuria = req.getParameter("occulthematuria");
+			vo.setOcculthematuria(occulthematuria);
+		}
+		if(req.getParameter("urineph")!= null) {
+			String urineph = req.getParameter("urineph");
+			vo.setUrineph(urineph);
+		}
+		if(req.getParameter("hemoglobin")!= null) {
+			String hemoglobin = req.getParameter("hemoglobin");
+			vo.setHemoglobin(hemoglobin);
+		}
+		if(req.getParameter("bloodglucose")!= null) {
+			String bloodglucose = req.getParameter("bloodglucose");
+			vo.setBloodglucose(bloodglucose);
+		}
+		if(req.getParameter("totalcholesterol")!= null) {
+			String totalcholesterol = req.getParameter("totalcholesterol");
+			vo.setTotalcholesterol(totalcholesterol);
+		}
+		if(req.getParameter("ast")!= null) {
+			String ast = req.getParameter("ast");
+			vo.setAst(ast);
+		}
+		if(req.getParameter("alt")!= null) {
+			String alt = req.getParameter("alt");
+			vo.setAlt(alt);
+		}
+		if(req.getParameter("gammagtp")!= null) {
+			String gammagtp = req.getParameter("gammagtp");
+			vo.setGammagtp(gammagtp);
+		}
+		if(req.getParameter("hepatitisscr")!= null) {
+			String hepatitisscr = req.getParameter("hepatitisscr");
+			vo.setHepatitisscr(hepatitisscr);
+		}
+		if(req.getParameter("breastradiography")!= null) {
+			String breastradiography = req.getParameter("breastradiography");
+			vo.setBreastradiography(breastradiography);
+		}
+		if(req.getParameter("ecg")!= null) {
+			String ecg = req.getParameter("ecg");
+			vo.setEcg(ecg);
+		}
 		vo.setCheckup_date(new Date(System.currentTimeMillis()));
 		
-		int insertCnt = dao.checkupAdd(vo);
+		int insertCnt = dao.checkupUpdate(vo);
 		
 		model.addAttribute("insertCnt", insertCnt);
 		model.addAttribute("checkuplist", checkuplist);
@@ -1070,11 +1120,11 @@ public class DoctorServiceImpl implements DoctorService {
         GuestVO gusDto = dao.getcusInfo(guestno);
         String doctorno = req.getParameter("doctorno");//
         System.out.println("doctorno"+ doctorno);
-        HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
-        System.out.println("hosDto" + hosDto);
+        //HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
+        //System.out.println("hosDto" + hosDto);
         
         model.addAttribute("gusDto",gusDto);
-        model.addAttribute("hosDto",hosDto);
+        //model.addAttribute("hosDto",hosDto);
 		
 	}
 

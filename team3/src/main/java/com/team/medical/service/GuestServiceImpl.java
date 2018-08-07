@@ -262,23 +262,21 @@ public class GuestServiceImpl implements GuestService {
 		  
 		
 		  
-		MyhealthVO vo = new MyhealthVO();
-		
-		vo = dao.myHealth(guestNo);
-		int weight =vo.getWeight();
-		int height =vo.getHeight();
-		
-		
-		if(vo.getGender()==1) {
-			gender="여자";
-		}else if(vo.getGender()==2) {
-			gender="남자";
-		}
-		
-		
+		MyhealthVO vo =  dao.myHealth(guestNo);
 		if(vo !=null) {
-			selectcnt = 1;  //등록하기 버튼 표시여부 때문에 필요!
-
+		
+			if(vo.getGender()==1) {
+				gender="여자";
+			}else if(vo.getGender()==2) {
+				gender="남자";
+			}
+			
+		
+		
+			selectcnt=1;  //등록하기 버튼 표시여부 때문에 필요!
+			int weight =vo.getWeight();
+			int height =vo.getHeight();
+			
 			/* bmi = (weight/(height*height))*10000;*/
 			int height2 = height*height;
 			int weigth2 =  weight*10000;
@@ -287,7 +285,8 @@ public class GuestServiceImpl implements GuestService {
 			/*bmi*/
 		
 		}
-
+		System.out.println("selectcnt?" +selectcnt);
+		
 		model.addAttribute("gender", gender);
 		model.addAttribute("bmi", bmi);
 		model.addAttribute("vo", vo);
@@ -344,7 +343,7 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //CheckUp테이블에 guestno을 통해 해당 회원의 검진서결과를  셀렉트 하기위함
 		int guestNo = gvo.getGuestNo();
-		
+		int	bloodpremax =0;
 		
 		int selectcnt = 0;
 		
@@ -353,8 +352,9 @@ public class GuestServiceImpl implements GuestService {
 		
 		if(vo!=null) {
 			selectcnt = 1;
+			bloodpremax =Integer.parseInt(vo.getBloodpremax()); 
 		}
-		int	bloodpremax =Integer.parseInt(vo.getBloodpremax()); 
+	
 		
 		
 		model.addAttribute("vo",vo);
@@ -531,7 +531,7 @@ public class GuestServiceImpl implements GuestService {
 	@Override
 	public void reservehospital(HttpServletRequest req, Model model) {
 		//int hospitalno = req.getParameter("hospitalno");
-		int hospitalno = 26;
+		int hospitalno = Integer.parseInt(req.getParameter("hospitalno"));
 		HospitalVO vo = new HospitalVO();
 		
 		vo = dao.reservehospital(hospitalno);
@@ -547,10 +547,17 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원의 회원정보 수정을위해 guestNo 값셀렉
 		int guestNo = gvo.getGuestNo();
-		
-		System.out.println("hospitalno? " + req.getParameter("hospitalno"));
-		System.out.println("reservationTime? " + req.getParameter("reservationTime"));
 	
+		 String checkup_symptomchk = "";
+	      String[] symptomchk = req.getParameterValues("symptomchk");
+	      for(int i = 0 ; i<symptomchk.length; i ++) {
+	         String a = (i==0) ? symptomchk[i] : "," + symptomchk[i];
+	         System.out.println("a : " + a);
+	         checkup_symptomchk += a;
+	         System.out.println("checkup_symptomchk : " + checkup_symptomchk);
+	      }
+		
+		
 		
 		vo.setHospitalno(Integer.parseInt(req.getParameter("hospitalno")));
 		vo.setGuestNo(guestNo);
@@ -560,7 +567,7 @@ public class GuestServiceImpl implements GuestService {
 		vo.setClock(req.getParameter("clock"));
 		vo.setMinute(req.getParameter("minute"));
 		vo.setSymptom(req.getParameter("symptom"));
-		vo.setSymptomchk(req.getParameter("symptomchk"));
+		vo.setSymptomchk(checkup_symptomchk);
 		
 		int insertcnt = dao.reservePro(vo);
 		model.addAttribute("insertcnt",insertcnt );
@@ -684,7 +691,7 @@ public class GuestServiceImpl implements GuestService {
 		String[] chk = req.getParameter("symptomchk").split(",");
 
 		//증상에해당하는 병 정보담을 바구니
-		 ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
+		 ArrayList<DiseaseVO> dtos = null;
 		 //병의 진료과에 해당하는 병원 정보 담을 바구니
 		 ArrayList<HospitalVO> htos = new ArrayList<HospitalVO>();
 		
@@ -695,21 +702,15 @@ public class GuestServiceImpl implements GuestService {
 			
 				
 		}
-		
-		//조회된 질병의 진료과 만큼 병원 조회
-		for(int j =0 ; j<dtos.size(); j++) {
-		String dikind = dtos.get(j).getDiseasehospitalkind();
-		System.out.println("service dikind"+dikind);
-		htos = dao.simpleTreathos(dikind);
-		if(dikind != null) {
-			selectcnt =1;
-		}
+		if(dtos.isEmpty()) {
+			selectcnt=0;
+		}else {
+			selectcnt=1;
 		}
 		
 		
 		System.out.println("selectcnt : "+ selectcnt);
 		model.addAttribute("dtos", dtos);
-		model.addAttribute("htos", htos);
 		model.addAttribute("selectcnt", selectcnt);
 	}
 	@Override
@@ -761,7 +762,7 @@ public class GuestServiceImpl implements GuestService {
 		
 		// 기초대사량 구하기 위한 회원건강정보셀렉
 		MyhealthVO mvo = new MyhealthVO();
-		double	basalmetabolism	= 0;
+		double	Dbasalmetabolism	= 0;
 		
 	
 		mvo = dao.myHealth(guestNo);
@@ -771,14 +772,18 @@ public class GuestServiceImpl implements GuestService {
 
 		
 		if(mvo.getGender()==1) {	//여자
-			basalmetabolism	= (655.1+(9.56*weight)+(5*height)-(6.76*age));
+			Dbasalmetabolism	= (655.1+(9.56*weight)+(5*height)-(6.76*age));
 		}else if(mvo.getGender()==2) { //남자
-			basalmetabolism	= (66.47+(13.75*weight)+(1.85*height)-(4.68*age));
+			Dbasalmetabolism	= (66.47+(13.75*weight)+(1.85*height)-(4.68*age));
 		}
 		
+		int basalmetabolism = (int)Dbasalmetabolism;
+		int encouragecal = (int) (Dbasalmetabolism*1.3);
+
+		
 		int alertcnt=0;
-		if(basalmetabolism<todaycal) {
-			 alertcnt=1;
+		if(todaycal>encouragecal) {
+			alertcnt=1;
 		}
 		
 		System.out.println("alertcnt?"+alertcnt);
@@ -1053,9 +1058,6 @@ public class GuestServiceImpl implements GuestService {
 	@Override
 	public void bookMark(HttpServletRequest req, Model model) {
 		
-
-		
-
 		int pageSize = 10; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
 
@@ -1076,9 +1078,13 @@ public class GuestServiceImpl implements GuestService {
 		int guestNo = gvo.getGuestNo();
 		
 		
-		cnt = dao.bookMarkcnt(guestNo);
+		 String favoritehos = dao.bookMarkListcnt(guestNo);
+		if(favoritehos!=null) {
+		 String[] chk = favoritehos.split(",");
+		 cnt = chk.length;
+		}
 		System.out.println("cnt : " + cnt);
-
+	
 		pageNum = req.getParameter("pageNum");
 		if (pageNum == null) {
 			pageNum = "1"; // 첫 페이지를 1페이지로 설정
@@ -1109,18 +1115,24 @@ public class GuestServiceImpl implements GuestService {
 		System.out.println("number" + number);
 		System.out.println("pageSize" + pageSize);
 	
+		
+		
+		
+		
 		if (cnt > 0) {
 			// 게시글 목록 조회
 			
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("start", start);
-			map.put("end", end);
-			map.put("guestNo", guestNo);
-		
 			ArrayList<HospitalVO> dtos = new ArrayList<HospitalVO>();
-			 dtos = dao.bookMark(map);
+			 String[] chk = favoritehos.split(",");
+			for(int i=0; i<chk.length; i++) {
+				System.out.println(" chk[i]"+ chk[i]);
+				String fd = chk[i].substring(1,3);
+				System.out.println("fd?"+fd);
+				int hospitalno = Integer.parseInt(fd);
+				dtos.add(dao.hospitalInfo(hospitalno));
+			}
 			 
-			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			
 			model.addAttribute("dtos", dtos);
 			
 			
@@ -1141,8 +1153,6 @@ public class GuestServiceImpl implements GuestService {
 			endPage = pageCount;
 		}
 		System.out.println("endPage : " + endPage); // 마지막페이지
-
-		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
 
 		model.addAttribute("cnt", cnt);
 		model.addAttribute("number", number); // 글 번호
@@ -1434,6 +1444,8 @@ public class GuestServiceImpl implements GuestService {
 		int guestNo = gvo.getGuestNo();
 		
 		
+		
+		
 		cnt = dao.checkupRegistercnt(guestNo);
 		System.out.println("cnt : " + cnt);
 
@@ -1534,6 +1546,50 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("selectcnt",selectcnt);
 
 		
+	}
+	@Override
+	public void bookMarkIn(HttpServletRequest req, Model model) {
+		String favoritehos ="";
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		
+		
+		int cnt = dao.bookMarkcnt(guestNo); //즐겨찾기 여부
+		String hospitalno =req.getParameter("hospitalno"); 
+		String dbfavoritehos = dao.dbfavoritehos(guestNo); //이미 즐겨찾기된 병원 셀렉
+	
+		
+		
+		if(cnt!=0) {
+			 favoritehos = "f"+hospitalno+"h";
+			 
+		}else if(cnt==0) {
+			
+			favoritehos = dbfavoritehos + ",f"+hospitalno+"h";
+	
+		}
+		//이미 즐겨찾기한 병원인지 여부 조회
+		String overlaphos = "f"+hospitalno+"h";
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("overlaphos", overlaphos);
+		m.put("guestNo", guestNo);
+		int overlap =dao.overlap(m);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("favoritehos", favoritehos);
+		map.put("guestNo", guestNo);
+		
+	
+		//즐겨찾기된 병원이 아닐때 즐겨찾는병원추가
+		if(overlap==0) {
+		dao.bookMarkIn(map);
+		}
+		System.out.println("overlap?"+overlap);
+		
+		model.addAttribute("overlap", overlap);
 	}
 	
 

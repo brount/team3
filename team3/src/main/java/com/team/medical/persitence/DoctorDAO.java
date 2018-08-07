@@ -54,7 +54,6 @@ public interface DoctorDAO {
 	// 검사의뢰목록
 	public ArrayList<CheckupListVO> CheckupList(Map<String, Integer> map);
 
-
 	// 일반 회원 정보
 	public GuestVO getcusInfo(int guestno);
 
@@ -62,7 +61,6 @@ public interface DoctorDAO {
 	public DoctorVO getDoctorInfo(int doctorno);
 
 	public int checkupdoc(int checkuplist);
-
 	
 	// 검사의뢰 정보
 	public CheckupListVO getCheckupInfo(int checkuplist);
@@ -130,7 +128,17 @@ public interface DoctorDAO {
 	// 게스트 번호로 건강검진 가져오기
 	public int getCheckupListGuestno(int guestno);
 
+	// 검사 결과 수정
+	public int checkupUpdate(CheckupVO vo);
 
+	// 검사의뢰 번호
+	public int getCheckupListno();
+
+	// 검사결과번호 
+	int getCheckupCheckupList(int checkuplist);
+
+	//
+	
 	
 
 	

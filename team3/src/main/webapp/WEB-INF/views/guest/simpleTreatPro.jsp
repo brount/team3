@@ -25,12 +25,30 @@
         
  <div class="mail-box">
   <form action="reserveForm">
-  <!-- 조회된 질병이 있으면 -->
-  <c:if test="${selectcnt!= 0 }">
- 	<c:forEach var="dto" items="${dtos}">
-                
-                      <div class="inbox-head">
-                      
+  <!-- 조회된 질병이 없으면 -->
+     		             <div class="inbox-body">
+                         <div class="mail-option">
+                 	<c:if test="${selectcnt==0 }">
+                 	  <table class="table table-inbox table-hover">      
+								<tr>
+									<td colspan="6" align="center">
+										조회된 질병이 없습니다. 증상을 다시 체크해주세요.
+									</td>
+									
+									
+								</tr>
+								</table>
+								
+								<input type="button" value="확인" onclick="window.history.back()">
+							</c:if>
+							</div>
+							</div>
+			  <!-- 조회된 질병이 있으면 -->
+			  <c:if test="${selectcnt!=0 }">
+			 	<c:forEach var="dto" items="${dtos}">
+			                
+			                      <div class="inbox-head">
+			                      
 				
 					<div class="panel-heading" >
 					<h5> 의심되는 질병은 <b>  ${dto.diseaseName } </b>입니다 .</h5>
@@ -102,7 +120,7 @@
 										<tr>
 											<td>
 										<%-- 	onclick="reserveForm?hospitalno=${hto.hospitalno }'" --%>
-												<input type="submit" class="btn btn-primary" value="예약" style="display: table;" >
+												<input type=button class="btn btn-primary" value="병원예약하러가기" style="display: table;" onclick="window.location=achospitalSeach?state=2">
 											</td>										
 										</tr>
 										
@@ -118,24 +136,7 @@
               
                   </c:forEach>
      		     </c:if>
-     		            <!-- 조회된 질병이 없으면 -->
-     		             <div class="inbox-body">
-                         <div class="mail-option">
-                 	<c:if test="${selectcnt == 0 }">
-                 	  <table class="table table-inbox table-hover">      
-								<tr>
-									<td colspan="6" align="center">
-										조회된 질병이 없습니다. 증상을 다시 체크해주세요.
-									</td>
-									
-									
-								</tr>
-								</table>
-								
-								<input type="button" value="확인" onclick="window.history.back()">
-							</c:if>
-							</div>
-							</div>
+     		            
 					
                  </form>
           

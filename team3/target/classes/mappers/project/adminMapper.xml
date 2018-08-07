@@ -92,7 +92,7 @@
 					AND sanctions = 0
 					AND status = 0
 			</where>
-				ORDER BY guestid DESC
+				ORDER BY guestNo DESC
 					)
 				)
 				<![CDATA[ 
@@ -326,6 +326,7 @@
 					 , sanctions
 					 , point
 					 , doctorregstration
+					 , hospitalno
 					 , rownum rNum        
 				  FROM (
 						SELECT * 
@@ -375,6 +376,7 @@
                       , sanctions
                       , point
                       , doctorregstration
+                      , hospitalno
 					  , rownum rNum        
             	   from (
                 	      select * 
@@ -424,6 +426,7 @@
 					 , sanctions
 					 , point
 					 , doctorregstration
+					 , hospitalno
 					 , rownum rNum        
 				  FROM (
 						SELECT * 
@@ -730,10 +733,21 @@
 	</update>
 	
 	<!-- 제휴병원 승인 처리 -->
-	<update id="hospitalPermissionPro" parameterType="com.team.medical.vo.HospitalVO"> 
-		UPDATE  hospital SET hospitalkind =	1
-		 WHERE  doctorno =	#{doctorno} 
+	<update id="hospitalPermissionPro" parameterType="java.util.Map"> 
+		UPDATE  hospital SET hospitalstate =	1
+							,doctorno = #{doctorno}
+		 WHERE  hospitalno =	#{hospitalno} 
 	</update>
+
+	
+	<!-- 병원 정보 -->
+	<select id="getHospital" resultType="com.team.medical.vo.HospitalVO">
+		SELECT * FROM hospital WHERE hospitalno = #{hospitalno}
+	</select>
+	
+
+
+
 
 
 
@@ -747,8 +761,7 @@
 		<where>
 			<choose>
 				<when test="hospitalChoice == 0 ">
-				<![CDATA[
-					hospitalstate < 2
+					hospitalstate = 0
 						<choose>
 							<when test="sc == 0 ">
 								AND hospitalname LIKE '%'||#{search}||'%'
@@ -760,11 +773,10 @@
 								AND hospitalkind LIKE '%'||#{search}||'%'
 							</when>
 						</choose>
-					]]>
 				</when>
 			
-				<when test="hospitalChoice == 2">
-				     hospitalstate = 2
+				<when test="hospitalChoice == 1">
+				     hospitalstate = 1
 				     <choose>
 						<when test="sc == 0 ">
 							AND hospitalname LIKE '%'||#{search}||'%'
@@ -799,8 +811,7 @@
 					  	<where>
 							<choose>
 								<when test="hospitalChoice == 0 ">
-								<![CDATA[
-									hospitalstate < 2 
+									hospitalstate = 0 
 										<choose>
 											<when test="sc == 0 ">
 												AND hospitalname LIKE '%'||#{search}||'%'
@@ -812,10 +823,9 @@
 												AND hospitalkind LIKE '%'||#{search}||'%'
 											</when>
 										</choose>
-									]]>
 								</when>
-								<when test="hospitalChoice == 2">
-									hospitalstate = 2
+								<when test="hospitalChoice == 1">
+									hospitalstate = 1
 										<choose>
 											<when test="sc == 0 ">
 												AND hospitalname LIKE '%'||#{search}||'%'
@@ -864,7 +874,7 @@
                   FROM ( 
                          SELECT * 
                            FROM drug 
-                          ORDER BY registDate DESC )
+                          ORDER BY drugCode DESC )
                )
        <where>
       <![CDATA[             

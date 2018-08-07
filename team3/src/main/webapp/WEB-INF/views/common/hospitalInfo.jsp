@@ -32,7 +32,7 @@
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="achospitalSeach?state=2">제휴병원</a>
+		                                        <a href="achospitalSeach?state=1">제휴병원</a>
 		                                    </td>
 		                                </tr>
 		                            </table>

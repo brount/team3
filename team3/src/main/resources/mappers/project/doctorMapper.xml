@@ -54,9 +54,6 @@
          </if>
       </where>
    </select>
-   <select id="getHpInfo" parameterType="String" resultType="com.team.medical.vo.HpVO">
-      select * from hp where hospitalphone = #{hospitalphone}
-   </select>
     <!-- 병원정보수정 -->
    <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
       UPDATA hospital SET doctorno=#{doctorno},
@@ -113,8 +110,17 @@
 	   select doctorno from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
 	</select>
 	
+	<!-- 검사의뢰 정보 -->
 	<select id = "getCheckupInfo" parameterType="int" resultType="com.team.medical.vo.CheckupListVO">
 	   select * from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 검사 번호 -->
+	<select id="getCheckupListno"  resultType="int">
+	 	select checkuplist from
+	 	(select checkuplist, rnum from
+	 	(select checkuplist, rownum rnum from checkuplist order by checkuplist desc)
+	 	where rnum = 1)
 	</select>
 	
 	<select id = "getcusnoInfo" resultType="int">
@@ -122,8 +128,8 @@
 	</select>
 	
 	<insert id = "checkupAdd" parameterType="com.team.medical.vo.CheckupVO">
-		insert into Checkup (checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date)
-		values(checkupseq.nextval, #{guestNo,jdbcType=INTEGER}, #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, #{fatness,jdbcType=VARCHAR}, #{visionl,jdbcType=VARCHAR}, #{visionr,jdbcType=VARCHAR}, #{hearingl,jdbcType=VARCHAR}, #{hearingr,jdbcType=VARCHAR}, #{bloodpremax,jdbcType=VARCHAR}, #{bloodpremin,jdbcType=VARCHAR}, #{urineglucose,jdbcType=VARCHAR}, #{urineprotein,jdbcType=VARCHAR}, #{occulthematuria,jdbcType=VARCHAR}, #{urineph,jdbcType=VARCHAR}, #{hemoglobin,jdbcType=VARCHAR}, #{bloodglucose,jdbcType=VARCHAR}, #{totalcholesterol,jdbcType=VARCHAR}, #{ast,jdbcType=VARCHAR}, #{alt,jdbcType=VARCHAR}, #{gammagtp,jdbcType=VARCHAR}, #{hepatitisscr,jdbcType=VARCHAR}, #{breastradiography,jdbcType=VARCHAR}, #{ecg,jdbcType=VARCHAR}, #{checkup_date} )
+		insert into Checkup (checkup, guestNo, checkuplist)
+		values(checkupseq.nextval, #{guestNo,jdbcType=INTEGER}, #{checkuplist,jdbcType=INTEGER} )
 	</insert>
 	
 	<select id="getCheckupResultListCnt" resultType="int">
@@ -134,7 +140,7 @@
 		<![CDATA[
 			SELECT * 
 			  FROM(
-			  		SELECT checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date, rownum rnum
+			  		SELECT checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date, checkuplist, rownum rnum
 			   	   	  FROM(
 			   	   	  		SELECT * 
 			   	   	  		  FROM Checkup 
@@ -245,6 +251,38 @@
 	   select CheckupList from CheckupList where guestno =#{guestno,jdbcType=INTEGER}
 	</select>
 	
-
+	<update id = "checkupUpdate" parameterType="com.team.medical.vo.CheckupVO">
+		update Checkup 
+		<set> 
+			<if test="height!=null">height = #{height},</if>
+			<if test="weight!=null">weight = #{weight},</if>
+			<if test="fatness!=null">fatness = #{fatness},</if>
+			<if test="visionl!=null">visionl = #{visionl},</if>
+			<if test="visionr!=null">visionr = #{visionr},</if>
+			<if test="hearingl!=null">hearingl = #{hearingl},</if>
+			<if test="hearingr!=null">hearingr = #{hearingr},</if>
+			<if test="bloodpremax!=null">bloodpremax = #{bloodpremax},</if>
+			<if test="bloodpremin!=null">bloodpremin = #{bloodpremin},</if>
+			<if test="urineglucose!=null">urineglucose = #{urineglucose},</if>
+			<if test="urineprotein!=null">urineprotein = #{urineprotein},</if>
+			<if test="occulthematuria!=null">occulthematuria = #{occulthematuria},</if>
+			<if test="urineph!=null">urineph = #{urineph},</if>
+			<if test="hemoglobin!=null">hemoglobin = #{hemoglobin},</if>
+			<if test="bloodglucose!=null">bloodglucose = #{bloodglucose},</if>
+			<if test="totalcholesterol!=null">totalcholesterol = #{totalcholesterol},</if>
+			<if test="ast!=null">ast = #{ast},</if>
+			<if test="alt!=null">alt = #{alt},</if>
+			<if test="gammagtp!=null">gammagtp = #{gammagtp},</if>
+			<if test="hepatitisscr!=null">hepatitisscr = #{hepatitisscr},</if>
+			<if test="breastradiography!=null">breastradiography = #{breastradiography},</if>
+			<if test="ecg!=null">ecg = #{ecg}</if>
+			
+		</set>
+		where checkup = #{checkup}
+	</update>
+	
+	<select id = "getCheckupCheckupList" parameterType="int" resultType="int">
+	   select checkup from checkup where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
 	
 </mapper>

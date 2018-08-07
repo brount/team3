@@ -73,10 +73,18 @@
 								<tr>
 									<td>
 										▣ 의뢰과목<br><br>
-										<input type="radio" name="checkup_kind" value="1">소변　
-										<input type="radio" name="checkup_kind" value="2">혈액　
-										<input type="radio" name="checkup_kind" value="3">MRI　 
-									</td>
+									<%-- 	<input type="checkbox" name="checkup_kind" value="1" <c:if test="${checkup_kind.indexOf('1') != -1 }" >checked='checked'</c:if> />계층검사
+										<input type="checkbox" name="checkup_kind" value="2" <c:if test="${checkup_kind.indexOf('2') != -1 }" >checked='checked'</c:if> />소변　
+										<input type="checkbox" name="checkup_kind" value="3" <c:if test="${checkup_kind.indexOf('3') != -1 }" >checked='checked'</c:if> />혈액　
+										<input type="checkbox" name="checkup_kind" value="4" <c:if test="${checkup_kind.indexOf('4') != -1 }" >checked='checked'</c:if> />MRI　 
+									 --%>
+									 <b>
+									 <c:if test="${kind=='1'}">계층검사</c:if>
+									 <c:if test="${kind=='2'}">요검사</c:if>
+									 <c:if test="${kind=='3'}">혈액검사</c:if>
+									 <c:if test="${kind=='4'}">영상검사</c:if>
+									 </b>
+									 </td>
 								</tr>
 								<tr>
 									<td>
@@ -114,7 +122,7 @@
 						    
 						</div>
 						<div style="display:table; margin:0 auto;">
-							<input type="button" value="건강검진 등록" style="margin-right:5px;"  onclick="window.location='checkupAdd?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}&checkup_kind=${checkup_kind}'">
+							<input type="button" value="건강검진 등록" style="margin-right:5px;"  onclick="window.location='checkupAdd?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}&kind=${kind}'">
 							<input type="button" value="목록가기" style="margin-left:5px;" onclick="window.location='checkupList'">
 						</div>
 					</div>

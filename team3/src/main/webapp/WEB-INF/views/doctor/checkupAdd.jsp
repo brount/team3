@@ -52,6 +52,7 @@
 								            </tr>
 								        </thead>
 								        <tbody>
+								        	<c:if test="${kind=='1'}">
 								            <tr>
 								                <td class="col-check"></td>
 								                <td rowspan="9">계층검사</td>
@@ -112,8 +113,8 @@
 								          		<td></td>
 								          		<td>80이상</td>
 								          	</tr>
-								          	
-								          	<c:if test="${checkup_kind==1}">
+								          	</c:if>
+								          	<c:if test="${kind=='2'}">
 									          	<tr>
 									          		<td rowspan="4">요검사</td>
 									          		<td rowspan="4">신장검사</td>
@@ -144,7 +145,7 @@
 									          		<td></td>
 									          	</tr>
 								          	</c:if>
-								          	<c:if test="${checkup_kind==2}">
+								          	<c:if test="${kind=='3'}">
 									          	<tr>
 									          		<td rowspan="7">혈액검사</td>
 									          		<td>빈혈등</td>
@@ -201,7 +202,7 @@
 									          		<td></td>
 									          	</tr>
 								          	</c:if>
-								          	<c:if test="${checkup_kind==3}">
+								          	<c:if test="${kind=='4'}">
 								          	<tr>
 								          		<td rowspan="2">영상검사</td>
 								          		<td>폐결핵 흉부 질환</td>

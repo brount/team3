@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <html class="no-js" lang="en">
 
 <head>
@@ -10,9 +11,22 @@
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
+<c:if test="${overlap==1 }">
+<script type="text/javascript">
+	alert('이미 즐겨찾기된 병원입니다.');
+</script>
+</c:if>
+
+<c:if test="${cnt==0 }">
+<script type="text/javascript">
+	alert('즐겨찾기된 병원이 없습니다.먼저 병원을 즐겨찾기해주세요!');
+	window.location="achospitalSeach?state=2";
+</script>
+</c:if>
 
 <header>
    <%@ include file="../common/header.jsp" %>
@@ -31,22 +45,17 @@
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>관심병원</h3>
-                          <form action="#" class="pull-right position">
-                              <div class="input-append">
-                                  <input type="text" class="sr-input" placeholder="검색">
-                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                              </div>
-                          </form>
+                          
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
                              
-
+ 					
                                <table class="table table-inbox table-hover">
                                 
                             <tbody>
                               <tr class="unread">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
+                 <!--   <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
                                   <td class="view-message">병원명</td>                                  
                                   <td></td>
                                   <td></td>
@@ -62,48 +71,56 @@
                                     </td>
                                   <td class="view-message  text-left">주소</td>
                               </tr>
+                                 <c:forEach var="dto" items="${dtos}" >
                               <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">032-544-8275</span></td>
-                                  <td class="view-message  text-left">인천광역시 계양구 도두리로 52 상가건물 203호</td>
+                <!--    <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
+                  
+                                  <td colspan="3" class="view-message" onclick="hospitalInfo?hospitalno=${dto.hospitalno }">${dto.hospitalname }</td>
+                                  <td><span class="label label-success">${dto.hospitalphone }</span></td>
+                                  <td class="view-message  text-left"><a href="hospitalInfo?hospitalno=${dto.hospitalno }">${dto.hospitaladdr }</a></td>
                               </tr>
-                              <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                                    <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">032-544-8275</span></td>
-                                  <td class="view-message  text-left">인천광역시 계양구 도두리로 52 상가건물 203호</td>
-                              </tr>
-                              <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                                 <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">032-544-8275</span></td>
-                                  <td class="view-message  text-left">인천광역시 계양구 도두리로 52 상가건물 203호</td>
-                              <tr class="">
-                   <td>  <input type="checkbox" class="toption-input checkbox" /></td>
-                                   <td colspan="3" class="view-message"><a href="boardInfo">김순영 소아과</a></td>
-                                  <td><span class="label label-success">032-544-8275</span></td>
-                                  <td class="view-message  text-left">인천광역시 계양구 도두리로 52 상가건물 203호</td>
-                              </tr>
-                            
+          			          </c:forEach>
                           </tbody>
                           </table>
-                          	<input type="button" onclick="window.location='reserveForm'" value="예약신청">
+                         
+                        <!--   	<input type="button" onclick="window.location='reserveForm'" value="예약신청"> -->
                       </div>
                       </div>
                       </div>
                       
                   </aside>
-                  <ul class="pagination">
-                  <li class="disabled"><span>«</span></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=2">2</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=3">3</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=4">4</a></li>
-                  <li class="disabled"><span>...</span></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=22">5</a></li>
-                  <li><a href="http://bootsnipp.com/search?q=page&page=2" rel="next">»</a></li>
-                </ul>
+                   
+		                  <!-- 페이지 컨트롤 -->
+				<table style="width:1000px" align="center">
+					<tr>
+						<th align="center">
+							<c:if test="${cnt>0 }">
+								<!-- 처음[◀◀] / 이전[◀]  -->
+								<c:if test="${startPage > pageBlock }">
+									<a href="bookMark">[◀◀]</a>
+									<a href="bookMark?pageNum=${startPage - pageBlock }">[◀]</a>
+								</c:if>
+								
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:if test="${i == currentPage }">
+										<span><b>[${i}]</b></span>
+									</c:if>
+									<c:if test="${i != currentPage}">
+										<a href="bookMark?pageNum=${i }">[${i}]</a>
+									</c:if>
+								</c:forEach>
+								
+								<!-- 다음[▶] / 끝[▶▶]  -->	
+								<c:if test="${pageCount > endPage }">
+									<a href="bookMark?pageNum=${startPage + pageBlock }">[▶]</a>
+									<a href="bookMark?pageNum=${pageCount}">[▶▶] </a>
+								</c:if>)
+
+							</c:if>
+						</th>
+					</tr>
+				
+				</table>			
               </div>                    
       </div>
 

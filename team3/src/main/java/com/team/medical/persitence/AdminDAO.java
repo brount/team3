@@ -134,7 +134,8 @@ public interface AdminDAO {
 	
 	// 의사회원 승인 처리
 	public int doctorPermissionPro(int doctorno);
-		
+	public int hospitalPermissionPro(Map<String, Object> map);
+	
 	// 의사회원 다중승인 처리
 	public int doctorChkPermissionPro(String[] checkOne);
 
@@ -144,8 +145,8 @@ public interface AdminDAO {
 	// 의사회원 다중 제명 처리
 	public int doctorChkExpelPro(String[] checkOne);
 	
-	// 병원 승인처리
-	public int hospitalPermissionPro(String doctorno);
+	// 병원정보 가져오기
+	public HospitalVO getHospital(int hospitalno);
 	
 //---------------------------------------------------------------------------------------	
 	

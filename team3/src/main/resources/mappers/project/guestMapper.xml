@@ -191,10 +191,10 @@
 	</select>
 						
 	<!-- 진료과에 해당하는 병원정보 셀렉트 -->						
-	<select id="simpleTreathos" resultType="com.team.medical.vo.HospitalVO">
+<!-- 	<select id="simpleTreathos" resultType="com.team.medical.vo.HospitalVO">
 		SELECT * FROM Hospital where HOSPITALKIND1=#{dikind} or  HOSPITALKIND2=#{dikind} or  HOSPITALKIND3=#{dikind} 
-	</select>
-	
+	</select> 
+ -->
 	<!-- 입력한 음식에 따른 칼로리 -->
 	<select id="foodsearch" resultType="com.team.medical.vo.FoodVO">
 		SELECT foodcal , food  from  food  where food=#{food} and guestno=#{guestNo}
@@ -314,7 +314,28 @@
 		]]>
 	</select>
 	
-	
-				
-
+	<!-- 사용자가 즐겨찾기한 병원의 유무 -->
+	<select id="bookMarkcnt" resultType="int">
+		select count(*) from guest where guestNo = #{guestNo}  and favoritehos is null
+	</select>
+	<!-- 즐겨찾기 병원 누적할 데이터 셀렉 -->
+	<select id="dbfavoritehos" resultType="String">
+		select favoritehos from guest where guestNo = #{guestNo} 
+	</select>
+	<!-- 즐겨찾기 병원 인서트 -->	
+	<update id="bookMarkIn" parameterType="java.util.Map">
+		update guest set favoritehos= #{favoritehos} where  guestNo = #{guestNo} 
+	</update>	
+	<!-- 즐겨찾기 병원 중복값 조회   -->		
+	<select id="overlap" resultType="int">
+		select count(*) from guest where  guestNo = #{guestNo}  and  favoritehos like'%'||#{overlaphos}||'%'
+	</select>
+	<!--사용자 테이블에 즐겨찾기 추가한 병원 구하기 -->
+	<select id="bookMarkListcnt" resultType="String">
+		select favoritehos from guest where guestNo = #{guestNo}
+	</select>
+	<!-- 병원번호로 병원정보불러오기 -->
+	<select id="hospitalInfo" resultType="com.team.medical.vo.HospitalVO">
+		select * from HOSPITAL where HOSPITALNO=#{HOSPITALNO}
+	</select>
 </mapper>

@@ -110,8 +110,16 @@ public interface GuestDAO {
 	//사용자가 즐겨찾기한 병원의 총 갯수 
 	public int bookMarkcnt(int guestNo);
 	
+	//즐겨찾기 병원 누적할 데이터 셀렉 
+	public String dbfavoritehos(int guestNo);
+	
 	//사용자가 즐겨찾기한 병원의 정보 셀렉
 	public ArrayList<HospitalVO> bookMark(Map<String,Object> map);
+	
+	
+	
+	//즐겨찾는 병원 추가
+	public void bookMarkIn(Map<String, Object> map);
 
 	
 	// 사용자가 추가한 음식 수정 윈도우폼에 뿌릴 정보
@@ -138,10 +146,25 @@ public interface GuestDAO {
 	// 사용자 처방전 리스트
 	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map);
 
+	//등록된 검진서 수
 	public int checkupRegistercnt(int guestNo);
 
+	//등록된 검진서의 상세페이지이동
 	public ExaminationVO checkupRegisterclick(int col);
 
+
+	//중복된 병원의 즐겨찾기가 없을때 인서트.
+	public int overlap(Map<String, Object> m);
+
+	//즐겨찾기한 병원목록 
+	public String bookMarkListcnt(int guestNo);
+
+	//병원번호에따른 병원정보
+	public HospitalVO hospitalInfo(int hospitalno);
+
+	
+
+	
 	
 	
 	

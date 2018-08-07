@@ -110,6 +110,15 @@ public class GuestContoller {
 		guService.personalMofPro(req, model);
 		return "guest/personalMofPro";
 	}	
+	//병원즐겨찾기 
+	@RequestMapping(value = "bookMarkIn")
+	public String bookMarkIn(HttpServletRequest req, Model model) {
+		logger.info("bookMarkIn, 페이지");
+		guService.bookMarkIn(req, model);
+		guService.bookMark(req, model);
+		return "guest/bookMark";
+	}	
+	
 	// 즐겨찾는병원페이지                            
 	@RequestMapping(value = "bookMark")
 	public String bookMark(HttpServletRequest req, Model model) {
@@ -131,9 +140,7 @@ public class GuestContoller {
 		logger.info("simpleTreat, 페이지");
 		return "guest/simpleTreat";
 	}	
-	
-	
-	
+
 	//간단진료 처리페이지                           
 		@RequestMapping(value = "simpleTreatPro")
 		public String simpleTreatPro(HttpServletRequest req, Model model) {
@@ -175,7 +182,7 @@ public class GuestContoller {
 			logger.info("calorAddModiPro, 페이지");
 			guService.calorAddModi(req, model);
 
-			return "guest/caloryAdd";
+			return "guest/caloryAdd2";
 		}	
 		
 		
@@ -350,7 +357,8 @@ public class GuestContoller {
 	  		guService.guestexaminationList(req, model);
 	  		return "guest/guestexaminationList";
 	  	}
-	  		
+		
+	  	
 
 	// ♬ 마이페이지
 	@RequestMapping(value = "myGuest")
@@ -360,6 +368,9 @@ public class GuestContoller {
 		guService.myHealth(req, model);
 		return "guest/myGuest";
 	}
+	
+	
+	
 	
 	// 내 질문목록
 	@RequestMapping(value = "myBordList")
@@ -378,6 +389,7 @@ public class GuestContoller {
 		
 		return "guest/guestLoginPro";
 	}	
+	
 	//일반회원탈퇴비밀번호확인                  
 	@RequestMapping(value = "guestExit")
 	public String memberExit(HttpServletRequest req, Model model) {

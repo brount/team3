@@ -34,7 +34,8 @@
                                 
                              <tbody>
                               <tr class="unread">
-                                    <td class="view-message">검사번호</td>
+                                    <td class="view-message"> 검사번호</td>
+                                    <td class="view-message"> 검사종류</td>
                                   <td class="view-message">환자명</td> 
                                     <td>
                                         <span>담당의사
@@ -46,18 +47,28 @@
                                <c:set value="0" var="a"></c:set>
                                <c:set value="0" var="b"></c:set>
 								<c:forEach var="dto" items="${dtos}">
+									<c:forEach var="vo" items="${dto.checkup_kind}">
 									<tr>
+										
 										<td>
 											${dto.checkuplist}
 											<c:set var="number" value="${number-1 }"></c:set>
-										</td>					
-										<td ><a onclick="window.location='checkupInfo?pageNum=${pageNum}&number=${number+1}&checkuplist=${dto.checkuplist}'">${guestList[b].guestname}</a></td>
+										</td>	
+										<td>
+											<c:if test="${vo==1}">계층검사</c:if>
+											<c:if test="${vo==2}">요검사</c:if>
+											<c:if test="${vo==3}">혈액검사</c:if>
+											<c:if test="${vo==4}">영상검사</c:if>
+											
+										</td>				
+										<td ><a onclick="window.location='checkupInfo?pageNum=${pageNum}&number=${number+1}&checkuplist=${dto.checkuplist}&kind=${vo}'">${guestList[b].guestname}</a></td>
 											
 										<td >${docList[a].doctorname}</td>
 										<td >
 											<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.checkup_date}"/>
 										</td>
 									</tr>
+									</c:forEach>
 									<c:set var="b" value="${b+1 }"></c:set>
 									<c:set var="a" value="${a+1 }"></c:set>
 								</c:forEach>

@@ -350,6 +350,27 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return cnt;
 	}
 
+	@Override
+	public int checkupUpdate(CheckupVO vo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.checkupUpdate(vo);
+		return cnt;
+	}
+
+	@Override
+	public int getCheckupListno() {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getCheckupListno();
+		return cnt;
+	}
+	
+	@Override
+	public int getCheckupCheckupList(int checkuplist) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getCheckupCheckupList(checkuplist);
+		return cnt;
+	}
+
 	
 	
 

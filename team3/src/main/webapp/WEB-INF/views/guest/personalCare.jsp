@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html class="no-js" lang="en">
 
 <head>
@@ -14,7 +14,12 @@
 </head>
 
 <body>
-
+ <c:if test="${sessionScope.memberState != 1 }">
+	<script type="text/javascript">
+		alert('로그인이 필요한 서비스 입니다.');
+		window.location="memberLogin";
+	</script>
+</c:if>
 
 
 <header>

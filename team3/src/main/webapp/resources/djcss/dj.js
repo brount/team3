@@ -9,6 +9,7 @@ var msg_emailChk = "이메일형식에 일치하지않아요~!";
 var msg_address = "주소를 입력하세요~!";
 var msg_confirmId = "중복확인 하세요~!";
 var msg_hp = "연락처 입력하세요~!";
+
 // 회원가입 페이지
 function inputFocus() { // 아이디로 포커스
 	document.inputform.id.focus();
@@ -31,9 +32,9 @@ function inputCheck() {
 		alert(msg_pwdChk);
 		document.inputform.confirmPassword.focus();
 		return false;
-	} else if (!document.inputform.first_name.value) {
+	} else if (!document.inputform.name.value) {
 		alert(msg_name);
-		document.inputform.first_name.focus();
+		document.inputform.name.focus();
 		return false;
 	} else if (!document.inputform.jumin1.value) {
 		alert(msg_brith);
@@ -60,8 +61,7 @@ function inputCheck() {
 		document.inputform.email1.focus();
 		return false;
 		// email2값이 null일 때 && email3의 값이 직접입력일때
-	} else if (!document.inputform.email2.value
-			&& document.inputform.email3.value == 0) {
+	} else if (!document.inputform.email2.value && document.inputform.email3.value == 0) {
 		alert(msg_email);
 		document.inputform.email2.focus();
 		return false;
@@ -84,7 +84,6 @@ function inputCheck() {
 		alert(msg_confirmId);
 		document.inputform.dupChk.focus();
 		return false;
-
 	}
 
 }
@@ -108,7 +107,7 @@ function nextJumin1() {
 
 function nextJumin2() {
 	if (document.inputform.jumin2.value.length >= 7) {
-		document.inputform.hp1.focus();
+		document.inputform.phone1.focus();
 	}
 }
 
@@ -148,7 +147,7 @@ function emailchk() {
 	var url = "findId?email=" + document.inputform.email1.value + "@"
 			+ document.inputform.email2.value;
 
-	window.open(url, "menubar=no,width=300,height=200");
+	window.open(url, "findId", "menubar=no,width=300,height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
 
 }
 
@@ -167,6 +166,7 @@ function key() {
 function keycnt() {
 
 	opener.document.inputform.hiddenEmail.value = "1";
+	
 	self.close();
 
 }
@@ -188,7 +188,7 @@ function confirmId() {
 																// 주기위해 자바스크립트에서
 																// 썼다.
 
-	window.open(url, "confirm", "menubar=no,width=300,height=200");
+	window.open(url, "confirm", "menubar=no,width=300,height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
 }
 // 중복확인 클릭 시 id로 포커스
 function comfirmIdFocus() {

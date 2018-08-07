@@ -340,19 +340,46 @@ public class GuestDAOImpl implements GuestDAO {
 		return dtos;
 
 	}
-
+	
+	// 즐겨찾기 병원의 갯수 유무구하기
 	@Override
 	public int bookMarkcnt(int guestNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int cnt = dao.bookMarkcnt(guestNo);
+		return cnt;
+	}
+	
+	
+	//현재 즐겨찾은 병원 셀렉
+	@Override
+	public String dbfavoritehos(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		String dbfavoritehos = dao.dbfavoritehos(guestNo);
+		return dbfavoritehos;
 	}
 
+	// 즐겨찾는 병원 추가
+	@Override
+	public void bookMarkIn(Map<String, Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		dao.bookMarkIn(map);
+		
+	}
+	//즐겨찾는 병원 목록 셀렉트.
 	@Override
 	public ArrayList<HospitalVO> bookMark(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		ArrayList<HospitalVO> dtos = null;
+		dtos = dao.bookMark(map);
+		
+
+		return dtos;
 	}
 
+	
+	
 	@Override
 	public int myFoodModi(Map<String, Object> map) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -455,6 +482,32 @@ public class GuestDAOImpl implements GuestDAO {
 		vo = dao.checkupRegisterclick(col);
 		return vo;
 	}
+
+	@Override
+	public int overlap(Map<String, Object> m) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int overlap =dao.overlap(m);
+		
+		return overlap;
+	}
+
+	@Override
+	public String bookMarkListcnt(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		String favoritehos = dao.bookMarkListcnt(guestNo);
+		return favoritehos;
+	}
+
+	@Override
+	public HospitalVO hospitalInfo(int hospitalno) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		HospitalVO vo =null;
+		vo = dao.hospitalInfo(hospitalno);
+		
+		return vo;
+	}
+
 
 	
 

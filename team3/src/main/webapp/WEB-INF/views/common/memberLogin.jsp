@@ -34,11 +34,6 @@ function loginSet(){
 						<div class="form-group">
 		                    <input type="password" name="pwd" id="password" class="form-control input-lg" placeholder="비밀번호를 입력하세요">
 						</div>
-						<span class="button-checkbox">
-							<!-- 체크 박스 처리 확인 해야됨 - 현재는 전체 체크 박스 처리만 가능 버튼을 바꾸든 해야할듯 -->
-							<button type="button" class="btn" data-color="info">아이디 저장</button>
-		                    <input type="checkbox" name="remember_me"  class="hidden">
-						</span>						
 		                    <input type="checkbox" name="memberState" value="1" class="" onchange="statChk1();">일반회원
 							<input type="checkbox" name="memberState" value="2" class="" onchange="statChk2();">의사회원
 							<script type="text/javascript">

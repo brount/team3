@@ -37,6 +37,37 @@
 <script src="/medical/resources/css/js/modernizr.custom.js"></script>
 <link rel="stylesheet" href="/medical/resources/common/css/footer.css" type="text/css">
 
+<script type="text/javascript">
+function personalCare() {
+	if(${sessionScope.id==null} ){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location='memberLogin';
+	}else{
+		window.location='personalCare';
+	}
+}
+function guestcheckupResultList() {
+	if(${sessionScope.id==null} ){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location='memberLogin';
+	}else{
+		window.location='guestcheckupResultList';
+	}
+}
+function guestexaminationList() {
+	if(${sessionScope.id==null} ){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location='memberLogin';
+	}else{
+		window.location='guestexaminationList';
+	}
+}
+
+
+</script>
+
+
+
 </head>
 
 <div class="container">
@@ -85,8 +116,8 @@
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                             <c:if test="${sessionScope.memberState != 2 }">
-								<li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='checkupResultList'">건강검진  목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="window.location='examinationList'">처방전 목록</a></li>  
+								<li class="sub-title text-uppercase"><a class="menu-item"  onclick="guestcheckupResultList()">건강검진  목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  onclick="guestexaminationList()">처방전 목록</a></li>  
 							 </c:if>
 							 <c:if test="${sessionScope.memberState == 2 }">
 								<li class="sub-title text-uppercase mt-sm"><a class="menu-item"  onclick="window.location='patientList'">검진 예약 목록</a></li>	
@@ -175,7 +206,7 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" onclick="window.location='reserveForm'" >병원 예약</a></li>
+                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" onclick="window.location='achospitalSeach?state=2'" >병원 예약</a></li>
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item" onclick="window.location='hospitalSeach'">병원 검색</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='hospitalSeach'">약국 검색</a></li>
                             
@@ -347,7 +378,7 @@
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item"   onclick="window.location='exerciseInfoList'">운동정보</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"   onclick="window.location='personalCare'">개인건강관리</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"   onclick="personalCare()">개인건강관리</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">

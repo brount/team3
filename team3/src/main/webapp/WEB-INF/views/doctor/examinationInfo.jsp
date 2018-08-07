@@ -52,7 +52,7 @@
 						  			<th>증상</th>
 						  		</tr>
 						  		<tr>
-						  			<td><textarea readonly cols="90" rows="5" name = "symptom">${preDto.symptom}</textarea></td>
+						  			<td><textarea readonly cols="90" rows="5" name = "symptom" style="resize: none;">${preDto.symptom}</textarea></td>
 						  		</tr>
 						  	</table>
 						    <table class="table table-striped table-hover" border="1">
@@ -111,7 +111,7 @@
 							    		<th>1회<br>투여량</th>
 							    		<th>1회<br>투여횟수</th>
 							    		<th>총<br>투여일수</th>
-						                <td rowspan="5"><textarea rows="8" name="caution">${preDto.caution}</textarea>　</td>
+						                <td rowspan="5"><textarea rows="8"  name="caution" style="resize: none;">${preDto.caution}</textarea>　</td>
 						          	</tr>
 						          	<tr>
 						          	  	<td>${injectionname1}</td>

@@ -24,7 +24,19 @@
 	
 	
 	      <h1>My Health</h1>
-		 <c:if test="${selectcnt != 0 }">
+	      <c:if test="${selectcnt==0}">
+	        <div style="display:table; margin:0 auto;">
+				<div>
+				
+				<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+	      </div>
+	      </div>
+	   
+	    
+		
+		</c:if>
+	
+		 <c:if test="${selectcnt!=0 }">
 	 
 					 	 <table class="table table-inbox table-hover">
 					 	 
@@ -94,17 +106,7 @@
 						</table>
 					</c:if>
 
-		<c:if test="${selectcnt == 0} ">
-	        <div style="display:table; margin:0 auto;">
-				<div>
-				
-				<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
-	      </div>
-	      </div>
-	   
-	    
 		
-		</c:if>
 	  </fieldset>
 			            
 			            

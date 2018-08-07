@@ -730,12 +730,12 @@ public class AdminServiceImpl implements AdminService {
 			
 			ArrayList<DoctorVO> dtos = dao.getDoctorList(map);
 			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건             "d"+String.valueOf(dtos.get(i).getDoctorno())+"t"
 			
 			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
 			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
+			for(int i = 0; i<dtos.size(); i++) {
+				hvo= dao.getHospital(dtos.get(i).getHospitalno());
 				dtos2.add(hvo);
 			}
 			System.out.println("dtos2 : " + dtos2.size());		
@@ -843,8 +843,8 @@ public class AdminServiceImpl implements AdminService {
 			
 			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
 			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
+			for(int i = 0; i<dtos.size(); i++) {
+				hvo= dao.getHospital(dtos.get(i).getHospitalno());
 				dtos2.add(hvo);
 			}
 			System.out.println("dtos2 : " + dtos2.size());		
@@ -886,7 +886,6 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void doctorpermissionList(HttpServletRequest req, Model model) {
 
-		
 		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
@@ -944,8 +943,8 @@ public class AdminServiceImpl implements AdminService {
 			
 			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
 			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
+			for(int i = 0; i<dtos.size(); i++) {
+				hvo= dao.getHospital(dtos.get(i).getHospitalno());
 				dtos2.add(hvo);
 			}
 			System.out.println("dtos2 : " + dtos2.size());		
@@ -1527,13 +1526,6 @@ public class AdminServiceImpl implements AdminService {
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String pageDivision = req.getParameter("pageDivision");
 		String[] checkOne = req.getParameter("doctorno").split(",");
-		ArrayList<Integer> doctor_arr = new ArrayList<Integer>();
-		
-		System.out.println();
-		for (int i = 0; i < checkOne.length; i++) {
-			doctor_arr.add(Integer.parseInt(checkOne[i]));
-		
-		}
 		
 		int deleteCnt = dao.doctorChkdeletePro(checkOne);
 		  
@@ -1549,15 +1541,25 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println(req.getAttribute("pageNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String[] checkOne = req.getParameter("doctorno").split(",");
-		ArrayList<Integer> doctor_arr = new ArrayList<Integer>();
 		
-		System.out.println();
-		for (int i = 0; i < checkOne.length; i++) {
-			doctor_arr.add(Integer.parseInt(checkOne[i]));
-		
-		}
+		String[] checkTwo = req.getParameter("hospitalno").split(",");
 		
 		int updateCnt = dao.doctorChkPermissionPro(checkOne);
+		Map<String, Object> map = new HashMap<String,Object>();
+		for(int i = 0; i <checkTwo.length-1; i++) {
+			map.put("hospitalno", Integer.parseInt(checkTwo[i]));
+			
+			if(dao.getHospital(Integer.parseInt(checkTwo[i])).getDoctorno() != null ) {
+				map.put("doctorno", dao.getHospital(Integer.parseInt(checkTwo[i])).getDoctorno()
+						+",d"+checkOne[i]+"t");
+			}else {
+				map.put("doctorno", "d"+checkOne[i]+"t");
+			}
+			
+			
+			if(updateCnt > 0) dao.hospitalPermissionPro(map);
+		}
+		
 
 		model.addAttribute("updateCnt", updateCnt);
 		model.addAttribute("pageNum",pageNum);
@@ -1568,13 +1570,6 @@ public class AdminServiceImpl implements AdminService {
 	public void doctorExpelPro(HttpServletRequest req, Model model) {
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String[] checkOne = req.getParameter("doctorno").split(",");
-		ArrayList<Integer> doctor_arr = new ArrayList<Integer>();
-		
-		System.out.println();
-		for (int i = 0; i < checkOne.length; i++) {
-			doctor_arr.add(Integer.parseInt(checkOne[i]));
-		
-		}
 		
 		int updateCnt = dao.doctorChkExpelPro(checkOne);
 		  
@@ -1602,17 +1597,24 @@ public class AdminServiceImpl implements AdminService {
 		int pageCount = 0; // 페이지 갯수
 		int startPage = 0; // 시작 페이지
 		int endPage = 0; // 마지막 페이지
-		String hospitalChoice = req.getParameter("hospitalChoice");
-		int sc = Integer.parseInt(req.getParameter("sc"));
-		String search = req.getParameter("search");
+		String hospitalChoice = null;
+		
+		hospitalChoice = req.getParameter("hospitalChoice");
+		
+		if(hospitalChoice == null) {
+			hospitalChoice = "1";
+		}
+		
+		//int sc = Integer.parseInt(req.getParameter("sc"));
+		//String search = req.getParameter("search");
 		
 		// 5단계. 갯수 구하기
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hospitalChoice", hospitalChoice);
-		map.put("sc", sc);
-		map.put("search", search);
-		System.out.println("검색종류 : " + sc);
-		System.out.println("검색내용 : " + search);
+		//map.put("sc", sc);
+		//map.put("search", search);
+		//System.out.println("검색종류 : " + sc);
+		//System.out.println("검색내용 : " + search);
 		cnt = dao.getHospitalListCnt(map);
 		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
 
@@ -1648,8 +1650,8 @@ public class AdminServiceImpl implements AdminService {
 			Map<String,Object> map2 = new HashMap<String, Object>();
 			map2.put("start", start);
 			map2.put("end", end);
-			map2.put("sc", sc);
-			map2.put("search", search);
+			//map2.put("sc", sc);
+			//map2.put("search", search);
 			map2.put("hospitalChoice", hospitalChoice);
 			
 			ArrayList<HospitalVO> dtos = dao.getHospitalList(map2);
@@ -1684,8 +1686,8 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("pageCount", pageCount); // 페이지 갯수
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
 			model.addAttribute("hospitalChoice", hospitalChoice);
-			model.addAttribute("sc", sc);
-			model.addAttribute("search", search);
+			//model.addAttribute("sc", sc);
+			//model.addAttribute("search", search);
 		}
 				
 	}
@@ -1789,11 +1791,6 @@ public class AdminServiceImpl implements AdminService {
 	public void drugdeletePro(HttpServletRequest req, Model model) {
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String[] checkOne = req.getParameter("drugCode").split(",");
-		ArrayList<Integer> drug_arr = new ArrayList<Integer>();
-		
-		for (int i = 0; i < checkOne.length; i++) {
-			drug_arr.add(Integer.parseInt(checkOne[i]));
-		}
 		
 		int deleteCnt = dao.drugChkdeletePro(checkOne);
 		  
@@ -1906,7 +1903,7 @@ public class AdminServiceImpl implements AdminService {
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/drug/");
 		// 업로드할 파일이 위치하게될 물리적인 경로
-		String realDir = "C:\\Dev36\\team3\\team3\\team3\\src\\main\\webapp\\resources\\images\\drug"; // 저장 경로
+		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\drug\\"; // 저장 경로
 						 
 		try {
 	            file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -2557,7 +2554,7 @@ public class AdminServiceImpl implements AdminService {
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
 		// 업로드할 파일이 위치하게될 물리적인 경로
-		String realDir = "C:\\Dev36\\team3\\team3\\team3\\src\\main\\webapp\\resources\\images\\exercise"; // 저장 경로
+		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\exercise\\"; // 저장 경로
 						 
 		try {
 	            file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -2625,7 +2622,7 @@ public class AdminServiceImpl implements AdminService {
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
 		// 업로드할 파일이 위치하게될 물리적인 경로
-		String realDir = "C:\\Dev36\\team3\\team3\\team3\\src\\main\\webapp\\resources\\images\\exercise"; // 저장 경로
+		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\exercise\\"; // 저장 경로
 		
 		
 		try {
@@ -2779,9 +2776,9 @@ public class AdminServiceImpl implements AdminService {
 		
 		MultipartFile file2 = req.getFile("thumbnail");
         
-        String saveDir = req.getRealPath("/resources/images/event");
+        String saveDir = req.getRealPath("/resources/images/event/");
         
-        String realDir="C:\\Dve36\\gitTeam\\team3\\src\\main\\webapp\\resources\\images\\event\\";
+        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\event\\";
         
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -2852,9 +2849,9 @@ public class AdminServiceImpl implements AdminService {
 			
 			MultipartFile file2 = req.getFile("thumbnail");
 	        
-	        String saveDir = req.getRealPath("/resources/images/event");
+	        String saveDir = req.getRealPath("/resources/images/event/");
 	        
-	        String realDir="C:\\Dve36\\gitTeam\\team3\\src\\main\\webapp\\resources\\images\\event\\";	        
+	        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\event\\";	        
         
 	        try {
 	        		file.transferTo(new File(saveDir+file.getOriginalFilename()));
@@ -2954,7 +2951,6 @@ public class AdminServiceImpl implements AdminService {
 		int startPage = 0; // 시작 페이지
 		int endPage = 0; // 마지막 페이지
 		int status = Integer.parseInt(req.getParameter("status"));
-		int totalPoint = 0;
 		
 		// 5단계. 갯수 구하기
 		cnt = dao.getPointListCnt(status);

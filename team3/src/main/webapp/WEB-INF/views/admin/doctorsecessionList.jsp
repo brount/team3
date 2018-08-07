@@ -72,7 +72,7 @@
 														<td>${dtos2[a].hospitalname}</td>
 														<td>${dto.doctorid}</td>
 														<td>${dto.doctorname}</td>
-														<td>${dtos2[a].hospitaladdress3}</td>
+														<td>${dtos2[a].hospitaladdr}</td>
 														<td>${dtos2[a].hospitalphone}</td>
 														<td>${dto.doctorspecialism}</td>
 														<td>${dto.doctorappro}</td>

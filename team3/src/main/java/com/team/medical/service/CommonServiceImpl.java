@@ -396,9 +396,9 @@ public class CommonServiceImpl implements CommonService {
 		
 		MultipartFile file2 = req.getFile("thumbnail");
         
-        String saveDir = req.getRealPath("/resources/images/event");
+        String saveDir = req.getRealPath("/resources/images/event/");
         
-        String realDir="C:\\Dve36\\gitTeam\\team3\\src\\main\\webapp\\resources\\images\\event\\";
+        String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\event";
         
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));

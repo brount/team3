@@ -71,8 +71,8 @@
 	<select id="getHospitalCnt" resultType="int" parameterType="java.util.Map">
 		select count(hospitalno) from hospital
 		<where>  
-			<if test="state == 2 ">
-				hospitalstate = 2
+			<if test="state == 1 ">
+				hospitalstate = #{state}
 			</if>    	
         	<if test="select != null">
      			<if test="sc == 1">
@@ -97,8 +97,8 @@
                              SELECT * 
                                FROM hospital 
                                <where>
-                               <if test="state == 2 ">
-									hospitalstate = 2
+                               <if test="state == 1 ">
+									hospitalstate = #{state}
 								</if>  
                                	<if test="select != null">
 	                               	<if test="sc == 1">
@@ -113,7 +113,7 @@
                )   
         <where>        	        	
         	<![CDATA[
-	           AND rnum >= #{start} AND rnum <= #{end}
+	           rnum >= #{start} AND rnum <= #{end}
 	      	]]>	      	
       	</where>
    </select>

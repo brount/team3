@@ -33,7 +33,8 @@ public interface GuestService {
 	
 	// 내 질문목록 
 	public void myBordList(HttpServletRequest req, Model model);
-	
+	//병원 즐겨찾기
+	public void bookMarkIn(HttpServletRequest req, Model model);
 	// 즐겨찾는 병원
 	public void bookMark(HttpServletRequest req, Model model);
 	// 마이헬스 정보등록페이지

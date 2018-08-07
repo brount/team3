@@ -26,7 +26,7 @@
 	                        <div class="pull-right">
 	                            <div class="btn-group">
 	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
-	                            		<option value="hospitalList?hospitalChoice=2">제휴병원</option>
+	                            		<option value="hospitalList?hospitalChoice=1">제휴병원</option>
 	                            		<option value="hospitalList_none?hospitalChoice=0">비제휴병원</option>
 						 			</select>
                                     <button type="button" style="margin-left:5px;">

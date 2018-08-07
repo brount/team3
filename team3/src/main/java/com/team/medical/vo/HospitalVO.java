@@ -17,7 +17,7 @@ public class HospitalVO {
    private String holi;						// 휴무일
    private String hospitalimage;			// 병원 사진
    private String hospitalkind;				// 병원 종류
-   private int hospitalstate;				// 제휴 상태
+   private int hospitalstate;				// 제휴 상태	비제휴 : 0, 제휴 : 1
    
    public int getHospitalno() {
       return hospitalno;

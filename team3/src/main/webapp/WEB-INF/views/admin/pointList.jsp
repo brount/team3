@@ -25,10 +25,10 @@
 						<div class="panel-heading">
 							<div class="pull-right">
 								<div class="btn-group">
-									<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-										<option value="#">주간결산</option>
-										<option value="#">월간결산</option>
-										<option value="#">연간결산</option>
+									<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
+										<option value="pointList_weekly">주간결산</option>
+										<option value="pointList_monthly">월간결산</option>
+										<option value="pointList_yearly">연간결산</option>
 									</select> 
 								</div>
 							</div>
@@ -72,7 +72,7 @@
 						<div class="panel-heading">
 							<div class="pull-right">
 								<div class="btn-group">
-									<select class="input" name="status">
+									<select class="btn btn-default btn-xs dropdown-toggle" onchange="return pointListCheck(this.value)">
 										<option value="0">전체</option>
 										<option value="1">획득</option>
 										<option value="2">사용</option>
@@ -128,74 +128,30 @@
 											<tr>
 												<th align="center">
 													<c:if test="${cnt > 0}">
-														<c:if test="${sc == null}">
-															<!-- 맨끝[◀◀] / 이전[◀] -->
-															<c:if test="${startPage > pageBlock}">
-																<a href="doctorList">[맨앞]</a>
-																<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
-															</c:if>
-										
-															<c:forEach var="i" begin="${startPage}" end="${endPage}">
-																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
-																</c:if>
-																<c:if test="${i != currentPage}">
-																	<a href="doctorList?pageNum=${i}">[${i}]</a>
-																</c:if>
-															</c:forEach>
-															
-															<!-- 맨끝[▶▶] / 다음▶] -->
-															<c:if test="${pageCount > endPage}">
-																<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
-																<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
-															</c:if>
+														<!-- 맨끝[◀◀] / 이전[◀] -->
+														<c:if test="${startPage > pageBlock}">
+															<a href="doctorList">[맨앞]</a>
+															<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
 														</c:if>
+									
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
+															<c:if test="${i == currentPage}">
+																<span><b>[${i}]</b></span>
+															</c:if>
+															<c:if test="${i != currentPage}">
+																<a href="doctorList?pageNum=${i}">[${i}]</a>
+															</c:if>
+														</c:forEach>
 														
-														<c:if test="${sc != null}">
-															<c:if test="${startPage > pageBlock}">
-																<a href="doctorSearchList?sc=${sc}&search=${search}">[맨앞]</a>
-																<a href="doctorSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
-															</c:if>
-										
-															<c:forEach var="i" begin="${startPage}" end="${endPage}">
-																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
-																</c:if>
-																<c:if test="${i != currentPage}">
-																	<a href="doctorSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
-																</c:if>
-															</c:forEach>
-															
-															<c:if test="${pageCount > endPage}">
-																<a href="doctorSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
-																<a href="doctorSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
-															</c:if>
+														<!-- 맨끝[▶▶] / 다음▶] -->
+														<c:if test="${pageCount > endPage}">
+															<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
+															<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
 														</c:if>
 													</c:if>
 												</th>
 											</tr>
 										</table>
-										
-	                                    <table align="center">
-	                                    	<form action="doctorSearchList" class="search_box" method="get">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="sc" >
-								 						<option value=0>회원ID</option>
-								 						<option value=1>회원명</option>
-								 						<option value=2>병원명</option>
-								 						<option value=3>전문분야</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="text" id="search" name="search">
-							 					</td>
-							 					<td>
-							 						<input type="submit" value="검색">
-							 					</td>
-						 					</tr>
-						 					</form>
-						 				</table>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!-- 
 <!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,10 +16,40 @@
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function simple(){
+	
+			   var count = 0;
+			   var chk = document.getElementsByName("symptomchk");
+			   var symptomchk = "";
+			 
+			   //선택된거 체크
+			   for(var i = 0; i < chk.length; i++){
+			      if(chk[i].checked == true){
+			         count++;
+			         if(symptomchk == ""){
+			        	 symptomchk += chk[i].value;
+			         }else{
+			        	 symptomchk += "," + chk[i].value;
+			         }
+			      }
+			   }
+			   
+				 alert(symptomchk);
+			   if(count == null){
+			      alert("증상을 선택하세요");
+			      return false;
+			   }else{
+				   window.location="reservePro?symptomchk="+symptomchk; 
+			   }
+			}
+		
+		</script>
 <script type="text/javascript">
             $(function () {
                 $("#datepicker").datepicker();
             });
+            
 </script>
 
 
@@ -30,7 +62,12 @@
 </head>
 
 <body>
-
+ <c:if test="${sessionScope.memberState != 1 }">
+	<script type="text/javascript">
+		alert('로그인이 필요한 서비스 입니다.');
+		window.location="memberLogin";
+	</script>
+</c:if>
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
@@ -59,7 +96,8 @@
 	 <div class="col-sm-9 col-md-9">
 
     <div class="well">
- 		<form class="form-horizontal" action="reservePro" method="post"  id="reg_form">
+ 		<form class="form-horizontal" action="reservePro" method="post"  id="reg_form" onsubmit="return simple();">
+ 	
  		<input type="hidden" name="hospitalno" value="${vo.hospitalno}">
  		 <input type="hidden" name="doctorNo" value="doctorNo">
  		 <input type="hidden" name="guestNo" value="guestNo">
@@ -193,7 +231,7 @@
 						    근육통
 						  </label>
 						  <label>
-						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="sore throat"/>
+						    <input type="checkbox" class="option-input checkbox"name="symptomchk"  value="sorethroat"/>
 						    인후통
 						  </label>
 						  
@@ -201,14 +239,15 @@
 		        </div>
 		      </div>
 		</div>
+		</fieldset>
 		    </div>
 		  
 		      <div class="form-group">
 		        <div style="display:table; margin:0 auto">
-		          <button type="submit" class="btn btn-warning">예약 <span class="glyphicon glyphicon-send"></span></button>
+		          <button type="submit" class="btn btn-warning" >예약 <span class="glyphicon glyphicon-send"></span></button>
 		        </div>
 		      </div>
-		    </fieldset>
+		 
 		  </form>
 		</div>
 		

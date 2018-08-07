@@ -46,7 +46,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
-	                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+	                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 	                                            <th>회원번호</th>			
 	                                            <th>병원명</th>			
 	                                            <th>회원ID</th>			
@@ -63,7 +63,7 @@
 	                                        <tbody>
 	                                        
 	                                        <c:if test="${cnt > 0}">
-	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">${pageNum}
+	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 	                                        	<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
@@ -72,7 +72,7 @@
 														<td>${dtos2[a].hospitalname}</td>
 														<td>${dto.doctorid}</td>
 														<td>${dto.doctorname}</td>
-														<td>${dtos2[a].hospitaladdress3}</td>
+														<td>${dtos2[a].hospitaladdr}</td>
 														<td>${dtos2[a].hospitalphone}</td>
 														<td>${dto.doctorspecialism}</td>
 														<td>${dto.doctorappro}</td>

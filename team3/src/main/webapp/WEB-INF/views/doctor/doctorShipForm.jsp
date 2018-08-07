@@ -119,7 +119,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span> 
 									<input name="hospital"class="form-control" type="text" style="padding: 1px;">
-									<input name="hospitalno" type="hidden" value="0">
+									<input name="hospitalno" type="hidden" value="">
 									<input name="hosSearch" type="button" value="병원찾기"
 										onclick="window.open('hosSearch','이름','menubar=no, width=500, height=700');">									
 								</div>

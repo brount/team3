@@ -231,7 +231,7 @@ public class AdminContoller {
 		return "admin/hospitalList_none";
 	}
 	
-	// 제휴병원목록페이지     
+	// 제휴병원 검색목록페이지     
 	@RequestMapping(value = "hospitaSearchlList")
 	public String hospitaSearchlList(HttpServletRequest req, Model model) {
 		logger.info("hospitaSearchlList, 페이지");
@@ -239,7 +239,7 @@ public class AdminContoller {
 		return "admin/hospitalList";
 	}
 	
-	// 일반병원목록페이지     
+	// 일반병원 검색목록페이지     
 	@RequestMapping(value = "hospitalSearchList_none")
 	public String hospitalSearchList_none(HttpServletRequest req, Model model) {
 		logger.info("hospitalSearchList_none, 페이지");

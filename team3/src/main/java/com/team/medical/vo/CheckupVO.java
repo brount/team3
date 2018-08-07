@@ -30,9 +30,15 @@ public class CheckupVO {
 	private String breastradiography;
 	private String ecg;
 	private Date checkup_date;
+	private int checkuplist;
 	
 	
-	
+	public int getCheckuplist() {
+		return checkuplist;
+	}
+	public void setCheckuplist(int checkuplist) {
+		this.checkuplist = checkuplist;
+	}
 	public int getCheckup() {
 		return checkup;
 	}

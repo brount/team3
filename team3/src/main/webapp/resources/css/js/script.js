@@ -178,8 +178,7 @@ function confirmIdCheck(){
 
 // self.close(); 메세지 없이 현재 창을 닫을 때 사용
 // hiddenId : 중복확인버튼 클릭 여부 체크
-function setId(id){
-	
+function setId(id){	
 	opener.document.reg_form.id.value=id;
 	opener.document.reg_form.hiddenId.value="1";
 	self.close();
@@ -198,6 +197,12 @@ function loginCheck(){
 		return false;
 	// 비밀번호 재확인
 	}
+}
+
+function setHos(a,b){	
+	opener.document.reg_form.hospitalno.value=a;
+	opener.document.reg_form.hospital.value=b;
+	self.close();
 }
 
 /*

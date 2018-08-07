@@ -27,7 +27,7 @@
 	                            <div class="btn-group">
 	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
 	                            		<option value="hospitalList_none?hospitalChoice=0">비제휴병원</option>
-	                            		<option value="hospitalList?hospitalChoice=2">제휴병원</option>
+	                            		<option value="hospitalList?hospitalChoice=1">제휴병원</option>
 						 			</select>
                                     <button type="button" style="margin-left:5px;">
                                     	삭제
@@ -55,6 +55,8 @@
 	                                        <tbody>
 		                                        <c:if test="${cnt > 0}">
 		                                        	<input type="hidden" name="pageNum" value="${pageNum}">
+		                                        	<input type="hidden" name="hospitalChoice" value="${hospitalChoice}">
+		                                        	
 													<c:forEach var="dto" items="${dtos}">
 														<tr>
 															<td class="center"><input type="checkbox" name="checkOne" value="${dto.hospitalno}"></td>
