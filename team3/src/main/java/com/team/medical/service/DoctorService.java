@@ -69,11 +69,6 @@ public interface DoctorService {
 	//처방전 페이지
 	public void examinationAdd(HttpServletRequest req, Model model);
 
-	//일반회원 정보 가져오기
-	//public void cusInfo(HttpServletRequest req, Model model);
-
-	//의사 정보 가져오기
-	//public void doctorInfo(HttpServletRequest req, Model model);
 
 	
 }

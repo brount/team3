@@ -198,7 +198,7 @@
                        			FROM QuestionBoard
                       			   WHERE kind IN (#{notice},#{report})
                       			   ORDER BY boardno DESC)
-		   	   	  	   ORDER BY kind ASC)
+		   	   	  	   ORDER BY kind ASC, boardno DESC)
 			  )
 		<![CDATA[
 			 WHERE rnum >= #{start} AND rnum <= #{end}

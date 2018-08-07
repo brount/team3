@@ -104,14 +104,14 @@ public class DoctorDAOImpl implements DoctorDAO {
 	      
 	      return chkCnt;
 	   }
-	   // 병원정보가져오기 (병원번호)
-	   @Override
-	   public HospitalVO getHospitalInfo(String hospitalphone) {
-	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-	      HospitalVO vo = dao.getHospitalInfo(hospitalphone);
-	      
-	      return vo;
-	   }
+	// 병원정보가져오기 (병원번호)
+      @Override
+      public HospitalVO getHospitalInfo(Map<String,Object> map) {
+         DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+         HospitalVO vo = dao.getHospitalInfo(map);
+         
+         return vo;
+      }
 	   // 일반병원정보가져오기 (병원번호)
 	   @Override
 	   public HpVO getHpInfo(String hospitalphone) {
@@ -358,14 +358,7 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return cnt;
 	}
 
-	/*@Override
-	public int getDocLicence(String id) {
-		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		int cnt = dao.getDocLicence(id);
-		return cnt;
-		
-	}
-*/
+	
 	
 
 

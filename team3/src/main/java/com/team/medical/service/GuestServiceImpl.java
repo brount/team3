@@ -22,6 +22,7 @@ import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
+import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.QuestionBoardVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -328,8 +329,8 @@ public class GuestServiceImpl implements GuestService {
 		vo.setHepatitisscr(req.getParameter("hepatitisscr"));
 		vo.setBreastradiography(req.getParameter("breastradiography"));
 		vo.setEcg(req.getParameter("ecg"));
-/*		vo.setExaminationday(Date.valueOf(req.getParameter("Examinationday")));
-*/		
+		vo.setExaminationday(Date.valueOf(req.getParameter("reservationtime")));
+		
 		int insertcnt = dao.checkupRegisterPro(vo);
 		model.addAttribute("insertcnt",insertcnt);
 		
@@ -343,6 +344,8 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //CheckUp테이블에 guestno을 통해 해당 회원의 검진서결과를  셀렉트 하기위함
 		int guestNo = gvo.getGuestNo();
+		
+		
 		int selectcnt = 0;
 		
 		ExaminationVO vo = new ExaminationVO();
@@ -1220,6 +1223,317 @@ public class GuestServiceImpl implements GuestService {
 			model.addAttribute("vo",vo);
 	
 	
+	}
+	@Override
+	public void guestcheckupResultList(HttpServletRequest req, Model model) {
+		int pageSize = 5; //한 페이지당 출력할 글 갯수
+		int pageBlock = 3; //한 블럭당 페이지 갯수
+		
+		int cnt=0;        // 글 갯수 30 db num 젤큰수  50 게시글 30개밖에20개지워지고
+		int start = 0;     // 현재페이지 시작 글번호
+		int end = 0;      // 현재페이지 마지막 글번호
+		int number=0;     // 출력용 글번호 30
+		String pageNum = null; // 페이지번호 
+		int currentPage=0;  // 현재페이지
+		
+		int pageCnt=0; //페이지갯수
+		int startPage=0; //현재블록 시작 페이지
+		int endPage=0; // 현재블록   마지막 페이지
+		
+		
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		// 5단계. 글갯수 구하기
+		cnt = dao.getCheckupResultListCnt(guestNo); 
+		
+		pageNum = req.getParameter("pageNum");
+		
+		if(pageNum==null) {
+			pageNum="1";
+		}
+		
+		//글 30건기준
+		currentPage = Integer.parseInt(pageNum);
+		
+		// 페이지 갯수 6 = (30 / 5 ) + (0)
+		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+		
+		// (1-1)*5 + 1
+		start = (currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
+		
+		// 5 = 1 + 5
+		end = start + pageSize - 1; // 현재페이지의 마지막 번호 5
+		
+		// 30 = 30 - ( 1 - 1 ) * 5
+		// 25 = 30 - ( 2 - 1 ) * 5  
+		number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
+		
+		ArrayList<CheckupVO> dtos = null;
+		if(cnt > 0) {
+			// 게시글 목록 조회 
+			Map<String,Integer> map = new HashMap<String,Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+			
+			dtos = dao.getCheckupResultList(map);
+			model.addAttribute("dtos", dtos);
+
+			ArrayList<GuestVO> guestList = new ArrayList<GuestVO>();
+			GuestVO gu = new GuestVO();
+			for(int i=0 ; i<dtos.size() ;i++) {
+				gu = dao.getcusInfo(dtos.get(i).getGuestNo()) ;
+				guestList.add(gu);
+			}
+			
+			model.addAttribute("guestList", guestList);
+			
+			
+		}
+		
+		// 1 = (1 / 3) * 3 + 1
+ 		startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
+ 		if(currentPage % pageBlock == 0) {
+ 			startPage -= pageBlock; // 나머지 계산
+ 		}		 		
+ 		
+ 		// 3 = 1 + 3 - 1
+ 		endPage = startPage + pageBlock - 1; // 마지막 페이지
+ 		if(endPage > pageCnt) {
+ 			endPage = pageCnt;
+ 		}
+		
+		model.addAttribute("cnt", cnt); // 글갯수
+		model.addAttribute("number", number); // 글번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+		if(cnt > 0) {
+			model.addAttribute("startPage", startPage); // 시작 페이지
+			model.addAttribute("endPage", endPage); // 마지막 페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재 페이지
+		}	
+		
+	}
+	@Override
+	public void guestexaminationList(HttpServletRequest req, Model model) {
+		int pageSize = 5; //한 페이지당 출력할 글 갯수
+		int pageBlock = 3; //한 블럭당 페이지 갯수
+		int cnt=0;        // 글 갯수 30 db num 젤큰수  50 게시글 30개밖에20개지워지고
+		int start = 0;     // 현재페이지 시작 글번호
+		int end = 0;      // 현재페이지 마지막 글번호
+		int number=0;     // 출력용 글번호 30
+		String pageNum = null; // 페이지번호 
+		int currentPage=0;  // 현재페이지
+		
+		int pageCnt=0; //페이지갯수
+		int startPage=0; //현재블록 시작 페이지
+		int endPage=0; // 현재블록   마지막 페이지
+		
+		
+
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		// 5단계. 글갯수 구하기
+		cnt = dao.examinationListCnt(guestNo); 
+		
+		pageNum = req.getParameter("pageNum");
+		
+		if(pageNum==null) {
+			pageNum="1";
+		}
+		
+		//글 30건기준
+		currentPage = Integer.parseInt(pageNum);
+		
+		// 페이지 갯수 6 = (30 / 5 ) + (0)
+		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+		
+		// (1-1)*5 + 1
+		start = (currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
+		
+		// 5 = 1 + 5
+		end = start + pageSize - 1; // 현재페이지의 마지막 번호 5
+		
+		// 30 = 30 - ( 1 - 1 ) * 5
+		// 25 = 30 - ( 2 - 1 ) * 5  
+		number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
+		
+		ArrayList<PrescriptionVO> dtos = null;
+		if(cnt > 0) {
+			// 게시글 목록 조회 
+			Map<String,Integer> map = new HashMap<String,Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+			
+			dtos = dao.getExaminationList(map);
+			model.addAttribute("dtos", dtos);
+		
+			ArrayList<GuestVO> guestList = new ArrayList<GuestVO>();
+			GuestVO gu = new GuestVO();
+			for(int i=0 ; i<dtos.size() ;i++) {
+				gu = dao.getcusInfo(dtos.get(i).getGuestno()) ;
+				guestList.add(gu);
+			}
+			
+			model.addAttribute("guestList", guestList);
+		}
+		
+		// 1 = (1 / 3) * 3 + 1
+ 		startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
+ 		if(currentPage % pageBlock == 0) {
+ 			startPage -= pageBlock; // 나머지 계산
+ 		}		 		
+ 		
+ 		// 3 = 1 + 3 - 1
+ 		endPage = startPage + pageBlock - 1; // 마지막 페이지
+ 		if(endPage > pageCnt) {
+ 			endPage = pageCnt;
+ 		}
+		
+		model.addAttribute("cnt", cnt); // 글갯수
+		model.addAttribute("number", number); // 글번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+		if(cnt > 0) {
+			model.addAttribute("startPage", startPage); // 시작 페이지
+			model.addAttribute("endPage", endPage); // 마지막 페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재 페이지
+		}	
+
+	}
+	@Override
+	public void checkupRegisterList(HttpServletRequest req, Model model) {
+		
+
+		
+
+		int pageSize = 10; // 한 페이지당 출력할 글 갯수
+		int pageBlock = 3; // 한 블럭당 보여질 페이지 수
+
+		int cnt = 0; // 글 갯수
+		int start = 0; // 현재 페이지 시작 글번호
+		int end = 0; // 현재 페이지 마지막 글번호
+		int number = 0; // 화면에 출력할 출력용 글번호(실제DB의 번호와 달리 보여질 때 삭제된 행이있어도 순서대로 보여지도록~!)
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재페이지
+
+		int pageCount = 0; // 페이지갯수
+		int startPage = 0; // 시작페이지
+		int endPage = 0; // 마지막페이지
+
+		
+		String id = (String) req.getSession().getAttribute("id");
+		GuestVO gvo = dao.getGuestInfo(id);  //해당 회원 guestNo구하기
+		int guestNo = gvo.getGuestNo();
+		
+		
+		cnt = dao.checkupRegistercnt(guestNo);
+		System.out.println("cnt : " + cnt);
+
+		pageNum = req.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1"; // 첫 페이지를 1페이지로 설정
+
+		}
+		// 글 30건을 기준
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage :" + currentPage);
+
+		// 글 갯수를 출력할 글 갯수로 나누는데
+		// 나머지가 있을수 있으므로 나머지가 있으면 1페이지 추가하기위해 삼항연산자로 되묻는다.
+		// 예) pageCount = (30/5)+(30 % 5 > 0 ? 1:0);
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지 갯수 + 나머지
+
+		// 1 =(1-1)*5+1;
+		start = (currentPage - 1) * pageSize + 1; // 페이지별로 시작 글번호
+
+		// 5 = 1 + 5 -1;
+		end = start + pageSize - 1; // 페이지별로 마지막 글번호
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1-1) * 5;
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 글번호
+		System.out.println("number" + number);
+		System.out.println("pageSize" + pageSize);
+	
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("guestNo", guestNo);
+		
+			ArrayList<ExaminationVO> dtos = new ArrayList<ExaminationVO>();
+			 dtos = dao.checkupRegisterList(map);
+			 
+			// jsp로 게시글 목록(= 큰 바구니) 넘긴다.
+			model.addAttribute("dtos", dtos);
+			
+			
+			
+		}
+
+		// 1 = (1/3)*3+1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작페이지
+
+		if (currentPage % pageBlock == 0) {
+			startPage -= pageBlock;
+		}
+		System.out.println("startPage:" + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		System.out.println("endPage : " + endPage); // 마지막페이지
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함.)
+
+		model.addAttribute("cnt", cnt);
+		model.addAttribute("number", number); // 글 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
+		
+			model.addAttribute("startPage", startPage); // 시작페이지
+			model.addAttribute("endPage", endPage); // 마지막페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재페이지
+
+		}
+	
+	
+		
+	}
+	@Override
+	public void checkupRegisterclick(HttpServletRequest req, Model model) {
+		int selectcnt = 0;
+		int col = Integer.parseInt(req.getParameter("col"));
+		ExaminationVO vo = new ExaminationVO();
+		vo = dao.checkupRegisterclick(col);
+		
+	
+		
+		
+		model.addAttribute("vo",vo);
+	
+		model.addAttribute("selectcnt",selectcnt);
+
+		
 	}
 	
 

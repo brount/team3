@@ -8,7 +8,6 @@
 </header>
 
 <!-- slide Section -->
-
 <div id="myCarousel" class="carousel slide bg-inverse   mr-auto" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -112,9 +111,6 @@
 	</div>
 </section>
 
-
-
-   
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <div class="scroll-to-top d-lg-none position-fixed ">
 	<a class="js-scroll-trigger d-block text-center text-white rounded"
@@ -280,7 +276,8 @@
 		</div>
 	</div>
 </div>
- <footer>
+
+<footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>
 

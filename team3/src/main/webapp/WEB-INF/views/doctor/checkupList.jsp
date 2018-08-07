@@ -81,8 +81,8 @@
 						<c:if test="${cnt>0}">
 							<!-- 처음[◀◀] / 이전블록 [◀] -->
 							<c:if test="${startPage > pageBlock }">
-								<a href="examinationList">[◀◀]</a>
-								<a href="examinationList?pageNum=${startPage-pageBlock}">[◀]</a>	
+								<a href="checkupList">[◀◀]</a>
+								<a href="checkupList?pageNum=${startPage-pageBlock}">[◀]</a>	
 							</c:if>
 							<!-- 페이지 블록 -->
 							<c:forEach var="i" begin="${startPage }" end="${endPage }">
@@ -90,13 +90,13 @@
 									<span> <b>[${i }]</b></span>
 								</c:if>
 								<c:if test="${i != currentPage }">
-									<a href="examinationList?pageNum=${i}">[${i }]</a>
+									<a href="checkupList?pageNum=${i}">[${i }]</a>
 								</c:if>
 							</c:forEach>										
 							<!-- 다음블록[▶] / 끝[▶▶] -->
 							<c:if test="${pageCnt > endPage }">
-								<a href="examinationList?pageNum=${startPage+pageBlock}">[▶]</a>
-								<a href="examinationList?pageNum=${pageCnt}">[▶▶]</a>
+								<a href="checkupList?pageNum=${startPage+pageBlock}">[▶]</a>
+								<a href="checkupList?pageNum=${pageCnt}">[▶▶]</a>
 							</c:if>
 						</c:if>
 					</th>

@@ -19,7 +19,7 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">병원 검색</a>
+		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">병원검색</a>
 		                        </h4>
 		                    </div>
 		                    <div id="collapseOne" class="panel-collapse collapse">
@@ -27,22 +27,12 @@
 		                            <table class="table">
 		                                <tr>
 		                                    <td>
-		                                       <a href="#">자외선지수</a>
+		                                       <a href="hospitalSeach">병원</a>
 		                                    </td>
 		                                </tr>
 		                                <tr>
 		                                    <td>
-		                                        <a href="#">식중독지수</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                       <a href="#">기타</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="#">기타</a>
+		                                        <a href="achospitalSeach?state=2">제휴병원</a>
 		                                    </td>
 		                                </tr>
 		                            </table>
@@ -52,35 +42,9 @@
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
 		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">약국 검색</a>
+		                            <a  href="drugStoreSeach">약국 검색</a>
 		                        </h4>
-		                    </div>
-		                    <div id="collapseTwo" class="panel-collapse collapse">
-		                        <div class="panel-body">
-		                            <table class="table">
-		                                <tr>
-		                                    <td>
-		                                        <a href="#">Orders</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="#">Invoices</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="#">Shipments</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="#">Tex</a>
-		                                    </td>
-		                                </tr>
-		                            </table>
-		                        </div>
-		                    </div>
+		                    </div>		                  
 		                </div>
 		            </div>
 		        </div>
@@ -94,39 +58,54 @@
 							</div>
 						
 							<div>
-								${vo.hospitalname }
-								<button type="button" class="btn btn-primary" value="" style="margin-left:30px; padding:0px;">즐겨찾는 병원 등록</button>
+								<img src="/medical/resources/images/licence/${vo.hospitalimage}" width="500px" height="380px">
+								
 							</div>
-							<table class='table'>
-								<tr>
-									<th>전화번호</th>
-									<td>${vo.hospitalphone }</td>
-								</tr>
-								<tr>
-									<th>주소</th>
-									<td>${vo.hospitaladdress3 }</td>
-								</tr>
-								<tr>
-									<th>진료시간</th>
-									<td>${vo.hospitaltime }</td>
-								</tr>
-								<tr>
-									<th>휴무일</th>
-									<td>${vo.hospitalholiday }</td>
-								</tr>
-								<tr>
-									<th>소개글</th>
-									<td>${vo.hospitalinstruction }</td>
-								</tr>
-								<tr>
-									<th>이미지</th>
-									<td> <img src="/medical/resources/images/licence/${vo.hospitalimage }"> </td>
-								</tr>
-							</table>
+			               <div class="panel panel-primary">
+			                   
+			                   <table class="table" >
+			                       <tr>
+			                          <th style="background: lightcyan">병원이름</th>
+			                          <td>${vo.hospitalname}</td>
+			                       </tr>
+			                       <tr>
+			                          <th style="background: lightcyan">병원주소</th>
+			                          <td>
+			                             ${vo.hospitaladdr}<br>
+			                          </td>
+			                       </tr>
+			                       <tr>
+			                          <th style="background: lightcyan">전화번호</th>
+			                          <td>${vo.hospitalphone}</td>
+			                       </tr>
+			                      <tr>
+			                          <th style="background: lightcyan">병원 소개</th>
+			                          <td>${vo.hospitalinstruction}</td>
+			                       </tr>
+			                      <tr>
+			                          <th style="background: lightcyan">진료시간</th>
+			                          <td>월 : ${vo.mon}<br>
+							                             화 : ${vo.tues}<br>
+							                             수 : ${vo.wed}<br>
+							                             목 : ${vo.thurs}<br>
+							                             금 : ${vo.fri}<br>
+							                             토 : ${vo.sat}<br>
+							                             일 : ${vo.sun}<br>
+							                             공휴일  : ${vo.holi}<br>
+			                          </td>
+			                       </tr>
+			                        <tr>
+			                        	<td style="background: lightcyan" align=center colspan=2>
+			                        		<button type="button" class="btn btn-primary" value="" style="margin-left:30px; padding:0px;">예약</button>
+			                        		<button type="button" class="btn btn-primary" value="" style="margin-left:30px; padding:0px;">즐겨찾는 병원 등록</button>
+			                        	</td>
+			                        </tr>
+			                    </table>
 						</div>
 					</div>
 	            </div>
 	        </div>
+	    </div>
 	    </div>
 	</section>
 	

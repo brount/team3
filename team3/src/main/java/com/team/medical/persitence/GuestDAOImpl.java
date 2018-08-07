@@ -19,6 +19,7 @@ import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
+import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.QuestionBoardVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -383,6 +384,76 @@ public class GuestDAOImpl implements GuestDAO {
 		 vo = dao.foodmodi(foodno);
 		 return vo;
 	
+	}
+
+	@Override
+	public int getCheckupResultListCnt(int guestNo) {
+		int selectcnt=0;
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		selectcnt = dao.getCheckupResultListCnt(guestNo);
+		
+		return selectcnt;
+	}
+
+	@Override
+	public ArrayList<CheckupVO> getCheckupResultList(Map<String, Integer> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		ArrayList<CheckupVO> dtos =null;
+		dtos=dao.getCheckupResultList(map);
+		
+		return dtos;
+	}
+
+	@Override
+	public GuestVO getcusInfo(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		GuestVO cnt = dao.getcusInfo(guestNo);
+		return cnt;
+	}
+
+	// 처방전 글 갯수
+	@Override
+	public int examinationListCnt(int guestNo) {
+		int selectcnt=0;
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		selectcnt = dao.examinationListCnt(guestNo);
+		return selectcnt;
+	}
+
+	@Override
+	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map) {
+		ArrayList<PrescriptionVO> dtos =null;
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		
+		dtos=dao.getExaminationList(map);
+		
+		return dtos;
+	}
+
+	@Override
+	public ArrayList<ExaminationVO> checkupRegisterList(Map<String, Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		ArrayList<ExaminationVO>  dtos = null;
+		dtos = dao.checkupRegisterList(map);
+		 return dtos;
+	
+	
+	}
+
+	@Override
+	public int checkupRegistercnt(int guestNo) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int cnt = dao.checkupRegistercnt(guestNo);
+		return cnt;
+	}
+
+	@Override
+	public ExaminationVO checkupRegisterclick(int col) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		ExaminationVO vo = new ExaminationVO();
+		vo = dao.checkupRegisterclick(col);
+		return vo;
 	}
 
 	

@@ -41,7 +41,7 @@ public interface DoctorDAO {
     public int chkHospital(String hospitalphone);
    
     // 병원정보 (병원번호)
-    public HospitalVO getHospitalInfo(String hospitalphone);
+    public HospitalVO getHospitalInfo(Map<String,Object> map);
    
     // 일반병원정보
     public HpVO getHpInfo(String hospitalphone);
@@ -134,8 +134,6 @@ public interface DoctorDAO {
 	// 게스트 번호로 건강검진 가져오기
 	public int getCheckupListGuestno(int guestno);
 
-	// 의사 면허증
-	//public int getDocLicence(String id);
 
 	
 

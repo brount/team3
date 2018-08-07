@@ -14,7 +14,9 @@ import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PreventionVO;
+import com.team.medical.vo.QuestionBoardVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -409,7 +411,17 @@ public class AdminDAOImpl implements AdminDAO {
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 		int updateCnt = dao.doctorPermissionPro(doctorno);
+		System.out.println(updateCnt == 1 ? "승인성공" : "승인실패");
 		
+		return updateCnt;
+	}
+	
+	// 병원 승인 처리
+	@Override
+	public int hospitalPermissionPro(String doctorno) {
+
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.hospitalPermissionPro(doctorno);
 		System.out.println(updateCnt == 1 ? "승인성공" : "승인실패");
 		
 		return updateCnt;
@@ -423,6 +435,7 @@ public class AdminDAOImpl implements AdminDAO {
   	  	int updateCnt = 0;
   	  	for (int i = 0; i < checkOne.length; i++) {
   	  		updateCnt = dao.doctorPermissionPro(Integer.parseInt(checkOne[i]));
+  	  		dao.hospitalPermissionPro(checkOne[i]);
   	  	}
 
   	  	return updateCnt;
@@ -453,6 +466,29 @@ public class AdminDAOImpl implements AdminDAO {
   	  	return updateCnt;
 	}
 	
+//---------------------------------------------------------------------------------------	
+	
+	// 병원목록 개수 구하기
+	@Override
+	public int getHospitalListCnt(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+		int selectCnt = dao.getHospitalListCnt(map);
+
+		return selectCnt;
+	}
+
+	/// 병원목록 조회
+	@Override
+	public ArrayList<HospitalVO> getHospitalList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+		ArrayList<HospitalVO> dtos = dao.getHospitalList(map);
+
+		return dtos;
+	}
+
+
 	
 //---------------------------------------------------------------------------------------
  	
@@ -709,7 +745,7 @@ public class AdminDAOImpl implements AdminDAO {
 		int selectCnt = 0;
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 		selectCnt = dao.search_exerciseListCnt(map);
-		System.out.println("운동검색목록목록갯수 : " + selectCnt);
+		System.out.println("운동검색목록갯수 : " + selectCnt);
 		return selectCnt;
 	}
 
@@ -830,7 +866,81 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 //------------------------------------------------------------ 희성
 
+	// 포인트목록 개수 구하기
+	@Override
+	public int getPointListCnt(int status) {
+		int selectCnt = 0;
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		selectCnt = dao.getPointListCnt(status);
+		System.out.println("포인트목록 개수 : " + selectCnt);
+		return selectCnt;
+	}
+
+	// 포인트목록 조회1
+	@Override
+	public ArrayList<PointVO> pointList(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<PointVO> dtos = dao.pointList(map);
+
+ 		return dtos;
+ 	}
+
+	// 포인트목록 조회2
+	@Override
+	public ArrayList<DoctorVO> pointList2(Map<String, Object> map2) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+  		ArrayList<DoctorVO> dtos = dao.pointList2(map2);
+
+  		return dtos;
+	}
 	
+//------------------------------------------------------------
+	
+	// 공지사항 상세보기
+	@Override
+	public QuestionBoardVO adminReportInfo(int num) {
+		
+		QuestionBoardVO cVO = new QuestionBoardVO();
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		cVO=dao.adminReportInfo(num);
+		
+		return cVO;
+	}
+	// 공지사항 수정
+	@Override
+	public int adminReportModifyPro(QuestionBoardVO dto) {
+		
+		int cnt = 0;
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		cnt = dao.adminReportModifyPro(dto);
+		
+		return cnt;
+	}
+	// 신고게시판 글 삭제
+	@Override
+	public int adminReportDeletePro(int num) {
+		
+		int cnt = 0;
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		cnt = dao.adminReportDeletePro(num);
+		
+		return cnt;
+	}
+	
+	// 신고게시판 다중삭제
+	@Override
+	public int adminReportDeleteProChek(String[] chk) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+  	  	int deleteCnt = 0;
+  	  	for (int i = 0; i < chk.length; i++) {
+  	  		deleteCnt = dao.adminReportDeletePro(Integer.parseInt(chk[i]));
+  	  	}
+  	  	return deleteCnt;
+	}
+
+
 
 
 	

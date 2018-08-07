@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -9,6 +9,109 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header> 
+
+<script type="text/javascript">
+function check() {
+	if(!document.register.reservationtime.value){
+		alert('검진 날짜를 입력해주세요.');
+		document.register.reservationtime.focus();
+		return false;
+	}else if(!document.register.height.value){
+		alert('신장을 입력해주세요.');
+		document.register.height.focus();
+		return false;
+	}else if(!document.register.weight.value){
+		alert('체중을 입력해주세요.');
+		document.register.weight.focus();
+		return false;
+	}else if(!document.register.fatness.value){
+		alert('BMI지수를 입력해주세요.');
+		document.register.fatness.focus();
+		return false;
+	}else if(!document.register.visionl.value){
+		alert('시력(좌)를 입력해주세요.');
+		document.register.visionl.focus();
+		return false;
+	}else if(!document.register.visionr.value){
+		alert('시력(우)를 입력해주세요.');
+		document.register.visionr.focus();
+		return false;
+	}else if(!document.register.hearingl.value){
+		alert('청력(좌)를 입력해주세요.');
+		document.register.hearingl.focus();
+		return false;
+	}else if(!document.register.hearingr.value){
+		alert('청력(우)를 입력해주세요.');
+		document.register.hearingr.focus();
+		return false;
+	}else if(!document.register.bloodpremax.value){
+		alert('혈압(최고)를 입력해주세요.');
+		document.register.bloodpremax.focus();
+		return false;
+	}else if(!document.register.bloodpremin.value){
+		alert('혈압(최저)를 입력해주세요.');
+		document.register.bloodpremin.focus();
+		return false;
+	}else if(!document.register.urineglucose.value){
+		alert('요당을 입력해주세요.');
+		document.register.urineglucose.focus();
+		return false;
+	}else if(!document.register.urineprotein.value){
+		alert('요단백을 입력해주세요.');
+		document.register.urineprotein.focus();
+		return false;
+	}else if(!document.register.occulthematuria.value){
+		alert('요잠혈을 입력해주세요.');
+		document.register.occulthematuria.focus();
+		return false;
+	}else if(!document.register.urineph.value){
+		alert('요ph을 입력해주세요.');
+		document.register.urineph.focus();
+		return false;
+	}else if(!document.register.hemoglobin.value){
+		alert('혈색소를 입력해주세요.');
+		document.register.hemoglobin.focus();
+		return false;
+	}else if(!document.register.bloodglucose.value){
+		alert('혈당를 입력해주세요.');
+		document.register.bloodglucose.focus();
+		return false;
+	}else if(!document.register.totalcholesterol.value){
+		alert('총 콜레스트롤을 입력해주세요.');
+		document.register.totalcholesterol.focus();
+		return false;
+	}else if(!document.register.ast.value){
+		alert('AST(SGOT)을 입력해주세요.');
+		document.register.ast.focus();
+		return false;
+	}else if(!document.register.alt.value){
+		alert('ALT(SGPT)을 입력해주세요.');
+		document.register.alt.focus();
+		return false;
+	}else if(!document.register.gammagtp.value){
+		alert('감마지티피를 입력해주세요.');
+		document.register.gammagtp.focus();
+		return false;
+	}else if(!document.register.hepatitisscr.value){
+		alert('간염검사를 입력해주세요.');
+		document.register.hepatitisscr.focus();
+		return false;
+	}else if(!document.register.breastradiography.value){
+		alert('영상검사를 입력해주세요.');
+		document.register.breastradiography.focus();
+		return false;
+	}else if(!document.register.ecg.value){
+		alert('심전도 검사를 입력해주세요.');
+		document.register.ecg.focus();
+		return false;
+	}
+	
+	
+	
+}
+
+</script>
+
 
 <section>
 	<div class="container">
@@ -79,7 +182,7 @@
 	        
 	        
 		  		 <div class="col-sm-9 col-md-9">
-		  		 <form action="checkupRegisterPro" method="post"> 
+		  		 <form action="checkupRegisterPro" method="post" name="register" onsubmit="return check();"> 
 		            <div class="well">
 		                <div>
 	    					<div class="panel panel-primary">

@@ -1200,5 +1200,38 @@
 	<delete id="delEvent" parameterType="int">
 		DELETE event WHERE advertisementNo = #{advertisementNo}
 	</delete>
+	
+	<!-- 포인트목록 개수 -->
+	<select id="getPointListCnt" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM point
+		<where>
+			<choose>
+				<when test="status == 1 ">
+					status = 1
+				</when>
+				
+				<when test="status == 2 ">
+					status = 2
+				</when>
+				<otherwise>
+					status > 0
+				</otherwise>
+			</choose>
+		</where>
+	</select> 
+	
+	<!-- 공지사항 상세보기 -->
+	<select id="adminReportInfo" resultType="com.team.medical.vo.QuestionBoardVO">
+		SELECT * FROM QuestionBoard WHERE boardno = #{boardno}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="adminReportModifyPro" parameterType="com.team.medical.vo.QuestionBoardVO">
+		UPDATE QuestionBoard SET boardno=#{boardno}, boardtitle=#{boardtitle}, boardcontent=#{boardcontent} WHERE boardno = #{boardno}
+	</update>
 
+	<!-- 공지사항 삭제 -->
+	<delete id="adminReportDeletePro" parameterType="int">
+		DELETE QuestionBoard WHERE boardno = #{boardno}
+	</delete>
 </mapper>

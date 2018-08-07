@@ -112,92 +112,96 @@
 								          		<td></td>
 								          		<td>80이상</td>
 								          	</tr>
-								          	<tr>
-								          		<td rowspan="4">요검사</td>
-								          		<td rowspan="4">신장검사</td>
-								          		<td>요당</td>
-								          		<td><input type="text" name="urineglucose"></td>
-								          		<td>음성</td>
-								          		<td>약양성±</td>
-								          	</tr>
 								          	
-								          	<tr>
-								          		<td>요단백</td>
-								          		<td><input type="text" name="urineprotein"></td>
-								          		<td>음성</td>
-								          		<td>약양성±</td>
-								          	</tr>
+								          	<c:if test="${checkup_kind==1}">
+									          	<tr>
+									          		<td rowspan="4">요검사</td>
+									          		<td rowspan="4">신장검사</td>
+									          		<td>요당</td>
+									          		<td><input type="text" name="urineglucose"></td>
+									          		<td>음성</td>
+									          		<td>약양성±</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>요단백</td>
+									          		<td><input type="text" name="urineprotein"></td>
+									          		<td>음성</td>
+									          		<td>약양성±</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>요잠혈</td>
+									          		<td><input type="text" name="occulthematuria"></td>
+									          		<td>음성</td>
+									          		<td>약양성±</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>요ph</td>
+									          		<td><input type="number" name="urineph"></td>
+									          		<td>4.5~8</td>
+									          		<td></td>
+									          	</tr>
+								          	</c:if>
+								          	<c:if test="${checkup_kind==2}">
+									          	<tr>
+									          		<td rowspan="7">혈액검사</td>
+									          		<td>빈혈등</td>
+									          		<td>혈색소</td>
+									          		<td><input type="number" name="hemoglobin">g/dL</td>
+									          		<td>남:13~16.5<br>여:12~15.5</td>
+									          		<td>남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>당뇨병</td>
+									          		<td>혈당</td>
+									          		<td><input type="number" name="bloodglucose">mg/dL</td>
+									          		<td>100미만</td>
+									          		<td>100~125</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>고혈압<br>
+									          		이상지질혈증<br>
+									          		동맥경화</td>
+									          		<td>총콜레스테롤</td>
+									          		<td><input type="number" name="totalcholesterol">mg/dL</td>
+									          		<td>200미만</td>
+									          		<td>239</td>
+									          	</tr>
 								          	
-								          	<tr>
-								          		<td>요잠혈</td>
-								          		<td><input type="text" name="occulthematuria"></td>
-								          		<td>음성</td>
-								          		<td>약양성±</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>요ph</td>
-								          		<td><input type="number" name="urineph"></td>
-								          		<td>4.5~8</td>
-								          		<td></td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td rowspan="7">혈액검사</td>
-								          		<td>빈혈등</td>
-								          		<td>혈색소</td>
-								          		<td><input type="number" name="hemoglobin">g/dL</td>
-								          		<td>남:13~16.5<br>여:12~15.5</td>
-								          		<td>남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>당뇨병</td>
-								          		<td>혈당</td>
-								          		<td><input type="number" name="bloodglucose">mg/dL</td>
-								          		<td>100미만</td>
-								          		<td>100~125</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>고혈압<br>
-								          		이상지질혈증<br>
-								          		동맥경화</td>
-								          		<td>총콜레스테롤</td>
-								          		<td><input type="number" name="totalcholesterol">mg/dL</td>
-								          		<td>200미만</td>
-								          		<td>239</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td rowspan="4">간장질환</td>
-								          		<td>AST(SGOT)</td>
-								          		<td><input type="number" name="ast">UL</td>
-								          		<td>40이하</td>
-								          		<td>41~50</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>ALT(SGPT)</td>
-								          		<td><input type="number" name="alt">UL</td>
-								          		<td>35이하</td>
-								          		<td>36~45이하</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>감마지티피</td>
-								          		<td><input type="number" name="gammagtp">UL</td>
-								          		<td>남:11~63<br> 여:8~35</td>
-								          		<td>남:64~77<br> 여:36~45</td>
-								          	</tr>
-								          	
-								          	<tr>
-								          		<td>간염검사</td>
-								          		<td><input type="text" name="hepatitisscr"></td>
-								          		<td></td>
-								          		<td></td>
-								          	</tr>
-								          	
+									          	<tr>
+									          		<td rowspan="4">간장질환</td>
+									          		<td>AST(SGOT)</td>
+									          		<td><input type="number" name="ast">UL</td>
+									          		<td>40이하</td>
+									          		<td>41~50</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>ALT(SGPT)</td>
+									          		<td><input type="number" name="alt">UL</td>
+									          		<td>35이하</td>
+									          		<td>36~45이하</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>감마지티피</td>
+									          		<td><input type="number" name="gammagtp">UL</td>
+									          		<td>남:11~63<br> 여:8~35</td>
+									          		<td>남:64~77<br> 여:36~45</td>
+									          	</tr>
+									          	
+									          	<tr>
+									          		<td>간염검사</td>
+									          		<td><input type="text" name="hepatitisscr"></td>
+									          		<td></td>
+									          		<td></td>
+									          	</tr>
+								          	</c:if>
+								          	<c:if test="${checkup_kind==3}">
 								          	<tr>
 								          		<td rowspan="2">영상검사</td>
 								          		<td>폐결핵 흉부 질환</td>
@@ -214,6 +218,7 @@
 								          		<td>정상</td>
 								          		<td>비활동성</td>
 								          	</tr>
+								          	</c:if>
 								        </tbody>
 								    </table>
 								</div>

@@ -67,39 +67,39 @@
 						        </thead>
 						        <tbody>
 						            <tr>
-						                <td>${preDto.drugname}</td>
-						                <td>${preDto.drugdosage}</td>
-						                <td>${preDto.drugrepeat}번</td>
-						                <td>${preDto.dosagedate}일</td>
-						                <td>${preDto.dosageusage}</td>
+						                <td>${drugname1}</td>
+						                <td>${drugdosage1}</td>
+						                <td>${drugrepeat1}번</td>
+						                <td>${dosagedate1}일</td>
+						                <td>${dosageusage1}</td>
 						          	</tr>
 						          	 <tr>
-						                <td><input type="text" style="width:100%" name="drugname2"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td>${drugname2}</td>
+						                <td>${drugdosage2}</td>
+						                <td>${drugrepeat2}번</td>
+						                <td>${dosagedate2}일</td>
+						                <td>${dosageusage2}</td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td>${drugname3}</td>
+						                <td>${drugdosage3}</td>
+						                <td>${drugrepeat3}번</td>
+						                <td>${dosagedate3}일</td>
+						                <td>${dosageusage3}</td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						                <td>${drugname4}</td>
+						                <td>${drugdosage4}</td>
+						                <td>${drugrepeat4}번</td>
+						                <td>${dosagedate4}일</td>
+						                <td>${dosageusage4}</td>
 						          	</tr>
 						          	<tr>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="text" style="width:100%"></td>
+						          		<td>${drugname5}</td>
+						          		<td>${drugdosage5}</td>
+						          		<td>${drugrepeat5}번</td>
+						          		<td>${dosagedate5}일</td>
+						          		<td>${dosageusage5}</td>
 						          	</tr>
 						          	
 						          	<tr>
@@ -114,22 +114,22 @@
 						                <td rowspan="5"><textarea rows="8" name="caution">${preDto.caution}</textarea>　</td>
 						          	</tr>
 						          	<tr>
-						          	  	<td>${preDto.injectionname}</td>
-						          	  	<td>${preDto.injectiondosage}</td>
-						                <td>${preDto.injectionrepeat}번</td>
-						                <td>${preDto.injectiondate}일</td>
+						          	  	<td>${injectionname1}</td>
+						          	  	<td>${injectiondosage1}</td>
+						                <td>${injectionrepeat1}번</td>
+						                <td>${injectiondate1}일</td>
 						          	</tr>
 						          	<tr>
-						          	  	<td><input type="text" style="width:100%"></td>
-						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
+						          	  	<td>${injectionname2}</td>
+						          	  	<td>${injectiondosage2}</td>
+						                <td>${injectionrepeat2}번</td>
+						                <td>${injectiondate2}일</td>
 						          	</tr>
 						          	<tr>
-						          	  	<td><input type="text" style="width:100%"></td>
-						          	  	<td><input type="text" style="width:100%"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
-						                <td><input type="number" style="width:100%" min="0"></td>
+						          	  	<td>${injectionname3}</td>
+						          	  	<td>${injectiondosage3}</td>
+						                <td>${injectionrepeat3}번</td>
+						                <td>${injectiondate3}일</td>
 						          	</tr>
 						        </tbody>
 						    </table>

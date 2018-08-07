@@ -32,10 +32,10 @@
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>검진 예약 목록</h3>
-                          <form action="#" class="pull-right position">
+                          <form action="patientListSearch" class="pull-right position">
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
-                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                  <button class="btn sr-btn" type="submit" name="patientListSearch"><i class="fa fa-search"></i></button>
                               </div>
                           </form>
                       </div>

@@ -135,20 +135,22 @@ public class CommonContoller {
 		
 		return "common/exerciseInfo";
 	}
-	// 10대질병정보페이지                         
-	@RequestMapping(value = "diseaseTop")
-	public String diseaseTop(HttpServletRequest req, Model model) {
-		logger.info("diseaseTop, 페이지");
-		return "common/diseaseTop";
-	}
 	//병원검색페이지                       
 	@RequestMapping(value = "hospitalSeach")
 	public String hospitalSeach(HttpServletRequest req, Model model) {
 		logger.info("hospitalSeach, 페이지");
 		
-		coService.hospitalList(req, model);
 		return "common/hospitalSeach";
 	}
+	//제휴 병원검색페이지                       
+	@RequestMapping(value = "achospitalSeach")
+	public String achospitalSeach(HttpServletRequest req, Model model) {
+		logger.info("achospitalSeach, 페이지");
+		
+		coService.hospitalList(req, model);
+		return "common/achospitalSeach";
+	}
+	
 	//약국검색페이지                       
 	@RequestMapping(value = "drugStoreSeach")
 	public String drugStoreSeach(HttpServletRequest req, Model model) {

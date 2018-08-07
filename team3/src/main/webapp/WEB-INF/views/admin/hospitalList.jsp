@@ -25,11 +25,11 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <button type="button" onclick="window.location='hospitalAddForm'">
-                                    	추가
-                                    </button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button">
+	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
+	                            		<option value="hospitalList?hospitalChoice=2">제휴병원</option>
+	                            		<option value="hospitalList_none?hospitalChoice=0">비제휴병원</option>
+						 			</select>
+                                    <button type="button" style="margin-left:5px;">
                                     	삭제
                                     </button>
 	                            </div>
@@ -43,58 +43,106 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th><input type="checkBox"></th>
+		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>병원번호</th>
 		                                            <th>병원명</th>
 		                                            <th>병원연락처</th>
 													<th>병원소재지</th>
 		                                            <th>전문분야</th>
-		                                            <th>진료시간</th>
-													<th>휴무일</th>
+													<th>소개글</th>
 		                                        </tr>
 	                                        </thead>
 	                                        <tbody>
-		                                        <tr>
-		                                        	<td><input type="checkBox"></td>
-		                                            <td type="button" onclick="window.location='hospitalModifyForm'">123123</td>
-		                                            <td>kosmo정신의학과</td>
-		                                            <td>02-0000-0000</td>
-													<td>서울시 금천구 가산동</td>
-		                                            <td>정신과</td>
-		                                            <td>09:00 ~ 19:00</td>
-													<td>매주 화요일,금요일,공휴일</td>
-		                                        </tr>
-	                                        </tbody>
+		                                        <c:if test="${cnt > 0}">
+		                                        	<input type="hidden" name="pageNum" value="${pageNum}">
+													<c:forEach var="dto" items="${dtos}">
+														<tr>
+															<td class="center"><input type="checkbox" name="checkOne" value="${dto.hospitalno}"></td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalno}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalname}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalphone}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitaladdr}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalkind}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalinstruction}</td>
+														</tr>
+													</c:forEach>
+												</c:if>
+											</tbody>
 	                                    </table>
 	                                    
 	                                    
 	                                    <!-- 페이지 컨트롤 -->
 										<table align="center">
-											<tr align="center">
-												<th>[≪]</th>
-												<th>[<]</th>
-												<th>1</th>
-												<th>[>]</th>
-												<th>[≫]</th>
+											<tr>
+												<th align="center">
+													<c:if test="${cnt > 0}">
+														<c:if test="${sc == null}">
+															<!-- 맨끝[◀◀] / 이전[◀] -->
+															<c:if test="${startPage > pageBlock}">
+																<a href="hospitalList">[맨앞]</a>
+																<a href="hospitalList?pageNum=${startPage - pageBlock}">[이전]</a>
+															</c:if>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="hospitalList?pageNum=${i}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<!-- 맨끝[▶▶] / 다음▶] -->
+															<c:if test="${pageCount > endPage}">
+																<a href="hospitalList?pageNum=${startPage + pageBlock}">[다음]</a>
+																<a href="hospitalList?pageNum=${pageCount}">[맨뒤]</a>
+															</c:if>
+														</c:if>
+														
+														<c:if test="${sc != null}">
+															<c:if test="${startPage > pageBlock}">
+																<a href="hospitalSearchList?sc=${sc}&search=${search}">[맨앞]</a>
+																<a href="hospitalSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+															</c:if>
+										
+															<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																<c:if test="${i == currentPage}">
+																	<span><b>[${i}]</b></span>
+																</c:if>
+																<c:if test="${i != currentPage}">
+																	<a href="hospitalSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																</c:if>
+															</c:forEach>
+															
+															<c:if test="${pageCount > endPage}">
+																<a href="hospitalSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
+																<a href="hospitalSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+															</c:if>
+														</c:if>
+													</c:if>
+												</th>
 											</tr>
 										</table>
+										
 	                                    <table align="center">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-								 						<option value="#">병원명</option>
-								 						<option value="#">소재지</option>
-								 						<option value="#">전문분야</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="search" id="search">
-							 					</td>
-							 					<td>
-							 						<input type="button" value="검색">
-							 					</td>
-						 					</tr>
-						 				</table>
+											<form action="hospitalSearchList" class="search_box" method="post">
+												<tr>
+													<td>
+														<select class="input" name="sc">
+															<option value="0">병원명</option>
+															<option value="1">소재지</option>
+															<option value="2">분야</option>
+														</select>
+													</td>
+													<td>
+														<input type="text" id="search" name="search">
+													</td>
+													<td>
+														<input type="submit" value="검색">
+													</td>
+												</tr>
+											</form>
+										</table>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

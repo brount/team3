@@ -53,9 +53,34 @@
 	}
 
 </script>
+<script type="text/javascript">
+function emailchk() {
+	// 이메일 입력값이 없을 때
+
+	if (!document.inputform.email1.value) {
+		alert(msg_email);
+		document.inputform.email1.focus();
+		return false;
+
+	} else if (!document.inputform.email2.value) {
+		alert(msg_email);
+		document.inputform.email2.focus();
+		return false;
+	}
+
+	var url = "findId?email=" + document.inputform.email1.value + "@"
+			+ document.inputform.email2.value;
+
+	window.open(url, "menubar=no,width=300,height=200");
+
+}
+
+</script>
+
+
 
   <form class="form-horizontal" action="guestShipPro" method="post"  id="reg_form"
-  		name="inputform"  onsubmit="return inputCheck()">
+  		name="inputform"  onsubmit="return inputCheck();">
   		 <input type="hidden" name="hiddenId" value="0">
 		  <input type="hidden" name="hiddenEmail" value="0">
     <fieldset>

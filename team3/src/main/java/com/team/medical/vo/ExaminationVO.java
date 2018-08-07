@@ -1,5 +1,7 @@
 package com.team.medical.vo;
 
+import java.sql.Date;
+
 public class ExaminationVO {
 	//검진서
 	private int COL;
@@ -27,6 +29,8 @@ public class ExaminationVO {
 	private String hepatitisscr;
 	private String breastradiography;
 	private String ecg;
+	private Date examinationday;
+	
 	public int getCOL() {
 		return COL;
 	}
@@ -185,6 +189,13 @@ public class ExaminationVO {
 	public void setEcg(String ecg) {
 		this.ecg = ecg;
 	}
+	public Date getExaminationday() {
+		return examinationday;
+	}
+	public void setExaminationday(Date examinationday) {
+		this.examinationday = examinationday;
+	}
+	
 	
 	
 

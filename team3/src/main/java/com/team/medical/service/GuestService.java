@@ -47,6 +47,12 @@ public interface GuestService {
 	// 검진서 등록 처리
 	public void checkupRegisterPro(HttpServletRequest req, Model model);
 	
+	// 등록된 검진서 리스트
+	public void checkupRegisterList(HttpServletRequest req, Model model);
+	
+	// 등록된 검진서 리스트 상세
+	public void checkupRegisterclick(HttpServletRequest req, Model model);
+	
 	// 해당 회원의 검진서 분석결과 조회
 	public void checkAnalyze(HttpServletRequest req, Model model);
 	
@@ -87,6 +93,12 @@ public interface GuestService {
 
 	// 사용자가 추가한 음식 삭제
 	public void myFoodDelete(HttpServletRequest req, Model model);
+	
+	//건강검진 목록페이지       
+	public void guestcheckupResultList(HttpServletRequest req, Model model);
+	
+	//처방목록페이지        
+	public void guestexaminationList(HttpServletRequest req, Model model);
 	
 	
 	

@@ -291,9 +291,23 @@ public class CommonServiceImpl implements CommonService {
 		int startPage=0; //현재블록 시작 페이지
 		int endPage=0; // 현재블록   마지막 페이지
 		
+		String select = null;
+		int sc =0;
+		if(req.getParameter("select") != null) {
+			sc = Integer.parseInt(req.getParameter("sc"));
+			select = req.getParameter("select");
+		}
+		int state = 0;
+		if(req.getParameter("state")!=null) {
+			state= Integer.parseInt(req.getParameter("state"));
+		}
 		// 5단계. 글갯수 구하기
-		cnt = dao.getHospitalCnt(); 
-		System.out.println(cnt);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("sc", sc);
+		map.put("select", select);
+		map.put("state", state);
+		System.out.println("state = "+ state);
+		cnt = dao.getHospitalCnt(map); 
 		pageNum = req.getParameter("pageNum");
 		
 		if(pageNum==null) {
@@ -316,10 +330,12 @@ public class CommonServiceImpl implements CommonService {
 		ArrayList<HospitalVO> dtos = null;
 		if(cnt > 0) {
 			// 게시글 목록 조회 
-			Map<String,Integer> map = new HashMap<String,Integer>();
-			map.put("start", start);
-			map.put("end", end);
-			dtos = dao.getHospitalList(map);
+			Map<String,Object> map2 = new HashMap<String,Object>();
+			map2.put("sc", sc);
+			map2.put("select", select);
+			map2.put("start", start);
+			map2.put("end", end);
+			dtos = dao.getHospitalList(map2);
 			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글목록 cf)작은바구니  : 게시글 1건
 		}
 		// 1 = (1 / 3) * 3 + 1
@@ -337,6 +353,8 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("number", number); // 글번호
 		model.addAttribute("pageNum", pageNum); // 페이지 번호
 		if(cnt > 0) {
+			model.addAttribute("sc",sc);
+			model.addAttribute("select",select);
 			model.addAttribute("startPage", startPage); // 시작 페이지
 			model.addAttribute("endPage", endPage); // 마지막 페이지
 			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
@@ -347,9 +365,23 @@ public class CommonServiceImpl implements CommonService {
 	// 병원검색 상세페이지
 	@Override
 	public void getHospitalInfo(HttpServletRequest req, Model model) {
-		String hospitalphone = req.getParameter("hospitalphone");
+		String hospitalphone = null;
 		String pageNum = req.getParameter("pageNum");
-		HospitalVO vo = docdao.getHospitalInfo(hospitalphone);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("hospitalphone", hospitalphone);
+		if(req.getParameter("hospitalphone")!=null) {
+			hospitalphone=req.getParameter("hospitalphone");
+			String hospitaladdr = req.getParameter("hospitaladdr");
+			map.put("hospitalphone", hospitalphone);
+			map.put("hospitaladdr", hospitaladdr);
+		}
+		map.put("hospitalno", null);
+		if(req.getParameter("hospitalno")!=null) {
+			int hospitalno =Integer.parseInt(req.getParameter("hospitalno")); 
+			map.put("hospitalno", hospitalno);
+		}
+		
+		HospitalVO vo = docdao.getHospitalInfo(map);
 		if(vo != null) {
 			model.addAttribute("vo", vo);
 			System.out.println(1);

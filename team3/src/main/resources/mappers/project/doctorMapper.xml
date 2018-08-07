@@ -43,8 +43,16 @@
       SELECT count(hospitalno) FROM hospital WHERE hospitalphone = #{hospitalphone}
    </select>
    <!-- 병원정보 가져오기(병원번호) -->
-   <select id="getHospitalInfo" parameterType="String" resultType="com.team.medical.vo.HospitalVO">
-      select * from hospital where hospitalphone = #{hospitalphone}
+   <select id="getHospitalInfo" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
+      select * from hospital 
+      <where>
+         <if test="hospitalphone != null">
+            hospitalphone = #{hospitalphone}
+         </if>
+         <if test="hospitalno != null">
+            hospitalno = #{hospitalno}
+         </if>
+      </where>
    </select>
    <select id="getHpInfo" parameterType="String" resultType="com.team.medical.vo.HpVO">
       select * from hp where hospitalphone = #{hospitalphone}
@@ -237,7 +245,6 @@
 	   select CheckupList from CheckupList where guestno =#{guestno,jdbcType=INTEGER}
 	</select>
 	
-	<!-- <select id = "getDocLicence" resultType="int">
-		select licence from doctor where doctorid=doctorid=#{id}
-	</select> -->
+
+	
 </mapper>

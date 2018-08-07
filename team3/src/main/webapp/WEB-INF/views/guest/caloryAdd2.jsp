@@ -46,6 +46,22 @@ function foodsearch3() {
 	window.open(url, "foodsearch", "menubar=no,width=500,height=400");
 }
 function newfoodinsert(){
+	if (!document.cal.food.value) {
+		alert('음식을 입력해주세요.');
+		document.cal.food.focus();
+		return false;
+	}
+	else if (!document.cal.foodcal.value) {
+		alert('해당음식의 칼로리를 입력해주세요.');
+		document.cal.foodcal.focus();
+		return false;
+	}
+	else if (!document.cal.gram.value) {
+		alert('해당음식의 양(gram)을 입력해주세요.');
+		document.cal.gram.focus();
+		return false;
+	}
+	
 	var food = document.cal.food.value;
 	var foodcal = document.cal.foodcal.value;
 	var foodgram = document.cal.gram.value;
@@ -54,7 +70,21 @@ function newfoodinsert(){
 
 	
 }
-
+function check() {
+	 if(!document.cal.food1.value) {
+			alert('음식을 입력해주세요.');
+			document.cal.food1.focus();
+			return false;
+	 }else if(!document.cal.food2.value) {
+			alert('음식을 입력해주세요.');
+			document.cal.food2.focus();
+			return false;
+	 }else if(!document.cal.food3.value) {
+			alert('음식을 입력해주세요.');
+			document.cal.food3.focus();
+			return false;
+	 }
+}
 
 </script>
 
@@ -80,7 +110,7 @@ function newfoodinsert(){
   		 	<div class="col-sm-9 col-md-9">
 	            
 		            <div class="container">
-		             <form class="form-horizontal" action="todaycal" method="post"  id="reg_form" name="cal">
+		             <form class="form-horizontal" action="todaycal" method="post"  id="reg_form" name="cal" onsubmit="return check();">
 		             <c:if test="${cnt == 0 }">
 					 
 					  <fieldset>

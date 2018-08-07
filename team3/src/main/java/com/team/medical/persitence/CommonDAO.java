@@ -33,9 +33,9 @@ public interface CommonDAO {
 	// 댓글작성
 	public int inputre(QuestionBoardVO dto);
 	// 병원 갯수 구하기
-	public int getHospitalCnt();
+	public int getHospitalCnt(Map<String,Object> map);
 	// 병원 목록 뿌리기
-	public ArrayList<HospitalVO> getHospitalList(Map<String,Integer> map);
+	public ArrayList<HospitalVO> getHospitalList(Map<String,Object> map);
 	// 이벤트 생성에 필요한 닥터넘버를 받아오기 위한 sql
 	public int eventNo(String id);
 	// 이벤트 추가

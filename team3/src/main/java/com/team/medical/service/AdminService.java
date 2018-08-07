@@ -77,6 +77,10 @@ public interface AdminService {
 	// 의사 회원 제명
 	public void doctorExpelPro(HttpServletRequest req, Model model);
 	
+//--------------------------------------------------------------------------------------	
+	
+	// 병원목록
+	public void hospitalList(HttpServletRequest req,Model model);
 	
 //--------------------------------------------------------------------------------------	
 
@@ -152,5 +156,18 @@ public interface AdminService {
 	// 이벤트 삭제
 	public void eventDel(HttpServletRequest req, Model model);
 	
+	// 포인트 목록
+	public void pointList(HttpServletRequest req, Model model);
+	
+//--------------------------------------------------------------------------------------
+	
+	// 공지사항 수정
+	public void adminReportModifyView(HttpServletRequest req, Model model);
+	// 공지사항 수정처리
+	public void adminReportModifyPro(HttpServletRequest req, Model model);
+	// 신고게시판 글 삭제
+	public void adminReportDeletePro(HttpServletRequest req, Model model);
+	// 신고게시판 글 다중삭제
+	public void adminReportDeleteProChek(HttpServletRequest req, Model model);
 
 }

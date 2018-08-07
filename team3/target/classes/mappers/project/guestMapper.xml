@@ -100,7 +100,7 @@
 	<insert id="checkupRegisterPro" parameterType="com.team.medical.vo.ExaminationVO">
 		INSERT INTO Examination(COL,  GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL, VISIONR , HEARINGL , HEARINGR ,BLOODPREMAX ,  BLOODPREMIN             
     ,URINEGLUCOSE, URINEPROTEIN , OCCULTHEMATURIA, URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,  TOTALCHOLESTEROL      
-   , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG )
+   , AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY, ECG,EXAMINATIONDAY )
 		VALUES(col_seq.nextval ,#{guestNo},#{height}, #{weight}, #{fatness}, #{visionl}, #{visionr}, #{hearingl}, #{hearingr},
 		 #{bloodpremax}, #{bloodpremin},#{urineglucose},#{urineprotein},#{occulthematuria},#{urineph},
 		 #{hemoglobin},#{bloodglucose},#{totalcholesterol}, #{ast},#{alt},#{gammagtp},#{hepatitisscr}, #{breastradiography}, #{ecg})
@@ -113,6 +113,40 @@
    ,AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY,ECG 
    FROM Examination c , guest g WHERE c.GUESTNO = g.GUESTNO AND g.guestNo=#{guestNo}	
 	</select>
+	
+	<!-- 사용자가 등록한 검진서의 총 수 -->
+	<select id="checkupRegistercnt" resultType="int">
+	select count(*) from Examination where guestNo = #{guestNo}
+	</select>
+	<!-- 사용자가 등록한 검진서 목록 -->
+	<select id="checkupRegisterList" parameterType="java.util.Map" resultType="com.team.medical.vo.ExaminationVO">
+		
+			SELECT * 
+			  FROM(
+			  		SELECT col,GUESTNO, HEIGHT,WEIGHT,FATNESS ,VISIONL,VISIONR ,HEARINGL ,HEARINGR ,BLOODPREMAX , BLOODPREMIN             
+    ,URINEGLUCOSE,URINEPROTEIN ,OCCULTHEMATURIA,URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,TOTALCHOLESTEROL      
+   ,AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY,ECG, Examinationday,  rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM EXAMINATION 
+			   	   	  		  where  guestNo =#{guestNo}
+			   	   	  		    ORDER BY col DESC 
+			   	   	  	  )
+					)   
+			<![CDATA[
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<!-- 검진서 목록 클릭시 결과 셀렉트 -->
+	<select id="checkupRegisterclick" resultType="com.team.medical.vo.ExaminationVO">
+	SELECT  g.GUESTNO,guestname, HEIGHT,WEIGHT,FATNESS ,VISIONL,VISIONR ,HEARINGL ,HEARINGR ,BLOODPREMAX , BLOODPREMIN             
+    ,URINEGLUCOSE,URINEPROTEIN ,OCCULTHEMATURIA,URINEPH ,HEMOGLOBIN ,BLOODGLUCOSE  ,TOTALCHOLESTEROL      
+   ,AST, ALT , GAMMAGTP , HEPATITISSCR ,BREASTRADIOGRAPHY,ECG 
+   FROM Examination c , guest g WHERE c.GUESTNO = g.GUESTNO AND g.col=#{col}	
+	</select>
+	
+	
 	
 	<!-- 예약버튼 클릭한 병원정보 셀렉트  -->
 	<select id="reservehospital" resultType="com.team.medical.vo.HospitalVO">
@@ -230,14 +264,55 @@
 	
 	
 	
+		<select id="getCheckupResultListCnt" resultType="int">
+		select count(checkup) from checkup where guestno=#{guestNo}
+	</select>
 	
 	
 	
+	<select id="getCheckupResultList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT checkup, guestNo, height ,weight, fatness, visionl, visionr, hearingl,hearingr, bloodpremax, bloodpremin, urineglucose, urineprotein, occulthematuria, urineph, hemoglobin, bloodglucose, totalcholesterol, ast, alt, gammagtp, hepatitisscr, breastradiography, ecg, checkup_date, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM Checkup 
+			   	   	  		  where  guestNo = #{guestNo}
+			   	   	  		    ORDER BY Checkup DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
 	
 	
+	<!-- 일반회원 정보 -->
+	<select id = "getcusInfo" parameterType="int" resultType="com.team.medical.vo.GuestVO">
+	   select * from guest where guestno =#{guestno,jdbcType=INTEGER}
+	</select>
 	
+	<!-- 처방전 글 갯수 -->
+	<select id="examinationListCnt" resultType="int">
+		select count(prescriptionNo) from Prescription where guestno=#{guestNo}
+	</select>
 	
-	
+		<!-- 처방전 목록 -->
+	<select id="getExaminationList" parameterType="java.util.Map" resultType="com.team.medical.vo.PrescriptionVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT prescriptionNo, hospitalno, guestno, symptom, drugname, drugdosage, drugrepeat, dosagedate, dosageusage, injectionname, injectiondosage, injectionrepeat, injectiondate, caution, prescriptionDate, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM Prescription 
+			   	   	  		   where  guestNo = #{guestNo}
+			   	   	  		    ORDER BY prescriptionNo DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
 	
 	
 				

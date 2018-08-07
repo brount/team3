@@ -10,7 +10,9 @@ import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PreventionVO;
+import com.team.medical.vo.QuestionBoardVO;
 
 public interface AdminDAO {
 	// 관리자 로그인
@@ -142,6 +144,17 @@ public interface AdminDAO {
 	// 의사회원 다중 제명 처리
 	public int doctorChkExpelPro(String[] checkOne);
 	
+	// 병원 승인처리
+	public int hospitalPermissionPro(String doctorno);
+	
+//---------------------------------------------------------------------------------------	
+	
+	// 병원목록 개수 구하기
+	public int getHospitalListCnt(Map<String, Object> map);
+	
+	// 병원목록 조회
+	public ArrayList<HospitalVO> getHospitalList(Map<String, Object> map);
+	
 	
 //---------------------------------------------------------------------------------------
 	
@@ -252,7 +265,24 @@ public interface AdminDAO {
 	// 일반탈퇴회원 다중삭제 처리
 	public int delChkEvent(String[] checkOne);
 	//------------------------------------- 희성
-	
 
+	// 포인트목록 개수 구하기
+	public int getPointListCnt(int status);
+
+	// 포인트목록 조회1
+	public ArrayList<PointVO> pointList(Map<String, Object> map);
+
+	// 포인트목록 조회2
+	public ArrayList<DoctorVO> pointList2(Map<String, Object> map2);
+	
+	//-------------------------------------
+	// 공지사항 상세보기
+	public QuestionBoardVO adminReportInfo(int num);
+	// 공지사항 수정
+	public int adminReportModifyPro(QuestionBoardVO dto);
+	// 신고게시판 글 삭제
+	public int adminReportDeletePro(int num);
+	// 신고게시판 글 다중 삭제
+	public int adminReportDeleteProChek(String[] chk);
 
 }

@@ -440,6 +440,10 @@ public class DoctorServiceImpl implements DoctorService {
 		GuestVO gusDto = dao.getcusInfo(guestno);
 		CheckupListVO checkDto = dao.getCheckupInfo(checkuplist);
 		
+		String checkup_kind = checkDto.getCheckup_kind();
+		
+		model.addAttribute("checkup_kind",checkup_kind);
+		
 		model.addAttribute("docDto",docDto);
 		model.addAttribute("hosDto",hosDto);
 		model.addAttribute("gusDto",gusDto);
@@ -739,6 +743,7 @@ public class DoctorServiceImpl implements DoctorService {
 		vo.setInjectiondate(injectiondate);
 		
 		vo.setPrescriptionDate(new Date(System.currentTimeMillis()));
+		vo.setCaution(caution);
 		
 		int insertCnt = dao.examinationAdd(vo);
 		
@@ -845,10 +850,99 @@ public class DoctorServiceImpl implements DoctorService {
 		PrescriptionVO preDto = dao.getPrescription(prescriptionNo);
 		GuestVO gusDto = dao.getcusInfo(guestno);
 		
-		model.addAttribute("docDto",docDto);
-		model.addAttribute("hosDto",hosDto);
-		model.addAttribute("preDto",preDto);
-		model.addAttribute("gusDto",gusDto);
+		String drugname = preDto.getDrugname();
+		String drugname1 = drugname.split(", ")[0];
+		String drugname2 = drugname.split(", ")[1];
+		String drugname3 = drugname.split(", ")[2];
+		String drugname4 = drugname.split(", ")[3];
+		String drugname5 = drugname.split(", ")[4];
+		
+		String drugdosage = preDto.getDrugdosage();
+		String drugdosage1 = drugdosage.split(", ")[0];
+		String drugdosage2 = drugdosage.split(", ")[1];
+		String drugdosage3 = drugdosage.split(", ")[2];
+		String drugdosage4 = drugdosage.split(", ")[3];
+		String drugdosage5 = drugdosage.split(", ")[4];
+		
+		
+		String drugrepeat = preDto.getDrugrepeat();
+		String drugrepeat1 = drugrepeat.split(", ")[0];
+		String drugrepeat2 = drugrepeat.split(", ")[1];
+		String drugrepeat3 = drugrepeat.split(", ")[2];
+		String drugrepeat4 = drugrepeat.split(", ")[3];
+		String drugrepeat5 = drugrepeat.split(", ")[4];
+		String dosagedate = preDto.getDosagedate();
+		String dosagedate1 = dosagedate.split(", ")[0];
+		String dosagedate2 = dosagedate.split(", ")[1];
+		String dosagedate3 = dosagedate.split(", ")[2];
+		String dosagedate4 = dosagedate.split(", ")[3];
+		String dosagedate5 = dosagedate.split(", ")[4];
+		String dosageusage = preDto.getDosageusage();
+		String dosageusage1 = dosageusage.split(", ")[0];
+		String dosageusage2 = dosageusage.split(", ")[1];
+		String dosageusage3 = dosageusage.split(", ")[2];
+		String dosageusage4 = dosageusage.split(", ")[3];
+		String dosageusage5 = dosageusage.split(", ")[4];
+		String injectionname = preDto.getInjectionname();
+		String injectionname1 = injectionname.split(", ")[0];
+		String injectionname2 = injectionname.split(", ")[1];
+		String injectionname3 = injectionname.split(", ")[2];
+		String injectiondosage = preDto.getInjectiondosage();
+		String injectiondosage1 = injectiondosage.split(", ")[0];
+		String injectiondosage2 = injectiondosage.split(", ")[1];
+		String injectiondosage3 = injectiondosage.split(", ")[2];
+		String injectionrepeat = preDto.getInjectionrepeat();
+		String injectionrepeat1 = injectionrepeat.split(", ")[0];
+		String injectionrepeat2 = injectionrepeat.split(", ")[1];
+		String injectionrepeat3 = injectionrepeat.split(", ")[2];
+		String injectiondate = preDto.getInjectiondate();
+		String injectiondate1 = injectiondate.split(", ")[0];
+		String injectiondate2 = injectiondate.split(", ")[1];
+		String injectiondate3 = injectiondate.split(", ")[2];
+		System.out.println(injectiondate1);
+		System.out.println(injectiondate2);
+		System.out.println(injectiondate3);
+		model.addAttribute("drugname1", drugname1);
+		model.addAttribute("drugname2", drugname2);
+		model.addAttribute("drugname3", drugname3);
+		model.addAttribute("drugname4", drugname4);
+		model.addAttribute("drugname5", drugname5);
+		model.addAttribute("drugdosage1", drugdosage1);
+		model.addAttribute("drugdosage2", drugdosage2);
+		model.addAttribute("drugdosage3", drugdosage3);
+		model.addAttribute("drugdosage4", drugdosage4);
+		model.addAttribute("drugdosage5", drugdosage5);
+		model.addAttribute("drugrepeat1", drugrepeat1);
+		model.addAttribute("drugrepeat2", drugrepeat2);
+		model.addAttribute("drugrepeat3", drugrepeat3);
+		model.addAttribute("drugrepeat4", drugrepeat4);
+		model.addAttribute("drugrepeat5", drugrepeat5);
+		model.addAttribute("dosagedate1", dosagedate1);
+		model.addAttribute("dosagedate2", dosagedate2);
+		model.addAttribute("dosagedate3", dosagedate3);
+		model.addAttribute("dosagedate4", dosagedate4);
+		model.addAttribute("dosagedate5", dosagedate5);
+		model.addAttribute("dosageusage1", dosageusage1);
+		model.addAttribute("dosageusage2", dosageusage2);
+		model.addAttribute("dosageusage3", dosageusage3);
+		model.addAttribute("dosageusage4", dosageusage4);
+		model.addAttribute("dosageusage5", dosageusage5);
+		model.addAttribute("injectionname1", injectionname1);
+		model.addAttribute("injectionname2", injectionname2);
+		model.addAttribute("injectionname3", injectionname3);
+		model.addAttribute("injectiondosage1", injectiondosage1);
+		model.addAttribute("injectiondosage2", injectiondosage2);
+		model.addAttribute("injectiondosage3", injectiondosage3);
+		model.addAttribute("injectionrepeat1", injectionrepeat1);
+		model.addAttribute("injectionrepeat2", injectionrepeat2);
+		model.addAttribute("injectionrepeat3", injectionrepeat3);
+		model.addAttribute("injectiondate1", injectiondate1);
+		model.addAttribute("injectiondate2", injectiondate2);
+		model.addAttribute("injectiondate3", injectiondate3);
+		model.addAttribute("docDto", docDto);
+		model.addAttribute("hosDto", hosDto);
+		model.addAttribute("preDto", preDto);
+		model.addAttribute("gusDto", gusDto);
 		System.out.println("preDto" + preDto);
 		
 	}

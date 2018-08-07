@@ -51,6 +51,20 @@
 
 </script>
 
+<script type="text/javascript">
+	function check() {
+		
+	}
+
+
+
+</script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -72,8 +86,8 @@
             <%@ include file="../guest/menuGuest.jsp" %>
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
-	            <div class="well">
-	    <form class="form-horizontal" action="guestModifyPro" method="post"  id="reg_form">
+	            
+	    <form class="form-horizontal" action="guestModifyPro" method="post"  id="reg_form" onsubmit="return check();">
     <fieldset>
       
       <legend>회원정보수정</legend>
@@ -149,11 +163,11 @@
         <div class="col-md-6  inputGroupContainer">
   	        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 	<c:if test="${vo.getGuesttel() == null}">
-		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:30px">
+		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:80px">
 		 					-
-		 					<input class="input" type="text" name = "phone2" maxlength="3" style="width:30px">
+		 					<input class="input" type="text" name = "phone2" maxlength="3" style="width:80px">
 		 					-
-		 					<input class="input" type="text" name = "phone3" maxlength="3" style="width:30px">
+		 					<input class="input" type="text" name = "phone3" maxlength="3" style="width:80px">
 		 				</c:if>
 		 				<c:if test="${vo.getGuesttel() != null}">
 		 				<c:set var="hpArr" value="${fn:split(vo.getGuesttel(),'-')}" />
@@ -227,7 +241,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 </section> 
  

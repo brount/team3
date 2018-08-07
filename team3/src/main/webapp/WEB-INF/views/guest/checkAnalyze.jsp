@@ -7,41 +7,79 @@
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-    google.charts.load('current', {'packages':['bar']});
-    google.charts.setOnLoadCallback(drawStuff);
+    google.charts.load('current', {'packages':['bar','corechart']});
+    
+    function schedulerSuccessAndFailChart() {
+        var data = google.visualization.arrayToDataTable([
+ 
+        	["건강수치","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+            [""
+		        ,0, 0 
+		        ,0, 0] 
+        	,
+        	["최고혈압","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+            [""
+		        ,120, 120 
+		        ,${vo.bloodpremax}, ${vo.bloodpremax}] 
+		   
+  		 	, ["최저혈압","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+		               	[""
+			        ,60, 60 
+			        ,${vo.bloodpremin}, ${vo.bloodpremin}] 
+		        ,["공복혈당","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+              	 		[""
+			        ,100, 100
+			        ,${vo.bloodglucose}, ${vo.bloodglucose}]
+		        ,["총 콜레스테롤","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+         	 		[""
+		        ,240, 240 
+		        ,${vo.totalcholesterol}, ${vo.totalcholesterol}]		        
+		        ,["BMI","정상수치", {role:'annotation'}, "나의 수치", {role:'annotation'}],
+     	 		[""
+			        ,23, 23 
+			        ,${vo.fatness}, ${vo.fatness}] 
+       ]);
+        
+ 
+       var barChartOption = {
+    		 
+    		   title:{textStyle:{fontSize:22}},
+               bars: 'vertical',
+               height :500,
+               width :'100%',
+               legend: { position: "top" },
+               isStacked: false,
+               tooltip:{textStyle : {fontSize:22}, showColorCode : true	},
+               animation: { //차트가 뿌려질때 실행될 애니메이션 효과
+                 startup: true,
+                 duration: 1000,
+                 easing: 'linear' },
+               annotations: {
+                   textStyle: {
+                	   
+                     fontSize: 15,
+                     bold: true,
+                     italic: true,
+                     color: '#871b47',
+                     auraColor: '#d799ae',
+                     opacity: 0.8
+                   }
+              }
+        };
+ 
+       var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+ 
+       chart.draw(data, barChartOption);
 
-    function drawStuff() {
-      var data = new google.visualization.arrayToDataTable([
-    	  ['검사항목', '정상수치', '나의 수치'],
-          ['최고혈압', '${vo.bloodpremax}',120],
-          ['최저혈압', 60,'${vo.bloodpremin}'],
-          ['혈당', 126,'${vo.bloodglucose}'],
-          ['콜레스트롤',200,'${vo.totalcholesterol}'],
-          ['비만도', 25, '${vo.fatness}']
-          ]);
+       window.addEventListener('resize', function() { chart.draw(data, barChartOption); }, false);
+    }
+ 
+    google.charts.setOnLoadCallback(schedulerSuccessAndFailChart);
+ 
+ 
 
-      var options = {
-        width: 800,
-        chart: {
-          title: 'Nearby galaxies',
-          subtitle: 'distance on the left, brightness on the right'
-        },
-        bars: 'horizontal', // Required for Material Bar Charts.
-        series: {
-          0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-          1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-        },
-        axes: {
-          x: {
-            distance: {label: 'parsecs'}, // Bottom x-axis.
-            brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
-          }
-        }
-      };
 
-    var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
-    chart.draw(data, options);
-  };
+
     </script>
  
  
@@ -170,7 +208,7 @@
           
           <div id="toolbar-admin" class="panel-body">
           </div>
-          <div id="dual_x_div" style="width:95%; height: 500px; margin:0 auto;"></div>
+          <div id="bar_chart_div" style="width:95%; height: 500px; margin:0 auto;"></div>
           <table class="table table-striped table-hover" border="1" style="width:95%; margin:5px auto;">
               <thead>
                   <tr>

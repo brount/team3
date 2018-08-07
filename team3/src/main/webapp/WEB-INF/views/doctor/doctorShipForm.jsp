@@ -20,8 +20,8 @@
 			<div class="well">
 				<form class="form-horizontal" action="inputPro" method="post"
 					name="reg_form" enctype="multipart/form-data">
-					<input type="hidden" name="hiddenId" value="0"> <input
-						type="hidden" name="hiddenEmail" value=0>
+					<input type="hidden" name="hiddenId" value="0"> 
+					<input type="hidden" name="hiddenEmail" value=0>
 
 					<fieldset>
 
@@ -36,8 +36,8 @@
 							<div class="col-md-6  inputGroupContainer">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-										class="glyphicon glyphicon-user"></i></span> <input name="id"
-										placeholder="아이디를 입력해주세요" class="form-control" type="text">
+										class="glyphicon glyphicon-user"></i></span>
+									 <input name="id"placeholder="아이디를 입력해주세요"class="form-control"type="text">
 									<input name="dupchk" type="button" value="중복확인"
 										onclick="doctorconfirmId();">
 								</div>
@@ -109,6 +109,19 @@
 										class="glyphicon glyphicon-envelope"></i></span> <input name="email"
 										placeholder="이메일을 입력해주세요" class="form-control" type="text"><input
 										type="button" value="인증">
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label">근무병원 찾기</label>
+							<div class="col-md-6  inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span> 
+									<input name="hospital"class="form-control" type="text" style="padding: 1px;">
+									<input name="hospitalno" type="hidden" value="0">
+									<input name="hosSearch" type="button" value="병원찾기"
+										onclick="window.open('hosSearch','이름','menubar=no, width=500, height=700');">									
 								</div>
 							</div>
 						</div>

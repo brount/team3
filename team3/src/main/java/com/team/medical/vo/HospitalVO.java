@@ -1,23 +1,23 @@
 package com.team.medical.vo;
 
 public class HospitalVO {
-   private int hospitalno;
-   private String doctorno;
-   private String hospitalname;
-   private String hospitaladdr;
-   private String hospitalphone;
-   private String hospitalinstruction;
-   private String mon;
-   private String tues;
-   private String wed;
-   private String thurs;
-   private String fri;
-   private String sat;
-   private String sun;
-   private String holi;
-   private String hospitalimage;
-   private String hospitalkind;
-   private int hospitalstate;
+   private int hospitalno;					// 병원번호
+   private String doctorno;					// 의사번호
+   private String hospitalname;				// 병원명
+   private String hospitaladdr;				// 병원주소
+   private String hospitalphone;			// 병원연락처
+   private String hospitalinstruction;		// 병원소개글
+   private String mon;						// 진료시간 - 월
+   private String tues;						// 진료시간 - 화
+   private String wed;						// 진료시간 - 수
+   private String thurs;					// 진료시간 - 목
+   private String fri;						// 진료시간 - 금
+   private String sat;						// 진료시간 - 토
+   private String sun;						// 진료시간 - 일
+   private String holi;						// 휴무일
+   private String hospitalimage;			// 병원 사진
+   private String hospitalkind;				// 병원 종류
+   private int hospitalstate;				// 제휴 상태
    
    public int getHospitalno() {
       return hospitalno;

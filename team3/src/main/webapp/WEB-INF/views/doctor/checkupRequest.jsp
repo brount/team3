@@ -71,12 +71,9 @@
 								<tr>
 									<td>
 										▣ 의뢰과목<br><br>
-										<input type="checkbox" name="checkup_kind" value="엑스레이">엑스레이　
-										<input type="checkbox" name="checkup_kind" value="혈액">혈액　
-										<input type="checkbox" name="checkup_kind" value="소변">소변　 
-										<input type="checkbox" name="checkup_kind" value="MRI">MRI　 
-										<input type="checkbox" name="checkup_kind" value="내시경">내시경　  
-										
+										<input type="radio" name="checkup_kind" value="1">소변　
+										<input type="radio" name="checkup_kind" value="2">혈액　
+										<input type="radio" name="checkup_kind" value="3">MRI　 
 									</td>
 								</tr>
 								<tr>

@@ -10,6 +10,7 @@ import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.MyhealthVO;
+import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.QuestionBoardVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -62,6 +63,9 @@ public interface GuestDAO {
 
 	//검진서 결과 셀렉트
 	public ExaminationVO checkAnalyze(int guestNo);
+	
+	//등록된 검진서 목록
+	public ArrayList<ExaminationVO> checkupRegisterList(Map<String,Object> map);
 	
 	//예약할 병원 정보 셀렉트 
 	public HospitalVO reservehospital(int hospitalno);
@@ -118,6 +122,25 @@ public interface GuestDAO {
 
 	// 사용자가 추가한 음식 삭제
 	public int myFoodDelete(int foodno);
+
+	// 사용자 검진서 갯수
+	public int getCheckupResultListCnt(int guestNo);
+
+	// 사용자 검진서 리스트
+	public ArrayList<CheckupVO> getCheckupResultList(Map<String, Integer> map);
+
+	// 사용자 회원 정보
+	public GuestVO getcusInfo(int guestNo);
+
+	// 사용자 처방전 갯수
+	public int examinationListCnt(int guestNo);
+
+	// 사용자 처방전 리스트
+	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map);
+
+	public int checkupRegistercnt(int guestNo);
+
+	public ExaminationVO checkupRegisterclick(int col);
 
 	
 	

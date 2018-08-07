@@ -27,7 +27,9 @@ import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PreventionVO;
+import com.team.medical.vo.QuestionBoardVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -60,8 +62,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void memberList(HttpServletRequest req, Model model) {
 		
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -151,7 +152,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void memberSearchList(HttpServletRequest req, Model model) {
 
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -245,8 +246,8 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void membersanctionList(HttpServletRequest req, Model model) {
 
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 3; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -334,7 +335,7 @@ public class AdminServiceImpl implements AdminService {
 	// 일반제제회원검색목록
 	@Override
 	public void membersanctionSearchList(HttpServletRequest req, Model model) {
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -427,8 +428,8 @@ public class AdminServiceImpl implements AdminService {
 	// 일반탈퇴회원목록
 	@Override
 	public void membersecessionList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -516,7 +517,7 @@ public class AdminServiceImpl implements AdminService {
 	// 일반탈퇴회원검색목록
 	@Override
 	public void membersecessionSearchList(HttpServletRequest req, Model model) {
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -675,8 +676,8 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void doctorList(HttpServletRequest req, Model model) {
 
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -772,8 +773,8 @@ public class AdminServiceImpl implements AdminService {
 
 	// 의사회원검색목록
 	public void doctorSearchList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -885,8 +886,8 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void doctorpermissionList(HttpServletRequest req, Model model) {
 
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -985,8 +986,8 @@ public class AdminServiceImpl implements AdminService {
 	// 의사회원 승인대기 검색목록
 
 	public void doctorpermissionSearchList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1100,8 +1101,8 @@ public class AdminServiceImpl implements AdminService {
 	// 의사제제회원 목록 페이지
 	@Override
 	public void doctorsanctionList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1198,8 +1199,8 @@ public class AdminServiceImpl implements AdminService {
 	// 의사제제회원 검색목록 페이지
 	@Override
 	public void doctorsanctionSearcList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1312,8 +1313,8 @@ public class AdminServiceImpl implements AdminService {
 	// 의사탈퇴회원 목록페이지 
 	@Override
 	public void doctorsecessionList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1410,8 +1411,9 @@ public class AdminServiceImpl implements AdminService {
 	// 의사탈퇴회원 검색목록페이지 
 	@Override
 	public void doctorsecessionSearcList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1543,6 +1545,7 @@ public class AdminServiceImpl implements AdminService {
 	// 의사회원 승인
 	@Override
 	public void doctorPermissionPro(HttpServletRequest req, Model model) {
+		
 		System.out.println(req.getAttribute("pageNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String[] checkOne = req.getParameter("doctorno").split(",");
@@ -1555,7 +1558,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		
 		int updateCnt = dao.doctorChkPermissionPro(checkOne);
-		  
+
 		model.addAttribute("updateCnt", updateCnt);
 		model.addAttribute("pageNum",pageNum);
 	}
@@ -1579,16 +1582,123 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pageNum",pageNum);
 	}
 
+
+//--------------------------------------------------------------------------------------		
 	
-	
+	// 병원목록
+	@Override
+	public void hospitalList(HttpServletRequest req, Model model) {
+
+		int pageSize = 20; // 한 페이지당 출력할 갯수
+		int pageBlock = 5; // 한 블럭당 페이지 갯수
+
+		int cnt = 0; // 갯수
+		int start = 0; // 현재 페이지 시작 번호
+		int end = 0; // 현재 페이지 마지막 번호
+		int number = 0; // 출력용 번호
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재 페이지
+
+		int pageCount = 0; // 페이지 갯수
+		int startPage = 0; // 시작 페이지
+		int endPage = 0; // 마지막 페이지
+		String hospitalChoice = req.getParameter("hospitalChoice");
+		int sc = Integer.parseInt(req.getParameter("sc"));
+		String search = req.getParameter("search");
+		
+		// 5단계. 갯수 구하기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hospitalChoice", hospitalChoice);
+		map.put("sc", sc);
+		map.put("search", search);
+		System.out.println("검색종류 : " + sc);
+		System.out.println("검색내용 : " + search);
+		cnt = dao.getHospitalListCnt(map);
+		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
+
+		pageNum = req.getParameter("pageNum");
+
+		if (pageNum == null) {
+			pageNum = "1"; // 첫페이지
+		}
+
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage : " + currentPage);
+
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
+
+		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
+
+		end = start + pageSize - 1; // 현재페이지 마지막번호
+
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1 - 1) * 5
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
+
+		System.out.println("number : " + number);
+		System.out.println("pageSize : " + pageSize);
+
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			Map<String,Object> map2 = new HashMap<String, Object>();
+			map2.put("start", start);
+			map2.put("end", end);
+			map2.put("sc", sc);
+			map2.put("search", search);
+			map2.put("hospitalChoice", hospitalChoice);
+			
+			ArrayList<HospitalVO> dtos = dao.getHospitalList(map2);
+			System.out.println("dtos : " + dtos.size());
+			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+		}
+
+		// 1 = (1 / 3) * 3 + 1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
+		if (currentPage % pageBlock == 0)
+			startPage -= pageBlock;
+
+		System.out.println("startPage : " + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1; // 마지막 페이지
+		if (endPage > pageCount)
+			endPage = pageCount;
+
+		System.out.println("endPage : " + endPage);
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
+
+		model.addAttribute("cnt", cnt); // 재고 갯수
+		model.addAttribute("number", number); // 재고 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+		System.out.println("hospitalChoice : " + hospitalChoice);
+		if (cnt > 0) {
+			model.addAttribute("startPage", startPage); // 시작 페이지
+			model.addAttribute("endPage", endPage); // 마지막 페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재 페이지
+			model.addAttribute("hospitalChoice", hospitalChoice);
+			model.addAttribute("sc", sc);
+			model.addAttribute("search", search);
+		}
+				
+	}
+
+
 //--------------------------------------------------------------------------------------	
 	
 	
 	// 약 목록
 	@Override
 	public void drugList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -1695,7 +1805,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void drugSearchList(HttpServletRequest req, Model model) {
 
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -1791,7 +1901,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void drugAddPro(MultipartHttpServletRequest req, Model model) {
 		
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
+		
 		MultipartFile file = req.getFile("drugImage");
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/drug/");
@@ -1953,8 +2063,8 @@ public class AdminServiceImpl implements AdminService {
 	// 질병목록
 	@Override
 	public void diseaseList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -2061,7 +2171,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void diseaseSearchList(HttpServletRequest req, Model model) {
 
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -2240,8 +2350,8 @@ public class AdminServiceImpl implements AdminService {
 	// 운동목록
 	@Override
 	public void exerciseList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -2348,7 +2458,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void exerciseSearchList(HttpServletRequest req, Model model) {
 
-		int pageSize = 50; // 한 페이지당 출력할 글 갯수
+		int pageSize = 20; // 한 페이지당 출력할 글 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 글 갯수 30 db num 젤큰수 50 게시글 30개밖에20개지워지고
@@ -2442,7 +2552,7 @@ public class AdminServiceImpl implements AdminService {
 	// 운동추가 처리
 	@Override
 	public void exerciseAddPro(MultipartHttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
+		
 		MultipartFile file = req.getFile("exerciseImage");
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
@@ -2510,7 +2620,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void exerciseModifyPro(MultipartHttpServletRequest req, Model model) {
 		
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
+		
 		MultipartFile file = req.getFile("exerciseImage");
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
@@ -2566,8 +2676,8 @@ public class AdminServiceImpl implements AdminService {
 	// 예방접종 목록
 	@Override
 	public void apreventionList(HttpServletRequest req, Model model) {
-		// 3단계. 화면으로부터 입력받은 값을 받아온다.
-		int pageSize = 50; // 한 페이지당 출력할 갯수
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
 		int cnt = 0; // 갯수
@@ -2822,12 +2932,191 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pageNum",pageNum);
 	}
 
+	
 
+	//--------------------------------------------------------------------------------------
+	
+	// 포인트 목록
+	@Override
+	public void pointList(HttpServletRequest req, Model model) {
+		
+		int pageSize = 20; // 한 페이지당 출력할 갯수
+		int pageBlock = 5; // 한 블럭당 페이지 갯수
+
+		int cnt = 0; // 갯수
+		int start = 0; // 현재 페이지 시작 번호
+		int end = 0; // 현재 페이지 마지막 번호
+		int number = 0; // 출력용 번호
+		String pageNum = null; // 페이지 번호
+		int currentPage = 0; // 현재 페이지
+
+		int pageCount = 0; // 페이지 갯수
+		int startPage = 0; // 시작 페이지
+		int endPage = 0; // 마지막 페이지
+		int status = Integer.parseInt(req.getParameter("status"));
+		int totalPoint = 0;
+		
+		// 5단계. 갯수 구하기
+		cnt = dao.getPointListCnt(status);
+		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
+
+		pageNum = req.getParameter("pageNum");
+
+		if (pageNum == null) {
+			pageNum = "1"; // 첫페이지
+		}
+
+		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
+		System.out.println("currentPage : " + currentPage);
+
+		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
+
+		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
+
+		end = start + pageSize - 1; // 현재페이지 마지막번호
+
+		System.out.println("start : " + start);
+		System.out.println("end : " + end);
+
+		if (end > cnt)
+			end = cnt;
+
+		// 30 = 30 - (1 - 1) * 5
+		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
+
+		System.out.println("number : " + number);
+		System.out.println("pageSize : " + pageSize);
+
+		if (cnt > 0) {
+			// 게시글 목록 조회
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			
+			ArrayList<PointVO> dtos = dao.pointList(map);
+			System.out.println("dtos : " + dtos.size());
+			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+			
+			
+			
+			Map<String,Object> map2 = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			
+			
+			ArrayList<DoctorVO> dtos2 = new ArrayList<DoctorVO>();
+			DoctorVO hvo = new DoctorVO();
+			for(int i=0;i<dtos.size();i++) {
+				hvo= doDAO.getDocInfo("d"+String.valueOf(dtos.get(i).getPointNo())+"t");
+				dtos2.add(hvo);
+			}
+		}
+
+		// 1 = (1 / 3) * 3 + 1
+		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
+		if (currentPage % pageBlock == 0)
+			startPage -= pageBlock;
+
+		System.out.println("startPage : " + startPage);
+
+		// 3 = 1 + 3 - 1
+		endPage = startPage + pageBlock - 1; // 마지막 페이지
+		if (endPage > pageCount)
+			endPage = pageCount;
+
+		System.out.println("endPage : " + endPage);
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
+
+		model.addAttribute("cnt", cnt); // 재고 갯수
+		model.addAttribute("number", number); // 재고 번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+
+		if (cnt > 0) {
+			model.addAttribute("startPage", startPage); // 시작 페이지
+			model.addAttribute("endPage", endPage); // 마지막 페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCount", pageCount); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재 페이지
+		}
+	}
 	
 	//--------------------------------------------------------------------------------------
-		
-
 	
+	// 공지사항 수정
+	@Override
+	public void adminReportModifyView(HttpServletRequest req, Model model) {
+		//3단계 화면으로부터 값 받기
+		int num = Integer.parseInt(req.getParameter("num"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		
+		QuestionBoardVO dto = null;
+		
+		dto = dao.adminReportInfo(num);
+		
+		//7단계 결과들 저장.
+		model.addAttribute("num",num);
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("dto",dto);
+		model.addAttribute("kind",kind);
+	}
+
+	// 공지사항 수정 처리
+	@Override
+	public void adminReportModifyPro(HttpServletRequest req, Model model) {
+		//3단계 화면으로부터 값 받기
+		int num = Integer.parseInt(req.getParameter("num"));			
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		QuestionBoardVO dto = new QuestionBoardVO();
+		
+		//5단계 바구니에 담기
+		dto.setBoardcontent(req.getParameter("boardcontent"));
+		dto.setBoardtitle(req.getParameter("boardtitle"));
+		dto.setBoardno(num);
+		int modifyCnt = dao.adminReportModifyPro(dto);
+		//6단계 결과들 저장.
+		model.addAttribute("modifyCnt", modifyCnt);
+		model.addAttribute("kind",kind);
+		model.addAttribute("num",num);
+		model.addAttribute("pageNum",pageNum);
+	}
+	
+	// 신고게시판 글 삭제
+	@Override
+	public void adminReportDeletePro(HttpServletRequest req, Model model) {
+		int num = Integer.parseInt(req.getParameter("num"));
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int deleteCnt = 0;
+
+		deleteCnt = dao.adminReportDeletePro(num);
+		
+		//6단계 결과들 저장.
+		model.addAttribute("deleteCnt", deleteCnt);
+		model.addAttribute("num",num);
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("kind", kind);
+	}
+	
+	// 신고게시판 글 삭제 (체크)
+	@Override
+	public void adminReportDeleteProChek(HttpServletRequest req, Model model) {
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		String[] checkOne = req.getParameter("boardno").split(",");
+		ArrayList<Integer> report_arr = new ArrayList<Integer>();
+		
+		for (int i = 0; i < checkOne.length; i++) {
+			report_arr.add(Integer.parseInt(checkOne[i]));
+		}
+		
+		int deleteCnt = dao.adminReportDeleteProChek(checkOne);
+		  
+		model.addAttribute("deleteCnt", deleteCnt);
+		model.addAttribute("pageNum",pageNum);
+	}
 	
 
 	

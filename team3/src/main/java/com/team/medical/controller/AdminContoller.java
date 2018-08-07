@@ -215,11 +215,36 @@ public class AdminContoller {
 	}
 //--------------------------------------------------------------------------------------	
 	
-	//제휴병원목록페이지     
+	// 제휴병원목록페이지     
 	@RequestMapping(value = "hospitalList")
 	public String hospitalList(HttpServletRequest req, Model model) {
 		logger.info("hospitalList, 페이지");
+		adService.hospitalList(req, model);
 		return "admin/hospitalList";
+	}
+	
+	// 일반병원목록페이지     
+	@RequestMapping(value = "hospitalList_none")
+	public String hospitalList_none(HttpServletRequest req, Model model) {
+		logger.info("hospitalList_none, 페이지");
+		adService.hospitalList(req, model);
+		return "admin/hospitalList_none";
+	}
+	
+	// 제휴병원목록페이지     
+	@RequestMapping(value = "hospitaSearchlList")
+	public String hospitaSearchlList(HttpServletRequest req, Model model) {
+		logger.info("hospitaSearchlList, 페이지");
+		adService.hospitalList(req, model);
+		return "admin/hospitalList";
+	}
+	
+	// 일반병원목록페이지     
+	@RequestMapping(value = "hospitalSearchList_none")
+	public String hospitalSearchList_none(HttpServletRequest req, Model model) {
+		logger.info("hospitalSearchList_none, 페이지");
+		adService.hospitalList(req, model);
+		return "admin/hospitalList_none";
 	}
 	
 	//제휴병원추가폼페이지      
@@ -449,29 +474,6 @@ public class AdminContoller {
 	
 //-------------------------------------------------------------------------------------- 
 	
-	//음식정보목록페이지         
-	@RequestMapping(value = "foodList")
-	public String foodList(HttpServletRequest req, Model model) {
-		logger.info("foodList, 페이지");
-		return "admin/foodList";
-	}
-	
-	//음식정보입력폼           
-	@RequestMapping(value = "foodAdd")
-	public String foodAdd(HttpServletRequest req, Model model) {
-		logger.info("foodAdd, 페이지");
-		return "admin/foodAdd";
-	}
-	
-	//음식정보수정폼           
-	@RequestMapping(value = "foodModify")
-	public String foodModify(HttpServletRequest req, Model model) {
-		logger.info("foodModify, 페이지");
-		return "admin/foodModify";
-	}
-	
-//-------------------------------------------------------------------------------------- 
-		
 	//예방정보목록페이지 
 	@RequestMapping(value = "apreventionList")
 	public String apreventionList(HttpServletRequest req, Model model) {
@@ -496,6 +498,13 @@ public class AdminContoller {
 	
 //-------------------------------------------------------------------------------------- 
 	
+	//요구사항목록페이지            
+	@RequestMapping(value = "requestList")
+	public String requestList(HttpServletRequest req, Model model) {
+		logger.info("requestList, 페이지");
+		return "admin/requestList";
+	}
+	
 	//광고신청목록페이지             
 	@RequestMapping(value = "eventRequestList")
 	public String eventList(HttpServletRequest req, Model model) {
@@ -510,6 +519,7 @@ public class AdminContoller {
 		logger.info("eventAdd, 페이지");
 		return "admin/eventAdd";
 	}
+	
 //---------------------------------------------------------------------------------------- 희성
 	//광고등록처리페이지             
 	@RequestMapping(value = "adminEventAddPro")
@@ -541,6 +551,7 @@ public class AdminContoller {
 		coService.eventList(req, model);
 		return "admin/eventRequestList";
 	}
+	
 //---------------------------------------------------------------------------------------- 희성
 
 	
@@ -548,14 +559,8 @@ public class AdminContoller {
 	@RequestMapping(value = "pointList")
 	public String pointList(HttpServletRequest req, Model model) {
 		logger.info("pointList, 페이지");
+		adService.pointList(req, model);
 		return "admin/pointList";
-	}
-	
-	//현금결제내역목록페이지             
-	@RequestMapping(value = "cashList")
-	public String cashList(HttpServletRequest req, Model model) {
-		logger.info("cashList, 페이지");
-		return "admin/cashList";
 	}
 	
 	//관리자 로그인 페이지
@@ -586,6 +591,95 @@ public class AdminContoller {
 		
 		return "admin/adminReportList";
 	}
+	
+	// 신고요청 상세페이지 
+	@RequestMapping(value = "adminReportInfo")
+	public String adminReportInfo(HttpServletRequest req, Model model) {
+		logger.info("adminReport, 페이지");
 		
+		coService.reportBoardInfo(req, model);
+		
+		return "admin/adminReportInfo";
+	}
+	
+	// 신고요청 공지사항 추가     
+	@RequestMapping(value = "adminReportAdd")
+	public String adminReportAdd(HttpServletRequest req, Model model) {
+		logger.info("adminReportAdd, 페이지");
+		
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		
+		int num = 0;
+		int ref = 1; // 그룹화 아이디
+		int pageNum = 1; //페이지
+		// 답변글
+		// contentForm.jsp에서 get방식으로 넘긴 값 num, ref, ref_step, ref_level를 받는다.
+		if(req.getParameter("num") != null) {
+			num = Integer.parseInt(req.getParameter("num"));
+			ref = Integer.parseInt(req.getParameter("ref"));
+			pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		}
+		model.addAttribute("num", num);
+		model.addAttribute("ref", ref);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("kind", kind);
+		
+		return "admin/adminReportAdd";
+	}
+	
+	// 신고요청 공지사항 추가처리
+	@RequestMapping(value = "adminReportAddPro")
+	public String adminReportAddPro(HttpServletRequest req, Model model) {
+		logger.info("adminReportAddPro, 페이지");
+		
+		coService.boardAddPro(req,model);
+		
+		coService.reportBoardList(req, model);
+		
+		return "admin/adminReportList";
+	}
+	
+	// 고객센터 수정상세페이지
+	@RequestMapping(value="adminReportModifyView")
+	public String adminReportModifyView(HttpServletRequest req, Model model) {
+		logger.info("adminReportModifyView, 페이지");
+		
+		adService.adminReportModifyView(req, model);
+		
+		return "admin/adminReportModifyView";
+	}
+	
+	// 고객센터 수정처리페이지
+	@RequestMapping(value = "adminReportModifyPro")
+	public String adminReportModifyPro(HttpServletRequest req, Model model) {
+		logger.info("adminReportModifyPro, 페이지");
+		
+		adService.adminReportModifyPro(req, model);
+		
+		return "admin/adminReportModifyPro";
+	}
+	
+	// 고객센터 삭제처리페이지
+	@RequestMapping(value = "adminReportDeletePro")
+	public String adminReportDeletePro(HttpServletRequest req, Model model) {
+		logger.info("adminReportDeletePro, 페이지");
+		
+		adService.adminReportDeletePro(req, model);
+		
+		return "admin/adminReportDeletePro";
+	}
+	
+	// 고객센터 삭제처리페이지
+	@RequestMapping(value = "adminReportDeleteProChek")
+	public String adminReportDeleteProChek(HttpServletRequest req, Model model) {
+		logger.info("adminReportDeleteProChek, 페이지");
+		
+		adService.adminReportDeleteProChek(req, model);
+		
+		coService.reportBoardList(req, model);
+		
+		return "admin/adminReportList";
+	}
+	
 //---------------------------------------------------------------------------------------- 나다
 }	

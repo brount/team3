@@ -112,16 +112,16 @@ public class CommonDAOImpl implements CommonDAO {
 	}
 	// 병원 갯수 구하기
 	@Override
-	public int getHospitalCnt() {
+	public int getHospitalCnt(Map<String,Object> map) {
 		int selectCnt=0;
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
-		selectCnt=dao.getHospitalCnt();
+		selectCnt=dao.getHospitalCnt(map);
 		
 		return selectCnt;
 	}
 	// 병원 목록 뿌리기
 	@Override
-	public ArrayList<HospitalVO> getHospitalList(Map<String, Integer> map) {
+	public ArrayList<HospitalVO> getHospitalList(Map<String,Object> map) {
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
 		ArrayList<HospitalVO> dtos=dao.getHospitalList(map);
 		System.out.println("1"+dtos);

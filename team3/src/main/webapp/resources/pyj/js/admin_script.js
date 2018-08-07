@@ -287,7 +287,7 @@ function drugdeleteCheck(){
 }
 
 //이벤트 선택삭제
-function memberdeleteCheck(){
+function eventDelCheck(){
    var count = 0;
    var advertisementNo = "";
    var checkOne = document.getElementsByName("checkOne");
@@ -308,8 +308,33 @@ function memberdeleteCheck(){
       alert("선택하세요");
       return false;
    }else{
-      window.location='eventDel?advertisementNo='+guestno+'&pageNum='+pageNum;
+      window.location='eventDel?advertisementNo='+advertisementNo+'&pageNum='+pageNum;
    }
+}
+
+// 신고 게시판 삭제
+function adminReportDeleteChek(){
+	var count = 0;
+	var boardno = "";
+	var checkOne = document.getElementsByName("checkOne");
+	var pageNum = document.getElementsByName("pageNum")[0].value;
+	//선택된거 체크
+	for(var i = 0; i < checkOne.length; i++){
+		if(checkOne[i].checked == true){
+			count++;
+			if(boardno == ""){
+				boardno += checkOne[i].value;
+			}else{
+				boardno += "," + checkOne[i].value;
+			}
+		}
+	}
+	if (boardno == null) {
+		alert("선택하세요");
+		return false;
+	} else {
+		window.location='adminReportDeleteProChek?boardno='+boardno+'&pageNum='+pageNum;
+	}
 }
 
 

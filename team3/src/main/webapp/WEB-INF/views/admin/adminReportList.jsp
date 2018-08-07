@@ -25,10 +25,10 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-	                            	<button type="button" onclick="window.location=''">
+	                            	<button type="button" onclick="window.location='adminReportAdd?kind=3'">
                                     	추가
                                     </button>
-                                    <button type="button" style="margin-left: 10px;">
+                                    <button type="button" style="margin-left:10px;" onclick="adminReportDeleteChek()">
                                     	삭제
                                     </button>
 	                            </div>
@@ -42,7 +42,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
-	                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+	                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 	                                            <th>글번호</th>			
 	                                            <th>분류</th>			
 	                                            <th>제목</th>			
@@ -57,12 +57,12 @@
 	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-														<td style="width:10%"><input type="checkbox" name="checkOne" value="${dto.boardno}"></td>
-													    <td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">
+														<td style="width:5%"><input type="checkbox" name="checkOne" value="${dto.boardno}"></td>
+													    <td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">
 													    	${number}
 													    	<c:set var="number" value="${number-1}"></c:set>
 													    </td>
-														<td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">
+														<td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">
 															<c:if test="${dto.kind == 3}">
 																공지
 															</c:if>
@@ -70,10 +70,10 @@
 																신고
 															</c:if>
 														</td>
-														<td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</td>
-														<td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardcontent}</td>
-														<td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardwriter}</td>
-														<td onclick="?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boarddate}</td>
+														<td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">${dto.boardtitle}</td>
+														<td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">${dto.boardcontent}</td>
+														<td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">${dto.boardwriter}</td>
+														<td onclick="window.location='adminReportInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}'">${dto.boarddate}</td>
 		                                        	</tr>
 		                                       	</c:forEach>
 		                                       </c:if>
@@ -88,8 +88,8 @@
 													<c:if test="${cnt > 0}">
 														<!-- 맨끝[◀◀] / 이전[◀] -->
 														<c:if test="${startPage > pageBlock}">
-															<a href="">[맨앞]</a>
-															<a href="?pageNum=${startPage - pageBlock}">[이전]</a>
+															<a href="adminReportList">[맨앞]</a>
+															<a href="adminReportList?pageNum=${startPage - pageBlock}">[이전]</a>
 														</c:if>
 									
 														<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -97,16 +97,15 @@
 																<span><b>[${i}]</b></span>
 															</c:if>
 															<c:if test="${i != currentPage}">
-																<a href="?pageNum=${i}">[${i}]</a>
+																<a href="adminReportList?pageNum=${i}">[${i}]</a>
 															</c:if>
 														</c:forEach>
 														
 														<!-- 맨끝[▶▶] / 다음▶] -->
 														<c:if test="${pageCount > endPage}">
-															<a href="?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="?pageNum=${pageCount}">[맨뒤]</a>
+															<a href="adminReportList?pageNum=${startPage + pageBlock}">[다음]</a>
+															<a href="adminReportList?pageNum=${pageCount}">[맨뒤]</a>
 														</c:if>
-														
 														
 													</c:if>
 												</th>

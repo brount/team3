@@ -31,14 +31,13 @@
 								<tr>
 									<th style="width: 150px">글번호</th>
 									<td style="width: 150px">${number}</td>
-								</tr>
-								<tr>
-
-									<th style="width: 150px">작성자</th>
-									<td style="width: 150px">${dto.boardwriter}</td>
-
+									
 									<th style="width: 150px">작성일</th>
 									<td style="width: 150px"><fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" /></td>
+								</tr>
+								<tr>
+									<th>작성자</th>
+									<td colspan=3>${dto.boardwriter}</td>
 								</tr>
 								<tr>
 									<th>글제목</th>

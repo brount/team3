@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team.medical.service.CommonService;
 import com.team.medical.service.DoctorService;
 
 @Controller
@@ -15,6 +16,8 @@ public class DoctorContoller {
 	
 	@Autowired
 	DoctorService docService;
+	@Autowired
+	CommonService coService;
 	
 	//약관동의페이지
 	@RequestMapping(value = "doctorClauseAgree")
@@ -35,6 +38,22 @@ public class DoctorContoller {
 		
 		docService.confirmId(req, model);
 		return "doctor/confirmId";
+	}
+	// 의사회원가입 병원찾기  페이지                 
+	@RequestMapping(value = "/hosSearch")
+	public String hosSearch(HttpServletRequest req, Model model) {
+		System.out.println("hosSearch, 페이지");
+		
+		coService.hospitalList(req, model);
+		return "doctor/hosSearch";
+	}
+	//ㅎ의사회원가입 병원찾기  페이지                 
+	@RequestMapping("/hosSearch_sub")
+	public String hosSearchList(HttpServletRequest req, Model model) {
+		System.out.println("hosSearchList, 페이지");
+		
+		coService.hospitalList(req, model);
+		return "doctor/hosSearch_sub";
 	}
 	//회원 가입 처리
 	@RequestMapping("inputPro")
@@ -279,6 +298,7 @@ public class DoctorContoller {
        docService.patientInfo(req, model);
        return "doctor/patientInfo";
     }
+    
     
     //포인트관리페이지                        
   	@RequestMapping(value = "pointManage")

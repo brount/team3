@@ -203,7 +203,6 @@ public class GuestContoller {
 		return "guest/reservePro";
 	}
 	
-	
 	//검진결과분석페이지                             
 	@RequestMapping(value = "checkAnalyze")
 	public String checkAnalyze(HttpServletRequest req, Model model) {
@@ -218,6 +217,7 @@ public class GuestContoller {
 		logger.info("checkupRegister, 페이지");
 		return "guest/checkupRegister";
 	}
+	
 	// 검진서 등록 처리페이지
 	@RequestMapping(value = "checkupRegisterPro")
 	public String checkupRegisterPro(HttpServletRequest req, Model model) {
@@ -226,6 +226,22 @@ public class GuestContoller {
 
 		return "guest/checkupRegisterPro";
 	}
+
+	//사용자가 등록한 검진서 리스트
+	@RequestMapping(value = "checkupRegisterList")
+	public String checkupRegisterList(HttpServletRequest req, Model model) {
+		logger.info("checkupRegisterList, 페이지");
+		guService.checkupRegisterList(req, model);
+		return "guest/checkupRegisterList";
+	}
+	//사용자가 등록한 검진서 클릭시 분석페이지
+		@RequestMapping(value = "checkupRegisterclick")
+		public String checkupRegisterclick(HttpServletRequest req, Model model) {
+			logger.info("checkupRegisterclick, 페이지");
+			guService.checkupRegisterclick(req, model);
+			return "guest/checkupRegisterclick";
+		}
+	
 	//음식 검색 칼로리조회 -아침
 	@RequestMapping(value = "foodsearch1")
 	public String foodsearch1(HttpServletRequest req, Model model) {
@@ -316,6 +332,26 @@ public class GuestContoller {
 			return "guest/myFoodDelete";
 		}
 	
+		
+		
+	 //건강검진 목록페이지                          
+	  	@RequestMapping(value = "guestcheckupResultList")
+	  	public String checkupResultList(HttpServletRequest req, Model model) {
+	  		logger.info("guestcheckupResultList, 페이지");
+	  	
+	  		guService.guestcheckupResultList(req, model);
+	  		return "guest/guestcheckupResultList";
+	  	}	
+	 //처방목록페이지                          
+	  	@RequestMapping(value = "guestexaminationList")
+	  	public String examinationList(HttpServletRequest req, Model model) {
+	  		logger.info("guestexaminationList, 페이지");
+	  		
+	  		guService.guestexaminationList(req, model);
+	  		return "guest/guestexaminationList";
+	  	}
+	  		
+
 	// ♬ 마이페이지
 	@RequestMapping(value = "myGuest")
 	public String myGuest(HttpServletRequest req, Model model) {

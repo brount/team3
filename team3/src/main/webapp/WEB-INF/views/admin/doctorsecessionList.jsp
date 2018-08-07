@@ -12,7 +12,7 @@
 	    <div id="page-wrapper">
 	        <div class="row">
 	            <div class="col-lg-12">	
-	                <h1 class="page-header">회원관리 - 의사제제회원목록 </h1>		<!-- 페이지 제목 -->
+	                <h1 class="page-header">회원관리 - 의사탈퇴회원목록 </h1>		<!-- 페이지 제목 -->
 	            </div>
 	            <!-- /.col-lg-12 -->
 	        </div>
