@@ -28,7 +28,6 @@ import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PointVO;
-import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 @Service
@@ -653,7 +652,7 @@ public class AdminServiceImpl implements AdminService {
 		GuestVO dto = new GuestVO();
 		
 		if(reason == null) {
-			reason = " ";
+			reason = "";
 		}
 		
 		dto.setGuestNo(guestNo);
@@ -1541,7 +1540,6 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println(req.getAttribute("pageNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		String[] checkOne = req.getParameter("doctorno").split(",");
-		
 		String[] checkTwo = req.getParameter("hospitalno").split(",");
 		
 		int updateCnt = dao.doctorChkPermissionPro(checkOne);
@@ -2668,107 +2666,7 @@ public class AdminServiceImpl implements AdminService {
 	        }
 	}
 
-//--------------------------------------------------------------------------------------	
-	
-	// 예방접종 목록
-	@Override
-	public void apreventionList(HttpServletRequest req, Model model) {
-		
-		int pageSize = 20; // 한 페이지당 출력할 갯수
-		int pageBlock = 5; // 한 블럭당 페이지 갯수
-
-		int cnt = 0; // 갯수
-		int start = 0; // 현재 페이지 시작 번호
-		int end = 0; // 현재 페이지 마지막 번호
-		int number = 0; // 출력용 번호
-		String pageNum = null; // 페이지 번호
-		int currentPage = 0; // 현재 페이지
-
-		int pageCount = 0; // 페이지 갯수
-		int startPage = 0; // 시작 페이지
-		int endPage = 0; // 마지막 페이지
-
-		// 5단계. 갯수 구하기
-		cnt = dao.getApreventionListCnt();
-		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
-
-		pageNum = req.getParameter("pageNum");
-
-		if (pageNum == null) {
-			pageNum = "1"; // 첫페이지
-		}
-
-		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
-		System.out.println("currentPage : " + currentPage);
-
-		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
-
-		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
-
-		end = start + pageSize - 1; // 현재페이지 마지막번호
-
-		System.out.println("start : " + start);
-		System.out.println("end : " + end);
-
-		if (end > cnt)
-			end = cnt;
-
-		// 30 = 30 - (1 - 1) * 5
-		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
-
-		System.out.println("number : " + number);
-		System.out.println("pageSize : " + pageSize);
-
-		if (cnt > 0) {
-			// 게시글 목록 조회
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("start", start);
-			map.put("end", end);
-			
-			ArrayList<PreventionVO> dtos = dao.getApreventionList(map);
-			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-			
-			
-			
-			Map<String,Object> map2 = new HashMap<String, Object>();
-			map.put("start", start);
-			map.put("end", end);
-			
-			ArrayList<DiseaseVO> dtos2 = dao.getApreventionList2(map2);
-			System.out.println("dtos2 : " + dtos2.size());
-			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-		}
-
-		// 1 = (1 / 3) * 3 + 1
-		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
-		if (currentPage % pageBlock == 0)
-			startPage -= pageBlock;
-
-		System.out.println("startPage : " + startPage);
-
-		// 3 = 1 + 3 - 1
-		endPage = startPage + pageBlock - 1; // 마지막 페이지
-		if (endPage > pageCount)
-			endPage = pageCount;
-
-		System.out.println("endPage : " + endPage);
-
-		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
-
-		model.addAttribute("cnt", cnt); // 재고 갯수
-		model.addAttribute("number", number); // 재고 번호
-		model.addAttribute("pageNum", pageNum); // 페이지 번호
-
-		if (cnt > 0) {
-			model.addAttribute("startPage", startPage); // 시작 페이지
-			model.addAttribute("endPage", endPage); // 마지막 페이지
-			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
-			model.addAttribute("pageCount", pageCount); // 페이지 갯수
-			model.addAttribute("currentPage", currentPage); // 현재 페이지
-		}
-	}
-	//---------------------------------------------------------------------------------------- 희성
+//---------------------------------------------------------------------------------------- 희성
 	// 이벤트추가
 	@Override
 	public void eventAdd(MultipartHttpServletRequest req, Model model) {
@@ -2950,7 +2848,12 @@ public class AdminServiceImpl implements AdminService {
 		int pageCount = 0; // 페이지 갯수
 		int startPage = 0; // 시작 페이지
 		int endPage = 0; // 마지막 페이지
-		int status = Integer.parseInt(req.getParameter("status"));
+		int status = 0;
+		int ava_point = 0;
+		
+		if(req.getParameter("status") != null) {
+			status = Integer.parseInt(req.getParameter("status"));
+		}
 		
 		// 5단계. 갯수 구하기
 		cnt = dao.getPointListCnt(status);
@@ -2988,25 +2891,30 @@ public class AdminServiceImpl implements AdminService {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("start", start);
 			map.put("end", end);
+			map.put("status", status);
 			
-			ArrayList<PointVO> dtos = dao.pointList(map);
+			ArrayList<PointVO> dtos = dao.getPointList(map);
 			System.out.println("dtos : " + dtos.size());
 			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
 			
+			int total = 0;
 			
-			
-			Map<String,Object> map2 = new HashMap<String, Object>();
-			map.put("start", start);
-			map.put("end", end);
-			
+			for(int i=0;i<dtos.size();i++) {
+				total += dtos.get(i).getPoint();
+			}
 			
 			ArrayList<DoctorVO> dtos2 = new ArrayList<DoctorVO>();
-			DoctorVO hvo = new DoctorVO();
+			DoctorVO dvo = new DoctorVO();
 			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getDocInfo("d"+String.valueOf(dtos.get(i).getPointNo())+"t");
-				dtos2.add(hvo);
+				dvo= doDAO.getDoctorInfo(dtos.get(i).getDoctorno());
+				dtos2.add(dvo);
 			}
+			System.out.println("dtos2 : " + dtos2.size());
+			System.out.println("dtos : " + dtos.get(0).getDoctorno());
+			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+			model.addAttribute("total",total);
 		}
+		
 
 		// 1 = (1 / 3) * 3 + 1
 		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
@@ -3034,7 +2942,9 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
 			model.addAttribute("pageCount", pageCount); // 페이지 갯수
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
+			
 		}
+		
 	}
 	
 	//--------------------------------------------------------------------------------------

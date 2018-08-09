@@ -55,6 +55,7 @@
                              
                                         
                               </tr>
+                              <c:if test="${cnt!=0 }">
                                <c:forEach var="dto" items="${dtos}" >
                               <tr class="">
                			  
@@ -73,7 +74,14 @@
                                   <td>${dto.clock }${dto.minute } </td>
                                   
                               </tr>
-                     </c:forEach>
+                              
+                    	 </c:forEach>
+                          </c:if>
+                          <tr>
+                          <td colspan="8" align="center" style="margin-top: 50;">	<button type="button" class="btn btn-primary" onclick="window.location='achospitalSeach?state=1'">
+													병원을 예약해주세요~! <span class="glyphicon glyphicon-send"></span>
+								</button> </td>
+                          </tr>
                           </tbody>
                           </table>
                       </div>

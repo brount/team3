@@ -22,7 +22,7 @@
 					<div>
 						<div class="panel panel-primary">
 						    <div class="panel-heading">
-						        <h3>처방전 입력</h3>
+						        <h3>처방전 결과</h3>
 						    </div>
 						    <table class="table" border="1">
 						    	<tr>
@@ -66,41 +66,17 @@
 						    	</tr>
 						        </thead>
 						        <tbody>
+						        <c:set value="0" var="a"></c:set>
+								<c:forEach var="drugname" items="${drugname1}">
 						            <tr>
-						                <td>${drugname1}</td>
-						                <td>${drugdosage1}</td>
-						                <td>${drugrepeat1}번</td>
-						                <td>${dosagedate1}일</td>
-						                <td>${dosageusage1}</td>
+						                <td>${drugname}</td>
+						                <td>${drugdosage1[a]}</td>
+						                <td>${drugrepeat1[a]}번</td>
+						                <td>${dosagedate1[a]}일</td>
+						                <td>${dosageusage1[a]}</td>
 						          	</tr>
-						          	 <tr>
-						                <td>${drugname2}</td>
-						                <td>${drugdosage2}</td>
-						                <td>${drugrepeat2}번</td>
-						                <td>${dosagedate2}일</td>
-						                <td>${dosageusage2}</td>
-						          	</tr>
-						          	<tr>
-						                <td>${drugname3}</td>
-						                <td>${drugdosage3}</td>
-						                <td>${drugrepeat3}번</td>
-						                <td>${dosagedate3}일</td>
-						                <td>${dosageusage3}</td>
-						          	</tr>
-						          	<tr>
-						                <td>${drugname4}</td>
-						                <td>${drugdosage4}</td>
-						                <td>${drugrepeat4}번</td>
-						                <td>${dosagedate4}일</td>
-						                <td>${dosageusage4}</td>
-						          	</tr>
-						          	<tr>
-						          		<td>${drugname5}</td>
-						          		<td>${drugdosage5}</td>
-						          		<td>${drugrepeat5}번</td>
-						          		<td>${dosagedate5}일</td>
-						          		<td>${dosageusage5}</td>
-						          	</tr>
+						         <c:set value="${a+1}" var="a"></c:set>
+						           </c:forEach>
 						          	
 						          	<tr>
 						          		<th colspan="4" align="center">주사제 처방내역</th>
@@ -111,26 +87,19 @@
 							    		<th>1회<br>투여량</th>
 							    		<th>1회<br>투여횟수</th>
 							    		<th>총<br>투여일수</th>
-						                <td rowspan="5"><textarea rows="8"  name="caution" style="resize: none;">${preDto.caution}</textarea>　</td>
+						                <td rowspan="5"><textarea rows="8"  name="caution" readonly="readonly" style="resize: none;">${preDto.caution}</textarea>　</td>
 						          	</tr>
+						          	<c:set value="0" var="b"></c:set>
+						          	<c:forEach var="injectionname" items="${injectionname1}">
 						          	<tr>
-						          	  	<td>${injectionname1}</td>
-						          	  	<td>${injectiondosage1}</td>
-						                <td>${injectionrepeat1}번</td>
-						                <td>${injectiondate1}일</td>
+						          	  	<td>${injectionname}</td>
+						          	  	<td>${injectiondosage1[b]}</td>
+						                <td>${injectionrepeat1[b]}번</td>
+						                <td>${injectiondate1[b]}일</td>
 						          	</tr>
-						          	<tr>
-						          	  	<td>${injectionname2}</td>
-						          	  	<td>${injectiondosage2}</td>
-						                <td>${injectionrepeat2}번</td>
-						                <td>${injectiondate2}일</td>
-						          	</tr>
-						          	<tr>
-						          	  	<td>${injectionname3}</td>
-						          	  	<td>${injectiondosage3}</td>
-						                <td>${injectionrepeat3}번</td>
-						                <td>${injectiondate3}일</td>
-						          	</tr>
+						          	<c:set value="${b+1}" var="b"></c:set>
+						          	</c:forEach>
+						         
 						        </tbody>
 						    </table>
 						    

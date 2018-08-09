@@ -14,17 +14,23 @@
 	                <table class="table">
 	                    <tr>
 	                        <td>
-	                            <a href="myHealth">내 건강정보</a>
+	                            <a href="myHealth">나의 건강 정보</a>
 	                        </td>
 	                    </tr>
+	                  
 	                       <tr>
 	                        <td>
 	                            <a href="checkupRegister">검진서등록</a>
 	                        </td>
 	                    </tr>
-	                    <tr>
+	                    <!-- <tr>
 	                        <td>
 	                            <a href="checkAnalyze">내 검진결과</a>
+	                        </td>
+	                    </tr> -->
+	                      <tr>
+	                  	   <td>
+	                            <a href="checkupRegisterList">내 검진서 목록</a>
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -35,6 +41,16 @@
 	                    <tr>
 	                        <td>
 	                            <a href="reserveList">예약목록</a>
+	                        </td>
+	                    </tr>
+	                       <tr>
+	                        <td>
+	                            <a href="personalCareM">개인건강관리</a>
+	                        </td>
+	                    </tr>
+	                       <tr>
+	                        <td>
+	                            <a href="myFoodList">나만의 음식 목록</a>
 	                        </td>
 	                    </tr>
 	                </table>

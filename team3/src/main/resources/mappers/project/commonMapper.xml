@@ -171,27 +171,6 @@
 		SELECT * FROM disease WHERE diseaseCode=#{diseaseCode}
 	</select>
 	
-	<!-- 예방 갯수 구하기 -->
-	<select id="getPreventionCnt" resultType="int">
-		SELECT count(*) FROM prevention
-	</select>
-	
-	<!-- 예방 리스트 -->
-	<select id="preventionList" parameterType="java.util.Map" resultType="com.team.medical.vo.PreventionVO">
-		<![CDATA[
-		SELECT *
-		  FROM (SELECT preventionCode, preventionKind, countryCode, diseasercode,
-		               preventioncontent, rownum rNum
-		         FROM (SELECT * FROM prevention ORDER BY preventionCode DESC))
-		  WHERE rNum >= #{start} AND rNum <= #{end}
-		]]>
-	</select>
-	
-	<!-- 예방 상세보기 -->
-	<select id="preventionInfo" resultType="com.team.medical.vo.PreventionVO">
-		SELECT * FROM prevention WHERE preventionCode=#{preventionCode}
-	</select>
-	
 	<!-- 운동 갯수 구하기 -->
 	<select id="getExerciseCnt" resultType="int">
 		SELECT count(*) FROM exercise
@@ -393,12 +372,32 @@
 	
 	<!-- 포인트 증가 -->
 	<update id="updatePoint" parameterType="String">
-		UPDATE doctor SET point=point+20 WHERE doctorid LIKE #{id}
+		UPDATE doctor SET point=point+50 WHERE doctorid LIKE #{id}
 	</update>
 	
 	<!-- 포인트 사용 -->
 	<update id="usePoint" parameterType="map">
-		UPDATE doctor SET point=point-${point} WHERE doctorid = #{id}
+		UPDATE doctor 
+		
+		SET point = point-${point}		
+		
+		WHERE doctorid = #{id} 
+		  AND 
+		  <![CDATA[		  
+		  	point >= ${point}
+		  ]]>
 	</update>
-	
+	<!-- 포인트 테이블 인서트 -->
+	<insert id="pointInsert" parameterType="java.util.Map">
+		INSERT INTO point ( pointNo,
+						    doctorno,
+						    point,
+						    status  )		
+		VALUES(
+			point_seq.nextval,
+			#{doctorno},
+			#{point},
+			#{status}
+		)
+	</insert>
 </mapper>

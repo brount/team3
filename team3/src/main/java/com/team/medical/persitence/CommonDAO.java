@@ -9,7 +9,6 @@ import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.HospitalVO;
-import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 public interface CommonDAO {
@@ -54,10 +53,6 @@ public interface CommonDAO {
 	public DiseaseVO diseaseInfo(int diseaseCode);
 	// 예방 갯수 구하기
 	public int getPreventionCnt();
-	// 예방 목록
-	public ArrayList<PreventionVO> preventionList(Map<String,Integer> map);
-	// 예방 상세 정보
-	public PreventionVO preventionInfo(int preventionCode);
 	// 운동 갯수 구하기
 	public int getExerciseCnt();
 	// 운동 목록
@@ -75,7 +70,10 @@ public interface CommonDAO {
 	// 포인트 업데이트
 	public int updatePoint(String id);
 	// 포인트 사용
-	public void usePoint(Map<String,Object> map);
+	public int usePoint(Map<String,Object> map);
+	// 포인트 인서트
+	public int pointInsert(Map<String,Object> map);
+	
 	public ArrayList<String> test(String[] args) throws IOException;
 	
 }

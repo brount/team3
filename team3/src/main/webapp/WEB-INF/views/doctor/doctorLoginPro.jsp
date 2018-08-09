@@ -16,8 +16,15 @@
             window.location="memberLogin";
          </script>
    </c:if>         
+   <c:if test="${logindAppro == 0}">
+   <script type="text/javascript">
+         alert("승인이 안된 회원입니다");
       
-   <c:if test="${loginCnt != 0}">
+      window.location="main";
+      </script>
+   </c:if>
+      
+   <c:if test="${loginCnt == 1}">
    <script type="text/javascript">
          alert("로그인 성공하였습니다~!");
       

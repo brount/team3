@@ -142,11 +142,6 @@ public interface AdminService {
 	// 운동 수정 처리
 	public void exerciseModifyPro(MultipartHttpServletRequest req, Model model);
 	
-//--------------------------------------------------------------------------------------
-	
-	// 예방접종 목록
-	public void apreventionList(HttpServletRequest req, Model model);
-
 //------------------------------------------------------------------------------------- 희성
 
 	// 이벤트 추가

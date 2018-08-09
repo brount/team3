@@ -301,6 +301,14 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //Checkup테이블에 guestno 인서트 하기위해 회원정보에서 guestNo 값 가져옴
 		int guestNo = gvo.getGuestNo();
+		String reservationtime1 = req.getParameter("reservationtime1");
+		String reservationtime2 = req.getParameter("reservationtime2");
+		String reservationtime3 = req.getParameter("reservationtime3");
+
+				
+		String reservationtime=reservationtime1+"-"+reservationtime2+"-"+reservationtime3;
+		
+		
 		
 		ExaminationVO vo = new ExaminationVO();
 		
@@ -328,8 +336,8 @@ public class GuestServiceImpl implements GuestService {
 		vo.setHepatitisscr(req.getParameter("hepatitisscr"));
 		vo.setBreastradiography(req.getParameter("breastradiography"));
 		vo.setEcg(req.getParameter("ecg"));
-		vo.setExaminationday(Date.valueOf(req.getParameter("reservationtime")));
-		
+		vo.setExaminationday(Date.valueOf(reservationtime));
+	
 		int insertcnt = dao.checkupRegisterPro(vo);
 		model.addAttribute("insertcnt",insertcnt);
 		
@@ -343,23 +351,23 @@ public class GuestServiceImpl implements GuestService {
 		String id = (String) req.getSession().getAttribute("id");
 		GuestVO gvo = dao.getGuestInfo(id);  //CheckUp테이블에 guestno을 통해 해당 회원의 검진서결과를  셀렉트 하기위함
 		int guestNo = gvo.getGuestNo();
-		int	bloodpremax =0;
+		int col = Integer.parseInt(req.getParameter("col"));
 		
-		int selectcnt = 0;
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("guestNo", guestNo);
+		map.put("col", col);
 		
 		ExaminationVO vo = new ExaminationVO();
-		vo = dao.checkAnalyze(guestNo);
-		
+		vo = dao.checkAnalyze(map);
+		int selectcnt = 0;
 		if(vo!=null) {
 			selectcnt = 1;
-			bloodpremax =Integer.parseInt(vo.getBloodpremax()); 
+			
 		}
 	
 		
 		
 		model.addAttribute("vo",vo);
-		model.addAttribute("bloodpremax",bloodpremax);
-
 		model.addAttribute("selectcnt",selectcnt);
 
 	
@@ -720,19 +728,24 @@ public class GuestServiceImpl implements GuestService {
 		GuestVO gvo = dao.getGuestInfo(id);  
 		int guestNo = gvo.getGuestNo();
 		int selectcnt = 0;
+		
 	
 		FoodVO vo = new FoodVO();
 		vo.setGuestNo(guestNo);
 		vo.setFood(food);
 		
-		ArrayList<FoodVO> dtos = new ArrayList<FoodVO>();
+		ArrayList<FoodVO> dtos =null;
 		dtos = dao.foodsearch(vo);
-		if(dtos != null) {
+		if(dtos.isEmpty()) {
+			selectcnt = 0;
+		}else {
 			selectcnt = 1;
 		}
-		
+		System.out.println("음식검색"+selectcnt);
+		model.addAttribute("food",food);
 		model.addAttribute("dtos",dtos);
 		model.addAttribute("selectcnt",selectcnt);
+		
 	}
 	@Override
 	public void todaycal(HttpServletRequest req, Model model) {
@@ -790,6 +803,7 @@ public class GuestServiceImpl implements GuestService {
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("mvo",mvo);
+		model.addAttribute("encouragecal",encouragecal);
 		model.addAttribute("basalmetabolism",basalmetabolism);
 		model.addAttribute("alertcnt",alertcnt);
 	}
@@ -1221,6 +1235,7 @@ public class GuestServiceImpl implements GuestService {
 		int foodno = Integer.parseInt(req.getParameter("foodno"));
 		int deletecnt = dao.myFoodDelete(foodno);
 		
+		System.out.println("deletecnt"+deletecnt);
 		model.addAttribute("deletecnt",deletecnt);
 
 	}
@@ -1590,6 +1605,17 @@ public class GuestServiceImpl implements GuestService {
 		System.out.println("overlap?"+overlap);
 		
 		model.addAttribute("overlap", overlap);
+	}
+	@Override
+	public void checkdelete(HttpServletRequest req, Model model) {
+		int col = Integer.parseInt(req.getParameter("col"));
+		
+		int deletecnt = dao.checkdelete(col);
+		
+		model.addAttribute("deletecnt",deletecnt);
+				
+				
+	
 	}
 	
 

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <html>
 
 
@@ -13,7 +15,12 @@
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
+<c:if test="${deletecnt==1 }">
+	<script type="text/javascript">
+	alert('검진서가 삭제되었습니다.');
+	window.location="checkupRegisterList";
+	</script>
+</c:if>
 
 
 <header>
@@ -30,10 +37,23 @@
 			            <div class="well">
 			                <div class="mail-box">
                   <aside class="lg-side">
-                      <div class="inbox-head">
+                     
+                      <%-- <div class="inbox-head">
+                         <c:if test="${cnt==0  }">
+											<div class="form-group">
+												<div style="display: table; margin: 0 auto;">
+													<button type="button" class="btn btn-primary" onclick="window.location='checkupRegister'">
+														검진서를 등록해주세요~! <span class="glyphicon glyphicon-send"></span>
+													</button>
+												</div>
+											</div>
+										</c:if>
+					
+                      
+                      </div> --%>
+                      
+                      			
                           <h3>나의 검진서 목록(${cnt})</h3>
-                       
-                      </div>
                       <div class="inbox-body">
                          <div class="mail-option">
                              
@@ -42,37 +62,45 @@
                                 
                             <tbody>
                               <tr class="unread">
-                                   
-                     			  <td>등록번호</td>
-                               
-                                  <td></td>
-                                  <td></td>                               
-                                  <td>검진날짜</td>
-                            
-								 
-                                  
-                                  
-                             
-                                        
-                              </tr>
+								<td>검진날짜</td>
+
+								<td></td>
+								<td></td>
+
+								<td>등록번호</td>
+		
+								<td></td>
+
+
+
+
+												</tr>
+                               <c:if test="${cnt !=0 }">		 
                                <c:forEach var="dto" items="${dtos}" >
+                             
                               <tr class="">
                			  
-                               <td><a href="checkAnalyze?col=${dto.COL}">${dto.COL}</a></td>
+                               <td><a href="checkAnalyze?col=${dto.COL}">${dto.examinationday}</a> </td>
                                  <td></td>
                                  <td></td>
-                                  <td><span class="label label-success">
-      			               <a href="checkAnalyze?col=${dto.COL}">${dto.examinationday}</a>
-                                  
-                                  </span></td>
-                                
+                                  <td>${dto.COL}</td>
+                                 <td><button type="button" class="btn btn-primary" onclick="window.location='checkdelete?col=${dto.COL}'" >검진서 삭제</button></td>
                               </tr>
-                     </c:forEach>
+                              
+                     </c:forEach>	
+                     </c:if>
+                       <c:if test="${cnt==0  }">
+                     		<tr>
+                     			<td colspan="4" align="center">	<button type="button" class="btn btn-primary" onclick="window.location='checkupRegister'">
+														검진서를 등록해주세요~! <span class="glyphicon glyphicon-send"></span>
+								</button> </td>
+                     		</tr>
+                     	</c:if>
                           </tbody>
                           </table>
                       </div>
                       </div>
-           
+     			 
                   </aside>
                   
                   

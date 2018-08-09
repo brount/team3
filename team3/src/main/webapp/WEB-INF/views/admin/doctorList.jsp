@@ -54,8 +54,6 @@
 	                                            <th>병원소재지</th>			
 	                                            <th>병원연락처</th>			
 	                                            <th>전문분야</th>			
-	                                            <th>승인여부</th>			
-												<th>제재단계</th>			
 												<th>포인트</th>			
 	                                            <th>가입일</th>			
 	                                        </tr>
@@ -75,8 +73,6 @@
 														<td>${dtos2[a].hospitaladdr}</td>
 														<td>${dtos2[a].hospitalphone}</td>
 														<td>${dto.doctorspecialism}</td>
-														<td>${dto.doctorappro}</td>
-														<td>${dto.sanctions}</td>
 														<td>${dto.point}</td>
 														<td>${dto.doctorregstration}</td>
 		                                        	</tr>

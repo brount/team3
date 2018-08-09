@@ -144,11 +144,12 @@ public class GuestDAOImpl implements GuestDAO {
 		return insertcnt;
 	}
 
+	//등록된 검진서 결과 셀렉
 	@Override
-	public ExaminationVO checkAnalyze(int guestNo) {
+	public ExaminationVO checkAnalyze(Map<String,Object> map) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		ExaminationVO vo = new ExaminationVO();
-		vo = dao.checkAnalyze(guestNo);
+		vo = dao.checkAnalyze(map);
 		return vo;
 
 	}
@@ -506,6 +507,13 @@ public class GuestDAOImpl implements GuestDAO {
 		vo = dao.hospitalInfo(hospitalno);
 		
 		return vo;
+	}
+
+	@Override
+	public int checkdelete(int col) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		int deletecnt = dao.checkdelete(col);
+		return deletecnt;
 	}
 
 

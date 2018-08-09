@@ -59,32 +59,32 @@
 								                <td rowspan="3">비만</td>
 								                <td>신장</td>
 								                <td><input type="number" name="height">cm</td>
-								                <td></td>
+								                <td>　　　　　　</td>
 								                <td></td>
 								          	</tr>
 								          	<tr>
 								          		<td>체중</td>
 								          		<td><input type="number" name="weight">kg</td>
-								          		<td></td>
+								          		<td>　　　　　　</td>
 								                <td></td>
 								          	</tr>
 								          	<tr>
 								          		<td>비만도</td>
 								          		<td><input type="number" name="fatness">BMI</td>
-								          		<td></td>
+								          		<td>　　　　　　</td>
 								                <td>저체충 18.5 미만<br>정상 : 18.5이상 ~ 23미만<br>과체중 : 23이상~25미만<br>비만 : 25이상~30미만 <br> 고도비만 30이상</td>
 								          	</tr>
 								          	<tr>
 								          		<td rowspan="2">시각 이상</td>
 								          		<td>시력(좌)</td>
 								          		<td><input type="number" name="visionl"></td>
-								          		<td></td>
+								          		<td>　　　　　　</td>
 								          		<td></td>
 								          	</tr>
 								          	<tr>
 								          		<td>시력(우)</td>
 								          		<td><input type="number" name="visionr"></td>
-								          		<td></td>
+								          		<td>　　　　　　</td>
 								          		<td></td>
 								          	</tr>
 								          	<tr>

@@ -56,6 +56,8 @@ public interface GuestService {
 	
 	// 해당 회원의 검진서 분석결과 조회
 	public void checkAnalyze(HttpServletRequest req, Model model);
+	// 등록한 검진서 삭제
+	public void checkdelete(HttpServletRequest req, Model model);
 	
 	// 병원예약 클릭시 해당 병원정보 조회후 예약신청페이지에 정보넘김
 	public void reservehospital(HttpServletRequest req, Model model);
@@ -100,6 +102,7 @@ public interface GuestService {
 	
 	//처방목록페이지        
 	public void guestexaminationList(HttpServletRequest req, Model model);
+	
 	
 	
 	

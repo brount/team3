@@ -6,7 +6,7 @@
 <title> 사이트 이름 </title>
 <body>
    
-<header>
+<header >
 	<%@ include file="../common/header.jsp" %>
 </header>
    

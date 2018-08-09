@@ -114,7 +114,7 @@
 								<c:if test="${pageCount > endPage }">
 									<a href="bookMark?pageNum=${startPage + pageBlock }">[▶]</a>
 									<a href="bookMark?pageNum=${pageCount}">[▶▶] </a>
-								</c:if>)
+								</c:if>
 
 							</c:if>
 						</th>

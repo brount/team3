@@ -63,7 +63,14 @@
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalphone}</td>
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitaladdr}</td>
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalkind}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalinstruction}</td>
+															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">
+																<c:if test="${dto.hospitalinstruction == null}">
+																	X
+																</c:if>
+																<c:if test="${dto.hospitalinstruction != null}">
+																	O
+																</c:if>
+															</td>
 														</tr>
 													</c:forEach>
 												</c:if>

@@ -44,7 +44,7 @@
 										<table class="table table-bordered table-hover table-striped">
 											<thead>
 												<tr>
-													<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+													<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 													<th>회원번호</th>
 													<th>회원ID</th>
 													<th>회원명</th>

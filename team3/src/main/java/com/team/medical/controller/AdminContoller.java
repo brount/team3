@@ -474,30 +474,6 @@ public class AdminContoller {
 	
 //-------------------------------------------------------------------------------------- 
 	
-	//예방정보목록페이지 
-	@RequestMapping(value = "apreventionList")
-	public String apreventionList(HttpServletRequest req, Model model) {
-		logger.info("apreventionList, 페이지");
-		adService.apreventionList(req, model);
-		return "admin/apreventionList";
-	}
-	
-	//예방정보입력폼           
-	@RequestMapping(value = "apreventionAdd")
-	public String apreventionAdd(HttpServletRequest req, Model model) {
-		logger.info("apreventionAdd, 페이지");
-		return "admin/apreventionAdd";
-	}
-
-	//예방정보입력폼           
-	@RequestMapping(value = "apreventionModify")
-	public String apreventionModify(HttpServletRequest req, Model model) {
-		logger.info("apreventionModify, 페이지");
-		return "admin/apreventionModify";
-	}
-	
-//-------------------------------------------------------------------------------------- 
-	
 	//요구사항목록페이지            
 	@RequestMapping(value = "requestList")
 	public String requestList(HttpServletRequest req, Model model) {

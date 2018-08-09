@@ -62,7 +62,7 @@ public interface GuestDAO {
 	public int checkupRegisterPro(ExaminationVO vo);
 
 	//검진서 결과 셀렉트
-	public ExaminationVO checkAnalyze(int guestNo);
+	public ExaminationVO checkAnalyze(Map<String,Object> map);
 	
 	//등록된 검진서 목록
 	public ArrayList<ExaminationVO> checkupRegisterList(Map<String,Object> map);
@@ -161,6 +161,9 @@ public interface GuestDAO {
 
 	//병원번호에따른 병원정보
 	public HospitalVO hospitalInfo(int hospitalno);
+
+	// 등록한 검진서 삭제
+	public int checkdelete(int col);
 
 	
 

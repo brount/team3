@@ -22,10 +22,10 @@
                       <div class="inbox-head">
                           <h3>건강검진 목록</h3>
                           <form action="#" class="pull-right position">
-                              <div class="input-append">
+                             <!--  <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
-                              </div>
+                              </div> -->
                           </form>
                       </div>
                       <div class="inbox-body">
@@ -60,7 +60,7 @@
 							<c:if test="${cnt==0 }">
 								<tr>
 									<td colspan="6" align="center">
-										게시글이 없습니다. 글을 작성해 주세요.!!
+									조회된 건강검진결과가 없습니다. 
 									</td>
 								</tr>
 							</c:if>

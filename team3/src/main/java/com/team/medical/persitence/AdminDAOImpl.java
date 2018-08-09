@@ -15,7 +15,6 @@ import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PointVO;
-import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 @Repository
@@ -223,16 +222,6 @@ public class AdminDAOImpl implements AdminDAO {
  		return dtos;
  	}
 
- 	// 의사회원목록 조회2
-  	@Override
-  	public ArrayList<HospitalVO> getDoctorList2(Map<String, Object> map) {
-
-  		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
-  		ArrayList<HospitalVO> dtos = dao.getDoctorList2(map);
-
-  		return dtos;
-  	}
   	
   	// 의사회원검색목록 개수 구하기
   	@Override
@@ -804,38 +793,6 @@ public class AdminDAOImpl implements AdminDAO {
             
 		return updateCnt;
 	}
-	
-//---------------------------------------------------------------------------------------	
-	
-	// 예방정보 개수 구하기
-	@Override
-	public int getApreventionListCnt() {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
-		int selectCnt = dao.getApreventionListCnt();
-
-		return selectCnt;
-	}
-
-	// 예방정보 목록 조회
-	@Override
-	public ArrayList<PreventionVO> getApreventionList(Map<String, Object> map) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
-		ArrayList<PreventionVO> dtos = dao.getApreventionList(map);
-
-		return dtos;
-	}
-
-	// 예방정보 목록 조회2
-	@Override
-	public ArrayList<DiseaseVO> getApreventionList2(Map<String, Object> map) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
-		ArrayList<DiseaseVO> dtos = dao.getApreventionList2(map);
-
-		return dtos;
-	}
 	//------------------------------------------------------------ 희성
 	@Override
 	public int addEvent(EventVO dto) {
@@ -888,26 +845,16 @@ public class AdminDAOImpl implements AdminDAO {
 		return selectCnt;
 	}
 
-	// 포인트목록 조회1
+	// 포인트목록 조회
 	@Override
-	public ArrayList<PointVO> pointList(Map<String, Object> map) {
+	public ArrayList<PointVO> getPointList(Map<String, Object> map) {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 
- 		ArrayList<PointVO> dtos = dao.pointList(map);
+ 		ArrayList<PointVO> dtos = dao.getPointList(map);
 
  		return dtos;
  	}
 
-	// 포인트목록 조회2
-	@Override
-	public ArrayList<DoctorVO> pointList2(Map<String, Object> map2) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
-  		ArrayList<DoctorVO> dtos = dao.pointList2(map2);
-
-  		return dtos;
-	}
-	
 //------------------------------------------------------------
 	
 	// 공지사항 상세보기

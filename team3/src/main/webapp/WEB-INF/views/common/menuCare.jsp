@@ -17,6 +17,13 @@
 	            </h4>
 	        </div>
 	    </div>
+	    <div class="panel panel-default">
+	        <div class="panel-heading">
+	            <h4 class="panel-title">
+	                <a href="myFoodList">나만의 음식목록</a>
+	            </h4>
+	        </div>
+	    </div>
 	</div>
 </body>
 </html>

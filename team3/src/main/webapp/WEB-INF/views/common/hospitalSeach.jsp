@@ -54,38 +54,7 @@
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
-		            <div class="panel-group" id="accordion">
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">병원 검색</a>
-		                        </h4>
-		                    </div>
-		                    <div id="collapseOne" class="panel-collapse collapse">
-		                        <div class="panel-body">
-		                            <table class="table">
-		                                <tr>
-		                                    <td>
-		                                       <a href="hospitalSeach">병원</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="achospitalSeach?state=1">제휴병원</a>
-		                                    </td>
-		                                </tr>
-		                            </table>
-		                        </div>
-		                    </div>
-		                </div>
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a  href="drugStoreSeach">약국 검색</a>
-		                        </h4>
-		                    </div>		                  
-		                </div>
-		            </div>
+		            <%@ include file="../common/menuMedical.jsp" %>
 		        </div>
 		        <div class="col-sm-9 col-md-9">
 		            <div class="well">
@@ -143,11 +112,7 @@
 														<button class="btn btn-primary">예약</button>	
 													</td>										
 												</tr> --%>
-											 <script type="text/javascript">
-												function hospitalMove(phone){
-													window.location="hospitalInfo?hospitalphone="+phone+"&pageNum=${pageNum}";
-												}	
-											  </script>
+											 
 										</c:forEach>
 									</c:if>
 									
@@ -477,6 +442,10 @@
 					        /* searchPlaces(); */ 
 					    }    
 					}
+					
+					function hospitalMove(phone){
+						window.location="hospitalInfo?hospitalphone="+phone+"&pageNum=${pageNum}";
+					}	
 					
 					</script>
 </body>

@@ -18,6 +18,12 @@ function calorie(calorie) {
 	self.close();
 
 }
+function re(food) {
+	opener.document.cal.food.value = food;
+
+	self.close();
+}
+
 </script>
 </head>
 <body > 
@@ -55,12 +61,12 @@ function calorie(calorie) {
 
 		</c:if>
 
-		<c:if test="${selectcnt != 1}">
+		<c:if test="${selectcnt==0 }">
 			<table>
 				<tr>
 					<td align="center">검색된 음식이 없습니다~! 움식을 새로 추가해주세요!</td>
 				<td>
-					 <input class="btn btn-warning" type="button" value="확인" onclick="self.close()">
+					 <input class="btn btn-warning" type="button" value="확인" onclick="re('${food}')">
 					 </td>
 				</tr>
 			

@@ -21,6 +21,7 @@
                   <aside class="lg-side">
                       <div class="inbox-head">
                           <h3>처방전 목록</h3>
+                          <small>*환자 이름을 클릭하세요</small>
                           <form action="#" class="pull-right position">
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">

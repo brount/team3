@@ -28,7 +28,7 @@
 				    </div>
 				 </div>
 					<center>
-						<img src="/medical/resources/images/licence/${vo.hospitalimage}" width="500px" height="380px">
+						<img src="/medical/resources/images/licence/${vo.hospitalimage}" width="500px" height="380px" onerror="this.src='/medical/resources/images/dachaimg.jpg'">
 						<br><br>
 					<div class="panel panel-primary">
 					    
@@ -66,7 +66,7 @@
 					   		
 					     </table>
 					</div>
-					<input type="button" value="병원 수정" onclick="window.location='myHospitalResistraion'">
+					<input type="button" value="병원 소개 수정" onclick="window.location='myHospitalUpdate'">
 				</div>
         	</div>
         </div>

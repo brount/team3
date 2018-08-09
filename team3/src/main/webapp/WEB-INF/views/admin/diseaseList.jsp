@@ -54,7 +54,7 @@ table tbody td {
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
 	                                        <tr>
-	                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+	                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 	                                            <th>질병코드</th>
 	                                            <th>병명</th>
 	                                            <th>정의</th>

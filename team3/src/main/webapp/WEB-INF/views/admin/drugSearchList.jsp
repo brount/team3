@@ -40,7 +40,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>약번호</th>
 		                                            <th>약이름</th>
 		                                            <th>제조업체</th>

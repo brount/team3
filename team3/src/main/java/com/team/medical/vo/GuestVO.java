@@ -17,7 +17,7 @@ public class GuestVO {
 	private String 	favoritehos;	// 즐겨찾는 병원
 	private Date 	guestdate;		// 가입일
 	private int 	sanctions;		// 제제단계
-	private int 	status;			// 탈퇴여부
+	private int 	status;			// 탈퇴여부			0 : 일반    -   1 : 탈퇴 or 제명
 	private String  reason;			// 제제사유
 	
 	public  int getGuestNo() {

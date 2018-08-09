@@ -4258,8 +4258,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .input-group-addon:first-child {
 	border-right: 0;
-	width: 70px;
-	
+	width: 50px;
 }
 
 .input-group .form-control:last-child, .input-group-addon:last-child,

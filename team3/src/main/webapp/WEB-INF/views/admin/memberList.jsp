@@ -122,8 +122,19 @@
 											</tr>
 										</table>
 										
+										<script type="text/javascript">
+										// 검색 체크
+										function searchChk(){
+											var search = document.getElementsByName("search").value;
+											
+											if(search == null){
+												alert("검색어를 입력하세요.");
+												return false;
+											}
+										}
+										</script>
+										<form action="memberSearchList" class="search_box" method="post" onsubmit="return searchChk()">
 	                                    <table align="center">
-	                                    	<form action="memberSearchList" class="search_box" method="post">
                                   			<tr>
                                        			<td>
 	                                        		<select class="input" name="sc" >
@@ -139,9 +150,8 @@
 							 						<input type="submit" value="검색">
 							 					</td>
 						 					</tr>
-						 					</form>
-						 					
 						 				</table>
+						 				</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

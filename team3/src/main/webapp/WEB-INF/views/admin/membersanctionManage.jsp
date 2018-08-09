@@ -56,10 +56,10 @@
 											<label>제제단계</label> 현재제제단계 : ${dto.sanctions}<br>
 											
 											<select id="sanctions" name="sanctions"> 
-												<option value="0">0단계</option>
-												<option value="1">1단계</option>
-												<option value="2">2단계</option>
-												<option value="3">3단계</option>
+												<option value="0">---</option>
+												<option value="1">경고</option>
+												<option value="2">제제</option>
+												<option value="3">제명</option>
 											</select>
 										</div>
 										

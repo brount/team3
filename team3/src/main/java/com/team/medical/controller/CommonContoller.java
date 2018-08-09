@@ -61,24 +61,6 @@ public class CommonContoller {
 		logger.info("memberShipPro, 페이지");
 		return "common/memberShipPro";
 	}
-	// 예방내용페이지                           
-	@RequestMapping(value = "cpreventionList")
-	public String preventionList(HttpServletRequest req, Model model) {
-		logger.info("cpreventionList, 페이지");
-		
-		coService.preventionList(req, model);
-		
-		return "common/cpreventionList";
-	}
-	// 예방내용페이지                           
-	@RequestMapping(value = "preventionInfo")
-	public String preventionInfo(HttpServletRequest req, Model model) {
-		logger.info("preventionInfo, 페이지");
-		
-		coService.preventionInfo(req, model);
-		
-		return "common/preventionInfo";
-	}
 	// 질병 리스트
 	@RequestMapping(value = "cdiseaseList")
 	public String diseaseList(HttpServletRequest req, Model model) {
@@ -201,7 +183,9 @@ public class CommonContoller {
 		
 		coService.eventAdd(req, model);
 		
-		return "common/eventRequest";
+		coService.eventList(req, model);
+		
+		return "common/eventList";
 	}
 	// 질문목록페이지
 	@RequestMapping(value = "boardList")

@@ -23,6 +23,7 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -35,22 +36,30 @@ public class DoctorServiceImpl implements DoctorService {
 	// 닥터 로그인
 	@Override
 	public void doctorLogin(HttpServletRequest req, Model model) {
-		
 		String id =req.getParameter("id");
 		String pwd = req.getParameter("pwd");
-		
-		Map<String,String> map = new HashMap<String,String>();
+		System.out.println("id " + id);
+		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("id", id);
 		map.put("pwd", pwd);
 		
 		int loginCnt = dao.doctorLogin(map);
-		
 		if(loginCnt==1) {
-			req.getSession().setAttribute("id", id);
-		} else {
+			int logindAppro = dao.doctorappro(map);
+			if(logindAppro==0) {
+				req.getSession().setAttribute("memberState",0);
+				model.addAttribute("logindAppro",logindAppro);
+			}else {
+				req.getSession().setAttribute("id", id);
+			}
+			
+			
+		}else {
 			req.getSession().setAttribute("memberState",0);
 		}
 		model.addAttribute("loginCnt",loginCnt);
+		
+		
 	}
 	
 	// 아이디 중복 확인
@@ -69,7 +78,7 @@ public class DoctorServiceImpl implements DoctorService {
 		MultipartFile file = req.getFile("file");
         String saveDir = req.getRealPath("/resources/images/licence/");
         String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
-        
+        int hospitalno = Integer.parseInt(req.getParameter("hospitalno"));
         try {
             file.transferTo(new File(saveDir+file.getOriginalFilename()));
             
@@ -103,6 +112,7 @@ public class DoctorServiceImpl implements DoctorService {
 		vo.setDoctorspecialism(specialism);
 		vo.setLicence(doctorlicence);
 		vo.setDoctorregstration(new Date(System.currentTimeMillis()));
+		vo.setHospitalno(hospitalno);
 		int insertCnt = dao.insertMember(vo);
 		model.addAttribute("insertCnt", insertCnt);
 		
@@ -693,103 +703,83 @@ public class DoctorServiceImpl implements DoctorService {
 		
 		String symptom = req.getParameter("symptom");
 		String drugname  = "";
-		String drugname1  = req.getParameter("drugname1");
-		String drugname2  = req.getParameter("drugname2");
-		String drugname3  = req.getParameter("drugname3");
-		String drugname4  = req.getParameter("drugname4");
-		String drugname5  = req.getParameter("drugname5");
+		String[] drugname1  = req.getParameterValues("drugname1");
+		for(int i = 0 ; i<drugname1.length; i ++) {
+			String a = (i==0) ? drugname1[i] : "," + drugname1[i];
+			System.out.println("a : " + a);
+			drugname += a;
+		}
 		String drugdosage = "";
-		String drugdosage1  = req.getParameter("drugdosage1");
-		String drugdosage2  = req.getParameter("drugdosage2");
-		String drugdosage3  = req.getParameter("drugdosage3");
-		String drugdosage4  = req.getParameter("drugdosage4");
-		String drugdosage5  = req.getParameter("drugdosage5");
+		String[] drugdosage1  = req.getParameterValues("drugdosage1");
+		for(int i = 0 ; i<drugdosage1.length; i ++) {
+			String a = (i==0) ? drugdosage1[i] : "," + drugdosage1[i];
+			System.out.println("a : " + a);
+			drugdosage += a;
+		}
 		String drugrepeat = ""; 
-		String drugrepeat1 = req.getParameter("drugrepeat1");
-		String drugrepeat2 = req.getParameter("drugrepeat2");
-		String drugrepeat3 = req.getParameter("drugrepeat3");
-		String drugrepeat4 = req.getParameter("drugrepeat4");
-		String drugrepeat5 = req.getParameter("drugrepeat5");
+		String[] drugrepeat1 = req.getParameterValues("drugrepeat1");
+		for(int i = 0 ; i<drugrepeat1.length; i ++) {
+			String a = (i==0) ? drugrepeat1[i] : "," + drugrepeat1[i];
+			System.out.println("a : " + a);
+			drugrepeat += a;
+		}
 		String dosagedate = "";
-		String dosagedate1 = req.getParameter("dosagedate1");
-		String dosagedate2 = req.getParameter("dosagedate2");
-		String dosagedate3 = req.getParameter("dosagedate3");
-		String dosagedate4 = req.getParameter("dosagedate4");
-		String dosagedate5 = req.getParameter("dosagedate5");
+		String[] dosagedate1 = req.getParameterValues("dosagedate1");
+		for(int i = 0 ; i<dosagedate1.length; i ++) {
+			String a = (i==0) ? dosagedate1[i] : "," + dosagedate1[i];
+			System.out.println("a : " + a);
+			dosagedate += a;
+		}
 		String dosageusage = "";
-		String dosageusage1 = req.getParameter("dosageusage1");
-		String dosageusage2 = req.getParameter("dosageusage2");
-		String dosageusage3 = req.getParameter("dosageusage3");
-		String dosageusage4 = req.getParameter("dosageusage4");
-		String dosageusage5 = req.getParameter("dosageusage5");
+		String[] dosageusage1 = req.getParameterValues("dosageusage1");
+		for(int i = 0 ; i<dosageusage1.length; i ++) {
+			String a = (i==0) ? dosageusage1[i] : "," + dosageusage1[i];
+			System.out.println("a : " + a);
+			dosageusage += a;
+		}
 		String injectionname = "";
-		String injectionname1 = req.getParameter("injectionname1");
-		String injectionname2 = req.getParameter("injectionname2");
-		String injectionname3 = req.getParameter("injectionname3");
+		String[] injectionname1 = req.getParameterValues("injectionname1");
+		for(int i = 0 ; i<injectionname1.length; i ++) {
+			String a = (i==0) ? injectionname1[i] : "," + injectionname1[i];
+			System.out.println("a : " + a);
+			injectionname += a;
+		}
 		String injectiondosage = "";
-		String injectiondosage1 = req.getParameter("injectiondosage1");
-		String injectiondosage2 = req.getParameter("injectiondosage2");
-		String injectiondosage3 = req.getParameter("injectiondosage3");
+		String[] injectiondosage1 = req.getParameterValues("injectiondosage1");
+		for(int i = 0 ; i<injectiondosage1.length; i ++) {
+			String a = (i==0) ? injectiondosage1[i] : "," + injectiondosage1[i];
+			System.out.println("a : " + a);
+			injectiondosage += a;
+		}
 		String injectionrepeat = "";
-		String injectionrepeat1 = req.getParameter("injectionrepeat1");
-		String injectionrepeat2 = req.getParameter("injectionrepeat2");
-		String injectionrepeat3 = req.getParameter("injectionrepeat3");
+		String[] injectionrepeat1 = req.getParameterValues("injectionrepeat1");
+		for(int i = 0 ; i<injectionrepeat1.length; i ++) {
+			String a = (i==0) ? injectionrepeat1[i] : "," + injectionrepeat1[i];
+			System.out.println("a : " + a);
+			injectionrepeat += a;
+		}
 		String injectiondate = "";
-		String injectiondate1 = req.getParameter("injectiondate1");
-		String injectiondate2 = req.getParameter("injectiondate2");
-		String injectiondate3 = req.getParameter("injectiondate3");
-		
+		String[] injectiondate1 = req.getParameterValues("injectiondate1");
+		for(int i = 0 ; i<injectiondate1.length; i ++) {
+			String a = (i==0) ? injectiondate1[i] : "," + injectiondate1[i];
+			System.out.println("a : " + a);
+			injectiondate += a;
+		}
 		String caution = req.getParameter("caution");
-		
-		
+
 		PrescriptionVO vo = new PrescriptionVO();
 		
 		vo.setHospitalno(hospitalno);
 		vo.setGuestno(guestno);
 		vo.setSymptom(symptom);
-		if (!drugname1.equals("") || !drugname2.equals("") || !drugname3.equals("") || !drugname4.equals("") || !drugname5.equals("")){
-			drugname = drugname1 + ", " + drugname2 + ", " + drugname3 + ", " + drugname4 + ", " + drugname5;
-		}
 		vo.setDrugname(drugname);
-
-		if (!drugdosage1.equals("") || !drugdosage2.equals("") || !drugdosage3.equals("") || !drugdosage4.equals("") || !drugdosage5.equals("")){
-			drugdosage = drugdosage1 + ", " + drugdosage2 + ", " + drugdosage3 + ", " + drugdosage4 + ", " + drugdosage5;
-		}
 		vo.setDrugdosage(drugdosage);
-		
-		if (!drugrepeat1.equals("") || !drugrepeat2.equals("") || !drugrepeat3.equals("") || !drugrepeat4.equals("") || !drugrepeat5.equals("")){
-			drugrepeat = drugrepeat1 + ", " + drugrepeat2 + ", " + drugrepeat3 + ", " + drugrepeat4 + ", " + drugrepeat5;
-		}
 		vo.setDrugrepeat(drugrepeat);
-		
-		if (!dosagedate1.equals("") || !dosagedate2.equals("") || !dosagedate3.equals("") || !dosagedate4.equals("") || !dosagedate5.equals("")){
-			dosagedate = dosagedate1 + ", " + dosagedate2 + ", " + dosagedate3 + ", " + dosagedate4 + ", " + dosagedate5;
-		}
 		vo.setDosagedate(dosagedate);
-		
-		if (!dosageusage1.equals("") || !dosageusage2.equals("") || !dosageusage3.equals("") || !dosageusage4.equals("") || !dosageusage5.equals("")){
-			dosageusage = dosageusage1 + ", " + dosageusage2 + ", " + dosageusage3 + ", " + dosageusage4 + ", " + dosageusage5;
-		}
 		vo.setDosageusage(dosageusage);
-		
-		if (!injectionname1.equals("") || !injectionname2.equals("") || !injectionname3.equals("") ){
-			injectionname = injectionname1 + ", " + injectionname2 + ", " + injectionname3;
-		}
 		vo.setInjectionname(injectionname);
-		
-		if (!injectiondosage1.equals("") || !injectiondosage2.equals("") || !injectiondosage3.equals("") ){
-			injectiondosage = injectiondosage1 + ", " + injectiondosage2 + ", " + injectiondosage3;
-		}
 		vo.setInjectiondosage(injectiondosage);
-		
-		if (!injectionrepeat1.equals("") || !injectionrepeat2.equals("") || !injectionrepeat3.equals("") ){
-			injectionrepeat = injectionrepeat1 + ", " + injectionrepeat2 + ", " + injectionrepeat3;
-		}
 		vo.setInjectionrepeat(injectionrepeat);
-		
-		if (!injectiondate1.equals("") || !injectiondate2.equals("") || !injectiondate3.equals("") ){
-			injectiondate = injectiondate1 + ", " + injectiondate2 + ", " + injectiondate3;
-		}
 		vo.setInjectiondate(injectiondate);
 		
 		vo.setPrescriptionDate(new Date(System.currentTimeMillis()));
@@ -901,94 +891,40 @@ public class DoctorServiceImpl implements DoctorService {
 		GuestVO gusDto = dao.getcusInfo(guestno);
 		
 		String drugname = preDto.getDrugname();
-		String drugname1 = drugname.split(", ")[0];
-		String drugname2 = drugname.split(", ")[1];
-		String drugname3 = drugname.split(", ")[2];
-		String drugname4 = drugname.split(", ")[3];
-		String drugname5 = drugname.split(", ")[4];
+		String[] drugname1 = drugname.split(",");
 		
 		String drugdosage = preDto.getDrugdosage();
-		String drugdosage1 = drugdosage.split(", ")[0];
-		String drugdosage2 = drugdosage.split(", ")[1];
-		String drugdosage3 = drugdosage.split(", ")[2];
-		String drugdosage4 = drugdosage.split(", ")[3];
-		String drugdosage5 = drugdosage.split(", ")[4];
-		
-		
+		String[] drugdosage1 = drugdosage.split(",");
+
 		String drugrepeat = preDto.getDrugrepeat();
-		String drugrepeat1 = drugrepeat.split(", ")[0];
-		String drugrepeat2 = drugrepeat.split(", ")[1];
-		String drugrepeat3 = drugrepeat.split(", ")[2];
-		String drugrepeat4 = drugrepeat.split(", ")[3];
-		String drugrepeat5 = drugrepeat.split(", ")[4];
+		String[] drugrepeat1 = drugrepeat.split(",");
+		
 		String dosagedate = preDto.getDosagedate();
-		String dosagedate1 = dosagedate.split(", ")[0];
-		String dosagedate2 = dosagedate.split(", ")[1];
-		String dosagedate3 = dosagedate.split(", ")[2];
-		String dosagedate4 = dosagedate.split(", ")[3];
-		String dosagedate5 = dosagedate.split(", ")[4];
+		String[] dosagedate1 = dosagedate.split(",");
+
 		String dosageusage = preDto.getDosageusage();
-		String dosageusage1 = dosageusage.split(", ")[0];
-		String dosageusage2 = dosageusage.split(", ")[1];
-		String dosageusage3 = dosageusage.split(", ")[2];
-		String dosageusage4 = dosageusage.split(", ")[3];
-		String dosageusage5 = dosageusage.split(", ")[4];
+		String[] dosageusage1 = dosageusage.split(",");
+
 		String injectionname = preDto.getInjectionname();
-		String injectionname1 = injectionname.split(", ")[0];
-		String injectionname2 = injectionname.split(", ")[1];
-		String injectionname3 = injectionname.split(", ")[2];
+		String[] injectionname1 = injectionname.split(",");
+
 		String injectiondosage = preDto.getInjectiondosage();
-		String injectiondosage1 = injectiondosage.split(", ")[0];
-		String injectiondosage2 = injectiondosage.split(", ")[1];
-		String injectiondosage3 = injectiondosage.split(", ")[2];
+		String[] injectiondosage1 = injectiondosage.split(",");
+
 		String injectionrepeat = preDto.getInjectionrepeat();
-		String injectionrepeat1 = injectionrepeat.split(", ")[0];
-		String injectionrepeat2 = injectionrepeat.split(", ")[1];
-		String injectionrepeat3 = injectionrepeat.split(", ")[2];
+		String[] injectionrepeat1 = injectionrepeat.split(",");
+
 		String injectiondate = preDto.getInjectiondate();
-		String injectiondate1 = injectiondate.split(", ")[0];
-		String injectiondate2 = injectiondate.split(", ")[1];
-		String injectiondate3 = injectiondate.split(", ")[2];
-		System.out.println(injectiondate1);
-		System.out.println(injectiondate2);
-		System.out.println(injectiondate3);
+		String[] injectiondate1 = injectiondate.split(",");
 		model.addAttribute("drugname1", drugname1);
-		model.addAttribute("drugname2", drugname2);
-		model.addAttribute("drugname3", drugname3);
-		model.addAttribute("drugname4", drugname4);
-		model.addAttribute("drugname5", drugname5);
 		model.addAttribute("drugdosage1", drugdosage1);
-		model.addAttribute("drugdosage2", drugdosage2);
-		model.addAttribute("drugdosage3", drugdosage3);
-		model.addAttribute("drugdosage4", drugdosage4);
-		model.addAttribute("drugdosage5", drugdosage5);
 		model.addAttribute("drugrepeat1", drugrepeat1);
-		model.addAttribute("drugrepeat2", drugrepeat2);
-		model.addAttribute("drugrepeat3", drugrepeat3);
-		model.addAttribute("drugrepeat4", drugrepeat4);
-		model.addAttribute("drugrepeat5", drugrepeat5);
 		model.addAttribute("dosagedate1", dosagedate1);
-		model.addAttribute("dosagedate2", dosagedate2);
-		model.addAttribute("dosagedate3", dosagedate3);
-		model.addAttribute("dosagedate4", dosagedate4);
-		model.addAttribute("dosagedate5", dosagedate5);
 		model.addAttribute("dosageusage1", dosageusage1);
-		model.addAttribute("dosageusage2", dosageusage2);
-		model.addAttribute("dosageusage3", dosageusage3);
-		model.addAttribute("dosageusage4", dosageusage4);
-		model.addAttribute("dosageusage5", dosageusage5);
 		model.addAttribute("injectionname1", injectionname1);
-		model.addAttribute("injectionname2", injectionname2);
-		model.addAttribute("injectionname3", injectionname3);
 		model.addAttribute("injectiondosage1", injectiondosage1);
-		model.addAttribute("injectiondosage2", injectiondosage2);
-		model.addAttribute("injectiondosage3", injectiondosage3);
 		model.addAttribute("injectionrepeat1", injectionrepeat1);
-		model.addAttribute("injectionrepeat2", injectionrepeat2);
-		model.addAttribute("injectionrepeat3", injectionrepeat3);
 		model.addAttribute("injectiondate1", injectiondate1);
-		model.addAttribute("injectiondate2", injectiondate2);
-		model.addAttribute("injectiondate3", injectiondate3);
 		model.addAttribute("docDto", docDto);
 		model.addAttribute("hosDto", hosDto);
 		model.addAttribute("preDto", preDto);
@@ -1114,17 +1050,99 @@ public class DoctorServiceImpl implements DoctorService {
 		int checkup = Integer.parseInt(req.getParameter("checkup"));
 		System.out.println("checkup" + checkup);
 		model.addAttribute("checkup", checkup);
-        
         int guestno = dao.getGuestCheckupResult(checkup);
+        System.out.println("guestno : " + guestno);
+        int checkuplist = dao.getCheckupListCheckup(checkup);//65
         System.out.println("guestno" + guestno);
         GuestVO gusDto = dao.getcusInfo(guestno);
-        String doctorno = req.getParameter("doctorno");//
+        String doctorno = "d"+String.valueOf(dao.checkupdoc(checkuplist))+"t";
         System.out.println("doctorno"+ doctorno);
-        //HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
-        //System.out.println("hosDto" + hosDto);
+        HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
+       System.out.println("hosDto" + hosDto);
         
         model.addAttribute("gusDto",gusDto);
-        //model.addAttribute("hosDto",hosDto);
+        model.addAttribute("hosDto",hosDto);
+		
+	}
+
+	@Override
+	public void pointManage(HttpServletRequest req, Model model) {
+		int pageSize = 5; //한 페이지당 출력할 글 갯수
+		int pageBlock = 3; //한 블럭당 페이지 갯수
+		int cnt=0;        // 글 갯수 30 db num 젤큰수  50 게시글 30개밖에20개지워지고
+		int start = 0;     // 현재페이지 시작 글번호
+		int end = 0;      // 현재페이지 마지막 글번호
+		int number=0;     // 출력용 글번호 30
+		String pageNum = null; // 페이지번호 
+		int currentPage=0;  // 현재페이지
+		
+		int pageCnt=0; //페이지갯수
+		int startPage=0; //현재블록 시작 페이지
+		int endPage=0; // 현재블록   마지막 페이지
+		
+		// 5단계. 글갯수 구하기
+		cnt = dao.getPointManageCnt(1); 
+		
+		pageNum = req.getParameter("pageNum");
+		
+		if(pageNum==null) {
+			pageNum="1";
+		}
+		
+		currentPage = Integer.parseInt(pageNum);
+		
+		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+		
+		start = (currentPage - 1) * pageSize + 1; 
+		
+		end = start + pageSize - 1;
+		
+		number = cnt - (currentPage -1)* pageSize; 
+		
+		ArrayList<PointVO> dtos = null;
+		if(cnt > 0) {
+			Map<String,Integer> map = new HashMap<String,Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			dtos = dao.getPointManageList(map);
+			model.addAttribute("dtos", dtos);
+		
+			/*ArrayList<GuestVO> guestList = new ArrayList<GuestVO>();
+			GuestVO gu = new GuestVO();
+			for(int i=0 ; i<dtos.size() ;i++) {
+				gu = dao.getcusInfo(dtos.get(i).getGuestno()) ;
+				guestList.add(gu);
+			}*/
+			
+			//model.addAttribute("guestList", guestList);
+		}
+		System.out.println("dtos : " + dtos);
+		// 1 = (1 / 3) * 3 + 1
+ 		startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
+ 		if(currentPage % pageBlock == 0) {
+ 			startPage -= pageBlock; // 나머지 계산
+ 		}		 		
+ 		
+ 		// 3 = 1 + 3 - 1
+ 		endPage = startPage + pageBlock - 1; // 마지막 페이지
+ 		if(endPage > pageCnt) {
+ 			endPage = pageCnt;
+ 		}
+ 		
+ 		String id = (String)req.getSession().getAttribute("id");
+		DoctorVO docDto = dao.getDocInfo(id);
+		
+		model.addAttribute("docDto", docDto); // 글갯수
+		model.addAttribute("cnt", cnt); // 글갯수
+		model.addAttribute("number", number); // 글번호
+		model.addAttribute("pageNum", pageNum); // 페이지 번호
+		if(cnt > 0) {
+			model.addAttribute("startPage", startPage); // 시작 페이지
+			model.addAttribute("endPage", endPage); // 마지막 페이지
+			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+			model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
+			model.addAttribute("currentPage", currentPage); // 현재 페이지
+		}	
 		
 	}
 

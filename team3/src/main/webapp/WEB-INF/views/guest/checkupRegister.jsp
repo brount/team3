@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,18 @@
 
 <script type="text/javascript">
 function check() {
-	if(!document.register.reservationtime.value){
-		alert('검진 날짜를 입력해주세요.');
-		document.register.reservationtime.focus();
+	if(!document.register.reservationtime1.value){
+		alert('검진 날짜(년)를 입력해주세요.');
+		document.register.reservationtime1.focus();
+		return false;
+	}
+	else if(!document.register.reservationtime2.value){
+		alert('검진 날짜(월)를 입력해주세요.');
+		document.register.reservationtime2.focus();
+		return false;
+	}else if(!document.register.reservationtime3.value){
+		alert('검진 날짜(일)를 입력해주세요.');
+		document.register.reservationtime3.focus();
 		return false;
 	}else if(!document.register.height.value){
 		alert('신장을 입력해주세요.');
@@ -117,68 +126,8 @@ function check() {
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
-	            <div class="panel-group" id="accordion">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
-	                        </h4>
-	                    </div>
-	                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
-	                        <div class="panel-body">
-	                            <table class="table">
-	                                <tr>
-	                                    <td>
-	                                        <a href="myHealth">내 건강정보</a>
-	                                    </td>
-	                                </tr>
-	                                   <tr>
-	                                    <td>
-	                                        <a href="checkupRegister">검진서등록</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <a href="checkAnalyze">내 검진결과</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                       <a href="myBordList">내 질문목록</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <a href="reserveList">예약목록</a>
-	                                    </td>
-	                                </tr>
-	                            </table>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="bookMark">즐겨찾는병원</a>
-	                        </h4>
-	                 	   </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a  href="guestModify">회원정보수정</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="memberExit">회원탈퇴</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>	
+		            <%@ include file="../guest/menuGuest.jsp" %>
+		        </div>	
 	        
 	        
 		  		 <div class="col-sm-9 col-md-9">
@@ -193,8 +142,15 @@ function check() {
 						<table class="table table-striped table-hover" border="1">
 							<thead>
 							<tr>
-							<th colspan="4">검진 날짜</th>
-							<td colspan="2"><input name="reservationtime" placeholder="20170725" class="form-control"  type="text" style="width:180px;"></td>
+							<th colspan="3">검진 날짜</th>
+							<td colspan="3">
+							<input name="reservationtime1" placeholder="2018" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;">
+							-
+							<input name="reservationtime2" placeholder="08" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;">
+							-
+							<input name="reservationtime3" placeholder="07" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;;">
+							</td>
+							
 							
 							</tr>
 							

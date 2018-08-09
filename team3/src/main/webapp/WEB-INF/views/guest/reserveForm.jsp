@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
-<!-- 
-<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
- -->
-
 <html  class="no-js" lang="en" >
 <head>
 <meta charset="utf-8">
@@ -297,11 +292,5 @@
    <%@ include file="../common/footer.jsp" %>
 </footer>
 
-
-
-<!-- <img src="resources/images/Demonstration/reserveForm.jpg"> -->
-	<!-- <--<input type="button" onclick="window.location='main'" value="메인페이지">
-	<input type="button" onclick="window.location='reserveList'" value="등록">
-	<input type="button" onclick="window.location='reserveList'" value="취소"> --> -->
 </body>
 </html>

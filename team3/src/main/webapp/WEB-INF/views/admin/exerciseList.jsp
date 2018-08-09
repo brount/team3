@@ -43,7 +43,7 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th>전체선택&nbsp;<input type="checkbox" name="checkAll" id="checkAll"></th>
+		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>운동명</th>
 		                                            <th>운동정의</th>
 		                                            <th>운동방법</th>

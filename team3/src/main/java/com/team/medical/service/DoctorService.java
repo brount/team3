@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface DoctorService {
-	
+	// 로그인
 	public void doctorLogin(HttpServletRequest req, Model model);
 	
 	// 아이디 중복 확인
@@ -68,6 +68,9 @@ public interface DoctorService {
 
 	//처방전 페이지
 	public void examinationAdd(HttpServletRequest req, Model model);
+
+	// 포인트 페이지
+	public void pointManage(HttpServletRequest req, Model model);
 
 
 	

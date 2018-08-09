@@ -195,6 +195,15 @@ public class GuestContoller {
 
 		return "guest/personalCare";
 	}
+	//(마이페이지버전)개인건강관리페이지                            
+		@RequestMapping(value = "personalCareM")
+		public String personalCareM(HttpServletRequest req, Model model) {
+			logger.info("personalCareM, 페이지");
+			
+			guService.myHealth(req, model);
+
+			return "guest/personalCareM";
+		}
 	//예약신청페이지  !!! 예약 신청 리스트 따로 필요할 듯 
 	@RequestMapping(value = "reserveForm")
 	public String reserveForm(HttpServletRequest req, Model model) {
@@ -248,7 +257,14 @@ public class GuestContoller {
 			guService.checkupRegisterclick(req, model);
 			return "guest/checkupRegisterclick";
 		}
-	
+	//사용자가 등록한 검진서 삭제
+	@RequestMapping(value = "checkdelete")
+	public String checkdelete(HttpServletRequest req, Model model) {
+		logger.info("checkdelete, 페이지");
+		guService.checkdelete(req, model);
+		return "guest/checkupRegisterList";
+	}
+		
 	//음식 검색 칼로리조회 -아침
 	@RequestMapping(value = "foodsearch1")
 	public String foodsearch1(HttpServletRequest req, Model model) {
@@ -283,9 +299,25 @@ public class GuestContoller {
 
 		return "guest/todaycal";
 	}
+	//음식 추가 폼
+	@RequestMapping(value = "myFoodAdd")
+	public String myFoodAdd(HttpServletRequest req, Model model) {
+		logger.info("myFoodAdd, 페이지");
+
+		return "guest/myFoodAdd";
+	}
+	
+	//사용자가 새로운 음식과 칼로리 인설트 - 나만의 음식목록으로이동
+	@RequestMapping(value = "newfoodAdd")
+	public String newfoodAdd(HttpServletRequest req, Model model) {
+		logger.info("newfoodAdd, 페이지");
+		guService.newfood(req, model);
+
+		return "guest/newfoodAdd";
+	}
 	
 	
-	//사용자가 새로운 음식과 칼로리 인설트
+	//사용자가 새로운 음식과 칼로리 인설트 - 하루칼로리 추가폼이동
 	@RequestMapping(value = "newfood")
 	public String newfood(HttpServletRequest req, Model model) {
 		logger.info("newfood, 페이지");
@@ -310,6 +342,15 @@ public class GuestContoller {
 
 			return "guest/myFoodList";
 		}
+		//(헬스케어페이지버전)사용자가 추가한 음식 목록
+		@RequestMapping(value = "myFoodListH")
+		public String myFoodListH(HttpServletRequest req, Model model) {
+			logger.info("myFoodListH, 페이지");
+			guService.myFoodList(req, model);
+
+			return "guest/myFoodListH";
+		}
+			
 		
 	//사용자가 추가한 음식 수정 전 폼
 		

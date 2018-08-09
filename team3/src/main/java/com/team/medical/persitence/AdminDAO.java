@@ -11,7 +11,6 @@ import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PointVO;
-import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 public interface AdminDAO {
@@ -74,9 +73,6 @@ public interface AdminDAO {
 	
 	// 의사회원목록 조회
 	public ArrayList<DoctorVO> getDoctorList(Map<String, Object> map);
-	
-	// 의사회원목록 조회2
-	public ArrayList<HospitalVO> getDoctorList2(Map<String, Object> map);
 	
 	// 의사회원검색목록 개수 구하기
 	public int search_doctorCnt();
@@ -244,17 +240,6 @@ public interface AdminDAO {
 	// 운동 수정 처리
 	public int exerciseModifyPro(ExerciseVO dto);
 	
-//---------------------------------------------------------------------------------------
-	
-	// 예방정보 목록 개수 구하기
-	public int getApreventionListCnt();
-	
-	// 예방정보 목록 조회
-	public ArrayList<PreventionVO> getApreventionList(Map<String, Object> map);
-
-	// 예방정보 목록 조회
-	public ArrayList<DiseaseVO> getApreventionList2(Map<String, Object> map);
-
 	//------------------------------------- 희성
 	// 이벤트 추가
 	public int addEvent(EventVO dto);
@@ -271,11 +256,8 @@ public interface AdminDAO {
 	public int getPointListCnt(int status);
 
 	// 포인트목록 조회1
-	public ArrayList<PointVO> pointList(Map<String, Object> map);
+	public ArrayList<PointVO> getPointList(Map<String, Object> map);
 
-	// 포인트목록 조회2
-	public ArrayList<DoctorVO> pointList2(Map<String, Object> map2);
-	
 	//-------------------------------------
 	// 공지사항 상세보기
 	public QuestionBoardVO adminReportInfo(int num);

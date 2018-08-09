@@ -19,7 +19,7 @@
 		
 			</script>
 			
-			<c:redirect url="checkAnalyze"/>
+			<c:redirect url="checkupRegisterList"/>
 		</c:if>
 </body>
 </html>

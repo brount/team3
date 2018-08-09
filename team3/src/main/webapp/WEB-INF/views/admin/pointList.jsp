@@ -22,17 +22,17 @@
 				<div class="col-lg-8">
 					<!-- /.panel -->
 					<div class="panel panel-default">
-						<div class="panel-heading">
+						<!-- <div class="panel-heading">
 							<div class="pull-right">
 								<div class="btn-group">
-									<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
+									<select class="btn btn-default btn-xs dropdown-toggle" name="pointDate" onchange="location.href=this.value">
 										<option value="pointList_weekly">주간결산</option>
 										<option value="pointList_monthly">월간결산</option>
 										<option value="pointList_yearly">연간결산</option>
 									</select> 
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="row">
@@ -47,7 +47,7 @@
 											
 											<tbody>
 												<tr>
-													<td>1,000,000pt</td>
+													<td>${total}</td>
 												</tr>
 											</tbody>
 										</table>
@@ -69,18 +69,6 @@
 				<div class="col-lg-8">
 				<!-- /.panel -->
 					<div class="panel panel-default">
-						<div class="panel-heading">
-							<div class="pull-right">
-								<div class="btn-group">
-									<select class="btn btn-default btn-xs dropdown-toggle" onchange="return pointListCheck(this.value)">
-										<option value="0">전체</option>
-										<option value="1">획득</option>
-										<option value="2">사용</option>
-									</select> 
-								</div>
-							</div>
-						</div>
-						<!-- /.panel-heading -->
 						<div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-lg-4">
@@ -92,6 +80,7 @@
 	                                            <th>회원ID</th>
 	                                            <th>일자</th>
 	                                            <th>사용/획득</th>
+	                                            <th>가용포인트</th>
 	                                            <th>누적포인트</th>
 	                                        </tr>
 	                                        </thead>
@@ -105,18 +94,32 @@
 													    <td>${dtos2[a].doctorno}</td>
 														<td>${dtos2[a].doctorid}</td>
 														<td>${dto.cum_date}</td>
+														
 														<td>
 															<c:if test="${dto.status == 1}">
-																+
+															+	${dto.point}
 															</c:if>
 															<c:if test="${dto.status == 2}">
-																-
+															-	${dto.point}
 															</c:if>
-															${dto.point}
 														</td>
-														<td>${cum_point}</td>
+														
+														
+														<td>
+															<c:set var="ava_point" value="${ava_point + dto.point}"/>
+															${ava_point}
+														</td>
+														
+														
+														<td>
+															<c:if test="${dto.status == 1 }">
+																<c:set var="cum_point" value="${cum_point + dto.point}"/>
+															</c:if>
+															${cum_point}
+														</td>
+														
 		                                        	</tr>
-		                                        	<c:set var="a" value="${a+1 }"></c:set>
+		                                        	<c:set var="a" value="${a+1 }"/>
 		                                       	</c:forEach>
 		                                       </c:if>
 	                                        </tbody>

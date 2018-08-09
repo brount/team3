@@ -12,6 +12,7 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.ReservationVO;
 
@@ -22,12 +23,12 @@ public class DoctorDAOImpl implements DoctorDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public int doctorLogin(Map<String, String> map) {
-		int selectCnt = 0;
+	public int doctorLogin(Map<String, Object> map) {
+		int loginCnt = 0;
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		selectCnt = dao.doctorLogin(map);
+		loginCnt = dao.doctorLogin(map);
 		
-		int idChkCnt =dao.idCheck((String)map.get("id"));
+		/*int idChkCnt =dao.idCheck((String)map.get("id"));
 		
 		// 로그인한 id에 해당하는 데이터가 있고
 		if(idChkCnt == 1) {
@@ -41,9 +42,9 @@ public class DoctorDAOImpl implements DoctorDAO {
 			} else {
 				selectCnt = -1;
 			}
-		}
+		}*/
 		
-		return selectCnt;
+		return loginCnt;
 	}
 	
 	//아이디 체크
@@ -370,15 +371,48 @@ public class DoctorDAOImpl implements DoctorDAO {
 		int cnt = dao.getCheckupCheckupList(checkuplist);
 		return cnt;
 	}
+	
+	@Override
+	public ArrayList<PrescriptionVO> aaa(int prescriptionNo) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		ArrayList<PrescriptionVO> cnt = dao.aaa(prescriptionNo);
+		return cnt;
+	}
+
+	@Override
+	public int getCheckupListCheckup(int checkup) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		int cnt = dao.getCheckupListCheckup(checkup);
+		return cnt;
+	}
+
+	@Override
+	public int doctorappro(Map<String, Object> map) {
+		int loginCnt = 0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		loginCnt = dao.doctorappro(map);
+		return loginCnt;
+	}
+
+	@Override
+	public int getPointManageCnt(int i) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getPointManageCnt(i);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map) {
+		ArrayList<PointVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		dtos=dao.getPointManageList(map);
+		
+		return dtos;
+	}
 
 	
 	
-
-
-
-	
-	
-
 
 	
 }

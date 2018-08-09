@@ -28,10 +28,24 @@
 		            <div class="well">
 			  		 	<div class="container">
 					      <div class="row text-center text-lg-left">
-				           	<div align="center"> 
-				           	${dto.advertisementTitle}  
-				           	<img src="resources/images/event/${dto.advertisementImage}">
-				            ${dto.advertisementContents}
+				           	<div>
+				           		<table class='table'>
+				           			<tr>
+				           				<th style="text-align: center;">
+				           					${dto.advertisementTitle}
+				           				</th>
+				           			</tr>
+				           			<tr>
+				           				<th>
+				           					<img src="resources/images/event/${dto.advertisementImage}" style="width:100%">
+				           				</th>
+				           			</tr>
+				           			<tr>
+				           				<th>
+				           					${dto.advertisementContents}
+				           				</th>
+				           			</tr>
+				           		</table>
 				           	</div>
 					      </div>					
 			        	</div>  

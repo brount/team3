@@ -34,7 +34,7 @@
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
-	                <a data-toggle="collapse" data-parent="#accordion" href="#">포인트</a>
+	                <a data-toggle="collapse" data-parent="#accordion" href="pointManage">내 포인트</a>
 	            </h4>
 	        </div>
 	     <div id="collapseTwo" class="panel-collapse collapse in collapse show">
@@ -42,14 +42,10 @@
 	                <table class="table">
 	                    <tr>
 	                        <td>
-	                            <a href="#">포인트 내역</a>
+	                            <a href="pointManage">포인트 내역</a>
 	                        </td>
 	                    </tr>
-	                    <tr>
-	                        <td>
-	                            <a href="#">포인트 충전</a>
-	                        </td>
-	                    </tr>
+	                    
 	                </table>
 	            </div>
 	        </div>

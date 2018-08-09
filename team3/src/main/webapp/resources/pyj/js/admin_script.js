@@ -1,5 +1,6 @@
 function allCheckFunc( obj ) {
 		$("[name=checkOne]").prop("checked", $(obj).prop("checked") );
+		$("[name=checkTwo]").prop("checked", $(obj).prop("checked") );
 }
 
 /* 체크박스 체크시 전체선택 체크 여부 */
@@ -25,6 +26,8 @@ function oneCheckFunc( obj )
 	}
 }
 
+
+
 $(function(){
 	$("[name=checkAll]").click(function(){
 		allCheckFunc( this );
@@ -34,6 +37,25 @@ $(function(){
 			oneCheckFunc( $(this) );
 		});
 	});
+	
+	// 의사회원 승인처리 체크박스
+	$("[name=checkOne]").click(function(){
+	    if($("[name=checkOne]").is(":checked")){
+	    	$(this).next().prop("checked",true);
+	    }
+	    else{
+	    	$(this).next().prop("checked",false);
+	    }
+	});
+	$("[name=checkOne]").click(function(){
+	    if($("[name=checkTwo]").is(":checked")){
+	    	$(this).next().prop("checked",true);
+	    }
+	    else{
+	    	$(this).next().prop("checked",false);
+	    }
+	});
+	
 });
 
 
@@ -123,19 +145,33 @@ function doctordeleteCheck(){
 
 //의사 회원 승인
 function doctorPermissionCheck(){
-	var count = 0;
+	var count1 = 0;
+	var count2 = 0;
 	var doctorno = "";
+	var hospitalno = "";
 	var checkOne = document.getElementsByName("checkOne");
+	var checkTwo = document.getElementsByName("checkTwo");
 	var pageNum = document.getElementsByName("pageNum")[0].value;
 
 	//선택된거 체크
 	for(var i = 0; i < checkOne.length; i++){
 		if(checkOne[i].checked == true){
-			count++;
+			count1++;
 			if(doctorno == ""){
 				doctorno += checkOne[i].value;
 			}else{
 				doctorno += "," + checkOne[i].value;
+			}
+		}
+	}
+	//선택된거 체크
+	for(var i = 0; i < checkTwo.length; i++){
+		if(checkTwo[i].checked == true){
+			count2++;
+			if(hospitalno == ""){
+				hospitalno += checkTwo[i].value;
+			}else{
+				hospitalno += "," + checkTwo[i].value;
 			}
 		}
 	}
@@ -144,7 +180,7 @@ function doctorPermissionCheck(){
 		alert("선택하세요");
 		return false;
 	}else{
-		window.location='doctorPermissionPro?doctorno='+doctorno+'&pageNum='+pageNum;
+		window.location='doctorPermissionPro?doctorno='+doctorno+'&hospitalno='+hospitalno+'&pageNum='+pageNum;
 	}
 }
 
@@ -336,5 +372,6 @@ function adminReportDeleteChek(){
 		window.location='adminReportDeleteProChek?boardno='+boardno+'&pageNum='+pageNum;
 	}
 }
+
 
 

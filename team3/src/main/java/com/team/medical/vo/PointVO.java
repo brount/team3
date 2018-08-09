@@ -7,8 +7,9 @@ public class PointVO {
    private int pointNo;
    private int doctorno;
    private int point;
-   private int status;
+   private int status;			// 1 : 획득포인트		2 : 사용포인트
    private Date cum_date;
+   
    public int getPointNo() {
       return pointNo;
    }

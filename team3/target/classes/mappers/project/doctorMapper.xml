@@ -6,6 +6,10 @@
 	<select id="doctorLogin" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM doctor WHERE doctorid=#{id} AND doctorpwd=#{pwd}
 	</select>
+	<select id="doctorappro" parameterType="java.util.Map" resultType="int">
+		SELECT doctorappro FROM doctor WHERE doctorid=#{id} 
+	</select>
+	
 	<!-- 아이디 체크 -->
 	<select id ="idCheck" resultType="int">
 		select count(*) from doctor where doctorid =#{doctorid,jdbcType=VARCHAR}
@@ -197,7 +201,7 @@
 			   	   	  		    ORDER BY prescriptionNo DESC
 			   	   	  	  )
 					)   
-			 WHERE rnum >= #{start} AND rnum <= #{end}
+			 WHERE rnum >= #{start,jdbcType=INTEGER} AND rnum <= #{end,jdbcType=INTEGER}
 		]]>
 	</select>
 	
@@ -283,6 +287,35 @@
 	
 	<select id = "getCheckupCheckupList" parameterType="int" resultType="int">
 	   select checkup from checkup where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	</select>
+	
+	<select id = "getCheckupListCheckup" parameterType="int" resultType="int">
+	   select checkuplist from checkup where checkup =#{checkup,jdbcType=INTEGER}
+	</select>
+	
+	<select id = "aaa" parameterType="int" resultType="com.team.medical.vo.PrescriptionVO">
+		select * from Prescription where prescriptionNo =#{prescriptionNo}
+	</select>
+	
+	<!-- 포인트 글 갯수 -->
+	<select id="getPointManageCnt" resultType="int">
+		select count(pointno) from point
+	</select>
+	
+	<!-- 포인트 글 목록 -->
+	<select id="getPointManageList" parameterType="java.util.Map" resultType="com.team.medical.vo.PointVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT pointno, doctorNo, point, status, cum_date, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM point 
+			   	   	  		    ORDER BY pointNo DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
 	</select>
 	
 </mapper>

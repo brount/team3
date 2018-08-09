@@ -19,7 +19,6 @@ import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
 import com.team.medical.vo.HospitalVO;
-import com.team.medical.vo.PreventionVO;
 import com.team.medical.vo.QuestionBoardVO;
 
 @Repository
@@ -222,28 +221,7 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return selectCnt;
 	}
-	// 예방 목록
-	@Override
-	public ArrayList<PreventionVO> preventionList(Map<String, Integer> map) {
-
-		ArrayList<PreventionVO> dtos = null;
-		
-		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
-		dtos = dao.preventionList(map);
-		
-		return dtos;
-	}
-	// 예방 상세 정보
-	@Override
-	public PreventionVO preventionInfo(int preventionCode) {
-
-		PreventionVO vo = null;
-		
-		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
-		vo = dao.preventionInfo(preventionCode);
-		
-		return vo;
-	}
+	
 	// 운동 갯수 구하기
 	@Override
 	public int getExerciseCnt() {
@@ -325,11 +303,20 @@ public class CommonDAOImpl implements CommonDAO {
 	}
 	// 업데이트 포인트
 	@Override
-	public void usePoint(Map<String,Object> map) {
+	public int usePoint(Map<String,Object> map) {
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
-		dao.usePoint(map);
+		int updateCnt = dao.usePoint(map);
+		
+		return updateCnt;
 	}
-	
+	// 포인트 인서트
+	@Override
+	public int pointInsert (Map<String,Object> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		int updateCnt = dao.pointInsert(map);
+		
+		return updateCnt;
+	}
 	// 테스트
 	@Override
 	public ArrayList<String> test(String[] args) throws IOException {

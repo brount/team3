@@ -54,42 +54,11 @@
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
-		            <div class="panel-group" id="accordion">
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">병원 검색</a>
-		                        </h4>
-		                    </div>
-		                    <div id="collapseOne" class="panel-collapse collapse">
-		                        <div class="panel-body">
-		                            <table class="table">
-		                                <tr>
-		                                    <td>
-		                                       <a href="#">병원</a>
-		                                    </td>
-		                                </tr>
-		                                <tr>
-		                                    <td>
-		                                        <a href="achospitalSeach?state=1">제휴병원</a>
-		                                    </td>
-		                                </tr>
-		                            </table>
-		                        </div>
-		                    </div>
-		                </div>
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a href="drugStoreSeach">약국 검색</a>
-		                        </h4>
-		                    </div>		                  
-		                </div>
-		            </div>
+		            <%@ include file="../common/menuMedical.jsp" %>
 		        </div>
 		        <div class="col-sm-9 col-md-9">
 		            <div class="well">
-		            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a1a559b1d0f771a06e9ccd3b7fcd926&libraries=services"></script>
+		            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=839212716fd418bb7f8f4913b0ec854c&libraries=services"></script>
 		             <h3>약국검색</h3>
 					<div class="map_wrap">
 					    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>

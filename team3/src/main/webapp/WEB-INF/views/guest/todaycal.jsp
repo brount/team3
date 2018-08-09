@@ -28,7 +28,7 @@
 	        </div>
 	        
   		 	<div class="col-sm-9 col-md-9">
-	        
+	        <div class="well">
 		            <div class="container">
 					  <form class="form-horizontal" action="todaycal" method="post"  id="reg_form" name="cal">
 				 
@@ -70,7 +70,7 @@
 							</c:if>
 							<tr class="unread" align="center">
                                     <td class="view-message  dont-show" colspan="2">					  
-                                       <input type="button" class="btn btn-warning" value="PersonalCare 메인" onclick="window.location='caloryAddModi'" >
+                                       <input type="button" class="btn btn-warning" value="PersonalCare 메인" onclick="window.location='personalCare'" >
 									</td>
                                                             
                                     
@@ -78,6 +78,7 @@
                               
 							</table>
 					   </form>
+					   </div>
 					   </div>
 					   </div>
 	            </div>

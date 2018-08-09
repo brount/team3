@@ -29,20 +29,18 @@
                       <div class="inbox-head">
                         
                           <form action="#" class="pull-right position">
-                              <div class="input-append">
+                           <!--    <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
                                   <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
                                   <input type="button" class="btn" value="글쓰기" onclick="window.location='boardAdd'">
-                              </div>
-                              <div>
-                              	
-                              </div>
+                              </div> -->
+                           
                           </form>
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
 
-                               <table class="table table-inbox table-hover">
+                               <table class="table table-inbox table-hover" style="margin-top: 50;">
                                 
                             <tbody>
                               <tr class="unread">
@@ -62,7 +60,7 @@
                               </tr>
                               
                               
-                              
+                              <c:if test="${cnt!=0 }">
                               <c:forEach var="dto" items="${dtos }" >
                               <tr class="">
                                   <td class="view-message  dont-show">${dto.boardno}</td>
@@ -72,7 +70,12 @@
                               </tr>
                             
                             </c:forEach>
-                            
+                            </c:if>
+                       		<c:if test="${cnt==0 }">
+                       			<tr>
+                       			<td colspan="6" align="center">작성된 질문이 없습니다.</td>
+                       			</tr>
+                       		</c:if>	
                        
                           </tbody>
                           </table>

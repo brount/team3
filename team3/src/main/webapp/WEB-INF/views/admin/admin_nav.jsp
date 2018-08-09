@@ -9,8 +9,8 @@
 		</div>
 
 		<ul class="nav navbar-right navbar-top-links">
-			<li onclick="main">Main</a></li>
-			<li onclick="main"><i class="fa fa-sign-out fa-fw"></i> Logout </a></li>
+			<li onclick="window.location='main'">Main</li>
+			<li onclick="window.location='main'"><i class="fa fa-sign-out fa-fw"></i> Logout </li>
 		</ul>
 		<!-- /.navbar-top-links -->
 

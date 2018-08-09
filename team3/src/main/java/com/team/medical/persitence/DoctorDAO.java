@@ -8,12 +8,13 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.ReservationVO;
 
 public interface DoctorDAO {
 	
-	public int doctorLogin(Map<String,String> map);
+	public int doctorLogin(Map<String, Object> map);
 	
 	//아이디 체크
 	public int idCheck(String id);
@@ -136,6 +137,20 @@ public interface DoctorDAO {
 
 	// 검사결과번호 
 	int getCheckupCheckupList(int checkuplist);
+
+	ArrayList<PrescriptionVO> aaa(int prescriptionNo);
+
+	// 검진 번호
+	public int getCheckupListCheckup(int checkup);
+
+	// 로그인 승인
+	public int doctorappro(Map<String, Object> map);
+
+	// 포인트 글 갯수
+	public int getPointManageCnt(int i);
+
+	// 포인트 글 목록
+	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map);
 
 	//
 	
