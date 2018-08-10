@@ -30,7 +30,40 @@
       window.location="main";
       </script>
    </c:if>
-      
+   <c:if test="${logindAppro == 3}">
+	   <script type="text/javascript">
+	         	alert("제명된 회원입니다");
+	   </script>
+	      <c:if test="${vo.sanctions == 0}">
+	      	 <script type="text/javascript">
+	        	 alert("제제 사유 : 음란글 게재");
+	         </script>
+	      </c:if>
+	      <c:if test="${vo.sanctions == 1}">
+		      <script type="text/javascript">
+		         alert("제제 사유 : 욕설/비방");
+		      </script>
+	      </c:if>
+	      <c:if test="${vo.sanctions == 2}">
+		      <script type="text/javascript">
+		     	 alert("제제 사유 : 도배");
+		      </script>
+	      </c:if>
+	      <c:if test="${vo.sanctions == 3}">
+		      <script type="text/javascript">
+		     	 alert("제제 사유 : 부적절한 광고/홍보");
+		      </script>
+	      </c:if>
+	      <c:if test="${vo.sanctions == 4}">
+		      <script type="text/javascript">
+		      	 alert("제제 사유 : 허위정보 유포");
+		      </script>
+		  </c:if>
+		<script type="text/javascript">   
+	      	window.location="main";
+	    </script>
+	      
+   </c:if>   
    <c:if test="${loginCnt == 1}">
    <script type="text/javascript">
          alert("로그인 성공하였습니다~!");

@@ -59,7 +59,7 @@
 									</tr>
 								</table>
 							</div>
-						<input type="button" value="병원 소개 수정" onclick="window.location='myHospitalUpdate'">
+						<input type="button" class="btn btn-dark-blue" value="병원 소개 수정" onclick="window.location='myHospitalUpdate'">
 					</div>
 				</div>
 			</div>

@@ -855,190 +855,200 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("number",number);
 	}
 	// 약 검색목록 페이지
-	@Override
-	public void drugSeachList(HttpServletRequest req, Model model) {
-		
-		//게시판 관련
-		int pageSize = 20; //한 페이지당 출력할 글 갯수
-		int pageBlock = 3; //한 블럭당 페이지 갯수
-		
-		int cnt = 0;        // 글 갯수 30 db num 젤큰수  50 게시글 30개밖에20개지워지고
-		int start = 0;     // 현재페이지 시작 글번호
-		int end = 0;      // 현재페이지 마지막 글번호
-		int number = 0;     // 출력용 글번호 30
-		String pageNum = null; // 페이지번호 
-		int currentPage = 0;  // 현재페이지
-		
-		int pageCnt = 0; //페이지갯수
-		int startPage = 0; //현재블록 시작 페이지
-		int endPage = 0; // 현재블록   마지막 페이지
-		// (1-1)*5 + 1
-		
-		// 5단계. 글갯수 구하기.
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		// 식별표시
-		String sign = null;
-		if(req.getParameter("sign")!=null);{
-			 sign = req.getParameter("sign");
-		}		
-		// 식별표시 검색종류 포함 일치 시작
-		int sign_flag = 0 ;
-		if(req.getParameter("sign_flag")!=null) {
-			sign_flag =Integer.parseInt(req.getParameter("sign_flag"));	
-		}
-		
-		// 제형 리스트
-		String[] shape = null;
-		String shape_etc = null;
-		if(req.getParameterValues("shape")!=null) {
-			shape = req.getParameterValues("shape");
-			for(int i =0; i<shape.length;i++) {
-				if(shape[i].equals("기타")){				
-					if(req.getParameter("shape_etc").equals("전체")) {
-						shape_etc = null;
-					}else {
-						shape_etc =req.getParameter("shape_etc");	
-					}
-				}else {
-					shape_etc = shape[i];
-				}
-			}
-		}	
-		// 모양 리스트
-		String[] drugForm = null;
-		String drugForm_etc =null;
-		if(req.getParameterValues("drugForm")!=null) {
-			drugForm =req.getParameterValues("drugForm");
-			for(int i =0; i<drugForm.length;i++) {
-				if(drugForm[i].equals("기타")){				
-					if(req.getParameter("drugForm_etc").equals("전체")) {
-						drugForm_etc = null;
-					}else {
-						drugForm_etc =req.getParameter("drugForm_etc");	
-					}					
-				}else {
-					drugForm_etc = drugForm[i];
-				}
-			}
-		}
-		// 색깔 리스트
-		String[] color =null;
-		if(req.getParameterValues("color")!=null) {
-			color=req.getParameterValues("color");
-		}		
-		// 분할선 앞 리스트
-		String[] splitlineF =null;
-		if(req.getParameterValues("splitlineF")!=null) {
-			splitlineF=req.getParameterValues("splitlineF");
-		}		
-		// 분할선 뒤 리스트
-		String[] splitlineB =null;
-		if(req.getParameterValues("splitlineB")!=null) {
-			splitlineB=req.getParameterValues("splitlineB");
-		}
-		// 제품명
-		String drugName = null;
-		if(req.getParameter("drugName")!=null) {
-			drugName= req.getParameter("drugName");
-		}
-		// 제조사
-		String drugCompany = null;
-		if(req.getParameter("drugCompany")!=null) {
-			drugCompany= req.getParameter("drugCompany");
-		}
-				
-		map.put("sign", sign);
-		map.put("sign_flag", sign_flag);
-		map.put("shape", shape);
-		map.put("shape_etc", shape_etc);
-		map.put("drugForm", drugForm);
-		map.put("drugForm_etc", drugForm_etc);
-		map.put("color", color);
-		map.put("splitlineF", splitlineF);
-		map.put("splitlineB", splitlineB);
-		map.put("drugName", drugName);
-		map.put("drugCompany", drugCompany);
-		
-		model.addAttribute("sign", sign);
-		model.addAttribute("sign_flag", sign_flag);
-		model.addAttribute("shape", shape);
-		model.addAttribute("shape_etc", shape_etc);
-		model.addAttribute("drugForm", drugForm);
-		model.addAttribute("drugForm_etc", drugForm_etc);
-		model.addAttribute("color", color);
-		model.addAttribute("splitlineF", splitlineF);
-		model.addAttribute("splitlineB", splitlineB);
-		model.addAttribute("drugName", drugName);
-		model.addAttribute("drugCompany", drugCompany);
-		
-		/*cnt = dao.getDrugListCnt(map);*/
-		
-		pageNum = req.getParameter("pageNum");
-		
-		if(pageNum == null) {
-			pageNum="1";
-		}
-		
-		//글 30건기준
-		currentPage = Integer.parseInt(pageNum);
-		
-		start = ( currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
-		
-		// 5 = 1 + 5
-		end = start + pageSize - 1; // 현재페이지의 마지막 번호 5
-		
-		// 30 = 30 - ( 1 - 1 ) * 5
-		// 25 = 30 - ( 2 - 1 ) * 5  
-		// 페이지 갯수 6 = (30 / 5 ) + (0)
-	
-		
-		ArrayList<DrugVO> dtos = null;
-		cnt=1;
-		if(cnt > 0) {
-			// 게시글 목록 조회 
-			Map<String, Object> map2 = new HashMap<String, Object>();
-			map2.put("sign", sign);
-			map2.put("sign_flag", sign_flag);
-			map2.put("shape", shape);
-			map2.put("shape_etc", shape_etc);
-			map2.put("drugForm", drugForm);
-			map2.put("drugForm_etc", drugForm_etc);
-			map2.put("color", color);
-			map2.put("splitlineF", splitlineF);
-			map2.put("splitlineB", splitlineB);
-			map2.put("drugName", drugName);
-			map2.put("drugCompany", drugCompany);
-			map2.put("start", start);
-			map2.put("end", end);
-			dtos = dao.getDrugList(map2);
-			model.addAttribute("dtos", dtos);
-		}
-		cnt = dtos.size();
-		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
-		number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
-		// 1 = (1 / 3) * 3 + 1
- 		startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
- 		if(currentPage % pageBlock == 0) {
- 			startPage -= pageBlock; // 나머지 계산
- 		}		 		
- 		// 3 = 1 + 3 - 1
- 		endPage = startPage + pageBlock - 1; // 마지막 페이지
- 		if(endPage > pageCnt) {
- 			endPage = pageCnt;
- 		}
-		
-		model.addAttribute("cnt", cnt); // 글갯수
-		model.addAttribute("number", number); // 글번호
-		model.addAttribute("pageNum", pageNum); // 페이지 번호
-		if(cnt > 0) {
-			model.addAttribute("startPage", startPage); // 시작 페이지
-			model.addAttribute("endPage", endPage); // 마지막 페이지
-			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
-			model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
-			model.addAttribute("currentPage", currentPage); // 현재 페이지
-		}
-	}
+	   @Override
+	   public void drugSeachList(HttpServletRequest req, Model model) {
+	      
+	      //게시판 관련
+	      int pageSize = 20; //한 페이지당 출력할 글 갯수
+	      int pageBlock = 3; //한 블럭당 페이지 갯수
+	      
+	      int cnt = 0;        // 글 갯수 30 db num 젤큰수  50 게시글 30개밖에20개지워지고
+	      int start = 0;     // 현재페이지 시작 글번호
+	      int end = 0;      // 현재페이지 마지막 글번호
+	      int number = 0;     // 출력용 글번호 30
+	      String pageNum = null; // 페이지번호 
+	      int currentPage = 0;  // 현재페이지
+	      
+	      int pageCnt = 0; //페이지갯수
+	      int startPage = 0; //현재블록 시작 페이지
+	      int endPage = 0; // 현재블록   마지막 페이지
+	      // (1-1)*5 + 1
+	      int nchk =0;
+	      // 5단계. 글갯수 구하기.
+	      
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      // 식별표시
+	      String sign = null;
+	      if(req.getParameter("sign")!=null);{
+	          sign = req.getParameter("sign");
+	          nchk =1;
+	      }      
+	      // 식별표시 검색종류 포함 일치 시작
+	      int sign_flag = 0 ;
+	      if(req.getParameter("sign_flag")!=null) {
+	         sign_flag =Integer.parseInt(req.getParameter("sign_flag"));
+	         nchk =1;
+	      }
+	      
+	      // 제형 리스트
+	      String[] shape = null;
+	      String shape_etc = null;
+	      if(req.getParameterValues("shape")!=null) {
+	         shape = req.getParameterValues("shape");
+	         for(int i =0; i<shape.length;i++) {
+	            if(shape[i].equals("기타")){            
+	               if(req.getParameter("shape_etc").equals("전체")) {
+	                  shape_etc = null;
+	               }else {
+	                  shape_etc =req.getParameter("shape_etc");   
+	               }
+	            }else {
+	               shape_etc = shape[i];
+	            }
+	         }
+	         nchk =1;
+	      }   
+	      // 모양 리스트
+	      String[] drugForm = null;
+	      String drugForm_etc =null;
+	      if(req.getParameterValues("drugForm")!=null) {
+	         drugForm =req.getParameterValues("drugForm");
+	         for(int i =0; i<drugForm.length;i++) {
+	            if(drugForm[i].equals("기타")){            
+	               if(req.getParameter("drugForm_etc").equals("전체")) {
+	                  drugForm_etc = null;
+	               }else {
+	                  drugForm_etc =req.getParameter("drugForm_etc");   
+	               }               
+	            }else {
+	               drugForm_etc = drugForm[i];
+	            }
+	         }
+	         nchk =1;
+	      }
+	      // 색깔 리스트
+	      String[] color =null;
+	      if(req.getParameterValues("color")!=null) {
+	         color=req.getParameterValues("color");
+	         nchk =1;
+	      }      
+	      // 분할선 앞 리스트
+	      String[] splitlineF =null;
+	      if(req.getParameterValues("splitlineF")!=null) {
+	         splitlineF=req.getParameterValues("splitlineF");
+	         nchk =1;
+	      }      
+	      // 분할선 뒤 리스트
+	      String[] splitlineB =null;
+	      if(req.getParameterValues("splitlineB")!=null) {
+	         splitlineB=req.getParameterValues("splitlineB");
+	         nchk =1;
+	      }
+	      // 제품명
+	      String drugName = null;
+	      if(req.getParameter("drugName")!=null) {
+	         drugName= req.getParameter("drugName");
+	         nchk =1;
+	      }
+	      // 제조사
+	      String drugCompany = null;
+	      if(req.getParameter("drugCompany")!=null) {
+	         drugCompany= req.getParameter("drugCompany");
+	         nchk =1;
+	      }
+	            
+	      map.put("sign", sign);
+	      map.put("sign_flag", sign_flag);
+	      map.put("shape", shape);
+	      map.put("shape_etc", shape_etc);
+	      map.put("drugForm", drugForm);
+	      map.put("drugForm_etc", drugForm_etc);
+	      map.put("color", color);
+	      map.put("splitlineF", splitlineF);
+	      map.put("splitlineB", splitlineB);
+	      map.put("drugName", drugName);
+	      map.put("drugCompany", drugCompany);
+	      map.put("nchk", nchk);
+	      
+	      model.addAttribute("sign", sign);
+	      model.addAttribute("sign_flag", sign_flag);
+	      model.addAttribute("shape", shape);
+	      model.addAttribute("shape_etc", shape_etc);
+	      model.addAttribute("drugForm", drugForm);
+	      model.addAttribute("drugForm_etc", drugForm_etc);
+	      model.addAttribute("color", color);
+	      model.addAttribute("splitlineF", splitlineF);
+	      model.addAttribute("splitlineB", splitlineB);
+	      model.addAttribute("drugName", drugName);
+	      model.addAttribute("drugCompany", drugCompany);
+	      
+	      /*cnt = dao.getDrugListCnt(map);*/
+	      
+	      pageNum = req.getParameter("pageNum");
+	      
+	      if(pageNum == null) {
+	         pageNum="1";
+	      }
+	      
+	      //글 30건기준
+	      currentPage = Integer.parseInt(pageNum);
+	      cnt = dao.getDrugListCnt(map);
+	      pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+	      number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
+	      start = ( currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
+	      
+	      // 5 = 1 + 5
+	      end = start + pageSize - 1; // 현재페이지의 마지막 번호 5
+	      
+	      // 30 = 30 - ( 1 - 1 ) * 5
+	      // 25 = 30 - ( 2 - 1 ) * 5  
+	      // 페이지 갯수 6 = (30 / 5 ) + (0)
+	   
+	      
+	      ArrayList<DrugVO> dtos = null;
+	      
+	      if(cnt > 0) {
+	         // 게시글 목록 조회 
+	         Map<String, Object> map2 = new HashMap<String, Object>();
+	         map2.put("sign", sign);
+	         map2.put("sign_flag", sign_flag);
+	         map2.put("shape", shape);
+	         map2.put("shape_etc", shape_etc);
+	         map2.put("drugForm", drugForm);
+	         map2.put("drugForm_etc", drugForm_etc);
+	         map2.put("color", color);
+	         map2.put("splitlineF", splitlineF);
+	         map2.put("splitlineB", splitlineB);
+	         map2.put("drugName", drugName);
+	         map2.put("drugCompany", drugCompany);
+	         map2.put("start", start);
+	         map2.put("end", end);
+	         dtos = dao.getDrugList(map2);
+	         model.addAttribute("dtos", dtos);
+	      }
+	      
+	      // 1 = (1 / 3) * 3 + 1
+	       startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
+	       if(currentPage % pageBlock == 0) {
+	          startPage -= pageBlock; // 나머지 계산
+	       }             
+	       // 3 = 1 + 3 - 1
+	       endPage = startPage + pageBlock - 1; // 마지막 페이지
+	       if(endPage > pageCnt) {
+	          endPage = pageCnt;
+	       }
+	      
+	      model.addAttribute("cnt", cnt); // 글갯수
+	      model.addAttribute("number", number); // 글번호
+	      model.addAttribute("pageNum", pageNum); // 페이지 번호
+	      if(cnt > 0) {
+	         model.addAttribute("startPage", startPage); // 시작 페이지
+	         model.addAttribute("endPage", endPage); // 마지막 페이지
+	         model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
+	         model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
+	         model.addAttribute("currentPage", currentPage); // 현재 페이지
+	      }
+	   }
 
 	@Override
 	public void test(HttpServletRequest req, Model model) throws IOException {

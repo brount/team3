@@ -1,5 +1,8 @@
 /* General Demo Style */
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import
+	url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic)
+	;
+
 @font-face {
 	font-family: 'Gothic A1', sans-serif;
 	src: url('../fonts/fontawesome.eot');
@@ -10,11 +13,45 @@
 	font-weight: normal;
 	font-style: normal;
 }
-section > a{
+
+section>a {
 	font-size: 33px;
 }
 
+.btn.btn-dark-blue {
+	background-color: #3fb2ff;
+    border-color: #46aef3;
+	-webkit-box-shadow: 0 3px 0 #1a5c87;
+	box-shadow: 0 3px 0 #1a5c87;
+}
 
+.btn.btn-dark-blue:hover {
+	background-color: #166ea8;
+}
+
+.btn.btn-dark-blue:active {
+	top: 3px;
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.btn {
+	font-size: 18px;
+	white-space: nowrap;
+	/* padding: .8em 1.5em; */
+	font-family: Open Sans, Helvetica, Arial, sans-serif;
+	line-height: 18px;
+	display: inline-block;
+	zoom: 1;
+	color: #fff;
+	text-align: center;
+	position: relative;
+	-webkit-transition: border .25s linear, color .25s linear,
+		background-color .25s linear;
+	transition: border .25s linear, color .25s linear, background-color .25s
+		linear;
+}
 
 body, html {
 	font-size: 100%;
@@ -40,7 +77,7 @@ body, html {
 }
 
 body {
-	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Do Hyeon', sans-serif;
 	color: black;
 }
 
@@ -49,8 +86,6 @@ a {
 	text-decoration: none;
 	font-size: 30px;
 }
-
-
 
 a:hover {
 	color: #000;
@@ -93,7 +128,6 @@ a:hover {
 	color: #999;
 	display: inline-block;
 	font-family: 'Gothic A1', sans-serif;
-	
 }
 
 .container>header nav a:after {
@@ -162,14 +196,13 @@ a:hover {
 	transform: translate3d(0, 0, 0);
 }
 
-
 }
 .carousel-control {
 	z-index: 2;
 }
 
 }
-html, body,  .item {
+html, body, .item {
 	height: 100%;
 }
 

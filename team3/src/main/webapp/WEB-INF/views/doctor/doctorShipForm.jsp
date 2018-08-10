@@ -39,7 +39,7 @@
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span>
 									 <input name="id"placeholder="아이디를 입력해주세요"class="form-control"type="text">
-									<input name="dupchk" type="button" value="중복확인"
+									<input name="dupchk" type="button" value="중복확인" class="btn btn-dark-blue"
 										onclick="doctorconfirmId();">
 								</div>
 							</div>
@@ -109,7 +109,13 @@
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-envelope"></i></span> <input name="email"
 										placeholder="이메일을 입력해주세요" class="form-control" type="email">
-										<input type="button" value="인증">
+										<input type="button" value="인증" onclick="emailC();">
+										<!-- <script type="text/javascript">
+											function emailC(){
+												window.open(url,"emailCheck",
+														"menubar=no,width=300,height=200");
+											}
+										</script> -->
 								</div>
 							</div>
 						</div>
@@ -162,7 +168,7 @@
 						<!-- Button -->
 						<div class="form-group">
 							<div style="margin: 0 auto; display: table;">
-								<button type="submit" class="btn btn-warning"
+								<button type="submit" class="btn btn-dark-blue"
 									style="margin-right: 5px;">
 									회원 가입<span class="glyphicon glyphicon-send"></span>
 								</button>

@@ -147,7 +147,7 @@
 
                      <div class="form-group">
                         <div style="display: table; margin: 0 auto">
-                           <button type="submit" class="btn btn-warning">
+                           <button type="submit" class="btn btn-dark-blue">
                               검사의뢰등록 <span class="glyphicon glyphicon-send"></span>
                            </button>
                         </div>

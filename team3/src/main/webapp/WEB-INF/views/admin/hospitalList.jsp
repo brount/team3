@@ -53,12 +53,12 @@
 		                                        	<input type="hidden" name="pageNum" value="${pageNum}">
 													<c:forEach var="dto" items="${dtos}">
 														<tr>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalno}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalname}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalphone}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitaladdr}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalkind}</td>
-															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalno}</td>
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalname}</td>
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalphone}</td>
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitaladdr}</td>
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalkind}</td>
+															<td onclick="window.location='hospitalModifyForm?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">
 																<c:if test="${dto.hospitalinstruction == null}">
 																	X
 																</c:if>
@@ -81,8 +81,8 @@
 														<c:if test="${sc == null}">
 															<!-- 맨끝[◀◀] / 이전[◀] -->
 															<c:if test="${startPage > pageBlock}">
-																<a href="hospitalList">[맨앞]</a>
-																<a href="hospitalList?pageNum=${startPage - pageBlock}">[이전]</a>
+																<a href="hospitalList?hospitalChoice=1">[맨앞]</a>
+																<a href="hospitalList?hospitalChoice=1&pageNum=${startPage - pageBlock}">[이전]</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -90,21 +90,21 @@
 																	<span><b>[${i}]</b></span>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="hospitalList?pageNum=${i}">[${i}]</a>
+																	<a href="hospitalList?hospitalChoice=1&pageNum=${i}">[${i}]</a>
 																</c:if>
 															</c:forEach>
 															
 															<!-- 맨끝[▶▶] / 다음▶] -->
 															<c:if test="${pageCount > endPage}">
-																<a href="hospitalList?pageNum=${startPage + pageBlock}">[다음]</a>
-																<a href="hospitalList?pageNum=${pageCount}">[맨뒤]</a>
+																<a href="hospitalList?hospitalChoice=1&pageNum=${startPage + pageBlock}">[다음]</a>
+																<a href="hospitalList?hospitalChoice=1&pageNum=${pageCount}">[맨뒤]</a>
 															</c:if>
 														</c:if>
 														
 														<c:if test="${sc != null}">
 															<c:if test="${startPage > pageBlock}">
-																<a href="hospitalSearchList?sc=${sc}&search=${search}">[맨앞]</a>
-																<a href="hospitalSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+																<a href="hospitalSearchList?hospitalChoice=1&sc=${sc}&search=${search}">[맨앞]</a>
+																<a href="hospitalSearchList?hospitalChoice=1&pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -112,13 +112,13 @@
 																	<span><b>[${i}]</b></span>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="hospitalSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																	<a href="hospitalSearchList?hospitalChoice=1&pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
 																</c:if>
 															</c:forEach>
 															
 															<c:if test="${pageCount > endPage}">
-																<a href="hospitalSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
-																<a href="hospitalSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+																<a href="hospitalSearchList?hospitalChoice=1&pageNum=${startPage + pageBlock}&sc=${sc}&search=${search}">[다음]</a>
+																<a href="hospitalSearchList?hospitalChoice=1&pageNum=${pageCount}&sc=${sc}&search=${search}">[맨뒤]</a>
 															</c:if>
 														</c:if>
 													</c:if>
@@ -126,14 +126,14 @@
 											</tr>
 										</table>
 										
-										<form action="hospitalSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+										<form action="hospitalSearchList?hospitalChoice=1" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
 	                                    	<table align="center">
 												<tr>
 													<td>
 														<select class="input" name="sc">
-															<option value="0">병원명</option>
-															<option value="1">소재지</option>
-															<option value="2">분야</option>
+															<option value="1">병원명</option>
+															<option value="2">소재지</option>
+															<option value="3">분야</option>
 														</select>
 													</td>
 													<td>

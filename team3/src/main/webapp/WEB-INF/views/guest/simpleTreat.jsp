@@ -11,6 +11,8 @@
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
+
 <script type="text/javascript">
 function simple(){
 	   var count = 0;
@@ -143,7 +145,7 @@ function simple(){
       <div style="margin:0 auto; display:table;">
       
       
-         <button type="button" class="btn btn-warning" onclick="simple();">검색 <span class="glyphicon glyphicon-send"></span></button>
+         <button type="button" class="btn btn-dark-blue" onclick="simple();">검색 <span class="glyphicon glyphicon-send"></span></button>
   </div>
   </fieldset>
   </form>

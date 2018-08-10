@@ -210,8 +210,9 @@
 								<form action="#" class="pull-right position">
 									<div class="input-append">
 										<input type="text" class="sr-input" placeholder="검색">
-										<button class="btn sr-btn" type="button">
+										<button class="btn btn-dark-blue" type="button">
 											<i class="fa fa-search"></i>
+											검색
 										</button>
 									</div>
 									<div></div>
@@ -232,9 +233,9 @@
 													<tr onclick="window.location='hospitalInfo?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number}'">
 														<td>${dto.hospitalname}</td>
 														<td>${dto.hospitaladdr}</td>
-														<td style="width: 16%">${dto.hospitalphone}</td>
-														<td>
-															<input type="button" value="예약" class="btn btn-primary">
+														<td style="width: 16%; text-align: center;">${dto.hospitalphone}</td>
+														<td style="text-align: center;">
+															<input type="button" value="예약" class="btn btn-dark-blue">
 														</td>
 													</tr>
 												</c:forEach>

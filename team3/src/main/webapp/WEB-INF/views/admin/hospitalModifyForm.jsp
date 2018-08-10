@@ -23,52 +23,34 @@
 							<div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <form role="form" action="hospitalList">
-                                      		<!-- 검색 -->
-                                            <div class="form-group input-group">
-                                            	<label>병원명</label>
-                                                <input type="text" class="form-control"> 	<!-- 검색창 -->
-                                                
-                                                <span class="input-group-btn" style="top:13px">
-                                                    <button class="btn btn-default" type="button" style="padding-bottom:9px; padding-top:9px'"><i class="fa fa-search"></i> <!-- 검색버튼 -->
-                                                    </button>
-                                                </span>
+                                        <form role="form" action="hospitalModifyPro" name="hosModifyForm" onsubmit="return hosModifyChk()">
+                                        	<input type="hidden" name="pageNum" value="${pageNum}">
+                                        	<div class="form-group input-group">
+                                            	<label>병원번호</label><br>
+                                                <input type="text" name="hospitalno" value="${dto.hospitalno}" readonly>
                                             </div>
-                                            <!-- 검색 -->
+                                            
+                                        
+                                            <div class="form-group input-group">
+                                            	<label>병원명</label><br>
+                                                <input type="text" name="hospitalname" value="${dto.hospitalname}">
+                                                
+                                            </div>
                                             
                                             <div class="form-group input-group">
                                            		<label>주소</label><br>
-									 				<input class="form-control" style="width:150px" type="text" id="postcode" name="u_postcode" placeholder="우편번호">&nbsp;&nbsp;&nbsp;
-													<input class="btn btn-default" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-													<input class="form-control" type="text" id="roadAddress" name="u_roadAddress" placeholder="도로명주소">
-													<input class="form-control" type="text" id="jibunAddress" name="u_jibunAddress" placeholder="지번주소">
-													<input class="form-control" type="text" id="detailAddress" name="u_detailAddress" placeholder="나머지주소">
-													<span id="guide" style="color:#999"></span>
-													<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+                                           		<input type="text" name="hospitaladdr" value="${dto.hospitaladdr}">
+                                            </div>
+                                            
+                                            <div class="form-group input-group">
+                                           		<label>병원번호</label><br>
+                                           		<input type="text" name="hospitalphone" value="${dto.hospitalphone}">
                                             </div>
                                       		
-                                      		<div class="form-group input-group">
-                                      			<label>병원연락처</label><br>
-                                      			<input class="form-control" type="text" name="hospitalphone1" style="width:100px">
-                                      			 - 
-                                      			<input class="form-control" type="text" name="hospitalphone2" style="width:100px">	
-                                      			 - 
-                                      			<input class="form-control" type="text" name="hospitalphone3" style="width:100px">
-                                      		</div>
-                                      		
-                                      		<div class="form-group input-group">
-	                                      		<label>진료시간</label>
-	                                            <input type="text" class="form-control">
-	                                        </div>
-	                                        
-	                                        <div>
-	                                      		<label>휴무일</label>
-	                                            <input type="text" class="form-control">
-	                                        </div>
 	                                        
 	                                        <div class="form-group">
                                                 <label>소개글</label>
-                                                <textarea class="form-control" rows="3"></textarea>
+                                                <textarea class="form-control" rows="3" name="hospitalinstruction">${dto.hospitalinstruction}</textarea>
                                             </div>
 	                                        
 	                                        <button type="submit" class="btn btn-default" >수정</button>

@@ -24,7 +24,7 @@
                           <form action="#" class="pull-right position">
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
-                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                  <button class="btn btn-dark-blue" type="button"><i class="fa fa-search"></i></button>
                               </div>
                           </form>
                       </div>
@@ -62,7 +62,7 @@
 											<c:if test="${vo==4}">영상검사</c:if>
 											
 										</td>				
-										<td ><a onclick="window.location='checkupInfo?pageNum=${pageNum}&number=${number+1}&checkuplist=${dto.checkuplist}&kind=${vo}'">${guestList[b].guestname}</a></td>
+										<td ><a onclick="window.location='checkupInfo?pageNum=${pageNum}&number=${number+1}&checkuplist=${dto.checkuplist}&kind=${vo}'">${guestList[b].guestname} 님 </a></td>
 											
 										<td >${docList[a].doctorname}</td>
 										<td >

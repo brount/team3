@@ -316,4 +316,9 @@
 		]]>
 	</select>
 	
+
+	<select id="checkupresult" resultType="com.team.medical.vo.CheckupresultVO">
+      select * from checkupresult
+   </select>
+	
 </mapper>

@@ -2,15 +2,15 @@ package com.team.medical.vo;
 
 public class DiseaseVO {
 
-	private int diseaseCode;
-	private String diseaseName;
-	private String diseaseDefine;
-	private String diseaseCause;
-	private String diseaseSymptom;
-	private String diseaseDiagnosis;
-	private String diseaseCure;
-	private String complications;
-	private String prevention;
+	private int diseaseCode;				// 질병번호
+	private String diseaseName;				// 질병명
+	private String diseaseDefine;			// 정의 
+	private String diseaseCause;			// 원인
+	private String diseaseSymptom;			// 증상
+	private String diseaseDiagnosis;		// 자가진단
+	private String diseaseCure;				// 치료법
+	private String complications;			// 경과/합병증
+	private String prevention;				// 예방법
 	private String diseasehospitalkind;
 
 	public int getDiseaseCode() {

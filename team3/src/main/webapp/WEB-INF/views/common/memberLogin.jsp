@@ -34,8 +34,8 @@ function loginSet(){
 						<div class="form-group">
 		                    <input type="password" name="pwd" id="password" class="form-control input-lg" placeholder="비밀번호를 입력하세요"style="font-size: 25;">
 						</div>
-		                    <input type="checkbox" name="memberState" value="1"class="option checkbox" onchange="statChk1();">일반회원
-							<input type="checkbox" name="memberState" value="2" class="option checkbox" onchange="statChk2();">의사회원
+		                    <input type="checkbox" name="memberState" value="1" class="option checkbox" style="margin: 7px;" onchange="statChk1();">일반회원
+							<input type="checkbox" name="memberState" value="2" class="option checkbox" style="margin: 7px;" onchange="statChk2();">의사회원
 							<script type="text/javascript">
 							
 							function statChk1(){
@@ -59,10 +59,10 @@ function loginSet(){
 						<hr class="colorgraph">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-		                        <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" style="font-size: 40;">
+		                        <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" style="font-size: 40; padding: 18px;">
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="memberClassify" class="btn btn-lg btn-primary btn-block" style="font-size: 40;">회원가입</a>
+								<a href="memberClassify" class="btn btn-lg btn-primary btn-block" style="font-size: 40; padding: 18px;">회원가입</a>
 							</div>
 						</div>
 					</fieldset>

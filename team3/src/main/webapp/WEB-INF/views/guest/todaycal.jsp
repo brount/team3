@@ -70,7 +70,7 @@
 							</c:if>
 							<tr class="unread" align="center">
                                     <td class="view-message  dont-show" colspan="2">					  
-                                       <input type="button" class="btn btn-warning" value="PersonalCare 메인" onclick="window.location='personalCare'" >
+                                       <input type="button"  class="btn btn-dark-blue"  value="PersonalCare 메인" onclick="window.location='personalCare'" >
 									</td>
                                                             
                                     

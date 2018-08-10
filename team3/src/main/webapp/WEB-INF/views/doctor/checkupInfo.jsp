@@ -122,8 +122,8 @@
 						    
 						</div>
 						<div style="display:table; margin:0 auto;">
-							<input type="button" value="건강검진 등록" style="margin-right:5px;"  onclick="window.location='checkupAdd?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}&kind=${kind}'">
-							<input type="button" value="목록가기" style="margin-left:5px;" onclick="window.location='checkupList'">
+							<input type="button" class="btn btn-dark-blue" value="건강검진 등록" style="margin-right:5px;"  onclick="window.location='checkupAdd?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}&kind=${kind}'">
+							<input type="button" class="btn btn-dark-blue" value="목록가기" style="margin-left:5px;" onclick="window.location='checkupList'">
 						</div>
 					</div>
 	            </div>

@@ -99,12 +99,12 @@
 						<div style="display:table; margin:0 auto;">
 							<div>
 							<c:if test="${selectcnt==0}">
-								<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> 내 건강정보 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+								<button type="button"  class="btn btn-dark-blue" onclick="window.location='personalAdd'"> 내 건강정보 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 						  		</c:if>
 						  			<c:if test="${selectcnt!=0}">
-								 <button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> 내 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+								 <button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalMof'"> 내 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
 						  		</c:if>
-						  		<button type="button" class="btn btn-warning" onclick="window.location='caloryAdd'"> 음식 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+						  		<button type="button" class="btn btn-dark-blue"  onclick="window.location='caloryAdd'"> 음식 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 							</div>
 						 </div>    
 						  </fieldset>

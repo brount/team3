@@ -36,7 +36,7 @@ function keycnt(){
 				
 				<th><b>이메일 인증에 성공하였습니다.</b></th>
 				<th colspan="2">
-				<input class="inputButton" type="button"
+				<input  class="btn btn-dark-blue"  type="button"
 					value="확인" onclick="keycnt();">
 		</th>
 

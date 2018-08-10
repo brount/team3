@@ -13,7 +13,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">광고게시</h1>
+					<h1 class="page-header">이벤트 신청 페이지</h1>
 					<!-- 페이지 제목 -->
 				</div>
 				<!-- /.col-lg-12 -->
@@ -24,34 +24,17 @@
 
 				<div class="container">
 					<div class="col-lg-9">
-						<br> <br>
-
-
 						<form class="form-horizontal" action="adminEventAddPro" method="post" id="reg_form" enctype="multipart/form-data">
-					  						      
-					      <fieldset>
-					      
-					      <!-- Form Name -->
-					      <legend> 이벤트 신청 페이지 </legend>
-					    
-					      <!-- Text input-->
-					      아래 내용을 바탕으로 이벤트 페이지 및 배너 게재를 요청합니다<br><br>
-					      
-					      <div class="form-group">
-					        <label class="col-md-4 control-label">제목</label>
-					        <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					            <input name="title" placeholder="제목을 입력해주세요" class="form-control" type="text">
-					          </div>
-					        </div>
+					      <div class="input-group">
+					        <label>제목</label>
+					            <input name="title" placeholder="제목을 입력해주세요" class="form-control" type="text" required>
 					      </div>
 					      
-					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 기간 </label>
-					        <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input id="date1"  name="date1" class="form-control" type="date" onchange="date();">
-					             <input id="date2" name="date2" class="form-control" type="date">					           
+					      <div class="input-group">
+					        <label>이벤트 기간 </label>
+					          <div class="input-group">
+					             <input id="date1"  name="date1" class="form-control" type="date" onchange="date();" required>
+					             <input id="date2" name="date2" class="form-control" type="date" readonly>					           
 					          </div>		
 					             <input type="radio" name="point" value="1000" checked="checked">7일
 					          	<input type="radio" name="point" value="2000" >15일
@@ -71,16 +54,55 @@
 										d2 = "0"+d2;
 									}
 									$("#date2").val(y + "-" + m + "-" + d2);
-									
 					          	}
 								function date(){
 									var date1 = $("#date1").val();
-									console.log(date1);
+									
 									var y = date1.substr(0,4);
 									var m = date1.substr(5,2);
 									var d = date1.substr(8,2);
 									
 									var date = new Date(y,m,d);
+									
+									var formattedDate = new Date();
+									var fy = formattedDate.getFullYear();
+									var fm = formattedDate.getMonth();
+									var fd = formattedDate.getDate();
+									(++fm < 10)? fm = "0" + fm : fm;
+									(fd < 10)? fd = "0" + fd : fd;
+									
+									if ((y*1) < (fy*1)) {
+										alert("이전 연도 선택 불가능");
+										$("#date1").val(fy + "-" + fm + "-" + fd);
+										$("input[checked=checked]").prop('checked', true);
+										var d2 = Number(fd)+7;
+										if (d2<10){
+											d2 = "0"+d2;
+										}
+										$("#date2").val(fy + "-" + fm + "-" + d2);
+										return false;
+									} else if ((m*1) < (fm*1)) {
+										alert("이전 월 선택 불가능");
+										$("#date1").val(fy + "-" + fm + "-" + fd);
+										$("input[checked=checked]").prop('checked', true);
+										var d2 = Number(fd)+7;
+										if (d2<10){
+											d2 = "0"+d2;
+										}
+										$("#date2").val(fy + "-" + fm + "-" + d2);
+										return false;
+									} else if ((d*1) < (fd*1)) {
+										alert("이전 날짜 선택 불가능");
+										$("#date1").val(fy + "-" + fm + "-" + fd);
+										$("input[checked=checked]").prop('checked', true);
+										var d2 = Number(fd)+7;
+										if (d2<10){
+											d2 = "0"+d2;
+										}
+										$("#date2").val(fy + "-" + fm + "-" + d2);
+										return false;
+									}
+									
 									$("input[checked=checked]").prop('checked', true);
 									date.setDate(date.getDate()+7);  
 									(d < 10)? d = "0" + d : d;
@@ -97,7 +119,7 @@
 								    dd = dd.substr(dd.length - 2);                  // take last 2 chars
 								    
 									var date2 = yyyy+"-"+mm+"-"+dd;
-									$("#date2").val(date2);		
+									$("#date2").val(date2);
 								}
 								$("input[name=point]").click(function(){
 									var date1 = $("#date1").val();
@@ -134,61 +156,44 @@
 									$("#date2").val(date2);										
 									
 								})
+								
 					          </script>
-					        </div>
 					      </div>
 					      
-					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 썸네일 이미지</label>
-					        <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="thumbnail" class="form-control"  type="file" style="padding:1px;">
-					          </div>
-					        </div>
+					      <div class="input-group">
+					        <label>이벤트 썸네일 이미지</label>
+					            <input  name="thumbnail" class="form-control"  type="file" style="padding:1px;" required>
 					      </div>
 					      
-					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 이미지</label>
-					        <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="image" class="form-control"  type="file" style="padding:1px;">
-					          </div>
-					        </div>
+					      <div class="input-group">
+					        <label>이벤트 이미지</label>
+					            <input  name="image" class="form-control"  type="file" style="padding:1px;" required>
 					      </div>
 					      
-					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 내용 </label>
-					        <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <textarea class="form-control" rows="8" name="content" placeholder="이벤트 내용을 적어주세요 " style="resize: none;"></textarea>
-					          </div>
-					        </div>
+					      <div class="input-group">
+					        <label>이벤트 내용 </label>
+				            <textarea class="form-control" rows="8" name="content" placeholder="이벤트 내용을 적어주세요 " style="resize: none;" required></textarea>
 					      </div>
 					      
-					        <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 종류</label>
-					        <div class="col-md-6 selectContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+				        <div class="input-group">
+					        <label>이벤트 종류</label>
 					            <select name="kind" class="form-control selectpicker" >
 					              <option value="" >이벤트 종류를 선택해주세요</option>
 					              <option value="1">광고</option> <!-- 광고 신청중  -->
 					              <option value="2">배너</option>
 					            </select>
-					          </div>
-					        </div>
 					      </div>
 					    
 					      <!-- Text input-->
 					      
 					      <!-- Button -->
-					      <div class="form-group">
+					      <div class="input-group">
 					        <div style="display:table; margin:0 auto;">
-					          <button type="submit" class="btn btn-warning" style="margin-right:5px;">신청 <span class="glyphicon glyphicon-send"></span></button>
-					          <button type="reset" class="btn btn-warning" >취소 <span class="glyphicon glyphicon-send"></span></button>
-					          <button type="button" class="btn btn-warning" style="margin-left:5px" onclick="window.location='eventList'">메인 <span class="glyphicon glyphicon-send"></span></button>
+					          <button type="submit" style="margin-right:5px;">신청 </button>
+					          <button type="reset" >취소 </button>
+					          <button type="button" style="margin-left:5px" onclick="window.location='eventRequestList'">메인</button>
 					        </div>
 					      </div>
-					    </fieldset>
 					  </form>
 					</div>
 				</div>

@@ -51,18 +51,6 @@ public interface AdminService {
 	
 	// 의사회원 승인대기목록
 	public void doctorpermissionList(HttpServletRequest req, Model model);
-	/*	
-	// 의사회원 승인대기 검색목록
-	public void doctorpermissionSearchList(HttpServletRequest req, Model model);
-	*/
-	
-	/*
-	// 의사회원 제제목록페이지 
-	public void doctorsanctionList(HttpServletRequest req, Model model);
-	
-	// 의사회원 제제목록 검색페이지
-	public void doctorsanctionSearcList(HttpServletRequest req, Model model);
-	*/
 	
 	// 의사탈퇴회원 목록 검색페이지
 	public void doctorsecessionList(HttpServletRequest req, Model model);
@@ -73,19 +61,23 @@ public interface AdminService {
 	// 의사 회원삭제
 	public void doctordeletePro(HttpServletRequest req, Model model);
 	
-	// 의사 회원 승인
-	public void doctorPermissionPro(HttpServletRequest req, Model model);
-	
-	// 의사 회원 제명
-	public void doctorExpelPro(HttpServletRequest req, Model model);
-	
 	// 의사 회원 상세페이지
 	public void doctorManage(HttpServletRequest req, Model model);
+	
+	// 의사 회원 수정처리
+	public void doctorManagePro(HttpServletRequest req, Model model);
+	
 //--------------------------------------------------------------------------------------	
 	
 	// 병원목록
-	public void hospitalList(HttpServletRequest req,Model model);
+	public void hospitalList(HttpServletRequest req, Model model);
 	
+	// 병원 수정폼
+	public void hospitalModify(HttpServletRequest req, Model model);
+	
+	// 병원 수정폼
+	public void hospitalModifyPro(HttpServletRequest req, Model model);
+		
 //--------------------------------------------------------------------------------------	
 
 	// 약목록
@@ -96,9 +88,6 @@ public interface AdminService {
 	
 	// 약검색목록
 	public void drugSearchList(HttpServletRequest req, Model model);
-	
-	// 약 추가 처리
-	public void drugAddPro(MultipartHttpServletRequest req, Model model);
 	
 	// 약 수정 폼
 	public void drugModify(HttpServletRequest req, Model model); 

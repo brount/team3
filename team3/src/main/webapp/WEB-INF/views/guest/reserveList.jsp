@@ -60,7 +60,7 @@
                               <tr class="">
                			  
                                <td>${dto.reservationNo}</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo">${dto.hospitalname }</a></td>
+                                  <td colspan="3" class="view-message"><a href="hospitalInfo?hospitalno=${dto.hospitalno }">${dto.hospitalname }</a></td>
                                   <td><span class="label label-success">
                                   <c:if test="${dto.reservationKind==1}">
                                   	병원 예약
@@ -78,7 +78,7 @@
                     	 </c:forEach>
                           </c:if>
                           <tr>
-                          <td colspan="8" align="center" style="margin-top: 50;">	<button type="button" class="btn btn-primary" onclick="window.location='achospitalSeach?state=1'">
+                          <td colspan="8" align="center" style="margin-top: 50;">	<button type="button"  class="btn btn-dark-blue" onclick="window.location='achospitalSeach?state=1'">
 													병원을 예약해주세요~! <span class="glyphicon glyphicon-send"></span>
 								</button> </td>
                           </tr>

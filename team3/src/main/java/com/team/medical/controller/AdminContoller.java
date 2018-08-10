@@ -131,17 +131,6 @@ public class AdminContoller {
 		return "admin/doctorpermissionList";
 	}
 	
-	/*
-	// 의사회원 승인대기 검색목록페이지
-	@RequestMapping(value = "doctorpermissionSearchList")
-	public String doctorpermissionSearchList(HttpServletRequest req, Model model) {
-		logger.info("doctorpermissionSearchList, 페이지");
-		adService.doctorpermissionSearchList(req, model);
-		return "admin/doctorpermissionSearchList";
-	}
-	
-	*/
-	
 
 	// 의사회원 탈퇴목록 페이지
 	@RequestMapping(value = "doctorsecessionList")
@@ -158,34 +147,6 @@ public class AdminContoller {
 		adService.doctorsecessionSearcList(req, model);
 		return "admin/doctorsecessionSearcList";
 	}
-		
-	
-	/*
-	// 의사회원 제제목록페이지 
-	@RequestMapping(value = "doctorsanctionList")
-	public String doctorsanctionList(HttpServletRequest req, Model model) {
-		logger.info("doctorpermissionList, 페이지");
-		adService.doctorsanctionList(req, model);
-		return "admin/doctorsanctionList";
-	}
-	
-	// 의사회원 제제목록 검색페이지
-	@RequestMapping(value = "doctorsanctionSearcList")
-	public String doctorsanctionSearcList(HttpServletRequest req, Model model) {
-		logger.info("doctorsanctionSearcList, 페이지");
-		adService.doctorsanctionSearcList(req, model);
-		return "admin/doctorsanctionList";
-	}
-	
-	// 의사회원제제관리페이지
-	@RequestMapping(value = "doctorsanctionManage")
-	public String doctorsanctionManage(HttpServletRequest req, Model model) {
-		logger.info("doctorsanctionManage, 페이지");
-		return "admin/doctorsanctionManage";
-	}
-
-	*/
-	
 	
 	// 의사회원삭제 처리 페이지
 	@RequestMapping(value = "doctordeletePro")
@@ -197,26 +158,6 @@ public class AdminContoller {
 		return "admin/doctordeletePro";
 	}
 	
-	// 의사 승인대기회원 승인 처리 페이지
-	@RequestMapping(value = "doctorPermissionPro")
-	public String doctorPermissionPro(HttpServletRequest req, Model model) {
-		logger.info("doctorPermissionPro");
-
-		adService.doctorPermissionPro(req, model);
-		
-		return "admin/doctorPermissionPro";
-	}
-	
-	// 의사 제명 처리
-	@RequestMapping(value = "doctorExpelPro")
-	public String doctorExpelPro(HttpServletRequest req, Model model) {
-		logger.info("doctorExpelPro");
-
-		adService.doctorExpelPro(req, model);
-		
-		return "admin/doctorExpelPro";
-	}
-	
 	// 의사 상세페이지
 	@RequestMapping(value = "doctorManage")
 	public String doctorManage(HttpServletRequest req, Model model) {
@@ -225,6 +166,16 @@ public class AdminContoller {
 		adService.doctorManage(req, model);
 		
 		return "admin/doctorManage";
+	}
+	
+	// 의사 수정처리
+	@RequestMapping(value = "doctorManagePro")
+	public String doctorManagePro(HttpServletRequest req, Model model) {
+		logger.info("doctorManagePro");
+		
+		adService.doctorManagePro(req, model);
+		
+		return "admin/doctorManagePro";
 	}
 //--------------------------------------------------------------------------------------	
 	
@@ -260,18 +211,22 @@ public class AdminContoller {
 		return "admin/hospitalList_none";
 	}
 	
-	//제휴병원추가폼페이지      
-	@RequestMapping(value = "hospitalAddForm")
-	public String hospitalAddForm(HttpServletRequest req, Model model) {
-		logger.info("hospitalAddForm, 페이지");
-		return "admin/hospitalAddForm";
-	}
-	
 	//제휴병원수정폼페이지
 	@RequestMapping(value = "hospitalModifyForm")
 	public String hospitalModifyForm(HttpServletRequest req, Model model) {
 		logger.info("hospitalModifyForm, 페이지");
+		adService.hospitalModify(req,model);
 		return "admin/hospitalModifyForm";
+	}
+	
+	// 병원수정처리폼           
+	@RequestMapping(value = "hospitalModifyPro")
+	public String hospitalModifyPro(HttpServletRequest req, Model model) {
+		logger.info("hospitalModifyPro, 페이지");
+		
+		adService.hospitalModifyPro(req, model);
+		
+		return "admin/hospitalModifyPro";
 	}
 	
 //--------------------------------------------------------------------------------------	
@@ -302,28 +257,6 @@ public class AdminContoller {
 		return "admin/drugSearchList";
 	}
 
-	// 약정보입력폼           
-	@RequestMapping(value = "drugAdd")
-	public String drugAdd(HttpServletRequest req, Model model) {
-		logger.info("drugAdd, 페이지");
-		
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-		
-		model.addAttribute("pageNum", pageNum);
-		
-		return "admin/drugAdd";
-	}
-	
-	// 약정보 추가처리
-	@RequestMapping(value = "drugAddPro", method=RequestMethod.POST)
-	public String drugAddPro(MultipartHttpServletRequest req, Model model) {
-		logger.info("drugAddPro, 페이지");
-		
-		adService.drugAddPro(req, model);
-		
-		return "admin/drugAddPro";
-	}
-	
 	// 약정보수정폼           
 	@RequestMapping(value = "drugModify")
 	public String drugModify(HttpServletRequest req, Model model) {
@@ -335,8 +268,8 @@ public class AdminContoller {
 	}
 	
 	// 약정보 수정처리폼           
-	@RequestMapping(value = "drugModifyPro", method=RequestMethod.POST)
-	public String drugModifyPro(MultipartHttpServletRequest req, Model model) {
+	@RequestMapping(value = "drugModifyPro")
+	public String drugModifyPro(HttpServletRequest req, Model model) {
 		logger.info("drugModifyPro, 페이지");
 		
 		adService.drugModifyPro(req, model);
@@ -487,12 +420,6 @@ public class AdminContoller {
 	
 //-------------------------------------------------------------------------------------- 
 	
-	//요구사항목록페이지            
-	@RequestMapping(value = "requestList")
-	public String requestList(HttpServletRequest req, Model model) {
-		logger.info("requestList, 페이지");
-		return "admin/requestList";
-	}
 	
 	//광고신청목록페이지             
 	@RequestMapping(value = "eventRequestList")
@@ -506,6 +433,11 @@ public class AdminContoller {
 	@RequestMapping(value = "adminEventAdd")
 	public String eventAdd(HttpServletRequest req, Model model) {
 		logger.info("eventAdd, 페이지");
+		
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum", pageNum);
+		
 		return "admin/eventAdd";
 	}
 	

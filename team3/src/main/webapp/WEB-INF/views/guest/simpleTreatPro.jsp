@@ -39,7 +39,7 @@
 								</tr>
 								</table>
 								
-								<input type="button" value="확인" onclick="window.history.back()">
+								<input type="button" class="btn btn-dark-blue"  value="확인" onclick="window.history.back()">
 							</c:if>
 							</div>
 							</div>
@@ -120,7 +120,7 @@
 										<tr>
 											<td>
 										<%-- 	onclick="reserveForm?hospitalno=${hto.hospitalno }'" --%>
-												<input type=button class="btn btn-primary" value="병원예약하러가기" style="display: table;" onclick="window.location=achospitalSeach?state=2">
+												<input type= "button"  class="btn btn-dark-blue"  value="병원예약하러가기" style="display: table;" onclick="window.location=achospitalSeach?state=2">
 											</td>										
 										</tr>
 										

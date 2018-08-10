@@ -145,6 +145,55 @@
 			}
 
 		}
+		function addTr2(idN) {
+			var tableObj = $("#" + idN);
+			if (tableObj.length != 1) {
+				alert("id'=" + idN
+						+ "'을 가진 table 태그가 없어 addTr(~)란 이름의 함수 호출 불가!");
+				return;
+			}
+			var lastTrObj = tableObj.find("tbody:eq(0)").find("tr:eq(0)")
+					.parent().children().last();
+			var htmlType1 = "input[type=checkbox],input[type=radio]";
+			var htmlType2 = "select, textarea,input[type=text],input[type=password],input[type=hidden],input[type=image]";
+			var htmlType3 = htmlType1 + "," + htmlType2;
+			var dataCnt = 0;
+			lastTrObj.find(htmlType3).each(
+					function() {
+						var thisObj = $(this);
+						if (thisObj.prop("type") == "radio"
+								|| thisObj.prop("type") == "checkbox") {
+							if (thisObj.filter(":checked").length > 0) {
+								dataCnt++;
+							}
+						}
+						else {
+							var val = thisObj.val();
+							if (val.split(" ").join("") != "") {
+								dataCnt++;
+							}
+						}
+					});
+			if (dataCnt < 4) {
+				alert("마지막 행에 데이터가 비어있어 행 추가 불가능");
+				return;
+			}
+			lastTrObj.parent().append(lastTrObj.clone());
+			lastTrObj = lastTrObj.next();
+			lastTrObj.find(htmlType2).val("");
+			lastTrObj.find(htmlType1).prop("checked", false);
+			var totTrCnt = lastTrObj.parent().children("tr").length;
+			var flag = false;
+			lastTrObj.find(htmlType3).each(function(i) {
+				var thisObj = $(this);
+				var nameV = thisObj.prop("name");
+			});
+			if (flag == true) {
+				lastTrObj.remove();
+				alert("<개발자 수정 사항>한 행의 입력 향식 name 속성값 마지막에는_숫자 가 붙어야합니다.");
+			}
+
+		}
 	</script>
 	<section>
 		<input type="hidden" value="${checkup}" name="checkup"> <input
@@ -228,8 +277,8 @@
 												<!-- var lastTrObj = tableObj.find("tbody:eq(0)").find("tr:eq(0)")
 														.parent().children().last(); -->
 										</table>
-										<input type="button" value="행추가" onclick="addTr( 'xxx' );">
-										<input type="button" value="행삭제" onclick="delLastTr( 'xxx' );">
+										<input type="button" class="btn btn-dark-blue" value="행추가" onclick="addTr( 'xxx' );">
+										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr( 'xxx' );">
 										<table class="table table-striped table-hover" border="1" id="yyy">
 											<tr>
 												<th colspan="4" align="center">주사제 처방내역</th>
@@ -259,15 +308,15 @@
 											</tr>
 											</tbody>
 										</table>
-										<input type="button" value="행추가" onclick="addTr( 'yyy' );">
+										<input type="button" class="btn btn-dark-blue" value="행추가" onclick="addTr2( 'yyy' );">
 
-										<input type="button" value="행삭제" onclick="delLastTr2( 'yyy' );">
+										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr2( 'yyy' );">
 
 									</div>
 									<div style="display: table; margin: 0 auto;">
 										<input type="submit" value="처방등록" style="margin-right: 5px;">
 										<input type="reset" value="작성취소"> <input type="button"
-											value="처방목록" style="margin-left: 5px;"
+											value="처방목록" style="margin-left: 5px;" class="btn btn-dark-blue"
 											onclick="window.location='examinationList'">
 									</div>
 								</div>

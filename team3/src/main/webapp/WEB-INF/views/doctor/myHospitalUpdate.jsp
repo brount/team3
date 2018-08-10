@@ -122,8 +122,8 @@
       <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-warning" >수정<span class="glyphicon glyphicon-send"></span></button>
-        <button type="reset" class="btn btn-warning" >취소<span class="glyphicon glyphicon-send"></span></button>
+          <button type="submit" class="btn btn-dark-blue" >수정<span class="glyphicon glyphicon-send"></span></button>
+        <button type="reset"class="btn btn-dark-blue" >취소<span class="glyphicon glyphicon-send"></span></button>
         </div>
       </div>
     </fieldset>

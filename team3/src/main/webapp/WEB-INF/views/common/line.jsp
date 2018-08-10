@@ -1,0 +1,1 @@
+<img style="background-color: #a4caea; width: 100%; height: 300px;">

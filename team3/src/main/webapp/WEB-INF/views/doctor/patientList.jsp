@@ -36,7 +36,7 @@
                           <form action="patientListSearch" class="pull-right position">
                               <div class="input-append">
                                   <input type="text" class="sr-input" placeholder="검색">
-                                  <button class="btn sr-btn" type="submit" name="patientListSearch"><i class="fa fa-search"></i></button>
+                                  <button class="btn btn-dark-blue" type="submit" name="patientListSearch"><i class="fa fa-search"></i></button>
                               </div>
                           </form>
                          

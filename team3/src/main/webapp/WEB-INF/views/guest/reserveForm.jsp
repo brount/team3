@@ -239,7 +239,7 @@
 		  
 		      <div class="form-group">
 		        <div style="display:table; margin:0 auto">
-		          <button type="submit" class="btn btn-warning" >예약 <span class="glyphicon glyphicon-send"></span></button>
+		          <button type="submit" class="btn btn-dark-blue" >예약 <span class="glyphicon glyphicon-send"></span></button>
 		        </div>
 		      </div>
 		 

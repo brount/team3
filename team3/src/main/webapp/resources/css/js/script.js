@@ -45,16 +45,14 @@ var msg_drugdosage1 = "1회 투여량을 입력해주세요";
 var msg_drugrepeat1 = "1회 투여횟수를 입력해주세요";
 var msg_dosagedate1 = "총투여일수를 입력해주세요";
 var msg_dosageusage1 = "용법을 입력해주세요";
+var msg_injectionname = "주사 처방의약품 명칭을 입력해주세요";
+var msg_injectiondosage = "주사 1회 투여량을 입력해주세요";
+var msg_injectionrepeat = "주사 1회 투여횟수를 입력해주세요";
+var msg_injectiondate = "주사 총투여일수를 입력해주세요";
+
 
 //*****************************************
-//*****************************************
-//*****************************************
 
-//*****************************************
-var InsertError = "회원가입에 실패했거든? \n 다시 해봐"
-var updateError = "회원정보 수정에 실패했거든? \n 다시 해봐"
-var deleteError = "회원탈퇴에 실패했거든? \n 다시 해봐 "
-var passwdError = "비밀번호가 일치하지않아 \n 다시 해봐"
 
 //*****************************************
 //회원가입
@@ -75,18 +73,18 @@ function inputCheck() {
 		// 비밀번호
 	} else if (!document.reg_form.password.value) {
 		alert(msg_pwd);
-		document.reg_form.pwd.focus();
+		document.reg_form.password.focus();
 		return false;
 		// 비밀번호 재확인
 	} else if (!document.reg_form.confirmPassword.value) {
 		alert(msg_repwd);
-		document.reg_form.repwd.focus();
+		document.reg_form.confirmPassword.focus();
 		return false;
 
 		// 비밀번호 일치여부
 	} else if (document.reg_form.password.value != document.reg_form.confirmPassword.value) {
 		alert(msg_pwdChk);
-		document.reg_form.repwd.focus();
+		document.reg_form.confirmPassword.focus();
 		return false;
 		// 이름
 	} else if (!document.reg_form.name.value) {
@@ -206,7 +204,6 @@ function checkupAddCheck(kind) {
 			document.checkupAdd.bloodpremin.focus();
 			return false;
 			alert("요검사시작");
-			// 요ph
 		}
 	}
 	if(kind==2){
@@ -215,8 +212,6 @@ function checkupAddCheck(kind) {
 				alert(msg_urineph);
 				document.checkupAdd.urineph.focus();
 				return false;
-			
-				
 			} 
 	}if(kind==3){
 		// 혈색소
@@ -277,42 +272,17 @@ function examinationAddCheck() {
 		document.examinationAdd.symptom.focus();
 		return false;
 		
-		// 처방의약품명칭
-	}/*else if(!document.examinationAdd.drugname1.value){
-		alert(msg_drugname1);
-		document.examinationAdd.drugname1.focus();
-		return false;
-	
-		// 1회 투여량
-	}else if(!document.examinationAdd.drugdosage1.value){
-		alert(msg_drugdosage1);
-		document.examinationAdd.drugdosage1.focus();
-		return false;
-	
-		// 1회 투여횟수
-	}else if(!document.examinationAdd.drugrepeat1.value){
-		alert(msg_drugrepeat1);
-		document.examinationAdd.drugrepeat1.focus();
-		return false;
-	
-		// 총 투여일수
-	}else if(!document.examinationAdd.dosagedate1.value){
-		alert(msg_dosagedate1);
-		document.examinationAdd.dosagedate1.focus();
-		return false;
-	
-		// 용법
-	}else if(!document.examinationAdd.dosageusage1.value){
-		alert(msg_dosageusage1);
-		document.examinationAdd.dosageusage1.focus();
-		return false;
-	
-	}*/
+	}
 	var drugname =  document.getElementsByName("drugname1");
 	var drugdosage =  document.getElementsByName("drugdosage1");
 	var drugrepeat =  document.getElementsByName("drugrepeat1");
 	var dosagedate =  document.getElementsByName("dosagedate1");
 	var dosageusage =  document.getElementsByName("dosageusage1");
+	var injectionname =  document.getElementsByName("injectionname1");
+	var injectiondosage =  document.getElementsByName("injectiondosage1");
+	var injectionrepeat =  document.getElementsByName("injectionrepeat1");
+	var injectiondate =  document.getElementsByName("injectiondate1");
+	
 	for(var i=0; i<drugname.length ;i++){
 		if(!drugname[i].value){
 			alert(msg_drugname1);
@@ -331,9 +301,14 @@ function examinationAddCheck() {
 			return false;
 		}
 	}
+	
 }
 
-
+function emailC(){
+	var url ="emailCheck?email="+document.reg_form.email.value;
+	window.open(url,"emailCheck",
+			"menubar=no,width=300,height=200");
+}
 
 function selectEmailChk() {
 	if (document.reg_form.email3.value == 0) {

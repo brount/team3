@@ -93,7 +93,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food1" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					 				kcal
-					         <input type="button" onclick="foodsearch1()" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
+					         <input type="button" onclick="foodsearch1()"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
 					            
 					          </div>
 					        </div>
@@ -109,7 +109,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					             <input  name="food1" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					 					<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch1()" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
+					         <input type="button" onclick="foodsearch1()"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
 					            
 					            
 					          </div>
@@ -121,7 +121,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					             <input  name="food2" placeholder="음식이름 작성" class="form-control"  type="text" style="width:70px;"> 
 					 					<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch2()" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
+					         <input type="button" onclick="foodsearch2()"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
 					            
 					            
 					          </div>
@@ -134,7 +134,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					             <input  name="food3" placeholder="음식이름 작성" class="form-control"  type="text" > 
 					 				<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch3()" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
+					         <input type="button" onclick="foodsearch3()"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
 					            
 					            
 					          </div>
@@ -151,7 +151,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food2" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					      		kcal
-					      		<input type="button"  onclick="foodsearch2()" type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> 
+					      		<input type="button"  onclick="foodsearch2()" type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> 
 					            
 					          </div>
 					        </div>
@@ -163,7 +163,7 @@ function newfoodinsert(){
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food3" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					         	kcal
-					         <input type="button"  onclick="foodsearch3()" type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;"value="검색 ">
+					         <input type="button"  onclick="foodsearch3()" type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;"value="검색 ">
 					            
 					          </div>
 					        </div>
@@ -176,7 +176,7 @@ function newfoodinsert(){
 					 
 					   
 	
-					     <input type="submit" class="btn btn-warning" style="display: table;margin: auto;" value="저장" >
+					     <input type="submit"  class="btn btn-dark-blue"  style="display: table;margin: auto;" value="저장" >
 					  
 					      
 					      
@@ -216,8 +216,8 @@ function newfoodinsert(){
 					             
 					          </div>
 					          
-					           <input type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
-					          <input type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
+					           <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
+					          <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
 					          
 					        </div>
 					      </div>

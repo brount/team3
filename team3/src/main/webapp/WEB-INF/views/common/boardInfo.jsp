@@ -76,7 +76,7 @@ document.oncontextmenu = function() {return false;}
 									<td align="center"><fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dt.boarddate }" />
 										<c:if test="${sessionScope.id==dt.boardwriter}">
 											<c:if test="${sessionScope.memberState==2 }">
-												<button onclick="window.open('refDelete?num=${dt.boardno}&kind=${dto.boardno}&pageNum=${pageNum}&number=${number}','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');">
+												<button class="btn btn-dark-blue" onclick="window.open('refDelete?num=${dt.boardno}&kind=${dto.boardno}&pageNum=${pageNum}&number=${number}','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');">
 													삭제
 												</button>
 											</c:if>
@@ -121,12 +121,12 @@ document.oncontextmenu = function() {return false;}
 							<tr>
 								<th colspan=4>
 									<c:if test="${sessionScope.id==dto.boardwriter}">
-										<input class="inputButton" type="button" value="글수정"
+										<input class="btn btn-dark-blue" type="button" value="글수정"
 											onclick="window.location='boardModify?num=${dto.boardno}&pageNum=${pageNum}&kind=1'">
-										<input class="inputButton" type="button" value="글삭제"
+										<input class="btn btn-dark-blue" type="button" value="글삭제"
 											onclick="window.location='boardDelete?num=${dto.boardno}&pageNum=${pageNum}&kind=1'">
 									</c:if> 
-										<input class="inputButton" type="button" value="목록보기"
+										<input class="btn btn-dark-blue" type="button" value="목록보기"
 											onclick="window.location='boardList?pageNum=${pageNum}'">
 								</th>
 							</tr>

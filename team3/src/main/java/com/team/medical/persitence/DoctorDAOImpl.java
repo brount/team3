@@ -2,13 +2,24 @@ package com.team.medical.persitence;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.team.medical.vo.CheckupListVO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.CheckupresultVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
@@ -22,6 +33,9 @@ public class DoctorDAOImpl implements DoctorDAO {
 	@Autowired
 	SqlSession sqlSession;
 
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	@Override
 	public int doctorLogin(Map<String, Object> map) {
 		int loginCnt = 0;
@@ -411,6 +425,37 @@ public class DoctorDAOImpl implements DoctorDAO {
 		return dtos;
 	}
 
+	@Override
+	   public ArrayList<CheckupresultVO> checkupresult(){      
+	      ArrayList<CheckupresultVO> dtos =null;
+	      DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+	      dtos=dao.checkupresult();
+	      
+	      return dtos;
+	   }
+
+	@Override
+	public void sendmail(String email, String key) {
+
+		try {
+
+			MimeMessage message = mailSender.createMimeMessage();
+
+			String txt = "인증번호 : " + key;
+			message.setSubject("회원가입 인증 메일입니다.");
+			message.setText(txt, "UTF-8", "html");
+			message.setFrom(new InternetAddress("silver@naver.com"));
+			message.addRecipient(RecipientType.TO, new InternetAddress(email));
+
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+			
+	}
 	
 	
 

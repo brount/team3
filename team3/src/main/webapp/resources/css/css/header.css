@@ -1,5 +1,6 @@
-
-
+.header {
+	  font-family: 'Do Hyeon', sans-serif;
+}
 
 #headerWrap {
 	position: relative;
@@ -809,7 +810,7 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
  * Nanum Gothic (Korean) http://www.google.com/fonts/earlyaccess v4
  */
 @font-face {
-  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: url(/asan/css/google_fonts/NanumGothic-Regular.eot);
@@ -819,7 +820,7 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
        url(/asan/css/google_fonts/NanumGothic-Regular.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   font-style: normal;
   font-weight: 700;
   src: url(/asan/css/google_fonts/NanumGothic-Bold.eot);
@@ -834,7 +835,7 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
 /* BLUEGRID RESET CSS ver 1.0(http://uid-lab.bluegrid.kr/entry/resetcss) :: edit by won yong bong (A.K.A dstyle) | License: none (public domain) */
 /* eric meyer Reset CSS v2.0(http://meyerweb.com/eric/tools/css/reset/) | License: none (public domain) */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin:0; padding:0; border:0; outline:0; vertical-align:baseline; background:transparent;}/*font-size:100%*/
-body { line-height:1; font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'굴림',Gulim,Tahoma, Geneva, sans-serif,verdana; font-size:15px; -webkit-text-size-adjust: none; font-weight:400 !important;}/**/
+body { line-height:1;   font-family: 'Do Hyeon', sans-serif; font-size:15px; -webkit-text-size-adjust: none; font-weight:400 !important;}/**/
 article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section {display:block;} /* delete vertical-align */
 body,html { width:100%; background:#fff;}
 ol,ul,li { list-style:none;}

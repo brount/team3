@@ -22,7 +22,7 @@
 						<div class="panel-body">
                               <div class="row">
                                   <div class="col-lg-6">
-									<form role="form" action="exerciseModifyPro" name="exerciseForm" enctype="multipart/form-data" method="post">
+									<form role="form" action="exerciseModifyPro" name="exerciseForm" enctype="multipart/form-data" method="post" onsubmit="return exerciseChk()">
 										<input type="hidden" name="pageNum" value="${pageNum}">
 										<div class="form-group input-group">
 											<label>운동명</label>

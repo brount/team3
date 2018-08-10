@@ -105,7 +105,7 @@
 						    
 						</div>
 						<div style="display:table; margin:0 auto;">
-							<input type="button" value="처방목록" style="margin-left:5px;" onclick="window.location='examinationList'">
+							<input type="button" class="btn btn-dark-blue" value="처방목록" style="margin-left:5px;" onclick="window.location='examinationList'">
 						</div>
 					</div>
 	            </div>

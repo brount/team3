@@ -28,7 +28,7 @@
 	        <div style="display:table; margin:0 auto;">
 				<div>
 				
-				<button type="button" class="btn btn-warning" onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+				<button type="button" class="btn btn-dark-blue"  onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 	      </div>
 	      </div>
 	   
@@ -94,7 +94,7 @@
 					
 					 <tr class="unread">
                                     <td class="view-message  dont-show" colspan="2" align="center">
-									<button type="button" class="btn btn-warning" onclick="window.location='personalMof'"> MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+									<button type="button" class="btn btn-dark-blue" onclick="window.location='personalMof'"> MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
 
 								</td>
                                     

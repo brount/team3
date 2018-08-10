@@ -55,7 +55,7 @@
 							<option value="1">병원명</option>
 							<option value="2">병원주소</option>
 						</select> <input type="text" name="select" id="select">
-						<button id="search">검색</button>
+						<button id="search" class="btn btn-dark-blue">검색</button>
 					</div>
 				</div>
 				

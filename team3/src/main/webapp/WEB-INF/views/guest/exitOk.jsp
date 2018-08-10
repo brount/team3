@@ -53,10 +53,10 @@ function pwdCheck(){
 						<hr class="colorgraph">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-		                        <input type="submit" class="btn btn-lg btn-success btn-block" value="확인">
+		                        <input type="submit" class="btn btn-lg btn-success btn-block"  class="btn btn-dark-blue"  value="확인">
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="myGuest" class="btn btn-lg btn-primary btn-block">취소</a>
+								<a href="myGuest"  class="btn btn-dark-blue" >취소</a>
 							</div>
 						</div>
 					</fieldset>

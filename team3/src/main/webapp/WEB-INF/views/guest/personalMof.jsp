@@ -244,7 +244,7 @@ function check() {
 						   <div class="form-group">
 						        <label class="col-md-4 control-label"></label>
 						        <div class="col-md-4">
-						          <button type="submit" class="btn btn-warning" style="margin-bottom: 50px;margin-top: 50px;" >수정하기<span class="glyphicon glyphicon-send"></span></button>
+						          <button type="submit"  class="btn btn-dark-blue"  style="margin-bottom: 50px;margin-top: 50px;" >수정하기<span class="glyphicon glyphicon-send"></span></button>
 						        </div>
 						      </div>
 	  </fieldset>

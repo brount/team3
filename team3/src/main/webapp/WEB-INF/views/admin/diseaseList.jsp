@@ -74,22 +74,14 @@ table tbody td {
 												<tr>
 													<td class="center"><input type="checkbox"
 														name="checkOne" value="${dto.diseaseCode}"></td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCode}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseName}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDefine}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseSymptom}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDiagnosis}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCure}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.complications}</td>
-													<td
-														onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.prevention}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCode}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseName}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDefine}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseSymptom}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDiagnosis}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCure}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.complications}</td>
+													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.prevention}</td>
 												</tr>
 											</c:forEach>
 										</c:if>

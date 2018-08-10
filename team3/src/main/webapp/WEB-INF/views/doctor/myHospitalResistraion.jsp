@@ -80,7 +80,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">주소</label>
 							<div class="col-md-6  inputGroupContainer">
-								<input type="button" onclick="addressSearch();" value="주소찾기"
+								<input type="button" class="btn btn-dark-blue" onclick="addressSearch();" value="주소찾기"
 									class="btn btn-warning"> <input type="text"
 									name="hospitaladdress1" id="sample6_postcode"
 									placeholder="우편번호" size="6" style="padding: 3px"
@@ -163,7 +163,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label"></label>
 							<div class="col-md-4">
-								<button type="submit" class="btn btn-warning">
+								<button type="submit" class="btn btn-dark-blue">
 									병원 등록<span class="glyphicon glyphicon-send"></span>
 								</button>
 							</div>

@@ -78,7 +78,7 @@ function foodsearch3() {
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food1" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					 				kcal
-					         <input type="button" onclick="foodsearch1()" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;" value="검색 "><span class="glyphicon glyphicon-send"></span>
+					         <input type="button" onclick="foodsearch1()" class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;" value="검색 "><span class="glyphicon glyphicon-send"></span>
 					            
 					          </div>
 					        </div>
@@ -91,7 +91,7 @@ function foodsearch3() {
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food2" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					      		kcal
-					      		<input type="button"  onclick="foodsearch2()" type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> <span class="glyphicon glyphicon-send"></span>
+					      		<input type="button"  onclick="foodsearch2()" type="button" class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> <span class="glyphicon glyphicon-send"></span>
 					            
 					          </div>
 					        </div>
@@ -103,7 +103,7 @@ function foodsearch3() {
 					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <input  name="food3" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					         	kcal
-					         <input type="button"  onclick="foodsearch3()" type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> <span class="glyphicon glyphicon-send"></span>
+					         <input type="button"  onclick="foodsearch3()" type="button" class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> <span class="glyphicon glyphicon-send"></span>
 					            
 					          </div>
 					        </div>
@@ -112,7 +112,7 @@ function foodsearch3() {
 						 
 					      
 					   </div>
-					     <input type="submit" class="btn btn-warning" value="저장" >
+					     <input type="submit" class="btn btn-dark-blue"  value="저장" >
 					     	
 					     	
 					     
@@ -135,7 +135,7 @@ function foodsearch3() {
 					            <input  name="first_name" placeholder="1인분당 칼로리 작성" class="form-control"  type="text" style="hegint:70px;"> 
 					           
 					                        	<b style="margin-left: 20px;">kcal</b> 
-					             <button type="submit" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;"onclick="window.location='personalCare'" >저장 <span class="glyphicon glyphicon-send"></span></button>
+					             <button type="submit" class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;"onclick="window.location='personalCare'" >저장 <span class="glyphicon glyphicon-send"></span></button>
 					          </div>
 					        </div>
 					      </div>

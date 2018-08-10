@@ -190,7 +190,7 @@
       <div class="form-group">
         <label class="col-md-3 control-label">주소</label>
         <div class="col-md-6  inputGroupContainer">
-         <input type="button" onclick="addressSearch();" value="주소찾기" class="btn btn-warning">
+         <input type="button" onclick="addressSearch();" value="주소찾기"  class="btn btn-dark-blue" >
         <input type="text" value="${vo.getAddress1()}" name="address1" id="sample6_postcode" placeholder="우편번호" size="6" style="padding:3px"class="form-control" style="width:30px" >
 		 <input value="${vo.getAddress2()}" name="address2" id="sample6_address" placeholder="주소" class="form-control" type="text">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -224,7 +224,7 @@
 		 					<option value="daum.net">다음</option>
 		 					<option value="naver.com">네이버</option>
 		 </select>
-		 <input  class="btn btn-warning"  type="button" value="이메일인증" name="echk" onclick="emailchk();">
+		 <input   class="btn btn-dark-blue"   type="button" value="이메일인증" name="echk" onclick="emailchk();">
           </div>
         </div>
       </div>
@@ -233,7 +233,7 @@
       <div class="form-group">
         <label class="col-md-3 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-warning" >수정완료 <span class="glyphicon glyphicon-send"></span></button>
+          <button type="submit"  class="btn btn-dark-blue"  >수정완료 <span class="glyphicon glyphicon-send"></span></button>
         </div>
        </div>
     </fieldset>

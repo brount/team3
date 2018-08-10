@@ -675,7 +675,6 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void doctorList(HttpServletRequest req, Model model) {
 
-		
 		int pageSize = 20; // 한 페이지당 출력할 갯수
 		int pageBlock = 5; // 한 블럭당 페이지 갯수
 
@@ -729,7 +728,7 @@ public class AdminServiceImpl implements AdminService {
 			
 			ArrayList<DoctorVO> dtos = dao.getDoctorList(map);
 			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건             "d"+String.valueOf(dtos.get(i).getDoctorno())+"t"
+			model.addAttribute("dtos", dtos); 
 			
 			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
 			HospitalVO hvo = new HospitalVO();
@@ -949,6 +948,7 @@ public class AdminServiceImpl implements AdminService {
 			System.out.println("dtos2 : " + dtos2.size());		
 			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
 		}
+		
 
 		// 1 = (1 / 3) * 3 + 1
 		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
@@ -978,335 +978,6 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
 		}
 	}
-	
-	/*
-	
-	// 의사회원 승인대기 검색목록
-
-	public void doctorpermissionSearchList(HttpServletRequest req, Model model) {
-		
-		int pageSize = 20; // 한 페이지당 출력할 갯수
-		int pageBlock = 5; // 한 블럭당 페이지 갯수
-
-		int cnt = 0; // 갯수
-		int start = 0; // 현재 페이지 시작 번호
-		int end = 0; // 현재 페이지 마지막 번호
-		int number = 0; // 출력용 번호
-		String pageNum = null; // 페이지 번호
-		int currentPage = 0; // 현재 페이지
-
-		int pageCount = 0; // 페이지 갯수
-		int startPage = 0; // 시작 페이지
-		int endPage = 0; // 마지막 페이지
-
-		int sc = Integer.parseInt(req.getParameter("sc"));
-		String search = req.getParameter("search");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sc", sc);
-		map.put("search", search);
-		System.out.println("검색종류 : " + sc);
-		System.out.println("검색내용 : " + search);
-		
-		// 5단계. 갯수 구하기
-		cnt = dao.search_doctorPermissionCnt();
-		
-		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
-
-		pageNum = req.getParameter("pageNum");
-
-		if (pageNum == null) {
-			pageNum = "1"; // 첫페이지
-		}
-
-		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
-		System.out.println("currentPage : " + currentPage);
-
-		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
-
-		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
-
-		end = start + pageSize - 1; // 현재페이지 마지막번호
-
-		System.out.println("start : " + start);
-		System.out.println("end : " + end);
-
-		if (end > cnt)
-			end = cnt;
-
-		// 30 = 30 - (1 - 1) * 5
-		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
-
-		System.out.println("number : " + number);
-		System.out.println("pageSize : " + pageSize);
-
-		if (cnt > 0) {
-			// 게시글 목록 조회
-			Map<String,Object> map2 = new HashMap<String, Object>();
-			map2.put("start", start);
-			map2.put("end", end);
-			map2.put("sc", sc);
-			map2.put("search", search);
-			
-			ArrayList<DoctorVO> dtos = dao.search_doctorPermission(map2);
-			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-			
-			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
-			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
-				dtos2.add(hvo);
-			}
-			System.out.println("dtos2 : " + dtos2.size());		
-			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-		}
-
-		// 1 = (1 / 3) * 3 + 1
-		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
-		if (currentPage % pageBlock == 0)
-			startPage -= pageBlock;
-
-		System.out.println("startPage : " + startPage);
-
-		// 3 = 1 + 3 - 1
-		endPage = startPage + pageBlock - 1; // 마지막 페이지
-		if (endPage > pageCount)
-			endPage = pageCount;
-
-		System.out.println("endPage : " + endPage);
-
-		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
-
-		model.addAttribute("cnt", cnt); // 재고 갯수
-		model.addAttribute("number", number); // 재고 번호
-		model.addAttribute("pageNum", pageNum); // 페이지 번호
-
-		if (cnt > 0) {
-			model.addAttribute("startPage", startPage); // 시작 페이지
-			model.addAttribute("endPage", endPage); // 마지막 페이지
-			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
-			model.addAttribute("pageCount", pageCount); // 페이지 갯수
-			model.addAttribute("currentPage", currentPage); // 현재 페이지
-			model.addAttribute("sc",sc);					// 검색조건
-			model.addAttribute("search",search);			// 검색어
-		}
-	}
-	*/
-
-	
-	/*
-	// 의사제제회원 목록 페이지
-	@Override
-	public void doctorsanctionList(HttpServletRequest req, Model model) {
-		
-		int pageSize = 20; // 한 페이지당 출력할 갯수
-		int pageBlock = 5; // 한 블럭당 페이지 갯수
-
-		int cnt = 0; // 갯수
-		int start = 0; // 현재 페이지 시작 번호
-		int end = 0; // 현재 페이지 마지막 번호
-		int number = 0; // 출력용 번호
-		String pageNum = null; // 페이지 번호
-		int currentPage = 0; // 현재 페이지
-
-		int pageCount = 0; // 페이지 갯수
-		int startPage = 0; // 시작 페이지
-		int endPage = 0; // 마지막 페이지
-
-		// 5단계. 갯수 구하기
-		cnt = dao.getDoctorSanctionListCnt();
-		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
-
-		pageNum = req.getParameter("pageNum");
-
-		if (pageNum == null) {
-			pageNum = "1"; // 첫페이지
-		}
-
-		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
-		System.out.println("currentPage : " + currentPage);
-
-		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
-
-		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
-
-		end = start + pageSize - 1; // 현재페이지 마지막번호
-
-		System.out.println("start : " + start);
-		System.out.println("end : " + end);
-
-		if (end > cnt)
-			end = cnt;
-
-		// 30 = 30 - (1 - 1) * 5
-		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
-
-		System.out.println("number : " + number);
-		System.out.println("pageSize : " + pageSize);
-
-		if (cnt > 0) {
-			// 게시글 목록 조회
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("start", start);
-			map.put("end", end);
-			
-			ArrayList<DoctorVO> dtos = dao.getDoctorSanctionList(map);
-			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-			
-			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
-			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
-				dtos2.add(hvo);
-			}
-			System.out.println("dtos2 : " + dtos2.size());		
-			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-		}
-
-		// 1 = (1 / 3) * 3 + 1
-		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
-		if (currentPage % pageBlock == 0)
-			startPage -= pageBlock;
-
-		System.out.println("startPage : " + startPage);
-
-		// 3 = 1 + 3 - 1
-		endPage = startPage + pageBlock - 1; // 마지막 페이지
-		if (endPage > pageCount)
-			endPage = pageCount;
-
-		System.out.println("endPage : " + endPage);
-
-		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
-
-		model.addAttribute("cnt", cnt); // 재고 갯수
-		model.addAttribute("number", number); // 재고 번호
-		model.addAttribute("pageNum", pageNum); // 페이지 번호
-
-		if (cnt > 0) {
-			model.addAttribute("startPage", startPage); // 시작 페이지
-			model.addAttribute("endPage", endPage); // 마지막 페이지
-			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
-			model.addAttribute("pageCount", pageCount); // 페이지 갯수
-			model.addAttribute("currentPage", currentPage); // 현재 페이지
-		}
-	}
-	
-	// 의사제제회원 검색목록 페이지
-	@Override
-	public void doctorsanctionSearcList(HttpServletRequest req, Model model) {
-		
-		int pageSize = 20; // 한 페이지당 출력할 갯수
-		int pageBlock = 5; // 한 블럭당 페이지 갯수
-
-		int cnt = 0; // 갯수
-		int start = 0; // 현재 페이지 시작 번호
-		int end = 0; // 현재 페이지 마지막 번호
-		int number = 0; // 출력용 번호
-		String pageNum = null; // 페이지 번호
-		int currentPage = 0; // 현재 페이지
-
-		int pageCount = 0; // 페이지 갯수
-		int startPage = 0; // 시작 페이지
-		int endPage = 0; // 마지막 페이지
-
-		int sc = Integer.parseInt(req.getParameter("sc"));
-		String search = req.getParameter("search");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sc", sc);
-		map.put("search", search);
-		System.out.println("검색종류 : " + sc);
-		System.out.println("검색내용 : " + search);
-		
-		// 5단계. 갯수 구하기
-		cnt = dao.search_doctorSanctionCnt();
-		
-		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
-
-		pageNum = req.getParameter("pageNum");
-
-		if (pageNum == null) {
-			pageNum = "1"; // 첫페이지
-		}
-
-		currentPage = Integer.parseInt(pageNum); // 현재페이지 : 1
-		System.out.println("currentPage : " + currentPage);
-
-		pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0); // 페이지갯수 + 나머지
-
-		start = (currentPage - 1) * pageSize + 1; // 현재페이지의 시작번호
-
-		end = start + pageSize - 1; // 현재페이지 마지막번호
-
-		System.out.println("start : " + start);
-		System.out.println("end : " + end);
-
-		if (end > cnt)
-			end = cnt;
-
-		// 30 = 30 - (1 - 1) * 5
-		number = cnt - (currentPage - 1) * pageSize; // 출력용 번호
-
-		System.out.println("number : " + number);
-		System.out.println("pageSize : " + pageSize);
-
-		if (cnt > 0) {
-			// 게시글 목록 조회
-			Map<String,Object> map2 = new HashMap<String, Object>();
-			map2.put("start", start);
-			map2.put("end", end);
-			map2.put("sc", sc);
-			map2.put("search", search);
-			
-			ArrayList<DoctorVO> dtos = dao.search_doctorSanction(map2);
-			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-			
-			ArrayList<HospitalVO> dtos2 = new ArrayList<HospitalVO>();
-			HospitalVO hvo = new HospitalVO();
-			for(int i=0;i<dtos.size();i++) {
-				hvo= doDAO.getMyhospitalInfo("d"+String.valueOf(dtos.get(i).getDoctorno())+"t");
-				dtos2.add(hvo);
-			}
-			System.out.println("dtos2 : " + dtos2.size());		
-			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-		}
-
-		// 1 = (1 / 3) * 3 + 1
-		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
-		if (currentPage % pageBlock == 0)
-			startPage -= pageBlock;
-
-		System.out.println("startPage : " + startPage);
-
-		// 3 = 1 + 3 - 1
-		endPage = startPage + pageBlock - 1; // 마지막 페이지
-		if (endPage > pageCount)
-			endPage = pageCount;
-
-		System.out.println("endPage : " + endPage);
-
-		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
-
-		model.addAttribute("cnt", cnt); // 재고 갯수
-		model.addAttribute("number", number); // 재고 번호
-		model.addAttribute("pageNum", pageNum); // 페이지 번호
-
-		if (cnt > 0) {
-			model.addAttribute("startPage", startPage); // 시작 페이지
-			model.addAttribute("endPage", endPage); // 마지막 페이지
-			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
-			model.addAttribute("pageCount", pageCount); // 페이지 갯수
-			model.addAttribute("currentPage", currentPage); // 현재 페이지
-			model.addAttribute("sc",sc);					// 검색조건
-			model.addAttribute("search",search);			// 검색어
-		}
-	}
-	*/
-
 	
 	// 의사탈퇴회원 목록페이지 
 	@Override
@@ -1533,76 +1204,70 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pageDivision",pageDivision);
 	}
 	
-	// 의사회원 승인
-	@Override
-	public void doctorPermissionPro(HttpServletRequest req, Model model) {
-		
-		System.out.println(req.getAttribute("pageNum"));
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-
-		int drugCode = Integer.parseInt(req.getParameter("drugCode"));
-    	String drugName = req.getParameter("drugName");
-    	String drugCompany = req.getParameter("drugCompany");
-    	String drugGroupCode = req.getParameter("drugGroupCode");
-    	String pro_Usual = req.getParameter("pro_Usual");
-    	
-    	String drugStorageMethod = req.getParameter("drugStorageMethod");
-    	String drugEfficacy = req.getParameter("drugEfficacy");
-    	String drugUsedCapacity = req.getParameter("drugUsedCapacity");
-    	String drugPrecautions = req.getParameter("drugPrecautions");
-    	
-        DrugVO dto = new DrugVO();
-        
-        dto.setDrugName(drugName);
-        dto.setDrugCompany(drugCompany);
-        dto.setDrugGroupCode(drugGroupCode);
-        dto.setPro_Usual(pro_Usual);
-        
-        dto.setDrugStorageMethod(drugStorageMethod);
-        dto.setDrugEfficacy(drugEfficacy);
-        dto.setDrugUsedCapacity(drugUsedCapacity);
-        dto.setDrugPrecautions(drugPrecautions);
-        
-        int selectCnt = dao.drugModifyPro(dto);
-        
-        model.addAttribute("drugCode", drugCode);
-        model.addAttribute("pageNum", pageNum);
-        model.addAttribute("selectCnt", selectCnt);
-	            
-
-		model.addAttribute("pageNum",pageNum);
-	}
-
-	// 의사회원 제명
-	@Override
-	public void doctorExpelPro(HttpServletRequest req, Model model) {
-		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-		String[] checkOne = req.getParameter("doctorno").split(",");
-		
-		int updateCnt = dao.doctorChkExpelPro(checkOne);
-		  
-		model.addAttribute("updateCnt", updateCnt);
-		model.addAttribute("pageNum",pageNum);
-	}
-
 	// 의사회원 상세페이지
 	@Override
 	public void doctorManage(HttpServletRequest req, Model model) {
 		String doctorid = req.getParameter("doctorid");
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-
+		String doctorno = null;
 		DoctorVO dto = doDAO.getDocInfo(doctorid);
 
-
-		String doctorno = "d"+String.valueOf(doDAO.getdocnoInfo(doctorid))+"t";
-	      
+		
+		doctorno = "d"+String.valueOf(doDAO.getdocnoInfo(doctorid))+"t";
+		
 		HospitalVO dto2 = doDAO.getMyhospitalInfo(doctorno);
+		
+		if(dto2 == null) {
+			dto2 = doDAO.getHospitalNoInfo(dto.getHospitalno());
+		}
+		
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("dto2",dto2);
 		model.addAttribute("pageNum", pageNum);
 	}
 
+	// 의사회원 수정 처리
+	@Override
+	public void doctorManagePro(HttpServletRequest req, Model model) {
+		
+		int doctorno = Integer.parseInt(req.getParameter("doctorno"));
+		int hospitalno = Integer.parseInt(req.getParameter("hospitalno"));
+		int doctorappro = 0;
+		int sanctions = 0;
+		int updateCnt = 0;
+		
+		DoctorVO dodto = new DoctorVO();
+		HospitalVO hodto = new HospitalVO();
+		
+		// 승인처리
+		if(req.getParameter("doctorappro") == null && req.getParameter("sanctions") == null) {	//doctorappro가 null이고 sanction이 null 일때			
+			
+			if(dao.getHospital(hospitalno).getDoctorno() != null) {		// 병원테이블에 Integer.parseInt(req.getParameter("doctorno"))가 있는지 여부체크
+				hodto.setDoctorno(dao.getHospital(hospitalno).getDoctorno()+",d"+doctorno+"t");	// 다른 doctorno가 있으면 뒤에 , 찍고 추가
+			}else {
+				hodto.setDoctorno("d"+doctorno+"t");											// 없으면 그냥 추가
+			}			
+			hodto.setHospitalno(hospitalno);
+			updateCnt = dao.doctorPermissionPro(doctorno);
+			
+			if(updateCnt != 0) {
+				dao.hospitalPermissionPro(hodto);
+			}		// 승인처리 끝
+			
+		}else {
+			doctorappro = Integer.parseInt(req.getParameter("doctorappro"));
+			sanctions = Integer.parseInt(req.getParameter("sanctions"));
+			
+			dodto.setDoctorno(doctorno);
+			dodto.setDoctorappro(doctorappro);
+			dodto.setSanctions(sanctions);
+			
+			updateCnt = dao.doctorExpelPro(doctorno);
+		}
+		
+		model.addAttribute(updateCnt);
+	}
 //--------------------------------------------------------------------------------------		
 	
 	// 병원목록
@@ -1623,23 +1288,28 @@ public class AdminServiceImpl implements AdminService {
 		int startPage = 0; // 시작 페이지
 		int endPage = 0; // 마지막 페이지
 		String hospitalChoice = null;
-		
+		int sc = 0;
+		String search = null;
 		hospitalChoice = req.getParameter("hospitalChoice");
 		
 		if(hospitalChoice == null) {
 			hospitalChoice = "1";
 		}
-		/*	
-		int sc = Integer.parseInt(req.getParameter("sc"));
-		String search = req.getParameter("search");
-		*/
+		
+		if(req.getParameter("sc") != null) {
+			sc = Integer.parseInt(req.getParameter("sc"));
+			search = req.getParameter("search");
+		}
 		// 5단계. 갯수 구하기
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hospitalChoice", hospitalChoice);
-		//map.put("sc", sc);
-		//map.put("search", search);
-		//System.out.println("검색종류 : " + sc);
-		//System.out.println("검색내용 : " + search);
+		
+		if(search != null && sc != 0) {
+			map.put("sc", sc);
+			map.put("search", search);
+			System.out.println("검색종류 : " + sc);
+			System.out.println("검색내용 : " + search);
+		}
 		cnt = dao.getHospitalListCnt(map);
 		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
 
@@ -1675,8 +1345,10 @@ public class AdminServiceImpl implements AdminService {
 			Map<String,Object> map2 = new HashMap<String, Object>();
 			map2.put("start", start);
 			map2.put("end", end);
-			//map2.put("sc", sc);
-			//map2.put("search", search);
+			if(search != null) {
+				map2.put("sc", sc);
+				map2.put("search", search);
+			}
 			map2.put("hospitalChoice", hospitalChoice);
 			
 			ArrayList<HospitalVO> dtos = dao.getHospitalList(map2);
@@ -1711,13 +1383,54 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("pageCount", pageCount); // 페이지 갯수
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
 			model.addAttribute("hospitalChoice", hospitalChoice);
-			//model.addAttribute("sc", sc);
-			//model.addAttribute("search", search);
+			if(search != null) {
+				model.addAttribute("sc", sc);
+				model.addAttribute("search", search);
+			}
 		}
 				
 	}
 
+	// 병원 수정폼
+	@Override
+	public void hospitalModify(HttpServletRequest req, Model model) {
+		int hospitalno = Integer.parseInt(req.getParameter("hospitalno"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 
+		// 5-2단계. 목록 1건을 읽어온다.
+		HospitalVO dto = dao.getHospital(hospitalno);
+		model.addAttribute("dto", dto);
+
+		// 6단계. request나 session에 처리결과를 저장(jsp에 전달하기 위함)
+		model.addAttribute("hospitalno", hospitalno);
+		model.addAttribute("pageNum", pageNum);
+	}
+	
+	// 병원 수정처리
+	@Override
+	public void hospitalModifyPro(HttpServletRequest req, Model model) {
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int hospitalno = Integer.parseInt(req.getParameter("hospitalno"));
+		String hospitalname = req.getParameter("hospitalname");
+		String hospitaladdr = req.getParameter("hospitaladdr");
+		String hospitalphone = req.getParameter("hospitalphone");
+		String hospitalinstruction = req.getParameter("hospitalinstruction");
+		
+		HospitalVO dto = new HospitalVO();
+		
+		dto.setHospitalno(hospitalno);
+		dto.setHospitalname(hospitalname);
+		dto.setHospitaladdr(hospitaladdr);
+		dto.setHospitalphone(hospitalphone);
+		dto.setHospitalinstruction(hospitalinstruction);
+		
+		int updateCnt = dao.hospitalModifyPro(dto);
+		
+		model.addAttribute(pageNum);
+		model.addAttribute(updateCnt);
+	}
+	
+	
 //--------------------------------------------------------------------------------------	
 	
 	
@@ -1811,7 +1524,7 @@ public class AdminServiceImpl implements AdminService {
 				
 	}
 
-	// 약 목록 삭제처리
+	// 약 삭제
 	@Override
 	public void drugdeletePro(HttpServletRequest req, Model model) {
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
@@ -1823,7 +1536,7 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pageNum",pageNum);
 	}
 
-	// 약 검색목록
+	// 약검색목록
 	@Override
 	public void drugSearchList(HttpServletRequest req, Model model) {
 
@@ -1917,115 +1630,6 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("search",search);			// 검색어
 		}
 		
-	}
-	
-	// 약추가 처리
-	@Override
-	public void drugAddPro(MultipartHttpServletRequest req, Model model) {
-		
-		
-		MultipartFile file = req.getFile("drugImage");
-		// 임시 파일이 저장되는 논리적인 경로
-		String saveDir = req.getRealPath("/resources/images/drug/");
-		// 업로드할 파일이 위치하게될 물리적인 경로
-		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\drug\\"; // 저장 경로
-						 
-		try {
-	            file.transferTo(new File(saveDir+file.getOriginalFilename()));
-	            
-	            FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-	            FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
-	            
-	            int data = 0;
-	            
-	            while((data = fis.read()) != -1) {
-	                fos.write(data);
-	            }
-	            fis.close();
-	            fos.close();
-	            
-	            int drugCode = Integer.parseInt(req.getParameter("drugCode"));
-	        	String drugName = req.getParameter("drugName");
-	        	String drugCompany = req.getParameter("drugCompany");
-	        	String drugGroupCode = req.getParameter("drugGroupCode");
-	        	String drugGroup = req.getParameter("drugGroup");
-	        	String pro_Usual = req.getParameter("pro_Usual");
-	        	
-	        	String admit = req.getParameter("admitDate");
-	        	Date admitDate = Date.valueOf(admit);
-	        	
-	        	String temperState = req.getParameter("temperState");
-	        	String shape = req.getParameter("shape");
-	        	
-	        	String drugImage = file.getOriginalFilename();    
-	        	
-	        	String signF = req.getParameter("signF");
-	        	String signB = req.getParameter("signB");
-	        	String drugForm = req.getParameter("drugForm");
-	        	String colorF = req.getParameter("colorF");
-	        	String colorB = req.getParameter("colorB");
-	        	String splitlineF = req.getParameter("splitlineF");
-	        	String splitlineB = req.getParameter("splitlineB");
-	        	int maxAxis = Integer.parseInt(req.getParameter("maxAxis"));
-	        	int minAxis = Integer.parseInt(req.getParameter("minAxis"));
-	        	int thickness = Integer.parseInt(req.getParameter("thickness"));
-	        	
-	        	String regist = req.getParameter("registDate");
-	        	Date registDate = Date.valueOf(regist);
-	        	
-	        	String markF = req.getParameter("markF");
-	        	String markB = req.getParameter("markB");
-	        	String markImageF = req.getParameter("markImageF");
-	        	String markImageB = req.getParameter("markImageB");
-	        	String markCodeF = req.getParameter("markCodeF");
-	        	String markCodeB = req.getParameter("markCodeB");
-	        	String drugStorageMethod = req.getParameter("drugStorageMethod");
-	        	String drugEfficacy = req.getParameter("drugEfficacy");
-	        	String drugUsedCapacity = req.getParameter("drugUsedCapacity");
-	        	String drugPrecautions = req.getParameter("drugPrecautions");
-	        	
-	            DrugVO dto = new DrugVO();
-	            
-	            dto.setDrugCode(drugCode);
-	            dto.setDrugName(drugName);
-	            dto.setDrugCompany(drugCompany);
-	            dto.setDrugGroupCode(drugGroupCode);
-	            dto.setDrugGroup(drugGroup);
-	            dto.setPro_Usual(pro_Usual);
-	            dto.setAdmitDate(admitDate);
-	            dto.setTemperState(temperState);
-	            dto.setShape(shape);
-	            dto.setDrugImage(drugImage);
-	            dto.setSignF(signF);
-	            dto.setSignB(signB);
-	            dto.setDrugForm(drugForm);
-	            dto.setColorF(colorF);
-	            dto.setColorB(colorB);
-	            dto.setSplitlineF(splitlineF);
-	            dto.setSplitlineB(splitlineB);
-	            dto.setMaxAxis(maxAxis);
-	            dto.setMinAxis(minAxis);
-	            dto.setThickness(thickness);
-	            dto.setRegistDate(registDate);
-	            dto.setMarkF(markF);
-	            dto.setMarkB(markB);
-	            dto.setMarkImageF(markImageF);
-	            dto.setMarkImageB(markImageB);
-	            dto.setMarkCodeF(markCodeF);
-	            dto.setMarkCodeB(markCodeB);
-	            dto.setDrugStorageMethod(drugStorageMethod);
-	            dto.setDrugEfficacy(drugEfficacy);
-	            dto.setDrugUsedCapacity(drugUsedCapacity);
-	            dto.setDrugPrecautions(drugPrecautions);
-	            
-	            int selectCnt = dao.drugAddPro(dto);
-	            
-	            model.addAttribute("selectCnt", selectCnt);
-	            
-	        } catch(IOException e) {
-	            e.printStackTrace();
-	        }
-	        
 	}
 	
 	// 약 수정 폼
@@ -3050,10 +2654,4 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("deleteCnt", deleteCnt);
 		model.addAttribute("pageNum",pageNum);
 	}
-	
-
-	
-
-	
-
 }

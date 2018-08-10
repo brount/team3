@@ -23,16 +23,6 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <div class="pull-right">
-	                            <div class="btn-group">
-                                    <button type="button" onclick="drugdeleteCheck();">
-                                    	삭제
-                                    </button>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <!-- /.panel-heading -->
 	                    <div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-lg-4">
@@ -40,7 +30,6 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>약번호</th>
 		                                            <th>약이름</th>
 		                                            <th>제조업체</th>
@@ -56,7 +45,6 @@
 													<c:forEach var="dto" items="${dtos}">
 													<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 														<tr>
-															<td class="center"><input type="checkbox" name="checkOne" value="${dto.drugCode}"></td>
 															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugCode}</td>
 															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugName}</td>
 															<td onclick="window.location='drugModify?drugCode=${dto.drugCode}&pageNum=${pageNum}&number=${number+1}'">${dto.drugCompany}</td>

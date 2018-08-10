@@ -44,7 +44,7 @@ function calorie(calorie) {
 				</tr>
 				<tr align="center">
 					<th colspan="2" >
-					 <input class="btn btn-warning"
+					 <input  class="btn btn-dark-blue" 
 						type="button" value="선택" onclick="calorie('${dto.foodcal}');">
 						
 					</th>
@@ -60,7 +60,7 @@ function calorie(calorie) {
 				<tr>
 					<td align="center">검색된 음식이 없습니다~! 움식을 새로 추가해주세요!</td>
 				<td>
-					 <input class="btn btn-warning" type="button" value="확인" onclick="self.close()">
+					 <input  class="btn btn-dark-blue"  type="button" value="확인" onclick="self.close()">
 					 </td>
 				</tr>
 			

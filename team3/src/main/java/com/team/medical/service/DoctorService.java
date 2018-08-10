@@ -75,6 +75,9 @@ public interface DoctorService {
 	// 병원 정보수정
 	public void myHospitalUpdate(HttpServletRequest req, Model model);
 
+	// 이메일 인증
+	public void emailkey(HttpServletRequest req, Model model);
+	
 
 	
 }

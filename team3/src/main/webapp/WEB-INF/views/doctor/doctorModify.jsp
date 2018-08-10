@@ -111,7 +111,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-envelope"></i></span> <input name="email"
-										placeholder="이메일을 입력해주세요" class="form-control" type="text" value="${vo.doctoremail}"><input
+										placeholder="이메일을 입력해주세요" class="form-control" type="text" value="${vo.doctoremail}"><input class="btn btn-dark-blue"
 										type="button" value="인증">
 								</div>
 							</div>
@@ -153,8 +153,8 @@
 				      <div class="form-group">
 				        <label class="col-md-4 control-label"></label>
 				        <div class="col-md-4">
-				          <button type="submit" class="btn btn-warning" >수정 <span class="glyphicon glyphicon-send"></span></button>
-				          <button type="reset" class="btn btn-warning" >취소 <span class="glyphicon glyphicon-send"></span></button>
+				          <button type="submit"class="btn btn-dark-blue" >수정 <span class="glyphicon glyphicon-send"></span></button>
+				          <button type="reset" class="btn btn-dark-blue" >취소 <span class="glyphicon glyphicon-send"></span></button>
 				        </div>
 				      </div>
 					</fieldset>

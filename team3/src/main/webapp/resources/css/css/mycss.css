@@ -7,20 +7,20 @@ silde
 
 .carousel-item active{
 	height: 500px;
-	width: 1200px;
+	width: 100%;
 }
 .carousel-item{
 	height: 500px;
-	width: 1200px;
+	width: 100%;
 }
 .slide{
 	height: 500px;
 	width: 100%;
-	    margin-top: 20px;
+	margin-top: 20px;
 	
 }
  #myCarousel{
- width: 1200px;
+ width: 100%;
  margin: 0 auto;
  }
  

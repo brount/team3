@@ -263,70 +263,6 @@ public class AdminDAOImpl implements AdminDAO {
  		return dtos;
 	}
 
-	/*
-	// 의사회원 승인대기 검색목록 개수 구하기
-	@Override
-	public int search_doctorPermissionCnt() {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		int selectCnt = dao.search_doctorPermissionCnt();
-
- 		return selectCnt;
-	}
-
-	// 의사회원 승인대기 검색목록 조회
-	@Override
-	public ArrayList<DoctorVO> search_doctorPermission(Map<String, Object> map2) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		ArrayList<DoctorVO> dtos = dao.search_doctorPermission(map2);
-
- 		return dtos;
-	}
-	*/
-	
-	/*
-	// 의사제제회원 개수 구하기
-	@Override
-	public int getDoctorSanctionListCnt() {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		int selectCnt = dao.getDoctorSanctionListCnt();
-
- 		return selectCnt;
-	}
-
-	// 의사제제회원 목록
-	@Override
-	public ArrayList<DoctorVO> getDoctorSanctionList(Map<String, Object> map) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		ArrayList<DoctorVO> dtos = dao.getDoctorSanctionList(map);
-
- 		return dtos;
-	}
-	
-	// 의사제제회원 검색목록 개수 구하기
-	@Override
-	public int search_doctorSanctionCnt() {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		int selectCnt = dao.search_doctorSanctionCnt();
-
- 		return selectCnt;
-	}
-
-	// 의사제제회원 검색목록
-	@Override
-	public ArrayList<DoctorVO> search_doctorSanction(Map<String, Object> map2) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		ArrayList<DoctorVO> dtos = dao.search_doctorSanction(map2);
-
- 		return dtos;
-	}
-	*/
-	
 	// 의사탈퇴회원 개수 구하기
 	@Override
 	public int getDoctorSecessionListCnt() {
@@ -409,24 +345,12 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	// 의사회원 승인 처리시 병원제휴 처리
 	@Override
-	public int hospitalPermissionPro(Map<String, Object> map) {
+	public int hospitalPermissionPro(HospitalVO hodto) {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 		
-		int updateCnt = dao.hospitalPermissionPro(map);
+		int updateCnt = dao.hospitalPermissionPro(hodto);
 		
 		return updateCnt;
-	}
-
-	// 의사회원 다중 승인 처리
-	@Override
-	public int doctorChkPermissionPro(String[] checkOne) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-  	  	int updateCnt = 0;
-  	  	for (int i = 0; i < checkOne.length; i++) {
-  	  		updateCnt = dao.doctorPermissionPro(Integer.parseInt(checkOne[i]));
-  	  	}
-
-  	  	return updateCnt;
 	}
 
 
@@ -443,18 +367,6 @@ public class AdminDAOImpl implements AdminDAO {
 		return updateCnt;
 	}
 
-	// 의사회원 다중 제명 처리
-	@Override
-	public int doctorChkExpelPro(String[] checkOne) {
-		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-  	  	int updateCnt = 0;
-  	  	for (int i = 0; i < checkOne.length; i++) {
-  	  		updateCnt = dao.doctorExpelPro(Integer.parseInt(checkOne[i]));
-  	  	}
-
-  	  	return updateCnt;
-	}
-	
 	// 의사회원목록 병원정보
 	@Override
 	public HospitalVO getHospital(int hospitalno) {
@@ -479,7 +391,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return selectCnt;
 	}
 
-	/// 병원목록 조회
+	// 병원목록 조회
 	@Override
 	public ArrayList<HospitalVO> getHospitalList(Map<String, Object> map) {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
@@ -489,8 +401,16 @@ public class AdminDAOImpl implements AdminDAO {
 		return dtos;
 	}
 
-
-	
+	// 병원정보 수정
+	public int hospitalModifyPro(HospitalVO dto) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+		int updateCnt = dao.hospitalModifyPro(dto);
+       
+		System.out.println("updateCnt : " + updateCnt);
+		System.out.println(updateCnt==1 ? "수정 성공":"수정 실패");
+            
+		return updateCnt;
+	}
 //---------------------------------------------------------------------------------------
  	
     // 약 목록 개수 구하기

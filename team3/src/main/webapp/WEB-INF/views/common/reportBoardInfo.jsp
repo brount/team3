@@ -30,7 +30,7 @@ document.oncontextmenu = function() {return false;}
 						<form action="#" class="pull-right position">
 							<div class="input-append">
 								<input type="text" class="sr-input" placeholder="검색">
-								<button class="btn sr-btn" type="button">
+								<button class="btn btn-dark-blue" type="button">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>
@@ -67,13 +67,13 @@ document.oncontextmenu = function() {return false;}
 								<th colspan=4>
 								<c:if test="${dto.kind==4}">
 								<c:if test="${sessionScope.id==dto.boardwriter}">
-								<input class="inputButton" type="button" value="글수정"
+								<input  class="btn btn-dark-blue" type="button" value="글수정"
 									onclick="window.location='reportBoardModify?num=${dto.boardno}&pageNum=${pageNum}&kind=4'">
-								<input class="inputButton" type="button" value="글삭제"
+								<input  class="btn btn-dark-blue" type="button" value="글삭제"
 									onclick="window.location='reportBoardDelete?num=${dto.boardno}&pageNum=${pageNum}&kind=4'">
 								</c:if>
 								</c:if>
-								<input class="inputButton" type="button" value="목록보기"
+								<input class="btn btn-dark-blue" type="button" value="목록보기"
 									onclick="window.location='reportBoardList?pageNum=${pageNum}'">
 								</th>
 							</tr>

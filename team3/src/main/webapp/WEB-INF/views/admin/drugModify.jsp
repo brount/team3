@@ -23,8 +23,9 @@
 								<div class="panel-body">
 	                                <div class="row">
 	                                    <div class="col-lg-6">
-											<form role="form" action="drugList">
+											<form role="form" action="drugModifyPro" onsubmit="return drugModifyChk()" name="drugModifyForm">
 											<input type="hidden" name="drugCode" value="${dto.drugCode}">
+											<input type="hidden" name="pageNum" value="${pageNum}">
 												<div class="form-group input-group">
 													<label>약이름</label>
 													<input type="text" class="form-control" name="drugName" value="${dto.drugName}" readonly>

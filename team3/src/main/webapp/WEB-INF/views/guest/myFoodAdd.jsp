@@ -101,8 +101,8 @@ function newfoodinsert(){
 					             
 					          </div>
 					          
-					           <input type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
-					          <input type="button" class="btn btn-warning" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
+					           <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
+					          <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
 					          
 					        </div>
 					      </div>

@@ -71,11 +71,11 @@
                               <td>비만도</td>
                               <td>
                                  <span 
-                                    <c:if test="${CheckDto.fatness < 18.5}">style="color:blue;"</c:if>
-                                    <c:if test="${CheckDto.fatness >= 18.5}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.fatness >= 23}">style="color:orange;"</c:if>
-                                    <c:if test="${CheckDto.fatness >= 25}">style="color:red;"</c:if>
-                                    <c:if test="${CheckDto.fatness > 30}">style="color:purple;"</c:if>
+                                    <c:if test="${CheckDto.fatness < 18}">style="color:blue;"</c:if>
+                                    <c:if test="${CheckDto.fatness >= 18 &&CheckDto.fatness<23}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.fatness >= 23 &&CheckDto.fatness<25}">style="color:orange;"</c:if>
+                                    <c:if test="${CheckDto.fatness >= 25 &&CheckDto.fatness<30} ">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.fatness >= 30}">style="color:purple;"</c:if>
                                  >
                                     ${CheckDto.fatness}BMI
                                  </span>
@@ -83,9 +83,9 @@
                               <td></td>
                               <td>
                               <span style="color:blue;">
-                              저체충 18.5 미만   </span>      <br>
+                              저체중 18 미만   </span>      <br>
                               <span style="color:green;">
-                              정상 : 18.5이상 ~ 23미만</span><br>
+                              정상 : 18이상 ~ 23미만</span><br>
                               <span style="color:orange;">
                               과체중 : 23이상~25미만</span><br>
                               <span style="color:red;">
@@ -162,7 +162,7 @@
                                  </span>                                 
                               </td>
                               <td>음성</td>
-                              <td>약양성±</td>
+                              <td>양성±</td>
                            </tr>
 
                            <tr>
@@ -176,7 +176,7 @@
                                  </span>                                 
                               </td>
                               <td>음성</td>
-                              <td>약양성±</td>
+                              <td>양성±</td>
                            </tr>
 
                            <tr>
@@ -190,21 +190,21 @@
                                  </span>                                 
                               </td>
                               <td>음성</td>
-                              <td>약양성±</td>
+                              <td>양성±</td>
                            </tr>
 
                            <tr>
                               <td>요ph</td>
                               <td> 
                                  <span 
-                                    <c:if test="${CheckDto.urineph < 4.5}">style="color:red;"</c:if> 
-                                    <c:if test="${CheckDto.urineph >= 4.5}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.urineph < 4}">style="color:red;"</c:if> 
+                                    <c:if test="${CheckDto.urineph >= 4}">style="color:green;"</c:if>
                                     <c:if test="${CheckDto.urineph > 8}">style="color:red;"</c:if>
                                     > 
                                        ${CheckDto.urineph}mmHg
                                  </span>
                                </td>
-                              <td>4.5~8</td>
+                              <td>4~8</td>
                               <td></td>
                            </tr>
 
@@ -213,9 +213,9 @@
                               <td>빈혈등</td>
                               <td>혈색소</td>
                               <td>${CheckDto.hemoglobin}g/dL</td>
-                              <td>남:13~16.5<br>여:12~15.5
+                              <td>남:13~16<br>여:12~15
                               </td>
-                              <td>남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5
+                              <td>남:12~13 / 16~17<br>여:10~12 / 15~16
                               </td>
                            </tr>
 
@@ -284,27 +284,24 @@
                               <td>비활동성</td>
                            </tr>
                            <tr>
-                              <td colspan=4> 주의사항</td>
-                              <td colspan=4 style="color:red;">
-                                 <c:if test="${CheckDto.bloodpremax >= 160}">고혈압 .. 나트륨 섭취 및 흡연,음주를 삼가해주세요 <br></c:if>                                 
-                                 <c:if test="${CheckDto.bloodpremax < 160}">
-                                    <c:if test="${CheckDto.bloodpremax >= 140}">경계형고혈압 .. 나트륨 섭취 및 흡연,음주를 삼가해주세요 <br></c:if>
-                                 </c:if>
-                                 <c:if test="${CheckDto.bloodpremax < 60}">저혈압.. 적절한운동과 식이요법 요함 <br></c:if>
-                                 <c:if test="${CheckDto.urineglucose == '양성'}">당뇨병 의심 혈액검사 필요 <br></c:if>
-                                 <c:if test="${CheckDto.urineph < 4.5}">[ 요산수치 이상 ] 의심질병 : 통풍, 글루타민, 대사이상증, 요산결합, 혈청단백결손증, 신장기능장애, 악성고혈압, 다발성낭포신, 전립선비대  <br></c:if> 
-                                 <c:if test="${CheckDto.urineph > 8}">[ 요산수치 이상 ] 의심질병 : 통풍, 글루타민, 대사이상증, 요산결합, 혈청단백결손증, 신장기능장애, 악성고혈압, 다발성낭포신, 전립선비대 <br></c:if>                                 
-                              </td>                           
+                              <td colspan=6 align=center> 주의사항</td>                                                  
                            </tr>
+                            <c:forEach var="item" items="${dtos2}">
+                           <tr>                  
+                           	<td colspan=6 style="color:red;">
+                           	 <b style="color:#47a3da;">${item.name } |</b>    ${item.content }
+                            </td>
+                           </tr>
+                           </c:forEach>
                         </tbody>
                      </table>
                   </div>
                </div>
             </div>
             <center>
-            <input type="button" value="처방전 등록" style="margin-right:5px;"  onclick="window.location='examinationAdd?checkup=${checkup}&doctorno=${doctorno}'">
-            <input type="reset" value="취소">         
-            <input type="button" value="검강검진목록" style="margin-left:5px;" onclick="window.location='checkupResultList'">
+            <input type="button" class="btn btn-dark-blue" value="처방전 등록" style="margin-right:5px;"  onclick="window.location='examinationAdd?checkup=${checkup}&doctorno=${doctorno}'">
+            <input type="reset" class="btn btn-dark-blue" value="취소">         
+            <input type="button" class="btn btn-dark-blue" value="검강검진목록" style="margin-left:5px;" onclick="window.location='checkupResultList'">
          </div>
       </div>
    </div>

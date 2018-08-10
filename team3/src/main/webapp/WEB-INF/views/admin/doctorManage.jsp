@@ -25,35 +25,37 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form" action="membersanctionManagePro" name="manageForm" onsubmit="return sanctionChk()">
+									<form role="form" action="doctorManagePro" name="doctormanageForm" onsubmit="return sanctionChk()">
 										<input type="hidden" name="pageNum" value="${pageNum}">
+										<input type="hidden" name="hospitalno" value="${dto2.hospitalno}">
 										<div class="form-group input-group">
-											<label>회원번호</label> 
+											<label>회원번호</label><br/>
 											<input type="text" class="form-control" id="doctorno" name="doctorno" value="${dto.doctorno}" readonly >
 										</div>
 										
 										<div class="form-group input-group">
-											<label>소속병원</label> 
+											<label>소속병원</label><br/>
 											<input type="text" class="form-control" id="hospitalname" name="hospitalname" value="${dto2.hospitalname}" readonly >
 										</div>
 										
 										<div class="form-group input-group">
-											<label>회원명</label> 
+											<label>회원명</label> <br/>
 											<input type="text" class="form-control" id="doctorname" name="doctorname" value="${dto.doctorname}" readonly >
 										</div>
 
 										<div class="form-group input-group">
-											<label>회원ID</label>
+											<label>회원ID</label><br/>
 											<input type="text" class="form-control" id="doctorid" name="doctorid" value="${dto.doctorid}" readonly >
 										</div>
 										
 										<div class="form-group input-group">
-											<label>의사 자격증</label>
+											<label>의사 자격증</label><br/><br/>
 											<img src="/medical/resources/images/licence/${dto.licence}" width="250px" height="190px" onerror="this.src='/medical/resources/images/dachaimg.jpg'">
 										</div>
 										
 										<c:if test="${dto.doctorappro != 0}">
 											<div class="form-group input-group">
+												<label>제제</label><br/>
 												<select id="doctorappro" name="doctorappro">
 													<option value="1">---</option>
 													<option value="3">제명</option>
@@ -61,9 +63,9 @@
 											</div>
 																						
 											<div class="form-group input-group">
-												<label>제제사유</label>
+												<label>제제사유</label><br/>
 												<select id="sanctions" name="sanctions">
-													<option value="#">---</option>
+													<option value="">---</option>
 													<option value="0">음란</option>
 													<option value="1">욕설/비방</option>
 													<option value="2">도배</option>

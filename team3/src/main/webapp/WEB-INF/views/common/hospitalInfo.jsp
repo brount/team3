@@ -57,10 +57,10 @@
 									</tr>
 									<tr>
 										<td style="background: lightcyan" align=center colspan=2>
-											<button type="button" class="btn btn-primary" value="" style="padding: 0px;"
+											<button type="button"class="btn btn-dark-blue"value="" style="padding: 8px;"
 												onclick="window.location='reserveForm?hospitalno=${vo.hospitalno}'">예약</button>
-											<button type="button" class="btn btn-primary" value="" style="margin-left:30px;
-											padding:0px;"onclick="window.location='bookMarkIn?hospitalno=${vo.hospitalno}'">
+											<button type="button" class="btn btn-dark-blue" value="" style="padding:8px;"
+												onclick="window.location='bookMarkIn?hospitalno=${vo.hospitalno}'">
 											즐겨찾는 병원 등록
 											</button>
 										</td>

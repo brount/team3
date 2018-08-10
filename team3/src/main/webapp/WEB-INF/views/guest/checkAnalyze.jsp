@@ -129,7 +129,7 @@
 										<c:if test="${selectcnt ==0 }">
 											<div class="form-group">
 												<div style="display: table; margin: 0 auto;">
-													<button type="submit" class="btn btn-warning">
+													<button type="submit" class="btn btn-dark-blue" >
 														검진서를 등록해주세요~! <span class="glyphicon glyphicon-send"></span>
 													</button>
 												</div>

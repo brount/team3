@@ -329,7 +329,7 @@ function check() {
 					          </table>
 					          <div class="form-group">
 					        	<div style="display:table; margin:0 auto;">
-					          <button type="submit" class="btn btn-warning" >검진서 등록 <span class="glyphicon glyphicon-send"></span></button>
+					          <button type="submit" class="btn btn-dark-blue"  >검진서 등록 <span class="glyphicon glyphicon-send"></span></button>
 					        </div>
 					      </div>
 					      </div>

@@ -6,7 +6,7 @@
 <body onload="confirmIdFocus();">
 	<h2> 중복확인 페이지</h2>
 	
-	<form action="confirmId" method="post" name="confirmform"
+	<form action="doctorconfirmId" method="post" name="confirmform"
 			onsubmit="return confirmIdCheck();">
 	
 	
@@ -26,8 +26,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input class="inputButton" type="submit" value="확인">
-					<input class="inputButton" type="button" value="취소" onclick="self.close();">
+					<input class="btn btn-dark-blue" type="submit" value="확인">
+					<input class="btn btn-dark-blue" type="button" value="취소" onclick="self.close();">
 				</td>					
 			</tr>
 		

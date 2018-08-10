@@ -201,9 +201,9 @@
 					      <!-- Button -->
 					      <div class="form-group">
 					        <div style="display:table; margin:0 auto;">
-					          <button type="submit" class="btn btn-warning" style="margin-right:5px;">신청 <span class="glyphicon glyphicon-send"></span></button>
-					          <button type="reset" class="btn btn-warning" >취소 <span class="glyphicon glyphicon-send"></span></button>
-					          <button type="button" class="btn btn-warning" style="margin-left:5px" onclick="window.location='eventList'">메인 <span class="glyphicon glyphicon-send"></span></button>
+					          <button type="submit" class="btn btn-dark-blue" style="margin-right:5px;">신청 <span class="glyphicon glyphicon-send"></span></button>
+					          <button type="reset" class="btn btn-dark-blue" >취소 <span class="glyphicon glyphicon-send"></span></button>
+					          <button type="button" class="btn btn-dark-blue" style="margin-left:5px" onclick="window.location='eventList'">메인 <span class="glyphicon glyphicon-send"></span></button>
 					        </div>
 					      </div>
 					    </fieldset>

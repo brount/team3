@@ -29,8 +29,11 @@
 						 				<option value="#">게시중</option>
 						 				<option value="#">승인대기</option>
 						 			</select>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" onclick="eventDelCheck();">
+						 			
+						 			<button type="button" style="margin-left:10px" onclick="window.location='adminEventAdd?pageNum=${pageNum}'">
+						 				추가
+						 			</button>
+                                    <button type="button" style="margin-left:10px" onclick="eventDelCheck();">
                                     	삭제
                                     </button>
 	                            </div>

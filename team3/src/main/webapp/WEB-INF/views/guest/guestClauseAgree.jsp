@@ -211,7 +211,7 @@
 
 (1) 유형물품이 아닌 무형물품 판매에 대해 상품에 특성상 교환 또는 환불이 불가능합니다.
 (2) 원하시는 상품 구매시 주문하기전 자신이 원하는 상품인지 정확히 구분하여야 하며, 구입에 대한 책임은 당사자 본인에게 있습니다.</textarea>
-					<label class="btn btn-primary" for="checkbox1" data-toggle="buttons" style="width:100%; margin:15px 0; background-color:#47a3da; border-color:#47a3da;">
+					<label  class="btn btn-dark-blue" for="checkbox1" data-toggle="buttons" style="width:100%; margin:15px 0; background-color:#47a3da; border-color:#47a3da;">
 				    <input type="checkbox" name="agree" value="1" id="agree11" data-toggle="checkbox"> <i class="fa fa-shield"></i> 회원가입약관의 내용에 동의합니다.</label>
 		          </div>
 				 
@@ -239,13 +239,13 @@
 		                </tbody>
 		            </table>
 		        </div>
-					<label class="btn btn-primary" for="checkbox2" data-toggle="buttons" style="width:100%; margin:15px 0; background-color:#47a3da; border-color:#47a3da;">
+					<label  class="btn btn-dark-blue"  for="checkbox2" data-toggle="buttons" style="width:100%; margin:15px 0; background-color:#47a3da; border-color:#47a3da;">
 				    <input type="checkbox" name="agree2" value="1" id="agree21" data-toggle="checkbox"> <i class="fa fa-shield"></i> 개인정보처리방침안내의 내용에 동의합니다.</label>
 		          </div>
 		        </div><!-- /content -->
 		
 			<div class="modal-footer">
-		        <button type="submit" class="btn btn-primary" style="margin:0 auto; background-color:#47a3da; border-color:#47a3da;"><i class="fa fa-user"></i> 회원가입</button>
+		        <button type="submit"  class="btn btn-dark-blue" style="margin:0 auto; background-color:#47a3da; border-color:#47a3da;"><i class="fa fa-user"></i> 회원가입</button>
 		      </div>
 		</form>
 				</div>

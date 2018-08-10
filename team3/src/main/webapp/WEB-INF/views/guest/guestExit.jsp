@@ -31,8 +31,8 @@
 						<hr class="colorgraph">
 					</fieldset>
 					<center>
-						<input type="submit" value="확인">
-						<input type="button" value="취소" onclick="window.histroy.back();">
+						<input type="submit" value="확인"  class="btn btn-dark-blue" >
+						<input type="button" value="취소" class="btn btn-dark-blue"  onclick="window.histroy.back();">
 					</center>					
 				</form>
 			</div>

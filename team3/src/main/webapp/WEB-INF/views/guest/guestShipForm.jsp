@@ -82,7 +82,7 @@
 									<i class="glyphicon glyphicon-user"></i></span>
 									<input name="id" placeholder="아이디 입력" class="form-control" type="text"
 										style="hegint: 70px;" required>
-									<input type="button" class="btn btn-warning" value="중복확인" name="dupChk"
+									<input type="button"  class="btn btn-dark-blue" value="중복확인" name="dupChk"
 										onclick="confirmId();">
 								</div>
 							</div>
@@ -176,7 +176,7 @@
 							<label class="col-md-4 control-label">주소</label>
 							<div class="col-md-6  inputGroupContainer">
 								<input type="button" onclick="addressSearch();" value="주소찾기"
-									class="btn btn-warning"> 
+									 class="btn btn-dark-blue" > 
 								<input type="text" name="address1" id="sample6_postcode" placeholder="우편번호"
 									size="6" style="padding: 3px" class="form-control" style="width:30px" required>
 								<input name="address2" id="sample6_address" placeholder="주소" class="form-control"
@@ -208,7 +208,7 @@
 										<option value="daum.net">다음</option>
 										<option value="naver.com">네이버</option>
 									</select> 
-									<input class="btn btn-warning" type="button" value="이메일인증"
+									<input  class="btn btn-dark-blue" type="button" value="이메일인증"
 										name="echk" onclick="emailchk();">
 								</div>
 							</div>
@@ -217,7 +217,7 @@
 						<!-- Button -->
 						<div class="form-group" style="margin-top: 10px;">
 							<div style="display: table; margin: 0 auto;">
-								<button type="submit" class="btn btn-warning">
+								<button type="submit"  class="btn btn-dark-blue" >
 									회원가입 <span class="glyphicon glyphicon-send"></span>
 								</button>
 							</div>

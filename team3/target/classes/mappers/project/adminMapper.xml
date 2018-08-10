@@ -415,7 +415,7 @@
 	<select id="getDoctorPermissionListCnt" resultType="int">
 		SELECT COUNT(*) FROM doctor 
 		<where>
-			doctorappro = 0 AND sanctions = 0
+			doctorappro = 0
 		</where>
 	</select>
 
@@ -437,7 +437,6 @@
 						SELECT * 
 						  FROM doctor
 						 WHERE doctorappro = 0
-						   AND sanctions = 0
 						 ORDER by doctorno desc
 						)
 				)
@@ -448,185 +447,11 @@
 	</select>
 
 
-	<!-- 
-	 의사회원 승인대기 검색목록 개수 구하기 
-	<select id="search_doctorPermissionCnt" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(doctorno) FROM doctor
-		<where>
-			 doctorappro = 0 AND sanctions = 0
-			<choose>
-				<when test="sc == 0 ">
-					AND doctorid LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 1">
-					AND doctorname LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 2">
-					AND hospitalname LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 3">
-					AND doctorspecialism LIKE '%'||#{search}||'%'
-				</when>
-			</choose>
-		</where>
-	</select>
-	
-	의사회원 승인대기 검색목록 조회
-	<select id="search_doctorPermission" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
-			select * 
-    	  from (
-                 SELECT doctorno 
-                      , doctorid
-                      , doctorname
-                      , doctorspecialism
-                      , doctorappro
-                      , sanctions
-                      , point
-                      , doctorregstration
-					  , rownum rNum        
-            	   from (
-                	      select * 
-                            from doctor
-								WHERE doctorappro = 0
-                              	  AND sanctions = 0
-								<choose>
-									<when test="sc == 0 ">
-										AND doctorid LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 1">
-										AND doctorname LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 2">
-										AND hospitalname LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 3">
-										AND doctorspecialism LIKE '%'||#{search}||'%'
-									</when>
-								</choose>
-                           ORDER by doctorno desc
-                        )
-               )
-				<![CDATA[
-         	WHERE rNum >= #{start}
-           	  AND rNum <= #{end}
-               ]]>
-	</select>
-	 -->
-
-	<!-- 
-	의사제제회원 목록 개수
-	<select id="getDoctorSanctionListCnt" resultType="int">
-		SELECT COUNT(*) FROM doctor 
-		<![CDATA[
-			where doctorappro = 1 
-			AND sanctions > 0
-		]]>
-	</select>
-
-	의사제제회원 목록 조회
-	<select id="getDoctorSanctionList" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
-		SELECT * 
-		  FROM (
-				SELECT doctorno 
-					 , doctorid
-					 , doctorname
-					 , doctorspecialism
-		 			 , doctorappro
-					 , sanctions
-					 , point
-					 , doctorregstration
-					 , rownum rNum        
-				  FROM (
-						SELECT * 
-						  FROM doctor
-<![CDATA[
-			 			 where doctorappro = 1 
-						   AND sanctions > 0
-]]>
-						 ORDER by doctorno desc
-						)
-				)
-		<![CDATA[
-		 WHERE rNum >= #{start}
-		   AND rNum <= #{end}
-		]]>
-	</select>
-
-	의사제제회원 검색목록 개수 구하기
-	<select id="search_doctorSanctionCnt" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(doctorno) FROM doctor
-		<where>
-	<![CDATA[
-			 doctorappro = 1 
-			 AND sanctions > 0
-	]]>
-			<choose>
-				<when test="sc == 0 ">
-					AND doctorid LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 1">
-					AND doctorname LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 2">
-					AND hospitalname LIKE '%'||#{search}||'%'
-				</when>
-				<when test="sc == 3">
-					AND doctorspecialism LIKE '%'||#{search}||'%'
-				</when>
-			</choose>
-		</where>
-	</select>
-	
-	의사제제회원 검색목록 조회
-	<select id="search_doctorSanction" parameterType="java.util.Map" resultType="com.team.medical.vo.DoctorVO">
-		 select * 
-    	  from (
-                 SELECT doctorno 
-                      , doctorid
-                      , doctorname
-                      , doctorspecialism
-                      , doctorappro
-                      , sanctions
-                      , point
-                      , doctorregstration
-					  , rownum rNum        
-            	   from (
-                	      select * 
-                            from doctor
-<![CDATA[
-			 				where doctorappro = 1 
-			 					AND sanctions > 0
-]]>
-								<choose>
-									<when test="sc == 0 ">
-										AND doctorid LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 1">
-										AND doctorname LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 2">
-										AND hospitalname LIKE '%'||#{search}||'%'
-									</when>
-									<when test="sc == 3">
-										AND doctorspecialism LIKE '%'||#{search}||'%'
-									</when>
-								</choose>
-                           ORDER by doctorno desc
-                        )
-               )
-				<![CDATA[
-         	WHERE rNum >= #{start}
-           	  AND rNum <= #{end}
-               ]]>
-	</select>
-	 -->
-	
-	
 	<!-- 의사탈퇴회원 목록 개수 -->
 	<select id="getDoctorSecessionListCnt" resultType="int">
 		SELECT COUNT(*) FROM doctor 
 		<where>
-			doctorappro = 2
+			doctorappro >= 2
 		</where> 
 	</select>
 
@@ -646,7 +471,7 @@
 				  FROM (
 						SELECT * 
 						  FROM doctor
-			 			 where doctorappro = 2
+			 			 where doctorappro >= 2
 						 ORDER by doctorno desc
 						)
 				)
@@ -660,7 +485,7 @@
 	<select id="search_doctorSecessionCnt" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(doctorno) FROM doctor
 		<where>
-			 doctorappro = 2
+			 doctorappro >= 2
 			<choose>
 				<when test="sc == 0 ">
 					AND doctorid LIKE '%'||#{search}||'%'
@@ -695,7 +520,7 @@
                 	      select * 
                             from doctor
                             <where>
-			 					doctorappro = 1 
+			 					doctorappro >= 2
 								<choose>
 									<when test="sc == 0 ">
 										AND doctorid LIKE '%'||#{search}||'%'
@@ -733,12 +558,13 @@
 	
 	<!-- 의사 회원 제명 처리 -->
 	<update id="doctorExpelPro" parameterType="com.team.medical.vo.DoctorVO"> 
-		UPDATE  doctor SET doctorappro =	2
+		UPDATE  doctor SET doctorappro 	=	#{doctorappro},
+						   sanctions 	=	#{sanctions}
 		 WHERE  doctorno =	#{doctorno} 
 	</update>
 	
 	<!-- 제휴병원 승인 처리 -->
-	<update id="hospitalPermissionPro" parameterType="java.util.Map"> 
+	<update id="hospitalPermissionPro" parameterType="com.team.medical.vo.HospitalVO"> 
 		UPDATE  hospital SET hospitalstate =	1
 							,doctorno = #{doctorno}
 		 WHERE  hospitalno =	#{hospitalno} 
@@ -768,13 +594,13 @@
 				<when test="hospitalChoice == 0 ">
 					hospitalstate = 0
 						<choose>
-							<when test="sc == 0 ">
+							<when test="sc == 1 ">
 								AND hospitalname LIKE '%'||#{search}||'%'
 							</when>
-							<when test="sc == 1">
+							<when test="sc == 2">
 								AND hospitaladdr LIKE '%'||#{search}||'%'
 							</when>
-							<when test="sc == 2">
+							<when test="sc == 3">
 								AND hospitalkind LIKE '%'||#{search}||'%'
 							</when>
 						</choose>
@@ -783,13 +609,13 @@
 				<when test="hospitalChoice == 1">
 				     hospitalstate = 1
 				     <choose>
-						<when test="sc == 0 ">
+						<when test="sc == 1 ">
 							AND hospitalname LIKE '%'||#{search}||'%'
 						</when>
-						<when test="sc == 1">
+						<when test="sc == 2">
 							AND hospitaladdr LIKE '%'||#{search}||'%'
 						</when>
-						<when test="sc == 2">
+						<when test="sc == 3">
 							AND hospitalkind LIKE '%'||#{search}||'%'
 						</when>
 					</choose>
@@ -818,27 +644,28 @@
 								<when test="hospitalChoice == 0 ">
 									hospitalstate = 0 
 										<choose>
-											<when test="sc == 0 ">
+											<when test="sc == 1 ">
 												AND hospitalname LIKE '%'||#{search}||'%'
 											</when>
-											<when test="sc == 1">
+											<when test="sc == 2">
 												AND hospitaladdr LIKE '%'||#{search}||'%'
 											</when>
-											<when test="sc == 2">
+											<when test="sc == 3">
 												AND hospitalkind LIKE '%'||#{search}||'%'
 											</when>
 										</choose>
 								</when>
+								
 								<when test="hospitalChoice == 1">
 									hospitalstate = 1
 										<choose>
-											<when test="sc == 0 ">
+											<when test="sc == 1 ">
 												AND hospitalname LIKE '%'||#{search}||'%'
 											</when>
-											<when test="sc == 1">
+											<when test="sc == 2">
 												AND hospitaladdr LIKE '%'||#{search}||'%'
 											</when>
-											<when test="sc == 2">
+											<when test="sc == 3">
 												AND hospitalkind LIKE '%'||#{search}||'%'
 											</when>
 										</choose>
@@ -855,6 +682,15 @@
 		]]>
 	</select>
 
+	<!-- 병원정보수정 -->
+	<update id="hospitalModifyPro" parameterType="com.team.medical.vo.HospitalVO">
+		UPDATE hospital SET    hospitalno			=	#{hospitalno}
+						 	 , hospitalname			=	#{hospitalname}
+						 	 , hospitaladdr			=	#{hospitaladdr}
+						 	 , hospitalphone		=	#{hospitalphone}
+						 	 , hospitalinstruction	=	#{hospitalinstruction}
+		 WHERE hospitalno = #{hospitalno}
+	</update>
 
 
 

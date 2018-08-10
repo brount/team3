@@ -214,76 +214,129 @@
 	</select>
 	
 	<!-- 약 검색 갯수 구하기 -->
-	<select id="getDrugListCnt" resultType="int">
-		SELECT count(*) FROM drug 
-		<where>
-			<if test="sign != null">
-				<choose>
-					<when test="sign_falg == 0">
-						signF LIKE '%'||#{sign}||'%'
-						OR
-						signB LIKE '%'||#{sign}||'%'
-					</when>
-					<when test="sign_falg == 1">
-						signF LIKE #{sign}
-						OR
-						signB LIKE #{sign}
-					</when>
-					<when test="sign_falg == 2">
-						signF LIKE #{sign}||'%'
-						OR
-						signB LIKE #{sign}||'%'
-					</when>
-				</choose>
-			</if>
-			<if test="shape != null">
-				AND shape IN
-				<foreach collection="shape" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>
-			</if>
-			<if test="shape_etc != null">
-				AND shape LIKE #{shape_etc}
-			</if>
-			<if test="drugForm != null">
-				AND drugForm IN
-				<foreach collection="drugForm" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>
-			</if>
-			<if test="drugForm_etc != null">
-				AND drugForm LIKE #{drugForm_etc}
-			</if>
-			<if test="color != null">
-				AND colorF IN
-				<foreach collection="color" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>
-				OR colorB IN
-				<foreach collection="color" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>	
-			</if>
-			<if test="splitlineF != null">
-				AND splitlineF IN
-				<foreach collection="splitlineF" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>
-			</if>
-			<if test="splitlineB != null">
-				AND splitlineB IN
-				<foreach collection="splitlineB" open="(" close=")" item="item" separator=",">
-					#{item}
-				</foreach>
-			</if>
-			<if test="drugName != null">
-				AND drugName LIKE '%'||#{drugName}||'%'
-			</if>
-			<if test="drugCompany != null">
-				AND drugCompany LIKE '%'||#{drugCompany}||'%'
-			</if>
-		</where>
-	</select>
+   <select id="getDrugListCnt" resultType="int">
+      SELECT count(*) FROM  
+      <if test="nchk == 0">
+         drug
+      </if>
+      <if test="nchk != 0">
+      (
+         <if test="sign != null">
+                     SELECT * FROM
+                           (
+                  </if>         
+                     <if test="shape != null">
+                        SELECT * FROM
+                              (
+                     </if>         
+                        <if test="shape_etc != null">
+                           SELECT * FROM
+                                 (
+                        </if>         
+                           <if test="drugForm != null">
+                              SELECT * FROM
+                                    (   
+                           </if>
+                              <if test="drugForm_etc != null">
+                                 SELECT * FROM
+                                       (   
+                              </if>         
+                                 <if test="color != null">
+                                    SELECT * FROM
+                                          (   
+                                 </if>         
+                                    <if test="splitlineF != null">
+                                       SELECT * FROM
+                                          (
+                                    </if>
+                                       <if test="splitlineB != null">
+                                          SELECT * FROM
+                                             (
+                                       </if>
+                                          <if test="drugName != null">
+                                             SELECT * FROM
+                                                (
+                                          </if>
+                                                SELECT * FROM drug 
+                                                   <if test="drugCompany != null">
+                                                      WHERE drugCompany LIKE '%'||#{drugCompany}||'%'
+                                                   </if>
+                                          <if test="drugName != null">
+                                             )         
+                                             WHERE drugName LIKE '%'||#{drugName}||'%'
+                                          </if>
+                                       <if test="splitlineB != null">
+                                       )
+                                          WHERE 
+                                          <foreach collection="splitlineB" open="" close="" item="item" separator="OR">
+                                             splitlineB LIKE '%'||#{item}||'%'
+                                          </foreach>
+                                       </if>
+                                    <if test="splitlineF != null">
+                                    )
+                                       WHERE
+                                       <foreach collection="splitlineF" open="" close="" item="item" separator="OR">
+                                          splitlineF LIKE '%'||#{item}||'%'
+                                       </foreach>
+                                    </if>
+                                 <if test="color != null">
+                                 )
+                                    WHERE 
+                                    <foreach collection="color" open="" close="" item="item" separator="OR">
+                                       colorF LIKE '%'||#{item}||'%'
+                                    </foreach>
+                                    OR
+                                    <foreach collection="color" open="" close="" item="item" separator="OR">
+                                       colorB LIKE '%'||#{item}||'%'
+                                    </foreach>
+                                 </if>
+                              <if test="drugForm_etc != null">
+                              )
+                                 WHERE drugForm LIKE #{drugForm_etc}
+                              </if>
+                           <if test="drugForm != null">
+                           )
+                              WHERE 
+                              <foreach collection="drugForm" open="" close="" item="item" separator="OR">
+                                 drugForm LIKE '%'||#{item}||'%'
+                              </foreach>
+                           </if>
+                        <if test="shape_etc != null">
+                        )
+                           WHERE shape LIKE '%'||#{shape_etc}||'%'
+                        </if>
+                     <if test="shape != null">
+                     )
+                        WHERE  
+                        <foreach collection="shape" open="" close="" item="item" separator="OR">
+                           shape LIKE '%'||#{item}||'%'
+                        </foreach>
+                     </if>
+                  <if test="sign != null">
+                  )
+                     <where>
+                        <choose>
+                           <when test="sign_falg == 0">
+                              signF LIKE '%'||#{sign}||'%'
+                              OR
+                              signB LIKE '%'||#{sign}||'%'
+                           </when>
+                           <when test="sign_falg == 1">
+                              signF LIKE #{sign}
+                              OR
+                              signB LIKE #{sign}
+                           </when>
+                           <when test="sign_falg == 2">
+                              signF LIKE #{sign}||'%'
+                              OR
+                              signB LIKE #{sign}||'%'
+                           </when>
+                        </choose>
+                     </where>
+                  </if>
+                  )
+            </if>
+   </select>
 	
 	<!-- 약 검색 목록 조회 -->
 	<select id="getDrugList" parameterType="java.util.Map" resultType="com.team.medical.vo.DrugVO">

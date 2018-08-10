@@ -55,6 +55,17 @@ public class DoctorContoller {
 		coService.hospitalList(req, model);
 		return "doctor/hosSearch_sub";
 	}
+	
+	// 아이디찾기 이메일 코드 보내기
+    @RequestMapping(value= {"emailCheck","guest/emailCheck"})
+    public String findId(HttpServletRequest req, Model model) {
+        System.out.println("emailCheck");
+        
+        docService.emailkey(req, model);
+        
+        return "doctor/emailCheck";
+    }
+	
 	//회원 가입 처리
 	@RequestMapping("inputPro")
 	public String inputPro(MultipartHttpServletRequest req, Model model) {
@@ -70,7 +81,7 @@ public class DoctorContoller {
  		System.out.println("doctorLogin, 페이지");
  		docService.doctorLogin(req,model);
  		
- 		return "doctor/doctorLogin";
+ 		return "doctor/doctorLoginPro";
  	}
  	
  	//의사회원로그인

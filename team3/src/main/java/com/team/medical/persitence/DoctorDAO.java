@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.team.medical.vo.CheckupListVO;
 import com.team.medical.vo.CheckupVO;
+import com.team.medical.vo.CheckupresultVO;
 import com.team.medical.vo.DoctorVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
@@ -153,7 +154,10 @@ public interface DoctorDAO {
 	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map);
 
 	//
-	
+	public ArrayList<CheckupresultVO> checkupresult();
+
+	// 이메일 보내기
+	public void sendmail(String email, String key);
 	
 
 	

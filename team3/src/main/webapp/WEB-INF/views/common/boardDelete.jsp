@@ -34,8 +34,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				 <input type="submit" value="확인">
-				 <input type="button" value="취소" onclick="window.history.back();">
+				 <input class="btn btn-dark-blue" type="submit" value="확인">
+				 <input class="btn btn-dark-blue" type="button" value="취소" onclick="window.history.back();">
 				</td>
 			</tr>		
 		</table>

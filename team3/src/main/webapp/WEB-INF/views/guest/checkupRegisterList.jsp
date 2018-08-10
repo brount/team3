@@ -91,7 +91,7 @@
                      </c:if>
                        <c:if test="${cnt==0  }">
                      		<tr>
-                     			<td colspan="4" align="center">	<button type="button" class="btn btn-primary" onclick="window.location='checkupRegister'">
+                     			<td colspan="4" align="center">	<button type="button" class="btn btn-dark-blue" onclick="window.location='checkupRegister'">
 														검진서를 등록해주세요~! <span class="glyphicon glyphicon-send"></span>
 								</button> </td>
                      		</tr>

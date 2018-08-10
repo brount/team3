@@ -64,7 +64,9 @@
                               <c:forEach var="dto" items="${dtos }" >
                               <tr class="">
                                   <td class="view-message  dont-show">${dto.boardno}</td>
-                                  <td colspan="3" class="view-message"><a href="boardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a></td>
+                                  
+                                  <td colspan="3" class="view-message">
+                                  <a href="boardInfoCheck?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a></td>
                                   <td><span class="label label-success">${dto.boardwriter}</span></td>
                                   <td class="view-message  text-left">${dto.boarddate}</td>
                               </tr>
