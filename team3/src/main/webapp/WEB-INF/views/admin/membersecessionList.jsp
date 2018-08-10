@@ -29,8 +29,7 @@
 						 				<option value="memberList">일반회원목록</option>
 						 				<option value="membersanctionList">제제회원목록</option>
 						 			</select>
-						 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" onclick="memberdeleteCheck();">
+                                    <button type="button" onclick="return memberdeleteCheck();">
                                     	삭제
                                     </button>
 	                            </div>
@@ -131,8 +130,8 @@
 											</tr>
 										</table>
 
-										<table align="center">
-											<form action="membersecessionSearchList" class="search_box" method="post">
+										<form action="membersecessionSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+											<table align="center">
 												<tr>
 													<td>
 														<select class="input" name="sc">
@@ -148,8 +147,8 @@
 														<input type="submit" value="검색">
 													</td>
 												</tr>
-											</form>
-										</table>
+											</table>
+										</form>
 									</div>
 									<!-- /.table-responsive -->
 								</div>

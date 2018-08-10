@@ -9,6 +9,7 @@
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet"
 	type="text/css" />
 
+
 <body>
 
 	<header>
@@ -19,7 +20,7 @@
 		<div style="width: 45%; margin: 0 auto;">
 			<div class="well">
 				<form class="form-horizontal" action="inputPro" method="post"
-					name="reg_form" enctype="multipart/form-data">
+					name="reg_form" enctype="multipart/form-data" onsubmit="return inputCheck()">
 					<input type="hidden" name="hiddenId" value="0"> 
 					<input type="hidden" name="hiddenEmail" value=0>
 
@@ -107,8 +108,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-envelope"></i></span> <input name="email"
-										placeholder="이메일을 입력해주세요" class="form-control" type="text"><input
-										type="button" value="인증">
+										placeholder="이메일을 입력해주세요" class="form-control" type="email">
+										<input type="button" value="인증">
 								</div>
 							</div>
 						</div>

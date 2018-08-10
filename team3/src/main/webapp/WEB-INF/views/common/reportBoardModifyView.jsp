@@ -17,6 +17,14 @@
 	</header>
 
 	<section>
+		<c:if test="${pwdCnt == 0}">
+			<script type="text/javascript">
+				alert("입력한 정보를 다시 확인하세요~!");
+				window.history.back();
+			</script>
+		</c:if>
+		
+		<c:if test="${pwdCnt != 0}">
 		<form action="reportBoardModifyPro">
 			<input type="hidden" name="kind" value="4">
 			<input type="hidden" name="num" value="${num}">
@@ -51,7 +59,6 @@
 						</td>
 					</tr>
 
-
 					<tr>
 						<th colspan="2">
 							<input class="inputButton" type="submit" value="작성">
@@ -60,11 +67,10 @@
 								onclick="window.location='reportBoardList?pageNum=${pageNum}'">
 						</th>
 					</tr>
-					
 				</table>
-
 			</fieldset>
 		</form>
+		</c:if>
 	</section>
 
 	<footer>

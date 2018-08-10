@@ -136,26 +136,26 @@
 											</tr>
 										</table>
 										
-	                                    <table align="center">
-	                                    	<form action="doctorsecessionSearchList" class="search_box" method="get">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="sc" >
-								 						<option value=0>회원ID</option>
-								 						<option value=1>회원명</option>
-								 						<option value=2>병원명</option>
-								 						<option value=3>전문분야</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="text" id="search" name="search">
-							 					</td>
-							 					<td>
-							 						<input type="submit" value="검색">
-							 					</td>
-						 					</tr>
-						 					</form>
-						 				</table>
+										<form action="doctorsecessionSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+	                                       	<table align="center">
+	                                  			<tr>
+	                                       			<td>
+		                                        		<select class="input" name="sc" >
+									 						<option value=0>회원ID</option>
+									 						<option value=1>회원명</option>
+									 						<option value=2>병원명</option>
+									 						<option value=3>전문분야</option>
+									 					</select>
+								 					</td>
+								 					<td>
+								 						<input type="text" id="search" name="search">
+								 					</td>
+								 					<td>
+								 						<input type="submit" value="검색">
+								 					</td>
+							 					</tr>
+						 					</table>
+						 				</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

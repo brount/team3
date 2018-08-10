@@ -285,7 +285,7 @@
 
 	<!-- 일반회원제제관리 조회 -->
 	<select id="membersanctionManage" parameterType="java.util.Map" resultType="com.team.medical.vo.GuestVO">
-		SELECT guestNo, guestname, guestid, sanctions FROM guest where guestNo=#{guestNo}
+		SELECT * FROM guest where guestNo=#{guestNo}
 	</select>
 
 	<!-- 일반회원제제관리 처리 -->

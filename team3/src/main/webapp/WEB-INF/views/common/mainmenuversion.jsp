@@ -22,7 +22,7 @@
       <img class="slide " src="/medical/resources/images/mainimg/header.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="slide" src="/medical/resources/images/ex3.jpg" alt="Third slide">
+      <img class="slide" src="/medical/resources/images/mainimg/good.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -34,6 +34,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 
 <!-- Portfolio Grid Section -->
 <section class="portfolio" id="portfolio">
@@ -49,7 +50,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/cabin.png" alt="">
+					</div> <img style="width: 100%; height: auto;"  src="/medical/resources/images/mainimg/portbag.jpg" alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
@@ -60,7 +61,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/cake.png" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portdrug.jpg" alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
@@ -71,7 +72,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/circus.png" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portear.jpg"  alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
@@ -82,7 +83,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/game.png" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/porthel.jpg" alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
@@ -93,7 +94,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/safe.png" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portjar.jpg" alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
@@ -104,7 +105,7 @@
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img class="img-fluid" src="/medical/resources/images/submarine.png" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portweight.jpg" alt="">
 				</a>
 			</div>
 		</div>

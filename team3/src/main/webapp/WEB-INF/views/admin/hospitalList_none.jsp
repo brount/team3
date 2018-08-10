@@ -29,9 +29,6 @@
 	                            		<option value="hospitalList_none?hospitalChoice=0">비제휴병원</option>
 	                            		<option value="hospitalList?hospitalChoice=1">제휴병원</option>
 						 			</select>
-                                    <button type="button" style="margin-left:5px;">
-                                    	삭제
-                                    </button>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -133,8 +130,8 @@
 											</tr>
 										</table>
 										
-	                                    <table align="center">
-											<form action="hospitalSearchList_none" class="search_box" method="post">
+										<form action="hospitalSearchList_none" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+		                                    <table align="center">
 												<tr>
 													<td>
 														<select class="input" name="sc">
@@ -150,8 +147,8 @@
 														<input type="submit" value="검색">
 													</td>
 												</tr>
-											</form>
-										</table>
+											</table>
+										</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

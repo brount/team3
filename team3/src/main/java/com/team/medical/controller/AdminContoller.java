@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.medical.service.AdminService;
 import com.team.medical.service.CommonService;
+import com.team.medical.service.DoctorService;
 
 @Controller
 public class AdminContoller {
@@ -21,6 +22,8 @@ public class AdminContoller {
 	AdminService adService;
 	@Autowired
 	CommonService coService;
+	@Autowired
+	DoctorService doService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminContoller.class);
 	
@@ -213,6 +216,16 @@ public class AdminContoller {
 		
 		return "admin/doctorExpelPro";
 	}
+	
+	// 의사 상세페이지
+	@RequestMapping(value = "doctorManage")
+	public String doctorManage(HttpServletRequest req, Model model) {
+		logger.info("doctorManage");
+		
+		adService.doctorManage(req, model);
+		
+		return "admin/doctorManage";
+	}
 //--------------------------------------------------------------------------------------	
 	
 	// 제휴병원목록페이지     
@@ -232,9 +245,9 @@ public class AdminContoller {
 	}
 	
 	// 제휴병원 검색목록페이지     
-	@RequestMapping(value = "hospitaSearchlList")
-	public String hospitaSearchlList(HttpServletRequest req, Model model) {
-		logger.info("hospitaSearchlList, 페이지");
+	@RequestMapping(value = "hospitalSearchList")
+	public String hospitalSearchList(HttpServletRequest req, Model model) {
+		logger.info("hospitalSearchList, 페이지");
 		adService.hospitalList(req, model);
 		return "admin/hospitalList";
 	}

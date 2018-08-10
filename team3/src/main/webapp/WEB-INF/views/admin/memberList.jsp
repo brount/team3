@@ -122,35 +122,24 @@
 											</tr>
 										</table>
 										
-										<script type="text/javascript">
-										// 검색 체크
-										function searchChk(){
-											var search = document.getElementsByName("search").value;
-											
-											if(search == null){
-												alert("검색어를 입력하세요.");
-												return false;
-											}
-										}
-										</script>
-										<form action="memberSearchList" class="search_box" method="post" onsubmit="return searchChk()">
-	                                    <table align="center">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="sc" >
-								 						<option value=0> 회원번호</option>
-								 						<option value=1> 회원명  </option>
-								 						<option value=2> 회원ID </option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="text" id="search" name="search">
-							 					</td>
-							 					<td>
-							 						<input type="submit" value="검색">
-							 					</td>
-						 					</tr>
-						 				</table>
+										<form action="memberSearchList" class="search_box" method="post" name="searchForm" onsubmit="searchChk()">
+		                                    <table align="center">
+	                                  			<tr>
+	                                       			<td>
+		                                        		<select class="input" name="sc" >
+									 						<option value=0> 회원번호</option>
+									 						<option value=1> 회원명  </option>
+									 						<option value=2> 회원ID </option>
+									 					</select>
+								 					</td>
+								 					<td>
+								 						<input type="text" id="search" name="search">
+								 					</td>
+								 					<td>
+								 						<input type="submit" value="검색">
+								 					</td>
+							 					</tr>
+							 				</table>
 						 				</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
@@ -170,8 +159,5 @@
 	
 	</div>
 	<!-- /#wrapper -->
-        
-       
-       
     </body>
 </html>

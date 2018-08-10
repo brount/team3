@@ -60,7 +60,7 @@
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
-	                <a href="memberExit">회원탈퇴</a>
+	                <a href="doctorExitOk">회원탈퇴</a>
 	            </h4>
 	        </div>
 	    </div>

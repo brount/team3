@@ -16,12 +16,11 @@
 
 <section>
 <form action="refDeletePro" method="get">
-	<input type="hidden" name="kind" value="${kind }">
-	<input type="hidden" name="num" value="${num }">
-	<input type="hidden" name="number" value="${number }">
-	<input type="hidden" name="pageNum" value="${pageNum }">
+	<input type="hidden" name="kind" value="${kind}">
+	<input type="hidden" name="num" value="${num}">
+	<input type="hidden" name="number" value="${number}">
+	<input type="hidden" name="pageNum" value="${pageNum}">
 	<fieldset style="width: 800px; margin:0 auto">
-	${num } ] ${number } ] ${pageNum }
 		<legend>비밀번호 확인</legend>
 		<table   class="table table-striped table-hover" border="1" align="center" id="board" >
 			<tr>

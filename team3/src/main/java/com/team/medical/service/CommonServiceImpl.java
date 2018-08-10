@@ -122,16 +122,29 @@ public class CommonServiceImpl implements CommonService {
 		int num = Integer.parseInt(req.getParameter("num"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int number = Integer.parseInt(req.getParameter("number"));
+		String pwd = req.getParameter("boardpwd");
+		int pwdCnt = 0;
 		
-		//5단계 상세페이지 가져오기 
-		QuestionBoardVO dto=dao.getQuestion(num);
+		QuestionBoardVO dto = null;
+		ArrayList<QuestionBoardVO> dtos = null;
 		
-		Map<String,Integer> map = new HashMap<String,Integer>();
-		map.put("kind", 2);
-		map.put("ref", dto.getBoardno());
-		ArrayList<QuestionBoardVO> dtos = dao.getreList(map);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("boardno",num );
+		map.put("boardpwd", pwd);
+		pwdCnt = dao.pwdChk(map);
+		
+		if(pwdCnt == 1) {
+			//5단계 상세페이지 가져오기 
+			dto = dao.getQuestion(num);
+			
+			Map<String,Integer> map2 = new HashMap<String,Integer>();
+			map2.put("kind", 2);
+			map2.put("ref", dto.getBoardno());
+			dtos = dao.getreList(map2);
+		}
 		
 		//6단계 request 나 session 에 결과값 저장하기
+		model.addAttribute("pwdCnt", pwdCnt);
 		model.addAttribute("dto", dto);
 		model.addAttribute("dtos", dtos);
 		model.addAttribute("pageNum",pageNum);
@@ -881,8 +894,14 @@ public class CommonServiceImpl implements CommonService {
 		if(req.getParameterValues("shape")!=null) {
 			shape = req.getParameterValues("shape");
 			for(int i =0; i<shape.length;i++) {
-				if(!shape[i].equals("전체")){				
-					shape_etc =req.getParameter("shape_etc");
+				if(shape[i].equals("기타")){				
+					if(req.getParameter("shape_etc").equals("전체")) {
+						shape_etc = null;
+					}else {
+						shape_etc =req.getParameter("shape_etc");	
+					}
+				}else {
+					shape_etc = shape[i];
 				}
 			}
 		}	
@@ -892,8 +911,14 @@ public class CommonServiceImpl implements CommonService {
 		if(req.getParameterValues("drugForm")!=null) {
 			drugForm =req.getParameterValues("drugForm");
 			for(int i =0; i<drugForm.length;i++) {
-				if(!drugForm[i].equals("전체")){				
-					drugForm_etc =req.getParameter("drugForm_etc");
+				if(drugForm[i].equals("기타")){				
+					if(req.getParameter("drugForm_etc").equals("전체")) {
+						drugForm_etc = null;
+					}else {
+						drugForm_etc =req.getParameter("drugForm_etc");	
+					}					
+				}else {
+					drugForm_etc = drugForm[i];
 				}
 			}
 		}
@@ -947,7 +972,7 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("drugName", drugName);
 		model.addAttribute("drugCompany", drugCompany);
 		
-		cnt = dao.getDrugListCnt(map);
+		/*cnt = dao.getDrugListCnt(map);*/
 		
 		pageNum = req.getParameter("pageNum");
 		
@@ -958,9 +983,6 @@ public class CommonServiceImpl implements CommonService {
 		//글 30건기준
 		currentPage = Integer.parseInt(pageNum);
 		
-		// 페이지 갯수 6 = (30 / 5 ) + (0)
-		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
-		
 		start = ( currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
 		
 		// 5 = 1 + 5
@@ -968,10 +990,11 @@ public class CommonServiceImpl implements CommonService {
 		
 		// 30 = 30 - ( 1 - 1 ) * 5
 		// 25 = 30 - ( 2 - 1 ) * 5  
-		number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
+		// 페이지 갯수 6 = (30 / 5 ) + (0)
+	
 		
 		ArrayList<DrugVO> dtos = null;
-		
+		cnt=1;
 		if(cnt > 0) {
 			// 게시글 목록 조회 
 			Map<String, Object> map2 = new HashMap<String, Object>();
@@ -991,7 +1014,9 @@ public class CommonServiceImpl implements CommonService {
 			dtos = dao.getDrugList(map2);
 			model.addAttribute("dtos", dtos);
 		}
-		
+		cnt = dtos.size();
+		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+		number = cnt - (currentPage -1)* pageSize; // 출력용 글번호
 		// 1 = (1 / 3) * 3 + 1
  		startPage =(currentPage / pageBlock) * pageBlock +1; // 시작페이지
  		if(currentPage % pageBlock == 0) {
@@ -1029,10 +1054,5 @@ public class CommonServiceImpl implements CommonService {
 		
 		
 	}
-
-	
-
-	
-
 
 }

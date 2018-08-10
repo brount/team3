@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team.medical.vo.DoctorVO;
+
 public interface AdminService {
 	
 	// 관리자 로그인
@@ -77,6 +79,8 @@ public interface AdminService {
 	// 의사 회원 제명
 	public void doctorExpelPro(HttpServletRequest req, Model model);
 	
+	// 의사 회원 상세페이지
+	public void doctorManage(HttpServletRequest req, Model model);
 //--------------------------------------------------------------------------------------	
 	
 	// 병원목록

@@ -3,7 +3,7 @@
 <html>
 <body>
 
-	<div class="panel-group" id="accordion">
+	<div class="panel-group" id="accordion" style="font-size: 30px;">
 	  
 	    <div class="panel panel-default">
 	        <div class="panel-heading">

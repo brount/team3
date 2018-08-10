@@ -8,13 +8,13 @@ public class DoctorVO {
 	private String doctorid;			// 의사회원ID
 	private String doctorpwd;			// 의사회원PW
 	private String doctorname;			// 의사회원명
-	private int doctorappro;			// 승인여부	0 : 승인대기, 1 : 승인, 2 : 탈퇴
+	private int doctorappro;			// 승인여부		0 : 승인대기, 1 : 승인, 2 : 탈퇴 ,	3	:	제명	
 	private String doctorphone;			// 개인연락처
 	private String doctoremail;			// 이메일주소
 	private Date doctorregstration;		// 가입신청일
-	private int doctorspecialism;		// 전문분야 - 1 : 내과, 2 : 이비인후과, 3 : 정신의학과, 4 : 외과, 5 : 치과
+	private int doctorspecialism;		// 전문분야		1 : 내과, 2 : 이비인후과, 3 : 정신의학과, 4 : 외과, 5 : 치과
 	private int point;					// 포인트
-	private int sanctions;				// 제제단계
+	private int sanctions;				// 제명 사유		0 : 음란, 1 : 욕설/비방, 2 : 도배, 3 : 광고/홍보, 4 : 허위정보
 	private String licence;				// 의사면허이미지
 	
 	public String getLicence() {

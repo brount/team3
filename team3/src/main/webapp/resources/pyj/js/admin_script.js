@@ -70,7 +70,7 @@ function memberdeleteCheck(){
 	for(var i = 0; i < checkOne.length; i++){
 		if(checkOne[i].checked == true){
 			count++;
-			if(guestno == ""){
+			if(guestno == " "){
 				guestno += checkOne[i].value;
 			}else{
 				guestno += "," + checkOne[i].value;
@@ -78,39 +78,11 @@ function memberdeleteCheck(){
 		}
 	}
 	
-	if(guestno == null){
+	if(guestno == ""){
 		alert("선택하세요");
 		return false;
 	}else{
 		window.location='memberdeletePro?guestno='+guestno+'&pageNum='+pageNum;
-	}
-}
-
-
-//의사 회원 선택제명
-function doctorExpelCheck(){
-	var count = 0;
-	var doctorno = "";
-	var checkOne = document.getElementsByName("checkOne");
-	var pageNum = document.getElementsByName("pageNum")[0].value;
-
-	//선택된거 체크
-	for(var i = 0; i < checkOne.length; i++){
-		if(checkOne[i].checked == true){
-			count++;
-			if(doctorno == ""){
-				doctorno += checkOne[i].value;
-			}else{
-				doctorno += "," + checkOne[i].value;
-			}
-		}
-	}
-	
-	if(doctorno == null){
-		alert("선택하세요");
-		return false;
-	}else{
-		window.location='doctorExpelPro?doctorno='+doctorno+'&pageNum='+pageNum;
 	}
 }
 
@@ -135,7 +107,7 @@ function doctordeleteCheck(){
 		}
 	}
 	
-	if(doctorno == null){
+	if(doctorno == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -176,7 +148,7 @@ function doctorPermissionCheck(){
 		}
 	}
 	
-	if(doctorno == null){
+	if(doctorno == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -202,7 +174,7 @@ function diseasedeleteCheck(){
 		}
 	}
 	
-	if(diseaseCode == null){
+	if(diseaseCode == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -245,7 +217,7 @@ function exerciseDeleteCheck(){
 		}
 	}
 	
-	if(exerciseName == null){
+	if(exerciseName == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -271,7 +243,7 @@ function preventiondeleteCheck(){
 		}
 	}
 	
-	if(preventionCode == null){
+	if(preventionCode == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -314,7 +286,7 @@ function drugdeleteCheck(){
 		}
 	}
 	
-	if(drugCode == null){
+	if(drugCode == ""){
 		alert("선택하세요");
 		return false;
 	}else{
@@ -340,7 +312,7 @@ function eventDelCheck(){
       }
    }
    
-   if(advertisementNo == null){
+   if(advertisementNo == ""){
       alert("선택하세요");
       return false;
    }else{
@@ -365,7 +337,7 @@ function adminReportDeleteChek(){
 			}
 		}
 	}
-	if (boardno == null) {
+	if (boardno == "") {
 		alert("선택하세요");
 		return false;
 	} else {
@@ -374,4 +346,29 @@ function adminReportDeleteChek(){
 }
 
 
+//검색 체크
+function searchChk(){
+	
+	var search = document.searchForm.search.value;
+	
+	if(search == null){
+		alert("검색어를 입력하세요.");
+		document.searchForm.search.focus();
+		return false;
+	}
+}
+
+//제제 사유 체크
+function sanctionChk(){
+	
+	var reason = document.manageForm.reason.value;
+	var sanctions = document.manageForm.sanctions.value;
+	console.log(typeof(sanctions*1))
+	
+	if(sanctions*1 > 0 && reason == ""){
+		alert("제제 사유를 작성해주세요.");
+		document.manageForm.reason.focus();
+		return false;
+	}
+}
 

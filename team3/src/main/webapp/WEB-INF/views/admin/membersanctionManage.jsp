@@ -36,7 +36,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form" action="membersanctionManagePro">
+									<form role="form" action="membersanctionManagePro" name="manageForm" onsubmit="return sanctionChk()">
 										<input type="hidden" name="pageNum" value="${pageNum}">
 										<div class="form-group input-group">
 											<label>회원번호</label> 
@@ -65,7 +65,7 @@
 										
 										<div class="form-group input-group">
 											<label>제제사유</label>
-											<textarea class="form-control" rows="3" id="reason" name="reason"></textarea>
+											<textarea class="form-control" rows="3" id="reason" name="reason"><c:if test="${dto.sanctions != 0}">${dto.reason}</c:if></textarea>
 										</div>
 										<button type="submit" class="btn btn-default">등록</button>
 										<button type="reset" class="btn btn-default"

@@ -29,9 +29,6 @@
 	                            		<option value="hospitalList?hospitalChoice=1">제휴병원</option>
 	                            		<option value="hospitalList_none?hospitalChoice=0">비제휴병원</option>
 						 			</select>
-                                    <button type="button" style="margin-left:5px;">
-                                    	삭제
-                                    </button>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -43,7 +40,6 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>병원번호</th>
 		                                            <th>병원명</th>
 		                                            <th>병원연락처</th>
@@ -57,7 +53,6 @@
 		                                        	<input type="hidden" name="pageNum" value="${pageNum}">
 													<c:forEach var="dto" items="${dtos}">
 														<tr>
-															<td class="center"><input type="checkbox" name="checkOne" value="${dto.hospitalno}"></td>
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalno}</td>
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalname}</td>
 															<td onclick="window.location='hosModify?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number+1}'">${dto.hospitalphone}</td>
@@ -131,8 +126,8 @@
 											</tr>
 										</table>
 										
-	                                    <table align="center">
-											<form action="hospitalSearchList" class="search_box" method="post">
+										<form action="hospitalSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+	                                    	<table align="center">
 												<tr>
 													<td>
 														<select class="input" name="sc">
@@ -148,8 +143,8 @@
 														<input type="submit" value="검색">
 													</td>
 												</tr>
-											</form>
-										</table>
+											</table>
+										</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

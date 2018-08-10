@@ -5,10 +5,8 @@
 	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<!-- 
 <link href="/medical/resources/common/css/drugSeach.css"
 	rel="stylesheet">
-	 -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <html lang="en">
@@ -26,9 +24,7 @@
 	</header>
 
 	<section>
-	<!-- 
 		<script src="/medical/resources/common/js/drugSeach.js"></script>
-		 -->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 col-md-3">

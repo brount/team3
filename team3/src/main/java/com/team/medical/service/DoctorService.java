@@ -72,6 +72,9 @@ public interface DoctorService {
 	// 포인트 페이지
 	public void pointManage(HttpServletRequest req, Model model);
 
+	// 병원 정보수정
+	public void myHospitalUpdate(HttpServletRequest req, Model model);
+
 
 	
 }

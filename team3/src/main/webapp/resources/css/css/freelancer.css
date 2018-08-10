@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lato';
+  font-family: 'Gothic A1', sans-serif;
 }
 
 h1,
@@ -9,7 +9,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: 'Montserrat';
+  font-family:'Jua', sans-serif;
 }
 
 hr.star-light,
@@ -32,7 +32,7 @@ hr.star-dark:after {
   display: inline-block;
   padding: 0 0.25em;
   content: '\f005';
-  font-family: FontAwesome;
+  font-family:'Jua', sans-serif;
   font-size: 2em;
 }
 
@@ -70,6 +70,10 @@ section h2 {
   }
 }
 
+.btn {
+	border-width: 0px !important;
+}
+
 .btn-xl {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;
@@ -100,7 +104,7 @@ section h2 {
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-weight: 700;
-  font-family: 'Montserrat';
+  font-family:'Jua', sans-serif;
 }
 
 #mainNav .navbar-brand {
@@ -179,7 +183,7 @@ header.masthead h1 {
 
 header.masthead h2 {
   font-size: 1.3rem;
-  font-family: 'Lato';
+  font-family: 'Gothic A1', sans-serif;
 }
 
 @media (min-width: 992px) {

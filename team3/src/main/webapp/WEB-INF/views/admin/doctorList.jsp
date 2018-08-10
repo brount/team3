@@ -30,11 +30,6 @@
 						 				<!-- <option value="doctorsanctionList">의사제제회원목록</option> -->
 						 				<option value="doctorsecessionList">의사탈퇴회원목록</option>
 						 			</select>
-						 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" onclick="doctorExpelCheck();">
-                                    	제명
-                                    </button>
-						 			
 	                            </div>
 	                        </div>
 	                    </div>
@@ -46,7 +41,6 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
-	                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 	                                            <th>회원번호</th>			
 	                                            <th>병원명</th>			
 	                                            <th>회원ID</th>			
@@ -65,16 +59,15 @@
 	                                        	<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-														<td><input type="checkbox" name="checkOne" value="${dto.doctorno}"></td>
-													    <td>${dto.doctorno}</td>
-														<td>${dtos2[a].hospitalname}</td>
-														<td>${dto.doctorid}</td>
-														<td>${dto.doctorname}</td>
-														<td>${dtos2[a].hospitaladdr}</td>
-														<td>${dtos2[a].hospitalphone}</td>
-														<td>${dto.doctorspecialism}</td>
-														<td>${dto.point}</td>
-														<td>${dto.doctorregstration}</td>
+													    <td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalname}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorid}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorregstration}</td>
 		                                        	</tr>
 		                                        	<c:set var="a" value="${a+1 }"></c:set>
 		                                       	</c:forEach>
@@ -136,26 +129,26 @@
 											</tr>
 										</table>
 										
-	                                    <table align="center">
-	                                    	<form action="doctorSearchList" class="search_box" method="get">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="sc" >
-								 						<option value=0>회원ID</option>
-								 						<option value=1>회원명</option>
-								 						<option value=2>병원명</option>
-								 						<option value=3>전문분야</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="text" id="search" name="search">
-							 					</td>
-							 					<td>
-							 						<input type="submit" value="검색">
-							 					</td>
-						 					</tr>
-						 					</form>
-						 				</table>
+										<form action="doctorSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">										
+		                                    <table align="center">
+	                                  			<tr>
+	                                       			<td>
+		                                        		<select class="input" name="sc" >
+									 						<option value=0>회원ID</option>
+									 						<option value=1>회원명</option>
+									 						<option value=2>병원명</option>
+									 						<option value=3>전문분야</option>
+									 					</select>
+								 					</td>
+								 					<td>
+								 						<input type="text" id="search" name="search">
+								 					</td>
+								 					<td>
+								 						<input type="submit" value="검색">
+								 					</td>
+							 					</tr>
+							 				</table>
+						 				</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

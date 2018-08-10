@@ -87,7 +87,7 @@
 							    		<th>1회<br>투여량</th>
 							    		<th>1회<br>투여횟수</th>
 							    		<th>총<br>투여일수</th>
-						                <td rowspan="5"><textarea rows="8"  name="caution" readonly="readonly" style="resize: none;">${preDto.caution}</textarea>　</td>
+						                <td rowspan="5"><textarea rows="3"  name="caution" readonly="readonly" style="resize: none;">${preDto.caution}</textarea>　</td>
 						          	</tr>
 						          	<c:set value="0" var="b"></c:set>
 						          	<c:forEach var="injectionname" items="${injectionname1}">

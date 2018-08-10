@@ -100,8 +100,8 @@
 											</tr>
 										</table>
 
-										<table align="center">
-											<form action="drugSearchList" class="search_box" method="get">
+										<form action="drugSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
+											<table align="center">
 												<tr>
 													<td>
 														<select class="input" name="sc">
@@ -117,8 +117,8 @@
 														<input type="submit" value="검색">
 													</td>
 												</tr>
-											</form>
-										</table>
+											</table>
+										</form>	
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

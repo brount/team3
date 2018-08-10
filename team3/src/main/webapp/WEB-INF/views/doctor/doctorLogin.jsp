@@ -4,7 +4,7 @@
 <html lang="en">
 <body>
 <script type="text/javascript">
-	window.location="doctorLogin?id=${id}&pwd=${pwd}&memberState=${memberState}";
+	window.location="doctorLoginPro?id=${id}&pwd=${pwd}&memberState=${memberState}";
 </script>
 </body>
 

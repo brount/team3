@@ -10,3 +10,63 @@
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
+
+header a{
+	font-size: 30px;
+} 
+section a{
+	font-size: 30px;
+} 
+
+.option {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+}
+.option :hover {
+  background: #9faab7;
+}
+.option:checked {
+  background: #40e0d0;
+}
+.option:checked::before {
+/* 
+     height: 40px;
+    width: 40px; */
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+  font-size: 40;
+    text-align: center;
+    line-height: 0.6;
+
+    padding-right: 10;
+}
+.option:checked::after {
+ /*  -webkit-animation: click-wave 0.65s; */
+ /*  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s; */
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}

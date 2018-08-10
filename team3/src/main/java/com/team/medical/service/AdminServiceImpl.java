@@ -1539,27 +1539,37 @@ public class AdminServiceImpl implements AdminService {
 		
 		System.out.println(req.getAttribute("pageNum"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
-		String[] checkOne = req.getParameter("doctorno").split(",");
-		String[] checkTwo = req.getParameter("hospitalno").split(",");
-		
-		int updateCnt = dao.doctorChkPermissionPro(checkOne);
-		Map<String, Object> map = new HashMap<String,Object>();
-		for(int i = 0; i <checkTwo.length-1; i++) {
-			map.put("hospitalno", Integer.parseInt(checkTwo[i]));
-			
-			if(dao.getHospital(Integer.parseInt(checkTwo[i])).getDoctorno() != null ) {
-				map.put("doctorno", dao.getHospital(Integer.parseInt(checkTwo[i])).getDoctorno()
-						+",d"+checkOne[i]+"t");
-			}else {
-				map.put("doctorno", "d"+checkOne[i]+"t");
-			}
-			
-			
-			if(updateCnt > 0) dao.hospitalPermissionPro(map);
-		}
-		
 
-		model.addAttribute("updateCnt", updateCnt);
+		int drugCode = Integer.parseInt(req.getParameter("drugCode"));
+    	String drugName = req.getParameter("drugName");
+    	String drugCompany = req.getParameter("drugCompany");
+    	String drugGroupCode = req.getParameter("drugGroupCode");
+    	String pro_Usual = req.getParameter("pro_Usual");
+    	
+    	String drugStorageMethod = req.getParameter("drugStorageMethod");
+    	String drugEfficacy = req.getParameter("drugEfficacy");
+    	String drugUsedCapacity = req.getParameter("drugUsedCapacity");
+    	String drugPrecautions = req.getParameter("drugPrecautions");
+    	
+        DrugVO dto = new DrugVO();
+        
+        dto.setDrugName(drugName);
+        dto.setDrugCompany(drugCompany);
+        dto.setDrugGroupCode(drugGroupCode);
+        dto.setPro_Usual(pro_Usual);
+        
+        dto.setDrugStorageMethod(drugStorageMethod);
+        dto.setDrugEfficacy(drugEfficacy);
+        dto.setDrugUsedCapacity(drugUsedCapacity);
+        dto.setDrugPrecautions(drugPrecautions);
+        
+        int selectCnt = dao.drugModifyPro(dto);
+        
+        model.addAttribute("drugCode", drugCode);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("selectCnt", selectCnt);
+	            
+
 		model.addAttribute("pageNum",pageNum);
 	}
 
@@ -1575,6 +1585,23 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pageNum",pageNum);
 	}
 
+	// 의사회원 상세페이지
+	@Override
+	public void doctorManage(HttpServletRequest req, Model model) {
+		String doctorid = req.getParameter("doctorid");
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+
+		DoctorVO dto = doDAO.getDocInfo(doctorid);
+
+
+		String doctorno = "d"+String.valueOf(doDAO.getdocnoInfo(doctorid))+"t";
+	      
+		HospitalVO dto2 = doDAO.getMyhospitalInfo(doctorno);
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("dto2",dto2);
+		model.addAttribute("pageNum", pageNum);
+	}
 
 //--------------------------------------------------------------------------------------		
 	
@@ -1602,10 +1629,10 @@ public class AdminServiceImpl implements AdminService {
 		if(hospitalChoice == null) {
 			hospitalChoice = "1";
 		}
-		
-		//int sc = Integer.parseInt(req.getParameter("sc"));
-		//String search = req.getParameter("search");
-		
+		/*	
+		int sc = Integer.parseInt(req.getParameter("sc"));
+		String search = req.getParameter("search");
+		*/
 		// 5단계. 갯수 구하기
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hospitalChoice", hospitalChoice);

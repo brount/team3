@@ -3,6 +3,28 @@
 <html lang="en">
 <title>사이트 이름</title>
 <body>
+<script type="text/javascript">
+function reportBoardAdd() {
+	if(${sessionScope.id==null} ){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location='memberLogin';
+	}else{
+		window.location='reportBoardAdd?kind=4';
+	}
+}
+
+function noEvent() { // 새로 고침 방지
+	if (event.keyCode == 116) {
+		event.keyCode = 2;
+		return false;
+	} else if (event.ctrlKey && (event.keyCode == 78 || event.keyCode == 82)) {
+		return false;
+	}
+}
+document.onkeydown = noEvent;
+
+document.oncontextmenu = function() {return false;}
+</script>
 
 	<header>
 		<%@ include file="../common/header.jsp"%>
@@ -20,7 +42,7 @@
 								<button class="btn sr-btn" type="button">
 									<i class="fa fa-search"></i>
 								</button>
-								<input type="button" class="btn" value="글쓰기" onclick="window.location='reportBoardAdd?kind=4'">
+								<input type="button" class="btn" value="글쓰기" onclick="reportBoardAdd()">
 							</div>
 							<div></div>
 						</form>

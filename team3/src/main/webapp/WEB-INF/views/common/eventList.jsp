@@ -5,6 +5,20 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <title> 사이트 이름 </title>
 <body>
+
+<script type="text/javascript">
+function noEvent() { // 새로 고침 방지
+	if (event.keyCode == 116) {
+		event.keyCode = 2;
+		return false;
+	} else if (event.ctrlKey && (event.keyCode == 78 || event.keyCode == 82)) {
+		return false;
+	}
+}
+document.onkeydown = noEvent;
+
+document.oncontextmenu = function() {return false;}
+</script>
    
 <header >
 	<%@ include file="../common/header.jsp" %>
@@ -14,15 +28,7 @@
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
-		            <div class="panel-group" id="accordion">
-		                <div class="panel panel-default">
-		                    <div class="panel-heading">
-		                        <h4 class="panel-title">
-		                            <a href="eventList">이벤트</a>
-		                        </h4>
-		                    </div>                   
-		                </div>
-		             </div>
+		            <%@ include file="../common/menuEvent.jsp" %>
 		        </div>
 	  		 	<div class="col-sm-9 col-md-9">
 		            <div class="well">
@@ -80,8 +86,5 @@
 	<%@ include file="../common/footer.jsp" %>
 </footer>
 
-
 </body>
 </html>
-
-	

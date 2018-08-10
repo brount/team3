@@ -1,3 +1,6 @@
+
+
+
 #headerWrap {
 	position: relative;
 	width: 100%;
@@ -806,7 +809,7 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
  * Nanum Gothic (Korean) http://www.google.com/fonts/earlyaccess v4
  */
 @font-face {
-  font-family: 'Nanum Gothic';
+  font-family: 'Gothic A1', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: url(/asan/css/google_fonts/NanumGothic-Regular.eot);
@@ -816,7 +819,7 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
        url(/asan/css/google_fonts/NanumGothic-Regular.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Nanum Gothic';
+  font-family: 'Gothic A1', sans-serif;
   font-style: normal;
   font-weight: 700;
   src: url(/asan/css/google_fonts/NanumGothic-Bold.eot);
@@ -825,6 +828,8 @@ h1.logo { position:absolute; top:64px; left:0;z-index:1002;}
        url(/asan/css/google_fonts/NanumGothic-Bold.woff) format('woff'),
        url(/asan/css/google_fonts/NanumGothic-Bold.ttf) format('truetype');
 }
+
+
 
 /* BLUEGRID RESET CSS ver 1.0(http://uid-lab.bluegrid.kr/entry/resetcss) :: edit by won yong bong (A.K.A dstyle) | License: none (public domain) */
 /* eric meyer Reset CSS v2.0(http://meyerweb.com/eric/tools/css/reset/) | License: none (public domain) */
@@ -837,10 +842,10 @@ blockquote,q { quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after { content:''; content:none;}
 table { border-collapse:collapse; border-spacing:0;}
 dt { display:block;}
-a { cursor:pointer;}
+a { cursor:pointer; font-size: 30px;}
 hr { display:none;}
 input, select, img { vertical-align:middle;}
-input, select, textarea { font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'굴림',Gulim,Tahoma, Geneva, sans-serif,verdana;}
+input, select, textarea { font-family:'Jua', sans-serif;}
 
 /* Web Content Accessibility TTS(Text To Speech) Code */
 .tts { position:absolute; width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibility:hidden;}
@@ -862,5 +867,5 @@ textarea.textarea { width:98%; border:1px solid #cdcdcd;} /* textarea.textarea S
 #skipToContent a:active { margin-top:0px; height:auto; padding:10px 0px;}
 
 /* 공통 - 컨덴츠 폰트페밀리 고정 */
-html * {font-family:'Nanum Gothic' !important;}
-html * select{font-family:'Nanum Gothic','나눔고딕' !important;}
+html * {font-family:'Jua', sans-serif;}
+html * select{font-family:'Jua', sans-serif;}

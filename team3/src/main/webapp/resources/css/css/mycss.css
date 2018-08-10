@@ -7,11 +7,11 @@ silde
 
 .carousel-item active{
 	height: 500px;
-	width: 1000px;
+	width: 1200px;
 }
 .carousel-item{
 	height: 500px;
-	width: 1000px;
+	width: 1200px;
 }
 .slide{
 	height: 500px;
@@ -20,7 +20,7 @@ silde
 	
 }
  #myCarousel{
- width: 1000px;
+ width: 1200px;
  margin: 0 auto;
  }
  

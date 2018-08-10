@@ -246,7 +246,7 @@ footer
       .personalization-area .contents-item .button-more-link { position:absolute; right:0; }
       .personalization-area .contents-item .button-more-link a { display:block; padding:10px 0 10px 10px; }
       .personalization-area .contents-item .button-more-link-text a { font-size:13px; color:#4ad1d4; }
-      .personalization-area .contents-item .button-more-link-text a .icon-gt { font-family:Tohoma; font-size:10px; }
+      .personalization-area .contents-item .button-more-link-text a .icon-gt { font-family:'Jua', sans-serif; font-size:10px; }
 
     /* 프로필 */
     .personalization-area .user-profile { position:relative; padding:0 0 28px 112px; border-top:0 !important; }
@@ -737,7 +737,7 @@ footer
 
       .gnb-panel-reservation .section-B .links {}
       .gnb-panel-reservation .section-B .links a {display: block; margin-top:-1px; padding: 20px 0; text-align: center; font-size: 14px; color: #125aac; border: 1px solid #e5ecf6;}
-      .gnb-panel-reservation .section-B .phone-call { position:absolute; left:0; right:0; margin-top: -44px;   /*display: block; margin-top: -44px;*/ font-family: Arial; font-weight: bold; font-size:17px; color: #41c1c2; text-align: center;}
+      .gnb-panel-reservation .section-B .phone-call { position:absolute; left:0; right:0; margin-top: -44px;   /*display: block; margin-top: -44px;*/ font-family: 'Gothic A1', sans-serif; font-weight: bold; font-size:17px; color: #41c1c2; text-align: center;}
       .gnb-panel-reservation .section-B .ico-gnb {width:42px; height:42px;}
       .gnb-panel-reservation .section-B .ico-gnb-call {background-position: -256px -207px;}
       .gnb-panel-reservation .section-B .ico-gnb-online {background-position: -323px -207px;}
@@ -826,7 +826,7 @@ footer
 
       .gnb-panel-information .section-C .links {}
       .gnb-panel-information .section-C .links a {display: block; margin-top:-1px; padding: 20px 0; width:114px; text-align: center; font-size: 15px; font-weight:bold; color: #125aac; border: 1px solid #e5ecf6; letter-spacing: -1px; }
-      .gnb-panel-information .section-C .phone-call { position:absolute; left:0; right:0; margin-top: -44px;   /*display: block; margin-top: -44px;*/ font-family: Arial; font-weight: bold; font-size:17px; color: #41c1c2; text-align: center;}
+      .gnb-panel-information .section-C .phone-call { position:absolute; left:0; right:0; margin-top: -44px;   /*display: block; margin-top: -44px;*/ font-family:'Jua', sans-serif; font-weight: bold; font-size:17px; color: #41c1c2; text-align: center;}
       .gnb-panel-information .section-C .ico-gnb {width:42px; height:42px; }
       .gnb-panel-information .section-C .ico-gnb-wayto {background-position: 0 -713px;}
       .gnb-panel-information .section-C .ico-gnb-lookaround {background-position: -74px -713px;}
@@ -1437,7 +1437,7 @@ quick-navigation
 	.selfcheck-graph .selfcheck-graph-heading { color: #222222; font-size: 24px; line-height: normal; }
 	.selfcheck-graph .selfcheck-graph-heading p { padding-bottom: 10px; }
 	.selfcheck-graph .selfcheck-graph-heading strong { display: inline-block; position: relative; color: #115bab; font-size: 38px; letter-spacing: -1px; }
-	.selfcheck-graph .selfcheck-graph-heading .number { margin-top: -10px; font-family: Tahoma; }
+	.selfcheck-graph .selfcheck-graph-heading .number { margin-top: -10px; font-family:'Jua', sans-serif; }
 	.selfcheck-graph .selfcheck-graph-heading .text {  }
 	.selfcheck-graph .selfcheck-graph-content { position: relative; margin-top: 10px; }
 
@@ -2067,7 +2067,7 @@ quick-navigation
 .magazine-list { margin-top: 30px; }
 .magazine-section { position: relative; margin-top: 20px; }
 .magazine-section-header { background-color: #efeff3; }
-.magazine-section-title { display: block; position: relative; padding: 10px 25px; color: #3378c1; font-size: 24px; font-family: Tahoma; font-weight: bold; letter-spacing: -1px; line-height: normal; }
+.magazine-section-title { display: block; position: relative; padding: 10px 25px; color: #3378c1; font-size: 24px; font-family:'Jua', sans-serif;font-weight: bold; letter-spacing: -1px; line-height: normal; }
 .magazine-section-title:after { content: ''; display: block; position: absolute; top: 50%; right: 25px; margin-top: -8px; width: 31px; height: 16px; background: url('../img/ico/ico_magazine_down.png') no-repeat 0 0; }
 .magazine-item-wrapper { border-bottom: 1px solid #dadada; }
 .magazine-item-wrapper ul { padding: 10px 0 0 15px }
@@ -2137,7 +2137,7 @@ quick-navigation
 	.calendar-header-step-right { text-align: right; width: 420px; }
 
 .calendar-header-title { display: inline-block; }
-	.calendar-header-title .calendar-date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: Tahoma; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
+	.calendar-header-title .calendar-date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: 'Gothic A1', sans-serif; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
 	.calendar-header-title .calendar-ctrl { display: inline-block; position: relative; overflow: hidden; width: 30px; height: 30px; margin: 0; padding: 0; border: 0; vertical-align: middle; text-indent: -9999px; }
 	.calendar-header-title .calendar-ctrl.ctrl-prev { background: url('../img/btn/btn_calendar_prev.png') no-repeat 50% 50%; }
 	.calendar-header-title .calendar-ctrl.ctrl-next { background: url('../img/btn/btn_calendar_next.png') no-repeat 50% 50%; }
@@ -2230,7 +2230,7 @@ quick-navigation
 	.calendar-takingcare-header { display: table; width: 100%; height: 52px; margin-bottom: 15px; }
 		.calendar-takingcare-header:after { content: ''; display: block; clear: both; height: 0; visibility: hidden; }
 		.calendar-takingcare-header .calendar-takingcare-title { display: table-cell; text-align: left; vertical-align: bottom; }
-		.calendar-takingcare-header .calendar-takingcare-title .calendar-date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: Tahoma; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
+		.calendar-takingcare-header .calendar-takingcare-title .calendar-date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: 'Gothic A1', sans-serif; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
 		.calendar-takingcare-header .calendar-takingcare-title .calendar-ctrl { display: inline-block; position: relative; overflow: hidden; width: 30px; height: 30px; margin: 0; padding: 0; border: 0; vertical-align: middle; text-indent: -9999px; }
 		.calendar-takingcare-header .calendar-takingcare-title .ctrl-prev { background: url('../img/btn/btn_calendar_prev.png') no-repeat 50% 50%; }
 		.calendar-takingcare-header .calendar-takingcare-title .ctrl-next { background: url('../img/btn/btn_calendar_next.png') no-repeat 50% 50%; }
@@ -2481,7 +2481,7 @@ quick-navigation
 **/
 .my-story {  }
 .my-story-header { margin-bottom: 30px; text-align: center; }
-.my-story-header .date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: Tahoma; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
+.my-story-header .date { display: inline-block; position: relative; top: -1px; padding: 0 2px; color: #3378c1; font-family: 'Gothic A1', sans-serif; font-weight: bold; font-size: 40px; line-height: normal; letter-spacing: -2px; vertical-align: middle; }
 .my-story-header .ctrl { display: inline-block; position: relative; overflow: hidden; width: 30px; height: 30px; margin: 0; padding: 0; border: 0; vertical-align: middle; text-indent: -9999px; }
 .my-story-header .ctrl-prev { background: url('../img/btn/btn_calendar_prev.png') no-repeat 50% 50%; }
 .my-story-header .ctrl-next { background: url('../img/btn/btn_calendar_next.png') no-repeat 50% 50%; }

@@ -49,6 +49,9 @@ public class DoctorServiceImpl implements DoctorService {
 			if(logindAppro==0) {
 				req.getSession().setAttribute("memberState",0);
 				model.addAttribute("logindAppro",logindAppro);
+			}else if(logindAppro==3) {
+				req.getSession().setAttribute("memberState",0);
+				model.addAttribute("logindAppro",logindAppro);
 			}else {
 				req.getSession().setAttribute("id", id);
 			}
@@ -200,7 +203,7 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	public void deletePro(HttpServletRequest req, Model model) {
-		String id = (String) req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		
 		int deleteCnt = dao.deleteMember(id);
 		model.addAttribute("deleteCnt", deleteCnt);
@@ -666,23 +669,14 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public void checkupResult(HttpServletRequest req, Model model) {
 		int checkup = Integer.parseInt(req.getParameter("checkup"));
-		System.out.println("checkup" + checkup);
 		model.addAttribute("checkup", checkup);
         
         int guestno = dao.getGuestCheckupResult(checkup);
-        //int CheckupList = dao.getCheckupListGuestno(guestno);
-        System.out.println("guestno" + guestno);
         CheckupVO CheckDto = dao.getCheckupResultInfo(checkup);
         GuestVO gusDto = dao.getcusInfo(guestno);
-        //String doctorno = String.valueOf(dao.doctornoGuestno(CheckupList));//
-       // HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
-       
-        //DoctorVO docDto = dao.getDoctorInfo(Integer.parseInt(doctorno));
         
         model.addAttribute("gusDto",gusDto);
         model.addAttribute("CheckDto",CheckDto);
-       // model.addAttribute("hosDto",hosDto);
-       // model.addAttribute("docDto",docDto);
         
 	}
 
@@ -706,63 +700,54 @@ public class DoctorServiceImpl implements DoctorService {
 		String[] drugname1  = req.getParameterValues("drugname1");
 		for(int i = 0 ; i<drugname1.length; i ++) {
 			String a = (i==0) ? drugname1[i] : "," + drugname1[i];
-			System.out.println("a : " + a);
 			drugname += a;
 		}
 		String drugdosage = "";
 		String[] drugdosage1  = req.getParameterValues("drugdosage1");
 		for(int i = 0 ; i<drugdosage1.length; i ++) {
 			String a = (i==0) ? drugdosage1[i] : "," + drugdosage1[i];
-			System.out.println("a : " + a);
 			drugdosage += a;
 		}
 		String drugrepeat = ""; 
 		String[] drugrepeat1 = req.getParameterValues("drugrepeat1");
 		for(int i = 0 ; i<drugrepeat1.length; i ++) {
 			String a = (i==0) ? drugrepeat1[i] : "," + drugrepeat1[i];
-			System.out.println("a : " + a);
 			drugrepeat += a;
 		}
 		String dosagedate = "";
 		String[] dosagedate1 = req.getParameterValues("dosagedate1");
 		for(int i = 0 ; i<dosagedate1.length; i ++) {
 			String a = (i==0) ? dosagedate1[i] : "," + dosagedate1[i];
-			System.out.println("a : " + a);
 			dosagedate += a;
 		}
 		String dosageusage = "";
 		String[] dosageusage1 = req.getParameterValues("dosageusage1");
 		for(int i = 0 ; i<dosageusage1.length; i ++) {
 			String a = (i==0) ? dosageusage1[i] : "," + dosageusage1[i];
-			System.out.println("a : " + a);
 			dosageusage += a;
 		}
 		String injectionname = "";
 		String[] injectionname1 = req.getParameterValues("injectionname1");
 		for(int i = 0 ; i<injectionname1.length; i ++) {
 			String a = (i==0) ? injectionname1[i] : "," + injectionname1[i];
-			System.out.println("a : " + a);
 			injectionname += a;
 		}
 		String injectiondosage = "";
 		String[] injectiondosage1 = req.getParameterValues("injectiondosage1");
 		for(int i = 0 ; i<injectiondosage1.length; i ++) {
 			String a = (i==0) ? injectiondosage1[i] : "," + injectiondosage1[i];
-			System.out.println("a : " + a);
 			injectiondosage += a;
 		}
 		String injectionrepeat = "";
 		String[] injectionrepeat1 = req.getParameterValues("injectionrepeat1");
 		for(int i = 0 ; i<injectionrepeat1.length; i ++) {
 			String a = (i==0) ? injectionrepeat1[i] : "," + injectionrepeat1[i];
-			System.out.println("a : " + a);
 			injectionrepeat += a;
 		}
 		String injectiondate = "";
 		String[] injectiondate1 = req.getParameterValues("injectiondate1");
 		for(int i = 0 ; i<injectiondate1.length; i ++) {
 			String a = (i==0) ? injectiondate1[i] : "," + injectiondate1[i];
-			System.out.println("a : " + a);
 			injectiondate += a;
 		}
 		String caution = req.getParameter("caution");
@@ -891,6 +876,7 @@ public class DoctorServiceImpl implements DoctorService {
 		GuestVO gusDto = dao.getcusInfo(guestno);
 		
 		String drugname = preDto.getDrugname();
+		
 		String[] drugname1 = drugname.split(",");
 		
 		String drugdosage = preDto.getDrugdosage();
@@ -906,25 +892,55 @@ public class DoctorServiceImpl implements DoctorService {
 		String[] dosageusage1 = dosageusage.split(",");
 
 		String injectionname = preDto.getInjectionname();
-		String[] injectionname1 = injectionname.split(",");
+		if(injectionname==null) {
+			String injectionname1 ="";
+			model.addAttribute("injectionname1", injectionname1);
+		}else {
+			String[] injectionname1 = injectionname.split(",");
+			model.addAttribute("injectionname1", injectionname1);
+		}
+		
+		
 
 		String injectiondosage = preDto.getInjectiondosage();
-		String[] injectiondosage1 = injectiondosage.split(",");
-
+		if(injectiondosage==null) {
+			String injectiondosage1="";
+			model.addAttribute("injectiondosage1", injectiondosage1);
+		}else {
+			String[] injectiondosage1 = injectiondosage.split(",");
+			model.addAttribute("injectiondosage1", injectiondosage1);
+		}
+		
 		String injectionrepeat = preDto.getInjectionrepeat();
-		String[] injectionrepeat1 = injectionrepeat.split(",");
-
+		if(injectionrepeat==null) {
+			String injectionrepeat1 = "";
+			model.addAttribute("injectionrepeat1", injectionrepeat1);
+		}else {
+			String[] injectionrepeat1 = injectionrepeat.split(",");
+			model.addAttribute("injectionrepeat1", injectionrepeat1);
+		}
+		
 		String injectiondate = preDto.getInjectiondate();
-		String[] injectiondate1 = injectiondate.split(",");
+		if(injectiondate==null) {
+			String injectiondate1 = "";
+			model.addAttribute("injectiondate1", injectiondate1);
+		}else {
+			String[] injectiondate1 = injectiondate.split(",");
+			model.addAttribute("injectiondate1", injectiondate1);
+		}
+		
+
+		
+		
 		model.addAttribute("drugname1", drugname1);
 		model.addAttribute("drugdosage1", drugdosage1);
 		model.addAttribute("drugrepeat1", drugrepeat1);
 		model.addAttribute("dosagedate1", dosagedate1);
 		model.addAttribute("dosageusage1", dosageusage1);
-		model.addAttribute("injectionname1", injectionname1);
-		model.addAttribute("injectiondosage1", injectiondosage1);
-		model.addAttribute("injectionrepeat1", injectionrepeat1);
-		model.addAttribute("injectiondate1", injectiondate1);
+		//model.addAttribute("injectionname1", injectionname1);
+		//model.addAttribute("injectiondosage1", injectiondosage1);
+		//
+		//model.addAttribute("injectiondate1", injectiondate1);
 		model.addAttribute("docDto", docDto);
 		model.addAttribute("hosDto", hosDto);
 		model.addAttribute("preDto", preDto);
@@ -1143,6 +1159,16 @@ public class DoctorServiceImpl implements DoctorService {
 			model.addAttribute("pageCnt", pageCnt); // 페이지 갯수
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
 		}	
+		
+	}
+
+	@Override
+	public void myHospitalUpdate(HttpServletRequest req, Model model) {
+		String id = (String)req.getSession().getAttribute("id");
+		String doctorno = "d"+String.valueOf(dao.getdocnoInfo(id))+"t";
+		HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
+		
+		model.addAttribute("hosDto", hosDto);
 		
 	}
 

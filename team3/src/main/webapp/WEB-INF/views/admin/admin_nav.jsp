@@ -30,7 +30,6 @@
 							<li><a href="drugList">약정보목록</a></li>
 							<li><a href="diseaseList">질병정보목록</a></li>
 							<li><a href="exerciseList">운동정보목록</a></li>
-							<li><a href="apreventionList">예방정보목록</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="adminReportList">신고게시판</a></li>
 					<li><a href="eventRequestList">광고관리</a></li>

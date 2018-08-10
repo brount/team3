@@ -196,6 +196,20 @@ public class CommonContoller {
 		
 		return "common/boardList";
 	}
+	// 질문상세페이지 전 비밀번호 체크
+	@RequestMapping(value = "boardInfoCheck")
+	public String boardInfoCheck(HttpServletRequest req, Model model) {
+		logger.info("boardInfoCheck, 페이지");
+		int num = Integer.parseInt(req.getParameter("num"));
+		int number = Integer.parseInt(req.getParameter("number"));
+		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("number",number);
+		model.addAttribute("num",num);
+		
+		return "common/boardInfoCheck";
+	}
 	// 질문상세페이지 
 	@RequestMapping(value = "boardInfo")
 	public String boardInfo(HttpServletRequest req, Model model) {
@@ -257,7 +271,7 @@ public class CommonContoller {
 	public String boardModifyView(HttpServletRequest req, Model model) {
 		logger.info("boardModifyView, 페이지");
 		
-		coService.boardModify(req, model);	
+		coService.boardModify(req, model);
 		return "common/boardModifyView";
 	}
 	// 질문수정처리페이지

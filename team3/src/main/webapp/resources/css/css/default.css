@@ -1,8 +1,7 @@
 /* General Demo Style */
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @font-face {
-	font-family: 'fontawesome';
+	font-family: 'Gothic A1', sans-serif;
 	src: url('../fonts/fontawesome.eot');
 	src: url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/fontawesome.svg#fontawesome') format('svg'),
@@ -11,6 +10,11 @@
 	font-weight: normal;
 	font-style: normal;
 }
+section > a{
+	font-size: 33px;
+}
+
+
 
 body, html {
 	font-size: 100%;
@@ -36,14 +40,17 @@ body, html {
 }
 
 body {
-	font-family: 'Lato', Calibri, Arial, sans-serif;
-	color: #47a3da;
+	font-family: 'Gothic A1', sans-serif;
+	color: black;
 }
 
 a {
-	color: #47a3da;
+	color: black;
 	text-decoration: none;
+	font-size: 30px;
 }
+
+
 
 a:hover {
 	color: #000;
@@ -85,7 +92,8 @@ a:hover {
 	padding: 0.5em 0.5em;
 	color: #999;
 	display: inline-block;
-	font-family: 'Lato';
+	font-family: 'Gothic A1', sans-serif;
+	
 }
 
 .container>header nav a:after {
@@ -109,7 +117,7 @@ a:hover {
 }
 
 .icon-drop:before, .icon-arrow-left:before {
-	font-family: 'fontawesome';
+	font-family: 'Gothic A1', sans-serif;
 	position: absolute;
 	top: 0;
 	width: 100%;

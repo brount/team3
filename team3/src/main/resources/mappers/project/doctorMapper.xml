@@ -28,7 +28,7 @@
 	
 	<!-- 의사회원 탈퇴 -->
 	<update id = "deleteMember" parameterType="com.team.medical.vo.DoctorVO">
-		update doctor set doctorappro = 3 where doctorid=#{id}  
+		update doctor set doctorappro = 2 where doctorid=#{id}  
 	</update>
 	
 	
@@ -60,11 +60,9 @@
    </select>
     <!-- 병원정보수정 -->
    <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
-      UPDATA hospital SET doctorno=#{doctorno},
-      hospitaladdr=#{hospitaladdr},hospitalphone=#{hospitalphone},
-      hospitalinstruction=#{hospitalinstruction},hospitalimage=#{hospitalimage},
-      mon=#{mon},tues=#{tues}, wed=#{wed}, thurs=#{thurs}, fri=#{fri}, sat=#{sat}, sun=#{sun}, 
-      holi=#{holi}, hospitalstate=#{hospitalstate}, hospitalkind=#{hospitalkind}
+      update hospital SET hospitalphone=#{hospitalphone},
+      hospitalinstruction=#{hospitalinstruction},
+      hospitalimage=#{hospitalimage}
       WHERE hospitalno = #{hospitalno}
    </update>
 	

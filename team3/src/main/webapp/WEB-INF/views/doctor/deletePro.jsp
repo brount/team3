@@ -3,7 +3,6 @@
 <%@ include file = "../common/setting.jsp" %>
 <html>
 <body>
-	<h2 align="center">글삭제 처리페이지</h2>	
 				
 	<!-- 비밀번호가 다른 경우 : '삭제 에러' 메세지 -->	
 	<c:if test = "${selectCnt==0 }">

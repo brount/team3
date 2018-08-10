@@ -350,7 +350,6 @@ public class GuestContoller {
 
 			return "guest/myFoodListH";
 		}
-			
 		
 	//사용자가 추가한 음식 수정 전 폼
 		

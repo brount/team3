@@ -1,10 +1,10 @@
 body {
-	font-family: Lato
+	font-family:'Jua', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
-	font-family: Montserrat
+	font-family: 'Gothic A1', sans-serif;
 }
 
 hr.star-dark, hr.star-light {
@@ -25,7 +25,7 @@ hr.star-dark:after, hr.star-light:after {
 	display: inline-block;
 	padding: 0 .25em;
 	content: '\f005';
-	font-family: FontAwesome;
+	font-family: 'Gothic A1', sans-serif;
 	font-size: 2em
 }
 
@@ -93,7 +93,7 @@ section h2 {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	font-weight: 700;
-	font-family: Montserrat;
+	font-family: 'Gothic A1', sans-serif;
 	z-index: 59;
 }
 
@@ -175,7 +175,7 @@ header.masthead h1 {
 
 header.masthead h2 {
 	font-size: 1.3rem;
-	font-family: Lato
+	font-family: 'Gothic A1', sans-serif;
 }
 
 @media ( min-width :992px) {

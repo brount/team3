@@ -70,7 +70,16 @@ public class DoctorContoller {
  		System.out.println("doctorLogin, 페이지");
  		docService.doctorLogin(req,model);
  		
- 		return "common/mainmenuversion";
+ 		return "doctor/doctorLogin";
+ 	}
+ 	
+ 	//의사회원로그인
+ 	 	@RequestMapping(value = "doctorLoginPro")
+ 	 	public String doctorLoginPro(HttpServletRequest req, Model model) {
+ 	 		System.out.println("doctorLogin, 페이지");
+ 	 		docService.doctorLogin(req,model);
+ 	 		
+ 	 		return "doctor/doctorLoginPro";
  	}
  	
 	//의사회원정보수정페이지                       
@@ -89,7 +98,15 @@ public class DoctorContoller {
 		docService.modifyPro(req, model);
 		return "doctor/modifyPro";
 	}
-	//의사회원탈퇴                       
+	// 의사회원탈퇴 처리                     
+	@RequestMapping(value = "doctorExitOk")
+	public String doctorExitOk(HttpServletRequest req, Model model) {
+		System.out.println("doctorExitOk, 페이지");
+		
+		return "doctor/doctorExitOk";
+	}
+	
+	// 의사회원탈퇴 처리                     
 	@RequestMapping(value = "deletePro")
 	public String deletePro(HttpServletRequest req, Model model) {
 		System.out.println("deletePro, 페이지");
@@ -108,21 +125,22 @@ public class DoctorContoller {
 		return "doctor/myHospital";
 	}
 	
-	//마이병원 등록                      
-	@RequestMapping(value = "myHospitalResistraion")
+	//마이병원 수정                     
+	@RequestMapping(value = "myHospitalUpdate")
 	public String myHospitalResistraion(HttpServletRequest req, Model model) {
 		System.out.println("myHospitalResistraion, 페이지");
 		
-		return "doctor/myHospitalResistraion";
+		docService.myHospitalUpdate(req, model);
+		return "doctor/myHospitalUpdate";
 	}
 	
 	//마이병원 수정처리                  
-	@RequestMapping(value = "myHospitalInputPro")
-	public String myHospitalInputPro(MultipartHttpServletRequest req, Model model) {
-		System.out.println("myHospitalInputPro, 페이지");
+	@RequestMapping(value = "myHospitalUpdatePro")
+	public String myHospitalUpdatePro(MultipartHttpServletRequest req, Model model) {
+		System.out.println("myHospitalUpdatePro, 페이지");
 		
 		docService.myHospitalUpdatePro(req, model);
-		return "doctor/myHospitalInputPro";
+		return "doctor/myHospitalUpdatePro";
 	}	
 	
 	//검사의뢰

@@ -30,12 +30,7 @@
 						 				<!-- <option value="doctorsanctionList">의사제제회원목록</option> -->
 						 				<option value="doctorsecessionList">의사탈퇴회원목록</option>
 						 			</select>
-						 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" onclick="doctorPermissionCheck();">
-                                    	승인
-                                    </button>
-						 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" onclick="doctordeleteCheck();">
+                                    <button type="button" style="margin-left:15px;" onclick="doctordeleteCheck();">
                                     	삭제
                                     </button>
 	                            </div>
@@ -71,17 +66,17 @@
 													<tr>
 														<td>
 															<input type="checkbox" name="checkOne" value="${dto.doctorno}">
-															<input type="checkbox" name="checkTwo" value="${dto.hospitalno}">
+															<input style="display:none" type="checkbox" name="checkTwo" value="${dto.hospitalno}">
 														</td>
-													    <td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalname}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorid}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>
-														<td onclick="window.location='doctorsanctionManage?&doctorno=${dto.doctorno}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorregstration}</td>
+													    <td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalname}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorid}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>
+														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorregstration}</td>
 		                                        	</tr>
 		                                        	<c:set var="a" value="${a+1 }"></c:set>
 		                                       	</c:forEach>

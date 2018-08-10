@@ -25,17 +25,17 @@ function loginSet(){
 		<div class="row" style="margin-top:20px">
 		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<form role="form" action="memberLoginPro">
-					<fieldset>
-						<h3> 로그인 </h3>
+					<fieldset style="font-size: 30px;">
+						<h1> 로그인 </h1>
 						<hr class="colorgraph">
 						<div class="form-group">
-		                    <input type="text" name="id" id="id" class="form-control input-lg" placeholder="아이디를 입력하세요">
+		                    <input type="text" name="id" id="id" class="form-control input-lg" placeholder="아이디를 입력하세요"style="font-size: 25;">
 						</div>
 						<div class="form-group">
-		                    <input type="password" name="pwd" id="password" class="form-control input-lg" placeholder="비밀번호를 입력하세요">
+		                    <input type="password" name="pwd" id="password" class="form-control input-lg" placeholder="비밀번호를 입력하세요"style="font-size: 25;">
 						</div>
-		                    <input type="checkbox" name="memberState" value="1" class="" onchange="statChk1();">일반회원
-							<input type="checkbox" name="memberState" value="2" class="" onchange="statChk2();">의사회원
+		                    <input type="checkbox" name="memberState" value="1"class="option checkbox" onchange="statChk1();">일반회원
+							<input type="checkbox" name="memberState" value="2" class="option checkbox" onchange="statChk2();">의사회원
 							<script type="text/javascript">
 							
 							function statChk1(){
@@ -53,16 +53,16 @@ function loginSet(){
 								}
 							}
 							</script>
-						<span class="button-checkbox">						
+					<!-- 	<span class="button-checkbox">						
 							<a href="" class="btn btn-link pull-right">Forgot Password?</a>
-						</span>
+						</span> -->
 						<hr class="colorgraph">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-		                        <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인">
+		                        <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" style="font-size: 40;">
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="memberClassify" class="btn btn-lg btn-primary btn-block">회원가입</a>
+								<a href="memberClassify" class="btn btn-lg btn-primary btn-block" style="font-size: 40;">회원가입</a>
 							</div>
 						</div>
 					</fieldset>
