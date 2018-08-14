@@ -13,6 +13,8 @@
 <header>
    <%@ include file="../common/header.jsp"%>
 </header>
+<%@ include file="../common/line.jsp"%>
+
 <input type="hidden" value="${doctorno}" name="doctorno">
 <section>
    <div class="container">

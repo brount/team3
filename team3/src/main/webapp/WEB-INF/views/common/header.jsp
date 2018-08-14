@@ -6,8 +6,7 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -76,13 +75,11 @@ function myFoodList() {
 			<c:if test="${sessionScope.memberState == null }">
 				<a onclick="window.location='memberLogin'" style="font-size: 17px; padding-top: 25px;">login</a>
 				<a onclick="window.location='memberClassify'" style="font-size: 17px; padding-top: 25px;">join us</a>
-<!-- 				<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 17px; padding-top: 25px;">관리자페이지</a>
- -->			</c:if>
+			</c:if>
 			<c:if test="${sessionScope.memberState == 0 }">
 				<a onclick="window.location='memberLogin'" style="font-size: 17px; padding-top: 25px;">login</a>
 				<a onclick="window.location='memberClassify'" style="font-size: 17px; padding-top: 25px;">join us</a>
-<!-- 				<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 17px; padding-top: 25px;">관리자페이지</a>
- -->			</c:if>
+			</c:if>
 			 <c:if test="${sessionScope.memberState == 1 }">
 				<a onclick="window.location='myGuest'" style="font-size: 17px; padding-top: 25px;">my page</a>
 				<a onclick="window.location='logout'" style="font-size: 17px; padding-top: 25px;">logout</a> 

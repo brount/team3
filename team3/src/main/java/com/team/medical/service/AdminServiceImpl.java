@@ -1,5 +1,7 @@
 package com.team.medical.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -2339,7 +2341,6 @@ public class AdminServiceImpl implements AdminService {
     		String advertisementThumbnail = file2.getOriginalFilename();
     		String advertisementImage = file.getOriginalFilename();
     		String advertisementContents = req.getParameter("content");
-    		int advertisementKind = Integer.parseInt(req.getParameter("kind"));
     		String date1 = req.getParameter("date1");
     		Date advertisementStart = Date.valueOf(date1);
     		String date2 = req.getParameter("date2");
@@ -2352,7 +2353,6 @@ public class AdminServiceImpl implements AdminService {
             dto.setAdvertisementThumbnail(advertisementThumbnail);
             dto.setAdvertisementImage(advertisementImage);
             dto.setAdvertisementContents(advertisementContents);
-            dto.setAdvertisementKind(advertisementKind);
             dto.setAdvertisementStart(advertisementStart);
             dto.setAdvertisementEnd(advertisementEnd);
             dto.setAdvertisementState(1);
@@ -2420,7 +2420,6 @@ public class AdminServiceImpl implements AdminService {
         
 		String advertisementTitle = req.getParameter("title");    		
 		String advertisementContents = req.getParameter("content");
-		int advertisementKind = Integer.parseInt(req.getParameter("kind"));
 		String date1 = req.getParameter("date1");
 		Date advertisementStart = Date.valueOf(date1);
 		String date2 = req.getParameter("date2");
@@ -2430,7 +2429,6 @@ public class AdminServiceImpl implements AdminService {
         
         dto.setAdvertisementTitle(advertisementTitle);           
         dto.setAdvertisementContents(advertisementContents);
-        dto.setAdvertisementKind(advertisementKind);
         dto.setAdvertisementStart(advertisementStart);
         dto.setAdvertisementEnd(advertisementEnd);
         dto.setAdvertisementState(1);
@@ -2578,6 +2576,31 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 	
+	// 포인트 차트
+	@Override
+	public void pointChart(HttpServletRequest req, Model model) {
+		Date date1 = Date.valueOf(req.getParameter("date1"));
+		Date date2 = Date.valueOf(req.getParameter("date2"));
+		System.out.println(date2);
+		System.out.println(date1);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("date2",date2);
+		map.put("date1",date1);
+		map.put("status",1);
+		ArrayList<PointVO> dtos1 = dao.pointChart(map);
+		
+		System.out.println(date1);
+		System.out.println(date2);
+		Map<String,Object> map2 = new HashMap<String,Object>();
+		map2.put("date2",date2);
+		map2.put("date1",date1);
+		map2.put("status",2);
+		ArrayList<PointVO> dtos2 = dao.pointChart(map2);
+		
+		model.addAttribute("dtos1",dtos1);
+		model.addAttribute("dtos2",dtos2);
+	}
+	
 	//--------------------------------------------------------------------------------------
 	
 	// 공지사항 수정
@@ -2654,4 +2677,5 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("deleteCnt", deleteCnt);
 		model.addAttribute("pageNum",pageNum);
 	}
+
 }

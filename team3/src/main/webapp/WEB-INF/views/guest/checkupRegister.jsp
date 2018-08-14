@@ -9,6 +9,7 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header> 
+<%@ include file="../common/line.jsp"%>
 
 <script type="text/javascript">
 function check() {
@@ -144,11 +145,11 @@ function check() {
 							<tr>
 							<th colspan="3">검진 날짜</th>
 							<td colspan="3">
-							<input name="reservationtime1" placeholder="2018" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;">
+							<input name="reservationtime1" placeholder="년도" class="form-control"  type="text" style="display: -webkit-inline-box; width: 90px;">
 							-
-							<input name="reservationtime2" placeholder="08" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;">
+							<input name="reservationtime2" placeholder="월" class="form-control"  type="text" style="display: -webkit-inline-box; width: 90px;">
 							-
-							<input name="reservationtime3" placeholder="07" class="form-control"  type="text" style="display: -webkit-inline-box; width: 70px;;">
+							<input name="reservationtime3" placeholder="일" class="form-control"  type="text" style="display: -webkit-inline-box; width: 90px;;">
 							</td>
 							
 							
@@ -168,19 +169,19 @@ function check() {
 					                      <td rowspan="9">계층검사</td>
 					                      <td rowspan="3">비만</td>
 					                      <td>신장</td>
-					                      <td><input name="height" placeholder="163cm" class="form-control"  type="text" style="width:80px;"></td>
+					                      <td><input name="height" placeholder="신장" class="form-control"  type="text" style="width:100px;"></td>
 					                      <td></td>
 					                      <td></td>
 					                   </tr>
 					                   <tr>
 					                      <td>체중</td>
-					                      <td><input name="weight" placeholder="46kg" class="form-control"  type="text" style="width:80px;"></td>
+					                      <td><input name="weight" placeholder="체중" class="form-control"  type="text" style="width:90px;"></td>
 					                      <td></td>
 					                      <td></td>
 					                   </tr>
 					                   <tr>
 					                      <td>비만도</td>
-					                      <td><input name="fatness" placeholder="BMI" class="form-control"  type="text" style="width:80px;"></td>
+					                      <td><input name="fatness" placeholder="지수" class="form-control"  type="text" style="width:90px;"></td>
 					                      <td></td>
 					                      <td>저체충 18.5 미만<br>정상 : 18.5이상 ~ 23미만<br>과체중 : 23이상~25미만<br>비만 : 25이상~30미만 <br> 고도비만 30이상</td>
 					                   </tr>
@@ -304,7 +305,7 @@ function check() {
 					                   
 					                   <tr>
 					                      <td>간염검사</td>
-					                      <td><input name="hepatitisscr" placeholder="정상" class="form-control"  type="text" style="width:60px;"></td>
+					                      <td><input name="hepatitisscr" placeholder="입력" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
 					                      <td></td>
 					                   </tr>
@@ -313,7 +314,7 @@ function check() {
 					                      <td rowspan="2">영상검사</td>
 					                      <td>폐결핵 흉부 질환</td>
 					                      <td>흉부방사선검사</td>
-					                      <td><input name="breastradiography" placeholder="정상" class="form-control"  type="text" style="width:60px;"></td>
+					                      <td><input name="breastradiography" placeholder="입력" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
 					                      <td>비활동성</td>
 					                   </tr>
@@ -321,7 +322,7 @@ function check() {
 					                   <tr>
 					                      <td>심장질환</td>
 					                      <td>심전도 검사</td>
-					                      <td><input name="ecg" placeholder="정상" class="form-control"  type="text" style="width:60px;"></td>
+					                      <td><input name="ecg" placeholder="입력" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
 					                      <td>비활동성</td>
 					                   </tr>

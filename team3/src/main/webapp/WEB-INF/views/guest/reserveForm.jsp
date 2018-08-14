@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
 		function simple(){
 	
@@ -66,6 +66,7 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section>
 <div class="container">

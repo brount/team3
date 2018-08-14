@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,6 +25,7 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section style="margin-bottom: 100px;">
 	<div class="container">
@@ -101,7 +102,7 @@
 							<c:if test="${selectcnt==0}">
 								<button type="button"  class="btn btn-dark-blue" onclick="window.location='personalAdd'"> 내 건강정보 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 						  		</c:if>
-						  			<c:if test="${selectcnt!=0}">
+						  			<c:if test="${selectcnt!=0 }">
 								 <button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalMof'"> 내 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
 						  		</c:if>
 						  		<button type="button" class="btn btn-dark-blue"  onclick="window.location='caloryAdd'"> 음식 등록하기 <span class="glyphicon glyphicon-send"></span></button>

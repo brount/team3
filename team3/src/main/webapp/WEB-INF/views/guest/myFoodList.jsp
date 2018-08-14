@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function modi(foodno) {
 
@@ -31,6 +31,7 @@ function modi(foodno) {
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section  style="margin-bottom: 100px;" >
   <form name="foodlist" action="myFoodModi" onsubmit="return modi();">
@@ -44,7 +45,9 @@ function modi(foodno) {
 			   
                   <aside class="lg-side">
                       <div class="inbox-head">
-                          <h3>나만의 음식 목록(${cnt})</h3>
+                          <h3>나만의 음식 목록(${cnt})  <input type="button" class="btn btn-dark-blue"  value="추가" onclick="window.location='myFoodAdd'"></h3>           	                        
+                         
+                          
                        
                       </div>
                       <div class="inbox-body">

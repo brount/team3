@@ -32,6 +32,7 @@ function pwdCheck(){
 	<header>
 	<%@ include file="../common/header.jsp" %>
 	</header>
+	<%@ include file="../common/line.jsp"%>
 	
 	<section>
 		<div class="container">

@@ -17,6 +17,8 @@
    <%@ include file="../common/header.jsp" %>
 </header>
 
+<%@ include file="../common/line.jsp"%>
+
 <section>
 <form action="reportBoardDeletePro">
 	<input type="hidden" name="kind" value="4">
@@ -29,11 +31,11 @@
 			<tr>
 				<th>비밀번호</th>	
 				<td>
-				<input name="boardpwd" type="password">
+				<input name="boardpwd" type="password" required>
 				</td>		
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2" style="text-align: center;">
 				 <input type="submit" class="btn btn-dark-blue" value="확인">
 				 <input type="button" class="btn btn-dark-blue" value="취소" onclick="window.history.back();">
 				</td>

@@ -24,6 +24,8 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
+                                   	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+									<input type="hidden" id="pageDivision" name="pageDivision" value="per">
 	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
 	                            		<option value="doctorpermissionList">의사회원승인대기목록</option>
 						 				<option value="doctorList">의사회원목록</option>
@@ -59,8 +61,6 @@
 	                                        <tbody>
 	                                        
 	                                        <c:if test="${cnt > 0}">
-	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
-												<input type="hidden" id="pageDivision" name="pageDivision" value="per">
 												<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
 													<tr>

@@ -147,6 +147,9 @@ public interface AdminService {
 	// 포인트 목록
 	public void pointList(HttpServletRequest req, Model model);
 	
+	// 포인트 차트
+	public void pointChart(HttpServletRequest req, Model model);
+	
 //--------------------------------------------------------------------------------------
 	
 	// 공지사항 수정

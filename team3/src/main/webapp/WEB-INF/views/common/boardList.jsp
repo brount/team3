@@ -27,9 +27,25 @@ document.onkeydown = noEvent;
 document.oncontextmenu = function() {return false;}
 </script>
 
+<style>
+	td {
+		font-size: 25px;
+		text-align: center;
+	}
+	a {
+		font-size: 25px;
+		text-decoration: none !important;
+	}
+	b {
+		font-size: 25px;
+	}
+</style>
+
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div class="container">
@@ -39,13 +55,9 @@ document.oncontextmenu = function() {return false;}
 						<h3>질문게시판</h3>
 						<form action="#" class="pull-right position">
 							<div class="input-append">
-								<input type="text" class="sr-input" placeholder="검색">
-								<button class="btn btn-dark-blue" type="button">
-									<i class="fa fa-search"></i>
-								</button>
 								<c:if test="${sessionScope.memberState == 1 }">
 								<input type="button" class="btn btn-dark-blue" value="글쓰기"
-									onclick="boardAdd()">
+									onclick="boardAdd()" style="float: right; margin-bottom: 10px;">
 								</c:if>
 							</div>
 							<div></div>
@@ -56,10 +68,10 @@ document.oncontextmenu = function() {return false;}
 							<table class="table table-inbox table-hover">
 								<tbody>
 									<tr class="unread">
-										<td class="view-message">글번호</td>
+										<td class="view-message" style="width: 10%">글번호</td>
 										<td class="view-message">제목</td>
-										<td><span>작성자 </span></td>
-										<td class="view-message">등록일</td>
+										<td style="width: 20%"><span>작성자 </span></td>
+										<td class="view-message" style="width: 20%">등록일</td>
 									</tr>
 									<c:if test="${cnt>0 }">
 										<c:forEach var="dto" items="${dtos}">
@@ -67,11 +79,23 @@ document.oncontextmenu = function() {return false;}
 												<td>${number } <c:set var="number" value="${number-1 }"></c:set>
 												</td>
 												<td>
-													<a href="boardInfoCheck?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a>
+													<c:if test="${sessionScope.memberState != 2}">
+														<a href="boardInfoCheck?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
+															style="font-size: 25px; text-decoration: none;">
+														${dto.boardtitle}
+														</a>
+													</c:if>
+													<c:if test="${sessionScope.memberState == 2}">
+														<a href="boardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
+															style="font-size: 25px; text-decoration: none;">
+														${dto.boardtitle}
+														</a>
+													</c:if>
+													
 												</td>
 												<td>${dto.boardwriter}</td>
 												<td>
-													<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" />
+													<fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.boarddate}" />
 												</td>
 											</tr>
 										</c:forEach>

@@ -27,7 +27,7 @@
 							<tr>
 								<th>아이디 :</th>
 								<td>
-									<input class="input" type="text" name="id" maxlength="20" style="width: 150px">
+									<input class="input" type="text" name="id" maxlength="20" style="width: 150px;">
 								</td>
 							</tr>
 							<tr>

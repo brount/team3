@@ -1111,10 +1111,10 @@
 	<!-- 이벤트 추가 -->
     <insert id="addEvent" parameterType="com.team.medical.vo.EventVO">
     INSERT
-		INTO event (advertisementNo, doctorno, advertisementTitle, advertisementThumbnail ,advertisementImage, advertisementContents,
+		INTO event (advertisementNo, advertisementTitle, advertisementThumbnail ,advertisementImage, advertisementContents,
 					advertisementRegDate, advertisementKind, advertisementStart, advertisementEnd, advertisementState)
-		VALUES (advertisementnoseq.nextval, #{doctorno}, #{advertisementTitle}, #{advertisementThumbnail}, #{advertisementImage}, #{advertisementContents},
-				sysdate, #{advertisementKind}, #{advertisementStart}, #{advertisementEnd}, #{advertisementState})
+		VALUES (advertisementnoseq.nextval, #{advertisementTitle}, #{advertisementThumbnail}, #{advertisementImage}, #{advertisementContents},
+				sysdate, 1, #{advertisementStart}, #{advertisementEnd}, #{advertisementState})
     </insert>
 	<!-- 이벤트 수정 -->
 	<update id="upEvent" parameterType="com.team.medical.vo.EventVO">
@@ -1175,4 +1175,10 @@
 		]]>
 	</select>
 	
+	<!-- 포인트 차트 -->
+	<select id="pointChart" parameterType="java.util.Map" resultType="com.team.medical.vo.PointVO">
+		select TO_CHAR(cum_date,'YYYY-MM-DD'), sum(point) point from point
+		where cum_date between #{date2} and #{date1}+1 and status = #{status}
+		group by TO_CHAR(cum_date,'YYYY-MM-DD')
+	</select>
 </mapper>

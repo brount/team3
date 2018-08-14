@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function modi(foodno) {
 
@@ -90,9 +90,9 @@ function modi(foodno) {
                                   
                                   
                                  <td>
-                                      <input type="button" class="btn" value="수정" onclick="modi(${dto.foodno })">
+                                      <input type="button" class="btn btn-dark-blue" value="수정" onclick="modi(${dto.foodno })">
                                  
-           	                         <input type="button" class="btn" value="삭제" onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
+           	                         <input type="button" class="btn btn-dark-blue" value="삭제" onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
            	                	   
            	
                                   </td>
@@ -103,7 +103,7 @@ function modi(foodno) {
                      <c:if test="${cnt==0 }">
                  	<tr>
                  	
-                 	<td colspan="8" align="center" style="margin-top: 50;">	<button type="button" class="btn btn-primary" onclick="window.location='myFoodAdd'">
+                 	<td colspan="8" align="center" style="margin-top: 50;">	<button type="button" class="btn btn-dark-blue"  onclick="window.location='myFoodAdd'">
 													나만의 음식 등록하기 <span class="glyphicon glyphicon-send"></span>
 								</button> </td>
                       

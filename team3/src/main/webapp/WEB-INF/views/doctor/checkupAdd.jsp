@@ -11,6 +11,7 @@
 <header>
 	<%@ include file="../common/header.jsp" %>
 </header> 
+<%@ include file="../common/line.jsp"%>
 
 <section>
 <form action="checkupAddInputPro?checkuplist=${checkuplist}&doctorno=${docDto.doctorno}"

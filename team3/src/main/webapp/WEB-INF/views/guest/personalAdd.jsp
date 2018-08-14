@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function check() {
 	if(!document.mof.birth1.value){
@@ -74,89 +74,32 @@ function check() {
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section>   
 	<div class="container">
 	    <div class="row">
-	        <div class="col-sm-3 col-md-3">
-	            <div class="panel-group" id="accordion">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" data-parent="#accordion" href="#">마이페이지</a>
-	                        </h4>
-	                    </div>
-	                    <div id="collapseOne" class="panel-collapse collapse in collapse show">
-	                        <div class="panel-body">
-	                            <table class="table">
-	                                <tr>
-	                                    <td>
-	                                        <a href="myHealth">내 건강정보</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <a href="checkupRegister">검진서등록</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <a href="checkAnalyze">내 검진결과</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                       <a href="#">내 질문목록</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td>
-	                                        <a href="reserveList">예약목록</a>
-	                                    </td>
-	                                </tr>
-	                            </table>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="bookMark">즐겨찾는병원</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="guestModify">회원정보수정</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a href="memberExit">회원탈퇴</a>
-	                        </h4>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>	
+	   
+	         <div class="col-sm-3 col-md-3">
+	            <%@ include file="../guest/menuGuest.jsp" %>
+	        </div>
+	       
 		  		 <div class="col-sm-9 col-md-9">
 		                 <div class="well">
 	<form class="form-horizontal" action="personalAddPro"  method="post"  id="" name="mof" onsubmit="return check();">
 	    <fieldset style="font-size: 30;">
 	
-	      <h1 style="margin-bottom: 50px">My Health 수정</h1>
+	      <h1 style="margin-bottom: 50px">My Health</h1>
 	    
 		 <div class="form-group">
 	        <label class="col-md-3 control-label">생년월일</label>
 	        <div class="col-md-8  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input name="birth1"placeholder="1994" class="form-control" type="text" style="width:30px; height:50px; margin-right: 10px;">
+	            <input name="birth1"placeholder="입력" class="form-control" type="text" style=" margin-right: 10px;">
 	          		<b>년</b> 
-	             <input name="birth2" placeholder="01" class="form-control" type="text" style="width:30px;  height:50px;margin-right: 10px;" >
+	             <input name="birth2" placeholder="입력" class="form-control" type="text" style="margin-right: 10px;" >
 	     		       <b>월</b> 	
-	              <input name="birth3" placeholder="13" class="form-control" type="text" style="width:30px; height:50px; margin-right: 10px;">
+	              <input name="birth3" placeholder="입력" class="form-control" type="text" style="margin-right: 10px;">
 	              	<b>일</b> 
 	          </div>
 	        </div>
@@ -168,7 +111,7 @@ function check() {
 	        <label class="col-md-3 control-label">신장</label>
 	        <div class="col-md-8 inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="height" placeholder="163" class="form-control"  type="text" style="hegint:50px;width:30px;"> 
+	            <input  name="height" placeholder="입력" class="form-control"  type="text" style="hegint:50px;width:30px;"> 
 	            	<b>cm</b> 
 	            
 	          </div>
@@ -179,7 +122,7 @@ function check() {
 	        <label class="col-md-3 control-label">체중</label>
 	        <div class="col-md-8 inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="weight" placeholder="46" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
+	            <input  name="weight" placeholder="입력" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
 	            	<b>kg</b> 
 	            
 	          </div>
@@ -234,7 +177,7 @@ function check() {
 	        <label class="col-md-3 control-label">나이</label>
 	        <div class="col-md-8  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="age" placeholder="25" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
+	            <input  name="age" placeholder="입력" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
 	            	<b>세(만)</b> 
 	            
 	          </div>

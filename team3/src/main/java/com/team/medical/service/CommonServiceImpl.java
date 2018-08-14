@@ -68,7 +68,7 @@ public class CommonServiceImpl implements CommonService {
 		currentPage = Integer.parseInt(pageNum);
 		
 		// 페이지 갯수 6 = (30 / 5 ) + (0)
-		pageCnt= ( cnt / pageSize ) + ( cnt % pageSize > 0 ? 1 : 0 );
+		pageCnt= (cnt / pageSize ) + (cnt % pageSize > 0 ? 1 : 0);
 		
 		// (1-1)*5 + 1
 		start = (currentPage - 1) * pageSize + 1; // 현재 페이지의 시작번호 1
@@ -122,27 +122,42 @@ public class CommonServiceImpl implements CommonService {
 		int num = Integer.parseInt(req.getParameter("num"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int number = Integer.parseInt(req.getParameter("number"));
-		String pwd = req.getParameter("boardpwd");
+		String pwd = null;
 		int pwdCnt = 0;
 		
 		QuestionBoardVO dto = null;
 		ArrayList<QuestionBoardVO> dtos = null;
 		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("boardno",num );
-		map.put("boardpwd", pwd);
-		pwdCnt = dao.pwdChk(map);
+		int memberState = (int) req.getSession().getAttribute("memberState");
 		
-		if(pwdCnt == 1) {
-			//5단계 상세페이지 가져오기 
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		if (memberState == 2) {
 			dto = dao.getQuestion(num);
 			
 			Map<String,Integer> map2 = new HashMap<String,Integer>();
 			map2.put("kind", 2);
 			map2.put("ref", dto.getBoardno());
 			dtos = dao.getreList(map2);
+			
+			pwdCnt = 1;
+		} else {
+			pwd = req.getParameter("boardpwd");
+			
+			map.put("boardno",num );
+			map.put("boardpwd", pwd);
+			pwdCnt = dao.pwdChk(map);
+			
+			if(pwdCnt == 1) {
+				//5단계 상세페이지 가져오기 
+				dto = dao.getQuestion(num);
+				
+				Map<String,Integer> map2 = new HashMap<String,Integer>();
+				map2.put("kind", 2);
+				map2.put("ref", dto.getBoardno());
+				dtos = dao.getreList(map2);
+			}
 		}
-		
 		//6단계 request 나 session 에 결과값 저장하기
 		model.addAttribute("pwdCnt", pwdCnt);
 		model.addAttribute("dto", dto);
@@ -236,6 +251,7 @@ public class CommonServiceImpl implements CommonService {
 		String pwd = req.getParameter("boardpwd");
 		int kind=Integer.parseInt(req.getParameter("kind"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
+		int number = 0;
 		int deleteCnt = 0;
 
 		//5단계 비즈니스 로직
@@ -248,7 +264,12 @@ public class CommonServiceImpl implements CommonService {
 			deleteCnt=dao.boardDeletePro(num);
 		}
 		
+		if (req.getParameter("number") != ""){
+			number = Integer.parseInt(req.getParameter("number"));
+		}
+		
 		//6단계 결과들 저장.
+		model.addAttribute("number", number);
 		model.addAttribute("deleteCnt", deleteCnt);
 		model.addAttribute("num",num);
 		model.addAttribute("pageNum",pageNum);

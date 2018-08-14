@@ -449,14 +449,14 @@ public class AdminContoller {
 		adService.eventAdd(req,model);
 		return "admin/eventAddPro";
 	}
-	//광고목록수정페이지             
+	//광고목록수정페이지
 	@RequestMapping(value = "eventModify")
 	public String eventModify(HttpServletRequest req, Model model) {
 		logger.info("eventModify, 페이지");
 		coService.eventInfo(req, model);
 		return "admin/eventModify";
 	}
-	//광고목록수정처리페이지             
+	//광고목록수정처리페이지
 	@RequestMapping(value = "eventModifyPro")
 	public String eventModifyPro(MultipartHttpServletRequest req, Model model) {
 		logger.info("eventModifyPro, 페이지");
@@ -464,7 +464,7 @@ public class AdminContoller {
 		coService.eventList(req, model);
 		return "admin/eventRequestList";
 	}
-	//광고등록처리페이지             
+	//광고등록처리페이지
 	@RequestMapping(value = "eventDel")
 	public String eventDel(HttpServletRequest req, Model model) {
 		logger.info("eventDel, 페이지");
@@ -476,10 +476,19 @@ public class AdminContoller {
 //---------------------------------------------------------------------------------------- 희성
 
 	
-	//포인트결제내역목록페이지             
+	//포인트목록페이지
 	@RequestMapping(value = "pointList")
 	public String pointList(HttpServletRequest req, Model model) {
 		logger.info("pointList, 페이지");
+		adService.pointList(req, model);
+		return "admin/pointList";
+	}
+	
+	// 포인트 차트
+	@RequestMapping(value = "pointChart")
+	public String pointChart(HttpServletRequest req, Model model) {
+		logger.info("pointChart, 페이지");
+		adService.pointChart(req,model);
 		adService.pointList(req, model);
 		return "admin/pointList";
 	}
@@ -503,7 +512,7 @@ public class AdminContoller {
 	
 //---------------------------------------------------------------------------------------- 나다
 	
-	// 신고요청 목록          
+	// 신고요청 목록
 	@RequestMapping(value = "adminReportList")
 	public String adminReportBoardList(HttpServletRequest req, Model model) {
 		logger.info("adminReportList, 페이지");

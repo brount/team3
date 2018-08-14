@@ -16,6 +16,8 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<form action="reportBoardModifyView">
@@ -28,10 +30,10 @@
 				<table class="table table-striped table-hover" border="1" align="center" id="board">
 					<tr>
 						<th>비밀번호</th>
-						<td><input name="boardpwd" type="password"></td>
+						<td><input name="boardpwd" type="password" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="확인"> 
+						<td colspan="2" style="text-align: center;"><input class="btn btn-dark-blue" type="submit" value="확인"> 
 							<input type="button" class="btn btn-dark-blue" value="취소" onclick="window.history.back();">
 						</td>
 					</tr>

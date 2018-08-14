@@ -4,14 +4,15 @@
 <head>
 <title> 사이트 이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
    
    <header>
    <%@ include file="../common/header.jsp" %>
    </header>
+      <%@ include file="../common/line.jsp"%>
       
 	<section  style="margin-bottom: 100px;"  >   
 		<div class="container">
@@ -49,12 +50,8 @@
                                   <td></td>
                                   <td></td>
                                     <td>
-                                        <span>작성자
-                                            <span class="label label-success pull-left"> </span> 
-                                            <span class="label label-info pull-left"> </span>
-                                            <span class="label label-warning pull-left"> </span>
-                                            <span class="label label-danger pull-left"> </span>
-                                        </span>
+                                		작성자
+                                      
                                     </td>
                                   <td class="view-message  text-left">등록일</td>
                               </tr>

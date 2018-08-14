@@ -24,6 +24,7 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
+	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 	                            	<select class="btn btn-default btn-xs dropdown-toggle" onchange="location.href=this.value">
 						 				<option value="membersecessionList">탈퇴회원목록</option>
 						 				<option value="memberList">일반회원목록</option>
@@ -56,8 +57,8 @@
 											</thead>
 											<tbody>
 												<c:if test="${cnt > 0}">
+												
 													<c:forEach var="dto" items="${dtos}">
-														<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 														<tr>
 															<td class="center">
 															<input type="checkbox" name="checkOne" value="${dto.guestNo}"></td>

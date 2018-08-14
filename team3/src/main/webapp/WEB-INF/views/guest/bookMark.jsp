@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -31,6 +31,8 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
+
 <section>
 
 <div class="container">
@@ -60,14 +62,8 @@
                                   <td></td>
                                   <td></td>
                                     <td> 
-                                        <span>전화번호
-                                            <div>
-                                                <span class="label label-success pull-left"> </span> 
-                                                <span class="label label-info pull-left"> </span>
-                                                <span class="label label-warning pull-left"> </span>
-                                                <span class="label label-danger pull-left"> </span>
-                                            </div>
-                                        </span>
+                                       		전화번호
+                                       
                                     </td>
                                   <td class="view-message  text-left">주소</td>
                               </tr>

@@ -9,20 +9,20 @@
 <script src="/medical/resources/common/js/memberLogin.js"></script>
 <title> 사이트 이름 </title>
 <body>
-	<c:if test="${selectCnt!=0}">
+	<c:if test="${loginCnt!=0}">
 		<script type="text/javascript">
 			alert("로그인 성공");
 			window.close();
 			opener.location.href="memberList";
 		</script>
 	</c:if>
-	<c:if test="${selectCnt == -1}">
+	<c:if test="${loginCnt == -1}">
 		<script type="text/javascript">
 			alert("비밀번호가 틀렸습니다.");
 			window.history.back();
 		</script>
 	</c:if>
-	<c:if test="${selectCnt == 0}">
+	<c:if test="${loginCnt == 0}">
 		<script type="text/javascript">
 			alert("아이디가 틀렸습니다");
 			window.history.back();

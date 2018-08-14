@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function check() {
 	if(!document.mof.birth1.value){
@@ -74,6 +74,7 @@ function check() {
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section>   
 	<div class="container">
@@ -234,7 +235,7 @@ function check() {
 	        <label class="col-md-3 control-label">나이</label>
 	        <div class="col-md-8  inputGroupContainer">
 	          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-	            <input  name="age" placeholder="${vo.weight}" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
+	            <input  name="age" value="${vo.age}" class="form-control"  type="text" style="width:30px;hegint:50px;"> 
 	            	<b>세(만)</b> 
 	            
 	          </div>

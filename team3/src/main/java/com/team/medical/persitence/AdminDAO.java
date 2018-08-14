@@ -251,9 +251,12 @@ public interface AdminDAO {
 	// 포인트목록 개수 구하기
 	public int getPointListCnt(int status);
 
-	// 포인트목록 조회1
+	// 포인트목록 조회
 	public ArrayList<PointVO> getPointList(Map<String, Object> map);
 
+	// 포인트 차트
+	public ArrayList<PointVO> pointChart(Map<String, Object> map);
+	
 	//-------------------------------------
 	// 공지사항 상세보기
 	public QuestionBoardVO adminReportInfo(int num);

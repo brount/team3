@@ -13,6 +13,8 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	<%@ include file="../common/line.jsp"%>
+	
 	<script src="jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script>
 		function delLastTr(idN) {

@@ -6,7 +6,7 @@ public class ExaminationVO {
 	//검진서
 	private int COL;
 	private int guestNo;
-	private int guestname;
+	private String guestname;
 	private String height;
 	private String weight;
 	private String fatness;
@@ -45,10 +45,10 @@ public class ExaminationVO {
 	public void setGuestNo(int guestNo) {
 		this.guestNo = guestNo;
 	}
-	public int getGuestname() {
+	public String getGuestname() {
 		return guestname;
 	}
-	public void setGuestname(int guestname) {
+	public void setGuestname(String guestname) {
 		this.guestname = guestname;
 	}
 	public int getGuestno() {

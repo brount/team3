@@ -16,6 +16,7 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 <section>
 	<fieldset style="width: 800px; margin:0 auto;">

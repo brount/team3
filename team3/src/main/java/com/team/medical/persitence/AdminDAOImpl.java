@@ -775,6 +775,16 @@ public class AdminDAOImpl implements AdminDAO {
  		return dtos;
  	}
 
+
+	// 포인트 차트
+	@Override
+	public ArrayList<PointVO> pointChart(Map<String, Object> map) {
+		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
+
+ 		ArrayList<PointVO> dtos = dao.pointChart(map);
+
+ 		return dtos;
+	}
 //------------------------------------------------------------
 	
 	// 공지사항 상세보기
@@ -818,12 +828,5 @@ public class AdminDAOImpl implements AdminDAO {
   	  	}
   	  	return deleteCnt;
 	}
-
-
-
-
-	
-
-	
 
 }

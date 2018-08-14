@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 
 function newfoodinsert(){
@@ -48,6 +48,7 @@ function newfoodinsert(){
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 
 
@@ -62,12 +63,13 @@ function newfoodinsert(){
 	        
   		 	<div class="col-sm-9 col-md-9">
 	            
-		            <div class="container">
+		    
 		   
 		      
 		<form action="" name="cal">
+		   <fieldset>
 					     	<legend> 나만의 음식 추가하기 </legend>
-					        <fieldset>
+					     
 						 <div class="form-group">
 					        <label class="col-md-4 control-label">음식 </label>
 					       <div class="col-md-6  inputGroupContainer">
@@ -76,7 +78,9 @@ function newfoodinsert(){
 					            
 					          </div>
 					        </div>
-					        
+					     </div> 
+					     
+					       <br>
 					        <div style="margin-top: 70px;">
 					    <label class="col-md-4 control-label" >1인분당 칼로리 </label>
 					       <div class="col-md-6  inputGroupContainer">
@@ -90,32 +94,39 @@ function newfoodinsert(){
 					        </div>
 					      </div>
 					
-					        <div style="margin-top: 70px;">
-					    <label class="col-md-4 control-label"  style=" margin-top: 35px;" >gram </label>
-					       <div class="col-md-6  inputGroupContainer">
+						<br>
+						
+					
+					
+					  <div style="margin-top: 80px;">
+					    <label class="col-md-3 control-label" >gram </label>
+					       <div class="col-md-6  inputGroupContainer" style="  margin-left: 66;">
 					       
-					          <div class="input-group" style=" margin-top: 35px;"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="gram" placeholder="100 g" class="form-control"  type="text" > 
+					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+					           <input  name="gram" placeholder="100 g" class="form-control"  type="text" style="hegint:70px; "> 
 					           
 					                        	<b style="margin-left: 20px;">g</b> 
 					             
 					          </div>
-					          
-					           <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
-					          <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
-					          
 					        </div>
 					      </div>
+				
+					   
+					        </fieldset>
+					       
+					       <div style="    text-align: center;">
+					          <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
+					          <input type="button"  class="btn btn-dark-blue"  style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
+					          </div>
+							</form>
 					      </div>
-					      </fieldset>
-			</form>
+					     
+					 
 					   </div>
 					   
 					  
 					   </div>
-					   
-	            </div>
-	        </div>		        
+		
 	
 	  
 </section>

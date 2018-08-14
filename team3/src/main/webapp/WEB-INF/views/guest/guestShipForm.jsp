@@ -10,6 +10,8 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div style="width: 45%; margin: 0 auto;">
@@ -142,7 +144,8 @@
 									<i class="glyphicon glyphicon-earphone"></i></span>
 									<input name="jumin1" placeholder="주민번호 입력" class="form-control" type="text"
 										style="width: 30px;" maxlength="6" onkeyup="nextJumin1();" onkeydown="onlyNumber(this)" required>
-									- <input name="jumin2" placeholder="*******"
+									- 
+									<input name="jumin2" placeholder="*******"
 										class="form-control" type="password" style="width: 50px;"
 										maxlength="7" onkeyup="nextJumin2();" onkeydown="onlyNumber(this)" required>
 								</div>

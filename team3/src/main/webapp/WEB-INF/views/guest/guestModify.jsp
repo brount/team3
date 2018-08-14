@@ -10,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 
  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -72,6 +72,7 @@
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 
 <!-- 
@@ -95,7 +96,8 @@
       <!-- 아이디-->
       
       <div class="form-group" >
-        <label class="col-md-3 control-label">아이디</label>
+        <label class="col-md-3 control-label" style="font-size: 30;
+    font-family: 'Do Hyeon', sans-serif;">아이디</label>
      		${vo.getGuestid()}
       </div>
   
@@ -132,7 +134,7 @@
         </div>
      
          <div class="form-group" >
-        <label class="col-md-4 control-label">이름</label>
+        <label class="col-md-3 control-label">이름</label>
   		
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -144,7 +146,7 @@
         
         
          <div class="form-group">
-        <label class="col-md-4 control-label">주민등록번호</label>
+        <label class="col-md-3 control-label">주민등록번호</label>
                  
         
         <div class="col-md-6  inputGroupContainer">
@@ -172,13 +174,13 @@
 		 				<c:if test="${vo.getGuesttel() != null}">
 		 				<c:set var="hpArr" value="${fn:split(vo.getGuesttel(),'-')}" />
 		 					
-		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:30px"
+		 					<input class="input" type="text" name = "phone1" maxlength="3" style="width:80px"
 		 						value="${hpArr[0]}">
 		 					-
-		 					<input class="input" type="text" name = "phone2" maxlength="4" style="width:30px"
+		 					<input class="input" type="text" name = "phone2" maxlength="4" style="width:80px"
 		 						value="${hpArr[1]}">
 		 					-
-		 					<input class="input" type="text" name = "phone3" maxlength="4" style="width:30px"
+		 					<input class="input" type="text" name = "phone3" maxlength="4" style="width:80px"
 		 						value="${hpArr[2]}">
 		 					
 		 			</c:if>
@@ -190,10 +192,12 @@
       <div class="form-group">
         <label class="col-md-3 control-label">주소</label>
         <div class="col-md-6  inputGroupContainer">
+       
          <input type="button" onclick="addressSearch();" value="주소찾기"  class="btn btn-dark-blue" >
+         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
         <input type="text" value="${vo.getAddress1()}" name="address1" id="sample6_postcode" placeholder="우편번호" size="6" style="padding:3px"class="form-control" style="width:30px" >
 		 <input value="${vo.getAddress2()}" name="address2" id="sample6_address" placeholder="주소" class="form-control" type="text">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+          <div class="input-group"> 
            
              <input name="address3"value="${vo.getAddress3()}"   id="sample6_address2"  placeholder="상세주소" class="form-control" type="text" onchange="addinput();">
              <input type="hidden" name="address">
@@ -210,10 +214,10 @@
 		 			<c:set var="emailArr" value="${fn:split(vo.getGuestemail(),'@')}" />	
 		 				
 		 				<input class="input" type="text" name="email1" maxlength="10"
-		 						style="width:60px" value="${emailArr[0]}">
+		 						style="width:100px" value="${emailArr[0]}">
 		 				@
 		 				<input class="input" type="text" name="email2" maxlength="20"
-		 						style="width:70px" value="${emailArr[1]}" >
+		 						style="width:150px" value="${emailArr[1]}" >
            
            
            

@@ -9,6 +9,7 @@
    <header>
    <%@ include file="../common/header.jsp" %>
    </header>
+   <%@ include file="../common/line.jsp"%>
    
 	<section style="    margin-bottom: 100px;">   
 		<div class="container">

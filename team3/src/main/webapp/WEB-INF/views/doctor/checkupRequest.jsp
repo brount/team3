@@ -11,6 +11,7 @@
 	<%@ include file="../common/header.jsp" %>
 </header> 
 
+<%@ include file="../common/line.jsp"%>
 
 <section>
 <form action="checkupRequestInputPro?guestno=${guestno}" method="post" name="checkupRequest" onsubmit="return checkupRequestCheck()">

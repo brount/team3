@@ -15,12 +15,34 @@ function noEvent() { // 새로 고침 방지
 document.onkeydown = noEvent;
 
 document.oncontextmenu = function() {return false;}
+
+function reChk() {
+	if (!document.reform.boardcontent.value) {
+		alert("댓글을 입력해주세요.");
+		document.reform.boardcontent.focus();
+		return false;
+	} else if (!document.reform.boardpwd.value) {
+		alert("비밀번호를 입력해주세요.");
+		document.reform.boardpwd.focus();
+		return false;
+	}
+}
 </script>
+<style>
+	th {
+		font-size: 25px !important;
+	}
+	td {
+		font-size: 25px !important;
+	}
+</style>
 
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-
+	
+	<%@ include file="../common/line.jsp"%>
+	
 	<section>
 	<c:if test="${pwdCnt == 0}">
 		<script type="text/javascript">
@@ -43,11 +65,11 @@ document.oncontextmenu = function() {return false;}
 							<tbody>
 								<tr>
 									<th style="width: 150px">글번호</th>
-									<td style="width: 150px">${number }</td>
+									<td style="width: 150px">${number}</td>
 
 									<th style="width: 150px">작성일</th>
 									<td style="width: 150px"><fmt:formatDate type="both"
-											pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" /></td>
+											pattern="yyyy-MM-dd" value="${dto.boarddate}" /></td>
 								</tr>
 								<tr>
 									<th>작성자</th>
@@ -58,25 +80,28 @@ document.oncontextmenu = function() {return false;}
 									<td colspan=3>${dto.boardtitle }</td>
 								</tr>
 								<tr>
-									<th>글내용</th>
-									<td colspan=3>${dto.boardcontent }</td>
+									<th colspan="4" style="text-align: center;">글내용</th>
+									
+								</tr>
+								<tr>
+									<td colspan="4">${dto.boardcontent }</td>
 								</tr>
 							</tbody>
 						</table>
-						<table style="width: 1000px" align="center">
+						<table style="width: 100%; margin-top: 50px;" align="center">
 							<tr>
-								<th style="width: 20%">작성자</th>
-								<th style="width: 65%">댓글내용</th>
-								<th style="width: 15%">작성일</th>
+								<th style="width: 15%; text-align: center;">작성자</th>
+								<th style="width: 60%; text-align: center;">댓글내용</th>
+								<th style="width: 25%; text-align: center;">작성일</th>
 							</tr>
-							<c:forEach var="dt" items="${dtos }">
+							<c:forEach var="dt" items="${dtos}">
 								<tr>
-									<td align="center">${dt.boardwriter }</td>
-									<td>${dt.boardcontent }</td>
+									<td align="center">${dt.boardwriter}</td>
+									<td>${dt.boardcontent}</td>
 									<td align="center"><fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dt.boarddate }" />
 										<c:if test="${sessionScope.id==dt.boardwriter}">
-											<c:if test="${sessionScope.memberState==2 }">
-												<button class="btn btn-dark-blue" onclick="window.open('refDelete?num=${dt.boardno}&kind=${dto.boardno}&pageNum=${pageNum}&number=${number}','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');">
+											<c:if test="${sessionScope.memberState==2}">
+												<button class="btn btn-dark-blue" onclick="window.open('refDelete?num=${dt.boardno}&kind=${dto.boardno}&pageNum=${pageNum}&number=${number}','로그인창','width=450px,height=200px,screenX=700px,screenY=400px');">
 													삭제
 												</button>
 											</c:if>
@@ -85,15 +110,14 @@ document.oncontextmenu = function() {return false;}
 								</tr>
 							</c:forEach>
 						</table>
-						<c:if test="${sessionScope.memberState == 2 }">
-							<form action="inputre" method="post" name="reform"
-								onclick="return reChk();">
+						<c:if test="${sessionScope.memberState == 2}">
+							<form action="inputre" method="post" name="reform" onsubmit="return reChk();">
 								<input type="hidden" name="kind" value="2">
 								<input type="hidden" name="ref" value="${dto.boardno }">
 								<input type="hidden" name="num" value="${dto.boardno }">
 								<input type="hidden" name="number" value="${number }">
 								<input type="hidden" name="pageNum" value="${pageNum }">
-								<table>
+								<table style="width: 100%">
 									<tr>
 										<td rowspan=3>
 											<c:if test="${sessionScope.id != null }"> ${sessionScope.id }
@@ -104,9 +128,9 @@ document.oncontextmenu = function() {return false;}
 											</c:if>
 										</td>
 										<td rowspan=3>
-											<textarea rows="3" cols="100" name="boardcontent"></textarea>
+											<textarea rows="3" cols="70" name="boardcontent" style="resize: none; "></textarea>
 										</td>
-										<td><input type="submit" value="댓글작성"></td>
+										<td><input class="btn btn-dark-blue" type="submit" value="댓글작성"></td>
 									</tr>
 									<tr>
 										<td>댓글 비밀번호</td>
@@ -117,9 +141,9 @@ document.oncontextmenu = function() {return false;}
 								</table>
 							</form>
 						</c:if>
-						<table>
+						<table style="width: 100%">
 							<tr>
-								<th colspan=4>
+								<th style="text-align: center;">
 									<c:if test="${sessionScope.id==dto.boardwriter}">
 										<input class="btn btn-dark-blue" type="button" value="글수정"
 											onclick="window.location='boardModify?num=${dto.boardno}&pageNum=${pageNum}&kind=1'">

@@ -9,6 +9,8 @@
  <header>
 	<%@ include file="../common/header.jsp" %>
 </header> 
+<%@ include file="../common/line.jsp"%>
+
 <section>
 <input type="hidden" value="${checkup}" name="checkup">
 <form action="examinationInputPro?checkup=${checkup}" method="post" name="examinationAdd">

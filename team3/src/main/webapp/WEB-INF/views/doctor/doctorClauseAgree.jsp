@@ -22,6 +22,7 @@
    <header>
    <%@ include file="../common/header.jsp" %>
    </header>
+   <%@ include file="../common/line.jsp"%>
    
    <section>
 	<div class="container"><!-- 회원가입약관 동의 시작 { -->

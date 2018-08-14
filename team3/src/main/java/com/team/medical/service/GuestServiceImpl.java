@@ -54,19 +54,14 @@ public class GuestServiceImpl implements GuestService {
 	public void confirmId(HttpServletRequest req, Model model) {
 		
 		String strId = req.getParameter("id");
-
 		
 		int selectCnt = dao.idCheck(strId); // DB에서 아이디값 불러옴
 
 		model.addAttribute("selectCnt", selectCnt);
 		model.addAttribute("strId", strId);
-		
-		
-		
 	}
 	@Override
 	public void emailkey(HttpServletRequest req, Model model) {
-
 		
 		String email = req.getParameter("email");
 		req.getSession().setAttribute("email", email);
@@ -114,8 +109,6 @@ public class GuestServiceImpl implements GuestService {
 		String email_key = req.getParameter("key");
 		System.out.println("email_key?"+email_key);
 		
-	
-		
 		cnt = dao.emailok(email);
 		System.out.println("cnt"+cnt);
 			if(cnt==0) {
@@ -123,8 +116,6 @@ public class GuestServiceImpl implements GuestService {
 				keycnt =1;
 				 
 			}
-		
-			
 		
 		System.out.println("keycnt?"+keycnt);
 		model.addAttribute("keycnt", keycnt);

@@ -6,7 +6,10 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link href="/medical/resources/common/css/drugSeach.css"
-	rel="stylesheet">
+	rel="stylesheet"><link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+	
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <html lang="en">
@@ -22,6 +25,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<script src="/medical/resources/common/js/drugSeach.js"></script>
@@ -207,7 +211,7 @@ end function
 									</tbody>
 								</table>
 
-								<table width="100%" cellspacing="0" cellpadding="0" border="0"
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table"
 									bordercolor="#cecece"
 									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece">
 									<tbody>

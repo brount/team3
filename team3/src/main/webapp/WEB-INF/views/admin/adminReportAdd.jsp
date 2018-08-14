@@ -22,7 +22,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-8">
-					<form action="adminReportAddPro">
+					<form action="adminReportAddPro" name="adminReportForm" onsubmit="return reportChk();">
 						<input type="hidden" name="kind" value="3">
 						<input type="hidden" name="ref" value="${ref}">
 						<input type="hidden" name="num" value="${num}">
@@ -52,7 +52,6 @@
 								<tr>
 									<th colspan="2">
 										<input class="inputButton" type="submit" value="작성">
-										<input class="inputButton" type="reset" value="취소">
 										<input class="inputButton" type="button" value="목록"
 											onclick="window.location='adminReportList?pageNum=${pageNum}'">
 									</th>

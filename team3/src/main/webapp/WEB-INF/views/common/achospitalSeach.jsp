@@ -195,6 +195,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div class="container">
@@ -207,16 +208,7 @@
 						<aside class="lg-side">
 							<div class="inbox-head">
 								<h3>제휴병원 검색</h3>
-								<form action="#" class="pull-right position">
-									<div class="input-append">
-										<input type="text" class="sr-input" placeholder="검색">
-										<button class="btn btn-dark-blue" type="button">
-											<i class="fa fa-search"></i>
-											검색
-										</button>
-									</div>
-									<div></div>
-								</form>
+							
 							</div>
 							<div class="inbox-body">
 								<div class="mail-option">

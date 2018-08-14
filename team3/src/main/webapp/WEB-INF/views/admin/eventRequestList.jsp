@@ -25,10 +25,7 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
-                                    <select class="btn btn-default btn-xs dropdown-toggle">
-						 				<option value="#">게시중</option>
-						 				<option value="#">승인대기</option>
-						 			</select>
+	                             	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 						 			
 						 			<button type="button" style="margin-left:10px" onclick="window.location='adminEventAdd?pageNum=${pageNum}'">
 						 				추가
@@ -47,15 +44,13 @@
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 		                                        <tr>
-		                                        	<th><input type="checkBox"></th>
+		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
 		                                            <th>광고번호</th>
 		                                            <th>의사회원번호</th>
 		                                            <th>병원명</th>
 		                                            <th>광고명</th>
 		                                            <th>신청일</th>
 		                                            <th>등록기간</th>
-		                                            <th>광고종류</th>
-													<th>게시여부</th>
 		                                        </tr>
 	                                        </thead>
 	                                        <tbody>
@@ -64,17 +59,20 @@
 	                                        
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
-													
-														<td> <input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
-														<input type="checkbox" name="checkOne" value="${dto.advertisementNo}"> </td>
+														<td><input type="checkbox" name="checkOne" value="${dto.advertisementNo}"></td>
 													    <td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementNo}</td>
-														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
+														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">
+															<c:if test="${dto.doctorno!=0}">
+																${dto.doctorno}
+															</c:if>
+															<c:if test="${dto.doctorno==0}">
+																admin
+															</c:if>
+														</td>
 														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementThumbnail}</td>
 														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementTitle}</td>
 														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementRegDate}</td>
 														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementStart} ~ ${dto.advertisementEnd} </td>
-														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementKind}</td>
-														<td onclick="window.location='eventModify?&advertisementNo=${dto.advertisementNo}&pageNum=${pageNum}&number=${number+1}'">${dto.advertisementState}</td>
 		                                        	</tr>
 		                                       	</c:forEach>
 		                                       </c:if>
@@ -110,23 +108,6 @@
 												</th>
 											</tr>
 										</table>
-	                                    <table align="center">
-                                  			<tr>
-                                       			<td>
-	                                        		<select class="input" name="btn btn-default btn-xs dropdown-toggle onchange=">
-								 						<option value="#">병원명</option>
-								 						<option value="#">광고명</option>
-								 						<option value="#">등록기간</option>
-								 					</select>
-							 					</td>
-							 					<td>
-							 						<input type="search" id="search">
-							 					</td>
-							 					<td>
-							 						<input type="button" value="검색">
-							 					</td>
-						 					</tr>
-						 				</table>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

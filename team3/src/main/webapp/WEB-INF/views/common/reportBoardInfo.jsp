@@ -16,10 +16,20 @@ document.onkeydown = noEvent;
 
 document.oncontextmenu = function() {return false;}
 </script>
+<style>
+	th {
+		font-size: 25px !important;
+	}
+	td {
+		font-size: 25px !important;
+	}
+</style>
 
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div class="container">
@@ -27,14 +37,6 @@ document.oncontextmenu = function() {return false;}
 				<aside class="lg-side">
 					<div class="inbox-head">
 						<h3>고객센터</h3>
-						<form action="#" class="pull-right position">
-							<div class="input-append">
-								<input type="text" class="sr-input" placeholder="검색">
-								<button class="btn btn-dark-blue" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-							</div>
-						</form>
 					</div>
 					<div class="mail-option">
 
@@ -46,7 +48,7 @@ document.oncontextmenu = function() {return false;}
 									<td style="width: 150px">${number}</td>
 									
 									<th style="width: 150px">작성일</th>
-									<td style="width: 150px"><fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" /></td>
+									<td style="width: 150px"><fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.boarddate}" /></td>
 								</tr>
 								<tr>
 									<th>작성자</th>
@@ -57,14 +59,16 @@ document.oncontextmenu = function() {return false;}
 									<td colspan=3>${dto.boardtitle}</td>
 								</tr>
 								<tr>
-									<th>글내용</th>
-									<td colspan=3>${dto.boardcontent}</td>
+									<th colspan="4" style="text-align: center;">글내용</th>
+								</tr>
+								<tr>
+									<td colspan="4">${dto.boardcontent}</td>
 								</tr>
 							</tbody>
 						</table>
-						<table>
+						<table style="width: 100%">
 							<tr>
-								<th colspan=4>
+								<th style="text-align: center;">
 								<c:if test="${dto.kind==4}">
 								<c:if test="${sessionScope.id==dto.boardwriter}">
 								<input  class="btn btn-dark-blue" type="button" value="글수정"

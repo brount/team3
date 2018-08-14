@@ -49,6 +49,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div style="width: 45%; margin: 0 auto;">

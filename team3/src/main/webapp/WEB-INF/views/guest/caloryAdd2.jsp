@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function foodsearch1() {
 	if (!document.cal.food1.value) {
@@ -95,6 +95,7 @@ function check() {
 <header>
    <%@ include file="../common/header.jsp" %>
 </header>
+<%@ include file="../common/line.jsp"%>
 
 
 
@@ -145,6 +146,8 @@ function check() {
 					          </div>
 					        </div>
 					        
+					        <br>
+					        
 					         <div style="margin-top: 70px;">
 					       <label class="col-md-4 control-label">점심 </label>
 					       <div class="col-md-6  inputGroupContainer">
@@ -158,6 +161,7 @@ function check() {
 					        </div>
 					        </div>  
 					        
+					        <br><br>
 					        
 					       <label class="col-md-4 control-label" style=" margin-top: 35px;">저녁 </label>
 					       <div class="col-md-6  inputGroupContainer" style=" margin-top: 35px;">
@@ -173,7 +177,7 @@ function check() {
 					        
 					        
 					        
-					        
+					        <br>
 					        
 					        <!-- <div style="margin-top:20px; margin-bottom:20px; ">
 					        <label class="col-md-4 control-label">점심 </label>
@@ -204,13 +208,13 @@ function check() {
 					   </div>
 					 					   </fieldset>
 					 
-					   
-	
+					   	<br>
+		
 					     <input type="submit"  class="btn btn-dark-blue" style="display: table;margin: auto;" value="저장" >
 					  
 					      
 					      
-					   
+					   <br>
 					     	<legend> 나만의 음식 추가하기 </legend>
 					        <fieldset>
 						 <div class="form-group">
@@ -221,7 +225,7 @@ function check() {
 					            
 					          </div>
 					        </div>
-					        
+					        <br>
 					        <div style="margin-top: 70px;">
 					    <label class="col-md-4 control-label" >1인분당 칼로리 </label>
 					       <div class="col-md-6  inputGroupContainer">
@@ -234,7 +238,7 @@ function check() {
 					          </div>
 					        </div>
 					      </div>
-					
+						<br>
 					        <div style="margin-top: 70px;">
 					    <label class="col-md-4 control-label"  style=" margin-top: 35px;" >gram </label>
 					       <div class="col-md-6  inputGroupContainer">
@@ -256,7 +260,7 @@ function check() {
 					 
 					      </c:if> 	
 					     	
-					 	 <c:if test="${cnt != 0 }">
+					 	<c:if test="${cnt!=0 }">
 						  
 					 	 <table class="table table-inbox table-hover">
 					 	 		 <h1>PersonalCare</h1>
@@ -280,7 +284,7 @@ function check() {
                               </tr>
                               <c:if test="${alertcnt==1}">
 					 	   <tr class="unread">
-                                    <td rowspan="2" class="view-message  dont-show">
+                                    <td colspan="4" class="view-message  dont-show">
                                     	    
 					 			
 					 			 나의   일일 권장칼로리에 비해 음식섭취량이 많으므로 
@@ -295,17 +299,14 @@ function check() {
                                 </c:if>
                               
                               
-                              <tr class="unread" align="center">
-                                    <td class="view-message  dont-show" colspan="2">					  
-                                       <input type="button"  class="btn btn-dark-blue" value="하루 칼로리 수정하기" onclick="window.location='caloryAddModi'" >
-									</td>
-                                                            
-                                    
-                              </tr>
+                             
                               
                               
 					 	 </table>
-					 	 
+					 					<div style="text-align: center;">
+                                       <input type="button"  class="btn btn-dark-blue" value="하루 칼로리 수정하기" onclick="window.location='caloryAddModi'" >
+							               </div>  
+                           
 					      </c:if> 	
 					     	
 					    

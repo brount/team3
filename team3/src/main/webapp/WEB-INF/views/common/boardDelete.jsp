@@ -17,6 +17,8 @@
    <%@ include file="../common/header.jsp" %>
 </header>
 
+<%@ include file="../common/line.jsp"%>
+
 <section>
 <form action="boardDeletePro">
 	<input type="hidden" name="kind" value="1">
@@ -29,7 +31,7 @@
 			<tr>
 				<th>비밀번호</th>	
 				<td>
-				<input name="boardpwd" type="password">
+				<input name="boardpwd" type="password" required>
 				</td>		
 			</tr>
 			<tr>

@@ -307,7 +307,7 @@ function examinationAddCheck() {
 function emailC(){
 	var url ="emailCheck?email="+document.reg_form.email.value;
 	window.open(url,"emailCheck",
-			"menubar=no,width=300,height=200");
+			"menubar=no,width=300,height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
 }
 
 function selectEmailChk() {
@@ -329,7 +329,7 @@ function doctorconfirmId() {
 		return false;
 	}
 	var url = "doctorconfirmId?id=" + document.reg_form.id.value;
-	window.open(url, "confirm", "menubar=no, width=300, height=200");
+	window.open(url, "confirm", "menubar=no, width=300, height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
 }
 
 // 중복 확인 버튼 클릭시 id로 포커스

@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 .footer-bs {
-	background-color: #424959;
+	background-color:#262b37;
 	color:#ffffff;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 6px;
 	bottom:0;
 	width: 100%;
+	height: 200px;
 }
 
 .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social,
@@ -25,7 +26,7 @@
 }
 
 .footer-bs .footer-brand p {
-	font-size: 12px;
+	font-size: 22px;
 	color: rgba(255, 255, 255, 0.70);
 }
 
@@ -106,7 +107,7 @@
 }
 
 .footer-bs .footer-ns p {
-	font-size: 12px;
+	font-size: 18px;
 	color: rgba(255, 255, 255, 0.70);
 }
 

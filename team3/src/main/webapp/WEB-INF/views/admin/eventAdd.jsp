@@ -7,9 +7,7 @@
 </head>
 <body>
 	<div id="wrapper">
-
 		<jsp:include page="./admin_nav.jsp"></jsp:include>
-
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
@@ -20,8 +18,7 @@
 			</div>
 			<!-- /.row -->
 			<div class="row">
-				<section style="padding:2rem 0;">
-
+ 
 				<div class="container">
 					<div class="col-lg-9">
 						<form class="form-horizontal" action="adminEventAddPro" method="post" id="reg_form" enctype="multipart/form-data">
@@ -174,23 +171,12 @@
 					        <label>이벤트 내용 </label>
 				            <textarea class="form-control" rows="8" name="content" placeholder="이벤트 내용을 적어주세요 " style="resize: none;" required></textarea>
 					      </div>
-					      
-				        <div class="input-group">
-					        <label>이벤트 종류</label>
-					            <select name="kind" class="form-control selectpicker" >
-					              <option value="" >이벤트 종류를 선택해주세요</option>
-					              <option value="1">광고</option> <!-- 광고 신청중  -->
-					              <option value="2">배너</option>
-					            </select>
-					      </div>
-					    
 					      <!-- Text input-->
 					      
 					      <!-- Button -->
 					      <div class="input-group">
 					        <div style="display:table; margin:0 auto;">
 					          <button type="submit" style="margin-right:5px;">신청 </button>
-					          <button type="reset" >취소 </button>
 					          <button type="button" style="margin-left:5px" onclick="window.location='eventRequestList'">메인</button>
 					        </div>
 					      </div>
@@ -198,7 +184,6 @@
 					</div>
 				</div>
 				<div class="row" align="left"></div>
-				</section>
 				<!-- /.row -->
 			</div>
 			<!-- /#page-wrapper -->

@@ -4,8 +4,8 @@
 <html class="no-js" lang="en">
 <link href="/medical/resources/djcss/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css"
-	rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css"
+	rel="stylesheet" type="text/css" /> -->
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet"
 	type="text/css" />
 
@@ -14,6 +14,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div class="container">

@@ -263,13 +263,13 @@ function exerciseDeleteCheck(){
 //운동입력 / 수정 체크
 function exerciseChk(){
 	if(!document.exerciseForm.exerciseName.value){
-		alert("운동정의를 입력하세요.");
+		alert("운동명을 입력하세요.");
 		document.exerciseForm.exerciseName.focus();
 		return false;
 	}
 	
 	else if(!document.exerciseForm.exerciseDefine.value){
-		alert("질병정의를 입력하세요.");
+		alert("운동정의를 입력하세요.");
 		document.exerciseForm.exerciseDefine.focus();
 		return false;
 	}
@@ -457,4 +457,21 @@ function drugModifyChk(){
 // 이벤트 입력 체크
 function eventAddChk(){
 	
+}
+
+// 신고게시판 글작성 체크
+function reportChk(){
+	var boardtitle = document.adminReportForm.boardtitle.value;
+	var boardcontent = document.adminReportForm.boardcontent.value;
+	
+	if(boardtitle == ""){
+		alert("글 제목을 입력하세요.");
+		document.adminReportForm.boardtitle.focus();
+		return false;
+	}
+	else if(boardcontent == ""){
+		alert("글 내용을 입력하세요.");
+		document.adminReportForm.boardcontent.focus();
+		return false;
+	}
 }

@@ -4,43 +4,32 @@
 
 <footer class="footer-bs">
         <div class="row">
-        	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<h2>Logo</h2>
-                <p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
-                <p>© 2014 BS3 UI Kit, All rights reserved</p>
+        	<div class="col-md-6 footer-brand animated fadeInLeft">
+	<h2>회사소개</h2>
+                <p>
+		           “메디클립”은
+				  병원제휴프로모션을 전문적으로 서비스하는 회사로서 <br>
+				국내 중소병원과 고객에게 통합의료정보시스템을 공급하고 있습니다<c:if test="${sessionScope.memberState == null }">
+										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 12px; padding-top: 25px;">.</a>
+										                </c:if>
+										                <c:if test="${sessionScope.memberState == 0 }">
+										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 12px; padding-top: 25px;">.</a>
+										                </c:if>
+                </p>
             </div>
-        	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu —</h4>
-            	<div class="col-md-6">
-                    <ul class="pages">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Nature</a></li>
-                        <li><a href="#">Explores</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Advice</a></li>
-                    </ul>
-                </div>
-            <!-- 	<div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div> -->
-            </div>
-        	<div class="col-md-2 footer-social animated fadeInDown">
-            	<h4>Follow Us</h4>
-            	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
-                	<li><a href="#">RSS</a></li>
-                </ul>
-            </div>
-        	<div class="col-md-3 footer-ns animated fadeInRight">
-            	<h4>Newsletter</h4>
-                <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
+        	<div class="col-md-6 footer-ns animated fadeInRight">
+            	<h2>고객센터 C/S Center</h2>
+            	
+                <p>
+전화 : 02.3446.3775<br>
+팩스 : 02.3446.0000
+이메일 : hansunsu@redholic.com<br>
+카카오톡 ID : hansunsu
+오전 9시부터 오후 6시까지 상담가능합니다.
+근무시간 : 월 ~ 금 AM 9:00 ~ PM 7:00<br>
+점심시간 : PM12 :00 ~ PM 1 : 00
+고객센터 : AM 10: 00 ~ PM6 : 00
+				</p>
                
             </div>
         </div>

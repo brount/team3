@@ -25,6 +25,7 @@
 	                    <div class="panel-heading">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
+	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 	                            	<button type="button" onclick="window.location='adminReportAdd?kind=3'">
                                     	추가
                                     </button>
@@ -54,7 +55,6 @@
 	                                        <tbody>
 	                                        
 	                                        <c:if test="${cnt > 0}">
-	                                        	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 												<c:forEach var="dto" items="${dtos}">
 													<tr>
 														<td style="width:5%"><input type="checkbox" name="checkOne" value="${dto.boardno}"></td>
@@ -111,27 +111,6 @@
 												</th>
 											</tr>
 										</table>
-										
-										<form action="" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
-                                    		<table align="center">	
-	                                  			<tr>
-	                                       			<td>
-		                                        		<select class="input" name="sc" >
-									 						<option value=0>회원ID</option>
-									 						<option value=1>회원명</option>
-									 						<option value=2>병원명</option>
-									 						<option value=3>전문분야</option>
-									 					</select>
-								 					</td>
-								 					<td>
-								 						<input type="text" id="search" name="search">
-								 					</td>
-								 					<td>
-								 						<input type="submit" value="검색">
-								 					</td>
-							 					</tr>
-							 				</table>
-							 			</form>
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

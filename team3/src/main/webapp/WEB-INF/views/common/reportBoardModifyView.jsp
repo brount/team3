@@ -15,6 +15,8 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<c:if test="${pwdCnt == 0}">
@@ -34,33 +36,33 @@
 				<legend>글 수정</legend>
 				<table class="table table-striped table-hover" border="1" align="center" id="board">
 					<tr>
-						<th>작성자</th>
+						<th style="text-align: center; width: 20%">작성자</th>
 						<td>${dto.boardwriter}</td>
 					</tr>
 
 					<tr>
-						<th>비밀번호</th>
+						<th style="text-align: center;">비밀번호</th>
 						<td>
-							<input class="input" type="password" name="boardpwd" maxlength="10">
+							<input class="input" type="password" name="boardpwd" maxlength="10" required>
 						</td>
 					</tr>
 
 					<tr>
-						<th>제목</th>
+						<th style="text-align: center;">제목</th>
 						<td>
-							<input class="input" type="text" name="boardtitle" maxlength="50" style="" value="${dto.boardtitle}">
+							<input class="input" type="text" name="boardtitle" maxlength="50" style="width: 100%;" value="${dto.boardtitle}" required>
 						</td>
 					</tr>
 
 					<tr>
-						<th>내용</th>
+						<th style="text-align: center;">내용</th>
 						<td>
-							<textarea class="input" name="boardcontent" style="" rows="10" cols="40">${dto.boardcontent}</textarea>
+							<textarea class="input" name="boardcontent" style="resize: none; width: 100%" rows="10" required>${dto.boardcontent}</textarea>
 						</td>
 					</tr>
 
 					<tr>
-						<th colspan="2">
+						<th colspan="2" style="text-align: center;">
 							<input class="btn btn-dark-blue"  type="submit" value="작성">
 							<input class="btn btn-dark-blue" type="reset" value="취소">
 							<input class="btn btn-dark-blue" type="button" value="목록"
