@@ -14,7 +14,7 @@
 	<%@ include file="../common/line.jsp"%>
 
 	<section>
-		<div style="width: 45%; margin: 0 auto;">
+		<div style="display: table; margin: 0 auto;">
 			<div class="well">
 
 				<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -200,11 +200,11 @@
 							<label class="col-md-4 control-label">이메일</label>
 							<div class="col-md-6  inputGroupContainer">
 								<div class="input-group">
-									<span class="input-group-addon">
+									<span class="input-group-addon" style="height: 35px;">
 									<i class="glyphicon glyphicon-envelope"></i></span>
-									<input name="email1" class="form-control" type="text" placeholder="이메일 입력" required> 
+									<input name="email1" class="form-control" type="text" placeholder="이메일 입력" style="height: 35px;" required> 
 									@ 
-									<input class="input" type="text" name="email2" required>
+									<input class="input" type="text" name="email2" style="height: 35px;" required>
 									<select name="email3" class="form-control selectpicker" style="width: 200px;" onchange="SelectEmailChk();">
 										<option value="0">직접입력</option>
 										<option value="gmail.com">구글</option>

@@ -100,6 +100,7 @@ public class GuestServiceImpl implements GuestService {
 
 		int keycnt = 0;
 		int cnt = 0;
+		int equal=0;
 		String key = (String)req.getSession().getAttribute("key");
 		System.out.println("key?"+key);
 	
@@ -111,13 +112,17 @@ public class GuestServiceImpl implements GuestService {
 		
 		cnt = dao.emailok(email);
 		System.out.println("cnt"+cnt);
+		if(email_key.equals(key)) {
+			equal=1;
 			if(cnt==0) {
 				
 				keycnt =1;
 				 
 			}
-		
+		}
 		System.out.println("keycnt?"+keycnt);
+		System.out.println("equal?"+equal);
+		model.addAttribute("equal", equal);
 		model.addAttribute("keycnt", keycnt);
 			
 	}

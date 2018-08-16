@@ -32,7 +32,7 @@
 										onclick="window.location.href='diseaseInfo?diseaseCode=${dto.diseaseCode}'">
 										<tr>
 											<th style="width: 10%;">${dto.diseaseName}</th>
-											<td style="color: #000000;">[정의] ${dto.diseaseDefine} <br>
+											<td style="color: #000000;"><%-- [정의] ${dto.diseaseDefine} <br> --%>
 												[증상] ${dto.diseaseCause}
 											</td>
 										</tr>

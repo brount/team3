@@ -10,6 +10,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<!-- 폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
 <!-- /medical/resources/css/ -->
 <!-- Bootstrap core CSS -->
 <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
@@ -17,6 +20,7 @@
 
 <!-- Plugin CSS -->
 <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Do+Hyeon" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 <link href="/medical/resources/css/vendor/magnific-popup/magnific-popup.css" rel="stylesheet"
 	type="text/css">
 
@@ -68,10 +72,11 @@ function myFoodList() {
  
 <div class="header"> 
 	<a onclick="window.location='main'" style="padding: 0px; margin-top: 10px; float: left;">
-	<h1 style="font-size: 40px;  font-family: 'Bungee Shade', cursive; padding-top:30px; margin-left: 50px;"> Medi Clip </h1></a>
+	<h1 style="font-size: 40px; font-family: 'Bungee', cursive;
+ padding-top:30px; margin-left: 50px;"> Medi Clip </h1></a>
 <div class="container">
 	<header class="clearfix" style="height: 49px; padding: 0px; margin-right: 45px;">
-		<nav class="mainmenu" style="font-size: 20px; padding: 0px 0px 0px 60px;">
+		<nav class="mainmenu" style="font-size: 25px; padding: 0px 0px 0px 60px;">
 			<c:if test="${sessionScope.memberState == null }">
 				<a onclick="window.location='memberLogin'" style="font-size: 17px; padding-top: 25px;">login</a>
 				<a onclick="window.location='memberClassify'" style="font-size: 17px; padding-top: 25px;">join us</a>
@@ -92,7 +97,7 @@ function myFoodList() {
 	</header>
 
 	<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-light white" id="headermenu" style="padding:0px 8px; width:100%;">
+<nav class="navbar navbar-expand-lg navbar-light white" id="headermenu" style="padding:0px 8px; width:100%; margin-left: 40px;">
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -111,14 +116,14 @@ function myFoodList() {
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                             <c:if test="${sessionScope.memberState != 2 }">
-								<li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="guestcheckupResultList()">건강검진  목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="guestexaminationList()">처방전 목록</a></li>  
+								<li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="guestcheckupResultList()">건강검진  목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="guestexaminationList()">처방전 목록</a></li>  
 							 </c:if>
 							 <c:if test="${sessionScope.memberState == 2 }">
-								<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='patientList'">검진 예약 목록</a></li>	
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='checkupList'">검사 의뢰 목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item"  style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='checkupResultList'">건강검진 목록</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='examinationList'">처방전 목록</a></li>  
+								<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='patientList'">검진 예약 목록</a></li>	
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='checkupList'">검사 의뢰 목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item"  style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='checkupResultList'">건강검진 목록</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='examinationList'">처방전 목록</a></li>  
 							 </c:if>	
                             </ol>
                         </div>
@@ -158,9 +163,9 @@ function myFoodList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='achospitalSeach?state=1'" >병원 예약</a></li>
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;" onclick="window.location='hospitalSeach'">병원 검색</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='hospitalSeach'">약국 검색</a></li>
+                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='achospitalSeach?state=1'" >병원 예약</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;" onclick="window.location='hospitalSeach'">병원 검색</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='hospitalSeach'">약국 검색</a></li>
                             
                             </ol>
                         </div>
@@ -200,10 +205,10 @@ function myFoodList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"    onclick="window.location='foodPoisoning'">날씨(보건기상지수)</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='cdiseaseList'">질병목록</a></li>
-                               <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='simpleTreat'">간단진료</a></li>
-                           <li class="sub-title text-uppercase"><a class="menu-item"  style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='drugSeach'">약검색</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"    onclick="window.location='foodPoisoning'">날씨(보건기상지수)</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='cdiseaseList'">질병목록</a></li>
+                               <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='simpleTreat'">간단진료</a></li>
+                           <li class="sub-title text-uppercase"><a class="menu-item"  style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='drugSeach'">약검색</a></li>
                             
                             </ol>
                         </div>
@@ -236,9 +241,9 @@ function myFoodList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='exerciseInfoList'">운동정보</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="personalCare()">개인건강관리</a></li>
-                                 <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="myFoodList()">나만의 음식목록</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='exerciseInfoList'">운동정보</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="personalCare()">개인건강관리</a></li>
+                                 <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="myFoodList()">나만의 음식목록</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
@@ -272,7 +277,7 @@ function myFoodList() {
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
                             
-                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;" onclick="window.location='boardList'">질문게시판 </a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;" onclick="window.location='boardList'">질문게시판 </a></li>
                                 
                             
                             </ol>
@@ -307,7 +312,7 @@ function myFoodList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='reportBoardList'">고객센터</a></li>
+                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='reportBoardList'">고객센터</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
@@ -332,9 +337,9 @@ function myFoodList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='eventList'">프로모션  목록</a></li>
+                            	<li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='eventList'">프로모션  목록</a></li>
                                 <c:if test="${sessionScope.memberState == 2 }">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  style="font-size: 20px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='eventRequest'">프로모션  신청</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item"  style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='eventRequest'">프로모션  신청</a></li>
 							 	</c:if>	
                             </ol>
                         </div>

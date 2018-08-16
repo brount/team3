@@ -27,7 +27,7 @@
 								<table class='table'>
 									<tr>
 										<th style="width:15%">이미지</th>
-										<td><img src="/medical/resources/common/images/${dto.exerciseImage}"></td>
+										<td><img src="/medical/resources/images/exercise/${dto.exerciseImage}"></td>
 									</tr>
 									<tr>
 										<th style="width:15%">운동 부위</th>

@@ -1289,7 +1289,7 @@ public class DoctorServiceImpl implements DoctorService {
 		int endPage=0; // 현재블록   마지막 페이지
 		
 		// 5단계. 글갯수 구하기
-		cnt = dao.getPointManageCnt(1); 
+		cnt = dao.getPointManageCnt();
 		
 		pageNum = req.getParameter("pageNum");
 		

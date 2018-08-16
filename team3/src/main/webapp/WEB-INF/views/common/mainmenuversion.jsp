@@ -43,7 +43,7 @@
 		<hr class="star-dark mb-5"> -->
 		<div class="row">
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+				<a class="portfolio-item d-block mx-auto" href="hospitalSeach">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
@@ -54,7 +54,7 @@
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+				<a class="portfolio-item d-block mx-auto" href="drugSeach">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
@@ -65,7 +65,7 @@
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+				<a class="portfolio-item d-block mx-auto" href="simpleTreat">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
@@ -76,7 +76,7 @@
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
+				<a class="portfolio-item d-block mx-auto" href="exerciseInfoList">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
@@ -87,7 +87,7 @@
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
+				<a class="portfolio-item d-block mx-auto" href="personalCare">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
@@ -98,14 +98,14 @@
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
+				<a class="portfolio-item d-block mx-auto" href="foodPoisoning">
 					<div
 						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
 						<div
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
-					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portweight.jpg" alt="">
+					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/atlrwndehr.jpg" alt="">
 				</a>
 			</div>
 		</div>

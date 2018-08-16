@@ -10,10 +10,10 @@
 		           “메디클립”은
 				  병원제휴프로모션을 전문적으로 서비스하는 회사로서 <br>
 				국내 중소병원과 고객에게 통합의료정보시스템을 공급하고 있습니다<c:if test="${sessionScope.memberState == null }">
-										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 12px; padding-top: 25px;">.</a>
+										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 18px; margin-left: -5px;">.</a>
 										                </c:if>
 										                <c:if test="${sessionScope.memberState == 0 }">
-										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 12px; padding-top: 25px;">.</a>
+										                	<a onclick="window.open('adminLogin','로그인창','width=450px,height=420px,screenX=700px,screenY=400px');" style="font-size: 18px; margin-left: -5px;">.</a>
 										                </c:if>
                 </p>
             </div>
@@ -23,8 +23,8 @@
                 <p>
 전화 : 02.3446.3775<br>
 팩스 : 02.3446.0000
-이메일 : hansunsu@redholic.com<br>
-카카오톡 ID : hansunsu
+이메일 : MediClip@naver.com<br>
+카카오톡 ID : MediClip
 오전 9시부터 오후 6시까지 상담가능합니다.
 근무시간 : 월 ~ 금 AM 9:00 ~ PM 7:00<br>
 점심시간 : PM12 :00 ~ PM 1 : 00

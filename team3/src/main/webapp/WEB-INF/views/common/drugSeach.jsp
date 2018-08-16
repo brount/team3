@@ -202,7 +202,7 @@ end function
 								<h3>
 									약품검색
 								</h3>
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-inbox table-hover">
 									<tbody>
 										<tr>
 											<td height="60"><span class="f_ds">※ 기본상태로 검색하시면
@@ -213,12 +213,12 @@ end function
 
 								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table"
 									bordercolor="#cecece"
-									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece">
+									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece" class="table table-inbox table-hover">
 									<tbody>
 										<tr>
 											<td
 												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
-												width="94px" height="74" bgcolor="#f3f3f3" align="center"><b>식별표시</b></td>
+												width="94px" height="74" bgcolor="#f3f3f3" align="center">식별표시</td>
 											<td
 												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
 												width="57px" height="54px" align="center">문자</td>
@@ -234,24 +234,24 @@ end function
 
 										<tr>
 											<td width="94" height="95" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece"><b>제 형</b></td>
+												style="border: solid 1px #cecece">제 형</td>
 											<td colspan="8"
 												style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="is_check_all"
 													onclick="auto_check()" class="ver">정제류 :
 											</li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="나정"
-													class="ver">나정&nbsp;
+												<li style="width: 75px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="당의정"
+													class="ver">당의정&nbsp;
 											</li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
+												<li style="width: 120px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="필름코팅정"
 													class="ver">필름코팅정&nbsp;
 											</li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="당의정"
-													class="ver">당의정&nbsp;
+												<li style="width: 60px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="나정"
+													class="ver">나정&nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="다층정"
@@ -261,28 +261,27 @@ end function
 													<input type="checkbox" name="shape" value="설하정"
 													class="ver">설하정&nbsp;
 											</li>
-												<div style="height: 5px; float: none; clear: both"></div>
-												<li style="width: 85px; float: left; margin-left: 85px">
+												<li style="width: 85px; float: left;">
 													<input type="checkbox" name="shape" value="저작정"
 													class="ver">저작정&nbsp;
 											</li>
+												<li style="width: 130px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="붕해(현탁)정"
+													class="ver">붕해(현탁)정
+											</li>
 
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
+												<li style="width:130px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="트로키정"
 													class="ver">트로키정&nbsp;
 											</li>
 
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="붕해(현탁)정"
-													class="ver">붕해(현탁)정
-											</li>
-												<div style="height: 5px; float: none; clear: both"></div>
+												
 												<li style="width: 85px; float: none; clear: both"></li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
+												<li style="width: 150px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="경질캡슐"
 													class="ver">경질캡슐&nbsp;
 											</li>
-												<li style="width: 85px; float: left"><input
+												<li style="width: 150px; float: left"><input
 													type="checkbox" name="shape" value="연질캡슐" class="ver">연질캡슐&nbsp;
 											</li>
 
@@ -344,7 +343,7 @@ else
 										</tr>
 										<tr>
 											<td width="94" height="60" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece"><b>모 양</b></td>
+												style="border: solid 1px #cecece">모 양</td>
 											<td
 												style="padding: 5px 0 5px 14px; border: solid 1px #cecece"
 												colspan="8">
@@ -371,7 +370,7 @@ else
 													class="ver">사각형 &nbsp;
 											</li>
 
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
+												<li style="width: 100px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="drugForm" value="마름모형"
 													class="ver">마름모형&nbsp;
 											</li>
@@ -434,11 +433,11 @@ else
 
 										<tr>
 											<td width="94" height="90px" bgcolor="#f3f3f3" align="center"
-												rowspan="1" style="border: solid 1px #cecece"><b>색
-													깔</b></td>
+												rowspan="1" style="border: solid 1px #cecece">색
+													깔</td>
 
 											<td style="padding: 0 0 0 14px;" colspan="8">
-												<table border="0" cellspacing="8" cellpadding="1">
+												<table border="0" cellspacing="8" cellpadding="1" class="table table-inbox ">
 													<!--색깔 -->
 													<tbody>
 														<tr>
@@ -534,7 +533,7 @@ else
 
 										<tr>
 											<td width="94" height="74" bgcolor="#f3f3f3" align="center"
-												rowspan="2" style="border: solid 1px #cecece"><b>분할선</b></td>
+												rowspan="2" style="border: solid 1px #cecece">분할선</td>
 											<td
 												style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
 											<td style="padding: 0 0 0 14px; border: solid 1px #cecece"
@@ -562,7 +561,7 @@ else
 
 										<tr>
 											<td width="95" height="45" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece; border-top: solid 0px #cecece;"><b>제품명</b></td>
+												style="border: solid 1px #cecece; border-top: solid 0px #cecece;">제품명</td>
 											<td
 												style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece; border-bottom: solid 1px #cecece"
 												colspan="2"><input type="text" size="30"
@@ -570,7 +569,7 @@ else
 												style="ime-mode: active; margin-right: 10px"></td>
 
 											<td width="94" height="45" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece; border-top: solid 0px #cecece"><b>제조사</b></td>
+												style="border: solid 1px #cecece; border-top: solid 0px #cecece">제조사</td>
 											<td
 												style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece"
 												colspan="4"><input type="text" name="drugCompany"
@@ -1260,7 +1259,7 @@ else
 								</table>
 
 								<table width="100%" border="0" cellspacing="0" cellpadding="0"
-									style="margin-top: 3px;">
+									style="margin-top: 3px;" class="table table-inbox table-hover">
 									<tbody>
 										<tr>
 											<!--검색 버튼 -->

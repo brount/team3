@@ -291,10 +291,6 @@
 	   select checkuplist from checkup where checkup =#{checkup,jdbcType=INTEGER}
 	</select>
 	
-	<select id = "aaa" parameterType="int" resultType="com.team.medical.vo.PrescriptionVO">
-		select * from Prescription where prescriptionNo =#{prescriptionNo}
-	</select>
-	
 	<!-- 포인트 글 갯수 -->
 	<select id="getPointManageCnt" resultType="int">
 		select count(pointno) from point

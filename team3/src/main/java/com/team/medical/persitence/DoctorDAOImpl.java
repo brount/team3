@@ -387,13 +387,6 @@ public class DoctorDAOImpl implements DoctorDAO {
 	}
 	
 	@Override
-	public ArrayList<PrescriptionVO> aaa(int prescriptionNo) {
-		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		ArrayList<PrescriptionVO> cnt = dao.aaa(prescriptionNo);
-		return cnt;
-	}
-
-	@Override
 	public int getCheckupListCheckup(int checkup) {
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
 		int cnt = dao.getCheckupListCheckup(checkup);
@@ -409,10 +402,10 @@ public class DoctorDAOImpl implements DoctorDAO {
 	}
 
 	@Override
-	public int getPointManageCnt(int i) {
+	public int getPointManageCnt() {
 		int selectCnt=0;
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		selectCnt = dao.getPointManageCnt(i);
+		selectCnt = dao.getPointManageCnt();
 		return selectCnt;
 	}
 

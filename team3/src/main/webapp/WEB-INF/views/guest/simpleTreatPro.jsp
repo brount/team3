@@ -84,6 +84,7 @@
 												▶  합병증 : ${dto.complications }
 											</td>										
 										</tr>
+										<%-- 
 										<tr>
 											<td>
 												 ▶ 진료과 : ${dto.diseasehospitalkind } 
@@ -117,11 +118,11 @@
 											</c:forEach>	
 											</td>
 									</tr>
-									
+									 --%>
 										<tr>
 											<td>
 										<%-- 	onclick="reserveForm?hospitalno=${hto.hospitalno }'" --%>
-												<input type= "button"  class="btn btn-dark-blue"  value="병원예약하러가기" style="display: table;" onclick="window.location=achospitalSeach?state=2">
+												<input type= "button"  class="btn btn-dark-blue"  value="병원예약하러가기" style="display: table;" onclick="window.location='achospitalSeach?state=1'">
 											</td>										
 										</tr>
 										
@@ -174,7 +175,9 @@
 		
    </section>
         
-        
+   <footer>
+		<%@ include file="../common/footer.jsp"%>
+	</footer>
         
         
         

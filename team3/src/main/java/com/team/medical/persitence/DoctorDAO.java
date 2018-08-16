@@ -139,8 +139,6 @@ public interface DoctorDAO {
 	// 검사결과번호 
 	int getCheckupCheckupList(int checkuplist);
 
-	ArrayList<PrescriptionVO> aaa(int prescriptionNo);
-
 	// 검진 번호
 	public int getCheckupListCheckup(int checkup);
 
@@ -148,7 +146,7 @@ public interface DoctorDAO {
 	public int doctorappro(Map<String, Object> map);
 
 	// 포인트 글 갯수
-	public int getPointManageCnt(int i);
+	public int getPointManageCnt();
 
 	// 포인트 글 목록
 	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map);

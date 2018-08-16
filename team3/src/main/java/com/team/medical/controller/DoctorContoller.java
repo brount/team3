@@ -85,12 +85,12 @@ public class DoctorContoller {
  	}
  	
  	//의사회원로그인
- 	 	@RequestMapping(value = "doctorLoginPro")
- 	 	public String doctorLoginPro(HttpServletRequest req, Model model) {
- 	 		System.out.println("doctorLogin, 페이지");
- 	 		docService.doctorLogin(req,model);
- 	 		
- 	 		return "doctor/doctorLoginPro";
+ 	@RequestMapping(value = "doctorLoginPro")
+ 	public String doctorLoginPro(HttpServletRequest req, Model model) {
+ 		System.out.println("doctorLogin, 페이지");
+ 		docService.doctorLogin(req,model);
+ 		
+ 		return "doctor/doctorLoginPro";
  	}
  	
 	//의사회원정보수정페이지                       
@@ -333,6 +333,9 @@ public class DoctorContoller {
   	@RequestMapping(value = "pointManage")
   	public String pointManage(HttpServletRequest req, Model model) {
   		System.out.println("pointManage, 페이지");
+  		
+  		docService.pointManage(req, model);
+  		
   		return "doctor/pointManage";
   	}
 }

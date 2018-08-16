@@ -28,6 +28,7 @@
 		        </div>	
 		  		 <div class="col-sm-9 col-md-9">
 		           
+					<div class="well">
 		                <form class="form-horizontal" action=" " method="post"  id="reg_form">
 	    	           
 	    <fieldset>
@@ -122,7 +123,7 @@
 	  </form>
 		            </div>
 		        </div>
-	        
+	        </div>
 	    </div>
 
 </section>

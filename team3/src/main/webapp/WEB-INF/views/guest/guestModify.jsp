@@ -87,7 +87,7 @@
             <%@ include file="../guest/menuGuest.jsp" %>
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
-	            
+	            <div class="well">
 	    <form class="form-horizontal" action="guestModifyPro" method="post"  id="reg_form" onsubmit="return check();">
     <fieldset>
       
@@ -242,6 +242,7 @@
        </div>
     </fieldset>
   </form>
+</div>
 </div>
 </div>
 </div>

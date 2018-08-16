@@ -19,10 +19,13 @@ function keycnt(){
 
 <form action="emailok" method="post">
 	<c:if test="${keycnt == 0}">
-
+		<c:if test="${equal==0 }">
 		<script type="text/javascript">
-			alert("이메일 인증에 실패했습니다. ")
+			alert("이메일 인증에 실패했습니다. 인증키를 다시 확인하세요. ")
+			
+			window.history.back();
 		</script>
+		</c:if>
 	</c:if>
 
 	<c:if test="${keycnt != 0}">

@@ -41,6 +41,7 @@ function modi(foodno) {
 		          <%@ include file="../guest/menuGuest.jsp" %>
 		        </div>	
 			  		 <div class="col-sm-9 col-md-9">
+			  		 <div class="well">
 			                <div class="mail-box">
 			   
                   <aside class="lg-side">
@@ -158,6 +159,7 @@ function modi(foodno) {
             
 					 </div>                    
              
+			            </div>
 			            </div>
 			        </div>
 			    </div>

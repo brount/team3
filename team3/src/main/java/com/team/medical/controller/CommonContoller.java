@@ -337,7 +337,8 @@ public class CommonContoller {
 		coService.boardDeletePro(req, model);
 		return "common/refDeletePro";
 	}
-	// 로그인화면페이지              
+	
+	// 로그인화면페이지
 	@RequestMapping(value = "memberLoginPro")
 	public String memberLoginPro(HttpServletRequest req, Model model) {
 		logger.info("memberLoginPro, 페이지");

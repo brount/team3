@@ -25,7 +25,15 @@ document.oncontextmenu = function() {return false;}
 </header>
    <%@ include file="../common/line.jsp"%>
    
-   <section>   	
+   <section>
+   		<c:if test="${updateCnt == 0}">
+			<script type="text/javascript">
+				alert("포인트가 부족합니다.");
+				window.history.back();
+			</script>
+		</c:if>
+		
+		<c:if test="${updateCnt != 0}">	
 		<div class="container">
 		    <div class="row">
 		        <div class="col-sm-3 col-md-3">
@@ -81,6 +89,7 @@ document.oncontextmenu = function() {return false;}
 		        </div>
 		    </div>
 		</div> 
+		</c:if>
    </section>
    
 <footer>

@@ -49,6 +49,7 @@ document.oncontextmenu = function() {return false;}
 
 	<section>
 		<div class="container">
+			<div class="well">
 			<div class="mail-box">
 				<aside class="lg-side">
 					<div class="inbox-head">
@@ -138,6 +139,7 @@ document.oncontextmenu = function() {return false;}
 						</th>
 					</tr>
 				</table>
+			</div>
 			</div>
 		</div>
 	</section>

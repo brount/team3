@@ -34,7 +34,7 @@
 	            <%@ include file="../guest/menuGuest.jsp" %>
 	        </div>
   		 	<div class="col-sm-9 col-md-9">
-
+<div class="well">
 		            <div class="container">
 					
 					
@@ -110,6 +110,7 @@
 						 </div>    
 						  </fieldset>
 						  </form>
+						  </div>
 						  </div>
 						  </div>
 	            </div>

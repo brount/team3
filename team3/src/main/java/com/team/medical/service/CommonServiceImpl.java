@@ -494,11 +494,12 @@ public class CommonServiceImpl implements CommonService {
             dto.setAdvertisementState(1);
             
             int insertCnt = 0;
+            int updateCnt = 0;
             int point = Integer.parseInt(req.getParameter("point"));
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("point", point);
             map.put("id", id);
-            int updateCnt = dao.usePoint(map);
+            updateCnt = dao.usePoint(map);
             if (updateCnt != 0) {
             	insertCnt = dao.insertEvent(dto);
             	map.put("status", 2);
@@ -507,6 +508,7 @@ public class CommonServiceImpl implements CommonService {
             }
                    
             model.addAttribute("insertCnt", insertCnt);
+            model.addAttribute("updateCnt", updateCnt);
             
         } catch(IOException e) {
             e.printStackTrace();

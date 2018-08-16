@@ -26,24 +26,27 @@
 <html lang="en">
 <title>근무병원 찾기</title>
 <script type="text/javascript">
-	$(function(){
-		/* data 가 json 인경우 */
-		$('#search').click(function(){ // 키입력이 끝낫을때 cf) 키입력중 : keydown			
-			var select = $("#select").val(); // 입력한 키워드
-			var sc = $("#sc").val();
-			
-			$.ajax({
-				url:"/medical/hosSearch_sub?sc="+sc+"&select="+select,				
-				type: 'post',								
-				
-				success : function(data){ 
-					$('#result').html(data);  
-				},error:function(){ 
-					alert('오류');
-				}
-			});																		
-		});
-	});
+$(document).ready(function(){
+    aa();
+    
+    /* data 가 json 인경우 */      
+    function aa(){ // 키입력이 끝낫을때 cf) 키입력중 : keydown         
+       var select = $("#select").val(); // 입력한 키워드
+       var sc = $("#sc").val();
+       
+       $.ajax({
+          url:"/medical/hosSearch_sub?sc="+sc+"&select="+select,            
+          type: 'post',                        
+          
+          success : function(data){ 
+             $('#result').html(data);  
+          },error:function(){ 
+             alert('오류');
+          }
+       });
+    }
+    $('#search').click(aa);
+ });
 </script>
 <body>
 	<section>
