@@ -56,7 +56,7 @@ document.oncontextmenu = function() {return false;}
 						<form action="#" class="pull-right position">
 							<div class="input-append">
 								<input class="btn btn-dark-blue" class="btn" value="글쓰기" onclick="reportBoardAdd()"
-									style="width: 100px; float: right; margin-bottom: 10px;">
+									style="width: 80px; float: right; margin-bottom: 10px;">
 							</div>
 						</form>
 					</div>
@@ -88,7 +88,8 @@ document.oncontextmenu = function() {return false;}
 													</c:if>
 												</td>
 												<td>
-													<a href="reportBoardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}">${dto.boardtitle}</a>
+													<a href="reportBoardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
+														style="font-size: 25px; font-family: 'Nanum Gothic', sans-serif;">${dto.boardtitle}</a>
 												</td>
 												<td>${dto.boardwriter}</td>
 												<td>
@@ -114,22 +115,22 @@ document.oncontextmenu = function() {return false;}
 						<th align="center"><c:if test="${cnt>0}">
 								<!-- 처음[◀◀] / 이전블록 [◀] -->
 								<c:if test="${startPage > pageBlock }">
-									<a href="reportBoardList">[◀◀]</a>
-									<a href="reportBoardList?pageNum=${startPage-pageBlock}">[◀]</a>
+									<a href="reportBoardList" style="font-size: 15px;">[◀◀]</a>
+									<a href="reportBoardList?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>
 								</c:if>
 								<!-- 페이지 블록 -->
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
 									<c:if test="${i == currentPage }">
-										<span> <b>[${i }]</b></span>
+										<span> <b style="font-size: 20px;">[${i }]</b></span>
 									</c:if>
 									<c:if test="${i != currentPage }">
-										<a href="reportBoardList?pageNum=${i}">[${i }]</a>
+										<a href="reportBoardList?pageNum=${i}" style="font-size: 15px;">[${i }]</a>
 									</c:if>
 								</c:forEach>
 								<!-- 다음블록[▶] / 끝[▶▶] -->
 								<c:if test="${pageCnt > endPage }">
-									<a href="reportBoardList?pageNum=${startPage+pageBlock}">[▶]</a>
-									<a href="reportBoardList?pageNum=${pageCnt}">[▶▶]</a>
+									<a href="reportBoardList?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
+									<a href="reportBoardList?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
 								</c:if>
 							</c:if>
 						</th>

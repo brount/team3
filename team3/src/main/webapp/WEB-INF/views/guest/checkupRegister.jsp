@@ -115,9 +115,6 @@ function check() {
 		document.register.ecg.focus();
 		return false;
 	}
-	
-	
-	
 }
 
 </script>
@@ -166,7 +163,7 @@ function check() {
 					              <tbody>
 					                  <tr>
 					                      <td class="col-check"></td>
-					                      <td rowspan="9">계층검사</td>
+					                      <td rowspan="9">계층<br>검사</td>
 					                      <td rowspan="3">비만</td>
 					                      <td>신장</td>
 					                      <td><input name="height" placeholder="신장" class="form-control"  type="text" style="width:100px;"></td>
@@ -183,7 +180,13 @@ function check() {
 					                      <td>비만도</td>
 					                      <td><input name="fatness" placeholder="지수" class="form-control"  type="text" style="width:90px;"></td>
 					                      <td></td>
-					                      <td>저체충 18.5 미만<br>정상 : 18.5이상 ~ 23미만<br>과체중 : 23이상~25미만<br>비만 : 25이상~30미만 <br> 고도비만 30이상</td>
+					                      <td> 
+											<span style="color:blue;"> 저체중 18 미만   </span> <br>
+											<span style="color:green;"> 정상 : 18이상 ~ 23미만</span> <br>
+											<span style="color:orange;"> 과체중 : 23이상~25미만</span> <br>
+											<span style="color:red;"> 비만 : 25이상~30미만 </span> <br>
+											<span style="color:purple;"> 고도비만 30이상</span>
+					                      </td>
 					                   </tr>
 					                   <tr>
 					                      <td rowspan="2">시각 이상</td>
@@ -216,59 +219,59 @@ function check() {
 					                      <td>혈압(최고)</td>
 					                      <td><input name="bloodpremax" placeholder="mmHg" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
-					                      <td>120이하</td>
+					                      <td style="color: green;">120이하</td>
 					                   </tr>
 					                   <tr>
 					                      <td>혈압(최저)</td>
 					                      <td><input name="bloodpremin" placeholder="mmHg" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
-					                      <td>80이상</td>
+					                      <td style="color: green;">80이상</td>
 					                   </tr>
 					                   <tr>
 					                      <td rowspan="4">요검사</td>
 					                      <td rowspan="4">신장검사</td>
 					                      <td>요당</td>
 					                      <td><input name="urineglucose" placeholder="" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>음성</td>
-					                      <td>약양성±</td>
+					                      <td style="color: green;">음성</td>
+					                      <td style="color: red;">약양성±</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>요단백</td>
 					                      <td><input name="urineprotein" placeholder="" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>음성</td>
-					                      <td>약양성±</td>
+					                      <td style="color: green;">음성</td>
+					                      <td style="color: red;">약양성±</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>요잠혈</td>
 					                      <td><input name="occulthematuria" placeholder="" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>음성</td>
-					                      <td>약양성±</td>
+					                      <td style="color: green;">음성</td>
+					                      <td style="color: red;">약양성±</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>요ph</td>
 					                      <td><input name="urineph" placeholder="" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>4.5~8</td>
+					                      <td style="color: green;">4.5~8</td>
 					                      <td></td>
 					                   </tr>
 					                   
 					                   <tr>
-					                      <td rowspan="7">혈액검사</td>
+					                      <td rowspan="7">혈액<br>검사</td>
 					                      <td>빈혈등</td>
 					                      <td>혈색소</td>
 					                      <td><input name="hemoglobin" placeholder="g/dL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>남:13~16.5<br>여:12~15.5</td>
-					                      <td>남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5</td>
+					                      <td style="color: green;">남:13~16.5<br>여:12~15.5</td>
+					                      <td style="color: green;">남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>당뇨병</td>
 					                      <td>혈당</td>
 					                      <td><input name="bloodglucose" placeholder="mg/dL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>100미만</td>
-					                      <td>100~125</td>
+					                      <td style="color: red;">100미만</td>
+					                      <td style="color: green;">100~125</td>
 					                   </tr>
 					                   
 					                   <tr>
@@ -277,30 +280,30 @@ function check() {
 					                      동맥경화</td>
 					                      <td>총콜레스테롤</td>
 					                      <td><input name="totalcholesterol" placeholder="mg/dL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>200미만</td>
-					                      <td>239</td>
+					                      <td style="color: red;">130미만</td>
+					                      <td style="color: green;">130~239</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td rowspan="4">간장질환</td>
 					                      <td>AST(SGOT)</td>
 					                      <td><input name="ast" placeholder="UL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>40이하</td>
-					                      <td>41~50</td>
+					                      <td style="color: red;">40이하</td>
+					                      <td style="color: green;">41~50</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>ALT(SGPT)</td>
 					                      <td><input name="alt" placeholder="UL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>35이하</td>
-					                      <td>36~45이하</td>
+					                      <td style="color: red;">35이하</td>
+					                      <td style="color: green;">36~45이하</td>
 					                   </tr>
 					                   
 					                   <tr>
 					                      <td>감마지티피</td>
 					                      <td><input name="gammagtp" placeholder="UL" class="form-control"  type="text" style="width:80px;"></td>
-					                      <td>남:11~63<br> 여:8~35</td>
-					                      <td>남:64~77<br> 여:36~45</td>
+					                      <td style="color: green;">남:11~63<br> 여:8~35</td>
+					                      <td style="color: green;">남:64~77<br> 여:36~45</td>
 					                   </tr>
 					                   
 					                   <tr>
@@ -311,12 +314,12 @@ function check() {
 					                   </tr>
 					                   
 					                   <tr>
-					                      <td rowspan="2">영상검사</td>
+					                      <td rowspan="2">영상<br>검사</td>
 					                      <td>폐결핵 흉부 질환</td>
 					                      <td>흉부방사선검사</td>
 					                      <td><input name="breastradiography" placeholder="입력" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
-					                      <td>비활동성</td>
+					                      <td style="color: red;">비활동성</td>
 					                   </tr>
 					                   
 					                   <tr>
@@ -324,7 +327,7 @@ function check() {
 					                      <td>심전도 검사</td>
 					                      <td><input name="ecg" placeholder="입력" class="form-control"  type="text" style="width:80px;"></td>
 					                      <td></td>
-					                      <td>비활동성</td>
+					                      <td style="color: red;">비활동성</td>
 					                   </tr>
 					              </tbody>
 					          </table>

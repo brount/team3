@@ -303,10 +303,10 @@ public class DoctorDAOImpl implements DoctorDAO {
 
 	// 예약 글 갯수
 	@Override
-	public int getPatientListCnt(int i) {
+	public int getPatientListCnt() {
 		int selectCnt=0;
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		selectCnt = dao.getPatientListCnt(i);
+		selectCnt = dao.getPatientListCnt();
 		return selectCnt;
 	}
 

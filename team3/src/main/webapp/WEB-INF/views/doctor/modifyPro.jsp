@@ -23,7 +23,7 @@
 	<c:if test="${updateCnt !=0}">
 		<script type="text/javascript">
 			alert("회원정보가 수정됨");
-			window.location="main";
+			window.location="myHospital";
 		</script>
 	</c:if>
 	<%-- <%		

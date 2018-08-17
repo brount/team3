@@ -85,7 +85,7 @@ public class DoctorServiceImpl implements DoctorService {
 	
 	//회원 가입 처리
 	@Override
-	public String inputPro(MultipartHttpServletRequest req, Model model) {
+	public void inputPro(MultipartHttpServletRequest req, Model model) {
 		MultipartFile file = req.getFile("file");
         String saveDir = req.getRealPath("/resources/images/licence/");
         String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
@@ -130,8 +130,6 @@ public class DoctorServiceImpl implements DoctorService {
         } catch(IOException e) {
             e.printStackTrace();
         }
-		return realDir;
-        
     
 	}
 
@@ -145,7 +143,8 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 	
 	@Override
-	public String modifyPro(MultipartHttpServletRequest req, Model model) {
+	public void modifyPro(MultipartHttpServletRequest req, Model model) {
+		
 		MultipartFile file = req.getFile("file");
         String saveDir = req.getRealPath("/resources/images/licence/");
         String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
@@ -170,7 +169,6 @@ public class DoctorServiceImpl implements DoctorService {
             	
         		
             }else {
-        	
 	        	
 	            String id = (String)req.getSession().getAttribute("id");
             	//String doctorlicence= String.valueOf(dao.getDocLicence(id));
@@ -204,9 +202,6 @@ public class DoctorServiceImpl implements DoctorService {
             e.printStackTrace();
         }
         
-        
-        
-		return realDir;
 	}
 
 	@Override
@@ -219,48 +214,45 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-   public String myHospitalUpdatePro(MultipartHttpServletRequest req, Model model) {
-	 MultipartFile file = req.getFile("hospitalimage");
+	public void myHospitalUpdatePro(MultipartHttpServletRequest req, Model model) {
+		
+		MultipartFile file = req.getFile("hospitalimage");
+		
         String saveDir = req.getRealPath("/resources/images/licence/");
         String realDir="C:\\team\\team3\\src\\main\\webapp\\resources\\images\\licence\\"; // 저장 경로
          
-        try {           
+        try {
         	String id = (String)req.getSession().getAttribute("id");
         	String doctorno = "d"+String.valueOf(dao.getdocnoInfo(id))+"t";
            HospitalVO vo = dao.getMyhospitalInfo(doctorno);   
            
-           if(req.getParameter("hospitalimage") != null) {
-               file.transferTo(new File(saveDir+file.getOriginalFilename()));
-               
-               FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
-               FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
-               
-               int data = 0;
-               
-               while((data = fis.read()) != -1) {
-                   fos.write(data);
-               }
-               fis.close();
-               fos.close();
-               String hospitalimage = file.getOriginalFilename();
-               vo.setHospitalimage(hospitalimage);
-           }      
+		file.transferTo(new File(saveDir+file.getOriginalFilename()));
+		   
+		FileInputStream fis = new FileInputStream(saveDir + file.getOriginalFilename());
+		FileOutputStream fos = new FileOutputStream(realDir + file.getOriginalFilename());
+		   
+		int data = 0;
+		   
+		while((data = fis.read()) != -1) {
+		       fos.write(data);
+		}
+		fis.close();
+		fos.close();
+		String hospitalimage = file.getOriginalFilename();
+		vo.setHospitalimage(hospitalimage);
          
-         String hospitalphone = req.getParameter("hospitalphone");
-         String hospitalinstruction = req.getParameter("hospitalinstruction");
-         
-         vo.setHospitalphone(hospitalphone);
-         vo.setHospitalinstruction(hospitalinstruction);            
-         
-         
-         int intsertCnt = dao.updateHospital(vo);
-         model.addAttribute("intsertCnt", intsertCnt);
-         
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-      return realDir;
-      
+		String hospitalphone = req.getParameter("hospitalphone");
+		String hospitalinstruction = req.getParameter("hospitalinstruction");
+		 
+		vo.setHospitalphone(hospitalphone);
+		vo.setHospitalinstruction(hospitalinstruction);            
+		 
+		int intsertCnt = dao.updateHospital(vo);
+		model.addAttribute("intsertCnt", intsertCnt);
+		 
+		} catch(IOException e) {
+		    e.printStackTrace();
+		}
       
    }
 
@@ -1129,10 +1121,6 @@ public class DoctorServiceImpl implements DoctorService {
 		model.addAttribute("drugrepeat1", drugrepeat1);
 		model.addAttribute("dosagedate1", dosagedate1);
 		model.addAttribute("dosageusage1", dosageusage1);
-		//model.addAttribute("injectionname1", injectionname1);
-		//model.addAttribute("injectiondosage1", injectiondosage1);
-		//
-		//model.addAttribute("injectiondate1", injectiondate1);
 		model.addAttribute("docDto", docDto);
 		model.addAttribute("hosDto", hosDto);
 		model.addAttribute("preDto", preDto);
@@ -1157,7 +1145,7 @@ public class DoctorServiceImpl implements DoctorService {
 		int endPage=0; // 현재블록   마지막 페이지
 		
 		// 5단계. 글갯수 구하기
-		cnt = dao.getPatientListCnt(1); 
+		cnt = dao.getPatientListCnt(); 
 		
 		pageNum = req.getParameter("pageNum");
 		

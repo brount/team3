@@ -26,10 +26,11 @@
 		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<form role="form" action="deletePro" name="exit">
 					<fieldset>
-						<h3> 비밀번호확인 </h3>
-						<br><br>
+						<h3 style="margin-bottom: 20px;"> 비밀번호확인 </h3>
+						<div style="font-size: 17px;">
 						정말 탈퇴하시겠습니까?<br>
 						탈퇴하시려면 비밀번호를 입력주세요
+						</div>
 						<hr class="colorgraph">
 						<div class="form-group">
 		                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="비밀번호를 입력하세요">

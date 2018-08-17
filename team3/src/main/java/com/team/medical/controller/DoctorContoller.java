@@ -293,8 +293,6 @@ public class DoctorContoller {
 		return "doctor/examinationInfo";
 	}
 	
-	
-	
 	//병원업무진행
     @RequestMapping(value = "hospital")
     public String hospital(HttpServletRequest req, Model model) {

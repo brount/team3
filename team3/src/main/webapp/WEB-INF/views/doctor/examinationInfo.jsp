@@ -31,7 +31,7 @@
 						    		<th rowspan="3"><br>환<br>자</th>
 						    		<th>이름</th>
 						    		<td>${gusDto.guestname}</td>
-						    		<th rowspan="3">의<br>료<br>기<br>관</th>
+						    		<th rowspan="3">의료<br>기관</th>
 						    		<th>명칭</th>
 						    		<td>${hosDto.hospitalname}</td>
 						    	</tr>
@@ -54,7 +54,7 @@
 						  			<th>증상</th>
 						  		</tr>
 						  		<tr>
-						  			<td><textarea readonly cols="90" rows="5" name = "symptom" style="resize: none;">${preDto.symptom}</textarea></td>
+						  			<td><textarea rows="5" name = "symptom" style="resize: none; width: 100%" readonly>${preDto.symptom}</textarea></td>
 						  		</tr>
 						  	</table>
 						    <table class="table table-striped table-hover" border="1">
@@ -89,7 +89,7 @@
 							    		<th>1회<br>투여량</th>
 							    		<th>1회<br>투여횟수</th>
 							    		<th>총<br>투여일수</th>
-						                <td rowspan="5"><textarea rows="3"  name="caution" readonly="readonly" style="resize: none;">${preDto.caution}</textarea>　</td>
+						                <td rowspan="5"><textarea rows="3" name="caution" readonly="readonly" style="resize: none; width: 100%">${preDto.caution}</textarea>　</td>
 						          	</tr>
 						          	<c:set value="0" var="b"></c:set>
 						          	<c:forEach var="injectionname" items="${injectionname1}">

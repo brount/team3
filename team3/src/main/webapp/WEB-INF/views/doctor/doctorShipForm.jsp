@@ -26,7 +26,7 @@
 
 	<section>
 		<div style="display: table; margin: 0 auto;">
-			<div class="well">
+			<div class="well" style="width: 1021px;">
 				<form class="form-horizontal" action="inputPro" method="post"
 					name="reg_form" enctype="multipart/form-data" onsubmit="return inputCheck()">
 					<input type="hidden" name="hiddenId" value="0"> 

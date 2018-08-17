@@ -245,7 +245,7 @@ end function
 													<input type="checkbox" name="shape" value="당의정"
 													class="ver">당의정&nbsp;
 											</li>
-												<li style="width: 120px; float: left; letter-spacing: -1px;">
+												<li style="width: 110px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="필름코팅정"
 													class="ver">필름코팅정&nbsp;
 											</li>
@@ -265,7 +265,7 @@ end function
 													<input type="checkbox" name="shape" value="저작정"
 													class="ver">저작정&nbsp;
 											</li>
-												<li style="width: 130px; float: left; letter-spacing: -1px;">
+												<li style="width: 110px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="붕해(현탁)정"
 													class="ver">붕해(현탁)정
 											</li>
@@ -274,10 +274,8 @@ end function
 													<input type="checkbox" name="shape" value="트로키정"
 													class="ver">트로키정&nbsp;
 											</li>
-
-												
 												<li style="width: 85px; float: none; clear: both"></li>
-												<li style="width: 150px; float: left; letter-spacing: -1px;">
+												<li style="width: 80px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="shape" value="경질캡슐"
 													class="ver">경질캡슐&nbsp;
 											</li>

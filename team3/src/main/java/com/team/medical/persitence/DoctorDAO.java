@@ -107,7 +107,7 @@ public interface DoctorDAO {
 	public PrescriptionVO getPrescription(int guestno);
 
 	// 예약 글 갯수
-	public int getPatientListCnt(int i);
+	public int getPatientListCnt();
 
 	// 예약 글 목록
 	public ArrayList<ReservationVO> getpatientList(Map<String, Integer> map);

@@ -33,24 +33,24 @@
 							<div class="panel panel-primary">
 								<table class="table">
 									<tr>
-										<th style="background: lightcyan">병원이름</th>
+										<th style="background: lightcyan; text-align: center; width: 12%;">병원이름</th>
 										<td>${vo.hospitalname}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">병원주소</th>
+										<th style="background: lightcyan; text-align: center;">병원주소</th>
 										<td>${vo.hospitaladdr}<br>
 										</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">전화번호</th>
+										<th style="background: lightcyan; text-align: center;">전화번호</th>
 										<td>${vo.hospitalphone}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">병원 소개</th>
+										<th style="background: lightcyan; text-align: center;">병원소개</th>
 										<td>${vo.hospitalinstruction}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">진료시간</th>
+										<th style="background: lightcyan; text-align: center;">진료시간</th>
 										<td>월 : ${vo.mon}<br> 화 : ${vo.tues}<br> 수 : ${vo.wed}
 										<br>목 : ${vo.thurs}<br> 금 : ${vo.fri}<br> 토 : ${vo.sat}
 										<br> 일 : ${vo.sun}<br> 공휴일 : ${vo.holi}<br>

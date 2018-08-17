@@ -35,6 +35,7 @@ function myFoodList() {
 	            </h4>
 	        </div>
 	    </div>
+	    <c:if test="${sessionScope.memberState == 1 }">
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
@@ -42,6 +43,7 @@ function myFoodList() {
 	            </h4>
 	        </div>
 	    </div>
+	    </c:if>
 	</div>
 </body>
 </html>

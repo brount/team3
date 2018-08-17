@@ -6,7 +6,7 @@
         <div class="row">
         	<div class="col-md-6 footer-brand animated fadeInLeft">
 	<h2>회사소개</h2>
-                <p>
+                <p style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif;">
 		           “메디클립”은
 				  병원제휴프로모션을 전문적으로 서비스하는 회사로서 <br>
 				국내 중소병원과 고객에게 통합의료정보시스템을 공급하고 있습니다<c:if test="${sessionScope.memberState == null }">
@@ -20,7 +20,7 @@
         	<div class="col-md-6 footer-ns animated fadeInRight">
             	<h2>고객센터 C/S Center</h2>
             	
-                <p>
+                <p style="font-size: 17px; font-family: 'Nanum Gothic', sans-serif;">
 전화 : 02.3446.3775<br>
 팩스 : 02.3446.0000
 이메일 : MediClip@naver.com<br>

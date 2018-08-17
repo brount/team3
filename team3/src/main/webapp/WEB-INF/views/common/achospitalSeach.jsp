@@ -216,10 +216,10 @@
 										<tbody>
 											<c:if test="${cnt>0 }">
 												<tr>
-													<th style="text-align: center;">이름</th>
+													<th style="text-align: center; width: 20%">이름</th>
 													<th style="text-align: center;">주소</th>
-													<th style="text-align: center;">번호</th>
-													<th style="text-align: center;">예약</th>
+													<th style="text-align: center; width: 20%">번호</th>
+													<th style="text-align: center; width: 5%">예약</th>
 												</tr>
 												<c:forEach var="dto" items="${dtos}">
 													<tr onclick="window.location='hospitalInfo?hospitalno=${dto.hospitalno}&pageNum=${pageNum}&number=${number}'">
@@ -250,22 +250,22 @@
 								<th align="center"><c:if test="${cnt>0}">
 										<!-- 처음[◀◀] / 이전블록 [◀] -->
 										<c:if test="${startPage > pageBlock }">
-											<a href="achospitalSeach">[◀◀]</a>
-											<a href="achospitalSeach?pageNum=${startPage-pageBlock}">[◀]</a>
+											<a href="achospitalSeach" style="font-size: 15px;">[◀◀]</a>
+											<a href="achospitalSeach?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>
 										</c:if>
 										<!-- 페이지 블록 -->
 										<c:forEach var="i" begin="${startPage }" end="${endPage }">
 											<c:if test="${i == currentPage }">
-												<span> <b>[${i }]</b></span>
+												<span> <b style="font-size: 20px;">[${i }]</b></span>
 											</c:if>
 											<c:if test="${i != currentPage }">
-												<a href="achospitalSeach?pageNum=${i}">[${i }]</a>
+												<a href="achospitalSeach?pageNum=${i}" style="font-size: 15px;">[${i }]</a>
 											</c:if>
 										</c:forEach>
 										<!-- 다음블록[▶] / 끝[▶▶] -->
 										<c:if test="${pageCnt > endPage }">
-											<a href="achospitalSeach?pageNum=${startPage+pageBlock}">[▶]</a>
-											<a href="achospitalSeach?pageNum=${pageCnt}">[▶▶]</a>
+											<a href="achospitalSeach?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
+											<a href="achospitalSeach?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
 										</c:if>
 									</c:if>
 								</th>

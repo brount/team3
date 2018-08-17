@@ -200,12 +200,6 @@
 	<section>
 		<input type="hidden" value="${checkup}" name="checkup"> <input
 			type="hidden" value="${doctorno}" name="doctorno">
-
-
-
-
-
-
 		<center>
 
 			<form
@@ -244,8 +238,8 @@
 												<th>증상</th>
 											</tr>
 											<tr>
-												<td><textarea cols="90" rows="5" name="symptom"
-														maxlength="100" style="resize: none;"></textarea></td>
+												<td><textarea rows="5" name="symptom"
+														maxlength="100" style="resize: none; width: 100%"></textarea></td>
 											</tr>
 										</table>
 										<table class="table table-striped table-hover" border="1"
@@ -295,8 +289,10 @@
 												</th>
 												<th>총<br>투여일수
 												</th>
-												<td><textarea rows="3" name="caution" maxlength="255"
-														style="resize: none;"></textarea></td>
+												<td rowspan="10">
+													<textarea rows="3" name="caution" maxlength="255"
+														style="resize: none; height: 150px;"></textarea>
+												</td>
 											</tr>
 											<tr>
 												<td><input type="text" style="width: 100%"
@@ -316,9 +312,9 @@
 
 									</div>
 									<div style="display: table; margin: 0 auto;">
-										<input type="submit" value="처방등록" style="margin-right: 5px;">
-										<input type="reset" value="작성취소"> <input type="button"
-											value="처방목록" style="margin-left: 5px;" class="btn btn-dark-blue"
+										<input type="submit" value="처방등록" style="margin-right: 5px;" class="btn btn-dark-blue">
+										<input type="reset" value="작성취소" class="btn btn-dark-blue">
+										<input type="button" value="처방목록" style="margin-left: 5px;" class="btn btn-dark-blue"
 											onclick="window.location='examinationList'">
 									</div>
 								</div>

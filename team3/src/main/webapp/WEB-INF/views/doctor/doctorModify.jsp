@@ -9,6 +9,16 @@
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet"
 	type="text/css" />
 
+<script>
+	// 키 입력시 한글 입력 불가
+	function onlyNumber(obj) {
+		$(obj).keyup(function(){
+			// 한글 입력시 공백으로 변경
+			$(this).val($(this).val().replace(/[^0-9]/g,""));
+	    });
+	}
+</script>
+
 <body>
 
 	<header>
@@ -42,8 +52,9 @@
 
 							<div class="col-md-6  inputGroupContainer">
 								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="glyphicon glyphicon-user"></i></span>　　${vo.doctorid}
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i></span>
+										<input name="id" class="form-control" type="text" value="${vo.doctorid}" readonly>
 									
 								</div>
 							</div>
@@ -88,7 +99,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-user"></i></span> <input name="name"
-										placeholder="이름을 입력해주세요" class="form-control" type="text" value="${vo.doctorname}">
+										placeholder="이름을 입력해주세요" class="form-control" type="text"
+										value="${vo.doctorname}" readonly>
 								</div>
 							</div>
 						</div>
@@ -101,7 +113,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span> <input name="phone"
-										placeholder=" '-' 없이 입력해 주세요" class="form-control" type="text" value="${vo.doctorphone}">
+										placeholder=" '-' 없이 입력해 주세요" class="form-control" type="text"
+										value="${vo.doctorphone}" maxlength="11" onkeydown="onlyNumber(this)">
 								</div>
 							</div>
 						</div>
@@ -112,8 +125,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-envelope"></i></span> <input name="email"
-										placeholder="이메일을 입력해주세요" class="form-control" type="text" value="${vo.doctoremail}"><input class="btn btn-dark-blue"
-										type="button" value="인증">
+										placeholder="이메일을 입력해주세요" class="form-control" type="text" value="${vo.doctoremail}">
 								</div>
 							</div>
 						</div>
@@ -133,8 +145,6 @@
 											<option value = "4">외과</option>
 											<option value = "5">치과</option>
 										</select>
-									<!-- <textarea class="form-control" name="specialism"
-										placeholder="전문분야를 적어주세요 "></textarea> -->
 								</div>
 							</div>
 						</div>
@@ -145,7 +155,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-pencil"></i></span> <input name="file"
-										class="form-control" type="file" style="padding: 1px;" value="${vo.licence}">
+										class="form-control" type="file" style="padding: 1px; font-size: 17px;" value="${vo.licence}">
 								</div>
 							</div>
 						</div>

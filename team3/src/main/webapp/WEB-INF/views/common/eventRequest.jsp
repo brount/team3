@@ -24,13 +24,13 @@
 					      <input type="hidden" name="id" value="${id}">
 					      <fieldset>
 					      <!-- Form Name -->
-					      <legend> 이벤트 신청 페이지 </legend>
+					      <legend> 프로모션 신청 페이지 </legend>
 					      <!-- Text input-->
 					      아래 내용을 바탕으로 이벤트 페이지 및 배너 게재를 요청합니다<br><br>
 					      
 					      <div class="form-group">
-					        <label class="col-md-4 control-label">제목</label>
-					        <div class="col-md-6  inputGroupContainer">
+					        <label class="col-md-3 control-label">제목</label>
+					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-user"></i></span>
 					            <input name="title" placeholder="제목을 입력해주세요" class="form-control" type="text" required>
 					          </div>
@@ -38,11 +38,11 @@
 					      </div>
 					      
 					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 기간 </label>
-					        <div class="col-md-6  inputGroupContainer">
+					        <label class="col-md-3 control-label">이벤트 기간 </label>
+					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input id="date1" name="date1" class="form-control" type="date" onchange="date();" required>
-					             <input id="date2" name="date2" class="form-control" type="date" readonly="readonly">					           
+					             <input id="date1" name="date1" class="form-control" type="date" onchange="date();" style="font-size: 20px;" required>
+					             <input id="date2" name="date2" class="form-control" type="date" style="font-size: 20px;" readonly="readonly">					           
 					          </div>		
 					             <input type="radio" name="point" value="1000" checked="checked">7일
 					          	<input type="radio" name="point" value="2000" >15일
@@ -170,26 +170,26 @@
 					      </div>
 					      
 					      <div class="form-group">
-					        <label class="col-md-4 control-label">썸네일 이미지</label>
-					        <div class="col-md-6  inputGroupContainer">
+					        <label class="col-md-3 control-label">썸네일 이미지</label>
+					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="thumbnail" class="form-control"  type="file" style="padding:1px;" required>
+					            <input  name="thumbnail" class="form-control"  type="file" style="padding:1px; font-size: 16px;" required>
 					          </div>
 					        </div>
 					      </div>
 					      
 					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 이미지</label>
-					        <div class="col-md-6  inputGroupContainer">
+					        <label class="col-md-3 control-label">이벤트 이미지</label>
+					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="image" class="form-control"  type="file" style="padding:1px;" required>
+					            <input  name="image" class="form-control"  type="file" style="padding:1px; font-size: 16px;" required>
 					          </div>
 					        </div>
 					      </div>
 					      
 					      <div class="form-group">
-					        <label class="col-md-4 control-label">이벤트 내용 </label>
-					        <div class="col-md-6  inputGroupContainer">
+					        <label class="col-md-3 control-label">이벤트 내용 </label>
+					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-pencil"></i></span>
 					            <textarea class="form-control" rows="8" name="content" placeholder="이벤트 내용을 적어주세요 " style="resize: none;" required></textarea>
 					          </div>

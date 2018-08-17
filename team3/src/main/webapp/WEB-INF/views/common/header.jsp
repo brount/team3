@@ -12,6 +12,7 @@
 
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <!-- /medical/resources/css/ -->
 <!-- Bootstrap core CSS -->
@@ -243,7 +244,9 @@ function myFoodList() {
                             <ol class="list-unstyled mx-4 dark-grey-text">
                                 <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='exerciseInfoList'">운동정보</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="personalCare()">개인건강관리</a></li>
-                                 <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="myFoodList()">나만의 음식목록</a></li>
+                                <c:if test="${sessionScope.memberState == 1 }">
+                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="myFoodList()">나만의 음식목록</a></li>
+                                </c:if>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">

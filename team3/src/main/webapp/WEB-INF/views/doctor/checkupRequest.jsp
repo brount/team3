@@ -50,8 +50,6 @@
 									<c:if test="${vo.doctorspecialism==5}">
 										치과
 									</c:if>
-									
-									
 									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의사명 : ${vo.doctorname}</td>
 								</tr>
 						    </table>

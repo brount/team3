@@ -1,38 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<!-- 
-<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
- -->
-
 <html class="no-js" lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/medical/resources/djcss/css/bootstrap.min.css"
-   rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css"
-   rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet"
-   type="text/css" />
-<script type="text/javascript">
-   $(function() {
-      $("#datepicker").datepicker();
-   });
-</script>
-
-
-<script
-   src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script
-   src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-<link rel="stylesheet"
-   href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-
-<script type="text/javascript"
-   src="/medical/resources/djcss/css/calendar.js"></script>
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="/medical/resources/css/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -40,7 +14,8 @@
    <header>
       <%@ include file="../common/header.jsp"%>
    </header>
-<%@ include file="../common/line.jsp"%>
+   
+	<%@ include file="../common/line.jsp"%>
 
    <section>
       <div class="container">
@@ -55,7 +30,7 @@
                      id="reg_form">
 
                      <fieldset>
-                        <legend>환자 정보 </legend>
+                        	<h2>환자 정보</h2> 
                         <div style="margin: 20px 20px;"></div>
 
                         <table class="table">
@@ -95,49 +70,49 @@
                   
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"
-                       value="head"  <c:if test="${ReservDto.symptomchk == 'head' }" >checked='checked'</c:if> />
+                       value="head" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'head' }" >checked='checked'</c:if> />
                      두통
                     </label>
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"  
-                      value="fever" <c:if test="${ReservDto.symptomchk == 'fever' }" >checked='checked'</c:if> />
+                      value="fever" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'fever' }" >checked='checked'</c:if> />
                          발열
                     </label>
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk" 
-                       value="cough" <c:if test="${ReservDto.symptomchk == 'cough' }" >checked='checked'</c:if> />
+                       value="cough" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'cough' }" >checked='checked'</c:if> />
                       기침
                     </label>
                    <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk" 
-                       value="disgusted" <c:if test="${ReservDto.symptomchk == 'disgusted' }" >checked='checked'</c:if>/>
+                       value="disgusted" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'disgusted' }" >checked='checked'</c:if>/>
                       
                   메스꺼움
                     </label>
                      <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk" 
-                       value="stomachache" <c:if test="${ReservDto.symptomchk == 'stomachache' }" >checked='checked'</c:if>/>
+                       value="stomachache" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'stomachache' }" >checked='checked'</c:if>/>
                      복통
                     </label>
                      <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"
-                        value="vomit" <c:if test="${ReservDto.symptomchk == 'vomit' }" >checked='checked'</c:if>/>
+                        value="vomit" onclick="return false;" <c:if  test="${ReservDto.symptomchk == 'vomit' }" >checked='checked'</c:if>/>
                       구토
                     </label>
 
                       <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"  
-                      value="diarrhea" <c:if test="${ReservDto.symptomchk == 'diarrhea' }" >checked='checked'</c:if>/>
+                      value="diarrhea" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'diarrhea' }" >checked='checked'</c:if>/>
                     설사
                     </label>
                      <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"  
-                      value="musclepain" <c:if test="${ReservDto.symptomchk == 'musclepain' }" >checked='checked'</c:if>/>
+                      value="musclepain" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'musclepain' }" >checked='checked'</c:if>/>
                       근육통
                     </label>
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"  
-                      value="sorethroat" <c:if test="${ReservDto.symptomchk == 'sorethroat' }" >checked='checked'</c:if>/>
+                      value="sorethroat" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'sorethroat' }" >checked='checked'</c:if>/>
                       인후통
                     </label>
                 </div> 
@@ -156,24 +131,15 @@
                      </fieldset>
                   </form>
                </div>
-
-
-
             </div>
          </div>
       </div>
 
    </section>
+   
    <footer>
       <%@ include file="../common/footer.jsp"%>
    </footer>
 
-
-
-   <!-- <img src="resources/images/Demonstration/reserveForm.jpg"> -->
-   <!-- <--<input type="button" onclick="window.location='main'" value="메인페이지">
-   <input type="button" onclick="window.location='reserveList'" value="등록">
-   <input type="button" onclick="window.location='reserveList'" value="취소"> -->
-   -->
 </body>
 </html>

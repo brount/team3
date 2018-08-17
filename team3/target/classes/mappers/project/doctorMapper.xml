@@ -60,10 +60,10 @@
    </select>
     <!-- 병원정보수정 -->
    <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
-      update hospital SET hospitalphone=#{hospitalphone},
-      hospitalinstruction=#{hospitalinstruction},
-      hospitalimage=#{hospitalimage}
-      WHERE hospitalno = #{hospitalno}
+      update hospital SET hospitalphone=#{hospitalphone,jdbcType=VARCHAR},
+      hospitalinstruction=#{hospitalinstruction,jdbcType=VARCHAR},
+      hospitalimage=#{hospitalimage,jdbcType=VARCHAR}
+      WHERE hospitalno = #{hospitalno,jdbcType=VARCHAR}
    </update>
 	
 	<!-- 의사 정보 가져오기 -->

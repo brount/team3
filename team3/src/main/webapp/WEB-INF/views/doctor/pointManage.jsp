@@ -21,8 +21,7 @@
 					<div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
-                          <h3>내 포인트</h3>
-                          <br><br>
+                          <h3 style="margin-bottom: 20px;">내 포인트</h3>
                           <h5>현재 포인트 : ${docDto.point}</h5>
                       </div>
                       <div class="inbox-body">
@@ -76,22 +75,22 @@
 						<c:if test="${cnt>0}">
 							<!-- 처음[◀◀] / 이전블록 [◀] -->
 							<c:if test="${startPage > pageBlock }">
-								<a href="pointManage">[◀◀]</a>
-								<a href="pointManage?pageNum=${startPage-pageBlock}">[◀]</a>	
+								<a href="pointManage" style="font-size: 15px;">[◀◀]</a>
+								<a href="pointManage?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>	
 							</c:if>
 							<!-- 페이지 블록 -->
 							<c:forEach var="i" begin="${startPage }" end="${endPage }">
 								<c:if test="${i == currentPage }">
-									<span> <b>[${i }]</b></span>
+									<span> <b style="font-size: 20px;">[${i }]</b></span>
 								</c:if>
 								<c:if test="${i != currentPage }">
-									<a href="pointManage?pageNum=${i}">[${i }]</a>
+									<a href="pointManage?pageNum=${i}" style="font-size: 15px;">[${i }]</a>
 								</c:if>
 							</c:forEach>										
 							<!-- 다음블록[▶] / 끝[▶▶] -->
 							<c:if test="${pageCnt > endPage }">
-								<a href="pointManage?pageNum=${startPage+pageBlock}">[▶]</a>
-								<a href="pointManage?pageNum=${pageCnt}">[▶▶]</a>
+								<a href="pointManage?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
+								<a href="pointManage?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
 							</c:if>
 						</c:if>
 					</th>
