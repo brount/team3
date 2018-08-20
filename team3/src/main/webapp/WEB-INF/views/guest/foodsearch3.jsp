@@ -18,6 +18,11 @@ function calorie(calorie) {
 	self.close();
 
 }
+function re(food) {
+	opener.document.cal.food.value = food;
+
+	self.close();
+}
 </script>
 </head>
 <body > 
@@ -60,7 +65,7 @@ function calorie(calorie) {
 				<tr>
 					<td align="center">검색된 음식이 없습니다~! 움식을 새로 추가해주세요!</td>
 				<td>
-					 <input  class="btn btn-dark-blue"  type="button" value="확인" onclick="self.close()">
+					  <input class="btn btn-dark-blue"  type="button" value="확인" onclick="re('${food}')">
 					 </td>
 				</tr>
 			

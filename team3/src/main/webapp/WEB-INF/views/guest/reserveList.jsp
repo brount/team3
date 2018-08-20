@@ -51,7 +51,7 @@
 														<tr class="">
 															<td>${dto.reservationNo}</td>
 															<td colspan="3" class="view-message"><a
-																href="hospitalInfo?hospitalno=${dto.hospitalno }"
+																href="hospitalInfo?hospitalno=${dto.hospitalno}"
 																style="font-size: 20px; font-family: 'Nanum Gothic', sans-serif;"
 																>${dto.hospitalname }</a></td>
 															<td style="padding: 16px;"><span class="label label-success"> 
@@ -117,8 +117,8 @@
 							※ 병원에 대기하는 환자가 많거나 현재 시간 기준으로 + 30분은 예약 및 예약수정이 불가능합니다.<br>
 							재예약을 원하시는 분은 신중히 취소해 주시기 바랍니다.<br> ※ 『정보통신망 이용촉진 및 정보보호 등에
 							관한 법률』 제 30조 2항(개인정보 이용내역의 통지)에 따라 메디클립 예약 서비스를 이용한 회원님의 개인정보
-							이용내역입니다.<br> ※ ‘예약내역’ 에는 오늘 날짜 이후의 예약내역만 확인하실 수 있습니다.<br>
-							※ 오늘 이전의 예약내역은 ‘지난예약내역’ 에서 확인하시기 바랍니다.<br>
+							이용내역입니다.
+							
 						</div>
 					</div>
 				</div>

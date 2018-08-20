@@ -70,21 +70,33 @@ function newfoodinsert(){
 
 	
 }
+
 function check() {
-	 if(!document.cal.food1.value) {
-			alert('음식을 입력해주세요.');
-			document.cal.food1.focus();
-			return false;
-	 }else if(!document.cal.food2.value) {
-			alert('음식을 입력해주세요.');
-			document.cal.food2.focus();
-			return false;
-	 }else if(!document.cal.food3.value) {
-			alert('음식을 입력해주세요.');
-			document.cal.food3.focus();
-			return false;
-	 }
-}
+var food1=document.cal.food1.value;
+var food2=document.cal.food2.value;
+var food3= document.cal.food3.value;
+
+
+ 
+  if(isNaN(food1) == true ||food1=="") {
+	  
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+		
+		document.cal.food1.focus();
+		return false;
+ }else if(isNaN(food2) == true||food2=="") {
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+			
+		
+		document.cal.food2.focus();
+		return false;
+ }else if(isNaN(food3) == true||food3=="") {
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+			
+		document.cal.food3.focus();
+		return false;
+ }
+} 
 
 </script>
 

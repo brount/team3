@@ -33,14 +33,17 @@
 					<div class="inbox-body">
 						<div class="mail-option">
 							<c:if test="${selectcnt==0 }">
-								<table class="table table-inbox table-hover">
+								<table class="table_d "  >
 									<tr>
 										<td colspan="6" align="center">조회된 질병이 없습니다. 증상을 다시
 											체크해주세요.</td>
 									</tr>
+									<tr>
+									<td colspan="6" align="center"><input type="button" class="btn btn-dark-blue" value="확인" 
+									onclick="window.history.back()"></td>
+									</tr>
 								</table>
-								<input type="button" class="btn btn-dark-blue" value="확인"
-									onclick="window.history.back()">
+								
 							</c:if>
 						</div>
 					</div>
@@ -56,7 +59,7 @@
 							</div>
 							<div class="inbox-body">
 								<div class="mail-option">
-									<table class="table table-inbox table-hover">
+									<table class="table_d table-inbox table-hover">
 										<tbody>
 											<tr>
 												<th>${dto.diseaseName }</th>

@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 사이트이름 </title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function foodsearch1() {
 	if (!document.cal.food1.value) {
@@ -55,6 +55,33 @@ function newfoodinsert(){
 	
 }
 
+function check() {
+var food1=document.cal.food1.value;
+var food2=document.cal.food2.value;
+var food3= document.cal.food3.value;
+
+
+ 
+  if(isNaN(food1) == true ||food1=="") {
+	  
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+		
+		document.cal.food1.focus();
+		return false;
+ }else if(isNaN(food2) == true||food2=="") {
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+			
+		
+		document.cal.food2.focus();
+		return false;
+ }else if(isNaN(food3) == true||food3=="") {
+			alert("움식의 칼로리를 숫자로 입력해주세요.");
+			
+		document.cal.food3.focus();
+		return false;
+ }
+} 
+
 
 </script>
 
@@ -81,7 +108,7 @@ function newfoodinsert(){
   		 	<div class="col-sm-9 col-md-9">
 	            
 		            <div class="container">
-		             <form class="form-horizontal" action="calorAddModiPro" method="post"  id="reg_form" name="cal">
+		             <form class="form-horizontal" action="calorAddModiPro" method="post"  id="reg_form" name="cal" onsubmit="return check();">
 		             
 					 
 					  <fieldset>

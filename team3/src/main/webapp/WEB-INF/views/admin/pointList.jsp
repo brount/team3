@@ -5,125 +5,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-
-function dateC(){		
-	var formattedDate = new Date();
-	var d = formattedDate.getDate();
-	var m = formattedDate.getMonth();
-	
-	(++m < 10)? m = "0" + m : m;
-	(d < 10)? d = "0" + d : d;
-	var y = formattedDate.getFullYear(); 
-	$("#date1").val(y + "-" + m + "-" + d);
-	var d2 = Number(d)-7;
-	if( d2<10){
-		d2 = "0"+d2;
-	}
-	$("#date2").val(y + "-" + m + "-" + d2);
-       	}
-function date(){
-	var date1 = $("#date1").val();
-	
-	var y = date1.substr(0,4);
-	var m = date1.substr(5,2);
-	var d = date1.substr(8,2);
-	
-	var date = new Date(y,m,d);
-	
-	var formattedDate = new Date();
-	var fy = formattedDate.getFullYear();
-	var fm = formattedDate.getMonth();
-	var fd = formattedDate.getDate();
-	(++fm < 10)? fm = "0" + fm : fm;
-	(fd < 10)? fd = "0" + fd : fd;
-	
-	if ((y*1) > (fy*1)) {
-		alert("현재연도 이후 연도 선택 불가능");
-		$("#date1").val(fy + "-" + fm + "-" + fd);
-		$("input[checked=checked]").prop('checked', true);
-		var d2 = Number(fd)-7;
-		if (d2<10){
-			d2 = "0"+d2;
-		}
-		$("#date2").val(fy + "-" + fm + "-" + d2);
-		return false;
-	} else if ((m*1) > (fm*1)) {
-		alert("현재월 이후 월 선택 불가능");
-		$("#date1").val(fy + "-" + fm + "-" + fd);
-		$("input[checked=checked]").prop('checked', true);
-		var d2 = Number(fd)-7;
-		if (d2<10){
-			d2 = "0"+d2;
-		}
-		$("#date2").val(fy + "-" + fm + "-" + d2);
-		return false;
-	} else if ((d*1) > (fd*1)) {
-		alert("현재날짜 이후 날짜 선택 불가능");
-		$("#date1").val(fy + "-" + fm + "-" + fd);
-		$("input[checked=checked]").prop('checked', true);
-		var d2 = Number(fd)-7;
-		if (d2<10){
-			d2 = "0"+d2;
-		}
-		$("#date2").val(fy + "-" + fm + "-" + d2);
-		return false;
-	}
-	
-	$("input[checked=checked]").prop('checked', true);
-	date.setDate(date.getDate()-7);  
-	(d < 10)? d = "0" + d : d;
-	
-	 // year
-    var yyyy = '' + date.getFullYear();
-
-    // month
-    var mm = ('0' + (date.getMonth()));  // prepend 0 // +1 is because Jan is 0
-    mm = mm.substr(mm.length - 2);                  // take last 2 chars
-
-    // day
-    var dd = ('0' + date.getDate());         // prepend 0
-    dd = dd.substr(dd.length - 2);                  // take last 2 chars
-    
-	var date2 = yyyy+"-"+mm+"-"+dd;
-	$("#date2").val(date2);
-}
-$("input[name=point]").click(function(){
-	var date1 = $("#date1").val();
-	console.log(date1);
-	var y = date1.substr(0,4);
-	var m = date1.substr(5,2);
-	var d = date1.substr(8,2);
-	var date = new Date(y,m,d);
-	switch($(this).val()){
-		case 1000 :
-			date.setDate(date.getDate()-7);  
-			break;
-		case 2000 :
-			date.setDate(date.getDate()-15);  
-			break;
-		case 3500 :
-			date.setDate(date.getDate()-30);
-			break;
-	}
-	(d < 10)? d = "0" + d : d;
-	
-	 // year
-    var yyyy = '' + date.getFullYear();
-
-    // month
-    var mm = ('0' + (date.getMonth()));  // prepend 0 // +1 is because Jan is 0
-    mm = mm.substr(mm.length - 2);                  // take last 2 chars
-
-    // day
-    var dd = ('0' + date.getDate());         // prepend 0
-    dd = dd.substr(dd.length - 2);                  // take last 2 chars
-    
-	var date2 = yyyy+"-"+mm+"-"+dd;
-	$("#date2").val(date2);										
-	
-})
-</script>
 <html>
 <head>
 <title> 관리자 페이지 - 결산</title>
@@ -152,7 +33,7 @@ $("input[name=point]").click(function(){
 										<div class="input-group">
 										
 											<script type="text/javascript">
-
+											
 											google.charts.load('current', {'packages':['bar','corechart']});
 
 											function schedulerSuccessAndFailChart() {
@@ -161,7 +42,7 @@ $("input[name=point]").click(function(){
 											    	["날짜","누적 포인트", "사용 포인트"],
 											    	<c:set value="0" var="a"/>
 													<c:forEach var="dto" items="${dtos1}" >
-														[${dto.cum_date},${dto.point },${dtos2[a].point}],
+														["${dto.date}",${dto.point },${dtos2[a].point}],
 														<c:set value="${a+1 }" var="a"/>
 													</c:forEach> 												     
 										  	 	]);
@@ -207,13 +88,115 @@ $("input[name=point]").click(function(){
 											</script>
 											<form action="pointChart" name="pointChartForm">
 											<div class="input-group">
-												<input id="date2" name="date2" class="form-control" type="date" readonly>
 												<input id="date1"  name="date1" class="form-control" type="date" onchange="date();" required>
-											</div>		
-												<input type="radio" name="point" value="1000" checked="checked">7일
-												<input type="radio" name="point" value="2000" >15일
-												<input type="radio" name="point" value="3500">30일		          
-											
+												<input id="date2" name="date2" class="form-control" type="date" onchange="date();" required>
+											</div>
+												<script type="text/javascript">
+												function dateC(){		
+													var formattedDate = new Date();
+													var d = formattedDate.getDate();
+													var m = formattedDate.getMonth();
+													
+													(++m < 10)? m = "0" + m : m;
+													(d < 10)? d = "0" + d : d;
+													var y = formattedDate.getFullYear(); 
+													$("#date2").val(y + "-" + m + "-" + d);
+													var d2 = Number(d)-7;
+													if( d2<10){
+														d2 = "0"+d2;
+													}
+													$("#date1").val(y + "-" + m + "-" + d2);
+												       	}
+												
+												function date(){
+													var date1 = $("#date1").val();
+													var date2 = $("#date2").val();
+
+													var y1 = date1.substr(0,4);
+													var m1 = date1.substr(5,2);
+													var d1 = date1.substr(8,2);
+													
+													var y2 = date2.substr(0,4);
+													var m2 = date2.substr(5,2);
+													var d2 = date2.substr(8,2);
+													
+													var date = new Date(y1,m1,d1,y2,m2,d2);
+													
+													var formattedDate = new Date();
+													var fy = formattedDate.getFullYear();
+													var fm = formattedDate.getMonth();
+													var fd = formattedDate.getDate();
+													(++fm < 10)? fm = "0" + fm : fm;
+													(fd < 10)? fd = "0" + fd : fd;
+
+													if ((y1*1) > (fy*1)) {
+														alert("선택한 년이 잘못되었습니다.1");
+														var dd = Number(d2)-7;
+														if (dd<10){
+															dd = "0"+dd;
+														}
+														$("#date1").val(fy + "-" + fm + "-" + dd);
+														return false;
+													} else if ((m1*1) > (fm*1)) {
+														alert("선택한 월이 잘못되었습니다.2");
+														var dd = Number(d2)-7;
+														if (dd<10){
+															dd = "0"+dd;
+														}
+														$("#date1").val(fy + "-" + fm + "-" + dd);
+														return false;
+													} else if ((d1*1) > (fd*1)) {
+														alert("선택한 일이 잘못되었습니다.3");
+														var dd = Number(d2)-7;
+														if (dd<10){
+															dd = "0"+dd;
+														}
+														$("#date1").val(fy + "-" + fm + "-" + dd);
+														return false;
+													}
+													
+													if ((y2*1) > (fy*1)) {
+														alert("선택한 년이 잘못되었습니다.4");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if ((m2*1) > (fm*1)) {
+														alert("선택한 월이 잘못되었습니다.5");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if ((d2*1) > (fd*1)) {
+														alert("선택한 일이 잘못되었습니다.6");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													}
+													
+													if (y2 == null && (y2*1) < (y1*1)) {
+														alert("선택한 년이 잘못되었습니다.7");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if (m2 == null && (m2*1) < (m1*1)) {
+														alert("선택한 월이 잘못되었습니다.8");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if (d2 == null && (d2*1) < (d1*1)) {
+														alert("선택한 일이 잘못되었습니다.9");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													}
+													if (y2 != null && (y2*1) < (y1*1)) {
+														alert("선택한 년이 잘못되었습니다.10");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if (m2 != null && (m2*1) < (m1*1)) {
+														alert("선택한 월이 잘못되었습니다.11");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													} else if (d2 != null && (d2*1) < (d1*1)) {
+														alert("선택한 일이 잘못되었습니다.12");
+														$("#date2").val(fy + "-" + fm + "-" + fd);
+														return false;
+													}
+												}
+												</script>
 							          			<input type="submit" value="조회">
 							          		</form>
 							      		</div>
@@ -241,12 +224,11 @@ $("input[name=point]").click(function(){
 	                                    <table class="table table-bordered table-hover table-striped">
 	                                        <thead>
 	                                        <tr>
+	                                        	<th>등록번호</th>
 	                                            <th>회원번호</th>			
 	                                            <th>회원ID</th>
 	                                            <th>일자</th>
 	                                            <th>사용/획득</th>
-	                                            <th>가용포인트</th>
-	                                            <th>누적포인트</th>
 	                                        </tr>
 	                                        </thead>
 	                                        <tbody>
@@ -256,6 +238,7 @@ $("input[name=point]").click(function(){
 	                                        	<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}" >
 													<tr>
+														<td>${dto.pointNo }</td>
 													    <td>${dtos2[a].doctorno}</td>
 														<td>${dtos2[a].doctorid}</td>
 														<td><fmt:formatDate type="both" pattern="yy-MM-dd" value="${dto.cum_date}"/></td>
@@ -268,26 +251,6 @@ $("input[name=point]").click(function(){
 															-	${dto.point}
 															</c:if>
 														</td>
-														
-														
-														<td>
-															<c:if test="${dto.status==1}">
-																<c:set var="ava_point" value="${ava_point + dto.point}"/>
-															</c:if>
-															<c:if test="${dto.status==2}">
-																<c:set var="ava_point" value="${ava_point - dto.point}"/>
-															</c:if>
-															${ava_point}
-														</td>
-														
-														
-														<td>
-															<c:if test="${dto.status == 1 }">
-																<c:set var="cum_point" value="${cum_point + dto.point}"/>
-															</c:if>
-															${cum_point}
-														</td>
-														
 		                                        	</tr>
 		                                        	<c:set var="a" value="${a+1 }"/>
 		                                       	</c:forEach>

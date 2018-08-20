@@ -26,11 +26,13 @@
 							<div class="center-block clearfix">
 							</div>
 							</div>
-							<table class='table'>
+							<table class='table_d'>
+							
 								<tr>
 									<th>병명</th>
 									<td>${dto.diseaseName}</td>
 								</tr>
+					
 								<tr>
 									<th>정의</th>
 									<td>${dto.diseaseDefine}</td>

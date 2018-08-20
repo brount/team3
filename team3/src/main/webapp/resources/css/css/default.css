@@ -83,6 +83,23 @@ legend {
     background-color: transparent;
     font-size: 20px !important;
 }
+.table_d {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    font-size: 20px !important;
+}
+
+.table_d>tbody>tr>td, .table_d>tbody>tr>th, .table_d>tfoot>tr>td, .table_d>tfoot>tr>th, .table_d>thead>tr>td, .table_d>thead>tr>th {
+    padding: 8px;
+    width:5px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 3px solid #688ba9;
+    font-family: 'Jua', sans-serif;
+}
+
 
 
 /*   tr:nth-child(2n+1) {
@@ -301,14 +318,3 @@ html, body, .item {
 	height: 100%;
 }
 
-.item:nth-child(1) {
-	background: #74C390;
-}
-
-.item:nth-child(2) {
-	background: #51BCE8;
-}
-
-.item:nth-child(3) {
-	background: #E46653;
-}

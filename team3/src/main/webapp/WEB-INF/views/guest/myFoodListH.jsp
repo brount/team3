@@ -27,7 +27,7 @@ function modi(foodno) {
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-
+<%@ include file="../common/line.jsp"%>
 	<section style="margin-bottom: 100px;">
 		<form name="foodlist" action="myFoodModi" onsubmit="return modi();">
 			<div class="container">

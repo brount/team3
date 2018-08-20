@@ -174,8 +174,8 @@
 	
 	 
 				SELECT *
-				 FROM (	select hospitalname, hospitalphone, reservationTime, reservationKind ,reservationNo, clock, minute ,rownum rNum 
-					 		from (select * from Reservation r ,  Hospital h  
+				 FROM (	select hospitalno, hospitalname, hospitalphone, reservationTime, reservationKind ,reservationNo, clock, minute ,rownum rNum 
+					 		from (select hospitalname,hospitalphone,r.hospitalno, clock, minute,reservationNo,reservationTime, reservationKind    from Reservation r ,  Hospital h  
 					 		where   r.hospitalno = h.hospitalno  
 					 		AND  guestNo = #{guestNo}
 				 			order by RESERVATIONNO desc)

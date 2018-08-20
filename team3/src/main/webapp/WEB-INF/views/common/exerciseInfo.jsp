@@ -24,7 +24,7 @@
 								<div class="row" style="margin-bottom: 20px;">
 									<div class="center-block clearfix"></div>
 								</div>
-								<table class='table'>
+								<table class='table_d'>
 									<tr>
 										<th style="width:15%">이미지</th>
 										<td><img src="/medical/resources/images/exercise/${dto.exerciseImage}"></td>
