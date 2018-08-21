@@ -39,15 +39,15 @@
 									<div class="mail-option">
 
 
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
-													<td>예약번호</td>
-													<td>환자명</td>
-													<td class="view-message">병원명</td>
-													<td>예약종류</td>
-													<td>예약시간</td>
+													<th>예약번호</th>
+													<th>환자명</th>
+													<th class="view-message">병원명</th>
+													<th>예약종류</th>
+													<th>예약시간</th>
 												</tr>
 												<c:if test="${cnt>0 }">
 													<c:set value="0" var="a"></c:set>

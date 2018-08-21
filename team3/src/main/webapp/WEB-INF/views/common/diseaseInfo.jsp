@@ -26,10 +26,10 @@
 							<div class="center-block clearfix">
 							</div>
 							</div>
-							<table class='table_d'>
+							<table class="responstable">
 							
 								<tr>
-									<th>병명</th>
+									<th style="width: 14%;">병명</th>
 									<td>${dto.diseaseName}</td>
 								</tr>
 					

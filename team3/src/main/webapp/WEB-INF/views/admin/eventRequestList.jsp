@@ -12,7 +12,7 @@
 	
 	    <div id="page-wrapper">
 	        <div class="row">
-	            <div class="col-lg-12">	
+	            <div class="col-lg-12">
 	                <h1 class="page-header">광고관리</h1>		<!-- 페이지 제목 -->
 	            </div>
 	            <!-- /.col-lg-12 -->

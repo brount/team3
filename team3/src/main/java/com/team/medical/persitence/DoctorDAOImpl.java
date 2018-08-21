@@ -25,6 +25,7 @@ import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PrescriptionVO;
+import com.team.medical.vo.QuestionBoardVO;
 import com.team.medical.vo.ReservationVO;
 
 @Repository
@@ -42,21 +43,6 @@ public class DoctorDAOImpl implements DoctorDAO {
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
 		loginCnt = dao.doctorLogin(map);
 		
-		/*int idChkCnt =dao.idCheck((String)map.get("id"));
-		
-		// 로그인한 id에 해당하는 데이터가 있고
-		if(idChkCnt == 1) {
-			int pwdChkCnt = dao.doctorLogin(map);
-			
-			//패스워드가 일치하면 selectCnt = 1
-			if(pwdChkCnt == 1) {
-				selectCnt = 1;
-				
-				//패스워드가일치하지 않으면 selectCnt = -1
-			} else {
-				selectCnt = -1;
-			}
-		}*/
 		
 		return loginCnt;
 	}
@@ -449,6 +435,59 @@ public class DoctorDAOImpl implements DoctorDAO {
 
 			
 	}
+
+	@Override
+	public int getReboardCnt(String id) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getReboardCnt(id);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<QuestionBoardVO> getReboardList(Map<String, Object> map) {
+		ArrayList<QuestionBoardVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		dtos=dao.getReboardList(map);
+		
+		return dtos;
+	}
+
+	// 내 병원 예약글 갯수
+	@Override
+	public int getMyHospitalReservationListCnt(int doctorno) {
+		int selectCnt=0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getMyHospitalReservationListCnt(doctorno);
+		return selectCnt;
+	}
+
+	@Override
+	public ArrayList<ReservationVO> getMyHospitalReservationListList(Map<String, Integer> map) {
+		ArrayList<ReservationVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		
+		dtos=dao.getMyHospitalReservationListList(map);
+		
+		return dtos;
+
+	}
+
+	@Override
+	public String getDoctornoHospitalno(int hospitalno) {
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		String cnt = dao.getDoctornoHospitalno(hospitalno);
+		return cnt;
+	}
+
+	@Override
+	public ArrayList<QuestionBoardVO> getRef(String id) {
+		ArrayList<QuestionBoardVO> dtos =null;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		dtos = dao.getRef(id);
+		return dtos;
+	}
+		
 	
 	
 

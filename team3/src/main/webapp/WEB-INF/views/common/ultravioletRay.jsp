@@ -595,9 +595,5 @@
 
 	</section>
 	
-<footer>
-	<%@ include file="../common/footer.jsp" %>
-</footer>
-
 </body>
 </html>

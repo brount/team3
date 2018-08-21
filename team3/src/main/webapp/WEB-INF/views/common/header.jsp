@@ -30,6 +30,8 @@
 <link href="/medical/resources/css/css/mycss.css" rel="stylesheet">
 <link href="/medical/resources/css/css/mainmenuversion.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/table.css" />
+
 <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/component.css" />
 <script src="/medical/resources/css/js/modernizr.custom.js"></script>
 <link rel="stylesheet" href="/medical/resources/common/css/footer.css" type="text/css">

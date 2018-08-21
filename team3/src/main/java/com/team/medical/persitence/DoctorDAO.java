@@ -11,6 +11,7 @@ import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.PointVO;
 import com.team.medical.vo.PrescriptionVO;
+import com.team.medical.vo.QuestionBoardVO;
 import com.team.medical.vo.ReservationVO;
 
 public interface DoctorDAO {
@@ -156,8 +157,28 @@ public interface DoctorDAO {
 
 	// 이메일 보내기
 	public void sendmail(String email, String key);
-	
 
+	// 댓글 갯수
+	public int getReboardCnt(String id);
+
+	// 댓글 목록
+	public ArrayList<QuestionBoardVO> getReboardList(Map<String, Object> map);
+
+	// 내 병원 예약글 갯수
+	public int getMyHospitalReservationListCnt(int hospitalno);
+	
+	// 내 병원 예약글 목록
+	public ArrayList<ReservationVO> getMyHospitalReservationListList(Map<String, Integer> map);
+	
+	// 병원번호로 의사 번호 가져오기
+	public String getDoctornoHospitalno(int hospitalno);
+
+	// 아이디로 ref가져오기
+	public ArrayList<QuestionBoardVO> getRef(String id);
+
+	
+	
+	
 	
 	
 	

@@ -19,12 +19,12 @@
 	                    </tr>
 	                    <tr>
 	                        <td>
-	                           <a href="#">내 답변목록</a>
+	                           <a href="reBoard">내 답변목록</a>
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <td>
-	                            <a href="#">예약목록</a>
+	                            <a href="MyHospitalReservationList">예약목록</a>
 	                        </td>
 	                    </tr>
 	                </table>

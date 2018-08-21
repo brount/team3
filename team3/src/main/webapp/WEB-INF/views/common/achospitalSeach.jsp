@@ -212,7 +212,7 @@
 							</div>
 							<div class="inbox-body">
 								<div class="mail-option">
-									<table class="table table-inbox table-hover">
+									<table class="responstable">
 										<tbody>
 											<c:if test="${cnt>0 }">
 												<tr>

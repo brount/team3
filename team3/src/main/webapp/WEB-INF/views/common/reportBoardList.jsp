@@ -48,7 +48,7 @@ document.oncontextmenu = function() {return false;}
 
 	<section>
 		<div class="container">
-			<div class="well">
+		
 			<div class="mail-box">
 				<aside class="lg-side">
 					<div class="inbox-head">
@@ -62,14 +62,14 @@ document.oncontextmenu = function() {return false;}
 					</div>
 					<div class="inbox-body">
 						<div class="mail-option">
-							<table class="table table-inbox table-hover">
+							<table class="responstable">
 								<tbody>
 									<tr class="unread">
-										<td class="view-message" style="width: 10%">글번호</td>
-										<td class="view-message" style="width: 10%">분류</td>
-										<td class="view-message">제목</td>
-										<td style="width: 15%"><span>작성자 </span></td>
-										<td class="view-message" style="width: 20%">등록일</td>
+										<th class="view-message" >글번호</th>
+										<th class="view-message" >분류</th>
+										<th class="view-message">제목</th>
+										<th style="width: 15%"><span>작성자 </span></th>
+										<th class="view-message">등록일</th>
 									</tr>
 									<c:if test="${cnt>0 }">
 										<c:forEach var="dto" items="${dtos}">
@@ -138,7 +138,7 @@ document.oncontextmenu = function() {return false;}
 				</table>
 			</div>
 		</div>
-		</div>
+		
 	</section>
 
 	<footer>

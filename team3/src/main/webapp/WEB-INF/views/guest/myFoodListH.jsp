@@ -45,18 +45,16 @@ function modi(foodno) {
 								</div>
 								<div class="inbox-body">
 									<div class="mail-option">
-										<table class="table table-inbox table-hover"
+										<table class="responstable"
 											style="font-size: 25px;">
 
 											<tbody>
 												<tr class="unread">
 													<!--       <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
-													<td class="view-message">음식</td>
-													<td></td>
-													<td></td>
-													<td>칼로리</td>
-													<td>gram</td>
-													<td></td>
+													<th class="view-message" colspan="3">음식</th>
+													<th>칼로리</th>
+													<th>gram</th>
+													<th></th>
 												</tr>
 												<c:if test="${cnt!=0 }">
 													<c:forEach var="dto" items="${dtos}">

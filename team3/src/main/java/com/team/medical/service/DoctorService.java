@@ -77,6 +77,12 @@ public interface DoctorService {
 
 	// 이메일 인증
 	public void emailkey(HttpServletRequest req, Model model);
+
+	// 의사 댓글 모음
+	public void reBoard(HttpServletRequest req, Model model);
+
+	// 내 병원 예약 목록 
+	public void MyHospitalReservationList(HttpServletRequest req, Model model);
 	
 
 	

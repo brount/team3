@@ -142,30 +142,30 @@
 												<td>요당</td>
 												<td><select name="urineglucose">
 														<option>음성</option>
-														<option>약양성±</option>
+														<option>양성±</option>
 												</select></td>
 												<td style="color:green;">음성</td>
-												<td style="color:red;">약양성±</td>
+												<td style="color:red;">양성±</td>
 											</tr>
 
 											<tr>
 												<td>요단백</td>
 												<td><select name="urineprotein">
 														<option>음성</option>
-														<option>약양성±</option>
+														<option>양성±</option>
 												</select></td>
 												<td style="color:green;">음성</td>
-												<td style="color:red;">약양성±</td>
+												<td style="color:red;">양성±</td>
 											</tr>
 
 											<tr>
 												<td>요잠혈</td>
 												<td><select name="occulthematuria">
 														<option>음성</option>
-														<option>약양성±</option>
+														<option>양성±</option>
 												</select></td>
 												<td style="color:green;">음성</td>
-												<td style="color:red;">약양성±</td>
+												<td style="color:red;">양성±</td>
 											</tr>
 
 											<tr>

@@ -16,7 +16,7 @@
 					<%@ include file="../common/menuCheckup.jsp"%>
 				</div>
 				<div class="col-sm-9 col-md-9">
-					<div class="well">
+				
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
@@ -26,15 +26,15 @@
 								<div class="inbox-body">
 									<div class="mail-option">
 
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
-													<td class="view-message">검사번호</td>
-													<td class="view-message">검사종류</td>
-													<td class="view-message">환자명</td>
-													<td><span>담당의사 </span></td>
-													<td class="view-message">접수일</td>
+													<th class="view-message">검사번호</th>
+													<th class="view-message">검사종류</th>
+													<th class="view-message">환자명</th>
+													<th><span>담당의사 </span></th>
+													<th class="view-message">접수일</th>
 												</tr>
 												<c:if test="${cnt>0 }">
 													<c:set value="0" var="a"></c:set>
@@ -106,7 +106,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+	
 
 
 	</section>

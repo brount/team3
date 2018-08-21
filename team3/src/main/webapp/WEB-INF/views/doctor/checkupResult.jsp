@@ -320,9 +320,16 @@
                </div>
             </div>
             <center>
+            
+            <c:if test="${sessionScope.memberState == 2 }">
+						
             <input type="button" class="btn btn-dark-blue" value="처방전 등록" style="margin-right:5px;"  onclick="window.location='examinationAdd?checkup=${checkup}&doctorno=${doctorno}'">
             <input type="reset" class="btn btn-dark-blue" value="취소">         
             <input type="button" class="btn btn-dark-blue" value="검강검진목록" style="margin-left:5px;" onclick="window.location='checkupResultList'">
+            </c:if>
+            <c:if test="${sessionScope.memberState != 2 }">
+			 <input type="button" class="btn btn-dark-blue" value="검강검진목록" style="margin-left:5px;" onclick="window.location='guestcheckupResultList'">
+            </c:if>
          </div>
       </div>
    </div>

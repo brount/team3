@@ -20,11 +20,12 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
 						<div class='form container'>
+						<h3>운동정보</h3>
 							<div>
 								<div class="row" style="margin-bottom: 20px;">
 									<div class="center-block clearfix"></div>
 								</div>
-								<table class='table_d'>
+								<table class="responstable">
 									<tr>
 										<th style="width:15%">이미지</th>
 										<td><img src="/medical/resources/images/exercise/${dto.exerciseImage}"></td>

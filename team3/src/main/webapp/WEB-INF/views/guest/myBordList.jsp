@@ -26,25 +26,24 @@
 				</div>
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
-						<h1>내 질문 목록</h1>
+						
 
 						<div class="container">
 							<div class="mail-box">
 								<aside class="lg-side">
+								
 									<div class="inbox-body">
 										<div class="mail-option">
-
-											<table class="table table-inbox table-hover"
+											<h3>내 질문 목록</h3>
+											<table class="responstable"
 												style="margin-top: 50;">
 
 												<tbody>
 													<tr class="unread">
-														<td class="view-message  dont-show">글번호</td>
-														<td class="view-message">제목</td>
-														<td></td>
-														<td></td>
-														<td>작성자</td>
-														<td class="view-message  text-left">등록일</td>
+														<th class="view-message  dont-show">글번호</th>
+														<th class="view-message" colspan="3">제목</th>
+														<th>작성자</th>
+														<th class="view-message  text-left">등록일</th>
 													</tr>
 
 													<c:if test="${cnt!=0 }">

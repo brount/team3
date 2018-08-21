@@ -36,7 +36,7 @@
 	
 	
 	
-	      <h1>My Health</h1>
+	      <h3>나의 건강정보</h3>
 	      	<c:if test="${selectcnt==0  }">
 	        <div style="display:table; margin:0 auto;">
 				<div>
@@ -49,11 +49,10 @@
 		
 		
 		 <c:if test="${selectcnt!=0 }">
-	 
-					 	 <table class="table table-inbox table-hover">
+	 	 <table class="responstable">
 					 	 
 					 	 	   <tr class="unread">
-                                    <td class="view-message  dont-show">생년월일</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">생년월일</th>
                                   <td class="view-message"> 
                                   ${vo.birth1}
 						         		<b>년</b> 
@@ -66,7 +65,7 @@
                            
                               </tr>
 					 	  <tr class="unread">
-                                    <td class="view-message  dont-show">신장</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">신장</th>
                                   <td class="view-message"> 
                                   	${vo.height}						            	
 									<b>cm</b> 
@@ -76,7 +75,7 @@
                               </tr>
 					
 					 <tr class="unread">
-                                    <td class="view-message  dont-show">체중</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">체중</th>
                                   <td class="view-message"> 
                                   	${vo.weight}						            	
 									<b>kg</b> 
@@ -86,7 +85,7 @@
                               </tr>
 					
 					 <tr class="unread">
-                                    <td class="view-message  dont-show">혈액형</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">혈액형</th>
                                   <td class="view-message"> 
                                   		  ${vo.bloodtype}	
                                   
@@ -95,29 +94,21 @@
                               </tr>	
                               
                               	 <tr class="unread">
-                                    <td class="view-message  dont-show">성별</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">성별</th>
                                   <td class="view-message"> 
-	                             	 ${gender}
+	                                 ${gender }
                                   </td>                                  
                            
                               </tr>
 					
 					
 					
-					 <tr class="unread">
-                                    <td class="view-message  dont-show" colspan="2" align="center"> 
-									<button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalMof'"> MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
-
-								</td>
-                                    
-                                    
-                                  
-                              </tr>	
-					
-					
 						</table>
+						<center>
+			<button type="button" class="btn btn-dark-blue" onclick="window.location='personalMof'" > MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+						</center>
 					</c:if>
-
+						
 	
 	  </fieldset>
 	  </form>

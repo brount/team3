@@ -40,16 +40,17 @@
 					
 						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
 						    <fieldset>
-						    <h1>PersonalCare</h1>
+						    <h1>개인건강관리</h1>
 						<c:if test="${selectcnt!=0}">
 						
 						
 						
 						 
-					 	 <table class="table table-inbox table-hover" style="height: 250px; font-size: 25px;" >
+					 	 <table class="responstable"  >
 					 	 
+					 	 	
 					 	 	   <tr class="unread">
-                                    <td class="view-message  dont-show">생년월일</td>
+                                    <th class="view-message  dont-show" style="width: 20%;">생년월일</th>
                                   <td class="view-message"> 
                                   ${vo.birth1}
 						         		<b>년</b> 
@@ -62,7 +63,7 @@
                            
                               </tr>
 					 	  <tr class="unread">
-                                    <td class="view-message  dont-show">신장</td>
+                                    <th class="view-message  dont-show">신장</th>
                                   <td class="view-message"> 
                                   	${vo.height}						            	
 									<b>cm</b> 
@@ -72,7 +73,7 @@
                               </tr>
 					
 					 <tr class="unread">
-                                    <td class="view-message  dont-show">체중</td>
+                                    <th class="view-message  dont-show">체중</th>
                                   <td class="view-message"> 
                                   	${vo.weight}						            	
 									<b>kg</b> 
@@ -82,7 +83,7 @@
                               </tr>
 					
 					 <tr class="unread">
-                                    <td class="view-message  dont-show">나의 신체질량 BMI 지수</td>
+                                    <th class="view-message  dont-show">나의 신체질량 BMI 지수</th>
                                   <td class="view-message"> 
                                   		  ${bmi}	
                                   

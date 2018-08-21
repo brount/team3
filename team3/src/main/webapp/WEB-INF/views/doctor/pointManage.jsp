@@ -27,14 +27,14 @@
                       <div class="inbox-body">
                          <div class="mail-option">
 
-                               <table class="table table-inbox table-hover">
+                               <table class="responstable">
                                 
                             <tbody>
                               <tr class="unread">
-                                  <td class="view-message">포인트번호</td>
-                                  <td class="view-message">획득/사용 포인트</td>
-                                  <td class="view-message">여부</td>
-                                  <td class="view-message  text-left">획득/사용일</td>
+                                  <th class="view-message">포인트번호</th>
+                                  <th class="view-message">획득/사용 포인트</th>
+                                  <th class="view-message">여부</th>
+                                  <th class="view-message ">획득/사용일</th>
                               </tr>
                               <c:if test="${cnt>0 }">
                                <c:set value="0" var="b"></c:set>

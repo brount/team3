@@ -103,7 +103,7 @@ h2{display:none;}
 html, body {width:100%;height:100%;margin:0;padding:0;}
 img {border:0;}
 a, input {outline:none;selector-dummy:expression(this.hideFocus=true);}
-ul, li {list-style-type:none;margin:0;padding:0; font-family: 'Do Hyeon', sans-serif !important; }
+ul, li {list-style-type:none;margin:0;padding:0; font-family:'Nanum Gothic', sans-serif; }
 .head {background:#fff;width:948px;margin:0 auto;}
 .wrap {width:948px;margin:0 auto;}
 .wrap a {height:100%;float:left;}

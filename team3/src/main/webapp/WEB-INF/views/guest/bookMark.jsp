@@ -56,16 +56,14 @@
 									<div class="mail-option">
 
 
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
 													<!--   <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
-													<td class="view-message">병원명</td>
-													<td></td>
-													<td></td>
-													<td>전화번호</td>
-													<td class="view-message  text-left">주소</td>
+													<th class="view-message" colspan="3" style="width: 17%;">병원명</th>
+													<th  style="width: 10%;">전화번호</th>
+													<th class="view-message  text-left">주소</th>
 												</tr>
 												<c:forEach var="dto" items="${dtos}">
 													<tr class="">

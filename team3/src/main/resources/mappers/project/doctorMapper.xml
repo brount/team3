@@ -316,5 +316,62 @@
 	<select id="checkupresult" resultType="com.team.medical.vo.CheckupresultVO">
       select * from checkupresult
    </select>
+   
+   <select id="getReboardCnt" resultType="int">
+		select count(boardno) from QuestionBoard where boardwriter=#{id,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 댓글 목록 -->
+	<select id="getReboardList" parameterType="java.util.Map" resultType="com.team.medical.vo.QuestionBoardVO">
+		
+		
+			SELECT * 
+			  FROM(
+			  		SELECT boardno, boardtitle, boardcontent, boardwriter, ref, boardpwd, boarddate, notify, notifycnt, notifyreason, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM QuestionBoard 
+			   	   	  		  <where>
+			   	   	  		  boardno IN
+			   	   	  		  	<foreach collection="ref" item="item" close=")" open="(" separator=",">
+			   	   	  		   	#{item}
+			   	   	  		   </foreach>
+			   	   	  		  </where>
+			   	   	  		  ORDER BY boardno DESC
+			   	   	  	  )
+					)   
+					<![CDATA[
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<!-- ref가져오기 -->
+	<select id = "getRef" parameterType="String" resultType="com.team.medical.vo.QuestionBoardVO">
+		select ref from QuestionBoard where boardwriter=#{id,jdbcType=VARCHAR} group by ref
+	</select>
+	<!-- 내 병원 예약글 갯수 -->
+	<select id="getMyHospitalReservationListCnt" resultType="int">
+		select count(reservationNo) from Reservation where hospitalno=#{hospitalno}
+	</select>
+	
+	<select id="getMyHospitalReservationListList" parameterType="java.util.Map" resultType="com.team.medical.vo.ReservationVO">
+		<![CDATA[
+			SELECT * 
+			  FROM(
+			  		SELECT hospitalno, doctorNo, reservationNo, guestNo, reservationTime, reservationKind, hospitalkind, clock, minute, symptom, symptomchk, rownum rnum
+			   	   	  FROM(
+			   	   	  		SELECT * 
+			   	   	  		  FROM Reservation 
+			   	   	  		  where hospitalno=#{hospitalno,jdbcType=INTEGER}
+			   	   	  		    ORDER BY reservationNo DESC
+			   	   	  	  )
+					)   
+			 WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	
+	
+	
 	
 </mapper>

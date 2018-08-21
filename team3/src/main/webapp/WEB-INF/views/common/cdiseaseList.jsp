@@ -25,9 +25,10 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
 						<div class="container">
+						<h3>질병정보</h3>
 							<div class="row text-center text-lg-left">
 								<c:forEach var="dto" items="${dtos}">
-									<table class='table'
+									<table class='responstable'
 										style="margin-top: 10px; margin-bottom: 0px; display: -webkit-box; max-height: 100px;
 										overflow: hidden; vertical-align: top; text-overflow: ellipsis; word-break: keep-all;
 										-webkit-box-orient: vertical; -webkit-line-clamp: 3; max-height: 95px;"

@@ -7,6 +7,17 @@
 	<%@ include file="../common/header.jsp" %>
 </header>
 
+<script type="text/javascript">
+	function personalCare() {
+		if(${sessionScope.id==null} ){
+			alert('로그인이 필요한 서비스입니다.');
+			window.location='memberLogin';
+		}else{
+			window.location='personalCare';
+		}
+	}
+</script>
+
 <!-- slide Section -->
 <div id="myCarousel" class="carousel slide bg-inverse   mr-auto" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -44,8 +55,11 @@
 		<div class="row">
 			<div class="col-md-6 col-lg-4">
 				<a class="portfolio-item d-block mx-auto" href="hospitalSeach">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)"> 
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">병원 검색</span>
 						<div
 							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
@@ -55,10 +69,12 @@
 			</div>
 			<div class="col-md-6 col-lg-4">
 				<a class="portfolio-item d-block mx-auto" href="drugSeach">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-						<div
-							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)">
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">약 검색</span>
+						<div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
 					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portdrug.jpg" alt="">
@@ -66,10 +82,12 @@
 			</div>
 			<div class="col-md-6 col-lg-4">
 				<a class="portfolio-item d-block mx-auto" href="simpleTreat">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-						<div
-							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)">
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">간단 진료</span>
+						<div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
 					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portear.jpg"  alt="">
@@ -77,21 +95,25 @@
 			</div>
 			<div class="col-md-6 col-lg-4">
 				<a class="portfolio-item d-block mx-auto" href="exerciseInfoList">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-						<div
-							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)">
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">운동 정보</span>
+						<div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
 					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/porthel.jpg" alt="">
 				</a>
 			</div>
 			<div class="col-md-6 col-lg-4">
-				<a class="portfolio-item d-block mx-auto" href="personalCare">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-						<div
-							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+				<a class="portfolio-item d-block mx-auto" onclick="personalCare()">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)">
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">개인건강관리</span>
+						<div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
 					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/portjar.jpg" alt="">
@@ -99,10 +121,12 @@
 			</div>
 			<div class="col-md-6 col-lg-4">
 				<a class="portfolio-item d-block mx-auto" href="foodPoisoning">
-					<div
-						class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-						<div
-							class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+					<div class="portfolio-item-caption d-flex position-absolute h-100 w-100"
+						style="background-color: rgba(89, 175, 247, 0.9)">
+						<span style="transform: translateX(-50%) translateY(-50%); width: 100%;
+							top: 50%; position: absolute; left: 50%; text-align: center;
+							background-color: #343a4085; font-size: 50; color: white;">보건기상지수</span>
+						<div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
 							<i class="fa fa-search-plus fa-3x"></i>
 						</div>
 					</div> <img style="width: 100%; height: auto;"   src="/medical/resources/images/mainimg/atlrwndehr.jpg" alt="">

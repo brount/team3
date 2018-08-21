@@ -17,7 +17,7 @@
           <%@ include file="guestmenuCheckup.jsp" %>
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
-	            <div class="well">
+	           
 					<div class="mail-box">
                   <aside class="lg-side">
                       <div class="inbox-head">
@@ -32,13 +32,13 @@
                       <div class="inbox-body">
                          <div class="mail-option">
 
-                               <table class="table table-inbox table-hover">
+                               <table class="responstable">
                                 
                             <tbody>
                               <tr class="unread">
-                                  <td class="view-message">검진번호</td>
-                                  <td class="view-message">환자명</td> 
-                                  <td class="view-message  text-left">등록일</td>
+                                  <th class="view-message">검진번호</th>
+                                  <th class="view-message">환자명</th> 
+                                  <th class="view-message  text-left">등록일</th>
                               </tr>
                               <c:if test="${cnt>0 }">
                                <c:set value="0" var="b"></c:set>

@@ -16,6 +16,18 @@
 	font-style: normal;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 td {
 	font-family: 'Nanum Gothic', sans-serif !important;
 }
@@ -74,7 +86,7 @@ legend {
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 2px solid #ddd;
-    font-family: 'Jua', sans-serif;
+   font-family: 'Nanum Gothic', sans-serif;
 }
 .table {
     width: 100%;
@@ -100,10 +112,9 @@ legend {
     font-family: 'Jua', sans-serif;
 }
 
-
-
-/*   tr:nth-child(2n+1) {
-    background-color: #3fb2ff14;
+/* 
+  tr:nth-child(2n) {
+    background-color: #EEEEEE;
   }
   */
 .well {
@@ -188,7 +199,7 @@ body, html {
 }
 
 body {
-	font-family: 'Jua', sans-serif !important;
+	/* font-family: 'Jua', sans-serif !important; */
 	color: black;
 }
 
@@ -196,7 +207,7 @@ a {
 	color: black;
 	text-decoration: none !important;
 	font-size: 25px;
-	font-family: 'Jua', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 a:hover {

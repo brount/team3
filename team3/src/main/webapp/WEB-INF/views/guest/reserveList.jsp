@@ -35,16 +35,15 @@
 								</div>
 								<div class="inbox-body">
 									<div class="mail-option">
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 											<tbody>
 												<tr class="unread">
-													<td>예약번호</td>
-													<td class="view-message">병원명</td>
-													<td></td>
-													<td></td>
-													<td>예약종류</td>
-													<td>예약날짜</td>
-													<td>예약시간</td>
+													<th>예약번호</th>
+													<th class="view-message" colspan="3">병원명</th>
+													
+													<th>예약종류</th>
+													<th>예약날짜</th>
+													<th>예약시간</th>
 												</tr>
 												<c:if test="${cnt!=0 }">
 													<c:forEach var="dto" items="${dtos}">

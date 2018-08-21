@@ -30,34 +30,43 @@
                      id="reg_form">
 
                      <fieldset>
-                        	<h2>환자 정보</h2> 
+                        	<h3>환자 정보</h3> 
                         <div style="margin: 20px 20px;"></div>
 
-                        <table class="table">
+                        <table class="responstable">
                            <tr>
-                              <td>성명 : ${gusDto.guestname}</td>
-                              <td>주민등록번호 : ${gusDto.jumin}</td>
+                              <th>성명 </th>
+                              <th>주민등록번호  </th>
+		                      <th>연락처 </th>
+		                      <th>이메일 주소 </th>
                            </tr>
 
                            <tr>
-                              <td>연락처 : ${gusDto.guesttel}</td>
-                              <td>이메일 주소 : ${gusDto.guestemail}</td>
+                              <td>${gusDto.guestname}</td>
+                              <td>${gusDto.jumin}</td>
+                              <td>${gusDto.guesttel}</td>
+                              <td>${gusDto.guestemail}</td>
                            </tr>
                         </table>
                         <!-- Text input-->
                      </fieldset>
                      <br>
                      <br>
-                     <table>
+                     <table class="responstable">
                         <tr>
-                           <td>▣ 증상<br>
-                           <br>
+                           <th style="padding: 0px;">▣ 증상
                            <textarea name="checkup_opinion" readonly rows="5" cols="120"
-                                 style="resize: none; width: 100%;">${ReservDto.symptom}</textarea>
-                           </td>
+                                 style="resize: none; width: 100%;color: black; text-align:center ">${ReservDto.symptom}</textarea>
+                           </th>
                         </tr>
                      </table>
-                     <div>
+                     
+                     
+                     
+                      ${ReservDto.symptomchk}
+                     
+                     
+               <%--       <div>
 
                         <br>
                         <br>
@@ -67,6 +76,8 @@
                            <div class="col-md-6  inputGroupContainer">
                               <div class="input-group">
                                   <div style="margin-left: 10px;">
+                                  
+                                 
                   
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"
@@ -75,7 +86,7 @@
                     </label>
                     <label>
                       <input type="checkbox" class="option-input checkbox"name="symptomchk"  
-                      value="fever" onclick="return false;" <c:if test="${ReservDto.symptomchk == 'fever' }" >checked='checked'</c:if> />
+                      value="fever" onclick="return false;" <c:if test=" == 'fever' }" >checked='checked'</c:if> />
                          발열
                     </label>
                     <label>
@@ -119,7 +130,7 @@
                               </div>
                            </div>
                         </div>
-                     </div>
+                     </div> --%>
 
                      <div class="form-group">
                         <div style="display: table; margin: 0 auto">

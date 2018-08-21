@@ -63,20 +63,18 @@ function modi(foodno) {
 										<div class="mail-option">
 
 
-											<table class="table table-inbox table-hover"
+											<table class="responstable"
 												style="font-size: 25px;">
 
 												<tbody>
 													<tr class="unread">
 														<!--       <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
 
-														<td class="view-message">음식</td>
-														<td></td>
-														<td></td>
-														<td>칼로리</td>
-														<td>gram</td>
+														<th class="view-message" colspan="3">음식</th>
+														<th>칼로리</th>
+														<th>gram</th>
 
-														<td></td>
+														<th></th>
 
 
 
@@ -89,11 +87,12 @@ function modi(foodno) {
 																<!--   <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
 
 																<td colspan="3" class="view-message">${dto.food }</td>
-
+														
+															
 																<td style="padding: 16px;"><span class="label label-success">
 
 																		${dto.foodcal } Kcal </span></td>
-
+														
 																<td style="padding: 16px;"><span class="label label-success">
 
 																		${dto.foodgram}g </span></td>

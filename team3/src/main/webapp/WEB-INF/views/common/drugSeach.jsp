@@ -211,18 +211,18 @@ end function
 									</tbody>
 								</table>
 
-								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table"
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="responstable"
 									bordercolor="#cecece"
-									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece" class="table table-inbox table-hover">
+									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece" class="responstable">
 									<tbody>
 										<tr>
+											<th
+												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
+												widtd="94px" height="74" bgcolor="#f3f3f3" align="center">식별표시</th>
 											<td
 												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
-												width="94px" height="74" bgcolor="#f3f3f3" align="center">식별표시</td>
-											<td
-												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
-												width="57px" height="54px" align="center">문자</td>
-											<td colspan=3 style="padding: 0 0 0 7px; border: solid 0px #cecece; border-bottom: solid 0px #cecece;"width="200px">
+												widtd="57px" height="54px" align="center">문자</td>
+											<td colspan=3 style="padding: 0 0 0 7px; border: solid 0px #cecece; border-bottom: solid 0px #cecece;"widtd="200px">
 												<input type="text" size="20"name="sign" style="ime-mode: inactive"><br>
 												 <input	type="radio" name="sign_flag" value="0" checked="checked"style="margin-top: 8px">포함&nbsp;&nbsp; 
 												 <input	type="radio" name="sign_flag" value="1">일치&nbsp;&nbsp;
@@ -233,8 +233,8 @@ end function
 
 
 										<tr>
-											<td width="94" height="95" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece">제 형</td>
+											<th width="94" height="95" bgcolor="#f3f3f3" align="center"
+												style="border: solid 1px #cecece">제 형</th>
 											<td colspan="8"
 												style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
@@ -340,8 +340,8 @@ else
 											</td>
 										</tr>
 										<tr>
-											<td width="94" height="60" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece">모 양</td>
+											<th width="94" height="60" bgcolor="#f3f3f3" align="center"
+												style="border: solid 1px #cecece">모 양</th>
 											<td
 												style="padding: 5px 0 5px 14px; border: solid 1px #cecece"
 												colspan="8">
@@ -430,30 +430,30 @@ else
 
 
 										<tr>
-											<td width="94" height="90px" bgcolor="#f3f3f3" align="center"
+											<th width="94" height="90px" bgcolor="#f3f3f3" align="center"
 												rowspan="1" style="border: solid 1px #cecece">색
-													깔</td>
+													깔</th>
 
 											<td style="padding: 0 0 0 14px;" colspan="8">
-												<table border="0" cellspacing="8" cellpadding="1" class="table table-inbox ">
+												<table border="0" cellspacing="8" cellpadding="1" class="responstable">
 													<!--색깔 -->
 													<tbody>
 														<tr>
-															<td width="40" height="16" align="left"
+															<td width="20" height="16" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#FFFF00" align="left"
+															<td width="20" bgcolor="#FFFF00" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#FFA500" align="left"
+															<td width="20" bgcolor="#FFA500" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#FF66FF" align="left"
+															<td width="20" bgcolor="#FF66FF" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#FF0000" align="left"
+															<td width="20" bgcolor="#FF0000" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#8B0000" align="left"
+															<td width="20" bgcolor="#8B0000" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#ADFF2F" align="left"
+															<td width="20" bgcolor="#ADFF2F" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#009900"
+															<td width="20" bgcolor="#009900"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
 														</tr>
 														<tr>
@@ -482,21 +482,21 @@ else
 																onclick="search_group(this,3)">초록</td>
 														</tr>
 														<tr>
-															<td width="40" bgcolor="#009900"
+															<td width="20" bgcolor="#009900"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" height="16" align="left" bgcolor="#3333FF"
+															<td width="20" height="16" align="left" bgcolor="#3333FF"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#330066" align="left"
+															<td width="20" bgcolor="#330066" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#8B008B" align="left"
+															<td width="20" bgcolor="#8B008B" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#8A2BE2" align="left"
+															<td width="20" bgcolor="#8A2BE2" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#D3D3D3" align="left"
+															<td width="20" bgcolor="#D3D3D3" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" bgcolor="#000000" align="left"
+															<td width="20" bgcolor="#000000" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
-															<td width="40" align="left"
+															<td width="20" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
 														</tr>
 														<tr>
@@ -530,8 +530,8 @@ else
 
 
 										<tr>
-											<td width="94" height="74" bgcolor="#f3f3f3" align="center"
-												rowspan="2" style="border: solid 1px #cecece">분할선</td>
+											<th width="94" height="74" bgcolor="#f3f3f3" align="center"
+												rowspan="2" style="border: solid 1px #cecece">분할선</th>
 											<td
 												style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
 											<td style="padding: 0 0 0 14px; border: solid 1px #cecece"
@@ -558,8 +558,8 @@ else
 
 
 										<tr>
-											<td width="95" height="45" bgcolor="#f3f3f3" align="center"
-												style="border: solid 1px #cecece; border-top: solid 0px #cecece;">제품명</td>
+											<th width="95" height="45" bgcolor="#f3f3f3" align="center"
+												style="border: solid 1px #cecece; border-top: solid 0px #cecece;">제품명</th>
 											<td
 												style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece; border-bottom: solid 1px #cecece"
 												colspan="2"><input type="text" size="30"

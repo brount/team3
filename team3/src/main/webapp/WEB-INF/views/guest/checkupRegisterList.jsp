@@ -62,18 +62,15 @@
 									<div class="mail-option">
 
 
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
-													<td>검진날짜</td>
+													<th>검진날짜</th>
 
-													<td></td>
-													<td></td>
 
-													<td>등록번호</td>
-
-													<td></td>
+													<th>등록번호</th>
+													<th></th>
 
 												</tr>
 												<c:if test="${cnt !=0 }">
@@ -83,8 +80,7 @@
 
 															<td style="font-size: 20px; font-family: 'Nanum Gothic', sans-serif;"><a href="checkAnalyze?col=${dto.COL}">${dto.examinationday}</a>
 															</td>
-															<td></td>
-															<td></td>
+															
 															<td>${dto.COL}</td>
 															<td><button type="button" class="btn btn-primary"
 																	onclick="window.location='checkdelete?col=${dto.COL}'">검진서

@@ -107,7 +107,13 @@
 						    
 						</div>
 						<div style="display:table; margin:0 auto;">
+						  <c:if test="${sessionScope.memberState == 2 }">
 							<input type="button" class="btn btn-dark-blue" value="처방목록" style="margin-left:5px;" onclick="window.location='examinationList'">
+						</c:if>
+						<c:if test="${sessionScope.memberState != 2 }">
+							<input type="button" class="btn btn-dark-blue" value="처방목록" style="margin-left:5px;" onclick="window.location='guestexaminationList'">
+						</c:if>
+						
 						</div>
 					</div>
 	            </div>
