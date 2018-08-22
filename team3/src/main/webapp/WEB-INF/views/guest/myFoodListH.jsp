@@ -36,17 +36,17 @@ function modi(foodno) {
 						<%@ include file="../common/menuCare.jsp"%>
 					</div>
 					<div class="col-sm-9 col-md-9">
+			<div class="well">
 						<div class="mail-box">
 
 							<aside class="lg-side">
 								<div class="inbox-head">
-									<h3>나만의 음식 목록(${cnt})</h3>
+									<h3>나만의 음식 목록</h3>
 
 								</div>
 								<div class="inbox-body">
 									<div class="mail-option">
-										<table class="responstable"
-											style="font-size: 25px;">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
@@ -54,7 +54,7 @@ function modi(foodno) {
 													<th class="view-message" colspan="3">음식</th>
 													<th>칼로리</th>
 													<th>gram</th>
-													<th></th>
+													<th style="width: 20%"></th>
 												</tr>
 												<c:if test="${cnt!=0 }">
 													<c:forEach var="dto" items="${dtos}">
@@ -70,8 +70,7 @@ function modi(foodno) {
 															<td><span class="label label-success">
 																	${dto.foodgram}g </span></td>
 															<td><input type="button" class="btn btn-dark-blue"
-																value="수정" onclick="modi(${dto.foodno })"> <input
-																type="button" class="btn btn-dark-blue" value="삭제"
+																value="수정" onclick="modi(${dto.foodno })"> <input type="button" class="btn btn-dark-blue" value="삭제"
 																onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
 															</td>
 														</tr>
@@ -96,40 +95,33 @@ function modi(foodno) {
 								</div>
 
 							</aside>
-
-							<!-- 페이지 컨트롤 -->
-							<table style="width: 100%; text-align: center;">
-								<tr>
-									<th align="center"><c:if test="${cnt>0 }">
-											<!-- 처음[◀◀] / 이전[◀]  -->
-											<c:if test="${startPage > pageBlock }">
-												<a href="myFoodListH" style="font-size: 15px;">[◀◀]</a>
-												<a href="myFoodListH?pageNum=${startPage - pageBlock }" style="font-size: 15px;">[◀]</a>
-											</c:if>
-
-											<c:forEach var="i" begin="${startPage }" end="${endPage }">
-												<c:if test="${i == currentPage }">
-													<span><b style="font-size: 20px;">[${i}]</b></span>
-												</c:if>
-												<c:if test="${i != currentPage}">
-													<a href="myFoodListH?pageNum=${i }" style="font-size: 15px;">[${i}]</a>
-												</c:if>
-											</c:forEach>
-
-											<!-- 다음[▶] / 끝[▶▶]  -->
-											<c:if test="${pageCount > endPage }">
-												<a href="myFoodListH?pageNum=${startPage + pageBlock }" style="font-size: 15px;">[▶]</a>
-												<a href="myFoodListH?pageNum=${pageCount}" style="font-size: 15px;">[▶▶] </a>
-											</c:if>
-										</c:if></th>
-								</tr>
-
-							</table>
-
+							<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="myFoodListH?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="myFoodListH?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="myFoodListH?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
+							
 
 
 						</div>
 
+					</div>
 					</div>
 				</div>
 			</div>

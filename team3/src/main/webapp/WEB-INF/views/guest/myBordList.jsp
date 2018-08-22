@@ -26,9 +26,7 @@
 				</div>
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
-						
-
-						<div class="container">
+					
 							<div class="mail-box">
 								<aside class="lg-side">
 								
@@ -43,7 +41,7 @@
 														<th class="view-message  dont-show">글번호</th>
 														<th class="view-message" colspan="3">제목</th>
 														<th>작성자</th>
-														<th class="view-message  text-left">등록일</th>
+														<th class="view-message">등록일</th>
 													</tr>
 
 													<c:if test="${cnt!=0 }">
@@ -55,8 +53,8 @@
 																	href="boardInfoCheck?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
 																	style="font-size: 20px; font-family: 'NanumGothic, sans-serif';"
 																	>${dto.boardtitle}</a></td>
-																<td style="padding: 16px;"><span class="label label-success">${dto.boardwriter}</span></td>
-																<td class="view-message  text-left">${dto.boarddate}</td>
+																<td style="padding: 16px;width: 15%"><span class="label label-success">${dto.boardwriter}</span></td>
+																<td class="view-message " style=" width: 20%">${dto.boarddate}</td>
 															</tr>
 
 														</c:forEach>
@@ -72,35 +70,31 @@
 										</div>
 									</div>
 								</aside>
+								
+								<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="myBordList?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="myBordList?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="myBordList?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
+								
+								
 
-								<!-- 페이지 컨트롤 -->
-								<table style="text-align: center; width: 100%">
-									<tr>
-										<th align="center"><c:if test="${cnt>0 }">
-												<!-- 처음[◀◀] / 이전[◀]  -->
-												<c:if test="${startPage > pageBlock }">
-													<a href="myBordList" style="font-size: 15px;">[◀◀]</a>
-													<a href="myBordList?pageNum=${startPage - pageBlock }" style="font-size: 15px;">[◀]</a>
-												</c:if>
-
-												<c:forEach var="i" begin="${startPage }" end="${endPage }">
-													<c:if test="${i == currentPage }">
-														<span><b style="font-size: 20px;">[${i}]</b></span>
-													</c:if>
-													<c:if test="${i != currentPage}">
-														<a href="myBordList?pageNum=${i }" style="font-size: 15px;">[${i}]</a>
-													</c:if>
-												</c:forEach>
-
-												<!-- 다음[▶] / 끝[▶▶]  -->
-												<c:if test="${pageCount > endPage }">
-													<a href="myBordList?pageNum=${startPage + pageBlock }" style="font-size: 15px;">[▶]</a>
-													<a href="myBordList?pageNum=${pageCount}" style="font-size: 15px;">[▶▶] </a>
-												</c:if>
-											</c:if>
-										</th>
-									</tr>
-								</table>
 							</div>
 						</div>
 					</div>

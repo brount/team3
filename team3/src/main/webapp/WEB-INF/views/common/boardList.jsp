@@ -29,11 +29,11 @@ document.oncontextmenu = function() {return false;}
 
 <style>
 	td {
-		font-size: 25px;
+		font-size: 20px;
 		text-align: center;
 	}
 	a {
-		font-size: 25px;
+		font-size: 20px;
 		text-decoration: none !important;
 	}
 	b {
@@ -49,7 +49,7 @@ document.oncontextmenu = function() {return false;}
 
 	<section>
 		<div class="container">
-		
+		 <div class="well">
 			<div class="mail-box">
 				<aside class="lg-side">
 					<div class="inbox-head">
@@ -82,13 +82,13 @@ document.oncontextmenu = function() {return false;}
 												<td>
 													<c:if test="${sessionScope.memberState != 2}">
 														<a href="boardInfoCheck?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
-															style="font-size: 25px; text-decoration: none;">
+															style="text-decoration: none;">
 														${dto.boardtitle}
 														</a>
 													</c:if>
 													<c:if test="${sessionScope.memberState == 2}">
 														<a href="boardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
-															style="font-size: 25px; font-family: 'Nanum Gothic', sans-serif;">
+															style="font-family: 'Nanum Gothic', sans-serif;">
 														${dto.boardtitle}
 														</a>
 													</c:if>
@@ -113,32 +113,33 @@ document.oncontextmenu = function() {return false;}
 						</div>
 					</div>
 				</aside>
-				<table align="center">
-					<tr>
-						<th align="center"><c:if test="${cnt>0}">
-								<!-- 처음[◀◀] / 이전블록 [◀] -->
-								<c:if test="${startPage > pageBlock}">
-									<a href="boardList" style="font-size: 15px;">[◀◀]</a>
-									<a href="boardList?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>
-								</c:if>
-								<!-- 페이지 블록 -->
-								<c:forEach var="i" begin="${startPage}" end="${endPage}">
-									<c:if test="${i == currentPage }">
-										<span> <b style="font-size: 20px;">[${i }]</b></span>
-									</c:if>
-									<c:if test="${i != currentPage }">
-										<a href="boardList?pageNum=${i}" style="font-size: 15px;">[${i}]</a>
-									</c:if>
-								</c:forEach>
-								<!-- 다음블록[▶] / 끝[▶▶] -->
-								<c:if test="${pageCnt > endPage }">
-									<a href="boardList?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
-									<a href="boardList?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
-								</c:if>
-							</c:if>
-						</th>
-					</tr>
-				</table>
+			
+			
+			
+			<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="boardList?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="boardList?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="boardList?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
+			
+			
+			</div>
 			</div>
 			</div>
 	</section>

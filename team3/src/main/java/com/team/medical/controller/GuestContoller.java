@@ -465,7 +465,8 @@ public class GuestContoller {
 
 		return "guest/guestExit";
 	}
-
+	
+	// 일반회원탈퇴 처리
 	@RequestMapping(value = "guestExitPro")
 	public String guestExitPro(HttpServletRequest req, Model model) {
 		logger.info("guestExitPro, 페이지");

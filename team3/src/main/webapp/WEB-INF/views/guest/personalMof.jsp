@@ -85,9 +85,9 @@
 					<div class="well">
 						<form class="form-horizontal" action="personalMofPro"
 							method="post" id="" name="mof" onsubmit="return check();">
-							<fieldset style="font-size: 30;">
+							<fieldset style="font-size: 20;">
 
-								<h1 style="margin-bottom: 50px">My Health 수정</h1>
+								<h3 style="margin-bottom: 50px">My Health 수정</h3>
 
 								<div class="form-group">
 									<label class="col-md-3 control-label">생년월일</label>

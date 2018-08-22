@@ -29,16 +29,18 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
 						<div>
-							<div class="panel panel-primary">
+						
 								<div class="panel-heading">
 									<h3>검사 의뢰서</h3>
 								</div>
-								<table class="table" border="1">
+								<table class="responstable" border="1">
 									<tr>
-										<td>진료 의뢰일 : ${checkDto.checkup_date}</td>
+									<th>진료 의뢰일 </th>
+										<td> ${checkDto.checkup_date}</td>
 									</tr>
 									<tr>
-										<td>과명 : <c:if test="${docDto.doctorspecialism==1}">
+									<th>진료과</th>
+										<td><c:if test="${docDto.doctorspecialism==1}">
 										내과
 									</c:if> <c:if test="${docDto.doctorspecialism==2}">
 										이비인후과
@@ -51,74 +53,105 @@
 									</c:if>
 
 
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의사명
-											: ${docDto.doctorname}
+										
 										</td>
 									</tr>
+									<tr>
+									
+										<th align="center" style="width: 20%;">의사 </th>
+										<td>${docDto.doctorname}</td>
+									</tr>
+									
 								</table>
 
-								<table class="table" border="1">
+								<table class="responstable" border="1">
 									<tr>
-										<td>성명 : ${gusDto.guestname}</td>
-										<td>주민등록번호 : ${gusDto.jumin}</td>
+										<th>환자명</th>
+										<td>${gusDto.guestname}</td>
+										<th style="width: 15%;">주민등록번호</th>
+										<td>${jumin}-*******</td>
 									</tr>
 
 									<tr>
-										<td>연락처 : ${gusDto.guesttel}</td>
-										<td>이메일 주소 : ${gusDto.guestemail}</td>
+										<th>연락처</th>
+										<td>${gusDto.guesttel}</td>
+										<th>이메일</th>
+										<td>${gusDto.guestemail}</td>
 									</tr>
 								</table>
 
-								<table class="table" border="1">
+								<table class="responstable" >
 									<tr>
-										<td>▣ 의뢰과목<br>
-										<br> <%-- 	<input type="checkbox" name="checkup_kind" value="1" <c:if test="${checkup_kind.indexOf('1') != -1 }" >checked='checked'</c:if> />계층검사
+										<th style="width: 18%;">▣ 의뢰과목	</th>
+										 <%-- 	<input type="checkbox" name="checkup_kind" value="1" <c:if test="${checkup_kind.indexOf('1') != -1 }" >checked='checked'</c:if> />계층검사
 										<input type="checkbox" name="checkup_kind" value="2" <c:if test="${checkup_kind.indexOf('2') != -1 }" >checked='checked'</c:if> />소변　
 										<input type="checkbox" name="checkup_kind" value="3" <c:if test="${checkup_kind.indexOf('3') != -1 }" >checked='checked'</c:if> />혈액　
 										<input type="checkbox" name="checkup_kind" value="4" <c:if test="${checkup_kind.indexOf('4') != -1 }" >checked='checked'</c:if> />MRI　 
-									 --%> <b> <c:if test="${kind=='1'}">계층검사</c:if> <c:if
-													test="${kind=='2'}">요검사</c:if> <c:if test="${kind=='3'}">혈액검사</c:if>
-												<c:if test="${kind=='4'}">영상검사</c:if>
-										</b>
+									 --%>
+										 <td> <b> <c:if test="${kind=='1'}">계층검사</c:if> <c:if
+														test="${kind=='2'}">요검사</c:if> <c:if test="${kind=='3'}">혈액검사</c:if>
+													<c:if test="${kind=='4'}">영상검사</c:if>
+											</b>
 										</td>
 									</tr>
 									<tr>
-										<td>▣ 진단명<br>
-										<br>
+										<th colspan="2">▣ 진단명</th>
+									</tr>
+									<tr>
+										<td colspan="2"> 
 										<textarea name="checkup_name" rows="5" readonly="readonly"
 												style="resize: none; width: 100%;">${checkDto.checkup_name}</textarea>
 										</td>
 									</tr>
 									<tr>
-										<td>▣ 병력 및 소견<br>
-										<br>
-										<textarea name="checkup_opinion" rows="5" readonly="readonly"
+										<th colspan="2">▣  병력 및 소견</th>
+									</tr>
+									<tr>
+										<td colspan="2"> 
+										<textarea name="checkup_name" rows="5" readonly="readonly"
 												style="resize: none; width: 100%;">${checkDto.checkup_opinion}</textarea>
 										</td>
 									</tr>
 									<tr>
-										<td>▣ 의뢰 내용<br>
-										<br>
-										<textarea name="checkup_contents" rows="5" readonly="readonly"
+										<th colspan="2">▣ 의뢰 내용</th>
+									</tr>
+									<tr>
+										<td colspan="2"> 
+										<textarea name="checkup_name" rows="5" readonly="readonly"
 												style="resize: none; width: 100%;">${checkDto.checkup_contents}</textarea>
 										</td>
 									</tr>
+									
 								</table>
 
-								<table class="table" border="1">
-									<tr>
-										<td align="center">의뢰 병원 : ${hosDto.hospitalname}</td>
-										<td align="center">전화번호 : ${hosDto.hospitalphone}</td>
+								<table class="responstable" border="1">
+								
+								
+								<tr>
+										<th style="width: 12%;">의뢰 병원 </th>
+										<td> ${hosDto.hospitalname}</td>
+										<th style="width: 12%;">의사</th>
+										<td>${docDto.doctorname}</td>
+									
+										
 									</tr>
+
 									<tr>
-										<td align="center">주소 : ${hosDto.hospitaladdr}<br>
-										</td>
-										<td align="center">의사 :${docDto.doctorname}</td>
+										<th style="width: 12%;">주소</th>
+										<td>${hosDto.hospitaladdr}</td>
+										<th>전화번호</th>
+										<td>${hosDto.hospitalphone}</td>
 									</tr>
+								
+								
+						
+									
+									
+								
 								</table>
-								<table class="table" border="1">
+								<table class="responstable" border="1">
 									<tr>
-										<td align="center">${hosDto.hospitalname}</td>
+										<th align="center" colspan="2">${hosDto.hospitalname}</th>
 									</tr>
 								</table>
 
@@ -135,7 +168,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</section>
 	<footer>
 		<%@ include file="../common/footer.jsp"%>

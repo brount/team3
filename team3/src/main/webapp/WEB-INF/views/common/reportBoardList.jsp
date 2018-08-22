@@ -26,19 +26,7 @@ document.onkeydown = noEvent;
 document.oncontextmenu = function() {return false;}
 </script>
 
-<style>
-	td {
-		font-size: 25px;
-		text-align: center;
-	}
-	a {
-		font-size: 25px;
-		text-decoration: none !important;
-	}
-	b {
-		font-size: 25px;
-	}
-</style>
+
 
 	<header>
 		<%@ include file="../common/header.jsp"%>
@@ -48,7 +36,7 @@ document.oncontextmenu = function() {return false;}
 
 	<section>
 		<div class="container">
-		
+			<div class="well">
 			<div class="mail-box">
 				<aside class="lg-side">
 					<div class="inbox-head">
@@ -89,7 +77,7 @@ document.oncontextmenu = function() {return false;}
 												</td>
 												<td>
 													<a href="reportBoardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
-														style="font-size: 25px; font-family: 'Nanum Gothic', sans-serif;">${dto.boardtitle}</a>
+														style= font-family: 'Nanum Gothic', sans-serif;">${dto.boardtitle}</a>
 												</td>
 												<td>${dto.boardwriter}</td>
 												<td>
@@ -110,32 +98,30 @@ document.oncontextmenu = function() {return false;}
 						</div>
 					</div>
 				</aside>
-				<table align="center">
-					<tr>
-						<th align="center"><c:if test="${cnt>0}">
-								<!-- 처음[◀◀] / 이전블록 [◀] -->
-								<c:if test="${startPage > pageBlock }">
-									<a href="reportBoardList" style="font-size: 15px;">[◀◀]</a>
-									<a href="reportBoardList?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>
-								</c:if>
-								<!-- 페이지 블록 -->
-								<c:forEach var="i" begin="${startPage }" end="${endPage }">
-									<c:if test="${i == currentPage }">
-										<span> <b style="font-size: 20px;">[${i }]</b></span>
-									</c:if>
-									<c:if test="${i != currentPage }">
-										<a href="reportBoardList?pageNum=${i}" style="font-size: 15px;">[${i }]</a>
-									</c:if>
-								</c:forEach>
-								<!-- 다음블록[▶] / 끝[▶▶] -->
-								<c:if test="${pageCnt > endPage }">
-									<a href="reportBoardList?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
-									<a href="reportBoardList?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
-								</c:if>
-							</c:if>
-						</th>
-					</tr>
-				</table>
+				<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="reportBoardList?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="reportBoardList?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="reportBoardList?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
+				
+				
+				</div>
 			</div>
 		</div>
 		

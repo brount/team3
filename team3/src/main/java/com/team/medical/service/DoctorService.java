@@ -8,10 +8,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public interface DoctorService {
 	// 로그인
 	public void doctorLogin(HttpServletRequest req, Model model);
-	
+
 	// 아이디 중복 확인
 	public void confirmId(HttpServletRequest req, Model model);
-	
+
 	// 회원가입 처리
 	public void inputPro(MultipartHttpServletRequest req, Model model);
 
@@ -81,9 +81,7 @@ public interface DoctorService {
 	// 의사 댓글 모음
 	public void reBoard(HttpServletRequest req, Model model);
 
-	// 내 병원 예약 목록 
+	// 내 병원 예약 목록
 	public void MyHospitalReservationList(HttpServletRequest req, Model model);
-	
 
-	
 }

@@ -65,7 +65,7 @@
 						<form class="form-horizontal" action="simpleTreatPro"
 							method="post" id="reg_form" onsubmit="simple();">
 							<fieldset>
-								<legend>간단 진료</legend>
+								<h3>간단 진료</h3>
 								<div class="form-group">
 									<label class="col-md-3 control-label">성별</label>
 									<div class="col-md-6  inputGroupContainer">
@@ -90,12 +90,12 @@
 										<div class="input-group">
 											<span class="input-group-addon"><i
 												class="glyphicon glyphicon-pencil"></i></span> <input name="birth1"
-												placeholder="0000" class="form-control" type="text"
-												style="width: 50px; height: 45px;" required> <b>년</b> <input
-												name="birth2" placeholder="00" class="form-control"
+												placeholder="0000" class="form-control" type="text" maxlength="4"
+												style="width: 50px; height: 45px;margin-left: 5px;" required> <b>년</b> <input
+												name="birth2" placeholder="00" class="form-control" maxlength="2"
 												type="text" style="width: 50px; height: 45px; margin-left: 10px;" required>
 											<b>월</b> <input name="birth3" placeholder="00"
-												class="form-control" type="text"
+												class="form-control" type="text" maxlength="2"
 												style="width: 50px; height: 45px; margin-left: 10px;" required> <b>일</b>
 										</div>
 									</div>

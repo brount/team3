@@ -87,7 +87,7 @@ function check() {
 		  		 <div class="col-sm-9 col-md-9">
 		                 <div class="well">
 	<form class="form-horizontal" action="personalAddPro"  method="post"  id="" name="mof" onsubmit="return check();">
-	    <fieldset style="font-size: 30;">
+	    <fieldset style="font-size: 20;">
 	
 	      <h1 style="margin-bottom: 50px">My Health</h1>
 	    

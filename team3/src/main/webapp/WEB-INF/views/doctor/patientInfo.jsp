@@ -43,7 +43,7 @@
 
                            <tr>
                               <td>${gusDto.guestname}</td>
-                              <td>${gusDto.jumin}</td>
+                              <td>${jumin}-*******</td>
                               <td>${gusDto.guesttel}</td>
                               <td>${gusDto.guestemail}</td>
                            </tr>

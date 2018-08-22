@@ -19,30 +19,46 @@
 <%@ include file="../common/line.jsp"%>
 
 <section>
-<form action="boardInfo">
+<div class="container">
+	<div class="well" >
+			<div class="row" style="margin-top:20px">
+					    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			
+		<form action="boardInfo">
+
+
 	<input type="hidden" name="kind" value="1">
 	<input type="hidden" name="num" value="${num}">
 	<input type="hidden" name="number" value="${number}">
 	<input type="hidden" name="pageNum" value="${pageNum}">
-	<fieldset style="width: 800px; margin:0 auto">
-		<legend>비밀번호 확인</legend>
-		<table   class="table table-striped table-hover" border="1" align="center" id="board" >
+	
+	<fieldset >
+		<h3>비밀번호 확인</h3>
+		<table   class="responstable"id="board" >
 			<tr>
 				<th style="text-align: center;">비밀번호</th>	
+				
+			</tr>
+			<tr>	
 				<td>
 				<input name="boardpwd" type="password" required>
 				</td>		
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align: center;">
+			
+					
+		</table>
+				<center>
 				 <input type="submit" class="btn btn-dark-blue" value="확인">
 				 <input type="button" class="btn btn-dark-blue" value="취소" onclick="window.history.back();">
-				</td>
-			</tr>		
-		</table>
+				</center>
 	
 		</fieldset>
+	
 		</form>
+		</div>
+		</div>
+		</div>
+		</div>	
 	</section>
   
  <footer>

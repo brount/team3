@@ -16,14 +16,7 @@ document.onkeydown = noEvent;
 
 document.oncontextmenu = function() {return false;}
 </script>
-<style>
-	th {
-		font-size: 25px !important;
-	}
-	td {
-		font-size: 25px !important;
-	}
-</style>
+
 
 	<header>
 		<%@ include file="../common/header.jsp"%>
@@ -41,29 +34,27 @@ document.oncontextmenu = function() {return false;}
 					</div>
 					<div class="mail-option">
 
-						<table class="table table-inbox table-hover">
+						<table class="responstable">
 
 							<tbody>
 								<tr>
-									<th style="width: 150px">글번호</th>
-									<td style="width: 150px">${number}</td>
+									<th >글번호</th>
+									<td >${number}</td>
 									
-									<th style="width: 150px">작성일</th>
-									<td style="width: 150px"><fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.boarddate}" /></td>
-								</tr>
-								<tr>
 									<th>작성자</th>
 									<td colspan=3>${dto.boardwriter}</td>
+									<th>작성일</th>
+									<td><fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.boarddate}" /></td>
 								</tr>
 								<tr>
 									<th>글제목</th>
-									<td colspan=3>${dto.boardtitle}</td>
+									<td colspan="7">${dto.boardtitle}</td>
 								</tr>
 								<tr>
-									<th colspan="4" style="text-align: center;">글내용</th>
+									<th colspan="8" style="text-align: center;">글내용</th>
 								</tr>
 								<tr>
-									<td colspan="4">${dto.boardcontent}</td>
+									<td colspan="8">${dto.boardcontent}</td>
 								</tr>
 							</tbody>
 						</table>

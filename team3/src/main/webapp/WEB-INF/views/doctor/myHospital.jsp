@@ -24,7 +24,7 @@
 			<div class="col-sm-9 col-md-9">
 				<div class="well">
 					<div>
-						<div class="panel panel-primary">
+					
 							<div class="panel-heading">
 								<h3>마이 병원</h3>
 							</div>
@@ -34,26 +34,26 @@
 								onerror="this.src='/medical/resources/images/dachaimg.jpg'">
 							<br><br>
 							<div class="panel panel-primary">
-								<table class="table">
+								<table class="responstable">
 									<tr>
-										<th style="background: lightcyan">병원이름</th>
+										<th style="width: 11%;" >병원이름</th>
 										<td>${vo.hospitalname}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">병원주소</th>
+										<th  >병원주소</th>
 										<td>${vo.hospitaladdr}<br>
 										</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">전화번호</th>
+										<th  >전화번호</th>
 										<td>${vo.hospitalphone}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">병원 소개</th>
+										<th  >병원 소개</th>
 										<td>${vo.hospitalinstruction}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan">진료시간</th>
+										<th  >진료시간</th>
 										<td>월 : ${vo.mon}<br> 화 : ${vo.tues}<br> 수 : ${vo.wed}
 										<br> 목 : ${vo.thurs}<br> 금 : ${vo.fri}<br> 토 : ${vo.sat}
 										<br> 일 : ${vo.sun}<br> 공휴일 : ${vo.holi}<br>
@@ -67,7 +67,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 </section>
 
 <footer>

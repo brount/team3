@@ -29,18 +29,21 @@
                      <div class="panel-heading">
                         <h3>건강검진 결과</h3>
                      </div>
-                     <table class="table" border="1">
+                     <table class="responstable" border="1">
+                    
                         <tr>
-                           <th colspan="2">환자정보</th>
-                        </tr>
+                           <th>환자명</th>
+                           <td>${gusDto.guestname}</td>
+                           <th>주민등록번호 </th>
+                           <td>${jumin}-*******</td>
                         
-                        <tr>
-                           <td>성명 : ${gusDto.guestname}</td>
-                           <td>주민등록번호 : ${gusDto.jumin}</td>
                         </tr>
                         <tr>
-                           <td>연락처 : ${gusDto.guesttel}</td>
-                           <td>이메일 주소 : ${gusDto.guestemail}15</td>
+                           <th>연락처</th>
+                           <td>${gusDto.guesttel}</td>
+                           <th>이메일 주소 </th>
+                           <td>${gusDto.guestemail}</td>
+                      
                         </tr>
                      </table>
                      <table class="table table-striped table-hover" border="1">

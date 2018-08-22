@@ -90,9 +90,18 @@
 								type="hidden" name="guestNo" value="guestNo">
 
 							<fieldset>
-								<legend>진료 예약 </legend>
-								<a><b style="font-size: 20px;">${vo.hospitalname} ☏ ${vo.hospitalphone}</b></a>
+								<h3>진료 예약 </h3>
 								<div style="margin: 20px 20px;"></div>
+								<div class="form-group">
+									<label class="col-md-4 control-label">병원</label>
+									<div class="col-md-6 selectContainer">
+											<div class="input-group">
+												<label style="font-weight: bold;font-size:18px;color: #178b89;">${vo.hospitalname} ☏ ${vo.hospitalphone}</label>
+											</div>
+									</div>		
+								</div>	
+
+
 
 								<div class="form-group">
 									<label class="col-md-4 control-label">진료과</label>
@@ -169,7 +178,7 @@
 							</fieldset>
 
 							<div>
-								<legend> 추가입력 정보 </legend>
+								<h3> 추가입력 정보 </h3>
 								<fieldset>
 
 									<div class="form-group">

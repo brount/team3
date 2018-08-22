@@ -36,7 +36,7 @@
   		 	<div class="col-sm-9 col-md-9">
 <div class="well">
 		            <div class="container">
-					
+				
 					
 						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
 						    <fieldset>
@@ -86,6 +86,7 @@
                                     <th class="view-message  dont-show">나의 신체질량 BMI 지수</th>
                                   <td class="view-message"> 
                                   		  ${bmi}	
+                                  		    <b>(BMI)</b>	
                                   
                                   </td>                                  
                            
@@ -114,8 +115,9 @@
 						  </div>
 						  </div>
 						  </div>
+						  </div>
 	            </div>
-	        </div>		        
+	         
 	
 </section>
 

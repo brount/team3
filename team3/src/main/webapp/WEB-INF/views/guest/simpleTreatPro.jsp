@@ -21,31 +21,33 @@
 
 	<section>
 	<div class="container">
-		<div style="display: flex;">
 		
 			<div class="col-sm-3 col-md-3">
 				<%@ include file="../common/menuHygiene.jsp"%>
 			</div>
-
-			<div class="mail-box">
-				<form action="reserveForm">
+			
+			
+			
+			 <div class="col-sm-9 col-md-9">
+			 	<div class="well">
 					<!-- 조회된 질병이 없으면 -->
 					<div class="inbox-body">
-						<div class="mail-option">
+					
 							<c:if test="${selectcnt==0 }">
-								<table class="table_d "  >
+								<table class="responstable"  >
 									<tr>
 										<td colspan="6" align="center">조회된 질병이 없습니다. 증상을 다시
 											체크해주세요.</td>
 									</tr>
-									<tr>
-									<td colspan="6" align="center"><input type="button" class="btn btn-dark-blue" value="확인" 
-									onclick="window.history.back()"></td>
-									</tr>
-								</table>
+									
 								
+								</table>
+									<center>
+									<input type="button" class="btn btn-dark-blue" value="확인" 
+									onclick="window.history.back()">
+									</center>
 							</c:if>
-						</div>
+						
 					</div>
 					<!-- 조회된 질병이 있으면 -->
 					<c:if test="${selectcnt!=0 }">
@@ -59,21 +61,29 @@
 							</div>
 							<div class="inbox-body">
 								<div class="mail-option">
-									<table class="table_d table-inbox table-hover">
+									<table class="responstable">
 										<tbody>
 											<tr>
-												<th>${dto.diseaseName }</th>
+												<th colspan="2">${dto.diseaseName }</th>
+												
+												
 											</tr>
 											<tr>
-												<td>▶ 정의 : ${dto.diseaseDefine } ${dto.diseaseSymptom}
+												
+												<th style="width: 13%;">▶ 정의 </th>
+												<td> ${dto.diseaseDefine } ${dto.diseaseSymptom}
 												</td>
+												
+												
 											</tr>
 
 											<tr>
-												<td>▶ 증상 : ${dto.diseaseDiagnosis }</td>
+												<th>▶ 증상 </th>
+												<td> ${dto.diseaseDiagnosis }</td>
 											</tr>
 											<tr>
-												<td>▶ 합병증 : ${dto.complications }</td>
+												<th>▶ 합병증 </th>
+												<td> ${dto.complications }</td>
 											</tr>
 											<%-- 
 										<tr>
@@ -110,50 +120,25 @@
 											</td>
 									</tr>
 									 --%>
-											<tr>
-												<td>
-													<%-- 	onclick="reserveForm?hospitalno=${hto.hospitalno }'" --%>
-													<input type="button" class="btn btn-dark-blue"
-													value="병원예약하러가기" style="display: table; margin: 0 auto;"
-													onclick="window.location='achospitalSeach?state=1'">
-												</td>
-											</tr>
+										
 										</tbody>
 									</table>
+									<input type="button" class="btn btn-dark-blue"
+													value="병원예약하러가기" style="display: table; margin: 0 auto;"
+													onclick="window.location='achospitalSeach?state=1'">
+									
+									
 								</div>
 							</div>
 						</c:forEach>
 					</c:if>
-				</form>
-
-				<table style="width: 1000px" align="center">
-					<tr>
-						<th align="center"><c:if test="${cnt>0 }">
-								<!-- 처음[◀◀] / 이전블록 [◀] -->
-								<c:if test="${startPage > pageBlock }">
-									<a href="bookList.hs">[◀◀]</a>
-									<a href="bookList.hs?pageNum=${startPage-pageBlock}">[◀]</a>
-								</c:if>
-								<!-- 페이지 블록 -->
-								<c:forEach var="i" begin="${startPage }" end="${endPage }">
-									<c:if test="${i == currentPage }">
-										<span> <b>[${i }]</b></span>
-									</c:if>
-									<c:if test="${i != currentPage }">
-										<a href="bookList.hs?pageNum=${i}">[${i }]</a>
-									</c:if>
-								</c:forEach>
-								<!-- 다음블록[▶] / 끝[▶▶] -->
-								<c:if test="${pageCnt > endPage }">
-									<a href="bookList.hs?pageNum=${startPage+pageBlock}">[▶]</a>
-									<a href="bookList.hs?pageNum=${pageCnt}">[▶▶]</a>
-								</c:if>
-							</c:if></th>
-					</tr>
-				</table>
+					</div>
+					</div>
 			</div>
-		</div>
-	</div>
+			
+		
+		
+	
 
 	</section>
 

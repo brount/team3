@@ -26,30 +26,30 @@
 						    <div class="panel-heading">
 						        <h3>처방전 결과</h3>
 						    </div>
-						    <table class="table" border="1">
+						    <table class="responstable" border="1">
 						    	<tr>
 						    		<th rowspan="3"><br>환<br>자</th>
-						    		<th>이름</th>
+						    		<td>이름</td>
 						    		<td>${gusDto.guestname}</td>
 						    		<th rowspan="3">의료<br>기관</th>
-						    		<th>명칭</th>
+						    		<td>명칭</td>
 						    		<td>${hosDto.hospitalname}</td>
 						    	</tr>
 						    	<tr>
-						    		<th>주민번호</th>
-						    		<td>${gusDto.jumin}</td>
-						    		<th>전화번호</th>
+						    		<td>주민번호</td>
+						    		<td>${jumin}-********</td>
+						    		<td>전화번호</td>
 						    		<td>${hosDto.hospitalphone}</td>
 						    		
 						    	</tr>
 						    	<tr>
-						    		<th>연락처</th>
+						    		<td>연락처</td>
 						    		<td>${gusDto.guesttel}</td>
-						    		<th>의사명</th>
+						    		<td>의사명</td>
 						    		<td>${docDto.doctorname}</td>
 						    	</tr>
 						    </table>
-						  	<table class="table table-striped table-hover" border="1">
+						  	<table class="responstable" border="1">
 						  		<tr>
 						  			<th>증상</th>
 						  		</tr>
@@ -57,14 +57,14 @@
 						  			<td><textarea rows="5" name = "symptom" style="resize: none; width: 100%" readonly>${preDto.symptom}</textarea></td>
 						  		</tr>
 						  	</table>
-						    <table class="table table-striped table-hover" border="1">
+						    <table class="responstable" border="1">
 						        <thead>
 						            <tr>
 						    		<th>처 방 의 약 품 <br>명 칭</th>
 						    		<th>1회<br>투여량</th>
 						    		<th>1회<br>투여횟수</th>
 						    		<th>총<br>투여일수</th>
-						    		<th>용법</th>
+						    		<th style=" width: 20%;">용법</th>
 						    	</tr>
 						        </thead>
 						        <tbody>

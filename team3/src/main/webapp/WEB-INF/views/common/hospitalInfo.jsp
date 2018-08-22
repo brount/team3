@@ -30,49 +30,49 @@
 								<img src="/medical/resources/images/licence/${vo.hospitalimage}" width="500px" height="380px"
 									onerror="this.src='/medical/resources/images/dachaimg.jpg'">
 							</div>
-							<div class="panel panel-primary">
-								<table class="table">
+							
+								<table class="responstable">
 									<tr>
-										<th style="background: lightcyan; text-align: center; width: 12%;">병원이름</th>
-										<td>${vo.hospitalname}</td>
+										<th style="width: 12%;">병원이름</th>
+										<td style="font-weight: bold;font-size: 20px;color: #178b89;">${vo.hospitalname}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan; text-align: center;">병원주소</th>
+										<th >병원주소</th>
 										<td>${vo.hospitaladdr}<br>
 										</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan; text-align: center;">전화번호</th>
+										<th >전화번호</th>
 										<td>${vo.hospitalphone}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan; text-align: center;">병원소개</th>
+										<th>병원소개</th>
 										<td>${vo.hospitalinstruction}</td>
 									</tr>
 									<tr>
-										<th style="background: lightcyan; text-align: center;">진료시간</th>
+										<th >진료시간</th>
 										<td>월 : ${vo.mon}<br> 화 : ${vo.tues}<br> 수 : ${vo.wed}
 										<br>목 : ${vo.thurs}<br> 금 : ${vo.fri}<br> 토 : ${vo.sat}
 										<br> 일 : ${vo.sun}<br> 공휴일 : ${vo.holi}<br>
 										</td>
 									</tr>
-									<tr>
-										<td style="background: lightcyan" align=center colspan=2>
-											<button type="button"class="btn btn-dark-blue"value="" style="padding: 8px;"
-												onclick="window.location='reserveForm?hospitalno=${vo.hospitalno}'">예약</button>
-											<button type="button" class="btn btn-dark-blue" value="" style="padding:8px;"
-												onclick="window.location='bookMarkIn?hospitalno=${vo.hospitalno}'">
-											즐겨찾는 병원 등록
-											</button>
-										</td>
-									</tr>
+									
 								</table>
+							
+									<center>
+									<button type="button"class="btn btn-dark-blue"value="" style="padding: 8px;"
+										onclick="window.location='reserveForm?hospitalno=${vo.hospitalno}'">예약</button>
+									<button type="button" class="btn btn-dark-blue" value="" style="padding:8px;"
+										onclick="window.location='bookMarkIn?hospitalno=${vo.hospitalno}'">
+									즐겨찾는 병원 등록
+									</button>
+									</center>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</section>
 
 	<footer>

@@ -27,7 +27,7 @@
 	<input type="hidden" name="pageNum" value="${pageNum }">
 	<fieldset style="width: 800px; margin:0 auto">
 		<legend>비밀번호 확인</legend>
-		<table   class="table table-striped table-hover" border="1" align="center" id="board" >
+		<table   class="responstable" border="1" align="center" id="board" >
 			<tr>
 				<th>비밀번호</th>	
 				<td>

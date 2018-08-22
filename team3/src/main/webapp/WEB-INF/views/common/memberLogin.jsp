@@ -26,7 +26,7 @@ function loginSet(){
 		<div class="row" style="margin-top:20px">
 		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<form role="form" action="memberLoginPro">
-					<fieldset style="font-size: 30px;">
+					<fieldset>
 						<h1> 로그인 </h1>
 						<hr class="colorgraph">
 						<div class="form-group">

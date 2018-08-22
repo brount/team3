@@ -20,7 +20,7 @@
 					<%@ include file="../common/menuCheckup.jsp"%>
 				</div>
 				<div class="col-sm-9 col-md-9">
-				
+				<div class="well">
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
@@ -36,7 +36,7 @@
 												<tr class="unread">
 													<th class="view-message">검진번호</th>
 													<th class="view-message">환자명</th>
-													<th class="view-message  text-left">등록일</th>
+													<th class="view-message ">등록일</th>
 												</tr>
 												<c:if test="${cnt>0 }">
 													<c:set value="0" var="b"></c:set>
@@ -67,32 +67,34 @@
 									</div>
 								</div>
 							</aside>
-							<table align="center">
-								<tr>
-									<th align="center"><c:if test="${cnt>0}">
-											<!-- 처음[◀◀] / 이전블록 [◀] -->
-											<c:if test="${startPage > pageBlock }">
-												<a href="checkupResultList" style="font-size: 15px;">[◀◀]</a>
-												<a href="checkupResultList?pageNum=${startPage-pageBlock}" style="font-size: 15px;">[◀]</a>
-											</c:if>
-											<!-- 페이지 블록 -->
-											<c:forEach var="i" begin="${startPage }" end="${endPage }">
-												<c:if test="${i == currentPage }">
-													<span> <b style="font-size: 20px;">[${i }]</b></span>
-												</c:if>
-												<c:if test="${i != currentPage }">
-													<a href="checkupResultList?pageNum=${i}" style="font-size: 15px;">[${i }]</a>
-												</c:if>
-											</c:forEach>
-											<!-- 다음블록[▶] / 끝[▶▶] -->
-											<c:if test="${pageCnt > endPage }">
-												<a href="checkupResultList?pageNum=${startPage+pageBlock}" style="font-size: 15px;">[▶]</a>
-												<a href="checkupResultList?pageNum=${pageCnt}" style="font-size: 15px;">[▶▶]</a>
-											</c:if>
-										</c:if></th>
-								</tr>
-							</table>
+							
+							
+							<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="checkupResultList?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="checkupResultList?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="checkupResultList?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
+							
+							
+							
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>

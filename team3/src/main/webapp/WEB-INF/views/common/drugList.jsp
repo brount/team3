@@ -19,16 +19,16 @@
                       <div class="inbox-body">
                          <div class="mail-option">
 								검색갯수 : ${cnt }
-                               <table class="table table-inbox table-hover">
+                               <table class="responstable">
                                 
                             <tbody>
                               <tr class="unread">
-                                    <td class="view-message" style="text-align: center;">약품번호</td>
-                                  <td class="view-message" style="text-align: center;">약이름</td> 
-                                    <td>
+                                    <th class="view-message" style="text-align: center;">약품번호</th>
+                                  <th class="view-message" style="text-align: center;width: 45%;">약이름</th> 
+                                    <th>
                                         <span style="text-align: center;">제약회사</span>
-                                    </td>
-                                  <td class="view-message" style="text-align: center;">등록일</td>
+                                    </th>
+                                  <th class="view-message" style="text-align: center;">등록일</th>
                               </tr>
                               <c:if test="${cnt>0 }">
 								<c:forEach var="dto" items="${dtos}">
@@ -59,13 +59,19 @@
                           </div>
                       </div>
                   </aside>
-                  <table align="center">
-				<tr>
-					<th align="center">
-						<c:if test="${cnt>0}">
-							<!-- 처음[◀◀] / 이전블록 [◀] -->
-							<c:if test="${startPage > pageBlock }">
-								<a href="drugSeachList?sign=${sign}&sign_flag=${sign_flag}
+                  
+                  
+                  
+         
+           
+                  
+                  
+                  <div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           
+                           <c:if test="${startPage > pageBlock }">
+                           	<a href="drugSeachList?sign=${sign}&sign_flag=${sign_flag}
 									<c:forEach var="item" items="${shape}">
 										&shape=${item}
 									</c:forEach>
@@ -82,8 +88,9 @@
 									</c:forEach>
 									<c:forEach var="item" items="${splitlineB}">
 										&splitlineB=${item}
-									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">[◀◀]</a>
-								<a href="drugSeachList?pageNum=${startPage-pageBlock}&sign=${sign}&sign_flag=${sign_flag}
+									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}"><<</a>
+                           
+                              <a href="drugSeachList?pageNum=${startPage-pageBlock}&sign=${sign}&sign_flag=${sign_flag}
 									<c:forEach var="item" items="${shape}">
 										&shape=${item}
 									</c:forEach>
@@ -100,12 +107,16 @@
 									</c:forEach>
 									<c:forEach var="item" items="${splitlineB}">
 										&splitlineB=${item}
-									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">[◀]</a>	
-							</c:if>
-							<!-- 페이지 블록 -->
-							<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}"><</a>	
+                        
+                        
+                        
+                        
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
 								<c:if test="${i == currentPage }">
-									<span> <b style="font-size: 20px;">[${i }]</b></span>
+									 <strong>${i }</strong>
 								</c:if>
 								<c:if test="${i != currentPage }">
 									<a href="drugSeachList?pageNum=${i}&sign=${sign}&sign_flag=${sign_flag}
@@ -125,11 +136,11 @@
 									</c:forEach>
 									<c:forEach var="item" items="${splitlineB}">
 										&splitlineB=${item}
-									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">[${i }]</a>
+									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" >${i }</a>
 								</c:if>
 							</c:forEach>										
-							<!-- 다음블록[▶] / 끝[▶▶] -->
-							<c:if test="${pageCnt > endPage }">
+                           <!-- 다음블록 -->
+                          <c:if test="${pageCnt > endPage }">
 								<a href="drugSeachList?pageNum=${startPage+pageBlock}&sign=${sign}&sign_flag=${sign_flag}
 									<c:forEach var="item" items="${shape}">
 										&shape=${item}
@@ -147,8 +158,8 @@
 									</c:forEach>
 									<c:forEach var="item" items="${splitlineB}">
 										&splitlineB=${item}
-									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">[▶]</a>
-								<a href="drugSeachList?pageNum=${pageCnt}&sign=${sign}&sign_flag=${sign_flag}
+									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}">></a>
+									<a href="drugSeachList?pageNum=${pageCnt}&sign=${sign}&sign_flag=${sign_flag}
 									<c:forEach var="item" items="${shape}">
 										&shape=${item}
 									</c:forEach>
@@ -165,12 +176,11 @@
 									</c:forEach>
 									<c:forEach var="item" items="${splitlineB}">
 										&splitlineB=${item}
-									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">[▶▶]</a>
-							</c:if>
-						</c:if>
-					</th>
-				</tr>
-			</table>
+									</c:forEach>&drugName=${drugName}&drugCompany=${drugCompany}" style="font-size: 15px;">>></a>
+									</c:if>
+                        </c:if>
+                     </div>
+               
               </div>                    
 		</div>
    </section>

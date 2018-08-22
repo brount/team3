@@ -20,6 +20,7 @@
 		        </div>
 		        <div class="col-sm-9 col-md-9">
 		            <div class="well">
+		            	<h3>질병정보</h3>
 		                <div class='form container'>
 						<div>
 							<div class="row" style="margin-bottom:20px;">

@@ -63,7 +63,7 @@
 													<!--   <td>  <input type="checkbox" class="toption-input checkbox" /></td> -->
 													<th class="view-message" colspan="3" style="width: 17%;">병원명</th>
 													<th  style="width: 10%;">전화번호</th>
-													<th class="view-message  text-left">주소</th>
+													<th class="view-message  ">주소</th>
 												</tr>
 												<c:forEach var="dto" items="${dtos}">
 													<tr class="">
@@ -71,7 +71,7 @@
 														<td colspan="3" class="view-message"
 															onclick="hospitalInfo?hospitalno=${dto.hospitalno }">${dto.hospitalname }</td>
 														<td style="padding: 16px;"><span class="label label-success">${dto.hospitalphone }</span></td>
-														<td class="view-message  text-left">
+														<td class="view-message ">
 														<a href="hospitalInfo?hospitalno=${dto.hospitalno }" 
 														style="font-size: 20px; font-family: 'NanumGothic, sans-serif';">
 														${dto.hospitaladdr }</a></td>
@@ -86,39 +86,31 @@
 						</div>
 
 						</aside>
+				<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                       <c:if test="${cnt>0}">
+                          <!-- 이전블록 -->
+                          <c:if test="${startPage > pageBlock }">
+                             <a href="bookMark?pageNum=${startPage-pageBlock}"><</a>
+                          </c:if>
+                          <!-- 페이지 블록 -->
+                          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                             <c:if test="${i == currentPage }">
+                                <strong>${i }</strong>
+                             </c:if>
+                             <c:if test="${i != currentPage }">
+                                <a href="bookMark?pageNum=${i}">${i }</a>
+                             </c:if>
+                          </c:forEach>
+                          <!-- 다음블록 -->
+                          <c:if test="${pageCnt > endPage }">
+                             <a href="bookMark?pageNum=${startPage+pageBlock}">></a>
+                          </c:if>
+                       </c:if>
+                    </div>
 
-						<!-- 페이지 컨트롤 -->
-						<table style="width: 100%; text-align: center;">
-							<tr>
-								<th align="center"><c:if test="${cnt>0 }">
-										<!-- 처음[◀◀] / 이전[◀]  -->
-										<c:if test="${startPage > pageBlock }">
-											<a href="bookMark" style="font-size: 15px;">[◀◀]</a>
-											<a href="bookMark?pageNum=${startPage - pageBlock }"
-												style="font-size: 15px;">[◀]</a>
-										</c:if>
 
-										<c:forEach var="i" begin="${startPage }" end="${endPage }">
-											<c:if test="${i == currentPage }">
-												<span><b style="font-size: 20px;">[${i}]</b></span>
-											</c:if>
-											<c:if test="${i != currentPage}">
-												<a href="bookMark?pageNum=${i }" style="font-size: 15px;">[${i}]</a>
-											</c:if>
-										</c:forEach>
 
-										<!-- 다음[▶] / 끝[▶▶]  -->
-										<c:if test="${pageCount > endPage }">
-											<a href="bookMark?pageNum=${startPage + pageBlock }"
-												style="font-size: 15px;">[▶]</a>
-											<a href="bookMark?pageNum=${pageCount}"
-												style="font-size: 15px;">[▶▶] </a>
-										</c:if>
 
-									</c:if></th>
-							</tr>
-
-						</table>
 					</div>
 				</div>
 

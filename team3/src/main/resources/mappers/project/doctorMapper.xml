@@ -3,86 +3,119 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.medical.persitence.DoctorDAO">
-	<select id="doctorLogin" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) FROM doctor WHERE doctorid=#{id} AND doctorpwd=#{pwd}
+
+	<!-- 의사 로그인 -->
+	<select id="doctorLogin" parameterType="java.util.Map"
+		resultType="int">
+		SELECT COUNT(*) FROM doctor WHERE doctorid=#{id} AND
+		doctorpwd=#{pwd}
 	</select>
-	<select id="doctorappro" parameterType="java.util.Map" resultType="int">
-		SELECT doctorappro FROM doctor WHERE doctorid=#{id} 
+
+	<!-- 로그인 승인 -->
+	<select id="doctorappro" parameterType="java.util.Map"
+		resultType="int">
+		SELECT doctorappro FROM doctor WHERE doctorid=#{id}
 	</select>
-	
+
 	<!-- 아이디 체크 -->
-	<select id ="idCheck" resultType="int">
-		select count(*) from doctor where doctorid =#{doctorid,jdbcType=VARCHAR}
+	<select id="idCheck" resultType="int">
+		select count(*) from doctor
+		where doctorid =#{doctorid,jdbcType=VARCHAR}
 	</select>
-	
+
 	<!-- 회원가입 정보 넣기 -->
 	<insert id="insertMember" parameterType="com.team.medical.vo.DoctorVO">
-		insert into doctor( doctorno, hospitalno, doctorid, doctorpwd, doctorname, doctorappro, doctorphone, doctoremail, doctorregstration, doctorspecialism, point, sanctions, licence)
-		values( doctornoseq.nextval ,#{hospitalno},#{doctorid},#{doctorpwd},#{doctorname},#{doctorappro},#{doctorphone},#{doctoremail},#{doctorregstration},#{doctorspecialism},#{point},#{sanctions}, #{licence,jdbcType=VARCHAR})
+		insert into doctor(
+		doctorno, hospitalno, doctorid, doctorpwd, doctorname, doctorappro,
+		doctorphone, doctoremail, doctorregstration, doctorspecialism, point,
+		sanctions, licence)
+		values( doctornoseq.nextval
+		,#{hospitalno},#{doctorid},#{doctorpwd},#{doctorname},#{doctorappro},#{doctorphone},#{doctoremail},#{doctorregstration},#{doctorspecialism},#{point},#{sanctions},
+		#{licence,jdbcType=VARCHAR})
 	</insert>
-	
+
 	<!-- 회원 정보 수정 -->
-	<update id ="updateMemberInfo" parameterType="com.team.medical.vo.DoctorVO">
-		update doctor set doctorpwd = #{doctorpwd}, doctorname =#{doctorname}, doctorphone =#{doctorphone}, doctoremail =#{doctoremail}, doctorspecialism =#{doctorspecialism},licence =#{licence,jdbcType=VARCHAR} where doctorid =#{doctorid,jdbcType=VARCHAR} 
+	<update id="updateMemberInfo" parameterType="com.team.medical.vo.DoctorVO">
+		update doctor set
+		doctorpwd = #{doctorpwd}, doctorname =#{doctorname}, doctorphone
+		=#{doctorphone}, doctoremail =#{doctoremail}, doctorspecialism
+		=#{doctorspecialism},licence =#{licence,jdbcType=VARCHAR} where
+		doctorid =#{doctorid,jdbcType=VARCHAR}
 	</update>
-	
+
 	<!-- 의사회원 탈퇴 -->
-	<update id = "deleteMember" parameterType="com.team.medical.vo.DoctorVO">
-		update doctor set doctorappro = 2 where doctorid=#{id}  
+	<update id="deleteMember" parameterType="com.team.medical.vo.DoctorVO">
+		update doctor set
+		doctorappro = 2 where doctorid=#{id}
 	</update>
-	
-	
+
 	<!-- 의사 번호 가져오기 -->
 	<select id="getdocnoInfo" parameterType="String" resultType="int">
 		select doctorno from doctor where doctorid=#{id,jdbcType=VARCHAR}
 	</select>
-	
+
 	<!-- 내 병원 정보 가져오기 -->
-   <select id="getMyhospitalInfo" parameterType="String" resultType="com.team.medical.vo.HospitalVO">
-      select * from hospital where doctorno LIKE '%'|| #{doctorno,jdbcType=VARCHAR} ||'%'
-   </select>
-   
-   <!-- 제휴병원 중복체크 -->
-   <select id="chkHospital" parameterType="String" resultType="int">
-      SELECT count(hospitalno) FROM hospital WHERE hospitalphone = #{hospitalphone}
-   </select>
-   <!-- 병원정보 가져오기(병원번호) -->
-   <select id="getHospitalInfo" parameterType="java.util.Map" resultType="com.team.medical.vo.HospitalVO">
-      select * from hospital 
-      <where>
-         <if test="hospitalphone != null">
-            hospitalphone = #{hospitalphone}
-         </if>
-         <if test="hospitalno != null">
-            hospitalno = #{hospitalno}
-         </if>
-      </where>
-   </select>
-    <!-- 병원정보수정 -->
-   <update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
-      update hospital SET hospitalphone=#{hospitalphone,jdbcType=VARCHAR},
-      hospitalinstruction=#{hospitalinstruction,jdbcType=VARCHAR},
-      hospitalimage=#{hospitalimage,jdbcType=VARCHAR}
-      WHERE hospitalno = #{hospitalno,jdbcType=VARCHAR}
-   </update>
-	
+	<select id="getMyhospitalInfo" parameterType="String"
+		resultType="com.team.medical.vo.HospitalVO">
+		select * from hospital where doctorno LIKE '%'||
+		#{doctorno,jdbcType=VARCHAR} ||'%'
+	</select>
+
+	<!-- 제휴병원 중복체크 -->
+	<select id="chkHospital" parameterType="String" resultType="int">
+		SELECT count(hospitalno) FROM hospital WHERE hospitalphone =
+		#{hospitalphone}
+	</select>
+
+	<!-- 병원정보 가져오기(병원번호) -->
+	<select id="getHospitalInfo" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.HospitalVO">
+		select * from hospital
+		<where>
+			<if test="hospitalphone != null">
+				hospitalphone = #{hospitalphone}
+			</if>
+			<if test="hospitalno != null">
+				hospitalno = #{hospitalno}
+			</if>
+		</where>
+	</select>
+
+	<!-- 병원정보수정 -->
+	<update id="updateHospital" parameterType="com.team.medical.vo.HospitalVO">
+		update hospital SET
+		hospitalphone=#{hospitalphone,jdbcType=VARCHAR},
+		hospitalinstruction=#{hospitalinstruction,jdbcType=VARCHAR},
+		hospitalimage=#{hospitalimage,jdbcType=VARCHAR}
+		WHERE hospitalno =
+		#{hospitalno,jdbcType=VARCHAR}
+	</update>
+
 	<!-- 의사 정보 가져오기 -->
-	<select id = "getDocInfo"  resultType="com.team.medical.vo.DoctorVO">
-		select * from doctor where doctorid=#{doctorid,jdbcType=VARCHAR}
+	<select id="getDocInfo" resultType="com.team.medical.vo.DoctorVO">
+		select * from doctor where
+		doctorid=#{doctorid,jdbcType=VARCHAR}
 	</select>
-	
+
 	<!-- 검사 의뢰서 등록 -->
-	<insert id = "checkListInput" parameterType="com.team.medical.vo.CheckupListVO">
-		insert into CheckupList(doctorno, checkuplist, guestNo, checkup_kind, checkup_name, checkup_opinion, checkup_contents, checkup_date)
-		values(#{doctorno}, checkuplistseq.nextval, #{guestNo}, #{checkup_kind}, #{checkup_name}, #{checkup_opinion}, #{checkup_contents} ,#{checkup_date})
+	<insert id="checkListInput" parameterType="com.team.medical.vo.CheckupListVO">
+		insert into
+		CheckupList(doctorno, checkuplist, guestNo, checkup_kind,
+		checkup_name, checkup_opinion, checkup_contents, checkup_date)
+		values(#{doctorno}, checkuplistseq.nextval, #{guestNo},
+		#{checkup_kind}, #{checkup_name}, #{checkup_opinion},
+		#{checkup_contents} ,#{checkup_date})
 	</insert>
-	
+
+	<!-- 검사의뢰목록 글 갯수 -->
 	<select id="getcheckupListCnt" resultType="int">
-		select count(checkuplist) from CheckupList
+		select
+		count(checkuplist) from CheckupList
 	</select>
-	
+
 	<!-- 검사의뢰 목록 -->
-	<select id="CheckupList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupListVO">
+	<select id="CheckupList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.CheckupListVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
@@ -96,49 +129,67 @@
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
+
 	<!-- 의사 번호로 정보가져오기 -->
-	<select id = "getDoctorInfo" parameterType="int" resultType="com.team.medical.vo.DoctorVO">
-		select * from doctor where doctorno=#{doctorno,jdbcType=INTEGER}
+	<select id="getDoctorInfo" parameterType="int"
+		resultType="com.team.medical.vo.DoctorVO">
+		select * from doctor where
+		doctorno=#{doctorno,jdbcType=INTEGER}
 	</select>
-		
+
 	<!-- 일반회원 정보 -->
-	<select id = "getcusInfo" parameterType="int" resultType="com.team.medical.vo.GuestVO">
-	   select * from guest where guestno =#{guestno,jdbcType=INTEGER}
+	<select id="getcusInfo" parameterType="int"
+		resultType="com.team.medical.vo.GuestVO">
+		select * from guest where guestno
+		=#{guestno,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 검사의뢰 의사번호 -->
-	<select id = "checkupdoc" resultType="int">
-	   select doctorno from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	<select id="checkupdoc" resultType="int">
+		select doctorno from
+		CheckupList where checkuplist
+		=#{checkuplist,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 검사의뢰 정보 -->
-	<select id = "getCheckupInfo" parameterType="int" resultType="com.team.medical.vo.CheckupListVO">
-	   select * from CheckupList where checkuplist =#{checkuplist,jdbcType=INTEGER}
+	<select id="getCheckupInfo" parameterType="int"
+		resultType="com.team.medical.vo.CheckupListVO">
+		select * from CheckupList where checkuplist
+		=#{checkuplist,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 검사 번호 -->
-	<select id="getCheckupListno"  resultType="int">
-	 	select checkuplist from
-	 	(select checkuplist, rnum from
-	 	(select checkuplist, rownum rnum from checkuplist order by checkuplist desc)
-	 	where rnum = 1)
+	<select id="getCheckupListno" resultType="int">
+		select checkuplist from
+		(select checkuplist, rnum from
+		(select checkuplist, rownum rnum from
+		checkuplist order by checkuplist desc)
+		where rnum = 1)
 	</select>
-	
-	<select id = "getcusnoInfo" resultType="int">
-		select guestno from checkuplist where checkuplist =#{checkuplist,jdbcType=INTEGER}
+
+	<!-- 회원 번호로 검색 -->
+	<select id="getcusnoInfo" resultType="int">
+		select guestno from
+		checkuplist where checkuplist =#{checkuplist,jdbcType=INTEGER}
 	</select>
-	
-	<insert id = "checkupAdd" parameterType="com.team.medical.vo.CheckupVO">
-		insert into Checkup (checkup, guestNo, checkuplist)
-		values(checkupseq.nextval, #{guestNo,jdbcType=INTEGER}, #{checkuplist,jdbcType=INTEGER} )
+
+	<!-- 건강검진 등록처리 -->
+	<insert id="checkupAdd" parameterType="com.team.medical.vo.CheckupVO">
+		insert into Checkup
+		(checkup, guestNo, checkuplist)
+		values(checkupseq.nextval,
+		#{guestNo,jdbcType=INTEGER}, #{checkuplist,jdbcType=INTEGER} )
 	</insert>
-	
+
+	<!-- 건강검진 글 갯수 -->
 	<select id="getCheckupResultListCnt" resultType="int">
-		select count(checkup) from checkup
+		select
+		count(checkup) from checkup
 	</select>
-	
-	<select id="getCheckupResultList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupVO">
+
+	<!-- 건강검진 글 갯수 -->
+	<select id="getCheckupResultList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.CheckupVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
@@ -152,43 +203,51 @@
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
-	<select id = "getCheckupResultInfo" parameterType="int" resultType="com.team.medical.vo.CheckupVO">
-	   select * from Checkup where checkup =#{checkup,jdbcType=INTEGER}
+
+	<!-- 건강검진 정보 가져오기 -->
+	<select id="getCheckupResultInfo" parameterType="int"
+		resultType="com.team.medical.vo.CheckupVO">
+		select * from Checkup where checkup
+		=#{checkup,jdbcType=INTEGER}
 	</select>
-	
-	<select id = "getGuestCheckupResult" resultType="int">
-	   select guestno from Checkup where checkup =#{checkup,jdbcType=INTEGER}
+
+	<!-- 건강검진 환자 번호 -->
+	<select id="getGuestCheckupResult" resultType="int">
+		select guestno
+		from Checkup where checkup =#{checkup,jdbcType=INTEGER}
 	</select>
-	
-	<!-- 삭제예정 -->
-	<select id = "getCheckupGuestno" resultType="int">
-	   select * from checkup where guestno =#{guestno,jdbcType=INTEGER}
+
+	<!-- 건강검진 의사번호 -->
+	<select id="getDoctonoCheckupResult" resultType="int">
+		select doctorno
+		from CheckupList where guestno =#{guestno,jdbcType=INTEGER}
 	</select>
-	
-	
-	
-	<!--  -->
-	<select id = "getDoctonoCheckupResult" resultType="int">
-	   select doctorno from CheckupList where guestno =#{guestno,jdbcType=INTEGER}
+
+	<!-- 의사번호로 병원번호 가져오기 -->
+	<select id="getHospitalnoDocno" resultType="int">
+		select hospitalno
+		from hospital where doctorno =#{doctorno,jdbcType=VARCHAR}
 	</select>
-	
-	<select id = "getHospitalnoDocno" resultType="int">
-	   select hospitalno from hospital where doctorno =#{doctorno,jdbcType=VARCHAR}
-	</select>
-	
-	<insert id = "examinationAdd" parameterType="com.team.medical.vo.PrescriptionVO">
-		insert into prescription(prescriptionNo, hospitalno, guestno, symptom, drugname, drugdosage, drugrepeat, dosagedate, dosageusage, injectionname, injectiondosage, injectionrepeat, injectiondate, caution, prescriptionDate)
+
+	<!-- 처방전 등록처리 -->
+	<insert id="examinationAdd" parameterType="com.team.medical.vo.PrescriptionVO">
+		insert into
+		prescription(prescriptionNo, hospitalno, guestno, symptom, drugname,
+		drugdosage, drugrepeat, dosagedate, dosageusage, injectionname,
+		injectiondosage, injectionrepeat, injectiondate, caution,
+		prescriptionDate)
 		values(prescriptionNo_seq.nextval,#{hospitalno},#{guestno},#{symptom,jdbcType=VARCHAR},#{drugname},#{drugdosage,jdbcType=VARCHAR},#{drugrepeat,jdbcType=VARCHAR},#{dosagedate},#{dosageusage,jdbcType=VARCHAR},#{injectionname,jdbcType=VARCHAR},#{injectiondosage,jdbcType=VARCHAR},#{injectionrepeat,jdbcType=VARCHAR},#{injectiondate,jdbcType=VARCHAR},#{caution,jdbcType=VARCHAR},#{prescriptionDate})
 	</insert>
-	
+
 	<!-- 처방전 글 갯수 -->
 	<select id="examinationListCnt" resultType="int">
-		select count(prescriptionNo) from Prescription
+		select
+		count(prescriptionNo) from Prescription
 	</select>
-	
+
 	<!-- 처방전 목록 -->
-	<select id="getExaminationList" parameterType="java.util.Map" resultType="com.team.medical.vo.PrescriptionVO">
+	<select id="getExaminationList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.PrescriptionVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
@@ -202,26 +261,34 @@
 			 WHERE rnum >= #{start,jdbcType=INTEGER} AND rnum <= #{end,jdbcType=INTEGER}
 		]]>
 	</select>
-	
-	<select id = "getPrescriptionNoGuestno" resultType="int">
-	   select guestno from Prescription where prescriptionNo =#{prescriptionNo,jdbcType=INTEGER}
+
+	<!-- 처방전 번호로 회원번호 가져오기 -->
+	<select id="getPrescriptionNoGuestno" resultType="int">
+		select guestno
+		from Prescription where prescriptionNo
+		=#{prescriptionNo,jdbcType=INTEGER}
 	</select>
-	
-	<select id = "getPrescription" parameterType="int" resultType="com.team.medical.vo.PrescriptionVO">
-		select * from Prescription where prescriptionNo=#{prescriptionNo,jdbcType=INTEGER}
+
+	<!-- 처방전 정보 -->
+	<select id="getPrescription" parameterType="int"
+		resultType="com.team.medical.vo.PrescriptionVO">
+		select * from Prescription where
+		prescriptionNo=#{prescriptionNo,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 예약 글 갯수 -->
 	<select id="getPatientListCnt" resultType="int">
-		select count(reservationNo) from Reservation
+		select
+		count(reservationNo) from Reservation
 	</select>
-	
+
 	<!-- 예약 글 목록 -->
-	<select id="getpatientList" parameterType="java.util.Map" resultType="com.team.medical.vo.ReservationVO">
+	<select id="getpatientList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.ReservationVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
-			  		SELECT hospitalno, doctorNo, reservationNo, guestNo, reservationTime, reservationKind, hospitalkind, clock, minute, symptom, symptomchk, rownum rnum
+			  		SELECT hospitalno, doctorNo, reservationNo, guestNo, reservationTime, reservationKind, hospitalkind, clock, minute, symptom, symptomchk, reservationappro, rownum rnum
 			   	   	  FROM(
 			   	   	  		SELECT * 
 			   	   	  		  FROM Reservation 
@@ -231,31 +298,46 @@
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
+
 	<!-- 예약병원정보 -->
-	<select id = "getHospitalNoInfo" parameterType="int" resultType="com.team.medical.vo.HospitalVO">
-	   select * from hospital where hospitalno =#{hospitalno,jdbcType=INTEGER}
+	<select id="getHospitalNoInfo" parameterType="int"
+		resultType="com.team.medical.vo.HospitalVO">
+		select * from hospital where hospitalno
+		=#{hospitalno,jdbcType=INTEGER}
 	</select>
-	
-	<select id = "reservationNoguestno" resultType="int">
-	   select guestno from reservation where reservationNo =#{reservationNo,jdbcType=INTEGER}
+
+	<!-- 예약번호로 환자번호 가져오기 -->
+	<select id="reservationNoguestno" resultType="int">
+		select guestno from
+		reservation where reservationNo
+		=#{reservationNo,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 예약정보 -->
-	<select id = "reservationInfo" parameterType="int" resultType="com.team.medical.vo.ReservationVO">
-	   select * from Reservation where reservationNo =#{reservationNo,jdbcType=INTEGER}
+	<select id="reservationInfo" parameterType="int"
+		resultType="com.team.medical.vo.ReservationVO">
+		select * from Reservation where reservationNo
+		=#{reservationNo,jdbcType=INTEGER}
 	</select>
-	<select id = "doctornoGuestno" resultType="int">
-	   select doctorno from CheckupList where CheckupList =#{CheckupList,jdbcType=INTEGER}
+
+	<!-- 게스트 번호로 의사번호 가져오기 -->
+	<select id="doctornoGuestno" resultType="int">
+		select doctorno from
+		CheckupList where CheckupList
+		=#{CheckupList,jdbcType=INTEGER}
 	</select>
-	
-	<select id = "getCheckupListGuestno" resultType="int">
-	   select CheckupList from CheckupList where guestno =#{guestno,jdbcType=INTEGER}
+
+	<!-- 게스트 번호로 건강검진 가져오기 -->
+	<select id="getCheckupListGuestno" resultType="int">
+		select CheckupList
+		from CheckupList where guestno
+		=#{guestno,jdbcType=INTEGER}
 	</select>
-	
-	<update id = "checkupUpdate" parameterType="com.team.medical.vo.CheckupVO">
-		update Checkup 
-		<set> 
+
+	<!-- 검사 결과 수정 -->
+	<update id="checkupUpdate" parameterType="com.team.medical.vo.CheckupVO">
+		update Checkup
+		<set>
 			<if test="height!=null">height = #{height},</if>
 			<if test="weight!=null">weight = #{weight},</if>
 			<if test="fatness!=null">fatness = #{fatness},</if>
@@ -278,26 +360,33 @@
 			<if test="hepatitisscr!=null">hepatitisscr = #{hepatitisscr},</if>
 			<if test="breastradiography!=null">breastradiography = #{breastradiography},</if>
 			<if test="ecg!=null">ecg = #{ecg}</if>
-			
+
 		</set>
 		where checkup = #{checkup}
 	</update>
-	
-	<select id = "getCheckupCheckupList" parameterType="int" resultType="int">
-	   select checkup from checkup where checkuplist =#{checkuplist,jdbcType=INTEGER}
+
+	<!-- 검진 번호 -->
+	<select id="getCheckupCheckupList" parameterType="int"
+		resultType="int">
+		select checkup from checkup where checkuplist
+		=#{checkuplist,jdbcType=INTEGER}
 	</select>
-	
-	<select id = "getCheckupListCheckup" parameterType="int" resultType="int">
-	   select checkuplist from checkup where checkup =#{checkup,jdbcType=INTEGER}
+
+	<select id="getCheckupListCheckup" parameterType="int"
+		resultType="int">
+		select checkuplist from checkup where checkup
+		=#{checkup,jdbcType=INTEGER}
 	</select>
-	
+
 	<!-- 포인트 글 갯수 -->
 	<select id="getPointManageCnt" resultType="int">
-		select count(pointno) from point
+		select count(pointno)
+		from point
 	</select>
-	
+
 	<!-- 포인트 글 목록 -->
-	<select id="getPointManageList" parameterType="java.util.Map" resultType="com.team.medical.vo.PointVO">
+	<select id="getPointManageList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.PointVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
@@ -311,50 +400,65 @@
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
 
+	<!-- 건강검진결과 -->
 	<select id="checkupresult" resultType="com.team.medical.vo.CheckupresultVO">
-      select * from checkupresult
-   </select>
-   
-   <select id="getReboardCnt" resultType="int">
-		select count(boardno) from QuestionBoard where boardwriter=#{id,jdbcType=VARCHAR}
+		select * from
+		checkupresult
 	</select>
-	
+
+	<!-- 댓글 갯수 -->
+	<select id="getReboardCnt" resultType="int">
+		select max(rnum) from (
+		select ref, rownum rnum from (
+
+		select ref from QuestionBoard where
+		boardwriter = #{id,jdbcType=VARCHAR}
+		group by ref ))
+	</select>
+
 	<!-- 댓글 목록 -->
-	<select id="getReboardList" parameterType="java.util.Map" resultType="com.team.medical.vo.QuestionBoardVO">
-		
-		
-			SELECT * 
-			  FROM(
-			  		SELECT boardno, boardtitle, boardcontent, boardwriter, ref, boardpwd, boarddate, notify, notifycnt, notifyreason, rownum rnum
-			   	   	  FROM(
-			   	   	  		SELECT * 
-			   	   	  		  FROM QuestionBoard 
-			   	   	  		  <where>
-			   	   	  		  boardno IN
-			   	   	  		  	<foreach collection="ref" item="item" close=")" open="(" separator=",">
-			   	   	  		   	#{item}
-			   	   	  		   </foreach>
-			   	   	  		  </where>
-			   	   	  		  ORDER BY boardno DESC
-			   	   	  	  )
-					)   
+	<select id="getReboardList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.QuestionBoardVO">
+
+
+		SELECT *
+		FROM(
+		SELECT boardno, boardtitle, boardcontent, boardwriter,
+		ref, boardpwd,
+		boarddate, notify, notifycnt, notifyreason, rownum rnum
+		FROM(
+		SELECT *
+		FROM QuestionBoard
+		<where>
+			boardno IN
+			<foreach collection="ref" item="item" close=")" open="("
+				separator=",">
+				#{item}
+			</foreach>
+		</where>
+		ORDER BY boardno DESC
+		)
+		)   
 					<![CDATA[
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
-	<!-- ref가져오기 -->
-	<select id = "getRef" parameterType="String" resultType="com.team.medical.vo.QuestionBoardVO">
-		select ref from QuestionBoard where boardwriter=#{id,jdbcType=VARCHAR} group by ref
+
+	<!-- 아이디로 ref가져오기 -->
+	<select id="getRef" parameterType="String"
+		resultType="com.team.medical.vo.QuestionBoardVO">
+		select ref from QuestionBoard where
+		boardwriter=#{id,jdbcType=VARCHAR} group by ref
 	</select>
 	<!-- 내 병원 예약글 갯수 -->
 	<select id="getMyHospitalReservationListCnt" resultType="int">
-		select count(reservationNo) from Reservation where hospitalno=#{hospitalno}
+		select
+		count(reservationNo) from Reservation where hospitalno=#{hospitalno}
 	</select>
-	
-	<select id="getMyHospitalReservationListList" parameterType="java.util.Map" resultType="com.team.medical.vo.ReservationVO">
+
+	<select id="getMyHospitalReservationListList" parameterType="java.util.Map"
+		resultType="com.team.medical.vo.ReservationVO">
 		<![CDATA[
 			SELECT * 
 			  FROM(
@@ -369,9 +473,12 @@
 			 WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	
-	
-	
-	
-	
+
+	<!-- 예약 확인여부 -->
+	<update id="reservationAppro" parameterType="com.team.medical.vo.ReservationVO">
+		update Reservation set Reservationappro = 2 where reservationNo =#{reservationNo}
+	</update>
+
+
+
 </mapper>

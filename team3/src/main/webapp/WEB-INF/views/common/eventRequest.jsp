@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <html lang="en">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="/medical/resources/djcss/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title> 사이트 이름 </title>
 <body onload="dateC();">
@@ -37,14 +39,15 @@
 					        </div>
 					      </div>
 					      
-					      <div class="form-group">
+					      <div class="form-group" style="font-size: 20px;">
 					        <label class="col-md-3 control-label">이벤트 기간 </label>
 					        <div class="col-md-7 inputGroupContainer">
 					          <div class="input-group"> <span class="input-group-addon" style="width:40px;"><i class="glyphicon glyphicon-pencil"></i></span>
 					             <input id="date1" name="date1" class="form-control" type="date" onchange="date();" style="font-size: 20px;" required>
 					             <input id="date2" name="date2" class="form-control" type="date" style="font-size: 20px;" readonly="readonly">					           
 					          </div>		
-					             <input type="radio" name="point" value="1000" checked="checked">7일
+					          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+					            <input type="radio" name="point" value="1000" checked="checked">7일
 					          	<input type="radio" name="point" value="2000" >15일
 					          	<input type="radio" name="point" value="3500">30일		          
 					          <script type="text/javascript">

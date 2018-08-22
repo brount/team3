@@ -168,10 +168,11 @@ public class DoctorContoller {
 	// 검사의뢰
 	@RequestMapping(value = "checkupRequest")
 	public String checkupRequest(HttpServletRequest req, Model model) {
-
+		logger.info("checkupRequest, 페이지");
 		docService.patientInfo(req, model);
 		docService.docnoInfo(req, model);
-		logger.info("checkupRequest, 페이지");
+	
+		
 
 		return "doctor/checkupRequest";
 	}
@@ -215,10 +216,8 @@ public class DoctorContoller {
 	@RequestMapping(value = "checkupAdd")
 	public String checkupAdd(HttpServletRequest req, Model model) {
 		logger.info("checkupAdd, 페이지");
-		// int doctorno = Integer.parseInt(req.getParameter("doctorno"));
 		int checkuplist = Integer.parseInt(req.getParameter("checkuplist"));
 		model.addAttribute("checkuplist", checkuplist);
-		// model.addAttribute("doctorno", doctorno);
 
 		docService.getCheckupInfo(req, model);
 
@@ -240,12 +239,6 @@ public class DoctorContoller {
 	public String checkupResultList(HttpServletRequest req, Model model) {
 		logger.info("checkupResultList, 페이지");
 
-		// ********
-		/*
-		 * int doctorno = Integer.parseInt(req.getParameter("doctorno"));
-		 * model.addAttribute("doctorno", doctorno); logger.info("doctorno :" +
-		 * doctorno);
-		 */
 		docService.checkupResultList(req, model);
 		return "doctor/checkupResultList";
 	}

@@ -18,8 +18,15 @@ public class ReservationVO {
 	private String minute; // 예약 시간 -분
 	private String symptom; //증상 텍스트
 	private String symptomchk; //증상체크
+	private int reservationappro; // 예약 확인 여부
 	
 	
+	public int getReservationappro() {
+		return reservationappro;
+	}
+	public void setReservationappro(int reservationappro) {
+		this.reservationappro = reservationappro;
+	}
 	public int getReservationNo() {
 		return reservationNo;
 	}

@@ -27,16 +27,17 @@
 			<input type="hidden" name="number" value="${number}">
 			<input type="hidden" name="pageNum" value="${pageNum}">
 			<fieldset style="width: 800px; margin: 0 auto;">
+			<div class="well">
 				<legend>글 작성</legend>
-				<table class="table table-striped table-hover" border="1" align="center" id="board">
+				<table class="responstable" align="center" id="board">
 					<tr>
-						<th style="text-align: center; width: 20%">작성자</th>
-						<td>${sessionScope.id}</td>
+						<th style="width: 20%;">작성자</th>
+						<td style="text-align: left;"">${sessionScope.id}</td>
 					</tr>
 
 					<tr>
-						<th style="text-align: center;">비밀번호</th>
-						<td><input class="input" type="password" name="boardpwd" maxlength="10" required></td>
+						<th >비밀번호</th>
+						<td style="text-align: left;" ><input class="input" type="password" name="boardpwd" maxlength="10" required></td>
 					</tr>
 
 					<tr>
@@ -49,17 +50,13 @@
 						<td><textarea class="input" name="boardcontent" style="resize: none; width: 100%" rows="10" required></textarea></td>
 					</tr>
 
-
-					<tr>
-						<th colspan="2" style="text-align: center;">
+				</table>
+						<center>
 							<input class="btn btn-dark-blue" type="submit" value="작성">
 							<input class="btn btn-dark-blue" type="reset" value="취소">
 							<input class="btn btn-dark-blue" type="button" value="목록" onclick="window.location='reportBoardList?pageNum=${pageNum}'">
-						</th>
-					</tr>
-
-				</table>
-
+							</center>
+				</div>
 			</fieldset>
 		</form>
 	</section>

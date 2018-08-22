@@ -22,7 +22,7 @@
 			  		 	<div class="container">
 					      <div class="row text-center text-lg-left">
 				           	<div>
-				           		<table class='table'>
+				           		<table class="responstable">
 				           			<tr>
 				           				<th style="text-align: center;">
 				           					${dto.advertisementTitle}

@@ -213,27 +213,28 @@
 						<div class="col-sm-9 col-md-9">
 							<div class="well">
 								<div>
-									<div class="panel panel-primary">
+									
+
 										<div class="panel-heading">
 											<h3>처방전 입력</h3>
 										</div>
-										<table class="table" border="1">
+										<table class="responstable" border="1">
 											<tr>
-												<th rowspan="3"><br>환<br>자</th>
-												<th>이름</th>
+												<th rowspan="3" style="width: 5%;"><br>환<br>자</th>
+												<td>환자명</td>
 												<td>${gusDto.guestname}</td>
 											</tr>
 											<tr>
-												<th>주민번호</th>
+												<td>주민번호</td>
 												<td>${gusDto.jumin}</td>
 											</tr>
 											<tr>
-												<th>연락처</th>
+												<td>연락처</td>
 												<td>${gusDto.guesttel}</td>
 											</tr>
 
 										</table>
-										<table class="table table-striped table-hover" border="1">
+										<table class="responstable" border="1">
 											<tr>
 												<th>증상</th>
 											</tr>
@@ -242,7 +243,7 @@
 														maxlength="100" style="resize: none; width: 100%"></textarea></td>
 											</tr>
 										</table>
-										<table class="table table-striped table-hover" border="1"
+										<table class="responstable" border="1"
 											id="xxx">
 											<thead>
 												<tr>
@@ -259,15 +260,15 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td><input type="text" style="width: 100%"
+													<td><input type="text" style="width: 85px"
 														name="drugname1"></td>
-													<td><input type="text" style="width: 100%"
+													<td><input type="text" style="width: 85px"
 														name="drugdosage1"></td>
-													<td><input type="text" style="width: 100%" min="0"
+													<td><input type="text" style="width: 85px" min="0"
 														max="99" name="drugrepeat1">번</td>
-													<td><input type="text" style="width: 100%" min="0"
+													<td><input type="text" style="width: 85px" min="0"
 														max="99" name="dosagedate1">일</td>
-													<td><input type="text" style="width: 100%"
+													<td><input type="text" style="width: 85px"
 														name="dosageusage1"></td>
 												</tr>
 												<!-- var lastTrObj = tableObj.find("tbody:eq(0)").find("tr:eq(0)")
@@ -275,7 +276,9 @@
 										</table>
 										<input type="button" class="btn btn-dark-blue" value="행추가" onclick="addTr( 'xxx' );">
 										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr( 'xxx' );">
-										<table class="table table-striped table-hover" border="1" id="yyy">
+											<br><br>
+											
+										<table class="responstable" border="1" id="yyy">
 											<tr>
 												<th colspan="4" align="center">주사제 처방내역</th>
 												<th>조 제 시 참 고 사 항</th>
@@ -295,13 +298,13 @@
 												</td>
 											</tr>
 											<tr>
-												<td><input type="text" style="width: 100%"
+												<td><input type="text" style="width: 85px"
 													name="injectionname1"></td>
-												<td><input type="text" style="width: 100%"
+												<td><input type="text" style="width: 85px"
 													name="injectiondosage1"></td>
-												<td><input type="text" style="width: 100%" min="0"
+												<td><input type="text" style="width: 85px" min="0"
 													max="99" name="injectionrepeat1">번</td>
-												<td><input type="text" style="width: 100%" min="0"
+												<td><input type="text" style="width: 85px" min="0"
 													max="99" name="injectiondate1">일</td>
 											</tr>
 											</tbody>
@@ -311,6 +314,8 @@
 										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr2( 'yyy' );">
 
 									</div>
+									
+										<br><br>
 									<div style="display: table; margin: 0 auto;">
 										<input type="submit" value="처방등록" style="margin-right: 5px;" class="btn btn-dark-blue">
 										<input type="reset" value="작성취소" class="btn btn-dark-blue">
@@ -321,7 +326,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				
 			</form>
 	</section>
 

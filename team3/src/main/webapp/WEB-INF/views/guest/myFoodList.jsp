@@ -51,7 +51,7 @@ function modi(foodno) {
 								<aside class="lg-side">
 									<div class="inbox-head">
 										<h3>
-											나만의 음식 목록(${cnt}) <input type="button"
+											나만의 음식 목록 <input type="button"
 												class="btn btn-dark-blue" value="추가"
 												onclick="window.location='myFoodAdd'">
 										</h3>
@@ -63,8 +63,7 @@ function modi(foodno) {
 										<div class="mail-option">
 
 
-											<table class="responstable"
-												style="font-size: 25px;">
+											<table class="responstable">
 
 												<tbody>
 													<tr class="unread">
@@ -74,7 +73,7 @@ function modi(foodno) {
 														<th>칼로리</th>
 														<th>gram</th>
 
-														<th></th>
+														<th style="width: 20%;"></th>
 
 
 
@@ -89,19 +88,18 @@ function modi(foodno) {
 																<td colspan="3" class="view-message">${dto.food }</td>
 														
 															
-																<td style="padding: 16px;"><span class="label label-success">
+																<td ><span class="label label-success">
 
 																		${dto.foodcal } Kcal </span></td>
 														
-																<td style="padding: 16px;"><span class="label label-success">
+																<td ><span class="label label-success">
 
 																		${dto.foodgram}g </span></td>
 
 
-																<td><input type="button" class="btn btn-dark-blue"
-																	value="수정" onclick="modi(${dto.foodno })"> <input
-																	type="button" class="btn btn-dark-blue" value="삭제"
-																	onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
+																<td>
+																<input type="button" class="btn btn-dark-blue"value="수정" onclick="modi(${dto.foodno })"> 
+																<input type="button" class="btn btn-dark-blue" value="삭제"onclick="window.location='myFoodDelete?foodno=${dto.foodno }'">
 
 
 																</td>
@@ -126,35 +124,27 @@ function modi(foodno) {
 										</div>
 									</div>
 								</aside>
-
-								<!-- 페이지 컨트롤 -->
-								<table style="width: 100%; text-align: center;">
-									<tr>
-										<th align="center"><c:if test="${cnt>0 }">
-												<!-- 처음[◀◀] / 이전[◀]  -->
-												<c:if test="${startPage > pageBlock }">
-													<a href="myFoodList" style="font-size: 15px;">[◀◀]</a>
-													<a href="myFoodList?pageNum=${startPage - pageBlock }" style="font-size: 15px;">[◀]</a>
-												</c:if>
-
-												<c:forEach var="i" begin="${startPage }" end="${endPage }">
-													<c:if test="${i == currentPage }">
-														<span><b style="font-size: 20px;">[${i}]</b></span>
-													</c:if>
-													<c:if test="${i != currentPage}">
-														<a href="myFoodList?pageNum=${i }" style="font-size: 15px;">[${i}]</a>
-													</c:if>
-												</c:forEach>
-
-												<!-- 다음[▶] / 끝[▶▶]  -->
-												<c:if test="${pageCount > endPage }">
-													<a href="myFoodList?pageNum=${startPage + pageBlock }" style="font-size: 15px;">[▶]</a>
-													<a href="myFoodList?pageNum=${pageCount}" style="font-size: 15px;">[▶▶] </a>
-												</c:if>
-											</c:if>
-										</th>
-									</tr>
-								</table>
+								<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                        <c:if test="${cnt>0}">
+                           <!-- 이전블록 -->
+                           <c:if test="${startPage > pageBlock }">
+                              <a href="myFoodList?pageNum=${startPage-pageBlock}"><</a>
+                           </c:if>
+                           <!-- 페이지 블록 -->
+                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                              <c:if test="${i == currentPage }">
+                                 <strong>${i }</strong>
+                              </c:if>
+                              <c:if test="${i != currentPage }">
+                                 <a href="myFoodList?pageNum=${i}">${i }</a>
+                              </c:if>
+                           </c:forEach>
+                           <!-- 다음블록 -->
+                           <c:if test="${pageCnt > endPage }">
+                              <a href="myFoodList?pageNum=${startPage+pageBlock}">></a>
+                           </c:if>
+                        </c:if>
+                     </div>
 
 							</div>
 

@@ -25,7 +25,7 @@
 	
 	
 	
-	      <h1>나의 건강정보</h1>
+	      <h3>나의 건강정보</h3>
 	      <c:if test="${selectcnt==0}">
 	        <div style="display:table; margin:0 auto;">
 				<div>
