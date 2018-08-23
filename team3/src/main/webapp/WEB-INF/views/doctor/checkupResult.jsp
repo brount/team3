@@ -23,7 +23,7 @@
             <%@ include file="../common/menuCheckup.jsp"%>
          </div>
          <div class="col-sm-9 col-md-9">
-            <div class="well">
+            <div class="well" style="padding: 0px;">
                <div>
                   <div class="panel panel-primary">
                      <div class="panel-heading">
