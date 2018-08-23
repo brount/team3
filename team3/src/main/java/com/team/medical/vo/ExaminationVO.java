@@ -37,8 +37,6 @@ public class ExaminationVO {
 	public void setCOL(int cOL) {
 		COL = cOL;
 	}
-	
-	
 	public int getGuestNo() {
 		return guestNo;
 	}

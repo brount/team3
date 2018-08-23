@@ -20,7 +20,6 @@ public class ReservationVO {
 	private String symptomchk; 		// 증상체크
 	private int reservationappro; 	// 예약 확인 여부
 	
-	
 	public int getReservationappro() {
 		return reservationappro;
 	}

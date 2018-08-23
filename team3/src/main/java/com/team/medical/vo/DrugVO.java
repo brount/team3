@@ -13,9 +13,7 @@ public class DrugVO {
 	private Date admitDate; 			// 허가일자
 	private String temperState; 		// 성상
 	private String shape; 				// 약 제형
-
 	private String drugImage; 			// 낱알 이미지
-
 	private String signF; 				// 표시(앞)
 	private String signB; 				// 표시(뒤)
 	private String drugForm; 			// 약 모양

@@ -3,11 +3,12 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class HealthcareVO {
-	private String careno;
-	private String guestid ;
-	private String caretitle ;
-	private String careval ;
-	private String reg_date ;
+	private String careno;		// 번호
+	private String guestid;		// 일반회원Id
+	private String caretitle;	// 항목이름
+	private String careval;		// 항목수치
+	private String reg_date;	// 등록일
+	
 	public String getCareno() {
 		return careno;
 	}

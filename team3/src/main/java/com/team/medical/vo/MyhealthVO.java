@@ -4,19 +4,17 @@ import java.sql.Date;
 
 public class MyhealthVO {
 
-	private int    guestNo;
-	private int    calorieno;
-	private int    birth1; //생년(1994)
-	private int    birth2; //월(01)
-	private int    birth3; //일(13)
-	private int    age; //나이 
-	private String height;
-	private String weight;
-	private String bloodtype; //혈액형
-	private String bmi;
-	private int gender; // 성별 - 1: 여자, 2: 남자
-
-	
+	private int guestNo;		// 일반회원번호
+	private int calorieno;		// 칼로리번호
+	private int birth1; 		// 생년
+	private int birth2; 		// 월
+	private int birth3; 		// 일
+	private int age; 			// 나이 
+	private String height;		// 신장
+	private String weight;		// 체중
+	private String bloodtype; 	// 혈액형
+	private String bmi;			// BMI 지수
+	private int gender; 		// 성별 - 1: 여자, 2: 남자
 	
 	public int getGuestNo() {
 		return guestNo;

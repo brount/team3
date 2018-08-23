@@ -3,18 +3,19 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class FoodVO {
-	private String foodkind;
-	private String foodname;
-	private String gram;
-	private String kcal;
-	private String carbohydrate;
-	private String protein;
-	private String fat;
-	private String sugars;
-	private String salt;
-	private String cholesterol;
-	private String sfa;
-	private String tfa;
+	private String foodkind;		// 식품군
+	private String foodname;		// 음식명
+	private String gram;			// 일회섭취량
+	private String kcal;			// 칼로리
+	private String carbohydrate;	// 탄수화물
+	private String protein;			// 단백질
+	private String fat;				// 지방
+	private String sugars;			// 당류
+	private String salt;			// 나트륨
+	private String cholesterol;		// 콜레스테롤
+	private String sfa;				// 포화지방산
+	private String tfa;				// 트랜스지방산
+	
 	public String getFoodkind() {
 		return foodkind;
 	}

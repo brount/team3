@@ -604,7 +604,7 @@ public class CommonServiceImpl implements CommonService {
 		model.addAttribute("dto", dto);
 		model.addAttribute("advertisementNo", advertisementNo);
 	}
-
+	// 질병 목록
 	@Override
 	public void diseaseList(HttpServletRequest req, Model model) {
 		

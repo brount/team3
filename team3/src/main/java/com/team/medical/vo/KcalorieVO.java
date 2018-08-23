@@ -3,10 +3,11 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class KcalorieVO {
-	private int guestno	;
-	private String foodname;
-	private String kcal;
-	private Date day;
+	
+	private int guestno;		// 일반회원번호
+	private String foodname;	// 음식명
+	private String kcal;		// 칼로리
+	private Date day;			// 등록일
 	
 	public int getGuestno() {
 		return guestno;
