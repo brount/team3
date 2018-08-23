@@ -65,15 +65,19 @@ function inputCheck() {
 		alert(msg_email);
 		document.inputform.email2.focus();
 		return false;
-	} else if (!document.inputform.addcode.value) {
+	} else if (!document.inputform.address1.value) {
 		alert(msg_address);
-		document.inputform.addcode.focus();
+		document.inputform.address1.focus();
 		return false;
 
-		// 중복확인 버튼을 클릭하지 않은경우
-		// 체크전제조건 : inputform.jsp의 form안 맨위에 <input type="hidden"
-		// name="hiddenId" value="0">
-		// hiddenId : 아이디 중복확인여부 체크(0이면 중복확인 클릭x, 1이면 클릭함
+	} else if (!document.inputform.address2.value) {
+		alert(msg_address);
+		document.inputform.address2.focus();
+		return false;
+	} else if (!document.inputform.address3.value) {
+		alert(msg_address);
+		document.inputform.address3.focus();
+		return false;
 
 	} else if (document.inputform.hiddenEmail.value == 0) {
 		alert("이메일 인증이 필요합니다~!");
@@ -188,17 +192,17 @@ function confirmId() {
 																// 주기위해 자바스크립트에서
 																// 썼다.
 
-	window.open(url, "confirm", "menubar=no,width=300,height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
+	window.open(url, "confirm", "menubar=no,width=500,height=200,top="+(screen.availHeight/2-100)+",left="+(screen.availWidth/2-100)+"");
 }
 // 중복확인 클릭 시 id로 포커스
 function comfirmIdFocus() {
 	document.confirmForm.id.focus();
 }
-// 중복확인 창에서 id입력여부
+//중복확인 창에서 id입력여부
 function confirmCheck() {
-	if (!document.inputform.id.value) {
+	if (!document.confirmForm.id.value) {
 		alert(msg_id);
-		document.inputform.id.focus();
+		document.confirmForm.id.focus();
 		return false;
 	}
 }

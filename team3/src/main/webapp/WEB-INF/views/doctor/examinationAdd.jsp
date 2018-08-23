@@ -200,7 +200,7 @@
 	<section>
 		<input type="hidden" value="${checkup}" name="checkup"> <input
 			type="hidden" value="${doctorno}" name="doctorno">
-		<center>
+	
 
 			<form
 				action="examinationInputPro?checkup=${checkup}&doctorno=${docDto.doctorno}"
@@ -213,20 +213,21 @@
 						<div class="col-sm-9 col-md-9">
 							<div class="well">
 								<div>
-									
-
+									<div class="panel panel-primary">
+								
 										<div class="panel-heading">
+									
 											<h3>처방전 입력</h3>
 										</div>
 										<table class="responstable" border="1">
 											<tr>
-												<th rowspan="3" style="width: 5%;"><br>환<br>자</th>
+												<th rowspan="3" style="width: 5%;">환자</th>
 												<td>환자명</td>
 												<td>${gusDto.guestname}</td>
 											</tr>
 											<tr>
 												<td>주민번호</td>
-												<td>${gusDto.jumin}</td>
+												<td>${jumin}-*******</td>
 											</tr>
 											<tr>
 												<td>연락처</td>
@@ -274,8 +275,10 @@
 												<!-- var lastTrObj = tableObj.find("tbody:eq(0)").find("tr:eq(0)")
 														.parent().children().last(); -->
 										</table>
+										<center>
 										<input type="button" class="btn btn-dark-blue" value="행추가" onclick="addTr( 'xxx' );">
 										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr( 'xxx' );">
+										</center>
 											<br><br>
 											
 										<table class="responstable" border="1" id="yyy">
@@ -309,10 +312,11 @@
 											</tr>
 											</tbody>
 										</table>
+										<center>
 										<input type="button" class="btn btn-dark-blue" value="행추가" onclick="addTr2( 'yyy' );">
 
 										<input type="button" class="btn btn-dark-blue" value="행삭제" onclick="delLastTr2( 'yyy' );">
-
+										</center>
 									</div>
 									
 										<br><br>
@@ -326,7 +330,7 @@
 							</div>
 						</div>
 					</div>
-				
+				</div>
 			</form>
 	</section>
 

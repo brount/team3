@@ -11,7 +11,7 @@ public class DiseaseVO {
 	private String diseaseCure;				// 치료법
 	private String complications;			// 경과/합병증
 	private String prevention;				// 예방법
-	private String diseasehospitalkind;
+	private String diseasehospitalkind;		// 병원종류
 
 	public int getDiseaseCode() {
 		return diseaseCode;

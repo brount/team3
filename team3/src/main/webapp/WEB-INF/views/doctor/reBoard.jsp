@@ -30,20 +30,20 @@
 							<aside class="lg-side">
 								<div class="inbox-head">
 									<h3>내 답변한 글 목록</h3>
-									<small>*답변한 글 제목을 클릭하세요</small>
+									<small>* 답변한 글 제목을 클릭하세요</small>
 								</div>
 								<div class="inbox-body">
 									<div class="mail-option">
 
 
-										<table class="table table-inbox table-hover">
+										<table class="responstable">
 
 											<tbody>
 												<tr class="unread">
-													<td>답변<br>번호
-													</td>
-													<td>내 답변한 글 제목</td>
-													<td class="view-message">작성 날짜</td>
+													<th>답변번호
+													</th>
+													<th>내 답변한 글 제목</th>
+													<th class="view-message">작성 날짜</th>
 												</tr>
 												<c:if test="${cnt>0 }">
 													<c:set value="0" var="a"></c:set>
@@ -55,7 +55,7 @@
 															</td>
 															<td>
 																<a href="boardInfo?num=${dto.boardno}&pageNum=${pageNum}&number=${number+1}"
-															style="font-size: 25px; font-family: 'Nanum Gothic', sans-serif;">
+															style=" font-family: 'Nanum Gothic', sans-serif;">
 														${dto.boardtitle}
 														</a>
 															</td>

@@ -214,129 +214,127 @@
 	</select>
 	
 	<!-- 약 검색 갯수 구하기 -->
-   <select id="getDrugListCnt" resultType="int">
-      SELECT count(*) FROM  
-      <if test="nchk == 0">
-         drug
-      </if>
-      <if test="nchk != 0">
-      (
-         <if test="sign != null">
-                     SELECT * FROM
-                           (
-                  </if>         
-                     <if test="shape != null">
-                        SELECT * FROM
-                              (
-                     </if>         
-                        <if test="shape_etc != null">
-                           SELECT * FROM
-                                 (
-                        </if>         
-                           <if test="drugForm != null">
-                              SELECT * FROM
-                                    (   
-                           </if>
-                              <if test="drugForm_etc != null">
-                                 SELECT * FROM
-                                       (   
-                              </if>         
-                                 <if test="color != null">
-                                    SELECT * FROM
-                                          (   
-                                 </if>         
-                                    <if test="splitlineF != null">
-                                       SELECT * FROM
-                                          (
-                                    </if>
-                                       <if test="splitlineB != null">
-                                          SELECT * FROM
-                                             (
-                                       </if>
-                                          <if test="drugName != null">
-                                             SELECT * FROM
-                                                (
-                                          </if>
-                                                SELECT * FROM drug 
-                                                   <if test="drugCompany != null">
-                                                      WHERE drugCompany LIKE '%'||#{drugCompany}||'%'
-                                                   </if>
-                                          <if test="drugName != null">
-                                             )         
-                                             WHERE drugName LIKE '%'||#{drugName}||'%'
-                                          </if>
-                                       <if test="splitlineB != null">
-                                       )
-                                          WHERE 
-                                          <foreach collection="splitlineB" open="" close="" item="item" separator="OR">
-                                             splitlineB LIKE '%'||#{item}||'%'
-                                          </foreach>
-                                       </if>
-                                    <if test="splitlineF != null">
-                                    )
-                                       WHERE
-                                       <foreach collection="splitlineF" open="" close="" item="item" separator="OR">
-                                          splitlineF LIKE '%'||#{item}||'%'
-                                       </foreach>
-                                    </if>
-                                 <if test="color != null">
-                                 )
-                                    WHERE 
-                                    <foreach collection="color" open="" close="" item="item" separator="OR">
-                                       colorF LIKE '%'||#{item}||'%'
-                                    </foreach>
-                                    OR
-                                    <foreach collection="color" open="" close="" item="item" separator="OR">
-                                       colorB LIKE '%'||#{item}||'%'
-                                    </foreach>
-                                 </if>
-                              <if test="drugForm_etc != null">
-                              )
-                                 WHERE drugForm LIKE #{drugForm_etc}
-                              </if>
-                           <if test="drugForm != null">
-                           )
-                              WHERE 
-                              <foreach collection="drugForm" open="" close="" item="item" separator="OR">
-                                 drugForm LIKE '%'||#{item}||'%'
-                              </foreach>
-                           </if>
-                        <if test="shape_etc != null">
-                        )
-                           WHERE shape LIKE '%'||#{shape_etc}||'%'
-                        </if>
-                     <if test="shape != null">
-                     )
-                        WHERE  
-                        <foreach collection="shape" open="" close="" item="item" separator="OR">
-                           shape LIKE '%'||#{item}||'%'
-                        </foreach>
-                     </if>
-                  <if test="sign != null">
-                  )
-                     <where>
-                        <choose>
-                           <when test="sign_falg == 0">
-                              signF LIKE '%'||#{sign}||'%'
-                              OR
-                              signB LIKE '%'||#{sign}||'%'
-                           </when>
-                           <when test="sign_falg == 1">
-                              signF LIKE #{sign}
-                              OR
-                              signB LIKE #{sign}
-                           </when>
-                           <when test="sign_falg == 2">
-                              signF LIKE #{sign}||'%'
-                              OR
-                              signB LIKE #{sign}||'%'
-                           </when>
-                        </choose>
-                     </where>
-                  </if>
-                  )
-            </if>
-   </select>
+	<select id="getDrugListCnt" resultType="int">
+		SELECT count(*) FROM  
+		<if test="nchk == 0">
+			drug
+		</if>
+		<if test="nchk != 0">
+			<if test="sign != null">
+							SELECT * FROM
+									(
+						</if>			
+							<if test="shape != null">
+								SELECT * FROM
+										(
+							</if>			
+								<if test="shape_etc != null">
+									SELECT * FROM
+											(
+								</if>			
+									<if test="drugForm != null">
+										SELECT * FROM
+												(	
+									</if>
+										<if test="drugForm_etc != null">
+											SELECT * FROM
+													(	
+										</if>			
+											<if test="color != null">
+												SELECT * FROM
+														(	
+											</if>			
+												<if test="splitlineF != null">
+													SELECT * FROM
+														(
+												</if>
+													<if test="splitlineB != null">
+														SELECT * FROM
+															(
+													</if>
+														<if test="drugName != null">
+															SELECT * FROM
+																(
+														</if>
+																SELECT * FROM drug 
+																	<if test="drugCompany != null">
+																		WHERE drugCompany LIKE '%'||#{drugCompany}||'%'
+																	</if>
+														<if test="drugName != null">
+															)			
+															WHERE drugName LIKE '%'||#{drugName}||'%'
+														</if>
+													<if test="splitlineB != null">
+													)
+														WHERE 
+														<foreach collection="splitlineB" open="" close="" item="item" separator="OR">
+															splitlineB LIKE '%'||#{item}||'%'
+														</foreach>
+													</if>
+												<if test="splitlineF != null">
+												)
+													WHERE
+													<foreach collection="splitlineF" open="" close="" item="item" separator="OR">
+														splitlineF LIKE '%'||#{item}||'%'
+													</foreach>
+												</if>
+											<if test="color != null">
+											)
+												WHERE 
+												<foreach collection="color" open="" close="" item="item" separator="OR">
+													colorF LIKE '%'||#{item}||'%'
+												</foreach>
+												OR
+												<foreach collection="color" open="" close="" item="item" separator="OR">
+													colorB LIKE '%'||#{item}||'%'
+												</foreach>
+											</if>
+										<if test="drugForm_etc != null">
+										)
+											WHERE drugForm LIKE #{drugForm_etc}
+										</if>
+									<if test="drugForm != null">
+									)
+										WHERE 
+										<foreach collection="drugForm" open="" close="" item="item" separator="OR">
+											drugForm LIKE '%'||#{item}||'%'
+										</foreach>
+									</if>
+								<if test="shape_etc != null">
+								)
+									WHERE shape LIKE '%'||#{shape_etc}||'%'
+								</if>
+							<if test="shape != null">
+							)
+								WHERE  
+								<foreach collection="shape" open="" close="" item="item" separator="OR">
+									shape LIKE '%'||#{item}||'%'
+								</foreach>
+							</if>
+						<if test="sign != null">
+						)
+							<where>
+								<choose>
+									<when test="sign_falg == 0">
+										signF LIKE '%'||#{sign}||'%'
+										OR
+										signB LIKE '%'||#{sign}||'%'
+									</when>
+									<when test="sign_falg == 1">
+										signF LIKE #{sign}
+										OR
+										signB LIKE #{sign}
+									</when>
+									<when test="sign_falg == 2">
+										signF LIKE #{sign}||'%'
+										OR
+										signB LIKE #{sign}||'%'
+									</when>
+								</choose>
+							</where>
+						</if>
+				</if>
+	</select>
 	
 	<!-- 약 검색 목록 조회 -->
 	<select id="getDrugList" parameterType="java.util.Map" resultType="com.team.medical.vo.DrugVO">
@@ -476,7 +474,7 @@
 	<update id="usePoint" parameterType="map">
 		UPDATE doctor 
 		
-		SET point = point-${point}
+		SET point = point-${point}		
 		
 		WHERE doctorid = #{id} 
 		  AND 
@@ -497,4 +495,35 @@
 			#{status}
 		)
 	</insert>
+	
+	<!-- android Mapper -->
+	
+	<!-- 그뭐야 항목별 수치 가져오기 -->
+	<select id="getAndroidHealthcareInfo" parameterType="java.util.Map" resultType="com.team.medical.vo.HealthcareVO">
+		select *
+		    from (
+		    select careval,caretitle,reg_date, rownum rnum
+		        from (
+		            select * from healthcare 
+		            where guestid = #{id}
+		            AND caretitle like '%'||#{title}||'%' 
+		            order by careno desc)
+		            )
+		 where rnum = 1
+	</select>
+	
+	<!-- 그뭐야 항목별 수치 목록 가져오기 -->
+	<select id="getAndroidHealthcareList" parameterType="java.util.Map" resultType="com.team.medical.vo.HealthcareVO">		
+	    select careval,caretitle,TO_CHAR(reg_date , 'yyyy/mm/dd hh24:mi:ss') reg_date from healthcare 
+	    where guestid = #{id}
+	    AND caretitle like '%'||#{title}||'%' 
+	    order by careno desc		            
+	</select>
+	
+	<!-- 그뭐야 항목별 수치 목록 추가 -->
+	<insert id="addAndroidHealthcareInfo" parameterType="java.util.Map">
+		INSERT INTO healthcare (careno,guestid,caretitle,careval,reg_date) 
+		VALUES (care_seq.nextval,#{id},#{title},#{careval},TO_DATE(#{date} , 'yyyy/mm/dd hh24:mi:ss'))
+	</insert>
+	<!-- android Mapper -->
 </mapper>

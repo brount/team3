@@ -21,7 +21,7 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
                                    	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
@@ -74,7 +74,21 @@
 														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
 														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
 														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
+														<c:if test="${dto.doctorspecialism == 1}">
+															<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">내과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 2}">
+															<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">이비인후과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 3}">
+															<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">정신의학과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 4}">
+															<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">외과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 5}">
+															<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">치과</td>
+														</c:if>
 														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>
 														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorregstration}</td>
 		                                        	</tr>

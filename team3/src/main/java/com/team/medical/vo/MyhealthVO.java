@@ -10,10 +10,10 @@ public class MyhealthVO {
 	private int    birth2; //월(01)
 	private int    birth3; //일(13)
 	private int    age; //나이 
-	private int height;
-	private int weight;
+	private String height;
+	private String weight;
 	private String bloodtype; //혈액형
-	private int bmi;
+	private String bmi;
 	private int gender; // 성별 - 1: 여자, 2: 남자
 
 	
@@ -54,16 +54,16 @@ public class MyhealthVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getHeight() {
+	public String getHeight() {
 		return height;
 	}
-	public void setHeight(int height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
-	public int getWeight() {
+	public String getWeight() {
 		return weight;
 	}
-	public void setWeight(int weight) {
+	public void setWeight(String weight) {
 		this.weight = weight;
 	}
 	public String getBloodtype() {
@@ -72,10 +72,10 @@ public class MyhealthVO {
 	public void setBloodtype(String bloodtype) {
 		this.bloodtype = bloodtype;
 	}
-	public int getBmi() {
+	public String getBmi() {
 		return bmi;
 	}
-	public void setBmi(int bmi) {
+	public void setBmi(String bmi) {
 		this.bmi = bmi;
 	}
 	public int getGender() {

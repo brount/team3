@@ -35,15 +35,13 @@ function myFoodList() {
 	            </h4>
 	        </div>
 	    </div>
-	    <c:if test="${sessionScope.memberState == 1 }">
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
 	            <h4 class="panel-title">
-	                <a onclick="myFoodList()">나만의 음식목록</a>
+	                <a href="kcalList">칼로리체크</a>
 	            </h4>
 	        </div>
 	    </div>
-	    </c:if>
 	</div>
 </body>
 </html>

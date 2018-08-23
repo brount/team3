@@ -5,7 +5,86 @@
 <link href="resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script src="/medical/resources/djcss/dj.js"></script>
+<script type="text/javascript">
 
+function inputCheck() {
+	if (!document.inputform.id.value) {
+		alert(msg_id);
+		document.inputform.id.focus();
+		return false;
+	} else if (!document.inputform.password.value) {
+		alert(msg_pwd);
+		document.inputform.password.focus();
+		return false;
+	} else if (!document.inputform.confirmPassword.value) {
+		alert(msg_repwd);
+		document.inputform.confirmPassword.focus();
+		return false;
+	} else if (document.inputform.password.value != document.inputform.confirmPassword.value) {
+		alert(msg_pwdChk);
+		document.inputform.confirmPassword.focus();
+		return false;
+	} else if (!document.inputform.name.value) {
+		alert(msg_name);
+		document.inputform.name.focus();
+		return false;
+	} else if (!document.inputform.jumin1.value) {
+		alert(msg_brith);
+		document.inputform.jumin1.focus();
+		return false;
+	} else if (!document.inputform.jumin2.value) {
+		alert(msg_brith);
+		document.inputform.jumin2.focus();
+		return false;
+	} else if (!document.inputform.phone1.value) {
+		alert(msg_hp);
+		document.inputform.phone1.focus();
+		return false;
+	} else if (!document.inputform.phone2.value) {
+		alert(msg_hp);
+		document.inputform.phone2.focus();
+		return false;
+	} else if (!document.inputform.phone3.value) {
+		alert(msg_hp);
+		document.inputform.phone3.focus();
+		return false;
+	} else if (!document.inputform.email1.value) {
+		alert(msg_email);
+		document.inputform.email1.focus();
+		return false;
+		// email2값이 null일 때 && email3의 값이 직접입력일때
+	} else if (!document.inputform.email2.value && document.inputform.email3.value == 0) {
+		alert(msg_email);
+		document.inputform.email2.focus();
+		return false;
+	} else if (!document.inputform.address1.value) {
+		alert(msg_address);
+		document.inputform.address1.focus();
+		return false;
+
+	} else if (!document.inputform.address2.value) {
+		alert(msg_address);
+		document.inputform.address2.focus();
+		return false;
+	} else if (!document.inputform.address3.value) {
+		alert(msg_address);
+		document.inputform.address3.focus();
+		return false;
+
+	} else if (document.inputform.hiddenEmail.value == 0) {
+		alert("이메일 인증이 필요합니다~!");
+
+		return false;
+
+	} else if (document.inputform.hiddenId.value == 0) {
+		alert(msg_confirmId);
+		document.inputform.dupChk.focus();
+		return false;
+	}
+
+}
+
+</script>
 <body>
 	<header>
 		<%@ include file="../common/header.jsp"%>

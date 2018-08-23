@@ -9,7 +9,6 @@
 		</div>
 
 		<ul class="nav navbar-right navbar-top-links">
-			<li onclick="window.location='main'" style="color: white;">Main</li>
 			<li onclick="window.location='main'" style="color: white;"><i class="fa fa-sign-out fa-fw"></i> Logout </li>
 		</ul>
 		<!-- /.navbar-top-links -->
@@ -31,8 +30,8 @@
 							<li><a href="diseaseList">질병정보목록</a></li>
 							<li><a href="exerciseList">운동정보목록</a></li>
 						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="adminReportList">신고게시판</a></li>
-					<li><a href="eventRequestList">광고관리</a></li>
+					<li><a href="adminReportList">고객센터</a></li>
+					<li><a href="eventRequestList">프로모션</a></li>
 					<li><a href="pointList">결산</a></li>
 				</ul>
 			</div>

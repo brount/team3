@@ -9,7 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/table.css" />
+<link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>

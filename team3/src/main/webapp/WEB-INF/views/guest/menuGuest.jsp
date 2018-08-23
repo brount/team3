@@ -49,8 +49,8 @@
 	                        </td>
 	                    </tr>
 	                       <tr>
-	                        <td>
-	                            <a href="myFoodList">나만의 음식 목록</a>
+	                       <td>
+	                            <a href="kcalList">나의 칼로리</a>
 	                        </td>
 	                    </tr>
 	                </table>

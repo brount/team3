@@ -49,7 +49,7 @@
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
-									<h3>관심병원</h3>
+									<h3>즐겨찾는 병원</h3>
 
 								</div>
 								<div class="inbox-body">

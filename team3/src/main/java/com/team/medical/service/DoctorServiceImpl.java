@@ -466,6 +466,13 @@ public class DoctorServiceImpl implements DoctorService {
 			model.addAttribute("kind", kind);
 
 		}
+		// 생년월일만 추출
+		String[] fulljumin = gusDto.getJumin().split("-");
+		String jumin =fulljumin[0];
+		
+				
+				
+		model.addAttribute("jumin",jumin);
 
 		model.addAttribute("checkup_kind", checkup_kind);
 
@@ -1280,8 +1287,12 @@ public class DoctorServiceImpl implements DoctorService {
 		int startPage = 0; // 현재블록 시작 페이지
 		int endPage = 0; // 현재블록 마지막 페이지
 
+		
 		// 5단계. 글갯수 구하기
-		cnt = dao.getPointManageCnt();
+		String id = (String) req.getSession().getAttribute("id");
+		String doctorno = String.valueOf(dao.getdocnoInfo(id));
+		System.out.println("호옹 : " + doctorno);
+		cnt = dao.getPointManageCnt(doctorno);
 
 		pageNum = req.getParameter("pageNum");
 
@@ -1320,7 +1331,6 @@ public class DoctorServiceImpl implements DoctorService {
 			endPage = pageCnt;
 		}
 
-		String id = (String) req.getSession().getAttribute("id");
 		DoctorVO docDto = dao.getDocInfo(id);
 
 		model.addAttribute("docDto", docDto); // 글갯수
@@ -1399,8 +1409,11 @@ public class DoctorServiceImpl implements DoctorService {
 
 		// 5단계. 글갯수 구하기
 		String id = (String) req.getSession().getAttribute("id");
-
-		cnt = dao.getReboardCnt(id);
+		cnt = dao.getReboardCntNull(id);
+		if(cnt != 0) {
+			cnt = dao.getReboardCnt(id);
+		}
+		
 		pageNum = req.getParameter("pageNum");
 
 		if (pageNum == null) {

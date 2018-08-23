@@ -9,6 +9,7 @@ import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.FoodVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.KcalorieVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.QuestionBoardVO;
@@ -16,6 +17,7 @@ import com.team.medical.vo.ReservationVO;
 
 public interface GuestDAO {
 	
+	//로그인
 	public int guestLogin(Map<String,Object> map);
 	
 	//아이디 중복확인
@@ -85,27 +87,25 @@ public interface GuestDAO {
 	//증상해당하는 병원 검색
 	public ArrayList<HospitalVO> simpleTreathos(String dikind);
 	
+// -----------------------------------------------------------------
 	//음식 검색 후 칼로리 조회
-	public ArrayList<FoodVO> foodsearch(FoodVO vo);
+	public ArrayList<KcalorieVO> foodsearch(KcalorieVO vo);
 
 	//아점저 값으로 하루 칼로리 인서트 
-	public int todaycal(FoodVO vo);
+	public int todaycal(Map<String,Object> map);
 	
 	//해당 회원의 하루 칼로리 검색
-	public FoodVO mycal(FoodVO vo);
+	public ArrayList<KcalorieVO> mycal(Map<String,Object> map);
 	
-	//하루 칼로리 업데이트
-	public int mycalUpdate(FoodVO vo);
+	// 회원별 칼로리 일자별 검색
+	public ArrayList<KcalorieVO> getKcalList(int guestNo);
 	
-	//사용자가 새로운음식과 해당하는음식의 칼로리 등록
-	public int newfood (FoodVO vo);
+	// 회원별 칼로리 일자별 상세정보
+	public ArrayList<KcalorieVO> getKcalInfo(Map<String,Object> map);
 	
-	//사용자가 등록한 음식의 총 갯수 
-	public int myFoodcnt(int guestNo);
-	
-	//사용자가 등록한 음식목록리스트 셀렉
-	public ArrayList<FoodVO> myFoodList(Map<String,Object> map);
-
+	// 음식 이름으로 정보 셀렉트
+	public FoodVO getFoodname(String foodname);
+// -----------------------------------------------------------------
 	
 	//사용자가 즐겨찾기한 병원의 총 갯수 
 	public int bookMarkcnt(int guestNo);
@@ -121,15 +121,6 @@ public interface GuestDAO {
 	//즐겨찾는 병원 추가
 	public void bookMarkIn(Map<String, Object> map);
 
-	
-	// 사용자가 추가한 음식 수정 윈도우폼에 뿌릴 정보
-	public FoodVO foodmodi(int foodno);
-	
-	// 사용자가 추가한 음식 수정
-	public int myFoodModi(Map<String,Object> map);
-
-	// 사용자가 추가한 음식 삭제
-	public int myFoodDelete(int foodno);
 
 	// 사용자 검진서 갯수
 	public int getCheckupResultListCnt(int guestNo);
@@ -165,10 +156,12 @@ public interface GuestDAO {
 	// 등록한 검진서 삭제
 	public int checkdelete(int col);
 
+	// 식품군  종류
+	public ArrayList<FoodVO> foodkind();
 	
-
+	//음식검색시 음식 총 갯수
+	public int getFoodCnt(Map<String,Object> map);
 	
-	
-	
-	
+	//총 음식 리스트
+	public ArrayList<FoodVO> getFoodList(Map<String,Object> map);
 }

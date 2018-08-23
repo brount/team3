@@ -91,12 +91,12 @@
 											<span class="input-group-addon"><i
 												class="glyphicon glyphicon-pencil"></i></span> <input name="birth1"
 												placeholder="0000" class="form-control" type="text" maxlength="4"
-												style="width: 50px; height: 45px;margin-left: 5px;" required> <b>년</b> <input
+												style="width: 50px; height: 35px;margin-left: 5px;" required> <b>년</b> <input
 												name="birth2" placeholder="00" class="form-control" maxlength="2"
-												type="text" style="width: 50px; height: 45px; margin-left: 10px;" required>
+												type="text" style="width: 50px; height: 35px; margin-left: 10px;" required>
 											<b>월</b> <input name="birth3" placeholder="00"
 												class="form-control" type="text" maxlength="2"
-												style="width: 50px; height: 45px; margin-left: 10px;" required> <b>일</b>
+												style="width: 50px; height: 35px; margin-left: 10px;" required> <b>일</b>
 										</div>
 									</div>
 

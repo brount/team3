@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class PointVO {
    
-   private int pointNo;
-   private int doctorno;
-   private int point;
-   private int status;			// 1 : 획득포인트		2 : 사용포인트
-   private Date cum_date;
+   private int pointNo;			// 포인트 넘버
+   private int doctorno;		// 의사회원번호
+   private int point;			// 포인트내역
+   private int status;			// 포인트상태 	1 : 획득포인트,		2 : 사용포인트
+   private Date cum_date;		// 획득/사용 시간
    
    public int getPointNo() {
       return pointNo;

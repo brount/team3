@@ -3,21 +3,22 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class PrescriptionVO {
-	private int prescriptionNo;
-	private int hospitalno;
-	private int guestno;
-	private String symptom;
-	private String drugname;
-	private String drugdosage;
-	private String drugrepeat;
-	private String dosagedate;
-	private String dosageusage;
-	private String injectionname;
-	private String injectiondosage;
-	private String injectionrepeat;
-	private String injectiondate;
-	private String caution;
-	private Date prescriptionDate;
+	private int prescriptionNo;			// 처방번호
+	private int hospitalno;				// 병원번호
+	private int guestno;				// 일반회원번호
+	private String symptom;				// 증상
+	private String drugname;			// 의약품명칭
+	private String drugdosage;			// 의약품투여량
+	private String drugrepeat;			// 의약품투여횟수
+	private String dosagedate;			// 의약품투여일수
+	private String dosageusage;			// 의약품용법
+	private String injectionname;		// 주사명칭
+	private String injectiondosage;		// 주사투여량
+	private String injectionrepeat;		// 주사투여횟수
+	private String injectiondate;		// 주사일수
+	private String caution;				// 주의사항
+	private Date prescriptionDate;		// 처방날짜
+	
 	public int getPrescriptionNo() {
 		return prescriptionNo;
 	}

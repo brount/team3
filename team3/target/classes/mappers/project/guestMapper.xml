@@ -196,81 +196,95 @@
 <!-- 	<select id="simpleTreathos" resultType="com.team.medical.vo.HospitalVO">
 		SELECT * FROM Hospital where HOSPITALKIND1=#{dikind} or  HOSPITALKIND2=#{dikind} or  HOSPITALKIND3=#{dikind} 
 	</select> 
- -->
-	<!-- 입력한 음식에 따른 칼로리 -->
-	<select id="foodsearch" resultType="com.team.medical.vo.FoodVO">
-		SELECT foodcal , food  from  food  where food=#{food} and guestno=#{guestNo}
-	</select>						
+ -->					
+		
 	
 	<!-- 회원번호와 하루 총 칼로리 인서트 -->			
-	<insert id="todaycal" parameterType="com.team.medical.vo.FoodVO">
-		insert into food(foodno, GUESTNO, DAY, TODAYCAL ) values(food_seq.nextval, #{guestNo}, #{day}, #{todaycal})
-	</insert>									
-	
-	
+	<insert id="todaycal" parameterType="java.util.Map">
+		<foreach collection="dtos2" item="item" index="index"  open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+        	 into kcalorie(guestno,foodname,kcal,day)
+        	values
+            (#{item.guestno}, #{item.foodname},	#{item.kcal}, #{item.day})
+        </foreach>
+	</insert>		
 	<!-- 회원의 현재 날짜의 칼로리 등록정보 조회  -->
-	<select id="mycal" parameterType="com.team.medical.vo.FoodVO" resultType="com.team.medical.vo.FoodVO"> 
-		select * from food where GUESTNO=#{guestNo} and day=#{day}
+	<select id="mycal" parameterType="java.util.Map" resultType="com.team.medical.vo.KcalorieVO"> 
+		select * from Kcalorie where guestno=#{guestno} and day=#{day}
+	</select>
+	<select id="getKcalList" parameterType="int" resultType="com.team.medical.vo.KcalorieVO">
+		select SUM(kcal) kcal,day from Kcalorie 
+		where guestno=#{guestno}
+		group by day 
+	</select>
+	<select id="getKcalInfo" parameterType="java.util.Map" resultType="com.team.medical.vo.KcalorieVO">
+		select * from Kcalorie 
+		where   guestno = #{guestno}
+			AND day = #{day} 
+	</select>
+	<select id="getFoodname" parameterType="String" resultType="com.team.medical.vo.FoodVO">
+		select * from food 
+		where foodname = #{foodname}
+	</select>
+	<!-- 식품군 검색 -->
+	<select id="foodkind" resultType="com.team.medical.vo.FoodVO">
+		select foodkind from food 
+		group by foodkind 
+		order by foodkind
 	</select>
 	
-	<!-- 회원번호와 하루 총 칼로리 업데이트 -->	
-	<update id="mycalUpdate"  parameterType="com.team.medical.vo.FoodVO">
-		update food set TODAYCAL=#{todaycal}  where GUESTNO=#{guestNo} and day=#{day} 
-		
-	</update>
-	
-	<!-- 사용자가 입력한 음식과 칼로리값 인서트 -->
-	<insert id="newfood" parameterType="com.team.medical.vo.FoodVO">
-		insert into food(food,foodno , foodcal, foodgram,guestno) values(#{food}, food_seq.nextval,#{foodcal}, #{foodgram},#{guestNo})
-	</insert>
-	
-	<!-- 사용자가 등록한 음식의 총 갯수  -->
-	<select id="myFoodcnt" resultType="int">
-		select count(*) from food where guestNo = #{guestNo} and food is not null
+	<!-- 음식목록 갯수세기 -->
+	<select id="getFoodCnt" resultType="int" parameterType="java.util.Map">
+		select count(*) from food
+		<where>
+			<if test="select != null">
+				foodname LIKE '%'||#{select}||'%'      		      
+	       	</if>	
+	       	<if test="sc != '전체' ">
+	       		AND foodkind LIKE '%'||#{sc}||'%' 	       		
+	       	</if>	
+      	</where>
 	</select>
 	
-	<!-- 사용자가 등록한 음식목록리스트 셀렉 -->
-	<select id="myFoodList" parameterType="map" resultType="com.team.medical.vo.FoodVO">
-		
-			SELECT * 
-			  FROM(
-			  		SELECT foodno, food, foodcal, foodgram, rownum rnum
-			   	   	  FROM(
-			   	   	  		SELECT * 
-			   	   	  		  FROM food 
-			   	   	  		  where guestNo=#{guestNo} and food is not null
-			   	   	  	  ORDER BY foodno DESC
-			   	   	  	  )
-					)   
-	<![CDATA[				
-			 WHERE rnum >= #{start} AND rnum <= #{end}
-		]]>
+	<!-- 음식목록 가져오기 -->   
+   <select id="getFoodList" parameterType="java.util.Map" resultType="com.team.medical.vo.FoodVO">
+     
+         SELECT * 
+           FROM(
+                 SELECT FOODKIND,
+						FOODNAME,
+						GRAM,
+						KCAL,
+						CARBOHYDRATE,
+						PROTEIN,
+						FAT,
+						SUGARS,
+						SALT,
+						CHOLESTEROL,
+						SFA,
+						TFA, rownum rnum
+                       FROM(
+                             SELECT * 
+                               FROM food 
+                               <where>
+									<if test="select != null">
+										foodname LIKE '%'||#{select}||'%'      		      
+							       	</if>	
+							       	<if test="sc != '전체' ">
+							       		AND foodkind LIKE '%'||#{sc}||'%' 	       		
+							       	</if>	
+						      	</where>
+                            )
+               )   
+        <where>        	        	
+        	<![CDATA[
+	           rnum >= #{start} AND rnum <= #{end}
+	      	]]>	      	
+      	</where>
+   </select>
 	
-	</select>
-	
-	<!-- 사용자가 등록한 음식 수정-->
-	<update id="myFoodModi" parameterType="java.util.Map">
-		update food set foodcal=#{foodcal}, foodgram=#{foodgram} where foodno=#{foodno}
-	</update>
-	
-	<!-- 사용자가 등록한 음식 삭제-->
-	<delete id="myFoodDelete">
-	delete food where foodno=#{foodno}
-	
-	</delete>
-	
-	<select id="foodmodi" resultType="com.team.medical.vo.FoodVO">
-	select *from food where foodno=#{foodno}
-	
-	</select>
-	
-	
-	
-		<select id="getCheckupResultListCnt" resultType="int">
+	<select id="getCheckupResultListCnt" resultType="int">
 		select count(checkup) from checkup where guestno=#{guestNo}
-	</select>
-	
-	
+	</select>	
 	
 	<select id="getCheckupResultList" parameterType="java.util.Map" resultType="com.team.medical.vo.CheckupVO">
 		<![CDATA[
@@ -340,4 +354,6 @@
 	<select id="hospitalInfo" resultType="com.team.medical.vo.HospitalVO">
 		select * from HOSPITAL where HOSPITALNO=#{HOSPITALNO}
 	</select>
+	
+	
 </mapper>

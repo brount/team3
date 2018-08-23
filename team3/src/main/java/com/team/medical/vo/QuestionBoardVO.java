@@ -3,17 +3,17 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class QuestionBoardVO {
-	private int boardno;
-	private String boardtitle;
-	private String 	boardcontent;
-	private String boardwriter;
-	private int ref;
-	private String boardpwd	;
-	private Date boarddate;
-	private int notify;
-	private int notifycnt;
-	private String notifyreason;
-	private int kind;	
+	private int boardno;			// 게시글번호
+	private String boardtitle;		// 게시글제목
+	private String boardcontent;	// 게시글내용
+	private String boardwriter;		// 작성자
+	private int ref;				// 댓글유무
+	private String boardpwd;		// 게시글 비밀번호
+	private Date boarddate;			// 작성일
+	private int notify;				// 신고여부
+	private int notifycnt;			// 신고갯수
+	private String notifyreason;	// 신고사유
+	private int kind;				// 게시글종류
 		
 	public int getKind() {
 		return kind;

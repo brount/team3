@@ -21,7 +21,7 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
 	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
@@ -30,7 +30,8 @@
 						 				<option value="memberList">일반회원목록</option>
 						 				<option value="membersanctionList">제제회원목록</option>
 						 			</select>
-                                    <button type="button" onclick="return memberdeleteCheck();">
+						 			
+                                    <button type="button" class="btn btn-dark-blue" style="width: 50px; height:30px; margin-left: 10px;" onclick="return memberdeleteCheck();">
                                     	삭제
                                     </button>
 	                            </div>
@@ -41,7 +42,7 @@
 							<div class="row">
 								<div class="col-lg-4">
 									<div class="table-responsive">
-										<table class="table table-bordered table-hover table-striped">
+										<table class="responstable">
 											<thead>
 												<tr>
 													<th><input type="checkbox" name="checkAll" id="checkAll"></th>
@@ -75,61 +76,59 @@
 												</c:if>
 											</tbody>
 										</table>
-
-										<!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
+										
+										
+	                                 <div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                      						<c:if test="${cnt > 0}">
 														<c:if test="${sc == null}">
 															<!-- 맨끝[◀◀] / 이전[◀] -->
 															<c:if test="${startPage > pageBlock}">
-																<a href="membersecessionList">[맨앞]</a>
-																<a href="membersecessionList?pageNum=${startPage - pageBlock}">[이전]</a>
+																<a href="membersecessionList"><<</a>
+																<a href="membersecessionList?pageNum=${startPage - pageBlock}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="membersecessionList?pageNum=${i}">[${i}]</a>
+																	<a href="membersecessionList?pageNum=${i}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<!-- 맨끝[▶▶] / 다음▶] -->
 															<c:if test="${pageCount > endPage}">
-																<a href="membersecessionList?pageNum=${startPage + pageBlock}">[다음]</a>
-																<a href="membersecessionList?pageNum=${pageCount}">[맨뒤]</a>
+																<a href="membersecessionList?pageNum=${startPage + pageBlock}">></a>
+																<a href="membersecessionList?pageNum=${pageCount}">>></a>
 															</c:if>
 														</c:if>
 														
-														
-														
 														<c:if test="${sc != null}">
 															<c:if test="${startPage > pageBlock}">
-																<a href="membersecessionSearchList?sc=${sc}&search=${search}">[맨앞]</a>
-																<a href="membersecessionSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+																<a href="membersecessionSearchList?sc=${sc}&search=${search}"><<</a>
+																<a href="membersecessionSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="memberSecessionSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																	<a href="memberSecessionSearchList?pageNum=${i}&sc=${sc}&search=${search}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<c:if test="${pageCount > endPage}">
-																<a href="membersecessionSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
-																<a href="membersecessionSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+																<a href="membersecessionSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">></a>
+																<a href="membersecessionSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">>></a>
 															</c:if>
 														</c:if>
 													</c:if>
-												</th>
-											</tr>
-										</table>
+            							         </div>   		
+										
+
+
+																<br>
 
 										<form action="membersecessionSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
 											<table align="center">
@@ -145,7 +144,7 @@
 														<input type="text" id="search" name="search">
 													</td>
 													<td>
-														<input type="submit" value="검색">
+														<input type="submit"  class="btn btn-dark-blue"value="검색">
 													</td>
 												</tr>
 											</table>

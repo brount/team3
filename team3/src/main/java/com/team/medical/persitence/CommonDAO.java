@@ -2,12 +2,14 @@ package com.team.medical.persitence;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
+import com.team.medical.vo.HealthcareVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -76,4 +78,12 @@ public interface CommonDAO {
 	
 	public ArrayList<String> test(String[] args) throws IOException;
 	
+	// 안드로이드 DAO
+	
+	// 항목별 정보 가져오기
+	public HealthcareVO getAndroidHealthcareInfo(Map<String,String> map);
+	// 항목별 정보 목록 가져오기
+	public List<HealthcareVO> getAndroidHealthcareList(Map<String, String> map);
+	// 안드로이드 DAO
+	public int addAndroidHealthcareInfo(Map<String, Object> map);
 }

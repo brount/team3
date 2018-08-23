@@ -3,8 +3,8 @@
 <html>
 
 <footer class="footer-bs">
-        <div class="row">
-        	<div class="col-md-6 footer-brand animated fadeInLeft">
+        <div class="row" style="margin: 0;">
+        	<div class="col-md-6 footer-brand animated fadeInLeft" style="padding-bottom: 0px;">
 	<h2>회사소개</h2>
                 <p style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif;">
 		           “메디클립”은
@@ -17,7 +17,7 @@
 										                </c:if>
                 </p>
             </div>
-        	<div class="col-md-6 footer-ns animated fadeInRight">
+        	<div class="col-md-6 footer-ns animated fadeInRight" style="padding-bottom: 0px;">
             	<h2>고객센터 C/S Center</h2>
             	
                 <p style="font-size: 17px; font-family: 'Nanum Gothic', sans-serif;">

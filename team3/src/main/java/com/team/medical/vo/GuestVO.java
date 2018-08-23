@@ -16,8 +16,8 @@ public class GuestVO {
 	private String 	address3;		// 도로명 주소
 	private String 	favoritehos;	// 즐겨찾는 병원
 	private Date 	guestdate;		// 가입일
-	private int 	sanctions;		// 제제단계
-	private int 	status;			// 탈퇴여부			0 : 일반    -   1 : 탈퇴 or 제명
+	private int 	sanctions;		// 제제단계	-	일반 : 0, 경고 : 1, 제제 : 2, 제명 : 3
+	private int 	status;			// 탈퇴여부 	- 	일반 : 0,	탈퇴 or 제명 : 1
 	private String  reason;			// 제제사유
 	
 	public  int getGuestNo() {

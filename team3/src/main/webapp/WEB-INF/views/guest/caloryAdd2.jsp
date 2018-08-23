@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@include file="../common/setting.jsp" %>
 <html class="no-js" lang="en">
 
 <head>
@@ -99,7 +99,11 @@ var food3= document.cal.food3.value;
 } 
 
 </script>
-
+<style type="text/css">
+#xxx > tbody > tr:first-child {
+	display:none;
+}
+</style>
 </head>
 
 <body>
@@ -121,177 +125,69 @@ var food3= document.cal.food3.value;
 	        </div>
 	        
   		 	<div class="col-sm-9 col-md-9">
-	            
+	            <div class="well">
 		            <div class="container">
-		             <form class="form-horizontal" action="todaycal" method="post"  id="reg_form" name="cal" onsubmit="return check();">
-		             <c:if test="${cnt == 0 }">
+		             <form class="form-horizontal" action="todaycal" method="get"  id="reg_form" name="cal" onsubmit="return check();">
+
 					 
 					  <fieldset>
-					      <legend>My Calory</legend>
+					      <h3>음식 검색</h3>
 					     
-						 <div class="form-group">
-					<!-- 	  <div style="margin-top:20px; margin-bottom:20px; ">
-						  <label class="col-md-4 control-label">아침 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="food1" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					 				kcal
-					         <input type="button" onclick="foodsearch1()"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
-					            
-					          </div>
-					        </div>
-					        </div>
-					         -->
-					        
-					        
-					        
-					        
-					      
-					        <label class="col-md-4 control-label">아침 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input  name="food1" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					 					<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch1()"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
-					            
-					            
-					          </div>
-					        </div>
-					        
-					        <br>
-					        
-					         <div style="margin-top: 70px;">
-					       <label class="col-md-4 control-label">점심 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input  name="food2" placeholder="음식이름 작성" class="form-control"  type="text" style="width:70px;"> 
-					 					<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch2()"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
-					            
-					            
-					          </div>
-					        </div>
-					        </div>  
-					        
-					        <br><br>
-					        
-					       <label class="col-md-4 control-label" style=" margin-top: 35px;">저녁 </label>
-					       <div class="col-md-6  inputGroupContainer" style=" margin-top: 35px;">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					             <input  name="food3" placeholder="음식이름 작성" class="form-control"  type="text" > 
-					 				<b style="margin-left: 20px;">kcal</b> 
-					         <input type="button" onclick="foodsearch3()"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;" value="검색 ">
-					            
-					            
-					          </div>
-					        </div>
-					       
-					        
-					        
-					        
-					        <br>
-					        
-					        <!-- <div style="margin-top:20px; margin-bottom:20px; ">
-					        <label class="col-md-4 control-label">점심 </label>
-					       <div class="col-md-6  inputGroupContainer" style="margin-top: 20px;">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="food2" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					      		kcal
-					      		<input type="button"  onclick="foodsearch2()" type="button"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;"value="검색 "> 
-					            
-					          </div>
-					        </div>
-					        </div> -->
-					        
-					  <!--     <div style="margin-top:20px; margin-bottom:20px; ">
-					        <label class="col-md-4 control-label" >저녁 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="food3" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					         	kcal
-					         <input type="button"  onclick="foodsearch3()" type="button"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;"value="검색 ">
-					            
-					          </div>
-					        </div>
-						</div>
-						   -->
-						 
-					      
-					   </div>
+						 <table class="responstable" border="1"
+											id="xxx">
+											<thead>
+												<tr>
+													<th>식품군</th>
+													<th>식품이름</th>
+													<th>1회 섭취량(g)</th>
+													<th>칼로리(kcal)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="text" style="width: 100%"name="foodkind"></td>
+													<td><input type="text" style="width: 100%"name="foodname"></td>
+													<td><input type="text" style="width: 100%"name="gram"></td>
+													<td><input type="text" style="width: 100%"name="kcal"></td>										
+												</tr>
+												
+												<!-- var lastTrObj = tableObj.find("tbody:eq(0)").find("tr:eq(0)")
+														.parent().children().last(); -->
+										</table>  
 					 					   </fieldset>
-					 
-					   	<br>
-		
-					     <input type="submit"  class="btn btn-dark-blue" style="display: table;margin: auto;" value="저장" >
-					  
-					      
+					   	<br>	<hr style="border-top: 2px solid rgba(91, 146, 203, 0.98);">
+					   				<div style="margin: 0 auto; display: table;">
+					   			
+										<input type="button" class="btn btn-dark-blue" value="검색" name="btnsear">
+					     				<input type="submit"  class="btn btn-dark-blue" style="margin-left: 15px;" value="저장" >
+									  </div>
+					      <script type="text/javascript">
+													$("input[name=btnsear]").click(function (){
+														
+														window.open('foodSearch' ,'이름','menubar=no, width=1210, height=700');	
+													});
+												
+												</script>
 					      
 					   <br>
-					     	<legend> 나만의 음식 추가하기 </legend>
-					        <fieldset>
-						 <div class="form-group">
-					        <label class="col-md-4 control-label">음식 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="food" placeholder="음식이름 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					            
-					          </div>
-					        </div>
-					        <br>
-					        <div style="margin-top: 70px;">
-					    <label class="col-md-4 control-label" >1인분당 칼로리 </label>
-					       <div class="col-md-6  inputGroupContainer">
-					       
-					          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="foodcal" placeholder="1인분당 칼로리 작성" class="form-control"  type="text" style="hegint:70px;"> 
-					           
-					                        	<b style="margin-left: 20px;">kcal</b> 
-					             
-					          </div>
-					        </div>
-					      </div>
-						<br>
-					        <div style="margin-top: 70px;">
-					    <label class="col-md-4 control-label"  style=" margin-top: 35px;" >gram </label>
-					       <div class="col-md-6  inputGroupContainer">
-					       
-					          <div class="input-group" style=" margin-top: 35px;"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-					            <input  name="gram" placeholder="100 g" class="form-control"  type="text" > 
-					           
-					                        	<b style="margin-left: 20px;">g</b> 
-					             
-					          </div>
-					          
-					           <input type="button"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="newfoodinsert()" value="저장">
-					          <input type="button"  class="btn btn-dark-blue" style="width:50x; height: 35px; margin-left: 20px;margin-top: 35px;" onclick="window.location='myFoodList'" value="나만의 음식 목록">
-					          
-					        </div>
-					      </div>
-					      </div>
-					      </fieldset>
-					 
-					      </c:if> 	
-					     	
-					 	<c:if test="${cnt!=0 }">
-						  
-					 	 <table class="table table-inbox table-hover">
-					 	 		 <h1>PersonalCare</h1>
+					     	<table class="responstable">
+					 	 		 <h3>나의 칼로리 정보</h3>
 					 	 
 					 	 	   <tr class="unread">
-                                    <td class="view-message  dont-show">오늘 하루 나의 섭취 칼로리</td>
-                                  <td class="view-message"> ${vo.todaycal}</td>                                  
-                               
-                                    
+                                    <th class="view-message  dont-show" style="width: 36%;">오늘 하루 나의 섭취 칼로리</th>
+                                  <td class="view-message">
+                                   	${todaykcal} kcal
+                                  </td>     
                               </tr>
 					 	 
 					 	 	   <tr class="unread">
-                                    <td class="view-message  dont-show">나의 기초 대사량</td>
-                                  <td class="view-message"> ${basalmetabolism}</td>                                  
+                                    <th class="view-message  dont-show">나의 기초 대사량</th>
+                                  <td class="view-message"> ${basalmetabolism} kcal </td>                                  
                                     
                               </tr>
 					 	 	   <tr class="unread">
-                                    <td class="view-message  dont-show">나의 권장 칼로리</td>
-                                  <td class="view-message"> ${encouragecal}</td>                                  
+                                    <th class="view-message  dont-show">나의 권장 칼로리</th>
+                                  <td class="view-message"> ${encouragecal} kcal</td>                                  
                                     
                               </tr>
                               <c:if test="${alertcnt==1}">
@@ -315,17 +211,12 @@ var food3= document.cal.food3.value;
                               
                               
 					 	 </table>
-					 					<div style="text-align: center;">
-                                       <input type="button"  class="btn btn-dark-blue" value="하루 칼로리 수정하기" onclick="window.location='caloryAddModi'" >
-							               </div>  
-                           
-					      </c:if> 	
+					 
 					     	
 					    
 					</form>
 					   </div>
-					   
-					  
+					   </div>
 					   </div>
 					   
 	            </div>

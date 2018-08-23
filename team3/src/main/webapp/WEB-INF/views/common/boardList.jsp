@@ -29,11 +29,11 @@ document.oncontextmenu = function() {return false;}
 
 <style>
 	td {
-		font-size: 20px;
-		text-align: center;
+/* 		font-size: 20px;
+ */		text-align: center;
 	}
 	a {
-		font-size: 20px;
+	/* 	font-size: 20px; */
 		text-decoration: none !important;
 	}
 	b {

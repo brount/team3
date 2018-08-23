@@ -2248,13 +2248,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void exerciseModifyPro(MultipartHttpServletRequest req, Model model) {
 		
-		
 		MultipartFile file = req.getFile("exerciseImage");
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
 		// 업로드할 파일이 위치하게될 물리적인 경로
 		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\exercise\\"; // 저장 경로
-		
 		
 		try {
 			String exerciseName = req.getParameter("exerciseName");

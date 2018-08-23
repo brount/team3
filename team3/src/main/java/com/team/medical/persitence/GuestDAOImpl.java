@@ -16,8 +16,10 @@ import com.team.medical.vo.CheckupVO;
 import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.ExaminationVO;
 import com.team.medical.vo.FoodVO;
+import com.team.medical.vo.KcalorieVO;
 import com.team.medical.vo.GuestVO;
 import com.team.medical.vo.HospitalVO;
+import com.team.medical.vo.KcalorieVO;
 import com.team.medical.vo.MyhealthVO;
 import com.team.medical.vo.PrescriptionVO;
 import com.team.medical.vo.QuestionBoardVO;
@@ -32,6 +34,7 @@ public class GuestDAOImpl implements GuestDAO {
 	@Autowired
 	private JavaMailSender mailSender;
 
+	//로그인
 	@Override
 	public int guestLogin(Map<String, Object> map) {
 		int loginCnt=0;
@@ -41,6 +44,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return loginCnt;
 	}
 
+	//아이디 중복확인
 	@Override
 	public int idCheck(String strId) {
 		
@@ -85,6 +89,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return cnt;
 	}
 
+	//일반회원 회원가입처리
 	@Override
 	public int insertGuest(GuestVO vo) {
 
@@ -94,6 +99,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return insertcnt;
 	}
 
+	//일반회원 정보조회 (회원정보수정페이지에 기본 정보)
 	@Override
 	public GuestVO getGuestInfo(String id) {
 		
@@ -114,6 +120,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return insertcnt;
 	}
 
+	//마이헬스정보 인서트
 	@Override
 	public int personalMofPro(MyhealthVO vo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -153,7 +160,8 @@ public class GuestDAOImpl implements GuestDAO {
 		return vo;
 
 	}
-
+	
+	//일반회원 정보수정처리
 	@Override
 	public int updateGuest(GuestVO vo) {
 
@@ -164,6 +172,7 @@ public class GuestDAOImpl implements GuestDAO {
 	
 	}
 	
+	//내 질문 건수 
 	@Override
 	public int myBordListcnt(String id) {
 
@@ -174,7 +183,7 @@ public class GuestDAOImpl implements GuestDAO {
 	}
 	
 	
-
+	// 내 질문목록
 	@Override
 	public ArrayList<QuestionBoardVO> myBordList(Map<String,Object> map) {
 		 ArrayList<QuestionBoardVO> dtos = new ArrayList<QuestionBoardVO>();
@@ -185,7 +194,8 @@ public class GuestDAOImpl implements GuestDAO {
 
 		return dtos;
 	}
-
+	
+	//일반회원 탈퇴전 비밀번호 확인
 	@Override
 	public int exitOkPro(Map<String, Object> map) {
 		
@@ -198,6 +208,7 @@ public class GuestDAOImpl implements GuestDAO {
 	
 	}
 	
+	//일반회원 회원탈퇴처리 업뎃
 	@Override
 	public int guestExitPro(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -207,6 +218,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return updatecnt;
 	}
 
+	//예약할 병원 정보 셀렉트 
 	@Override
 	public HospitalVO reservehospital(int hospitalno) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -215,7 +227,8 @@ public class GuestDAOImpl implements GuestDAO {
 		vo = dao.reservehospital(hospitalno);
 		return vo;
 	}
-
+	
+	//예약정보 인서트
 	@Override
 	public int reservePro(ReservationVO vo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -227,8 +240,7 @@ public class GuestDAOImpl implements GuestDAO {
 	
 	}
 
-	
-	
+	//나의 예약목록 셀렉트
 	@Override
 	public  ArrayList<ReservationVO> reserveList(Map<String,Object> map) {
 		ArrayList<ReservationVO> dtos = new ArrayList<ReservationVO>();
@@ -240,11 +252,10 @@ public class GuestDAOImpl implements GuestDAO {
 		return dtos;
 	}
 
+	//간단진료 증상 검색 후 결과반환  
 	@Override
 	public ArrayList<DiseaseVO> simpleTreatPro(String chk) {
 		ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
-
-		
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		System.out.println( "dao:"+chk);
 		
@@ -254,6 +265,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return dtos;
 	}
 
+	//증상해당하는 병원 검색
 	@Override
 	public ArrayList<HospitalVO> simpleTreathos(String dikind) {
 		System.out.println("dao dikind : "+dikind);
@@ -264,53 +276,93 @@ public class GuestDAOImpl implements GuestDAO {
 		return htos;
 	}
 
+//--------------------------------------------------------------------------------------------------------------
+
+	//음식 검색 후 칼로리 조회
 	@Override
-	public ArrayList<FoodVO> foodsearch(FoodVO vo ) {
+	public ArrayList<KcalorieVO> foodsearch(KcalorieVO vo ) {
 		
-		 ArrayList<FoodVO> dtos = new  ArrayList<FoodVO>();
+		 ArrayList<KcalorieVO> dtos = new  ArrayList<KcalorieVO>();
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		dtos = dao.foodsearch(vo);
-		
-		
 		return dtos;
 	}
 
+	//아점저 값으로 하루 칼로리 인서트 
 	@Override
-	public int todaycal(FoodVO vo) {
+	public int todaycal(Map<String,Object> map) {
 		
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		int insertcnt = dao.todaycal(vo);
+		int insertcnt = dao.todaycal(map);
 		return insertcnt;
 	}
 
+	//해당 회원의 하루 칼로리 검색
 	@Override
-	public FoodVO mycal(FoodVO vo) {
+	public ArrayList<KcalorieVO> mycal(Map<String,Object> map) {
 	
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		vo = dao.mycal(vo);
+		ArrayList<KcalorieVO> dtos = dao.mycal(map);
 		
 		
-		return vo;
-	}
-
-	@Override
-	public int mycalUpdate(FoodVO vo) {	
-	GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-	int cnt = dao.mycalUpdate(vo);
-	return cnt;
+		return dtos;
+	}	
 	
-	}
-
+	// 식품군  종류
 	@Override
-	public int newfood(FoodVO vo) {
+	public ArrayList<FoodVO> foodkind() {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-		
-		int foodcnt = dao.newfood(vo);
-		
-		
-		return foodcnt;
-	}
 
+		ArrayList<FoodVO> vo = dao.foodkind();
+		 return vo;
+	}
+	
+	//음식검색시 음식 총 갯수
+	@Override
+	public int getFoodCnt(Map<String, Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		int vo = dao.getFoodCnt(map);
+		 return vo;
+	}
+	//총 음식 리스트
+	@Override
+	public ArrayList<FoodVO> getFoodList(Map<String, Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+
+		ArrayList<FoodVO> vo = dao.getFoodList(map);
+		 return vo;
+	}
+	
+	// 회원별 칼로리 일자별 검색
+	@Override
+	public ArrayList<KcalorieVO> getKcalList(int guestno) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		ArrayList<KcalorieVO> dtos = dao.getKcalList(guestno);	
+		
+		return dtos;
+	}
+	
+	// 회원별 칼로리 일자별 상세정보
+	@Override
+	public ArrayList<KcalorieVO> getKcalInfo(Map<String,Object> map) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		ArrayList<KcalorieVO> dtos = dao.getKcalInfo(map);	
+		
+		return dtos;
+	}
+	
+	// 음식 이름으로 정보 셀렉트
+	@Override
+	public FoodVO getFoodname(String foodname) {
+		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
+		FoodVO dtos = dao.getFoodname(foodname);	
+		
+		return dtos;
+	}
+//--------------------------------------------------------------------------------------------------------------
+
+	//나의 총 예약건수
 	@Override
 	public int reservecnt(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -319,28 +371,6 @@ public class GuestDAOImpl implements GuestDAO {
 		return cnt;
 	}
 
-	@Override
-	public int myFoodcnt(int guestNo) {
-		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-
-		int cnt = dao.myFoodcnt(guestNo);
-		
-		return cnt;
-	
-	}
-
-	@Override
-	public ArrayList<FoodVO> myFoodList(Map<String, Object> map) {
-		
-		ArrayList<FoodVO> dtos = new ArrayList<FoodVO>();
-
-		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-
-		dtos = dao.myFoodList(map);
-		
-		return dtos;
-
-	}
 	
 	// 즐겨찾기 병원의 갯수 유무구하기
 	@Override
@@ -379,41 +409,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return dtos;
 	}
 
-	
-	
-	@Override
-	public int myFoodModi(Map<String, Object> map) {
-		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-
-		int updatecnt = dao.myFoodModi(map);
-		
-		return updatecnt;
-	
-	}
-
-	@Override
-	public int myFoodDelete(int foodno) {
-		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-
-		int deletecnt = dao.myFoodDelete(foodno);
-		
-		return deletecnt;
-
-		
-		
-	}
-
-	@Override
-	public FoodVO foodmodi(int foodno) {
-		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
-
-		FoodVO vo = new FoodVO();
-		
-		 vo = dao.foodmodi(foodno);
-		 return vo;
-	
-	}
-
+	// 사용자 검진서 갯수
 	@Override
 	public int getCheckupResultListCnt(int guestNo) {
 		int selectcnt=0;
@@ -422,7 +418,8 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return selectcnt;
 	}
-
+	
+	// 사용자 검진서 리스트
 	@Override
 	public ArrayList<CheckupVO> getCheckupResultList(Map<String, Integer> map) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -432,6 +429,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return dtos;
 	}
 
+	// 사용자 회원 정보
 	@Override
 	public GuestVO getcusInfo(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -447,7 +445,8 @@ public class GuestDAOImpl implements GuestDAO {
 		selectcnt = dao.examinationListCnt(guestNo);
 		return selectcnt;
 	}
-
+	
+	// 사용자 처방전 리스트
 	@Override
 	public ArrayList<PrescriptionVO> getExaminationList(Map<String, Integer> map) {
 		ArrayList<PrescriptionVO> dtos =null;
@@ -457,7 +456,8 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return dtos;
 	}
-
+	
+	//등록된 검진서의 상세페이지이동
 	@Override
 	public ArrayList<ExaminationVO> checkupRegisterList(Map<String, Object> map) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -468,14 +468,16 @@ public class GuestDAOImpl implements GuestDAO {
 	
 	
 	}
-
+	
+	//등록된 검진서 수
 	@Override
 	public int checkupRegistercnt(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		int cnt = dao.checkupRegistercnt(guestNo);
 		return cnt;
 	}
-
+	
+	//등록된 검진서의 상세페이지이동
 	@Override
 	public ExaminationVO checkupRegisterclick(int col) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -483,7 +485,8 @@ public class GuestDAOImpl implements GuestDAO {
 		vo = dao.checkupRegisterclick(col);
 		return vo;
 	}
-
+	
+	//중복된 병원의 즐겨찾기가 없을때 인서트.
 	@Override
 	public int overlap(Map<String, Object> m) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -493,13 +496,15 @@ public class GuestDAOImpl implements GuestDAO {
 		return overlap;
 	}
 
+	//즐겨찾기한 병원목록 
 	@Override
 	public String bookMarkListcnt(int guestNo) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		String favoritehos = dao.bookMarkListcnt(guestNo);
 		return favoritehos;
 	}
-
+	
+	//병원번호에따른 병원정보
 	@Override
 	public HospitalVO hospitalInfo(int hospitalno) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
@@ -508,18 +513,14 @@ public class GuestDAOImpl implements GuestDAO {
 		
 		return vo;
 	}
-
+	
+	// 등록한 검진서 삭제
 	@Override
 	public int checkdelete(int col) {
 		GuestDAO dao = sqlSession.getMapper(GuestDAO.class);
 		int deletecnt = dao.checkdelete(col);
 		return deletecnt;
 	}
-
-
-	
-
-
 
 
 }

@@ -382,6 +382,7 @@
 	<select id="getPointManageCnt" resultType="int">
 		select count(pointno)
 		from point
+		where doctorno=#{doctorno}
 	</select>
 
 	<!-- 포인트 글 목록 -->
@@ -415,6 +416,12 @@
 		select ref from QuestionBoard where
 		boardwriter = #{id,jdbcType=VARCHAR}
 		group by ref ))
+	</select>
+	
+	<!-- 예약댓글 없을 때 -->
+	<select id = "getReboardCntNull" resultType="int">
+		select count(*) from QuestionBoard where
+		boardwriter = #{id,jdbcType=VARCHAR}
 	</select>
 
 	<!-- 댓글 목록 -->
@@ -478,7 +485,5 @@
 	<update id="reservationAppro" parameterType="com.team.medical.vo.ReservationVO">
 		update Reservation set Reservationappro = 2 where reservationNo =#{reservationNo}
 	</update>
-
-
-
+	
 </mapper>

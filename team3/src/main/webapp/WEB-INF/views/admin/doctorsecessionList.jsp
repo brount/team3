@@ -21,7 +21,7 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
                                    	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
@@ -72,7 +72,21 @@
 														<td>${dto.doctorname}</td>
 														<td>${dtos2[a].hospitaladdr}</td>
 														<td>${dtos2[a].hospitalphone}</td>
-														<td>${dto.doctorspecialism}</td>
+														<c:if test="${dto.doctorspecialism == 1}">
+															<td>내과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 2}">
+															<td>이비인후과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 3}">
+															<td>정신의학과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 4}">
+															<td>외과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 5}">
+															<td>치과</td>
+														</c:if>
 														<td>${dto.point}</td>
 														<td>${dto.doctorregstration}</td>
 		                                        	</tr>

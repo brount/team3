@@ -378,3 +378,20 @@ function setHos(a, b) {
 	opener.document.reg_form.hospital.value = b;
 	self.close();
 }
+
+function setFood(a,b,c,d,e,f,g,h,i,j,k,l,z) {
+	var lastTrObj = $(opener.document).find("#xxx").find("tbody:eq(0)").find("tr:eq(0)")
+	.parent().children().last();
+	var $obj = lastTrObj.clone();
+	lastTrObj.parent().append($obj);
+	lastTrObj = lastTrObj.next();
+	lastTrObj.find("input[name=foodkind]").val(a);
+	lastTrObj.find("input[name=foodname]").val(b);
+	lastTrObj.find("input[name=gram]").val(c);
+	lastTrObj.find("input[name=kcal]").val(d);
+	lastTrObj.css("display","");
+	self.close();
+}
+
+
+

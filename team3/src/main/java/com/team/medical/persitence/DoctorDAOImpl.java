@@ -402,10 +402,10 @@ public class DoctorDAOImpl implements DoctorDAO {
 
 	// 포인트 글 갯수
 	@Override
-	public int getPointManageCnt() {
+	public int getPointManageCnt(String doctorno) {
 		int selectCnt = 0;
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
-		selectCnt = dao.getPointManageCnt();
+		selectCnt = dao.getPointManageCnt(doctorno);
 		return selectCnt;
 	}
 
@@ -510,6 +510,15 @@ public class DoctorDAOImpl implements DoctorDAO {
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
 		int cnt = dao.reservationAppro(reservationNo);
 		return cnt;
+	}
+
+	// 예약댓글 없을 때
+	@Override
+	public int getReboardCntNull(String id) {
+		int selectCnt = 0;
+		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
+		selectCnt = dao.getReboardCntNull(id);
+		return selectCnt;
 	}
 
 }

@@ -27,7 +27,7 @@
 	                        <div class="row">
 	                            <div class="col-lg-4">
 	                                <div class="table-responsive">
-	                                    <table class="table table-bordered table-hover table-striped">
+	                                    <table class="responstable">
 	                                        <thead>
 		                                        <tr>
 		                                            <th>약번호</th>
@@ -58,36 +58,34 @@
 												</c:if>
 											</tbody>
 										</table>
-
-										<!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
-														<!-- 맨끝[◀◀] / 이전[◀] -->
-														<c:if test="${startPage > pageBlock}">
-															<a href="drugList">[맨앞]</a>
-															<a href="drugList?pageNum=${startPage - pageBlock}">[이전]</a>
-														</c:if>
-
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="drugList?pageNum=${i}">[${i}]</a>
-															</c:if>
-														</c:forEach>
-
-														<!-- 맨끝[▶▶] / 다음▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="drugList?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="drugList?pageNum=${pageCount}">[맨뒤]</a>
-														</c:if>
-													</c:if>
-												</th>
-											</tr>
-										</table>
+										
+										<br>
+										
+										<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+											<c:if test="${cnt>0}">
+										<!-- 이전블록 -->
+										 <c:if test="${startPage > pageBlock }">
+											 <a href="drugList"><<</a>
+				                             <a href="drugList?pageNum=${startPage-pageBlock}"><</a>
+				                          </c:if>
+				                          <!-- 페이지 블록 -->
+				                          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+				                             <c:if test="${i == currentPage }">
+				                                <strong>${i }</strong>
+				                             </c:if>
+				                             <c:if test="${i != currentPage }">
+				                                <a href="drugList?pageNum=${i}">${i }</a>
+				                             </c:if>
+				                          </c:forEach>
+				                          <!-- 다음블록 -->
+				                          <c:if test="${pageCount > endPage }">
+				                             <a href="drugList?pageNum=${startPage+pageBlock}">></a>
+				                             	<a href="drugList?pageNum=${pageCount}">>></a>
+				                          </c:if>
+				                       </c:if>
+				                    </div>
+										<br>
+										
 
 										<form action="drugSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
 											<table align="center">
@@ -103,7 +101,7 @@
 														<input type="text" id="search" name="search">
 													</td>
 													<td>
-														<input type="submit" value="검색">
+														<input type="submit" class="btn btn-dark-blue" value="검색">
 													</td>
 												</tr>
 											</table>

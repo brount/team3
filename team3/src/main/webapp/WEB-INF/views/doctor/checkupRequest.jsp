@@ -23,94 +23,133 @@
 	  		 <div class="col-sm-9 col-md-9">
 	            <div class="well">
 					<div>
-						<div class="panel panel-primary">
+					
 						    <div class="panel-heading">
 						        <h3>검사 의뢰서</h3>
 						    </div>
 						     <c:set value="0" var="a"></c:set>
                                <c:set value="0" var="b"></c:set>
-						    <table class="table" border="1" >
+							 <table class="responstable" border="1">
+									<tr>
+									<th>진료 의뢰일 </th>
+										<td> ${ReservDto.reservationTime}</td>
+									</tr>
 								<tr>
-									<td>진료 의뢰일 : 2018년 7월 19일 5시 10분</td>
-								</tr>
-								<tr>
-									<td>과명 : ${docList[a].doctorname}
-									<c:if test="${vo.doctorspecialism==1}">
+									<th>진료과  ${docList[a].doctorname}</th>
+									<td><c:if test="${vo.doctorspecialism==1}">
 										내과
-									</c:if>
-									<c:if test="${vo.doctorspecialism==2}">
+									</c:if> <c:if test="${vo.doctorspecialism==2}">
 										이비인후과
-									</c:if>
-									<c:if test="${vo.doctorspecialism==3}">
+									</c:if> <c:if test="${vo.doctorspecialism==3}">
 										정신의학과
-									</c:if>
-									<c:if test="${vo.doctorspecialism==4}">
+									</c:if> <c:if test="${vo.doctorspecialism==4}">
 										외과
-									</c:if>
-									<c:if test="${vo.doctorspecialism==5}">
+									</c:if> <c:if test="${vo.doctorspecialism==5}">
 										치과
 									</c:if>
-									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의사명 : ${vo.doctorname}</td>
+
+
+										
+										</td>
 								</tr>
-						    </table>
-						    
-						     <table class="table" border="1" >
 								<tr>
-									<td>성명 : ${gusDto.guestname}</td>
-									<td>주민등록번호 : ${gusDto.jumin}</td>
-								</tr>
-								
-								<tr>
-									<td>연락처 : ${gusDto.guesttel}</td>
-									<td>이메일 주소 : ${gusDto.guestemail}</td>
-								</tr>
+									
+										<th align="center" style="width: 20%;">의사 </th>
+										<td>${vo.doctorname}</td>
+									</tr>
 						    </table>
+						  <table class="responstable" border="1">
+									<tr>
+										<th>환자명</th>
+										<td>${gusDto.guestname}</td>
+										<th style="width: 15%;">주민등록번호</th>
+										<td>${jumin}-*******</td>
+									</tr>
+
+									<tr>
+										<th>연락처</th>
+										<td>${gusDto.guesttel}</td>
+										<th>이메일</th>
+										<td>${gusDto.guestemail}</td>
+									</tr>
+								</table>
 									    
-						    <table class="table" border="1" >
+						 	<table class="responstable" >
 								<tr>
-									<td>
-										▣ 의뢰과목<br><br>
+									<th colspan="2">▣ 의뢰과목</th>
+								</tr>	
+								<tr>	
+									<td>	
 										<input type="checkbox" name="checkup_kind" value="1">계층검사
 										<input type="checkbox" name="checkup_kind" value="2">소변　
 										<input type="checkbox" name="checkup_kind" value="3">혈액　
 										<input type="checkbox" name="checkup_kind" value="4">MRI　 
-									</td>
+									</td>	
+									
 								</tr>
 								<tr>
-									<td>
-										▣ 진단명<br><br><textarea name="checkup_name" rows="5" style="resize: none; width: 100%;" maxlength="100"></textarea>
-									</td>
+									<th>
+										▣ 진단명
+									</th>
 								</tr> 
 								<tr>
 									<td>
-										▣ 병력 및 소견<br><br><textarea name ="checkup_opinion" rows="5"  style="resize: none; width: 100%;" maxlength="100"></textarea>
+									<textarea name="checkup_name" rows="5" style="resize: none; width: 100%;" maxlength="100"></textarea>
 									</td>
+								</tr>
+								
+								<tr>
+									<th>
+										▣ 병력 및 소견
+									</th>
+								</tr>
+							
+								<tr>
+									<td>
+									<textarea name ="checkup_opinion" rows="5"  style="resize: none; width: 100%;" maxlength="100"></textarea>
+									</td>
+								</tr>
+								
+								<tr>
+									<th>
+										▣ 의뢰 내용
+									</th>
 								</tr>
 								<tr>
 									<td>
-										▣ 의뢰 내용<br><br><textarea name ="checkup_contents" rows="5" style="resize: none; width: 100%;" maxlength="100"></textarea>
+									<textarea name ="checkup_contents" rows="5" style="resize: none; width: 100%;" maxlength="100"></textarea>
 									</td>
 								</tr>
 						    </table>
 						    
-						    <table class="table" border="1" >
-								<tr>
-									<td align="center">의뢰 병원 : ${dto.hospitalname}</td>
-									<td align="center">전화번호 : ${dto.hospitalphone}</td>
-								</tr>
-								<tr>
-									<td align="center">주소 : ${dto.hospitaladdr}<br>
-															 	
-									</td>
-									<td align="center">의사 :${vo.doctorname}</td>
-								</tr>
-						    </table>
-						    <table class="table" border="1" >
-								<tr>
-									<td align="center"> ${dto.hospitalname}</td>
-								</tr>
-						    </table>
 						    
+						    <table class="responstable" border="1">
+								
+								
+								<tr>
+										<th style="width: 12%;">의뢰 병원 </th>
+										<td> ${dto.hospitalname}</td>
+										<th style="width: 12%;">의사</th>
+										<td>${vo.doctorname}</td>
+									
+										
+									</tr>
+
+									<tr>
+										<th style="width: 12%;">주소</th>
+										<td>${dto.hospitaladdr}</td>
+										<th>전화번호</th>
+										<td>${dto.hospitalphone}</td>
+									</tr>
+					
+								</table>
+								<table class="responstable" border="1">
+									<tr>
+										<th align="center" colspan="2">${dto.hospitalname}</th>
+									</tr>
+								</table>
+						    
+					
 						</div>
 						<div style="display:table; margin:0 auto;">
 							<input type="submit" class="btn btn-dark-blue" value="등록하기" style="margin-right:5px;">
@@ -121,7 +160,7 @@
 	            </div>
 	        </div>
 	    </div>
-	</div> 
+
 </form>
 </section>
  <footer>

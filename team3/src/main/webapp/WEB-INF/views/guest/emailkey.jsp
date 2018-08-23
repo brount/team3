@@ -7,6 +7,9 @@
 <title>사이트이름</title>
 <link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/medical/resources/css/css/table.css" />
+
 <script src="/medical/resources/djcss/dj.js"></script>
 <script type="text/javascript">
 	function key() {
@@ -25,7 +28,7 @@
 
 	<form action="emailok" onsubmit="return key();" name="findform">
 	
-		<table class="table table-inbox table-hover">
+		<table  class="responstable">
 			<tr>
 				<th>인증번호 :</th>
 				<td>
@@ -34,8 +37,8 @@
 			</tr>
 			<tr>
 				<th colspan="2" style="text-align: center;">
-					<input class="btn btn-warning" type="submit" value="확인">
-					<input class="btn btn-warning" type="reset" value="취소" onclick="self.close();">
+					<input class="btn btn-dark-blue"  type="submit" value="확인">
+					<input class="btn btn-dark-blue" type="reset" value="취소" onclick="self.close();">
 				</th>
 			</tr>
 		</table>

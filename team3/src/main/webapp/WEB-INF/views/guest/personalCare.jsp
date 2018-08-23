@@ -40,7 +40,7 @@
 					
 						  <form class="form-horizontal" action=" " method="post"  id="reg_form">
 						    <fieldset>
-						    <h1>개인건강관리</h1>
+						    <h3>개인건강관리</h3>
 						<c:if test="${selectcnt!=0}">
 						
 						
@@ -84,10 +84,29 @@
 					 <tr class="unread">
                                     <th class="view-message  dont-show">나의 신체질량 BMI 지수</th>
                                   <td class="view-message"> 
-                                  		  ${bmi}
-                                  		  <b>(BMI)</b>	
+                                  		  ${bmi}	
                                   
                                   </td>                                  
+                           
+                              </tr>	
+                              <tr class="unread">
+                                    <th class="view-message  dont-show">최고혈압</th>
+                                  <td class="view-message"> 
+                                   <c:if test="${max==null }">
+                                  		어플에서 등록하실 수 있습니다~!
+                                  	</c:if>
+                                 ${max}     <b>Hg</b>
+                                  </td>                                  
+                           
+                              </tr>	
+                              <tr class="unread">
+                                    <th class="view-message  dont-show">최저혈압</th>
+                                  <td class="view-message"> 
+                                  	<c:if test="${min==null }"> 
+                                  		 어플에서 등록하실 수 있습니다~!
+                              	    </c:if>	
+                                  		 	${min}     <b>Hg</b>
+                                  </td>                                
                            
                               </tr>	
 						</table>
@@ -105,8 +124,8 @@
 						  		</c:if>
 						  			<c:if test="${selectcnt!=0}">
 								 <button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalMof'"> 내 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
-						  		</c:if>
 						  		<button type="button"  class="btn btn-dark-blue" onclick="window.location='caloryAdd'"> 음식 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+						  		</c:if>
 							</div>
 						 </div>    
 						  </fieldset>

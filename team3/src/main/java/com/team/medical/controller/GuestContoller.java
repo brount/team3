@@ -170,52 +170,6 @@ public class GuestContoller {
 		return "guest/personalAdd";
 	}
 
-	// 칼로리등록페이지
-	@RequestMapping(value = "caloryAdd")
-	public String caloryAdd(HttpServletRequest req, Model model) {
-		logger.info("caloryAdd, 페이지");
-		guService.caloryAdd(req, model);
-
-		return "guest/caloryAdd2";
-	}
-
-	// 칼로리수정페이지
-	@RequestMapping(value = "caloryAddModi")
-	public String calorAddModi(HttpServletRequest req, Model model) {
-		logger.info("caloryAddModi, 페이지");
-
-		return "guest/caloryAddModi";
-	}
-
-	// 칼로리수정처리페이지
-	@RequestMapping(value = "calorAddModiPro")
-	public String calorAddModiPro(HttpServletRequest req, Model model) {
-		logger.info("calorAddModiPro, 페이지");
-		guService.calorAddModi(req, model);
-
-		return "guest/caloryAdd2";
-	}
-
-	// 개인건강관리페이지
-	@RequestMapping(value = "personalCare")
-	public String personalCare(HttpServletRequest req, Model model) {
-		logger.info("personalCare, 페이지");
-
-		guService.myHealth(req, model);
-
-		return "guest/personalCare";
-	}
-
-	// (마이페이지버전)개인건강관리페이지
-	@RequestMapping(value = "personalCareM")
-	public String personalCareM(HttpServletRequest req, Model model) {
-		logger.info("personalCareM, 페이지");
-
-		guService.myHealth(req, model);
-
-		return "guest/personalCareM";
-	}
-
 	// 예약신청페이지 !!! 예약 신청 리스트 따로 필요할 듯
 	@RequestMapping(value = "reserveForm")
 	public String reserveForm(HttpServletRequest req, Model model) {
@@ -281,121 +235,94 @@ public class GuestContoller {
 		return "guest/checkupRegisterList";
 	}
 
-	// 음식 검색 칼로리조회 -아침
-	@RequestMapping(value = "foodsearch1")
-	public String foodsearch1(HttpServletRequest req, Model model) {
-		logger.info("foodsearch, 페이지");
-		guService.foodsearch(req, model);
+	
+//--------------------------------------------------------------------------------------------------	
+	// 칼로리등록페이지
+	@RequestMapping(value = "caloryAdd")
+	public String caloryAdd(HttpServletRequest req, Model model) {
+		logger.info("caloryAdd, 페이지");
+		guService.caloryAdd(req, model);
 
-		return "guest/foodsearch1";
+		return "guest/caloryAdd2";
 	}
-
-	// 음식 검색 칼로리조회 -점심
-	@RequestMapping(value = "foodsearch2")
-	public String foodsearch2(HttpServletRequest req, Model model) {
-		logger.info("foodsearch, 페이지");
-		guService.foodsearch(req, model);
-
-		return "guest/foodsearch2";
-	}
-
-	// 음식 검색 칼로리조회 -저녁
-	@RequestMapping(value = "foodsearch3")
-	public String foodsearch3(HttpServletRequest req, Model model) {
-		logger.info("foodsearch, 페이지");
-		guService.foodsearch(req, model);
-
-		return "guest/foodsearch3";
-	}
-
-	// 아점저 칼로리 등록 후 정보 인설트
+	// 칼로리등록처리페이지
 	@RequestMapping(value = "todaycal")
 	public String todaycal(HttpServletRequest req, Model model) {
 		logger.info("todaycal, 페이지");
 		guService.todaycal(req, model);
-
+		guService.kcalList(req,model);
+		// 칼로리 일자별 리스트
+		return "guest/kcalList";
+	}
+	// 칼로리등록처리페이지
+	@RequestMapping(value = "kcalList")
+	public String kcalList(HttpServletRequest req, Model model) {
+		logger.info("kcalList, 페이지");
+		guService.kcalList(req,model);
+		// 칼로리 일자별 리스트
+		return "guest/kcalList";
+	}
+	// 칼로리 일자별 상세페이지
+	@RequestMapping(value = "kcalInfo")
+	public String kcalInfo(HttpServletRequest req, Model model) {
+		logger.info("kcalInfo, 페이지");
+		guService.kcalInfo(req,model);
+		// 칼로리 일자별 리스트
 		return "guest/todaycal";
 	}
+	// 개인건강관리페이지
+	@RequestMapping(value = "personalCare")
+	public String personalCare(HttpServletRequest req, Model model) {
+		logger.info("personalCare, 페이지");
 
-	// 음식 추가 폼
-	@RequestMapping(value = "myFoodAdd")
-	public String myFoodAdd(HttpServletRequest req, Model model) {
-		logger.info("myFoodAdd, 페이지");
+		guService.myHealth(req, model);
 
-		return "guest/myFoodAdd";
+		return "guest/personalCare";
 	}
 
-	// 사용자가 새로운 음식과 칼로리 인설트 - 나만의 음식목록으로이동
-	@RequestMapping(value = "newfoodAdd")
-	public String newfoodAdd(HttpServletRequest req, Model model) {
-		logger.info("newfoodAdd, 페이지");
-		guService.newfood(req, model);
+	// (마이페이지버전)개인건강관리페이지
+	@RequestMapping(value = "personalCareM")
+	public String personalCareM(HttpServletRequest req, Model model) {
+		logger.info("personalCareM, 페이지");
 
-		return "guest/newfoodAdd";
+		guService.myHealth(req, model);
+
+		return "guest/personalCareM";
 	}
-
-	// 사용자가 새로운 음식과 칼로리 인설트 - 하루칼로리 추가폼이동
-	@RequestMapping(value = "newfood")
-	public String newfood(HttpServletRequest req, Model model) {
-		logger.info("newfood, 페이지");
-		guService.newfood(req, model);
-
-		return "guest/newfood";
+	
+	
+	
+	// 음식 검색 페이지
+	@RequestMapping(value = "foodSearch")
+	public String foodsearch(HttpServletRequest req, Model model) {
+		logger.info("foodsearch, 페이지");
+		guService.foodkind(req, model);
+		
+		if(req.getParameter("sc") !=null) {
+			model.addAttribute("sc",req.getParameter("sc"));
+			model.addAttribute("select",req.getParameter("select"));
+			model.addAttribute("pageNum",req.getParameter("pageNum"));
+		}
+		
+		
+		return "guest/foodsearch";
 	}
+	// 음식 검색
+	@RequestMapping(value = "foodSearch_sub")
+	public String foodsearch1(HttpServletRequest req, Model model) {
+		logger.info("foodSearch_sub, 페이지");
+		guService.foodsearch(req, model);
 
-	// 사용자가 새로운 음식과 칼로리 인설트/ 수정페이지버전
-	@RequestMapping(value = "newfoodModi")
-	public String newfoodmodi(HttpServletRequest req, Model model) {
-		logger.info("newfoodmodi, 페이지");
-		guService.newfood(req, model);
-
-		return "guest/newfoodmodi";
+		return "guest/foodSearch_sub";
 	}
-
-	// 사용자가 추가한 음식 목록
-	@RequestMapping(value = "myFoodList")
-	public String myFoodList(HttpServletRequest req, Model model) {
-		logger.info("myFoodList, 페이지");
-		guService.myFoodList(req, model);
-
-		return "guest/myFoodList";
-	}
-
-	// (헬스케어페이지버전)사용자가 추가한 음식 목록
-	@RequestMapping(value = "myFoodListH")
-	public String myFoodListH(HttpServletRequest req, Model model) {
-		logger.info("myFoodListH, 페이지");
-		guService.myFoodList(req, model);
-
-		return "guest/myFoodListH";
-	}
-
-	// 사용자가 추가한 음식 수정 전 폼
-
-	@RequestMapping(value = "foodmodi")
-	public String foodmodi(HttpServletRequest req, Model model) {
-		logger.info("foodmodi, 페이지");
-		guService.foodmodi(req, model);
-		return "guest/foodmodi";
-	}
-
-	// 사용자가 추가한 음식 수정
-	@RequestMapping(value = "myFoodModi")
-	public String myFoodModi(HttpServletRequest req, Model model) {
-		logger.info("myFoodModi, 페이지");
-		guService.myFoodModi(req, model);
-
-		return "guest/foodmodiPro";
-	}
-
-	// 사용자가 추가한 음식 삭제
-	@RequestMapping(value = "myFoodDelete")
-	public String myFoodDelete(HttpServletRequest req, Model model) {
-		logger.info("myFoodModi, 페이지");
-		guService.myFoodDelete(req, model);
-
-		return "guest/myFoodDelete";
-	}
+	
+	
+	
+//--------------------------------------------------------------------------------------------------
+	
+	
+	
+	
 
 	// 건강검진 목록페이지
 	@RequestMapping(value = "guestcheckupResultList")
@@ -465,8 +392,7 @@ public class GuestContoller {
 
 		return "guest/guestExit";
 	}
-	
-	// 일반회원탈퇴 처리
+
 	@RequestMapping(value = "guestExitPro")
 	public String guestExitPro(HttpServletRequest req, Model model) {
 		logger.info("guestExitPro, 페이지");

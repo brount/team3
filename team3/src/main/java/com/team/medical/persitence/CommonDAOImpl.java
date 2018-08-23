@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +19,7 @@ import com.team.medical.vo.DiseaseVO;
 import com.team.medical.vo.DrugVO;
 import com.team.medical.vo.EventVO;
 import com.team.medical.vo.ExerciseVO;
+import com.team.medical.vo.HealthcareVO;
 import com.team.medical.vo.HospitalVO;
 import com.team.medical.vo.QuestionBoardVO;
 
@@ -361,6 +363,33 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		
     }
+	// 안드로이드 DAO
 	
+	// 항목별 정보 가져오기
+	@Override
+	public HealthcareVO getAndroidHealthcareInfo(Map<String, String> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		HealthcareVO vo =  dao.getAndroidHealthcareInfo(map);
+		
+		return vo;
+	}
+	// 항목별 정보 목록 가져오기
+	@Override
+	public List<HealthcareVO> getAndroidHealthcareList(Map<String, String> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		List<HealthcareVO> vo =  dao.getAndroidHealthcareList(map);
+		
+		return vo;
+	}
+	// 항목별 정보 insert
+	@Override
+	public int addAndroidHealthcareInfo(Map<String, Object> map) {
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		int vo =  dao.addAndroidHealthcareInfo(map);
+		
+		return vo;
+	}
+	
+	// 안드로이드 DAO
 	
 }

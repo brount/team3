@@ -6,6 +6,9 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link href="/medical/resources/common/css/sidebar.css" rel="stylesheet">
+<link href="/medical/resources/djcss/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <html lang="en">
 <title>사이트 이름</title>

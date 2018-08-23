@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class CheckupListVO {
 
-	private int doctorno;
-	private int checkuplist;
-	private int guestNo;
-	private String checkup_kind;
-	private String checkup_name;
-	private String checkup_opinion;
-	private String checkup_contents;
-	private Date checkup_date;
+	private int doctorno;				// 의사회원번호
+	private int checkuplist;			// 검사목록번호
+	private int guestNo;				// 일반회원번호
+	private String checkup_kind;		// 검사종류
+	private String checkup_name;		// 검사이름
+	private String checkup_opinion;		// 의사소견
+	private String checkup_contents;	// 검사내용
+	private Date checkup_date;			// 검사날짜
 	
 	public String getCheckup_opinion() {
 		return checkup_opinion;

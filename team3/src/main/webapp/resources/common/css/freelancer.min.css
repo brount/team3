@@ -338,9 +338,7 @@ a {
 	color: #18bc9c
 }
 
-a:active, a:focus, a:hover {
-	color: #128f76
-}
+
 
 .btn {
 	border-width: 5px

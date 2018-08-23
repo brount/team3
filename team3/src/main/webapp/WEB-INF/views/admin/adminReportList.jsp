@@ -12,35 +12,42 @@
 	
 	    <div id="page-wrapper">
 	        <div class="row">
-	            <div class="col-lg-12">	
-	                <h1 class="page-header">신고게시판</h1>		<!-- 페이지 제목 -->
-	            </div>
 	            <!-- /.col-lg-12 -->
+	            <div class="col-lg-12">	
+	               <!-- 페이지 제목 -->
+	               <h1 class="page-header">신고목록</h1>		
+	            </div>
 	        </div>
 	        <!-- /.row -->
 	        <div class="row">
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <div class="pull-right">
-	                            <div class="btn-group">
-	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
-	                            	<button type="button" onclick="window.location='adminReportAdd?kind=3'">
-                                    	추가
-                                    </button>
-                                    <button type="button" style="margin-left:10px;" onclick="adminReportDeleteChek()">
-                                    	삭제
-                                    </button>
-	                            </div>
-	                        </div>
 	                    </div>
+	                <div class="panel panel-default">
+	                 <div class="panel-heading" style="background-color: #5b92cb78!important">
+	                 
+	                    <div class="">
+	                   
+	                        <div class="pull-right">
+	                        </div>
+	                        <br>
 	                    <!-- /.panel-heading -->
 	                    <div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-lg-4">
 	                                <div class="table-responsive">
-	                                    <table class="table table-bordered table-hover table-striped">
+	                              
+	                              <br>
+	                           		<div style="text-align: -webkit-right;">
+	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+	                            	<button type="button"class="btn btn-dark-blue" onclick="window.location='adminReportAdd?kind=3'">
+                                    	추가
+                                    </button>
+                                    <button type="button"class="btn btn-dark-blue" style="margin-left:10px;" onclick="adminReportDeleteChek()">
+                                    	삭제
+                                    </button>
+	                   			   </div>
+	                                    <table class="responstable">
 	                                        <thead>
 	                                        <tr>
 	                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
@@ -80,37 +87,32 @@
 	                                        </tbody>
 	                                    </table>
 	                                    
+	                             
+	                             <div class="pagination clearfix" style="display: table; margin: 0 auto;">
+				                       <c:if test="${cnt>0}">
+				                          <!-- 이전블록 -->
+				                          <c:if test="${startPage > pageBlock }">
+				                          <a href="adminReportList"><<</a>
+				                             <a href="adminReportList?pageNum=${startPage-pageBlock}"><</a>
+				                          </c:if>
+				                          <!-- 페이지 블록 -->
+				                          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+				                             <c:if test="${i == currentPage }">
+				                                <strong>${i }</strong>
+				                             </c:if>
+				                             <c:if test="${i != currentPage }">
+				                                <a href="adminReportList?pageNum=${i}">${i }</a>
+				                             </c:if>
+				                          </c:forEach>
+				                          <!-- 다음블록 -->
+				                          <c:if test="${pageCnt > endPage }">
+				                             <a href="adminReportList?pageNum=${startPage+pageBlock}">></a>
+				                             	<a href="adminReportList?pageNum=${pageCount}">>></a>
+				                          </c:if>
+				                       </c:if>
+				                    </div>
 	                                    
-	                                    <!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
-														<!-- 맨끝[◀◀] / 이전[◀] -->
-														<c:if test="${startPage > pageBlock}">
-															<a href="adminReportList">[맨앞]</a>
-															<a href="adminReportList?pageNum=${startPage - pageBlock}">[이전]</a>
-														</c:if>
-									
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="adminReportList?pageNum=${i}">[${i}]</a>
-															</c:if>
-														</c:forEach>
-														
-														<!-- 맨끝[▶▶] / 다음▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="adminReportList?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="adminReportList?pageNum=${pageCount}">[맨뒤]</a>
-														</c:if>
-														
-													</c:if>
-												</th>
-											</tr>
-										</table>
+	                                    
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>
@@ -122,6 +124,7 @@
 	                <!-- /.panel -->
 	            </div>
 	            <!-- /.col-lg-4 -->
+	        </div>
 	        </div>
 	        <!-- /.row -->
 	    </div>

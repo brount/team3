@@ -28,7 +28,7 @@
 						    </div>
 						    <table class="responstable" border="1">
 						    	<tr>
-						    		<th rowspan="3"><br>환<br>자</th>
+						    		<th rowspan="3" style="width: 5%;">환자</th>
 						    		<td>이름</td>
 						    		<td>${gusDto.guestname}</td>
 						    		<th rowspan="3">의료<br>기관</th>

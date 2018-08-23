@@ -70,39 +70,27 @@ public interface GuestService {
 	
 	// 간단진료 인설트
 	public void simpleTreatPro(HttpServletRequest req, Model model);
-	 
+	//식품군검색
+	public void foodkind(HttpServletRequest req, Model model);
 	// 음식검색 후 칼로리 조회
 	public void foodsearch(HttpServletRequest req, Model model);
 	
 	// 하루 칼로리 인서트
 	public void todaycal(HttpServletRequest req, Model model);
 	
-	// 하루 칼로리 업데이트
-	public void calorAddModi(HttpServletRequest req, Model model);
-	
 	// 하루에 한번만 칼로리 등록할 수 있도록 회원의 현재날짜의 칼로리 등록여부 조회
 	public void caloryAdd(HttpServletRequest req, Model model);
 	
-	// 사용자가 새로운음식과 해당하는음식의 칼로리 등록
-	public void newfood(HttpServletRequest req, Model model);
-	
-	// 사용자가 추가한 음식목록
-	public void myFoodList(HttpServletRequest req, Model model);
-	
-	// 사용자가 추가한 음식 수정 윈도우창에 뿌릴 정보
-	public void foodmodi(HttpServletRequest req, Model model);
-	// 사용자가 추가한 음식 수정
-	public void myFoodModi(HttpServletRequest req, Model model);
-
-	// 사용자가 추가한 음식 삭제
-	public void myFoodDelete(HttpServletRequest req, Model model);
+	// 칼로리 일자별 리스트
+	public void kcalList(HttpServletRequest req, Model model);
+	// 칼로리 일자별 상세정보
+	public void kcalInfo(HttpServletRequest req, Model model);
 	
 	//건강검진 목록페이지       
 	public void guestcheckupResultList(HttpServletRequest req, Model model);
 	
 	//처방목록페이지        
 	public void guestexaminationList(HttpServletRequest req, Model model);
-	
 	
 	
 	

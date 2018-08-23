@@ -14,7 +14,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">신고게시판</h1>
+					<h1 class="page-header">신고목록</h1>
 					<!-- 페이지 제목 -->
 				</div>
 				<!-- /.col-lg-12 -->
@@ -28,7 +28,7 @@
 								<h3>고객센터</h3>
 							</div>
 							<div class="mail-option">
-								<table class="table table-inbox table-hover">
+								<table class="responstable">
 									<tbody>
 										<tr>
 											<th style="width: 150px">글번호</th>
@@ -55,16 +55,16 @@
 									<tr>
 										<th colspan=4>
 										<c:if test="${dto.kind == 3}">
-										<input class="inputButton" type="button" value="글수정"
+										<input class="btn btn-dark-blue"type="button" value="글수정"
 											onclick="window.location='adminReportModifyView?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
-										<input class="inputButton" type="button" value="글삭제"
+										<input class="btn btn-dark-blue"type="button" value="글삭제"
 											onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
 										</c:if>
 										<c:if test="${dto.kind == 4}">
-										<input class="inputButton" type="button" value="글삭제"
+										<input class="btn btn-dark-blue"type="button" value="글삭제"
 											onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=4'">
 										</c:if>
-										<input class="inputButton" type="button" value="목록보기"
+										<input class="btn btn-dark-blue"type="button" value="목록보기"
 											onclick="window.location='adminReportList?pageNum=${pageNum}'">
 										</th>
 									</tr>

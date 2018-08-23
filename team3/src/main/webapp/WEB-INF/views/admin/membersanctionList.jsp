@@ -23,7 +23,7 @@
 				<div class="col-lg-8">
 					<!-- /.panel -->
 					<div class="panel panel-default">
-						<div class="panel-heading">
+	                 <div class="panel-heading" style="background-color: #5b92cb78!important">
 							<div class="pull-right">
 								<div class="btn-group">
 									<select class="btn btn-default btn-xs dropdown-toggle"
@@ -40,7 +40,7 @@
 							<div class="row">
 								<div class="col-lg-4">
 									<div class="table-responsive">
-										<table class="table table-bordered table-hover table-striped">
+										<table class="responstable">
 	                                        <thead>
 	                                        <tr>
 	                                            <th>회원번호</th>
@@ -70,61 +70,57 @@
 		                                       </c:if>
 	                                        </tbody>
 	                                    </table>
-
-										<!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
+											           
+	                                    
+	                                 <div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                      						<c:if test="${cnt > 0}">
 														<c:if test="${sc == null}">
 															<!-- 맨끝[◀◀] / 이전[◀] -->
 															<c:if test="${startPage > pageBlock}">
-																<a href="membersanctionList">[맨앞]</a>
-																<a href="membersanctionList?pageNum=${startPage - pageBlock}">[이전]</a>
+																<a href="membersanctionList"><<</a>
+																<a href="membersanctionList?pageNum=${startPage - pageBlock}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="membersanctionList?pageNum=${i}">[${i}]</a>
+																	<a href="membersanctionList?pageNum=${i}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<!-- 맨끝[▶▶] / 다음▶] -->
 															<c:if test="${pageCount > endPage}">
-																<a href="membersanctionList?pageNum=${startPage + pageBlock}">[다음]</a>
-																<a href="membersanctionList?pageNum=${pageCount}">[맨뒤]</a>
+																<a href="membersanctionList?pageNum=${startPage + pageBlock}">></a>
+																<a href="membersanctionList?pageNum=${pageCount}">>></a>
 															</c:if>
 														</c:if>
 														
-														
-														
 														<c:if test="${sc != null}">
 															<c:if test="${startPage > pageBlock}">
-																<a href="membersanctionSearchList?sc=${sc}&search=${search}">[맨앞]</a>
-																<a href="membersanctionSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+																<a href="membersanctionSearchList?sc=${sc}&search=${search}"><<</a>
+																<a href="membersanctionSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="membersanctionSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																	<a href="membersanctionSearchList?pageNum=${i}&sc=${sc}&search=${search}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<c:if test="${pageCount > endPage}">
-																<a href="membersanctionSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
-																<a href="membersanctionSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+																<a href="membersanctionSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">></a>
+																<a href="membersanctionSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">>></a>
 															</c:if>
 														</c:if>
 													</c:if>
-												</th>
-											</tr>
-										</table>
+            							         </div>   		
+
+				<br>
 										
 										<form action="membersanctionSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
 											<table align="center">
@@ -140,7 +136,7 @@
 														<input type="text" id="search" name="search">
 													</td>
 													<td>
-														<input type="submit" value="검색">
+														<input type="submit"class="btn btn-dark-blue" value="검색">
 													</td>
 												</tr>
 											</table>

@@ -3,18 +3,18 @@ package com.team.medical.vo;
 import java.sql.Date;
 
 public class EventVO {
-	private int advertisementNo;
-	private int doctorno;
-	private String advertisementTitle;
-	private String advertisementThumbnail;
-	private String advertisementImage;
-	private String advertisementContents;
-	private Date advertisementRegDate;
-	private int advertisementPeriod;
-	private int advertisementKind;
-	private Date advertisementStart;
-	private Date advertisementEnd;
-	private int advertisementState;
+	private int advertisementNo;			// 광고번호
+	private int doctorno;					// 의사회원번호
+	private String advertisementTitle;		// 광고제목
+	private String advertisementThumbnail;	// 광고섬네일
+	private String advertisementImage;		// 광고이미지
+	private String advertisementContents;	// 광고내용
+	private Date advertisementRegDate;		// 등록일
+	private int advertisementPeriod;		// 사용기간
+	private int advertisementKind;			// 광고종류
+	private Date advertisementStart;		// 광고시작시간
+	private Date advertisementEnd;			// 광고종료시간
+	private int advertisementState;			// 광고게시상태
 	
 	public int getAdvertisementNo() {
 		return advertisementNo;

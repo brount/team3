@@ -53,9 +53,9 @@
 			
 								<tr>
 									<th colspan="2">
-										<input class="inputButton" type="submit" value="작성">
-										<input class="inputButton" type="reset" value="취소">
-										<input class="inputButton" type="button" value="목록"
+										<input class="btn btn-dark-blue" type="submit" value="작성">
+										<input class="btn btn-dark-blue" type="reset" value="취소">
+										<input class="btn btn-dark-blue" type="button" value="목록"
 											onclick="window.location='adminReportList?pageNum=${pageNum}'">
 									</th>
 								</tr>

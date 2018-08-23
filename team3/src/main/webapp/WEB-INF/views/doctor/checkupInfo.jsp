@@ -29,7 +29,8 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
 						<div>
-						
+							<div class="panel panel-primary">
+								
 								<div class="panel-heading">
 									<h3>검사 의뢰서</h3>
 								</div>
@@ -163,6 +164,7 @@
 								<input type="button" class="btn btn-dark-blue" value="목록가기"
 									style="margin-left: 5px;"
 									onclick="window.location='checkupList'">
+							</div>
 							</div>
 						</div>
 					</div>

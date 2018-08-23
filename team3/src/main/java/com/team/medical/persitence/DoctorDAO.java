@@ -146,7 +146,7 @@ public interface DoctorDAO {
 	public int doctorappro(Map<String, Object> map);
 
 	// 포인트 글 갯수
-	public int getPointManageCnt();
+	public int getPointManageCnt(String doctorno);
 
 	// 포인트 글 목록
 	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map);
@@ -177,5 +177,8 @@ public interface DoctorDAO {
 
 	// 예약 확인여부
 	public int reservationAppro(int reservationNo);
+
+	// 예약댓글 없을 때
+	public int getReboardCntNull(String id);
 
 }

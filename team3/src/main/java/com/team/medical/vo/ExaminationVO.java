@@ -4,32 +4,32 @@ import java.sql.Date;
 
 public class ExaminationVO {
 	//검진서
-	private int COL;
-	private int guestNo;
-	private String guestname;
-	private String height;
-	private String weight;
-	private String fatness;
-	private String visionl;
-	private String visionr;
-	private String hearingl;
-	private String hearingr;
-	private String bloodpremax;
-	private String bloodpremin;
-	private String urineglucose;
-	private String urineprotein;
-	private String occulthematuria;
-	private String urineph;
-	private String hemoglobin;
-	private String bloodglucose;
-	private String totalcholesterol;
-	private String ast;
-	private String alt;
-	private String gammagtp;
-	private String hepatitisscr;
-	private String breastradiography;
-	private String ecg;
-	private Date examinationday;
+	private int COL;					// 검진서번호
+	private int guestNo;				// 일반회원번호
+	private String guestname;			// 회원이름
+	private String height;				// 신장
+	private String weight;				// 체중
+	private String fatness;				// 비만도
+	private String visionl;				// 시력(좌)
+	private String visionr;				// 시력(우)
+	private String hearingl;			// 청력(좌)
+	private String hearingr;			// 청력(우)
+	private String bloodpremax;			// 혈압(최고)
+	private String bloodpremin;			// 혈압(최저)
+	private String urineglucose;		// 요당
+	private String urineprotein;		// 요단백
+	private String occulthematuria;		// 요잠혈
+	private String urineph;				// 요ph
+	private String hemoglobin;			// 혈색소
+	private String bloodglucose;		// 혈당
+	private String totalcholesterol;	// 총콜레스테롤
+	private String ast;					// AST(SGOT)
+	private String alt;					// ALT(SGPT)
+	private String gammagtp;			// 감마지티피
+	private String hepatitisscr;		// 간염검사
+	private String breastradiography;	// 흉부방사선검사
+	private String ecg;					// 심전도검사
+	private Date examinationday;		// 검진날짜
 	
 	public int getCOL() {
 		return COL;

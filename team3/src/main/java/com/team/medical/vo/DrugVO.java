@@ -4,40 +4,40 @@ import java.sql.Date;
 
 public class DrugVO {
 
-	private int drugCode; // 약 번호
-	private String drugName; // 약 이름
-	private String drugCompany; // 제조회사
-	private String drugGroupCode; // 약효분류코드
-	private String drugGroup; // 약효분류
-	private String pro_Usual; // 전문/일반
-	private Date admitDate; // 허가일자
-	private String temperState; // 성상
-	private String shape; // 약 제형
+	private int drugCode; 				// 약 번호
+	private String drugName; 			// 약 이름
+	private String drugCompany; 		// 제조회사
+	private String drugGroupCode; 		// 약효분류코드
+	private String drugGroup; 			// 약효분류
+	private String pro_Usual; 			// 전문/일반
+	private Date admitDate; 			// 허가일자
+	private String temperState; 		// 성상
+	private String shape; 				// 약 제형
 
-	private String drugImage; // 낱알 이미지
+	private String drugImage; 			// 낱알 이미지
 
-	private String signF; // 표시(앞)
-	private String signB; // 표시(뒤)
-	private String drugForm; // 약 모양
-	private String colorF; // 색상(앞)
-	private String colorB; // 색상(뒤)
-	private String splitlineF; // 분할선(앞)
-	private String splitlineB; // 분할선(뒤)
-	private int maxAxis; // 크기(장축)
-	private int minAxis; // 크기(단축)
-	private int thickness; // 크기(두께)
-	private Date registDate; // 등록일자
-	private String markF; // 마크내용(앞)
-	private String markB; // 마크내용(뒤)
-	private String markImageF; // 마크이미지(앞)
-	private String markImageB; // 마크이미지(뒤)
-	private String markCodeF; // 마크코드(앞)
-	private String markCodeB; // 마크코드(뒤)
+	private String signF; 				// 표시(앞)
+	private String signB; 				// 표시(뒤)
+	private String drugForm; 			// 약 모양
+	private String colorF; 				// 색상(앞)
+	private String colorB; 				// 색상(뒤)
+	private String splitlineF; 			// 분할선(앞)
+	private String splitlineB; 			// 분할선(뒤)
+	private int maxAxis; 				// 크기(장축)
+	private int minAxis; 				// 크기(단축)
+	private int thickness; 				// 크기(두께)
+	private Date registDate; 			// 등록일자
+	private String markF; 				// 마크내용(앞)
+	private String markB; 				// 마크내용(뒤)
+	private String markImageF; 			// 마크이미지(앞)
+	private String markImageB; 			// 마크이미지(뒤)
+	private String markCodeF; 			// 마크코드(앞)
+	private String markCodeB; 			// 마크코드(뒤)
 	// -----------------------------------------------------
-	private String drugStorageMethod; // 저장방법
-	private String drugEfficacy; // 효능 효과
-	private String drugUsedCapacity; // 용법용량
-	private String drugPrecautions; // 주의사항
+	private String drugStorageMethod; 	// 저장방법
+	private String drugEfficacy; 		// 효능 효과
+	private String drugUsedCapacity; 	// 용법용량
+	private String drugPrecautions; 	// 주의사항
 
 	public int getDrugCode() {
 		return drugCode;

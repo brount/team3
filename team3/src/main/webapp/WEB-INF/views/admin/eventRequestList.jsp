@@ -22,26 +22,32 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
 	                             	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
-						 			
-						 			<button type="button" style="margin-left:10px" onclick="window.location='adminEventAdd?pageNum=${pageNum}'">
-						 				추가
-						 			</button>
-                                    <button type="button" style="margin-left:10px" onclick="eventDelCheck();">
-                                    	삭제
-                                    </button>
 	                            </div>
 	                        </div>
 	                    </div>
+	                    
+	                       <br>
+	                   <div style="text-align: -webkit-right; margin-right: 10px;">
+						 			
+						 			<button type="button" class="btn btn-dark-blue" style="margin-left:10px" onclick="window.location='adminEventAdd?pageNum=${pageNum}'">
+						 				추가
+						 			</button>
+                                    <button type="button" class="btn btn-dark-blue" style="margin-left:10px" onclick="eventDelCheck();">
+                                    	삭제
+                                    </button>
+	                
+	                
+	                </div>
 	                    <!-- /.panel-heading -->
 	                    <div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-lg-4">
 	                                <div class="table-responsive">
-	                                    <table class="table table-bordered table-hover table-striped">
+	                                    <table class="responstable">
 	                                        <thead>
 		                                        <tr>
 		                                        	<th><input type="checkbox" name="checkAll" id="checkAll"></th>
@@ -79,35 +85,33 @@
 	                                        </tbody>
 	                                    </table>
 	                                    
-	                                   <!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
-														<!-- 맨끝[◀◀] / 이전[◀] -->
-														<c:if test="${startPage > pageBlock}">
-															<a href="eventRequestList">[맨앞]</a>
-															<a href="eventRequestList?pageNum=${startPage - pageBlock}">[이전]</a>
-														</c:if>
-									
-														<c:forEach var="i" begin="${startPage}" end="${endPage}">
-															<c:if test="${i == currentPage}">
-																<span><b>[${i}]</b></span>
-															</c:if>
-															<c:if test="${i != currentPage}">
-																<a href="eventRequestList?pageNum=${i}">[${i}]</a>
-															</c:if>
-														</c:forEach>
-														
-														<!-- 맨끝[▶▶] / 다음▶] -->
-														<c:if test="${pageCount > endPage}">
-															<a href="eventRequestList?pageNum=${startPage + pageBlock}">[다음]</a>
-															<a href="eventRequestList?pageNum=${pageCount}">[맨뒤]</a>
-														</c:if>
-													</c:if>
-												</th>
-											</tr>
-										</table>
+							                                   
+									<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+							                      <c:if test="${cnt>0}">
+							                         <!-- 이전블록 -->
+							                         <c:if test="${startPage > pageBlock }">
+							                           <a href="eventRequestList"><<</a>
+							                            <a href="eventRequestList?pageNum=${startPag - pageBlock}"><</a>
+							                         </c:if>
+							                         <!-- 페이지 블록 -->
+							                         <c:forEach var="i" begin="${startPage }" end="${endPage }">
+							                            <c:if test="${i == currentPage }">
+							                               <strong>${i }</strong>
+							                            </c:if>
+							                            <c:if test="${i != currentPage }">
+							                               <a href="eventRequestList?pageNum=${i}">${i }</a>
+							                            </c:if>
+							                         </c:forEach>
+							                         <!-- 다음블록 -->
+							                         <c:if test="${pageCnt > endPage }">
+							                            <a href="eventRequestList?pageNum=${startPage + pageBlock}">></a>
+							                            <a href="eventRequestList?pageNum=${pageCount}">>></a>
+							                            
+							                         </c:if>
+							                      </c:if>
+							                   </div>
+							                                   
+	                                
 	                                </div>
 	                                <!-- /.table-responsive -->
 	                            </div>

@@ -36,34 +36,38 @@ table tbody td {
 			<div class="col-lg-8">
 				<!-- /.panel -->
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 						<div class="pull-right">
 							<div class="btn-group">
-								<button type="button"
-									onclick="window.location='diseaseAdd?pageNum=${pageNum}'">
-									추가</button>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<button type="button" onclick="diseasedeleteCheck()">
-									삭제</button>
 							</div>
 						</div>
 					</div>
+					<br>
 					<!-- /.panel-heading -->
+					<div style="text-align: -webkit-right; margin-right: 10px;">
+								<button type="button" class="btn btn-dark-blue"
+									onclick="window.location='diseaseAdd?pageNum=${pageNum}'">
+									추가</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-dark-blue" onclick="diseasedeleteCheck()">
+									삭제</button>
+					</div>
+					
 					<div class="panel-body">
 						<div class="col-lg-4">
 							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped">
+								<table class="responstable">
 									<thead>
 										<tr>
 											<th><input type="checkbox" name="checkAll" id="checkAll"></th>
-											<th>질병코드</th>
-											<th>병명</th>
+											<th style="width: 5%;">질병코드</th>
+											<th style="width: 5%;" >병명</th>
 											<th>정의</th>
-											<th>증상</th>
+											<!-- <th>증상</th>
 											<th>진단</th>
 											<th>치료</th>
 											<th>경과/합병증</th>
-											<th>예방</th>
+											<th>예방</th> -->
 										</tr>
 									</thead>
 									<tbody>
@@ -77,44 +81,44 @@ table tbody td {
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCode}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseName}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDefine}</td>
-													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseSymptom}</td>
+													<%-- <td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseSymptom}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseDiagnosis}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.diseaseCure}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.complications}</td>
 													<td onclick="window.location='diseaseModify?diseaseCode=${dto.diseaseCode}&pageNum=${pageNum}&number=${number+1}'">${dto.prevention}</td>
+												 --%>
 												</tr>
 											</c:forEach>
 										</c:if>
 									</tbody>
 								</table>
-
-								<!-- 페이지 컨트롤 -->
-								<table align="center">
-									<tr>
-										<th align="center"><c:if test="${cnt > 0}">
-												<!-- 맨끝[◀◀] / 이전[◀] -->
-												<c:if test="${startPage > pageBlock}">
-													<a href="diseaseList">[맨앞]</a>
-													<a href="diseaseList?pageNum=${startPage - pageBlock}">[이전]</a>
-												</c:if>
-
-												<c:forEach var="i" begin="${startPage}" end="${endPage}">
-													<c:if test="${i == currentPage}">
-														<span><b>[${i}]</b></span>
-													</c:if>
-													<c:if test="${i != currentPage}">
-														<a href="diseaseList?pageNum=${i}">[${i}]</a>
-													</c:if>
-												</c:forEach>
-
-												<!-- 맨끝[▶▶] / 다음▶] -->
-												<c:if test="${pageCount > endPage}">
-													<a href="diseaseList?pageNum=${startPage + pageBlock}">[다음]</a>
-													<a href="diseaseList?pageNum=${pageCount}">[맨뒤]</a>
-												</c:if>
-											</c:if></th>
-									</tr>
-								</table>
+								
+								
+								
+	
+							<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+											<c:if test="${cnt>0}">
+										<!-- 이전블록 -->
+										 <c:if test="${startPage > pageBlock }">
+											 <a href="diseaseList"><<</a>
+				                             <a href="diseaseList?pageNum=${startPage -pageBlock}"><</a>
+				                          </c:if>
+				                          <!-- 페이지 블록 -->
+				                          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+				                             <c:if test="${i == currentPage }">
+				                                <strong>${i }</strong>
+				                             </c:if>
+				                             <c:if test="${i != currentPage }">
+				                                <a href="diseaseList?pageNum=${i}">${i }</a>
+				                             </c:if>
+				                          </c:forEach>
+				                          <!-- 다음블록 -->
+				                          <c:if test="${pageCount > endPage }">
+				                             <a href="diseaseList?pageNum=${startPage +pageBlock}">></a>
+				                             	<a href="diseaseList?pageNum=${pageCount}">>></a>
+				                          </c:if>
+				                       </c:if>
+				                    </div>
 
 								<form action="diseaseSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">
 									<table align="center">
@@ -127,7 +131,7 @@ table tbody td {
 											</select></td>
 											<td><input type="text" id="search" name="search">
 											</td>
-											<td><input type="submit" value="검색"></td>
+											<td><input type="submit"class="btn btn-dark-blue" value="검색"></td>
 										</tr>
 
 									</table>

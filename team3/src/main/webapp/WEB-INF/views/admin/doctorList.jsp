@@ -21,7 +21,7 @@
 	            <div class="col-lg-8">
 	                <!-- /.panel -->
 	                <div class="panel panel-default">
-	                    <div class="panel-heading">
+					<div class="panel-heading" style="background-color: #5b92cb78!important">
 	                        <div class="pull-right">
 	                            <div class="btn-group">
 	                            	<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
@@ -39,7 +39,7 @@
 	                        <div class="row">
 	                            <div class="col-lg-4">
 	                                <div class="table-responsive">
-	                                    <table class="table table-bordered table-hover table-striped">
+	                                    <table class="responstable">
 	                                        <thead>
 	                                        <tr>
 	                                            <th>회원번호</th>			
@@ -55,20 +55,34 @@
 	                                        </thead>
 	                                        <tbody>
 	                                        
-	                                        <c:if test="${cnt > 0}">
+	                                       <c:if test="${cnt > 0}">
 	                                        	
 	                                        	<c:set value="0" var="a"></c:set>
 												<c:forEach var="dto" items="${dtos}">
-													<tr>
-													    <td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorno}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalname}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorid}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorname}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitaladdr}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dtos2[a].hospitalphone}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorspecialism}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.point}</td>
-														<td onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">${dto.doctorregstration}</td>
+													<tr onclick="window.location='doctorManage?&doctorid=${dto.doctorid}&pageNum=${pageNum}&number=${number+1}'">
+													    <td>${dto.doctorno}</td>
+														<td>${dtos2[a].hospitalname}</td>
+														<td>${dto.doctorid}</td>
+														<td>${dto.doctorname}</td>
+														<td>${dtos2[a].hospitaladdr}</td>
+														<td>${dtos2[a].hospitalphone}</td>
+														<c:if test="${dto.doctorspecialism == 1}">
+															<td>내과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 2}">
+															<td>이비인후과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 3}">
+															<td>정신의학과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 4}">
+															<td>외과</td>
+														</c:if>
+														<c:if test="${dto.doctorspecialism == 5}">
+															<td>치과</td>
+														</c:if>
+														<td>${dto.point}</td>
+														<td>${dto.doctorregstration}</td>
 		                                        	</tr>
 		                                        	<c:set var="a" value="${a+1 }"></c:set>
 		                                       	</c:forEach>
@@ -76,60 +90,55 @@
 	                                        </tbody>
 	                                    </table>
 	                                    
-	                                    
-	                                    <!-- 페이지 컨트롤 -->
-										<table align="center">
-											<tr>
-												<th align="center">
-													<c:if test="${cnt > 0}">
+	                                     <div class="pagination clearfix" style="display: table; margin: 0 auto;">
+                      						<c:if test="${cnt > 0}">
 														<c:if test="${sc == null}">
 															<!-- 맨끝[◀◀] / 이전[◀] -->
 															<c:if test="${startPage > pageBlock}">
-																<a href="doctorList">[맨앞]</a>
-																<a href="doctorList?pageNum=${startPage - pageBlock}">[이전]</a>
+																<a href="doctorList"><<</a>
+																<a href="doctorList?pageNum=${startPage - pageBlock}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="doctorList?pageNum=${i}">[${i}]</a>
+																	<a href="doctorList?pageNum=${i}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<!-- 맨끝[▶▶] / 다음▶] -->
 															<c:if test="${pageCount > endPage}">
-																<a href="doctorList?pageNum=${startPage + pageBlock}">[다음]</a>
-																<a href="doctorList?pageNum=${pageCount}">[맨뒤]</a>
+																<a href="doctorList?pageNum=${startPage + pageBlock}">></a>
+																<a href="doctorList?pageNum=${pageCount}">>></a>
 															</c:if>
 														</c:if>
 														
 														<c:if test="${sc != null}">
 															<c:if test="${startPage > pageBlock}">
-																<a href="doctorSearchList?sc=${sc}&search=${search}">[맨앞]</a>
-																<a href="doctorSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}">[이전]</a>
+																<a href="doctorSearchList?sc=${sc}&search=${search}"><<</a>
+																<a href="doctorSearchList?pageNum=${startPage - pageBlock}&sc=${sc}&search=${search}"><</a>
 															</c:if>
 										
 															<c:forEach var="i" begin="${startPage}" end="${endPage}">
 																<c:if test="${i == currentPage}">
-																	<span><b>[${i}]</b></span>
+																	<strong>${i}</strong>
 																</c:if>
 																<c:if test="${i != currentPage}">
-																	<a href="doctorSearchList?pageNum=${i}&sc=${sc}&search=${search}">[${i}]</a>
+																	<a href="doctorSearchList?pageNum=${i}&sc=${sc}&search=${search}">${i}</a>
 																</c:if>
 															</c:forEach>
 															
 															<c:if test="${pageCount > endPage}">
-																<a href="doctorSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">[다음]</a>
-																<a href="doctorSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">[맨뒤]</a>
+																<a href="doctorSearchList?pageNum=${startPage + pageBlock}sc=${sc}&search=${search}">></a>
+																<a href="doctorSearchList?pageNum=${pageCount}sc=${sc}&search=${search}">>></a>
 															</c:if>
 														</c:if>
 													</c:if>
-												</th>
-											</tr>
-										</table>
-										
+            							         </div>  
+	                                    
+	                                    
 										<form action="doctorSearchList" class="search_box" method="post" name="searchForm" onsubmit="return searchChk()">										
 		                                    <table align="center">
 	                                  			<tr>
@@ -145,7 +154,7 @@
 								 						<input type="text" id="search" name="search">
 								 					</td>
 								 					<td>
-								 						<input type="submit" value="검색">
+								 						<input type="submit" class="btn btn-dark-blue" value="검색">
 								 					</td>
 							 					</tr>
 							 				</table>

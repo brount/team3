@@ -1,11 +1,11 @@
 package com.team.medical.vo;
 
 public class CheckupresultVO {
-	private String head;
-    private String value;
-    private int state;
-    private String content;
-    private String name;
+	private String head;		// 항목명 (영어)
+    private String value;		// 비교수치
+    private int state;			// 상태  - 초과 : 1,  미만 : 2
+    private String content;		// 관련내용
+    private String name;		// 항목명 (한글)
     
 	public String getName() {
 		return name;

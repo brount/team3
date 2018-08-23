@@ -36,7 +36,7 @@
 							<div class="panel panel-primary">
 								<table class="responstable">
 									<tr>
-										<th style="width: 11%;" >병원이름</th>
+										<th style="width: 13%;" >병원이름</th>
 										<td>${vo.hospitalname}</td>
 									</tr>
 									<tr>
