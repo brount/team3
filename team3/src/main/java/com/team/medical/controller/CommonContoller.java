@@ -90,6 +90,8 @@ public class CommonContoller {
 	@RequestMapping(value = "drugInfo")
 	public String drugInfo(HttpServletRequest req, Model model) {
 		logger.info("drugInfo, 페이지");
+		
+		coService.drugInfo(req, model);
 		return "common/drugInfo";
 	}
 	// 운동정보목록페이지                       
@@ -365,13 +367,6 @@ public class CommonContoller {
 		logger.info("foodPoisoning, 페이지");
 		
 		return "common/foodPoisoning";
-	}
-	// 자외선지수
-	@RequestMapping(value = "ultravioletRay")
-	public String ultravioletRay(HttpServletRequest req, Model model) {
-		logger.info("ultravioletRay, 페이지");
-		
-		return "common/ultravioletRay";
 	}
 	// 고객센터 글목록페이지
 	@RequestMapping(value = "reportBoardList")

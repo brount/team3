@@ -41,7 +41,7 @@
 	        <div style="display:table; margin:0 auto;">
 				<div>
 				
-				<button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalAdd'"> MyHealth 등록하기 <span class="glyphicon glyphicon-send"></span></button>
+				<button type="button"  class="btn btn-dark-blue"  onclick="window.location='personalAdd'"> 나의 건강정보 등록하기 <span class="glyphicon glyphicon-send"></span></button>
 	      </div>
 	      </div>
 	 	  </c:if>

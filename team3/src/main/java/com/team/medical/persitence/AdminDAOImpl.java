@@ -357,11 +357,11 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 의사회원 제명 처리
 	@Override
-	public int doctorExpelPro(int doctorno) {
-		System.out.println("제명할 회원 번호 : " + doctorno);
+	public int doctorExpelPro(DoctorVO dodto) {
+		System.out.println("제명할 회원 번호 : " + dodto.getDoctorno());
 
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-		int updateCnt = dao.doctorExpelPro(doctorno);
+		int updateCnt = dao.doctorExpelPro(dodto);
 		
 		System.out.println(updateCnt == 1 ? "제명성공" : "제명실패");
 		

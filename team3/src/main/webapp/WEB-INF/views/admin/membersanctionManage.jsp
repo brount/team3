@@ -6,6 +6,7 @@
 <title>관리자 페이지 - 일반회원관리</title>
 </head>
 <body>
+
 	<div id="wrapper">
 		<jsp:include page="./admin_nav.jsp"></jsp:include>
 
@@ -68,9 +69,7 @@
 
 										<div class="form-group input-group">
 											<label>제제사유</label>
-											<textarea class="form-control" rows="3" id="reason" style="resize: none;" name="reason">
-												<c:if test="${dto.sanctions != 0}">${dto.reason}</c:if>
-											</textarea>
+											<textarea class="form-control" rows="5" id="reason" style="resize: none;" name="reason"><c:if test="${dto.sanctions != 0}">${dto.reason}</c:if></textarea>
 										</div>
 										<button type="submit" class="btn btn-default">등록</button>
 										<button type="reset" class="btn btn-default"

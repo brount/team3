@@ -6,20 +6,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">날씨(보건기상지수)</a>
+					<a href="foodPoisoning">보건기상지수</a>
 				</h4>
-			</div>
-			<div id="collapseOne" class="panel-collapse collapse in collapse">
-				<div class="panel-body">
-					<table class="table">
-						<tr>
-							<td><a href="ultravioletRay">자외선지수</a></td>
-						</tr>
-						<tr>
-							<td><a href="foodPoisoning">식중독지수</a></td>
-						</tr>
-					</table>
-				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">

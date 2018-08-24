@@ -89,7 +89,7 @@ function check() {
 	<form class="form-horizontal" action="personalAddPro"  method="post"  id="" name="mof" onsubmit="return check();">
 	    <fieldset style="font-size: 20;">
 	
-	      <h1 style="margin-bottom: 50px">My Health</h1>
+	      <h3 style="margin-bottom: 50px">나의 건강정보</h3>
 	    
 		 <div class="form-group">
 	        <label class="col-md-3 control-label">생년월일</label>

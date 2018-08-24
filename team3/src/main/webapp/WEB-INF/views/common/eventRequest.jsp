@@ -27,7 +27,7 @@
 								<input type="hidden" name="id" value="${id}">
 								<fieldset>
 									<!-- Form Name -->
-									<legend> 프로모션 신청 페이지 </legend>
+									<legend> 프로모션 신청 </legend>
 									<!-- Text input-->
 									아래 내용을 바탕으로 이벤트 페이지 및 배너 게재를 요청합니다<br>
 									<br>

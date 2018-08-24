@@ -33,7 +33,7 @@
 											<tr>
 												<td style="text-align: center;">${dto.drugCode}</td>
 												<td>
-													<a href="drugInfo?" style="font-family: 'Nanum Gothic', sans-serif; font-size: 20px;">${dto.drugName}</a>
+													<a href="drugInfo?drugCode=${dto.drugCode}" style="font-family: 'Nanum Gothic', sans-serif; font-size: 20px;">${dto.drugName}</a>
 												</td>
 												<td>${dto.drugCompany}</td>
 												<td style="text-align: center;">

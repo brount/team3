@@ -208,7 +208,7 @@ function kcalList() {
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5 pl-4">
                             <ol class="list-unstyled mx-4 dark-grey-text">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"    onclick="window.location='foodPoisoning'">날씨(보건기상지수)</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"    onclick="window.location='foodPoisoning'">보건기상지수</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='cdiseaseList'">질병목록</a></li>
                                <li class="sub-title text-uppercase"><a class="menu-item" style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"   onclick="window.location='simpleTreat'">간단진료</a></li>
                            <li class="sub-title text-uppercase"><a class="menu-item"  style="font-size: 25px; font-family: 'Do Hyeon', sans-serif !important;"  onclick="window.location='drugSeach'">약검색</a></li>

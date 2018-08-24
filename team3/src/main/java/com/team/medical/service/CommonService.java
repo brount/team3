@@ -46,9 +46,9 @@ public interface CommonService {
 	public void reportBoardInfo(HttpServletRequest req, Model model);
 	// 약 검색목록 페이지
 	public void drugSeachList(HttpServletRequest req, Model model);
+	// 약 상세페이지
+	public void drugInfo(HttpServletRequest req, Model model);
 	// 테스트
 	public void test(HttpServletRequest req, Model model) throws IOException;
-	
-	
 	
 }

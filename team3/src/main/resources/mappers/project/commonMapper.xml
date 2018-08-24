@@ -498,6 +498,11 @@
 		)
 	</insert>
 	
+	<!-- 약 상세보기 -->
+	<select id="drugInfo" resultType="com.team.medical.vo.DrugVO">
+		SELECT * FROM drug WHERE drugCode=#{drugCode}
+	</select>
+	
 	<!-- android Mapper -->
 	
 	<!-- 그뭐야 항목별 수치 가져오기 -->

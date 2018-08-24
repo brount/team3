@@ -135,7 +135,7 @@ public interface AdminDAO {
 	public int hospitalPermissionPro(HospitalVO hodto);
 	
 	// 의사회원 제명 처리
-	public int doctorExpelPro(int doctorno);
+	public int doctorExpelPro(DoctorVO dodto);
 	
 	// 병원정보 가져오기
 	public HospitalVO getHospital(int hospitalno);

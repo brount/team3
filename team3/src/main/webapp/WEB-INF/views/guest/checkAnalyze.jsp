@@ -18,9 +18,7 @@
         	["총콜레스테롤", 240, ${vo.totalcholesterol}],
         	["BMI", 23, ${vo.fatness}]
       	 	]);
- 
        var barChartOption = {
-    		 
     		   title:{textStyle:{fontSize:22}},
                bars: 'vertical',
                height :500,
@@ -34,7 +32,6 @@
                  easing: 'linear' },
                annotations: {
                    textStyle: {
-                	   
                      fontSize: 15,
                      bold: true,
                      italic: true,
@@ -44,14 +41,10 @@
                    }
               }
         };
- 
        var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
- 
        chart.draw(data, barChartOption);
-
        window.addEventListener('resize', function() { chart.draw(data, barChartOption); }, false);
     }
- 
     google.charts.setOnLoadCallback(schedulerSuccessAndFailChart);
 
     </script>

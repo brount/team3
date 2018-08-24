@@ -216,9 +216,9 @@
 										<tbody>
 											<c:if test="${cnt>0 }">
 												<tr>
-													<th style="text-align: center; width: 20%">이름</th>
+													<th style="text-align: center; width: 25%">이름</th>
 													<th style="text-align: center;">주소</th>
-													<th style="text-align: center; width: 20%">번호</th>
+													<th style="text-align: center; width: 17%">번호</th>
 													<th style="text-align: center; width: 5%">예약</th>
 												</tr>
 												<c:forEach var="dto" items="${dtos}">

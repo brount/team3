@@ -28,30 +28,26 @@
 										<img src="/medical/resources/common/images/testDrug.jpg">
 									</div>
 								</div>
-								<table class='table'>
+								<table class="responstable">
 									<tr>
-										<th>약품명</th>
-										<td>내용</td>
-									</tr>
-									<tr>
-										<th>성분정보</th>
-										<td>내용</td>
+										<th style="width: 22%;">약품명</th>
+										<td>${vo.drugName}</td>
 									</tr>
 									<tr>
 										<th>저장방법</th>
-										<td>내용</td>
+										<td>${vo.drugStorageMethod}</td>
 									</tr>
 									<tr>
 										<th>효능효과</th>
-										<td>내용</td>
+										<td>${vo.drugEfficacy}</td>
 									</tr>
 									<tr>
 										<th>용법용량</th>
-										<td>내용</td>
+										<td>${vo.drugUsedCapacity}</td>
 									</tr>
 									<tr>
 										<th>사용상 주의사항</th>
-										<td>내용</td>
+										<td>${vo.drugPrecautions}</td>
 									</tr>
 								</table>
 							</div>

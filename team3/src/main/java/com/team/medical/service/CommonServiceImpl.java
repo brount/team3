@@ -1072,6 +1072,18 @@ public class CommonServiceImpl implements CommonService {
 	         model.addAttribute("currentPage", currentPage); // 현재 페이지
 	      }
 	   }
+	// 약 상세페이지   
+   @Override
+	public void drugInfo(HttpServletRequest req, Model model) {
+		//3단계 화면으로부터 값 받기
+		int drugCode = Integer.parseInt(req.getParameter("drugCode"));
+		
+		//5단계 상세페이지 가져오기 
+		DrugVO vo = dao.drugInfo(drugCode);
+		
+		//6단계 request 나 session 에 결과값 저장하기
+		model.addAttribute("vo", vo);
+	}  
 
 	@Override
 	public void test(HttpServletRequest req, Model model) throws IOException {

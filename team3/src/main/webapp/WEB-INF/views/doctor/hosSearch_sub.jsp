@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="../common/setting.jsp" %>
+    <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/table.css" />
+    <link rel="stylesheet" type="text/css" href="/medical/resources/css/css/default.css" />
     
 <html lang="en">
 <title>근무병원 찾기</title>
 <body>
 
-	<table class="table table-inbox table-hover">
+	<table class="responstable">
 		<tbody>
 			
 			<tr class="unread">
-				<td class="view-message">병원명</td>
+				<th class="view-message">병원명</th>
 
-				<td class="view-message">주소</td>
+				<th class="view-message">주소</th>
 			</tr>
 			<c:if test="${cnt>0 }">
 				<c:forEach var="dto" items="${dtos}">

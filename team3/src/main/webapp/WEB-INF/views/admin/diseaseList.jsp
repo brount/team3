@@ -40,21 +40,20 @@ table tbody td {
 						style="background-color: #5b92cb78 !important">
 						<div class="pull-right">
 							<div class="btn-group">
-								<div style="text-align: -webkit-right; margin-right: 10px;">
-									<button type="button" class="btn btn-dark-blue"
-										onclick="window.location='diseaseAdd?pageNum=${pageNum}'">
-										추가
-									</button>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<button type="button" class="btn btn-dark-blue"
-										onclick="diseasedeleteCheck()">삭제</button>
-								</div>
 							</div>
 						</div>
 					</div>
 					<br>
 					<!-- /.panel-heading -->
-					
+					<div style="text-align: -webkit-right; margin-right: 10px;">
+						<button type="button" class="btn btn-dark-blue"
+							onclick="window.location='diseaseAdd?pageNum=${pageNum}'">
+							추가
+						</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-dark-blue"
+							onclick="diseasedeleteCheck()">삭제</button>
+					</div>
 
 					<div class="panel-body">
 						<div class="col-lg-4">

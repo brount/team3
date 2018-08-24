@@ -633,7 +633,6 @@ public class AdminServiceImpl implements AdminService {
 		int guestNo = Integer.parseInt(req.getParameter("guestNo"));
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 
-
 		GuestVO dto = dao.membersanctionManage(guestNo);
 		model.addAttribute("dto", dto);
 		model.addAttribute("guestNo", guestNo);
@@ -1265,7 +1264,7 @@ public class AdminServiceImpl implements AdminService {
 			dodto.setDoctorappro(doctorappro);
 			dodto.setSanctions(sanctions);
 			
-			updateCnt = dao.doctorExpelPro(doctorno);
+			updateCnt = dao.doctorExpelPro(dodto);
 		}
 		
 		model.addAttribute(updateCnt);
@@ -1603,7 +1602,7 @@ public class AdminServiceImpl implements AdminService {
 
 			dtos = dao.search_drugList(map2);
 			System.out.println(dtos);
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글목록 cf)작은바구니 : 게시글 1건
+			model.addAttribute("dtos", dtos); 
 		}
 
 		// 1 = (1 / 3) * 3 + 1
@@ -2475,9 +2474,8 @@ public class AdminServiceImpl implements AdminService {
 			status = Integer.parseInt(req.getParameter("status"));
 		}
 		
-		// 5단계. 갯수 구하기
 		cnt = dao.getPointListCnt(status);
-		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
+		System.out.println("cnt : " + cnt); 
 
 		pageNum = req.getParameter("pageNum");
 
@@ -2515,7 +2513,7 @@ public class AdminServiceImpl implements AdminService {
 			
 			ArrayList<PointVO> dtos = dao.getPointList(map);
 			System.out.println("dtos : " + dtos.size());
-			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+			model.addAttribute("dtos", dtos); 
 			
 			ArrayList<DoctorVO> dtos2 = new ArrayList<DoctorVO>();
 			DoctorVO dvo = new DoctorVO();
@@ -2529,7 +2527,7 @@ public class AdminServiceImpl implements AdminService {
 			
 			model.addAttribute("cum",cum);
 			model.addAttribute("tal",tal);
-			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
+			model.addAttribute("dtos2", dtos2); 
 		}
 
 		// 1 = (1 / 3) * 3 + 1

@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<link href="/medical/resources/common/css/drugSeach.css" rel="stylesheet">
-<link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="/medical/resources/common/css/drugSeach.css"
+	rel="stylesheet"><link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
- -->
-<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
-
+ --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
+	
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <html lang="en">
@@ -15,15 +17,15 @@
 
 <meta name="description" content="">
 <meta name="keywords" content="낱알식별,낱알식별등록,약사회,대한약사회">
-<link rel="stylesheet" type="text/css" href="/medical/resources/drug/common.css">
+<link rel="stylesheet" type="text/css"
+	href="/medical/resources/drug/common.css">
 <!-- jquey datepicker 때문에 추가 -->
 <link rel="stylesheet" href="/medical/resources/drug/jquery-ui.css">
 <body>
-
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-	<%@ include file="../common/line.jsp"%>
+<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<script src="/medical/resources/common/js/drugSeach.js"></script>
@@ -37,126 +39,142 @@
 						<script type="text/javascript" async=""
 							src="/medical/resources/drug/ga.js"></script>
 						<script type="text/javascript">
-							var omitformtags = [ "input", "textarea", "select" ]
 
-							omitformtags = omitformtags.join("|")
+var omitformtags=["input", "textarea", "select"]
 
-							function disableselect(e) {
-								if (omitformtags.indexOf(e.target.tagName
-										.toLowerCase()) == -1)
-									return false
-							}
+omitformtags=omitformtags.join("|")
 
-							function reEnable() {
-								return true
-							}
-						</script>
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
 
-						<script language="JavaScript">
-							//마우스 왼쪽/오른쪽 클릭 금지 
-							function noRightClick(evnt) {
-								//네비게디터
-								if (navigator.appName.toUpperCase().match(
-										/NETSCAPE/) != null) {
-									//오른쪽 버튼 클릭금지
-									if (evnt.which == 3) {
-										;
-										return false;
-									} else {
-										//왼쪽버튼 영역지정 금지
-										if (document.onselectstart)
-											return false;
-									}
-								}
-								//Microsoft Internet Explorer
-								else {
-									//오른쪽 버튼 클릭금지
-									if (event.button == 2) {
-										return false;
-									} else {
-										//왼쪽버튼 영역지정 금지
-										if (document.onselectstart)
-											return false;
-									}
-								}
-							}
+function reEnable(){
+return true
+}
 
-							function rtn_false() {
-								return false;
-							}
+</script>
 
-							//document.onmousedown = noRightClick;
-							//document.onselectstart = noRightClick;
-							if (typeof document.onselectstart != "undefined")
-								document.onselectstart = rtn_false
-							else {
-								document.onmousedown = disableselect
-								document.onmouseup = reEnable
-							}
-							document.oncontextmenu = rtn_false;
-						</script>
+
+						<script language="JavaScript"> 
+
+//마우스 왼쪽/오른쪽 클릭 금지 
+function noRightClick(evnt) {
+	//네비게디터
+	if (navigator.appName.toUpperCase().match(/NETSCAPE/) != null) {
+		//오른쪽 버튼 클릭금지
+		if (evnt.which == 3){;
+			return false;
+		}
+		else {
+			//왼쪽버튼 영역지정 금지
+			if (document.onselectstart)
+				return false;
+		}		
+	}
+	//Microsoft Internet Explorer
+	else {
+		//오른쪽 버튼 클릭금지
+		if (event.button==2){
+			return false;
+		}
+		else {
+			//왼쪽버튼 영역지정 금지
+			if (document.onselectstart)
+				return false;
+		}
+	}
+}
+
+function rtn_false() {
+	return false;
+}
+
+	//document.onmousedown = noRightClick;
+	//document.onselectstart = noRightClick;
+	if (typeof document.onselectstart!="undefined")
+		document.onselectstart= rtn_false
+	else{
+		document.onmousedown=disableselect
+		document.onmouseup=reEnable
+	}
+	document.oncontextmenu = rtn_false;
+
+
+</script>
 						<!-- # include virtual = "/include/asp/permission_normal.asp" -->
 
-						<script type="text/javascript" src="/medical/resources/drug/swfobject.js"></script>
-						<script type="text/javascript" src="/medical/resources/drug/common.js"></script>
-						<script type="text/javascript" src="/medical/resources/drug/jquery-1.6.2.min.js"></script>
-						<script>
-							window.jQuery
-									|| document
-											.write('<script src="/include/js/jquery-1.4.2.min.js">\x3C/script>')
-						</script>
+
+
+
+						<script type="text/javascript"
+							src="/medical/resources/drug/swfobject.js"></script>
+						<script type="text/javascript"
+							src="/medical/resources/drug/common.js"></script>
+						<script type="text/javascript"
+							src="/medical/resources/drug/jquery-1.6.2.min.js"></script>
+						<script>window.jQuery || document.write('<script src="/include/js/jquery-1.4.2.min.js">\x3C/script>')</script>
 						<!-- jquey datepicker 때문에 추가 -->
 						<script src="/medical/resources/drug/jquery-ui.js"></script>
 
 						<!-- Highslide JS -->
-						<script type="text/javascript" src="/medical/resources/drug/highslide-full.js"></script>
-						<script type="text/javascript">
-							hs.graphicsDir = '/include/js/highslide/graphics/';
-							hs.wrapperClassName = 'wide-border';
-							hs.showCredits = false;
-							hs.dimmingOpacity = 0.5;
-							hs.easing = 'easeInCirc';
-							hs.blockRightClick = true;
-							hs.headingEval = 'this.thumb.title';
-						</script>
-						<script language="JavaScript">
-							function auto_fill() {
-								document.frm.drugCompany.value = document.frm.drugCompany2.value;
-							}
+						<script type="text/javascript"
+							src="/medical/resources/drug/highslide-full.js"></script>
+						<script type="text/javascript"> 
+hs.graphicsDir = '/include/js/highslide/graphics/';
+hs.wrapperClassName = 'wide-border';
+hs.showCredits = false;
+hs.dimmingOpacity = 0.5;
+hs.easing = 'easeInCirc';
+hs.blockRightClick = true;
+hs.headingEval = 'this.thumb.title';
+</script>
+<script language="JavaScript">
 
-							function auto_fill2() {
-								document.frm.drugForm[10].checked = true;
-							}
+function auto_fill()
+{
+	document.frm.drugCompany.value = document.frm.drugCompany2.value;
+}
 
-							function auto_fill3() {
-								document.frm.shape[10].checked = true;
-							}
+function auto_fill2()
+{
+	document.frm.drugForm[10].checked = true;
+}
 
-							function auto_check(c_type) {
-								if (document.frm.is_check_all.checked) {
-									document.frm.shape[0].checked = true;
-									document.frm.shape[1].checked = true;
-									document.frm.shape[2].checked = true;
-									document.frm.shape[3].checked = true;
-									document.frm.shape[4].checked = true;
-									document.frm.shape[5].checked = true;
-									document.frm.shape[6].checked = true;
-									document.frm.shape[7].checked = true;
-									document.frm.shape[10].checked = true;
-								} else {
-									document.frm.shape[0].checked = false;
-									document.frm.shape[1].checked = false;
-									document.frm.shape[2].checked = false;
-									document.frm.shape[3].checked = false;
-									document.frm.shape[4].checked = false;
-									document.frm.shape[5].checked = false;
-									document.frm.shape[6].checked = false;
-									document.frm.shape[7].checked = false;
-									document.frm.shape[10].checked = false;
-								}
-							}
-						//-->
-						</script>
+function auto_fill3()
+{
+	document.frm.shape[10].checked = true;
+}
+
+function auto_check(c_type)
+{
+  	if (document.frm.is_check_all.checked)
+  	{
+  		document.frm.shape[0].checked = true;
+  		document.frm.shape[1].checked = true;
+  		document.frm.shape[2].checked = true;
+  		document.frm.shape[3].checked = true;
+  		document.frm.shape[4].checked = true;
+  		document.frm.shape[5].checked = true;
+  		document.frm.shape[6].checked = true;
+		document.frm.shape[7].checked = true;
+		document.frm.shape[10].checked = true;
+  	} else {
+  		document.frm.shape[0].checked = false;
+  		document.frm.shape[1].checked = false;
+  		document.frm.shape[2].checked = false;
+  		document.frm.shape[3].checked = false;	
+  		document.frm.shape[4].checked = false;
+  		document.frm.shape[5].checked = false;
+  		document.frm.shape[6].checked = false;
+		document.frm.shape[7].checked = false;	
+		document.frm.shape[10].checked = false;	
+  	}
+}
+
+//-->
+</script>
+
 
 						<script language="VBScript">
 function frm_OnSubmit() 
@@ -177,84 +195,102 @@ end function
 						<!-- 전체 -->
 						<div id="wrapper">
 
+
+
 							<form method="get" action="drugSeachList" name="frm">
 
-								<h3>약품검색</h3>
+								<h3>
+									약품검색
+								</h3>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-inbox table-hover">
 									<tbody>
 										<tr>
-											<td height="60">
-												<span class="f_ds">※ 기본상태로 검색하시면
-													모든제품이 검색됩니다. </span>&nbsp;
-											</td>
+											<td height="60"><span class="f_ds">※ 기본상태로 검색하시면
+													모든제품이 검색됩니다. </span>&nbsp;</td>
 										</tr>
 									</tbody>
 								</table>
 
-								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="responstable" bordercolor="#cecece"
-									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece"
-									class="responstable">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" class="responstable"
+									bordercolor="#cecece"
+									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece" class="responstable">
 									<tbody>
 										<tr>
-											<th style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
+											<th
+												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
 												widtd="94px" height="74" bgcolor="#f3f3f3" align="center">식별표시</th>
-											<td style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
+											<td
+												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
 												widtd="57px" height="54px" align="center">문자</td>
-											<td colspan=3
-												style="padding: 0 0 0 7px; border: solid 0px #cecece; border-bottom: solid 0px #cecece;"
-												widtd="200px"><input type="text" size="20" name="sign"
-												style="ime-mode: inactive"><br> 
-												<input type="radio" name="sign_flag" value="0" checked="checked"
-													style="margin-top: 8px">포함&nbsp;&nbsp; 
-												<input
-													type="radio" name="sign_flag" value="1">일치&nbsp;&nbsp;
-												<input type="radio" name="sign_flag" value="2">시작</td>
+											<td colspan=3 style="padding: 0 0 0 7px; border: solid 0px #cecece; border-bottom: solid 0px #cecece;"widtd="200px">
+												<input type="text" size="20"name="sign" style="ime-mode: inactive"><br>
+												 <input	type="radio" name="sign_flag" value="0" checked="checked"style="margin-top: 8px">포함&nbsp;&nbsp; 
+												 <input	type="radio" name="sign_flag" value="1">일치&nbsp;&nbsp;
+												<input type="radio" name="sign_flag" value="2">시작
+												</td>
+											
 										</tr>
+
 
 										<tr>
 											<th width="94" height="95" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece">제 형</th>
-											<td colspan="8" style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
+											<td colspan="8"
+												style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="is_check_all"
 													onclick="auto_check()" class="ver">정제류 :
 											</li>
-												<li style="width: 75px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="당의정" class="ver">당의정&nbsp;
+												<li style="width: 65px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="당의정"
+													class="ver">당의정&nbsp;
 											</li>
-												<li style="width: 110px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="필름코팅정" class="ver">필름코팅정&nbsp;
+												<li style="width: 90px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="필름코팅정"
+													class="ver">필름코팅정&nbsp;
 											</li>
-												<li style="width: 60px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="나정" class="ver">나정&nbsp;
+												<li style="width: 50px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="나정"
+													class="ver">나정&nbsp;
 											</li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="다층정" class="ver">다층정&nbsp;
+												<li style="width: 59px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="다층정"
+													class="ver">다층정&nbsp;
 											</li>
-												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="설하정" class="ver">설하정&nbsp;
+												<li style="width:67px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="설하정"
+													class="ver">설하정&nbsp;
 											</li>
-												<li style="width: 85px; float: left;">
-													<input type="checkbox" name="shape" value="저작정" class="ver">저작정&nbsp;
+												<li style="width:64px; float: left;">
+													<input type="checkbox" name="shape" value="저작정"
+													class="ver">저작정&nbsp;
 											</li>
-												<li style="width: 110px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="붕해(현탁)정" class="ver">붕해(현탁)정
-											</li>
-												<li style="width: 130px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="트로키정" class="ver">트로키정&nbsp;
-											</li>
-												<li style="width: 85px; float: none; clear: both"></li>
-												<li style="width: 80px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="경질캡슐" class="ver">경질캡슐&nbsp;
-											</li>
-												<li style="width: 150px; float: left">
-													<input type="checkbox" name="shape" value="연질캡슐" class="ver">연질캡슐&nbsp;
+												<li style="width: 95px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="붕해(현탁)정"
+													class="ver">붕해(현탁)정
 											</li>
 
-												<li style="width: 173px; float: right; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="기타" class="ver"
-													style="margin-right: 0px;" onclick="zcheck()">기타&nbsp; 
-													<select name="shape_etc" onchange="javascript:auto_fill3()" class="ver f12" style="width: 100px">
+												<li style="width:80px; float: left; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="트로키정"
+													class="ver">트로키정&nbsp;
+											</li>
+												<li style="width: 85px; float: none; clear: both"></li>
+												<li style="width: 80px; float: left; letter-spacing: -1px;margin-left: 8px;" >
+													<input type="checkbox" name="shape" value="경질캡슐"
+													class="ver">경질캡슐&nbsp;
+											</li>
+												<li style="width: 150px; float: left"><input
+													type="checkbox" name="shape" value="연질캡슐" class="ver">연질캡슐&nbsp;
+											</li>
+
+
+												<li
+												style="width: 173px; float: right; letter-spacing: -1px;">
+													<input type="checkbox" name="shape" value="기타"
+													class="ver" style="margin-right: 0px;" onclick="zcheck()">기
+													타&nbsp; <select name="shape_etc"
+													onchange="javascript:auto_fill3()" class="ver f12"
+													style="width: 100px">
 														<option value="">전체</option>
 														<option value="구강붕해필름">구강붕해필름</option>
 														<option value="구강정">구강정</option>
@@ -271,78 +307,95 @@ end function
 														<option value="특수구강정">특수구강정</option>
 														<option value="확산정">확산정</option>
 												</select>&nbsp;
-											</li> 
-											<script type="text/javascript">
-												function zcheck() {
-													if (document.frm.shape.checked) {
-													} else {
+											</li> <script type="text/javascript">
+function zcheck()
+{
+if (document.frm.shape.checked)
+{
+}
+else
+{
 
-														document.frm.shape_etc[0].selected = true;
-													}
+  		document.frm.shape_etc[0].selected = true;
+}
 
-												}
-											//-->
-											</script> 
-											<script type="text/javascript">
-												function zcheck2() {
-													if (document.frm.drugForm.checked) {
-													} else {
+}
+//-->
+</script> <script type="text/javascript">
+function zcheck2()
+{
+if (document.frm.drugForm.checked)
+{
+}
+else
+{
 
-														document.frm.drugForm_etc[0].selected = true;
-													}
+  		document.frm.drugForm_etc[0].selected = true;
+}
 
-												}
-											//-->
-											</script>
+}
+//-->
+</script>
 
 											</td>
 										</tr>
 										<tr>
 											<th width="94" height="60" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece">모 양</th>
-											<td style="padding: 5px 0 5px 14px; border: solid 1px #cecece" colspan="8">
+											<td
+												style="padding: 5px 0 5px 14px; border: solid 1px #cecece"
+												colspan="8">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="원형" class="ver">원형 &nbsp;
+													<input type="checkbox" name="drugForm" value="원형"
+													class="ver">원형 &nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="drugForm" value="타원형"
-														class="ver type1" onclick="search_group(this,1)">타원형
-														&nbsp;
+													class="ver type1" onclick="search_group(this,1)">타원형
+													&nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="반원형" class="ver">반원형 &nbsp;
+													<input type="checkbox" name="drugForm" value="반원형"
+													class="ver">반원형 &nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="삼각형" class="ver">삼각형 &nbsp;
+													<input type="checkbox" name="drugForm" value="삼각형"
+													class="ver">삼각형 &nbsp;
 											</li>
 
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="사각형" class="ver">사각형 &nbsp;
+													<input type="checkbox" name="drugForm" value="사각형"
+													class="ver">사각형 &nbsp;
 											</li>
 
 												<li style="width: 100px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="마름모형" class="ver">마름모형&nbsp;
+													<input type="checkbox" name="drugForm" value="마름모형"
+													class="ver">마름모형&nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
 													<input type="checkbox" name="drugForm" value="장방형"
-														class="ver type1" onclick="search_group(this,1)">장방형
-														&nbsp;
+													class="ver type1" onclick="search_group(this,1)">장방형
+													&nbsp;
 											</li>
 												<div style="padding-top: 5px; clear: both; float: none">
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="오각형" class="ver">오각형 &nbsp;
+														<input type="checkbox" name="drugForm" value="오각형"
+														class="ver">오각형 &nbsp;
 													</li>
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="육각형" class="ver">육각형 &nbsp;
+														<input type="checkbox" name="drugForm" value="육각형"
+														class="ver">육각형 &nbsp;
 													</li>
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="팔각형" class="ver">팔각형 &nbsp;
+														<input type="checkbox" name="drugForm" value="팔각형"
+														class="ver">팔각형 &nbsp;
 													</li>
-													<li style="width: 173px; float: right; letter-spacing: -1px;">
+													<li
+														style="width: 173px; float: right; letter-spacing: -1px;">
 														<input type="checkbox" name="drugForm" value="기타"
-														class="ver" onclick="zcheck2()">기 타&nbsp;
-														<select name="drugForm_etc" onchange="javascript:auto_fill2()"
-															class="ver f12" style="width: 100px">
+														class="ver" onclick="zcheck2()">기 타&nbsp; <select
+														name="drugForm_etc" onchange="javascript:auto_fill2()"
+														class="ver f12" style="width: 100px">
 															<option value="">전체</option>
 															<option value="8자형">8자형</option>
 															<option value="강낭콩형">강낭콩형</option>
@@ -372,11 +425,14 @@ end function
 											</td>
 										</tr>
 
+
 										<!-- 색깔 표시 시작 ---------------------------------------------------------->
+
 
 										<tr>
 											<th width="94" height="90px" bgcolor="#f3f3f3" align="center"
-												rowspan="1" style="border: solid 1px #cecece">색 깔</th>
+												rowspan="1" style="border: solid 1px #cecece">색
+													깔</th>
 
 											<td style="padding: 0 0 0 14px;" colspan="8">
 												<table border="0" cellspacing="8" cellpadding="1" class="responstable">
@@ -400,33 +456,31 @@ end function
 															<td width="20" bgcolor="#009900"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
 														</tr>
-														
 														<tr>
-															<td align="center">
-																<input type="checkbox" name="color" value="하양" class="ver f12">하양</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="노랑,미황" class="ver f12 type2"
-																	onclick="search_group(this,2)">노랑</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="주황" class="ver f12 type2"
-																	onclick="search_group(this,2)">주황</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="분홍" class="ver f12 type2"
-																	onclick="search_group(this,2)">분홍</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="빨강" class="ver f12 type2"
-																	onclick="search_group(this,2)">빨강</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="갈색" class="ver f12 type2"
-																	onclick="search_group(this,2)">갈색</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="연두" class="ver f12 type3"
-																	onclick="search_group(this,3)">연두</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="초록" class="ver f12 type3"
-																	onclick="search_group(this,3)">초록</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="하양" class="ver f12">하양</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="노랑,미황" class="ver f12 type2"
+																onclick="search_group(this,2)">노랑</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="주황" class="ver f12 type2"
+																onclick="search_group(this,2)">주황</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="분홍" class="ver f12 type2"
+																onclick="search_group(this,2)">분홍</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="빨강" class="ver f12 type2"
+																onclick="search_group(this,2)">빨강</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="갈색" class="ver f12 type2"
+																onclick="search_group(this,2)">갈색</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="연두" class="ver f12 type3"
+																onclick="search_group(this,3)">연두</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="초록" class="ver f12 type3"
+																onclick="search_group(this,3)">초록</td>
 														</tr>
-														
 														<tr>
 															<td width="20" bgcolor="#009900"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
@@ -445,70 +499,83 @@ end function
 															<td width="20" align="left"
 																style="border: solid 1px #c8c8c8">&nbsp;</td>
 														</tr>
-														
 														<tr>
-															<td align="center">
-																<input type="checkbox" name="color" value="청록" class="ver f12 type3"
-																	onclick="search_group(this,3)">청록</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="파랑,하늘" class="ver f12 type4"
-																	onclick="search_group(this,4)">파랑</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="남색" class="ver f12 type4"
-																	onclick="search_group(this,4)">남색</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="자주" class="ver f12 type5"
-																	onclick="search_group(this,5)">자주</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="보라" class="ver f12 type5"
-																	onclick="search_group(this,5)">보라</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="회색" class="ver f12">회색</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="검정" class="ver f12">검정</td>
-															<td align="center">
-																<input type="checkbox" name="color" value="투명" class="ver f12">투명</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="청록" class="ver f12 type3"
+																onclick="search_group(this,3)">청록</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="파랑,하늘" class="ver f12 type4"
+																onclick="search_group(this,4)">파랑</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="남색" class="ver f12 type4"
+																onclick="search_group(this,4)">남색</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="자주" class="ver f12 type5"
+																onclick="search_group(this,5)">자주</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="보라" class="ver f12 type5"
+																onclick="search_group(this,5)">보라</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="회색" class="ver f12">회색</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="검정" class="ver f12">검정</td>
+															<td align="center"><input type="checkbox"
+																name="color" value="투명" class="ver f12">투명</td>
 														</tr>
 													</tbody>
 												</table>
 											</td>
+
 										</tr>
+
 
 										<tr>
 											<th width="94" height="74" bgcolor="#f3f3f3" align="center"
 												rowspan="2" style="border: solid 1px #cecece">분할선</th>
-											<td style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
-											<td style="padding: 0 0 0 14px; border: solid 1px #cecece" colspan="6">
-												<input type="checkbox" name="splitlineF" value="없음" class="ver">없음 &nbsp;
-												<input type="checkbox" name="splitlineF" value="-" class="ver">'-' (또는 'I' ) 형 &nbsp;
-												<input type="checkbox" name="splitlineF" value="+" class="ver"> '+' 형 &nbsp; 
-												<input type="checkbox" name="splitlineF" value="기타" class="ver">기타</td>
+											<td
+												style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
+											<td style="padding: 0 0 0 14px; border: solid 1px #cecece"
+												colspan="6"><input type="checkbox" name="splitlineF"
+												value="없음" class="ver">없음 &nbsp; <input
+												type="checkbox" name="splitlineF" value="-" class="ver">
+												'-' (또는 'I' ) 형 &nbsp; <input type="checkbox"
+												name="splitlineF" value="+" class="ver"> '+' 형
+												&nbsp; <input type="checkbox" name="splitlineF" value="기타"
+												class="ver">기타</td>
 										</tr>
-										
 										<tr>
-											<td style="border: solid 1px #cecece; text-align: center; height: 37px">뒤</td>
-											<td style="padding: 0 0 0 14px; border: solid 1px #cecece" colspan="6">
-												<input type="checkbox" name="splitlineB" value="없음" class="ver">없음 &nbsp;
-												<input type="checkbox" name="splitlineB" value="-" class="ver">'-' (또는 'I' ) 형 &nbsp;
-												<input type="checkbox" name="splitlineB" value="+" class="ver">'+' 형 &nbsp;
-												<input type="checkbox" name="splitlineB" value="기타" class="ver">기타</td>
+											<td
+												style="border: solid 1px #cecece; text-align: center; height: 37px">뒤</td>
+											<td style="padding: 0 0 0 14px; border: solid 1px #cecece"
+												colspan="6"><input type="checkbox" name="splitlineB"
+												value="없음" class="ver">없음 &nbsp; <input
+												type="checkbox" name="splitlineB" value="-" class="ver">
+												'-' (또는 'I' ) 형 &nbsp; <input type="checkbox"
+												name="splitlineB" value="+" class="ver"> '+' 형
+												&nbsp; <input type="checkbox" name="splitlineB" value="기타"
+												class="ver">기타</td>
 										</tr>
+
 
 										<tr>
 											<th width="95" height="45" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece; border-top: solid 0px #cecece;">제품명</th>
-											<td style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece; border-bottom: solid 1px #cecece" colspan="2">
-												<input type="text" size="30" name="drugName" style="ime-mode: active; margin-right: 10px">
-											</td>
+											<td
+												style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece; border-bottom: solid 1px #cecece"
+												colspan="2"><input type="text" size="30"
+												name="drugName"
+												style="ime-mode: active; margin-right: 10px"></td>
 
 											<td width="94" height="45" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece; border-top: solid 0px #cecece">제조사</td>
-											<td style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece" colspan="4">
-												<input type="text" name="drugCompany" style="ime-mode: active; width: 80px" class="ver f12">
-												<select name="drugCompany2" onchange="javascript:auto_fill()" class="ver f12" style="width: 120px">
-													
+											<td
+												style="padding: 0 0 0 14px; border: solid 1px #cecece; border-top: solid 0px #cecece"
+												colspan="4"><input type="text" name="drugCompany"
+												style="ime-mode: active; width: 80px" class="ver f12">
+												<select name="drugCompany2"
+												onchange="javascript:auto_fill()" class="ver f12"
+												style="width: 120px">
 													<option value="">직접입력</option>
-													
 													<option value="갈더마코리아">갈더마코리아</option>
 
 													<option value="건일제약(주)">건일제약(주)</option>
@@ -1176,9 +1243,15 @@ end function
 													<option value="(주)휴온스">(주)휴온스</option>
 
 													<option value="(주)휴온스메디케어">(주)휴온스메디케어</option>
-												</select>
-											</td>
+
+											</select></td>
 										</tr>
+
+
+
+
+
+
 
 									</tbody>
 								</table>
@@ -1188,14 +1261,26 @@ end function
 									<tbody>
 										<tr>
 											<!--검색 버튼 -->
-											<td align="right"><a class="over_btn" onclick="frm.submit();">
-												<img src="/medical/resources/drug/btn_search01.gif" alt="검색">
-												<img src="/medical/resources/drug/btn_search02.gif" alt="검색" class="over"></a></td>
+											<td align="right"><a class="over_btn" onclick="frm.submit();"><img
+													src="/medical/resources/drug/btn_search01.gif" alt="검색"><img
+													src="/medical/resources/drug/btn_search02.gif" alt="검색"
+													class="over"></a></td>
 										</tr>
+
+
+
+
+
+
 									</tbody>
 								</table>
 							</form>
-							<br> <br>
+
+							<br>
+							<br>
+
+
+
 
 						</div>
 					</div>

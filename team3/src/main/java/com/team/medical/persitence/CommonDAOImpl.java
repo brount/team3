@@ -319,6 +319,19 @@ public class CommonDAOImpl implements CommonDAO {
 		
 		return updateCnt;
 	}
+	// 글 상세보기
+	@Override
+	public DrugVO drugInfo(int drugCode) {
+		
+		DrugVO vo = new DrugVO();
+		
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		vo = dao.drugInfo(drugCode);
+		
+		return vo;
+	}
+	
+	
 	// 테스트
 	@Override
 	public ArrayList<String> test(String[] args) throws IOException {

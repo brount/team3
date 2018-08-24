@@ -75,6 +75,8 @@ public interface CommonDAO {
 	public int usePoint(Map<String,Object> map);
 	// 포인트 인서트
 	public int pointInsert(Map<String,Object> map);
+	// 약 상세페이지
+	public DrugVO drugInfo(int drugCode);
 	
 	public ArrayList<String> test(String[] args) throws IOException;
 	
