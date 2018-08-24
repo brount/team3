@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <html>
 <script type="text/javascript">
 function personalCare() {
@@ -21,27 +21,27 @@ function myFoodList() {
 </script>
 <body>
 	<div class="panel-group" id="accordion">
-	    <div class="panel panel-default">
-	        <div class="panel-heading">
-	            <h4 class="panel-title">
-	                <a href="exerciseInfoList">운동정보</a>
-	            </h4>
-	        </div>                   
-	    </div>
-	    <div class="panel panel-default">
-	        <div class="panel-heading">
-	            <h4 class="panel-title">
-	                <a onclick="personalCare()">개인건강관리</a>
-	            </h4>
-	        </div>
-	    </div>
-	    <div class="panel panel-default">
-	        <div class="panel-heading">
-	            <h4 class="panel-title">
-	                <a href="kcalList">칼로리체크</a>
-	            </h4>
-	        </div>
-	    </div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a href="exerciseInfoList">운동정보</a>
+				</h4>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a onclick="personalCare()">개인건강관리</a>
+				</h4>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a href="kcalList">칼로리체크</a>
+				</h4>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

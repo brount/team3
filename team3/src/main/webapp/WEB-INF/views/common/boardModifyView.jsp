@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -43,21 +44,24 @@
 						<tr>
 							<th style="text-align: center;">비밀번호</th>
 							<td>
-								<input class="input" type="password" name="boardpwd" maxlength="10" required>
+								<input class="input" type="password" name="boardpwd"
+									maxlength="10" required>
 							</td>
 						</tr>
 
 						<tr>
 							<th style="text-align: center;">제목</th>
 							<td>
-								<input class="input" type="text" name="boardtitle" maxlength="50" style="width: 100%" value="${dto.boardtitle}" required>
+								<input class="input" type="text" name="boardtitle"
+									maxlength="50" style="width: 100%" value="${dto.boardtitle}" required>
 							</td>
 						</tr>
 
 						<tr>
 							<th style="text-align: center;">내용</th>
 							<td>
-								<textarea class="input" name="boardcontent" style="resize: none; width: 100%" rows="10" required>${dto.boardcontent}</textarea>
+								<textarea class="input" name="boardcontent"
+									style="resize: none; width: 100%" rows="10" required>${dto.boardcontent}</textarea>
 							</td>
 						</tr>
 

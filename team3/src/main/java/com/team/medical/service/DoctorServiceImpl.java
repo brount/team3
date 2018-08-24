@@ -870,7 +870,11 @@ public class DoctorServiceImpl implements DoctorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		// 생년월일만 추출
+		String[] fulljumin = gusDto.getJumin().split("-");
+		String jumin =fulljumin[0];
+		
+		model.addAttribute("jumin", jumin);
 		model.addAttribute("gusDto", gusDto);
 		model.addAttribute("CheckDto", CheckDto);
 
@@ -1120,7 +1124,11 @@ public class DoctorServiceImpl implements DoctorService {
 			String[] injectiondate1 = injectiondate.split(",");
 			model.addAttribute("injectiondate1", injectiondate1);
 		}
-
+		// 생년월일만 추출
+		String[] fulljumin = gusDto.getJumin().split("-");
+		String jumin =fulljumin[0];
+		
+		model.addAttribute("jumin", jumin);
 		model.addAttribute("drugname1", drugname1);
 		model.addAttribute("drugdosage1", drugdosage1);
 		model.addAttribute("drugrepeat1", drugrepeat1);
@@ -1249,8 +1257,13 @@ public class DoctorServiceImpl implements DoctorService {
 			symptomchk += a;
 
 		}
-		model.addAttribute("symptom1", symptomchk);
-
+		
+		model.addAttribute("symptom1", symptom);
+		// 생년월일만 추출
+				String[] fulljumin = gusDto.getJumin().split("-");
+				String jumin =fulljumin[0];
+				
+				model.addAttribute("jumin", jumin);
 		int selectCnt = dao.reservationAppro(reservationNo);
 		model.addAttribute("selectCnt", selectCnt);
 	}
@@ -1266,6 +1279,13 @@ public class DoctorServiceImpl implements DoctorService {
 		String doctorno = "d" + String.valueOf(dao.checkupdoc(checkuplist)) + "t";
 		HospitalVO hosDto = dao.getMyhospitalInfo(doctorno);
 
+		// 생년월일만 추출
+		String[] fulljumin = gusDto.getJumin().split("-");
+		String jumin =fulljumin[0];
+		
+		model.addAttribute("jumin", jumin);
+		
+		
 		model.addAttribute("gusDto", gusDto);
 		model.addAttribute("hosDto", hosDto);
 

@@ -446,6 +446,7 @@ public class GuestServiceImpl implements GuestService {
 		
 		
 	}
+	// 내 질문목록 
 	@Override
 	public void myBordList(HttpServletRequest req, Model model) {
 		
@@ -550,7 +551,7 @@ public class GuestServiceImpl implements GuestService {
 
 		}
 	}
-	
+	// 일반회원 회원탈퇴
 	@Override
 	public void guestExitPro(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
@@ -563,6 +564,7 @@ public class GuestServiceImpl implements GuestService {
 		
 		
 	}
+	// 병원예약 클릭시 해당 병원정보 조회후 예약신청페이지에 정보넘김
 	@Override
 	public void reservehospital(HttpServletRequest req, Model model) {
 		//int hospitalno = req.getParameter("hospitalno");
@@ -575,6 +577,7 @@ public class GuestServiceImpl implements GuestService {
 			
 	
 	}
+	// 병원예약 처리
 	@Override
 	public void reservePro(HttpServletRequest req, Model model) {
 		ReservationVO vo = new ReservationVO();
@@ -608,6 +611,7 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("insertcnt",insertcnt );
 		
 	}
+	// 나의 예약목록 셀렉트
 	@Override
 	public void reserveList(HttpServletRequest req, Model model) {
 		
@@ -749,6 +753,7 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("selectcnt", selectcnt);
 	}
 	// --------------------------------------------------------------------------------------------------
+	// 하루 칼로리 인서트
 	@Override
 	public void todaycal(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
@@ -900,7 +905,7 @@ public class GuestServiceImpl implements GuestService {
 		model.addAttribute("kcalList",kcalList);
 		
 	}
-	
+	// 하루에 한번만 칼로리 등록할 수 있도록 회원의 현재날짜의 칼로리 등록여부 조회
 	@Override
 	public void caloryAdd(HttpServletRequest req, Model model) {
 		String id = (String) req.getSession().getAttribute("id");
@@ -1048,7 +1053,7 @@ public class GuestServiceImpl implements GuestService {
 		
 	//-------------------------------------------------------------------------------------------------
 	
-	
+	// 즐겨찾는 병원 목록
 	@Override
 	public void bookMark(HttpServletRequest req, Model model) {
 		
@@ -1544,46 +1549,5 @@ public class GuestServiceImpl implements GuestService {
 	}
 	
 	
-	
 
-/*	@Override
-	public void simpleTreatPro(HttpServletRequest req, Model model) {
-		
-
-		String[] chk = req.getParameter("symptomchk").split(",");
-
-		 ArrayList<SimpleTreatVO> dtos = new ArrayList<SimpleTreatVO>();
-		
-		for (int i = 0; i < chk.length; i++) {
-			System.out.println("service: "+ chk[i]);
-			dtos = dao.simpleTreatPro(chk[i]);
-		}
-	
-		model.addAttribute("dtos", dtos);
-
-	}*/
-/*	@Override
-	public void simpleTreatPro(HttpServletRequest req, Model model) {
-		
-
-		String[] chk = req.getParameter("symptomchk").split(",");
-
-		 ArrayList<DiseaseVO> dtos = new ArrayList<DiseaseVO>();
-		
-		for (int i = 0; i < chk.length; i++) {
-			System.out.println("service: "+ chk[i]);
-			dtos = dao.simpleTreatPro(chk[i]);
-			
-				
-		}
-		for(int j =0 ; j<dtos.size(); j++) {
-		String dikind = dtos.get(j).getDiseasehospitalkind();
-		
-		}
-		System.out.println("병테이블 진료과"+dtos.get(0).getDiseasehospitalkind());
-		
-		model.addAttribute("dtos", dtos);
-
-	}
-	*/
 }

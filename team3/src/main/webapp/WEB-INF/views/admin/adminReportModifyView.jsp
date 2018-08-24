@@ -29,28 +29,31 @@
 						<input type="hidden" name="pageNum" value="${pageNum}">
 						<input type="hidden" name="boardpwd" value="admin">
 						<fieldset style="width: 800px; margin: 0 auto">
+						
 							<legend>글 수정</legend>
+							
 							<table class="table table-striped table-hover" border="1" align="center" id="board">
 								<tr>
 									<th>작성자</th>
 									<td>${dto.boardwriter}</td>
 								</tr>
-			
+
 								<tr>
 									<th>제목</th>
 									<td>
-										<input class="input" type="text" name="boardtitle" maxlength="50" style="" value="${dto.boardtitle}">
+										<input class="input" type="text" name="boardtitle"
+											maxlength="50" style="" value="${dto.boardtitle}">
 									</td>
 								</tr>
-			
+
 								<tr>
 									<th>내용</th>
 									<td>
-										<textarea class="input" name="boardcontent" style="" rows="10" cols="40">${dto.boardcontent}</textarea>
+										<textarea class="input" name="boardcontent" style="resize: none;"
+											rows="10" cols="40">${dto.boardcontent}</textarea>
 									</td>
 								</tr>
-			
-			
+
 								<tr>
 									<th colspan="2">
 										<input class="btn btn-dark-blue" type="submit" value="작성">
@@ -59,9 +62,8 @@
 											onclick="window.location='adminReportList?pageNum=${pageNum}'">
 									</th>
 								</tr>
-								
+
 							</table>
-			
 						</fieldset>
 					</form>
 				</div>

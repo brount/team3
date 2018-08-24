@@ -22,6 +22,7 @@
 		<c:if test="${pwdCnt == 0}">
 			<script type="text/javascript">
 				alert("입력한 정보를 다시 확인하세요~!");
+				
 				window.history.back();
 			</script>
 		</c:if>

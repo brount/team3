@@ -1,6 +1,7 @@
 package com.team.medical.persitence;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -415,20 +416,20 @@ public class AdminDAOImpl implements AdminDAO {
  	
     // 약 목록 개수 구하기
 	@Override
-	public int getDrugListCnt() {
+	public int adminGetDrugListCnt() {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 
-		int selectCnt = dao.getDrugListCnt();
+		int selectCnt = dao.adminGetDrugListCnt();
 
 		return selectCnt;
 	}
 
 	// 약 목록 조회
 	@Override
-	public ArrayList<DrugVO> getDrugList(Map<String, Object> map) {
+	public ArrayList<DrugVO> adminGetDrugList(Map<String, Object> map) {
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
 
-		ArrayList<DrugVO> dtos = dao.getDrugList(map);
+		ArrayList<DrugVO> dtos = dao.adminGetDrugList(map);
 
 		return dtos;
 	}
@@ -775,16 +776,19 @@ public class AdminDAOImpl implements AdminDAO {
  		return dtos;
  	}
 
-
-	// 포인트 차트
+	// 포인트차트 조회
 	@Override
-	public ArrayList<PointVO> pointChart(Map<String, Object> map) {
+	public int pointChart(int status) {
+		
+		int point = 0;
+		
 		AdminDAO dao = sqlSession.getMapper(AdminDAO.class);
-
- 		ArrayList<PointVO> dtos = dao.pointChart(map);
-
- 		return dtos;
+		
+		point = dao.pointChart(status);
+		
+		return point;
 	}
+
 //------------------------------------------------------------
 	
 	// 공지사항 상세보기
@@ -828,5 +832,6 @@ public class AdminDAOImpl implements AdminDAO {
   	  	}
   	  	return deleteCnt;
 	}
+
 
 }

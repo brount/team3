@@ -16,7 +16,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-	
+
 	<%@ include file="../common/line.jsp"%>
 
 	<section>
@@ -36,24 +36,33 @@
 
 					<tr>
 						<th style="text-align: center;">비밀번호</th>
-						<td><input class="input" type="password" name="boardpwd" maxlength="10" required></td>
+						<td>
+							<input class="input" type="password" name="boardpwd" maxlength="10" required>
+						</td>
 					</tr>
 
 					<tr>
 						<th style="text-align: center;">제목</th>
-						<td><input class="input" type="text" name="boardtitle" maxlength="50" style="width: 100%" required></td>
+						<td>
+							<input class="input" type="text" name="boardtitle"
+								maxlength="50" style="width: 100%" required>
+						</td>
 					</tr>
 
 					<tr>
 						<th style="text-align: center;">내용</th>
-						<td><textarea class="input" name="boardcontent" style="resize: none; width: 100%" rows="10" required></textarea></td>
+						<td>
+							<textarea class="input" name="boardcontent"
+								style="resize: none; width: 100%" rows="10" required></textarea>
+						</td>
 					</tr>
 
 					<tr>
 						<th colspan="2" style="text-align: center;">
-							<input class="btn btn-dark-blue" type="submit" value="작성">
-							<input class="btn btn-dark-blue" type="reset" value="취소">
-							<input class="btn btn-dark-blue" type="button" value="목록" onclick="window.location='boardList?pageNum=${pageNum}&category=${category }'">
+						<input class="btn btn-dark-blue" type="submit" value="작성">
+						<input class="btn btn-dark-blue" type="reset" value="취소">
+						<input class="btn btn-dark-blue" type="button" value="목록"
+							onclick="window.location='boardList?pageNum=${pageNum}&category=${category }'">
 						</th>
 					</tr>
 

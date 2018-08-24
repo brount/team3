@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<c:if test="${modifyCnt == 0}">
 		<script type="text/javascript">
 			alert("입력한 정보를 다시 확인하세요~!");
+			
 			window.history.back();
 		</script>
 	</c:if>
@@ -22,5 +24,6 @@
 			window.location = "boardList";
 		</script>
 	</c:if>
+	
 </body>
 </html>

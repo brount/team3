@@ -220,6 +220,7 @@
 			drug
 		</if>
 		<if test="nchk != 0">
+		(
 			<if test="sign != null">
 							SELECT * FROM
 									(
@@ -333,6 +334,7 @@
 								</choose>
 							</where>
 						</if>
+						)
 				</if>
 	</select>
 	

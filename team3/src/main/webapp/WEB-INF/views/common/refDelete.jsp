@@ -14,7 +14,6 @@
 </head>
 <body>
 
-
 <section>
 <form action="refDeletePro" method="get">
 	<input type="hidden" name="kind" value="${kind}">

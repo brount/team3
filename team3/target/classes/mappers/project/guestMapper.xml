@@ -214,7 +214,8 @@
 	<select id="getKcalList" parameterType="int" resultType="com.team.medical.vo.KcalorieVO">
 		select SUM(kcal) kcal,day from Kcalorie 
 		where guestno=#{guestno}
-		group by day 
+		group by day
+		order by day desc 
 	</select>
 	<select id="getKcalInfo" parameterType="java.util.Map" resultType="com.team.medical.vo.KcalorieVO">
 		select * from Kcalorie 

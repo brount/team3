@@ -9,6 +9,7 @@
 	<header>
 	<%@ include file="../common/header.jsp" %>
 	</header>
+	
 	<%@ include file="../common/line.jsp"%>
 	
 	<section>
@@ -42,11 +43,9 @@
 		</div>
 	</section>
 	
-	
 	<footer>
 	<%@ include file="../common/footer.jsp" %>
 	</footer>
-
 
 </body>
 </html>

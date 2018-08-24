@@ -9,7 +9,8 @@
 		</div>
 
 		<ul class="nav navbar-right navbar-top-links">
-			<li onclick="window.location='main'" style="color: white;"><i class="fa fa-sign-out fa-fw"></i> Logout </li>
+			<li onclick="window.location='adminLogOff'" style="color: white;">
+				<i class="fa fa-sign-out fa-fw"></i> Logout</li>
 		</ul>
 		<!-- /.navbar-top-links -->
 

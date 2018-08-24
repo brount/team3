@@ -85,6 +85,5 @@ document.oncontextmenu = function() {return false;}
 		<%@ include file="../common/footer.jsp"%>
 	</footer>
 
-
 </body>
 </html>

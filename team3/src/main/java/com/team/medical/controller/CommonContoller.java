@@ -30,13 +30,6 @@ public class CommonContoller {
 		}
 		return "common/mainmenuversion";
 	}
-	// 내용들어 갈 부분(헤더푸터공통부분)
-	@RequestMapping("templets")
-	public String templets(HttpServletRequest req,Model model) {
-		logger.info("templets");
-	
-		return "common/templets";
-	}
 	// 로그인화면페이지              
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin(HttpServletRequest req, Model model) {

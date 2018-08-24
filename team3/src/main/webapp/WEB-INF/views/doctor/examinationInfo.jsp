@@ -21,10 +21,12 @@
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
 	            <div class="well">
+	               <h3><small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" >처방전 목록 > </small>처방전</h3>
+	            <br>
 					<div>
 						<div class="panel panel-primary">
 						    <div class="panel-heading">
-						        <h3>처방전 결과</h3>
+						        <h3>처방전</h3>
 						    </div>
 						    <table class="responstable" border="1">
 						    	<tr>

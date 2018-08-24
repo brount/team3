@@ -29,41 +29,47 @@
 										<input type="hidden" name="pageNum" value="${pageNum}">
 										<input type="hidden" name="hospitalno" value="${dto2.hospitalno}">
 										<div class="form-group input-group">
-											<label>회원번호</label><br/>
-											<input type="text" class="form-control" id="doctorno" name="doctorno" value="${dto.doctorno}" readonly >
-										</div>
-										
-										<div class="form-group input-group">
-											<label>소속병원</label><br/>
-											<input type="text" class="form-control" id="hospitalname" name="hospitalname" value="${dto2.hospitalname}" readonly >
-										</div>
-										
-										<div class="form-group input-group">
-											<label>회원명</label> <br/>
-											<input type="text" class="form-control" id="doctorname" name="doctorname" value="${dto.doctorname}" readonly >
+											<label>회원번호</label><br />
+											<input type="text" class="form-control" id="doctorno" name="doctorno"
+												value="${dto.doctorno}" readonly>
 										</div>
 
 										<div class="form-group input-group">
-											<label>회원ID</label><br/>
-											<input type="text" class="form-control" id="doctorid" name="doctorid" value="${dto.doctorid}" readonly >
+											<label>소속병원</label><br />
+											<input type="text" class="form-control" id="hospitalname" name="hospitalname"
+												value="${dto2.hospitalname}" readonly>
 										</div>
-										
+
 										<div class="form-group input-group">
-											<label>의사 자격증</label><br/><br/>
-											<img src="/medical/resources/images/licence/${dto.licence}" width="250px" height="190px" onerror="this.src='/medical/resources/images/dachaimg.jpg'">
+											<label>회원명</label> <br />
+											<input type="text" class="form-control" id="doctorname" name="doctorname"
+												value="${dto.doctorname}" readonly>
 										</div>
-										
+
+										<div class="form-group input-group">
+											<label>회원ID</label><br />
+											<input type="text" class="form-control" id="doctorid" name="doctorid"
+												value="${dto.doctorid}" readonly>
+										</div>
+
+										<div class="form-group input-group">
+											<label>의사 자격증</label><br />
+											<br /> 
+											<img src="/medical/resources/images/licence/${dto.licence}"
+												width="250px" height="190px" onerror="this.src='/medical/resources/images/dachaimg.jpg'">
+										</div>
+
 										<c:if test="${dto.doctorappro != 0}">
 											<div class="form-group input-group">
-												<label>제제</label><br/>
+												<label>제제</label><br /> 
 												<select id="doctorappro" name="doctorappro">
 													<option value="1">---</option>
 													<option value="3">제명</option>
 												</select>
 											</div>
-																						
+
 											<div class="form-group input-group">
-												<label>제제사유</label><br/>
+												<label>제제사유</label><br />
 												<select id="sanctions" name="sanctions">
 													<option value="">---</option>
 													<option value="0">음란</option>
@@ -75,12 +81,13 @@
 											</div>
 											<button type="submit" class="btn btn-default">등록</button>
 										</c:if>
-										
+
 										<c:if test="${dto.doctorappro == 0}">
 											<button type="submit" class="btn btn-default">승인</button>
 										</c:if>
-										<button type="reset" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
-										
+										<button type="reset" class="btn btn-default"
+											onclick="window.history.back(-1)">취소</button>
+
 									</form>
 								</div>
 								<!-- /.col-lg-6 (nested) -->
@@ -96,11 +103,8 @@
 			<!-- /.row -->
 		</div>
 		<!-- /#page-wrapper -->
-
 	</div>
 	<!-- /#wrapper -->
-
-
 
 </body>
 </html>

@@ -32,7 +32,7 @@
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
-									<h3>검사 예약 목록</h3>
+									<h3>진료 예약 목록<small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" > > 환자정보 > 검사의뢰서 등록</small></h3>
 									<small>*환자 이름을 클릭하세요</small>
 								</div>
 								<div class="inbox-body">

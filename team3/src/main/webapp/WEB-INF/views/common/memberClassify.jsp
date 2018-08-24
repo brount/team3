@@ -1,49 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <html lang="en">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="/medical/resources/common/css/memberLogin.css" rel="stylesheet">
-<title> 사이트 이름 </title>
+<title>사이트 이름</title>
 <body>
-	
+
 	<header>
-	<%@ include file="../common/header.jsp" %>
+		<%@ include file="../common/header.jsp"%>
 	</header>
-	<%@ include file="../common/line.jsp"%>
 	
+	<%@ include file="../common/line.jsp"%>
+
 	<section>
 		<div class="container">
-		
-		<div class="row" style="margin-top:20px">
-		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form">
-					<fieldset>
-						<h3> 회원가입분류 </h3>
-						<hr class="colorgraph">
+
+			<div class="row" style="margin-top: 20px">
+				<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+					<form role="form">
+						<fieldset>
+							<h3>회원가입분류</h3>
+							<hr class="colorgraph">
 							<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-		                        <a href="guestClauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
-		                        <img src="/medical/resources/common/images/guest.png" style="display:table; width:100px; margin:0 auto;">일반 회원가입</a>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<a href="guestClauseAgree" class="btn btn-lg btn-primary btn-block"
+										style="background-color: #47a3da; border-color: #47a3da;">
+										<img src="/medical/resources/common/images/guest.png"
+										style="display: table; width: 100px; margin: 0 auto;">일반회원가입
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<a href="doctorClauseAgree" class="btn btn-lg btn-primary btn-block"
+										style="background-color: #47a3da; border-color: #47a3da;">
+										<img src="/medical/resources/common/images/doctor.png"
+										style="display: table; width: 100px; margin: 0 auto;">의사회원가입
+									</a>
+								</div>
 							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="doctorClauseAgree" class="btn btn-lg btn-primary btn-block" style="background-color:#47a3da; border-color:#47a3da;">
-								<img src="/medical/resources/common/images/doctor.png" style="display:table; width:100px; margin:0 auto;">의사 회원가입</a>
-							</div>
-						</div>
-						<hr class="colorgraph">
-					</fieldset>
-				</form>
+							<hr class="colorgraph">
+						</fieldset>
+					</form>
+				</div>
 			</div>
-		</div>
-		
+
 		</div>
 	</section>
-	
-	
-	<footer>
-	<%@ include file="../common/footer.jsp" %>
-	</footer>
 
+	<footer>
+		<%@ include file="../common/footer.jsp"%>
+	</footer>
 
 </body>
 </html>

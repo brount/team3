@@ -21,10 +21,13 @@
 				</div>
 				<div class="col-sm-9 col-md-9">
 				<div class="well">
+							<h3>검진결과 목록<small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" > > 검진결과 > 처방전 등록</small></h3>
+				
+				
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
-									<h3>건강검진 목록</h3>
+								
 									<small>*환자 이름을 클릭하세요</small>
 								</div>
 								<div class="inbox-body">

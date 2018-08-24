@@ -1455,7 +1455,7 @@ public class AdminServiceImpl implements AdminService {
 		int endPage = 0; // 마지막 페이지
 
 		// 5단계. 갯수 구하기
-		cnt = dao.getDrugListCnt();
+		cnt = dao.adminGetDrugListCnt();
 		System.out.println("cnt : " + cnt); // 먼저 테이블에 30건을 insert 할것
 
 		pageNum = req.getParameter("pageNum");
@@ -1491,7 +1491,7 @@ public class AdminServiceImpl implements AdminService {
 			map.put("start", start);
 			map.put("end", end);
 			
-			ArrayList<DrugVO> dtos = dao.getDrugList(map);
+			ArrayList<DrugVO> dtos = dao.adminGetDrugList(map);
 			System.out.println("dtos : " + dtos.size());
 			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
 		}
@@ -1656,10 +1656,6 @@ public class AdminServiceImpl implements AdminService {
 		
 		int pageNum = Integer.parseInt(req.getParameter("pageNum"));
 		int drugCode = Integer.parseInt(req.getParameter("drugCode"));
-    	String drugName = req.getParameter("drugName");
-    	String drugCompany = req.getParameter("drugCompany");
-    	String drugGroupCode = req.getParameter("drugGroupCode");
-    	String pro_Usual = req.getParameter("pro_Usual");
     	
     	String drugStorageMethod = req.getParameter("drugStorageMethod");
     	String drugEfficacy = req.getParameter("drugEfficacy");
@@ -1668,21 +1664,17 @@ public class AdminServiceImpl implements AdminService {
     	
         DrugVO dto = new DrugVO();
         
-        dto.setDrugName(drugName);
-        dto.setDrugCompany(drugCompany);
-        dto.setDrugGroupCode(drugGroupCode);
-        dto.setPro_Usual(pro_Usual);
-        
+        dto.setDrugCode(drugCode);
         dto.setDrugStorageMethod(drugStorageMethod);
         dto.setDrugEfficacy(drugEfficacy);
         dto.setDrugUsedCapacity(drugUsedCapacity);
         dto.setDrugPrecautions(drugPrecautions);
         
-        int selectCnt = dao.drugModifyPro(dto);
+        int updateCnt = dao.drugModifyPro(dto);
         
         model.addAttribute("drugCode", drugCode);
         model.addAttribute("pageNum", pageNum);
-        model.addAttribute("selectCnt", selectCnt);
+        model.addAttribute("updateCnt", updateCnt);
 	            
 	}
 
@@ -2248,11 +2240,13 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void exerciseModifyPro(MultipartHttpServletRequest req, Model model) {
 		
+		
 		MultipartFile file = req.getFile("exerciseImage");
 		// 임시 파일이 저장되는 논리적인 경로
 		String saveDir = req.getRealPath("/resources/images/exercise/");
 		// 업로드할 파일이 위치하게될 물리적인 경로
 		String realDir = "C:\\team\\team3\\src\\main\\webapp\\resources\\images\\exercise\\"; // 저장 경로
+		
 		
 		try {
 			String exerciseName = req.getParameter("exerciseName");
@@ -2476,7 +2470,6 @@ public class AdminServiceImpl implements AdminService {
 		int startPage = 0; // 시작 페이지
 		int endPage = 0; // 마지막 페이지
 		int status = 0;
-		int ava_point = 0;
 		
 		if(req.getParameter("status") != null) {
 			status = Integer.parseInt(req.getParameter("status"));
@@ -2524,24 +2517,20 @@ public class AdminServiceImpl implements AdminService {
 			System.out.println("dtos : " + dtos.size());
 			model.addAttribute("dtos", dtos); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
 			
-			int total = 0;
-			
-			for(int i=0;i<dtos.size();i++) {
-				total += dtos.get(i).getPoint();
-			}
-			
 			ArrayList<DoctorVO> dtos2 = new ArrayList<DoctorVO>();
 			DoctorVO dvo = new DoctorVO();
 			for(int i=0;i<dtos.size();i++) {
 				dvo= doDAO.getDoctorInfo(dtos.get(i).getDoctorno());
 				dtos2.add(dvo);
 			}
-			System.out.println("dtos2 : " + dtos2.size());
-			System.out.println("dtos : " + dtos.get(0).getDoctorno());
+			
+			int cum = dao.pointChart(1);
+			int tal = dao.pointChart(2);
+			
+			model.addAttribute("cum",cum);
+			model.addAttribute("tal",tal);
 			model.addAttribute("dtos2", dtos2); // 큰바구니 : 게시글 cf)작은 바구니 : 게시글 1건
-			model.addAttribute("total",total);
 		}
-		
 
 		// 1 = (1 / 3) * 3 + 1
 		startPage = (currentPage / pageBlock) * pageBlock + 1; // 시작 페이지
@@ -2569,34 +2558,7 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("pageBlock", pageBlock); // 출력할 페이지 갯수
 			model.addAttribute("pageCount", pageCount); // 페이지 갯수
 			model.addAttribute("currentPage", currentPage); // 현재 페이지
-			
 		}
-		
-	}
-	
-	// 포인트 차트
-	@Override
-	public void pointChart(HttpServletRequest req, Model model) {
-		Date date1 = Date.valueOf(req.getParameter("date1"));
-		Date date2 = Date.valueOf(req.getParameter("date2"));
-		System.out.println(date2);
-		System.out.println(date1);
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("date2",date2);
-		map.put("date1",date1);
-		map.put("status",1);
-		ArrayList<PointVO> dtos1 = dao.pointChart(map);
-		
-		System.out.println(date1);
-		System.out.println(date2);
-		Map<String,Object> map2 = new HashMap<String,Object>();
-		map2.put("date2",date2);
-		map2.put("date1",date1);
-		map2.put("status",2);
-		ArrayList<PointVO> dtos2 = dao.pointChart(map2);
-		
-		model.addAttribute("dtos1",dtos1);
-		model.addAttribute("dtos2",dtos2);
 	}
 	
 	//--------------------------------------------------------------------------------------

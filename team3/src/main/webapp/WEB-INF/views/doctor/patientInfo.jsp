@@ -30,7 +30,9 @@
                      id="reg_form">
 
                      <fieldset>
-                        	<h3>환자 정보</h3> 
+                     <h3><small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" >진료 예약 목록 ></small> 환자정보 <small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" >> 검사의뢰서 등록</small></h3>
+                     
+                        
                         <div style="margin: 20px 20px;"></div>
 
                         <table class="responstable">
@@ -61,11 +63,31 @@
                         </tr>
                      </table>
                      
-                     
-                     
-                      ${ReservDto.symptomchk}
-                     
-                     
+                     <br>
+                     <table class="responstable">
+                        <tr>
+                           <th style="padding: 0px;">▣체크된  증상
+                       	</tr>
+                       	<tr>
+                       	<td style="border: 1px solid #a9a9a9; height:120px;">
+                            <c:forEach var="symptomchk" items="${symptom1}">
+                          <b>
+                             <c:if test="${symptomchk=='head'}">두통</c:if><c:if test="${symptomchk == 'fever' }">발열</c:if>
+                                 <c:if test="${symptomchk == 'cough' }">기침</c:if>
+                                 <c:if test="${symptomchk == 'disgusted' }" >메스꺼움</c:if>
+                                 <c:if test="${symptomchk == 'stomachache' }" >복통</c:if>
+                                 <c:if  test="${symptomchk == 'vomit' }" >구토</c:if>
+                                 <c:if test="${symptomchk == 'diarrhea' }" >설사</c:if>
+                                 <c:if test="${symptomchk == 'musclepain' }" >근육통</c:if>
+                                  <c:if test="${symptomchk == 'sorethroat' }" >인후통</c:if></b>
+                            </c:forEach>
+                             
+                           </td>
+                           
+                        </tr>
+                     </table>
+           
+                     			
                <%--       <div>
 
                         <br>
@@ -135,7 +157,7 @@
                      <div class="form-group">
                         <div style="display: table; margin: 0 auto">
                            <button type="submit" class="btn btn-dark-blue">
-                              검사의뢰등록 <span class="glyphicon glyphicon-send"></span>
+                              검사의뢰서 등록 <span class="glyphicon glyphicon-send"></span>
                            </button>
                         </div>
                      </div>

@@ -74,11 +74,9 @@ function loginSet(){
 		</div>
 	</section>
 	
-	
 	<footer>
 	<%@ include file="../common/footer.jsp" %>
 	</footer>
-
 
 </body>
 </html>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-latest.min.js"></script>
@@ -195,7 +196,7 @@
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-<%@ include file="../common/line.jsp"%>
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<div class="container">
@@ -208,7 +209,6 @@
 						<aside class="lg-side">
 							<div class="inbox-head">
 								<h3>제휴병원 검색</h3>
-							
 							</div>
 							<div class="inbox-body">
 								<div class="mail-option">
@@ -235,8 +235,7 @@
 											<!-- 게시글이 없으면 -->
 											<c:if test="${cnt==0 }">
 												<tr>
-													<td colspan="6" align="center">
-														게시글이 없습니다. 글을 작성해주세요.!!
+													<td colspan="6" align="center">게시글이 없습니다. 글을 작성해주세요.!!
 													</td>
 												</tr>
 											</c:if>
@@ -245,30 +244,29 @@
 								</div>
 							</div>
 						</aside>
-						
-						
-					<div class="pagination clearfix" style="display: table; margin: 0 auto;">
-                        <c:if test="${cnt>0}">
-                           <!-- 이전블록 -->
-                           <c:if test="${startPage > pageBlock }">
-                              <a href="achospitalSeach?pageNum=${startPage-pageBlock}"><</a>
-                           </c:if>
-                           <!-- 페이지 블록 -->
-                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
-                              <c:if test="${i == currentPage }">
-                                 <strong>${i }</strong>
-                              </c:if>
-                              <c:if test="${i != currentPage }">
-                                 <a href="achospitalSeach?pageNum=${i}">${i }</a>
-                              </c:if>
-                           </c:forEach>
-                           <!-- 다음블록 -->
-                           <c:if test="${pageCnt > endPage }">
-                              <a href="achospitalSeach?pageNum=${startPage+pageBlock}">></a>
-                           </c:if>
-                        </c:if>
-                     </div>
-					
+
+						<div class="pagination clearfix" style="display: table; margin: 0 auto;">
+							<c:if test="${cnt>0}">
+								<!-- 이전블록 -->
+								<c:if test="${startPage > pageBlock }">
+									<a href="achospitalSeach?pageNum=${startPage-pageBlock}"><</a>
+								</c:if>
+								<!-- 페이지 블록 -->
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:if test="${i == currentPage }">
+										<strong>${i }</strong>
+									</c:if>
+									<c:if test="${i != currentPage }">
+										<a href="achospitalSeach?pageNum=${i}">${i }</a>
+									</c:if>
+								</c:forEach>
+								<!-- 다음블록 -->
+								<c:if test="${pageCnt > endPage }">
+									<a href="achospitalSeach?pageNum=${startPage+pageBlock}">></a>
+								</c:if>
+							</c:if>
+						</div>
+
 					</div>
 				</div>
 			</div>

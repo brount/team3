@@ -364,7 +364,7 @@ public class AdminContoller {
 
 		adService.exerciseDeletePro(req, model);
 		
-		return "admin/exerciseDeletePro";
+		return "admin/exercisedeletePro";
 	}
 	
 	
@@ -484,14 +484,6 @@ public class AdminContoller {
 		return "admin/pointList";
 	}
 	
-	// 포인트 차트
-	@RequestMapping(value = "pointChart")
-	public String pointChart(HttpServletRequest req, Model model) {
-		logger.info("pointChart, 페이지");
-		adService.pointChart(req,model);
-		adService.pointList(req, model);
-		return "admin/pointList";
-	}
 	
 	//관리자 로그인 페이지
 	@RequestMapping(value = "adminLogin")
@@ -508,6 +500,17 @@ public class AdminContoller {
 		
 		adService.adminLoginPro(req, model);
 		return "admin/adminLoginPro";
+	}
+	
+	// 관리자 로그아웃 페이지
+	@RequestMapping(value = "adminLogOff")
+	public String adminLogOff(HttpServletRequest req, Model model) {
+		logger.info("adminLogOff, 페이지");
+		
+		req.getSession().setAttribute("memberState",0);
+		req.getSession().setAttribute("id",null);
+		
+		return "common/mainmenuversion";
 	}
 	
 //---------------------------------------------------------------------------------------- 나다

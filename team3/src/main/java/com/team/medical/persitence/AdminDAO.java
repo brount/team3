@@ -1,6 +1,7 @@
 package com.team.medical.persitence;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import com.team.medical.vo.DiseaseVO;
@@ -152,10 +153,10 @@ public interface AdminDAO {
 //---------------------------------------------------------------------------------------
 	
 	// 약 목록 개수 구하기
-	public int getDrugListCnt();
+	public int adminGetDrugListCnt();
 	
 	// 약 목록 조회
-	public ArrayList<DrugVO> getDrugList(Map<String, Object> map);
+	public ArrayList<DrugVO> adminGetDrugList(Map<String, Object> map);
 	
 	// 약삭제 처리
 	public int drugdeletePro(int drugCode);
@@ -244,7 +245,7 @@ public interface AdminDAO {
 	// 이벤트 삭제
 	public int delEvent(int num);
 
-	// 일반탈퇴회원 다중삭제 처리
+	// 이벤트 다중삭제 처리
 	public int delChkEvent(String[] checkOne);
 	//------------------------------------- 희성
 
@@ -254,9 +255,8 @@ public interface AdminDAO {
 	// 포인트목록 조회
 	public ArrayList<PointVO> getPointList(Map<String, Object> map);
 
-	// 포인트 차트
-	public ArrayList<PointVO> pointChart(Map<String, Object> map);
-	
+	// 포인트차트
+	public int pointChart(int status);
 	//-------------------------------------
 	// 공지사항 상세보기
 	public QuestionBoardVO adminReportInfo(int num);
@@ -266,5 +266,7 @@ public interface AdminDAO {
 	public int adminReportDeletePro(int num);
 	// 신고게시판 글 다중 삭제
 	public int adminReportDeleteProChek(String[] chk);
+
+	
 
 }

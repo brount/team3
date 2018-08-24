@@ -31,7 +31,7 @@
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
-									<h3>나의 예약 목록(${cnt})</h3>
+									<h3>나의 예약 목록</h3>
 								</div>
 								<div class="inbox-body">
 									<div class="mail-option">
@@ -61,7 +61,7 @@
                                   							클리닉 예약
                                  							</c:if>
 															</span></td>
-															<td class="view-message  text-left">${dto.reservationTime }</td>
+															<td class="view-message">${dto.reservationTime }</td>
 															<td>${dto.clock }${dto.minute }</td>
 														</tr>
 													</c:forEach>

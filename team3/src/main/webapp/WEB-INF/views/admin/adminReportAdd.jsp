@@ -22,7 +22,8 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-8">
-					<form action="adminReportAddPro" name="adminReportForm" onsubmit="return reportChk();">
+					<form action="adminReportAddPro" name="adminReportForm"
+						onsubmit="return reportChk();">
 						<input type="hidden" name="kind" value="3">
 						<input type="hidden" name="ref" value="${ref}">
 						<input type="hidden" name="num" value="${num}">
@@ -40,14 +41,19 @@
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td><input class="input" type="text" name="boardtitle" maxlength="50" style=""></td>
+									<td>
+										<input class="input" type="text" name="boardtitle"
+											maxlength="50" style="">
+									</td>
 								</tr>
 
 								<tr>
 									<th>내용</th>
-									<td><textarea class="input" name="boardcontent" style="" rows="10" cols="40"></textarea></td>
+									<td>
+										<textarea class="input" name="boardcontent" style="resize: none;"
+											rows="10" cols="40"></textarea>
+									</td>
 								</tr>
-
 
 								<tr>
 									<th colspan="2">
@@ -56,7 +62,6 @@
 											onclick="window.location='adminReportList?pageNum=${pageNum}'">
 									</th>
 								</tr>
-
 							</table>
 
 						</fieldset>
@@ -67,7 +72,6 @@
 			<!-- /.row -->
 		</div>
 		<!-- /#page-wrapper -->
-
 	</div>
 </body>
 </html>

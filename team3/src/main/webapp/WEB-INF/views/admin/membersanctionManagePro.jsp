@@ -4,15 +4,18 @@
 
 <html>
 <body>
+
 	<c:if test="${sanctions == 0}">
 		<script type="text/javascript">
-			window.location="memberList?pageNum="+${pageNum};
+			window.location = "memberList?pageNum=" + ${pageNum};
 		</script>
 	</c:if>
+	
 	<c:if test="${sanctions != 0}">
 		<script type="text/javascript">
-			window.location="membersanctionList?pageNum="+${pageNum};
+			window.location = "membersanctionList?pageNum=" + ${pageNum};
 		</script>
 	</c:if>
+	
 </body>
 </html>

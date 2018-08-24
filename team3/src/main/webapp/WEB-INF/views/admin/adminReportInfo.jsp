@@ -33,9 +33,11 @@
 										<tr>
 											<th style="width: 150px">글번호</th>
 											<td style="width: 150px">${number}</td>
-											
+
 											<th style="width: 150px">작성일</th>
-											<td style="width: 150px"><fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" /></td>
+											<td style="width: 150px"><fmt:formatDate type="both"
+													pattern="yyyy-MM-dd HH:mm" value="${dto.boarddate}" />
+											</td>
 										</tr>
 										<tr>
 											<th>작성자</th>
@@ -54,18 +56,18 @@
 								<table>
 									<tr>
 										<th colspan=4>
-										<c:if test="${dto.kind == 3}">
-										<input class="btn btn-dark-blue"type="button" value="글수정"
-											onclick="window.location='adminReportModifyView?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
-										<input class="btn btn-dark-blue"type="button" value="글삭제"
-											onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
-										</c:if>
-										<c:if test="${dto.kind == 4}">
-										<input class="btn btn-dark-blue"type="button" value="글삭제"
-											onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=4'">
-										</c:if>
-										<input class="btn btn-dark-blue"type="button" value="목록보기"
-											onclick="window.location='adminReportList?pageNum=${pageNum}'">
+											<c:if test="${dto.kind == 3}">
+												<input class="btn btn-dark-blue" type="button" value="글수정"
+													onclick="window.location='adminReportModifyView?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
+												<input class="btn btn-dark-blue" type="button" value="글삭제"
+													onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=3'">
+											</c:if>
+											<c:if test="${dto.kind == 4}">
+												<input class="btn btn-dark-blue" type="button" value="글삭제"
+													onclick="window.location='adminReportDeletePro?num=${dto.boardno}&pageNum=${pageNum}&kind=4'">
+											</c:if>
+												<input class="btn btn-dark-blue" type="button" value="목록보기"
+													onclick="window.location='adminReportList?pageNum=${pageNum}'">
 										</th>
 									</tr>
 								</table>

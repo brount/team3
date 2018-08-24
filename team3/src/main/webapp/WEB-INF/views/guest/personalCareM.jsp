@@ -83,7 +83,7 @@
                               </tr>
 					
 					 <tr class="unread">
-                                    <th class="view-message  dont-show">나의 신체질량 BMI 지수</th>
+                                    <th class="view-message  dont-show">BMI 지수</th>
                                   <td class="view-message"> 
                                   		  ${bmi} 
                                   		  <b>BMI</b>	

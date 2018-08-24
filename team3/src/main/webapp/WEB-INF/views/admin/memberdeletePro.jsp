@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../admin_setting.jsp" %>
+<%@ include file="../admin_setting.jsp"%>
 <html>
 <body>
 	<c:if test="${deleteCnt == 0}">
@@ -11,7 +11,7 @@
 
 	<c:if test="${deleteCnt != 0}">
 		<script type="text/javascript">
-			window.location="membersecessionList";	
+			window.location = "membersecessionList";
 		</script>
 	</c:if>
 </body>
