@@ -299,7 +299,7 @@
 												</th>
 												<td rowspan="10">
 													<textarea rows="3" name="caution" maxlength="255"
-														style="resize: none; height: 150px;"></textarea>
+														style="resize: none; height: 150px; width: 100%;"></textarea>
 												</td>
 											</tr>
 											<tr>

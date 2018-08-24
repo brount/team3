@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<link href="/medical/resources/common/css/drugSeach.css"
-	rel="stylesheet"><link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="/medical/resources/common/css/drugSeach.css" rel="stylesheet">
+<link href="/medical/resources/djcss/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- <link href="/medical/resources/djcss/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
- --><link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
-	
+ -->
+<link href="/medical/resources/djcss/css/style.css" rel="stylesheet" type="text/css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <html lang="en">
@@ -17,15 +14,16 @@
 
 <meta name="description" content="">
 <meta name="keywords" content="낱알식별,낱알식별등록,약사회,대한약사회">
-<link rel="stylesheet" type="text/css"
-	href="/medical/resources/drug/common.css">
+<link rel="stylesheet" type="text/css" href="/medical/resources/drug/common.css">
 <!-- jquey datepicker 때문에 추가 -->
 <link rel="stylesheet" href="/medical/resources/drug/jquery-ui.css">
 <body>
+
 	<header>
 		<%@ include file="../common/header.jsp"%>
 	</header>
-<%@ include file="../common/line.jsp"%>
+	
+	<%@ include file="../common/line.jsp"%>
 
 	<section>
 		<script src="/medical/resources/common/js/drugSeach.js"></script>
@@ -36,77 +34,70 @@
 				</div>
 				<div class="col-sm-9 col-md-9">
 					<div class="well">
-						<script type="text/javascript" async=""
-							src="/medical/resources/drug/ga.js"></script>
+						<script type="text/javascript" async="" src="/medical/resources/drug/ga.js"></script>
 						<script type="text/javascript">
 
-var omitformtags=["input", "textarea", "select"]
-
-omitformtags=omitformtags.join("|")
-
-function disableselect(e){
-if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
-return false
-}
-
-function reEnable(){
-return true
-}
-
-</script>
-
+							var omitformtags=["input", "textarea", "select"]
+							
+							omitformtags=omitformtags.join("|")
+							
+							function disableselect(e){
+							if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+							return false
+							}
+							
+							function reEnable(){
+							return true
+							}
+						
+						</script>
 
 						<script language="JavaScript"> 
 
-//마우스 왼쪽/오른쪽 클릭 금지 
-function noRightClick(evnt) {
-	//네비게디터
-	if (navigator.appName.toUpperCase().match(/NETSCAPE/) != null) {
-		//오른쪽 버튼 클릭금지
-		if (evnt.which == 3){;
-			return false;
-		}
-		else {
-			//왼쪽버튼 영역지정 금지
-			if (document.onselectstart)
-				return false;
-		}		
-	}
-	//Microsoft Internet Explorer
-	else {
-		//오른쪽 버튼 클릭금지
-		if (event.button==2){
-			return false;
-		}
-		else {
-			//왼쪽버튼 영역지정 금지
-			if (document.onselectstart)
-				return false;
-		}
-	}
-}
-
-function rtn_false() {
-	return false;
-}
-
-	//document.onmousedown = noRightClick;
-	//document.onselectstart = noRightClick;
-	if (typeof document.onselectstart!="undefined")
-		document.onselectstart= rtn_false
-	else{
-		document.onmousedown=disableselect
-		document.onmouseup=reEnable
-	}
-	document.oncontextmenu = rtn_false;
-
-
-</script>
+							//마우스 왼쪽/오른쪽 클릭 금지 
+							function noRightClick(evnt) {
+								//네비게디터
+								if (navigator.appName.toUpperCase().match(/NETSCAPE/) != null) {
+									//오른쪽 버튼 클릭금지
+									if (evnt.which == 3){;
+										return false;
+									}
+									else {
+										//왼쪽버튼 영역지정 금지
+										if (document.onselectstart)
+											return false;
+									}		
+								}
+								//Microsoft Internet Explorer
+								else {
+									//오른쪽 버튼 클릭금지
+									if (event.button==2){
+										return false;
+									}
+									else {
+										//왼쪽버튼 영역지정 금지
+										if (document.onselectstart)
+											return false;
+									}
+								}
+							}
+							
+							function rtn_false() {
+								return false;
+							}
+							
+								//document.onmousedown = noRightClick;
+								//document.onselectstart = noRightClick;
+								if (typeof document.onselectstart!="undefined")
+									document.onselectstart= rtn_false
+								else{
+									document.onmousedown=disableselect
+									document.onmouseup=reEnable
+								}
+								document.oncontextmenu = rtn_false;
+						
+						</script>
 						<!-- # include virtual = "/include/asp/permission_normal.asp" -->
-
-
-
-
 						<script type="text/javascript"
 							src="/medical/resources/drug/swfobject.js"></script>
 						<script type="text/javascript"
@@ -116,65 +107,64 @@ function rtn_false() {
 						<script>window.jQuery || document.write('<script src="/include/js/jquery-1.4.2.min.js">\x3C/script>')</script>
 						<!-- jquey datepicker 때문에 추가 -->
 						<script src="/medical/resources/drug/jquery-ui.js"></script>
-
+						
 						<!-- Highslide JS -->
 						<script type="text/javascript"
 							src="/medical/resources/drug/highslide-full.js"></script>
 						<script type="text/javascript"> 
-hs.graphicsDir = '/include/js/highslide/graphics/';
-hs.wrapperClassName = 'wide-border';
-hs.showCredits = false;
-hs.dimmingOpacity = 0.5;
-hs.easing = 'easeInCirc';
-hs.blockRightClick = true;
-hs.headingEval = 'this.thumb.title';
-</script>
-<script language="JavaScript">
-
-function auto_fill()
-{
-	document.frm.drugCompany.value = document.frm.drugCompany2.value;
-}
-
-function auto_fill2()
-{
-	document.frm.drugForm[10].checked = true;
-}
-
-function auto_fill3()
-{
-	document.frm.shape[10].checked = true;
-}
-
-function auto_check(c_type)
-{
-  	if (document.frm.is_check_all.checked)
-  	{
-  		document.frm.shape[0].checked = true;
-  		document.frm.shape[1].checked = true;
-  		document.frm.shape[2].checked = true;
-  		document.frm.shape[3].checked = true;
-  		document.frm.shape[4].checked = true;
-  		document.frm.shape[5].checked = true;
-  		document.frm.shape[6].checked = true;
-		document.frm.shape[7].checked = true;
-		document.frm.shape[10].checked = true;
-  	} else {
-  		document.frm.shape[0].checked = false;
-  		document.frm.shape[1].checked = false;
-  		document.frm.shape[2].checked = false;
-  		document.frm.shape[3].checked = false;	
-  		document.frm.shape[4].checked = false;
-  		document.frm.shape[5].checked = false;
-  		document.frm.shape[6].checked = false;
-		document.frm.shape[7].checked = false;	
-		document.frm.shape[10].checked = false;	
-  	}
-}
-
-//-->
-</script>
-
+							hs.graphicsDir = '/include/js/highslide/graphics/';
+							hs.wrapperClassName = 'wide-border';
+							hs.showCredits = false;
+							hs.dimmingOpacity = 0.5;
+							hs.easing = 'easeInCirc';
+							hs.blockRightClick = true;
+							hs.headingEval = 'this.thumb.title';
+						</script>
+						<script language="JavaScript">
+						
+							function auto_fill()
+							{
+								document.frm.drugCompany.value = document.frm.drugCompany2.value;
+							}
+							
+							function auto_fill2()
+							{
+								document.frm.drugForm[10].checked = true;
+							}
+							
+							function auto_fill3()
+							{
+								document.frm.shape[10].checked = true;
+							}
+							
+							function auto_check(c_type)
+							{
+							  	if (document.frm.is_check_all.checked)
+							  	{
+							  		document.frm.shape[0].checked = true;
+							  		document.frm.shape[1].checked = true;
+							  		document.frm.shape[2].checked = true;
+							  		document.frm.shape[3].checked = true;
+							  		document.frm.shape[4].checked = true;
+							  		document.frm.shape[5].checked = true;
+							  		document.frm.shape[6].checked = true;
+									document.frm.shape[7].checked = true;
+									document.frm.shape[10].checked = true;
+							  	} else {
+							  		document.frm.shape[0].checked = false;
+							  		document.frm.shape[1].checked = false;
+							  		document.frm.shape[2].checked = false;
+							  		document.frm.shape[3].checked = false;	
+							  		document.frm.shape[4].checked = false;
+							  		document.frm.shape[5].checked = false;
+							  		document.frm.shape[6].checked = false;
+									document.frm.shape[7].checked = false;	
+									document.frm.shape[10].checked = false;	
+							  	}
+							}
+						
+						//-->
+						</script>
 
 						<script language="VBScript">
 function frm_OnSubmit() 
@@ -190,15 +180,12 @@ function frm_OnSubmit()
 	
 	frm_onSubmit = True
 end function
-</script>
+						</script>
 
 						<!-- 전체 -->
 						<div id="wrapper">
 
-
-
 							<form method="get" action="drugSeachList" name="frm">
-
 								<h3>
 									약품검색
 								</h3>
@@ -216,81 +203,63 @@ end function
 									style="border: solid 1px #cecece; border-collapse: collapse; border-bottom: solid 0px #cecece" class="responstable">
 									<tbody>
 										<tr>
-											<th
-												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
+											<th style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
 												widtd="94px" height="74" bgcolor="#f3f3f3" align="center">식별표시</th>
-											<td
-												style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
+											<td style="border: solid 1px #cecece; border-bottom: solid 0px #cecece;"
 												widtd="57px" height="54px" align="center">문자</td>
 											<td colspan=3 style="padding: 0 0 0 7px; border: solid 0px #cecece; border-bottom: solid 0px #cecece;"widtd="200px">
 												<input type="text" size="20"name="sign" style="ime-mode: inactive"><br>
-												 <input	type="radio" name="sign_flag" value="0" checked="checked"style="margin-top: 8px">포함&nbsp;&nbsp; 
-												 <input	type="radio" name="sign_flag" value="1">일치&nbsp;&nbsp;
+												<input	type="radio" name="sign_flag" value="0" checked="checked"style="margin-top: 8px">포함&nbsp;&nbsp; 
+												<input	type="radio" name="sign_flag" value="1">일치&nbsp;&nbsp;
 												<input type="radio" name="sign_flag" value="2">시작
 												</td>
-											
 										</tr>
-
 
 										<tr>
 											<th width="94" height="95" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece">제 형</th>
-											<td colspan="8"
-												style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
+											<td colspan="8" style="padding: 5px 0 5px 14px; border: solid 1px #cecece">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="is_check_all"
+												<input type="checkbox" name="is_check_all"
 													onclick="auto_check()" class="ver">정제류 :
 											</li>
 												<li style="width: 65px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="당의정"
-													class="ver">당의정&nbsp;
+												<input type="checkbox" name="shape" value="당의정" class="ver">당의정&nbsp;
 											</li>
 												<li style="width: 90px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="필름코팅정"
-													class="ver">필름코팅정&nbsp;
+												<input type="checkbox" name="shape" value="필름코팅정" class="ver">필름코팅정&nbsp;
 											</li>
 												<li style="width: 50px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="나정"
-													class="ver">나정&nbsp;
+												<input type="checkbox" name="shape" value="나정" class="ver">나정&nbsp;
 											</li>
 												<li style="width: 59px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="다층정"
-													class="ver">다층정&nbsp;
+												<input type="checkbox" name="shape" value="다층정" class="ver">다층정&nbsp;
 											</li>
 												<li style="width:67px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="설하정"
-													class="ver">설하정&nbsp;
+												<input type="checkbox" name="shape" value="설하정" class="ver">설하정&nbsp;
 											</li>
 												<li style="width:64px; float: left;">
-													<input type="checkbox" name="shape" value="저작정"
-													class="ver">저작정&nbsp;
+												<input type="checkbox" name="shape" value="저작정" class="ver">저작정&nbsp;
 											</li>
 												<li style="width: 95px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="붕해(현탁)정"
-													class="ver">붕해(현탁)정
+												<input type="checkbox" name="shape" value="붕해(현탁)정" class="ver">붕해(현탁)정
 											</li>
 
 												<li style="width:80px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="트로키정"
-													class="ver">트로키정&nbsp;
+												<input type="checkbox" name="shape" value="트로키정" class="ver">트로키정&nbsp;
 											</li>
 												<li style="width: 85px; float: none; clear: both"></li>
 												<li style="width: 80px; float: left; letter-spacing: -1px;margin-left: 8px;" >
-													<input type="checkbox" name="shape" value="경질캡슐"
-													class="ver">경질캡슐&nbsp;
+												<input type="checkbox" name="shape" value="경질캡슐" class="ver">경질캡슐&nbsp;
 											</li>
-												<li style="width: 150px; float: left"><input
-													type="checkbox" name="shape" value="연질캡슐" class="ver">연질캡슐&nbsp;
+												<li style="float: left;">
+												<input type="checkbox" name="shape" value="연질캡슐" class="ver">연질캡슐&nbsp;
 											</li>
 
-
-												<li
-												style="width: 173px; float: right; letter-spacing: -1px;">
-													<input type="checkbox" name="shape" value="기타"
-													class="ver" style="margin-right: 0px;" onclick="zcheck()">기
-													타&nbsp; <select name="shape_etc"
-													onchange="javascript:auto_fill3()" class="ver f12"
-													style="width: 100px">
+												<li style="width: 173px; float: right; letter-spacing: -1px;">
+												<input type="checkbox" name="shape" value="기타"
+													class="ver" style="margin-right: 0px;" onclick="zcheck()">기타&nbsp;
+													<select name="shape_etc" onchange="javascript:auto_fill3()" class="ver f12" style="width: 100px">
 														<option value="">전체</option>
 														<option value="구강붕해필름">구강붕해필름</option>
 														<option value="구강정">구강정</option>
@@ -307,94 +276,84 @@ end function
 														<option value="특수구강정">특수구강정</option>
 														<option value="확산정">확산정</option>
 												</select>&nbsp;
-											</li> <script type="text/javascript">
-function zcheck()
-{
-if (document.frm.shape.checked)
-{
-}
-else
-{
-
-  		document.frm.shape_etc[0].selected = true;
-}
-
-}
-//-->
-</script> <script type="text/javascript">
-function zcheck2()
-{
-if (document.frm.drugForm.checked)
-{
-}
-else
-{
-
-  		document.frm.drugForm_etc[0].selected = true;
-}
-
-}
-//-->
-</script>
+											</li> 
+											
+											<script type="text/javascript">
+												function zcheck()
+												{
+												if (document.frm.shape.checked)
+												{
+												}
+												else
+												{
+												
+												  		document.frm.shape_etc[0].selected = true;
+												}
+												
+												}
+												//-->
+												</script> <script type="text/javascript">
+												function zcheck2()
+												{
+												if (document.frm.drugForm.checked)
+												{
+												}
+												else
+												{
+												
+												  		document.frm.drugForm_etc[0].selected = true;
+												}
+												
+												}
+												//-->
+											</script>
 
 											</td>
 										</tr>
 										<tr>
 											<th width="94" height="60" bgcolor="#f3f3f3" align="center"
 												style="border: solid 1px #cecece">모 양</th>
-											<td
-												style="padding: 5px 0 5px 14px; border: solid 1px #cecece"
-												colspan="8">
+											<td style="padding: 5px 0 5px 14px; border: solid 1px #cecece" colspan="8">
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="원형"
-													class="ver">원형 &nbsp;
+												<input type="checkbox" name="drugForm" value="원형" class="ver">원형 &nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="타원형"
+												<input type="checkbox" name="drugForm" value="타원형"
 													class="ver type1" onclick="search_group(this,1)">타원형
 													&nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="반원형"
-													class="ver">반원형 &nbsp;
+												<input type="checkbox" name="drugForm" value="반원형" class="ver">반원형 &nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="삼각형"
-													class="ver">삼각형 &nbsp;
+												<input type="checkbox" name="drugForm" value="삼각형" class="ver">삼각형 &nbsp;
 											</li>
 
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="사각형"
-													class="ver">사각형 &nbsp;
+												<input type="checkbox" name="drugForm" value="사각형" class="ver">사각형 &nbsp;
 											</li>
 
 												<li style="width: 100px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="마름모형"
-													class="ver">마름모형&nbsp;
+												<input type="checkbox" name="drugForm" value="마름모형" class="ver">마름모형&nbsp;
 											</li>
 												<li style="width: 85px; float: left; letter-spacing: -1px;">
-													<input type="checkbox" name="drugForm" value="장방형"
+												<input type="checkbox" name="drugForm" value="장방형"
 													class="ver type1" onclick="search_group(this,1)">장방형
 													&nbsp;
 											</li>
 												<div style="padding-top: 5px; clear: both; float: none">
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="오각형"
-														class="ver">오각형 &nbsp;
+													<input type="checkbox" name="drugForm" value="오각형" class="ver">오각형 &nbsp;
 													</li>
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="육각형"
-														class="ver">육각형 &nbsp;
+													<input type="checkbox" name="drugForm" value="육각형" class="ver">육각형 &nbsp;
 													</li>
 													<li style="width: 85px; float: left; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="팔각형"
-														class="ver">팔각형 &nbsp;
+													<input type="checkbox" name="drugForm" value="팔각형" class="ver">팔각형 &nbsp;
 													</li>
-													<li
-														style="width: 173px; float: right; letter-spacing: -1px;">
-														<input type="checkbox" name="drugForm" value="기타"
-														class="ver" onclick="zcheck2()">기 타&nbsp; <select
-														name="drugForm_etc" onchange="javascript:auto_fill2()"
+													<li style="width: 173px; float: right; letter-spacing: -1px;">
+													<input type="checkbox" name="drugForm" value="기타" class="ver" onclick="zcheck2()">기 타&nbsp; 
+													<select name="drugForm_etc" onchange="javascript:auto_fill2()"
 														class="ver f12" style="width: 100px">
 															<option value="">전체</option>
 															<option value="8자형">8자형</option>
@@ -425,14 +384,11 @@ else
 											</td>
 										</tr>
 
-
 										<!-- 색깔 표시 시작 ---------------------------------------------------------->
-
 
 										<tr>
 											<th width="94" height="90px" bgcolor="#f3f3f3" align="center"
-												rowspan="1" style="border: solid 1px #cecece">색
-													깔</th>
+												rowspan="1" style="border: solid 1px #cecece">색깔</th>
 
 											<td style="padding: 0 0 0 14px;" colspan="8">
 												<table border="0" cellspacing="8" cellpadding="1" class="responstable">
@@ -532,8 +488,7 @@ else
 										<tr>
 											<th width="94" height="74" bgcolor="#f3f3f3" align="center"
 												rowspan="2" style="border: solid 1px #cecece">분할선</th>
-											<td
-												style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
+											<td style="border: solid 1px #cecece; text-align: center; height: 37px">앞</td>
 											<td style="padding: 0 0 0 14px; border: solid 1px #cecece"
 												colspan="6"><input type="checkbox" name="splitlineF"
 												value="없음" class="ver">없음 &nbsp; <input
@@ -1246,13 +1201,6 @@ else
 
 											</select></td>
 										</tr>
-
-
-
-
-
-
-
 									</tbody>
 								</table>
 
@@ -1264,24 +1212,14 @@ else
 											<td align="right"><a class="over_btn" onclick="frm.submit();"><img
 													src="/medical/resources/drug/btn_search01.gif" alt="검색"><img
 													src="/medical/resources/drug/btn_search02.gif" alt="검색"
-													class="over"></a></td>
+													class="over"></a>
+											</td>
 										</tr>
-
-
-
-
-
-
 									</tbody>
 								</table>
 							</form>
-
 							<br>
 							<br>
-
-
-
-
 						</div>
 					</div>
 				</div>

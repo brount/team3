@@ -357,4 +357,31 @@
 	</select>
 	
 	
+		<!-- 처방전 정보 -->
+	<select id="getPrescription" parameterType="int"
+		resultType="com.team.medical.vo.PrescriptionVO">
+		select * from Prescription where
+		prescriptionNo=#{prescriptionNo}
+	</select>
+	
+	<!-- 의사 번호 가져오기 -->
+	<select id="getdocnoInfo" parameterType="int" resultType="int">
+		select doctorno from doctor where hospitalno=#{hospitalno}
+	</select>
+	
+	<!-- 의사 번호로 정보가져오기 -->
+	<select id="getDoctorInfo" parameterType="int"
+		resultType="com.team.medical.vo.DoctorVO">
+		select * from doctor where
+		doctorno=#{doctorno,jdbcType=INTEGER}
+	</select>
+
+	<!--  병원 정보 가져오기 -->
+	<select id="getMyhospitalInfo" parameterType="String"
+		resultType="com.team.medical.vo.HospitalVO">
+		select * from hospital where doctorno LIKE '%'||
+		#{doctorno,jdbcType=VARCHAR} ||'%'
+	</select>
+	
+	
 </mapper>
