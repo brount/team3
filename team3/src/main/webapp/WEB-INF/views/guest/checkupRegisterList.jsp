@@ -57,7 +57,7 @@
                       </div> --%>
 
 
-								<h3>나의 검진서 목록(${cnt})</h3>
+								<h3>나의 검진서 목록</h3>
 								<div class="inbox-body">
 									<div class="mail-option">
 

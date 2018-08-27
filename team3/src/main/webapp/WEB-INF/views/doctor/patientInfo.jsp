@@ -69,7 +69,7 @@
                            <th style="padding: 0px;">▣체크된  증상
                        	</tr>
                        	<tr>
-                       	<td style="border: 1px solid #a9a9a9; height:120px;">
+                       	<td style="border: 1px solid #a9a9a9; ">
                             <c:forEach var="symptomchk" items="${symptom1}">
                           <b>
                              <c:if test="${symptomchk=='head'}">두통</c:if><c:if test="${symptomchk == 'fever' }">발열</c:if>

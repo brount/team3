@@ -411,7 +411,7 @@ public class DoctorDAOImpl implements DoctorDAO {
 
 	// 포인트 글 목록
 	@Override
-	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map) {
+	public ArrayList<PointVO> getPointManageList(Map<String, Object> map) {
 		ArrayList<PointVO> dtos = null;
 		DoctorDAO dao = sqlSession.getMapper(DoctorDAO.class);
 		dtos = dao.getPointManageList(map);

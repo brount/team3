@@ -12,7 +12,7 @@
 	</c:if>
 	<c:if test="${insertCnt!=0}">
 		<script type="text/javascript">
-			alert("건강검진이 등록되었습니다");
+			
 			
 			window.location = "checkupList"
 		</script>

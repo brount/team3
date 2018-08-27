@@ -1332,9 +1332,10 @@ public class DoctorServiceImpl implements DoctorService {
 
 		ArrayList<PointVO> dtos = null;
 		if (cnt > 0) {
-			Map<String, Integer> map = new HashMap<String, Integer>();
+			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("start", start);
 			map.put("end", end);
+			map.put("doctorno", doctorno);
 			dtos = dao.getPointManageList(map);
 			model.addAttribute("dtos", dtos);
 

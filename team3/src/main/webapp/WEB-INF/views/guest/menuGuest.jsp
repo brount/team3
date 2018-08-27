@@ -50,7 +50,7 @@
 	                    </tr>
 	                       <tr>
 	                       <td>
-	                            <a href="kcalList">나의 칼로리</a>
+	                            <a href="mkcalList">나의 칼로리</a>
 	                        </td>
 	                    </tr>
 	                </table>

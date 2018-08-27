@@ -395,6 +395,7 @@
 			   	   	  FROM(
 			   	   	  		SELECT * 
 			   	   	  		  FROM point 
+			   	   	  		  where doctorno=#{doctorno}
 			   	   	  		    ORDER BY pointNo DESC
 			   	   	  	  )
 					)   

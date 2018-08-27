@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+	
 <html>
 <script type="text/javascript">
 function personalCare() {
@@ -28,6 +30,7 @@ function myFoodList() {
 				</h4>
 			</div>
 		</div>
+		   <c:if test="${sessionScope.memberState == 1 }">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
@@ -42,6 +45,7 @@ function myFoodList() {
 				</h4>
 			</div>
 		</div>
+		</c:if>
 	</div>
 </body>
 </html>

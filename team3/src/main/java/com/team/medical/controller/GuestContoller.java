@@ -262,6 +262,14 @@ public class GuestContoller {
 		// 칼로리 일자별 리스트
 		return "guest/kcalList";
 	}
+	//마이페이지에서 칼로리등록처리페이지
+		@RequestMapping(value = "mkcalList")
+		public String mkcalList(HttpServletRequest req, Model model) {
+			logger.info("mkcalList, 페이지");
+			guService.kcalList(req,model);
+			// 칼로리 일자별 리스트
+			return "guest/mkcalList";
+		}
 	// 칼로리 일자별 상세페이지
 	@RequestMapping(value = "kcalInfo")
 	public String kcalInfo(HttpServletRequest req, Model model) {

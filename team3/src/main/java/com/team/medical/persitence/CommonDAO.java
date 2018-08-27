@@ -71,6 +71,8 @@ public interface CommonDAO {
 	public ArrayList<DrugVO> getDrugList(Map<String, Object> map);
 	// 포인트 업데이트
 	public int updatePoint(String id);
+	// 포인트 체크
+	public int checkPoint(String id);
 	// 포인트 사용
 	public int usePoint(Map<String,Object> map);
 	// 포인트 인서트

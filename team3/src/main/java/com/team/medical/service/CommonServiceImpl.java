@@ -496,15 +496,20 @@ public class CommonServiceImpl implements CommonService {
             int insertCnt = 0;
             int updateCnt = 0;
             int point = Integer.parseInt(req.getParameter("point"));
-            Map<String,Object> map = new HashMap<String,Object>();
-            map.put("point", point);
-            map.put("id", id);
-            updateCnt = dao.usePoint(map);
-            if (updateCnt != 0) {
-            	insertCnt = dao.insertEvent(dto);
-            	map.put("status", 2);
-                map.put("doctorno", doctorno);
-            	dao.pointInsert(map);
+            int checkCnt = 0; // 현재 포인트
+            checkCnt = dao.checkPoint(id);
+            if (checkCnt >= point) {
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("point", point);
+				map.put("id", id);
+				updateCnt = dao.usePoint(map);
+				
+				if (updateCnt != 0) {
+				insertCnt = dao.insertEvent(dto);
+				map.put("status", 2);
+				map.put("doctorno", doctorno);
+				dao.pointInsert(map);
+				}
             }
                    
             model.addAttribute("insertCnt", insertCnt);

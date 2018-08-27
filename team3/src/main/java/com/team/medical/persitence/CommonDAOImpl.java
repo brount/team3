@@ -303,7 +303,15 @@ public class CommonDAOImpl implements CommonDAO {
 		cnt = dao.updatePoint(id);
 		return cnt;
 	}
-	// 업데이트 포인트
+	// 포인트 체크
+	@Override
+	public int checkPoint(String id) {
+		int cnt = 0;
+		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);
+		cnt = dao.checkPoint(id);
+		return cnt;
+	}
+	// 포인트 사용
 	@Override
 	public int usePoint(Map<String,Object> map) {
 		CommonDAO dao = sqlSession.getMapper(CommonDAO.class);

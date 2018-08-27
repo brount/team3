@@ -34,6 +34,7 @@
 		<c:if test="${updateCnt == 0}">
 			<script type="text/javascript">
 				alert("포인트가 부족합니다.");
+				
 				window.history.back();
 			</script>
 		</c:if>

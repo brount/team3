@@ -472,6 +472,12 @@
 		UPDATE doctor SET point=point+50 WHERE doctorid LIKE #{id}
 	</update>
 	
+	<!-- 포인트 확인 -->
+	<select id="checkPoint" resultType="int">
+		SELECT point from doctor where doctorid = #{id}
+	</select>
+	
+	
 	<!-- 포인트 사용 -->
 	<update id="usePoint" parameterType="map">
 		UPDATE doctor 
@@ -484,6 +490,7 @@
 		  	point >= ${point}
 		  ]]>
 	</update>
+	
 	<!-- 포인트 테이블 인서트 -->
 	<insert id="pointInsert" parameterType="java.util.Map">
 		INSERT INTO point ( pointNo,

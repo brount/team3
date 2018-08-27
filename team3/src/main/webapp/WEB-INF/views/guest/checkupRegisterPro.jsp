@@ -11,7 +11,7 @@
 <body>
 <c:if test="${insertcnt == 0 }">
 			<script type ="text/javascript">
-			 errorAlert(insertError);
+			
 			</script>
 		</c:if>
 	<c:if test="${insertcnt != 0 }">

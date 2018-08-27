@@ -105,7 +105,7 @@
 					
 						</table>
 						<center>
-			<button type="button" class="btn btn-dark-blue" onclick="window.location='personalMof'" > MyHealth 수정하기 <span class="glyphicon glyphicon-send"></span></button>
+			<button type="button" class="btn btn-dark-blue" onclick="window.location='personalMof'" > 나의 건강정보 수정하기 <span class="glyphicon glyphicon-send"></span></button>
 						</center>
 					</c:if>
 						

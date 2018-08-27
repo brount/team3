@@ -149,7 +149,7 @@ public interface DoctorDAO {
 	public int getPointManageCnt(String doctorno);
 
 	// 포인트 글 목록
-	public ArrayList<PointVO> getPointManageList(Map<String, Integer> map);
+	public ArrayList<PointVO> getPointManageList(Map<String, Object> map);
 
 	// 건강검진결과
 	public ArrayList<CheckupresultVO> checkupresult();

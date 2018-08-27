@@ -14,8 +14,7 @@
 	</c:if>
 	<c:if test="${insertCnt!=0}">
 		<script type="text/javascript">
-			alert("검진의뢰가 등록되었습니다");
-			
+		
 			window.location = "checkupResultList?doctorno=${doctorno}"
 		</script>
 
