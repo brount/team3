@@ -85,16 +85,16 @@
 												<td><input type="text" name="fatness">BMI</td>
 												<td></td>
 												<td>
-												<span style="color:blue;">
-									                              저체중 18 미만   </span>      <br>
-									                              <span style="color:green;">
-									                              정상 : 18이상 ~ 23미만</span><br>
-									                              <span style="color:orange;">
-									                              과체중 : 23이상~25미만</span><br>
-									                              <span style="color:red;">
-									                              비만 : 25이상~30미만 </span><br>
-									                              <span style="color:purple;"> 
-									                              고도비만 30이상</span>
+													<div style="border:1px solid;border-color:blue; background:blue; padding:7px; display:-webkit-inline-box;"></div>
+					                              	<span style="color:blue;"> 저체중:18 미만   </span> <br>
+													<div style="border:1px solid;border-color:green; background:green; padding:7px; display:-webkit-inline-box;"></div>
+													<span style="color:green;"> 정상:18~22 </span> <br>
+													<div style="border:1px solid;border-color:orange; background:orange; padding:7px; display:-webkit-inline-box;"></div>
+													<span style="color:orange;"> 과체중:23~24 </span> <br>
+													<div style="border:1px solid;border-color:red; background:red; padding:7px; display:-webkit-inline-box;"></div>
+													<span style="color:red;"> 비만:25~29 </span> <br>
+													<div style="border:1px solid;border-color:purple; background:purple; padding:7px; display:-webkit-inline-box;"></div>
+													<span style="color:purple;"> 고도비만:30 이상 </span>
 												</td>
 											</tr>
 											<tr>

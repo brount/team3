@@ -679,197 +679,225 @@ public class DoctorServiceImpl implements DoctorService {
 	// 건강검진 상세
 	@Override
 	public void checkupResult(HttpServletRequest req, Model model) {
-		int checkup = Integer.parseInt(req.getParameter("checkup"));
-		model.addAttribute("checkup", checkup);
-
-		int guestno = dao.getGuestCheckupResult(checkup);
-
-		CheckupVO CheckDto = dao.getCheckupResultInfo(checkup);
-		GuestVO gusDto = dao.getcusInfo(guestno);
-		// 비교용
-		ArrayList<CheckupresultVO> dtos = dao.checkupresult();
-		// 출력용
-		ArrayList<CheckupresultVO> dtos2 = new ArrayList<CheckupresultVO>();
-
-		try {
-			Object obj = CheckDto;
-			for (Field field : obj.getClass().getDeclaredFields()) {
-				field.setAccessible(true);
-				Object value = field.get(obj);
-				for (int i = 0; i < dtos.size(); i++) {
-					if (field.getName().equals("bloodpremax")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("bloodpremax")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 1) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "1" + dtos.get(i).getContent());
-										break;
-									}
-								} else if (Integer.parseInt(dtos.get(i).getValue()) > Integer
-										.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 2) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "2" + dtos.get(i).getContent());
-										break;
-									}
-								}
-							}
-						}
-					} else if (field.getName().equals("bloodpremin")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("bloodpremin")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 1) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "1" + dtos.get(i).getContent());
-										break;
-									}
-								} else if (Integer.parseInt(dtos.get(i).getValue()) > Integer
-										.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 2) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "2" + dtos.get(i).getContent());
-										break;
-									}
-								}
-							}
-						}
-					} else if (field.getName().equals("urineglucose")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("urineglucose")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "3" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("urineprotein")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("urineprotein")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "4" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("occulthematuria")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("occulthematuria")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "5" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("urineph")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("urineph")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 1) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "6" + dtos.get(i).getContent());
-										break;
-									}
-								} else if (Integer.parseInt(dtos.get(i).getValue()) > Integer
-										.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 2) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "7" + dtos.get(i).getContent());
-										break;
-									}
-								}
-							}
-						}
-					} else if (field.getName().equals("hemoglobin")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("hemoglobin")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 1) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "8" + dtos.get(i).getContent());
-										break;
-									}
-								} else if (Integer.parseInt(dtos.get(i).getValue()) > Integer
-										.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 2) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "9" + dtos.get(i).getContent());
-										break;
-									}
-								}
-							}
-						}
-					} else if (field.getName().equals("bloodglucose")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("bloodglucose")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "10" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("totalcholesterol")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("totalcholesterol")) {
-								if (Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 1) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "11" + dtos.get(i).getContent());
-										break;
-									}
-								} else if (Integer.parseInt(dtos.get(i).getValue()) > Integer
-										.parseInt((value.toString()))) {
-									if (dtos.get(i).getState() == 2) {
-										dtos2.add(dtos.get(i));
-										System.out.println(value + "12" + dtos.get(i).getContent());
-										break;
-									}
-								}
-							}
-						}
-					} else if (field.getName().equals("ast")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("ast")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "13" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("alt")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("alt")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "14" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					} else if (field.getName().equals("gammagtp")) {
-						if (value != null) {
-							if (dtos.get(i).getHead().equals("gammagtp")) {
-								if ((value.toString()).equals("양성")) {
-									dtos2.add(dtos.get(i));
-									System.out.println(value + "15" + dtos.get(i).getContent());
-									break;
-								}
-							}
-						}
-					}
-
-				}
-			}
-			model.addAttribute("dtos2", dtos2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+      int checkup = Integer.parseInt(req.getParameter("checkup"));
+      model.addAttribute("checkup", checkup);
+        
+        int guestno = dao.getGuestCheckupResult(checkup);
+        
+        CheckupVO CheckDto = dao.getCheckupResultInfo(checkup);
+        GuestVO gusDto = dao.getcusInfo(guestno);
+        // 비교용
+        ArrayList<CheckupresultVO> dtos = dao.checkupresult();
+        // 출력용
+        ArrayList<CheckupresultVO> dtos2 = new ArrayList<CheckupresultVO>();
+        
+        try{
+            Object obj=CheckDto;
+            for (Field field : obj.getClass().getDeclaredFields()){
+                field.setAccessible(true);
+                Object value=field.get(obj);
+                for(int i =0; i<dtos.size();i++) {
+                   if(field.getName().equals("bloodpremax")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("bloodpremax")) {                              
+                             if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+                                if(dtos.get(i).getState() == 1) {
+                                     dtos2.add(dtos.get(i));
+                                     System.out.println(value+"1"+dtos.get(i).getContent());
+                                     break;
+                                  }
+                              }    
+                             else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                                if(dtos.get(i).getState() == 2) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"2"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }  
+                           }
+                      }                      
+                   }else if(field.getName().equals("bloodpremin")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("bloodpremin")) {
+                            if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+                                if(dtos.get(i).getState() == 1) {
+                                     dtos2.add(dtos.get(i));
+                                     System.out.println(value+"1"+dtos.get(i).getContent());
+                                     break;
+                                  }
+                              }    
+                             else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                                if(dtos.get(i).getState() == 2) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"2"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }                  
+                          }
+                      }
+                   }else if(field.getName().equals("urineglucose")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("urineglucose")) {                         
+                            if((value.toString()).equals("양성")) {
+                                dtos2.add(dtos.get(i));
+                                System.out.println(value+"3"+dtos.get(i).getContent());
+                                break;
+                             }        
+                          }
+                      }
+                   }else if(field.getName().equals("urineprotein")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("urineprotein")) {                         
+                            if((value.toString()).equals("양성")) {
+                                dtos2.add(dtos.get(i));
+                                System.out.println(value+"4"+dtos.get(i).getContent());
+                                break;
+                             }        
+                          }
+                      }
+                   }else if(field.getName().equals("occulthematuria")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("occulthematuria")) {                         
+                            if((value.toString()).equals("양성")) {
+                                dtos2.add(dtos.get(i));
+                                System.out.println(value+"5"+dtos.get(i).getContent());
+                                break;
+                             }        
+                          }
+                      }
+                   }else if(field.getName().equals("urineph")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("urineph")) {   
+                            if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 1) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"6"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }    
+                            else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 2) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"7"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }      
+                         }
+                      }
+                   }else if(field.getName().equals("hemoglobin")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("hemoglobin")) {   
+                            if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 1) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"8"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }    
+                            else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 2) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"9"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }   
+                         }
+                      }
+                   }else if(field.getName().equals("bloodglucose")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("bloodglucose")) {  
+                           if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                               dtos2.add(dtos.get(i));
+                               System.out.println(value+"10"+dtos.get(i).getContent());
+                               break;
+                            }
+                         }
+                      }
+                   }else if(field.getName().equals("totalcholesterol")) {
+                      if(value != null) {
+                         if(dtos.get(i).getHead().equals("totalcholesterol")) {  
+                            if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 1) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"11"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }    
+                            else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+                               if(dtos.get(i).getState() == 2) {
+                                    dtos2.add(dtos.get(i));
+                                    System.out.println(value+"12"+dtos.get(i).getContent());
+                                    break;
+                                 }
+                             }  
+                         }
+                      }
+                   }else if(field.getName().equals("ast")) {
+                	   if(value != null) {
+	                         if(dtos.get(i).getHead().equals("ast")) {                              
+	                             if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 1) {
+	                                     dtos2.add(dtos.get(i));
+	                                     System.out.println(value+"1"+dtos.get(i).getContent());
+	                                     break;
+	                                  }
+	                              }    
+	                             else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 2) {
+	                                    dtos2.add(dtos.get(i));
+	                                    System.out.println(value+"2"+dtos.get(i).getContent());
+	                                    break;
+	                                 }
+	                             }  
+	                           }
+	                      }   
+                   }else if(field.getName().equals("alt")) {
+                      if(value != null) {
+                    	  if(dtos.get(i).getHead().equals("alt")) {                              
+	                             if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 1) {
+	                                     dtos2.add(dtos.get(i));
+	                                     System.out.println(value+"1"+dtos.get(i).getContent());
+	                                     break;
+	                                  }
+	                              }    
+	                             else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 2) {
+	                                    dtos2.add(dtos.get(i));
+	                                    System.out.println(value+"2"+dtos.get(i).getContent());
+	                                    break;
+	                                 }
+	                             }  
+	                           }
+                      }
+                   }else if(field.getName().equals("gammagtp")) {
+                      if(value != null) {
+                    	  if(dtos.get(i).getHead().equals("gammagtp")) {                              
+	                             if(Integer.parseInt(dtos.get(i).getValue()) < Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 1) {
+	                                     dtos2.add(dtos.get(i));
+	                                     System.out.println(value+"1"+dtos.get(i).getContent());
+	                                     break;
+	                                  }
+	                              }    
+	                             else if(Integer.parseInt(dtos.get(i).getValue()) > Integer.parseInt((value.toString()))) {
+	                                if(dtos.get(i).getState() == 2) {
+	                                    dtos2.add(dtos.get(i));
+	                                    System.out.println(value+"2"+dtos.get(i).getContent());
+	                                    break;
+	                                 }
+	                             }  
+	                           }
+                      }
+                   }              
+                   
+                }                
+            }
+            model.addAttribute("dtos2",dtos2);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+		
 		// 생년월일만 추출
 		String[] fulljumin = gusDto.getJumin().split("-");
 		String jumin =fulljumin[0];

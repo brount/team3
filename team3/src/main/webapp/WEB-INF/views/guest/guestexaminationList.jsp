@@ -42,7 +42,7 @@
 											${dto.prescriptionNo}
 											<c:set var="number" value="${number-1 }"></c:set>
 										</td>					
-										<td ><a onclick="window.location='examinationInfo?pageNum=${pageNum}&number=${number+1}&prescriptionNo=${dto.prescriptionNo}&doctorno=${doctorno}'">${guestList[b].guestname}님 처방전</a></td>
+										<td ><a onclick="window.location='guestexaminationInfo?pageNum=${pageNum}&number=${number+1}&prescriptionNo=${dto.prescriptionNo}&doctorno=${doctorno}'">${guestList[b].guestname}님 처방전</a></td>
 											
 										<td >
 											<fmt:formatDate type="both" pattern="yyyy-MM-dd" value="${dto.prescriptionDate}"/>
