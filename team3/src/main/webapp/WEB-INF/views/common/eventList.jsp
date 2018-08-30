@@ -58,7 +58,7 @@
 													<div style="font-size: 25px; font-family: 'Nanum Gothic', sans-serif !important;">${dto.advertisementTitle}</div>
 													<img src="resources/images/event/${dto.advertisementThumbnail}"
 														style="width: 165px; height: 100px;">
-													<div style="font-size: 14; margin-top: 5px;">${dto.advertisementStart}
+													<div style="font-size: 12px; margin-top: 5px;">${dto.advertisementStart}
 														~ ${dto.advertisementEnd}</div>
 												</div>
 											</a>

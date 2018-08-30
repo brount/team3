@@ -32,33 +32,31 @@
                      <div class="panel-heading">
                         <h3>검진결과</h3>
                      </div>
+                     
                      <table class="responstable" border="1">
-                    
                         <tr>
                            <th>환자명</th>
                            <td>${gusDto.guestname}</td>
                            <th>주민등록번호 </th>
                            <td>${jumin}-*******</td>
-                        
                         </tr>
                         <tr>
                            <th>연락처</th>
                            <td>${gusDto.guesttel}</td>
                            <th>이메일 주소 </th>
                            <td>${gusDto.guestemail}</td>
-                      
                         </tr>
                      </table>
                      
                       <table class="responstable">
                         <tr>
-                           <th style="padding: 0px; height: 34px;" colspan="2">▣  검진결과 주의항목 및 관련 질병</th>
+                           <th style="padding: 0px; height: 34px;" colspan="2">▣  종합판정결과</th>
                         </tr>   
 							<c:forEach var="item" items="${dtos2}">
 								<tr>   
 								<th style="width: 20%;">${item.name }</th>
 									<td colspan=6 style="text-align:left; font-size: 20px;">
-									<b style="color:#47a3da;">관련질병  </b>   <b> ${item.content }</b>
+									<b style="color:#47a3da;">관련질병  </b> <b style="color: red;"> ${item.content }</b>
 								</td>
 								</tr>
 							</c:forEach>
@@ -155,22 +153,22 @@
                                     ${CheckDto.bloodpremax}mmHg 
                                  </span>
                               </td>
+                              <td style="color: red;">140 이상</td>
                               <td></td>
-                              <td style="color: green;">120이하</td>
                            </tr>
                            <tr>
                               <td>혈압(최저)</td>
                               <td> 
                                  <span 
-                                    <c:if test="${CheckDto.bloodpremin < 60}">style="color:red;"</c:if> 
-                                    <c:if test="${CheckDto.bloodpremax >= 60}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.bloodpremin < 60}">style="color:red;"</c:if>
                                     <c:if test="${CheckDto.bloodpremin > 140}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.bloodpremax >= 60}">style="color:green;"</c:if>
                                     > 
                                        ${CheckDto.bloodpremin}mmHg
                                  </span>
                                </td>
+                              <td style="color: red;">60 이하</td>
                               <td></td>
-                              <td style="color: green;">80이상</td>
                            </tr>
                            <tr>
                               <td rowspan="4" style="text-align: center;">요검사</td>
@@ -179,13 +177,13 @@
                               <td>
                                  <span
                                     <c:if test="${CheckDto.urineglucose == '음성'}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.urineglucose == '양성'}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.urineglucose == '양성±'}">style="color:red;"</c:if>
                                     >
                                     ${CheckDto.urineglucose}                                 
                                  </span>                                 
                               </td>
-                              <td style="color: green;">음성</td>
                               <td style="color: red;">양성±</td>
+                              <td style="color: green;">음성</td>
                            </tr>
 
                            <tr>
@@ -193,13 +191,13 @@
                               <td>
                                  <span
                                     <c:if test="${CheckDto.urineprotein == '음성'}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.urineprotein == '양성'}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.urineprotein == '양성±'}">style="color:red;"</c:if>
                                     >
                                     ${CheckDto.urineprotein}                                 
                                  </span>                                 
                               </td>
-                              <td style="color: green;">음성</td>
                               <td style="color: red;">양성±</td>
+                              <td style="color: green;">음성</td>
                            </tr>
 
                            <tr>
@@ -207,28 +205,28 @@
                               <td>
                                  <span
                                     <c:if test="${CheckDto.occulthematuria == '음성'}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.occulthematuria == '양성'}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.occulthematuria == '양성±'}">style="color:red;"</c:if>
                                     >
                                     ${CheckDto.occulthematuria}                                 
                                  </span>                                 
                               </td>
-                              <td style="color: green;">음성</td>
                               <td style="color: red;">양성±</td>
+                              <td style="color: green;">음성</td>
                            </tr>
 
                            <tr>
                               <td>요ph</td>
                               <td> 
                                  <span 
-                                    <c:if test="${CheckDto.urineph < 4}">style="color:red;"</c:if> 
-                                    <c:if test="${CheckDto.urineph >= 4}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.urineph < 4}">style="color:red;"</c:if>
                                     <c:if test="${CheckDto.urineph > 8}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.urineph >= 4}">style="color:green;"</c:if>
                                     > 
                                        ${CheckDto.urineph}mmHg
                                  </span>
                                </td>
-                              <td style="color: green;">4~8</td>
                               <td></td>
+                              <td style="color: green;">4~8</td>
                            </tr>
 
                            <tr>
@@ -237,16 +235,15 @@
                               <td>혈색소</td>
                               <td>
                               	 <span 
-                                    <c:if test="${CheckDto.hemoglobin < 12}">style="color:red;"</c:if> 
+                                    <c:if test="${CheckDto.hemoglobin < 12}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.hemoglobin > 17}">style="color:red;"</c:if> 
                                     <c:if test="${CheckDto.hemoglobin >= 12}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.hemoglobin > 17}">style="color:red;"</c:if>
                                     >
                               		${CheckDto.hemoglobin}g/dL
                               	</span>
                               </td>
-                              <td style="color: green;">남:13~16<br>여:12~15
-                              </td>
-                              <td style="color: green;">남:12~13 / 16~17<br>여:10~12 / 15~16
+                              <td></td>
+                              <td style="color: green;">12~17
                               </td>
                            </tr>
 
@@ -256,14 +253,14 @@
                               <td>혈당</td>
                               <td>
                               	<span 
-                                    <c:if test="${CheckDto.bloodglucose < 100}">style="color:red;"</c:if> 
-                                    <c:if test="${CheckDto.bloodglucose >= 100}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.bloodglucose < 100}">style="color:red;"</c:if>
                                     <c:if test="${CheckDto.bloodglucose > 125}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.bloodglucose >= 100}">style="color:green;"</c:if>
                                     >
                               		${CheckDto.bloodglucose}mg/dL
                               	</span>
                               	</td>
-                              <td style="color: red;">100미만</td>
+                              <td style="color: red;">100 미만</td>
                               <td style="color: green;">100~125</td>
                            </tr>
 
@@ -273,63 +270,100 @@
                               <td>총콜레스테롤</td>
                               <td>
                               	<span 
-                                    <c:if test="${CheckDto.totalcholesterol < 100}">style="color:red;"</c:if> 
+                                    <c:if test="${CheckDto.totalcholesterol < 100}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.totalcholesterol > 250}">style="color:red;"</c:if>
                                     <c:if test="${CheckDto.totalcholesterol >= 100}">style="color:green;"</c:if>
-                                    <c:if test="${CheckDto.totalcholesterol > 239}">style="color:red;"</c:if>
                                     >
                               		${CheckDto.totalcholesterol}mg/dL
                               	</span>
                               	</td>
-                              <td style="color: red;">130미만</td>
-                              <td style="color: green;">130~239</td>
+                              <td style="color: red;">251 이상</td>
+                              <td style="color: green;">130~250</td>
                            </tr>
 
                            <tr>
                               <td rowspan="4">간장질환</td>
                               <td>AST(SGOT)</td>
-                              <td>${CheckDto.ast}UL</td>
-                              <td style="color: red;">40이하</td>
+                              <td>
+                              	<span 
+                                    <c:if test="${CheckDto.ast < 41}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.ast > 50}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.ast >= 41}">style="color:green;"</c:if>
+                                    >
+                              		${CheckDto.ast}UL
+                              	</span>
+                              </td>
+                              <td style="color: red;">40 이하</td>
                               <td style="color: green;">41~50</td>
                            </tr>
 
                            <tr>
                               <td>ALT(SGPT)</td>
-                              <td>${CheckDto.alt}UL</td>
-                              <td style="color: red;">35이하</td>
-                              <td style="color: green;">36~45이하</td>
+                              <td>
+                              	<span 
+                                    <c:if test="${CheckDto.alt < 36}">style="color:red;"</c:if> 
+                                    <c:if test="${CheckDto.alt > 45}">style="color:red;"</c:if>
+                                    <c:if test="${CheckDto.alt >= 36}">style="color:green;"</c:if>
+                                    >
+                              		${CheckDto.alt}UL
+                              	</span>
+                              </td>
+                              <td style="color: red;">35 이하</td>
+                              <td style="color: green;">36~45</td>
                            </tr>
 
                            <tr>
                               <td>감마지티피</td>
                               <td>${CheckDto.gammagtp}UL</td>
-                              <td style="color: red;">남:11~63<br> 여:8~35
+                              <td style="color: red;">남: 11~63<br> 여: 8~35
                               </td>
-                              <td style="color: green;">남:64~77<br> 여:36~45
+                              <td style="color: green;">남: 64~77<br> 여: 36~45
                               </td>
                            </tr>
 
                            <tr>
                               <td>간염검사</td>
-                              <td>${CheckDto.hepatitisscr}</td>
-                              <td></td>
-                              <td></td>
+                              <td>
+                              	<span
+                                    <c:if test="${CheckDto.hepatitisscr == '정상'}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.hepatitisscr == '비활동성'}">style="color:red;"</c:if>
+                                    >
+                                    ${CheckDto.hepatitisscr}                               
+                                 </span>
+                              </td>
+                              <td style="color: red;">비활동성</td>
+                              <td style="color: green;">정상</td>
                            </tr>
 
                            <tr>
                               <td rowspan="2" style="text-align: center;">영상<br>검사</td>
                               <td>폐결핵 흉부 질환</td>
                               <td>흉부방사선검사</td>
-                              <td>${CheckDto.breastradiography}</td>
-                              <td style="color: green;">정상</td>
+                              <td>
+                              	<span
+                                    <c:if test="${CheckDto.breastradiography == '정상'}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.breastradiography == '비활동성'}">style="color:red;"</c:if>
+                                    >
+                                    ${CheckDto.breastradiography}                                
+                                 </span>
+                              </td>
                               <td style="color: red;">비활동성</td>
+                              <td style="color: green;">정상</td>
                            </tr>
 
                            <tr>
                               <td>심장질환</td>
                               <td>심전도 검사</td>
-                              <td>${CheckDto.ecg}</td>
-                              <td style="color: green;">정상</td>
+                              <td>
+                              	<span
+                                    <c:if test="${CheckDto.ecg == '정상'}">style="color:green;"</c:if>
+                                    <c:if test="${CheckDto.ecg == '비활동성'}">style="color:red;"</c:if>
+                                    >
+                                    ${CheckDto.ecg}                                 
+                                 </span>
+                              </td>
                               <td style="color: red;">비활동성</td>
+                              <td style="color: green;">정상</td>
                            </tr>
                           <!--  <tr>
                               <td colspan=6 align=center> 주의사항</td>                                                  

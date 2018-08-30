@@ -27,7 +27,7 @@
 					<%@ include file="../common/menuCheckup.jsp"%>
 				</div>
 				<div class="col-sm-9 col-md-9">
-					<div class="well" >
+					<div class="well" style="padding: 0px;">
 					   <h3><small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" >검사 의뢰목록 > 검사의뢰서 ></small> 검진서 등록</h3>
 						<br>
 						
@@ -56,10 +56,10 @@
 									<thead>
 										<tr>
 											<th class="col-check"></th>
-											<th style="text-align: center; width: 10%">구분</th>
+											<th style="text-align: center; width: 8%">구분</th>
 											<th colspan="2" style="text-align: center;">목표질환</th>
 											<th style="text-align: center;">결과</th>
-											<th colspan="2" style="text-align: center;">참고치</th>
+											<th colspan="2" style="text-align: center; width: 35%">참고치</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -71,7 +71,7 @@
 												<td rowspan="3">비만</td>
 												<td>신장</td>
 												<td><input type="text" name="height">cm</td>
-												<td style="width: 10%"></td>
+												<td style="width: 12%"></td>
 												<td></td>
 											</tr>
 											<tr>
@@ -130,15 +130,15 @@
 												<td>혈압<br>(최고)
 												</td>
 												<td><input type="text" name="bloodpremax">mmHg</td>
+												<td style="color: red;">140 이상</td>
 												<td></td>
-												<td style="color:green;">120이하</td>
 											</tr>
 											<tr>
 												<td>혈압<br>(최저)
 												</td>
 												<td><input type="text" name="bloodpremin">mmHg</td>
+												<td style="color: red;">60 이하</td>
 												<td></td>
-												<td style="color:green;">80이상</td>
 											</tr>
 										</c:if>
 										<c:if test="${kind=='2'}">
@@ -150,8 +150,8 @@
 														<option>음성</option>
 														<option>양성±</option>
 												</select></td>
-												<td style="color:green;">음성</td>
 												<td style="color:red;">양성±</td>
+												<td style="color:green;">음성</td>
 											</tr>
 
 											<tr>
@@ -160,8 +160,8 @@
 														<option>음성</option>
 														<option>양성±</option>
 												</select></td>
-												<td style="color:green;">음성</td>
 												<td style="color:red;">양성±</td>
+												<td style="color:green;">음성</td>
 											</tr>
 
 											<tr>
@@ -170,15 +170,15 @@
 														<option>음성</option>
 														<option>양성±</option>
 												</select></td>
-												<td style="color:green;">음성</td>
 												<td style="color:red;">양성±</td>
+												<td style="color:green;">음성</td>
 											</tr>
 
 											<tr>
 												<td>요ph</td>
 												<td><input type="text" name="urineph"></td>
-												<td style="color:green;">4.5~8</td>
 												<td></td>
+												<td style="color:green;">4~8</td>
 											</tr>
 										</c:if>
 										<c:if test="${kind=='3'}">
@@ -188,9 +188,8 @@
 												<td>빈혈등</td>
 												<td>혈색소</td>
 												<td><input type="text" name="hemoglobin">g/dL</td>
-												<td style="color:green;">남:13~16.5<br>여:12~15.5
-												</td>
-												<td style="color:green;">남:12~12.9 / 16.6~17.5<br>여:10~11.9 / 15.6~16.5
+												<td></td>
+												<td style="color:green;">12~17
 												</td>
 											</tr>
 
@@ -198,7 +197,7 @@
 												<td>당뇨병</td>
 												<td>혈당</td>
 												<td><input type="text" name="bloodglucose">mg/dL</td>
-												<td style="color:red;">100미만</td>
+												<td style="color:red;">100 미만</td>
 												<td style="color:green;">100~125</td>
 											</tr>
 
@@ -211,39 +210,39 @@
 												<td>총<br>콜레스테롤
 												</td>
 												<td><input type="text" name="totalcholesterol">mg/dL</td>
-												<td style="color:red;">130미만</td>
-												<td style="color:green;">130~239</td>
+												<td style="color: red;">251 이상</td>
+												<td style="color:green;">130~250</td>
 											</tr>
 
 											<tr>
 												<td rowspan="4">간장질환</td>
 												<td>AST(SGOT)</td>
 												<td><input type="text" name="ast">UL</td>
-												<td style="color:red;">40이하</td>
+												<td style="color:red;">40 이하</td>
 												<td style="color:green;">41~50</td>
 											</tr>
 
 											<tr>
 												<td>ALT(SGPT)</td>
 												<td><input type="text" name="alt">UL</td>
-												<td style="color:red;">35이하</td>
-												<td style="color:green;">36~45이하</td>
+												<td style="color:red;">35 이하</td>
+												<td style="color:green;">36~45 이하</td>
 											</tr>
 
 											<tr>
 												<td>감마지티피</td>
 												<td><input type="text" name="gammagtp">UL</td>
-												<td style="color:green;">남:11~63<br> 여:8~35
+												<td style="color:red;">남: 11~63<br> 여: 8~35
 												</td>
-												<td style="color:green;">남:64~77<br> 여:36~45
+												<td style="color:green;">남: 64~77<br> 여: 36~45
 												</td>
 											</tr>
 
 											<tr>
 												<td>간염검사</td>
 												<td><input type="text" name="hepatitisscr"></td>
-												<td></td>
-												<td></td>
+												<td style="color:red;">비활동성</td>
+												<td style="color:green;">정상</td>
 											</tr>
 										</c:if>
 										<c:if test="${kind=='4'}">
@@ -255,8 +254,8 @@
 														<option>정상</option>
 														<option>비활동성</option>
 												</select></td>
-												<td style="color:green;">정상</td>
 												<td style="color:red;">비활동성</td>
+												<td style="color:green;">정상</td>
 											</tr>
 
 											<tr>
@@ -266,8 +265,8 @@
 														<option>정상</option>
 														<option>비활동성</option>
 												</select></td>
-												<td style="color:green;">정상</td>
 												<td style="color:red;">비활동성</td>
+												<td style="color:green;">정상</td>
 											</tr>
 										</c:if>
 									</tbody>

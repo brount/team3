@@ -16,12 +16,11 @@
 					<%@ include file="../common/menuCheckup.jsp"%>
 				</div>
 				<div class="col-sm-9 col-md-9">
-				
+					<div class="well">
 						<div class="mail-box">
 							<aside class="lg-side">
 								<div class="inbox-head">
-			<h3>검사의뢰 목록<small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" > > 검사 의뢰서 > 검진서 등록</small></h3>
-									
+									<h3>검사의뢰 목록<small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" > > 검사 의뢰서 > 검진서 등록</small></h3>
 								
 									<small>*환자 이름을 클릭하세요</small>
 								</div>
@@ -105,11 +104,8 @@
 					</div>
 				</div>
 			</div>
-	
-
-
+		</div>
 	</section>
-
 
 	<footer>
 		<%@ include file="../common/footer.jsp"%>

@@ -20,7 +20,7 @@
             <%@ include file="../common/menuCheckup.jsp" %>
         </div>	
 	  		 <div class="col-sm-9 col-md-9">
-	            <div class="well">
+	            <div class="well" style="padding: 0px;">
 	            <c:if test="${sessionScope.memberState == 2 }">
 	               <h3><small style="font-family: 'Do Hyeon', sans-serif; font-size: 25px;" >처방전 목록 > </small>처방전</h3>
 	               </c:if>

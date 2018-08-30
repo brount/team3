@@ -19,10 +19,10 @@
 					<%@ include file="../common/menuEvent.jsp"%>
 				</div>
 				<div class="col-sm-9 col-md-9">
-					<div class="well">
+					<div class="well" style="padding: 0px;">
 						<div class="container">
 							<div class="row text-center text-lg-left">
-								<div>
+								<div style="width: 100%;">
 									<table class="responstable">
 										<tr>
 											<th style="text-align: center;">
